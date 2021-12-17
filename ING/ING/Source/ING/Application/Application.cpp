@@ -4,7 +4,17 @@
 namespace ING {
 
 
+	Application::Application() {
 
+
+
+	}
+
+	Application::~Application() {
+
+
+
+	}
 
 
 }

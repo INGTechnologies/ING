@@ -20,5 +20,6 @@
   <ItemGroup>
     <ClInclude Include="Source\ING.h" />
     <ClInclude Include="Source\ING\Application\Application.h" />
+    <ClInclude Include="Source\ING\Singleton\Singleton.h" />
   </ItemGroup>
 </Project>
