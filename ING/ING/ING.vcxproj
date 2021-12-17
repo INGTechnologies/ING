@@ -72,17 +72,21 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\Libs</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\Libs</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\Libs</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir);$(IncludePath)</IncludePath>
+    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\Libs</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -99,6 +103,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -124,8 +131,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,6 +151,9 @@
       </SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <Lib>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -168,18 +179,33 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d3dcompiler.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="IdGenerator.cpp" />
+    <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp" />
+    <ClCompile Include="Source\ING\Board\Board.cpp" />
+    <ClCompile Include="Source\ING\Events\Event.cpp" />
     <ClCompile Include="Source\ING\Application\Application.cpp" />
     <ClCompile Include="Source\ING.cpp" />
+    <ClCompile Include="Source\ING\Window\Window.cpp" />
+    <ClCompile Include="Source\ING\Board\Square\Square.cpp" />
+    <ClCompile Include="Source\ING\Thread\Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="IdGenerator.h" />
+    <ClInclude Include="Source\ING\Thread\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Board\Board.h" />
+    <ClInclude Include="Source\ING\Events\Event.h" />
     <ClInclude Include="Source\ING\Application\Application.h" />
     <ClInclude Include="Source\ING.h" />
     <ClInclude Include="Source\ING\Singleton\Singleton.h" />
+    <ClInclude Include="Source\ING\Window\Window.h" />
+    <ClInclude Include="Source\ING\Board\Square\Square.h" />
+    <ClInclude Include="Source\ING\Thread\Thread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -16,10 +16,38 @@
     <ClCompile Include="Source\ING\Application\Application.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ING\Events\Event.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Window\Window.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Board\Board.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Board\Square\Square.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Thread\Thread.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="IdGenerator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ING.h" />
     <ClInclude Include="Source\ING\Application\Application.h" />
     <ClInclude Include="Source\ING\Singleton\Singleton.h" />
+    <ClInclude Include="Source\ING\Events\Event.h" />
+    <ClInclude Include="Source\ING\Window\Window.h" />
+    <ClInclude Include="Source\ING\Board\Board.h" />
+    <ClInclude Include="Source\ING\Board\Square\Square.h" />
+    <ClInclude Include="Source\ING\Thread\Thread.h" />
+    <ClInclude Include="Source\ING\Thread\Manager\Manager.h" />
+    <ClInclude Include="IdGenerator.h" />
   </ItemGroup>
 </Project>
