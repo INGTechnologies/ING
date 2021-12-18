@@ -1,18 +1,34 @@
 #include "Application.h"
 
-#include "../Thread/Manager/Manager.h"
+
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
+
+
+
+#include <ING/Rendering/Rendering.h>
+
+using namespace ING::Rendering;
+
+
+
+#include <ING/Threading/Manager/Manager.h>
+
 
 
 
 namespace ING {
 
-
+	/*
+	 *	Constructors And Destructor
+	 */
 	Application::Application() {
 
 		/*
 		 *	Add Squares
 		 */
-		AddSquare(new Thread::Manager());
+		AddSquare<Thread::Manager>();
 
 
 	}
@@ -24,6 +40,10 @@ namespace ING {
 	}
 
 
+
+	/*
+	 *	Init, Run, Release Methods
+	 */
 	bool Application::Init() {
 
 

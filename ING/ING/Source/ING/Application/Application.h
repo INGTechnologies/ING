@@ -1,15 +1,22 @@
 #pragma once
 
+#include <ING/EntryPoint/EntryPoint.h>
 
-#include "../Singleton/Singleton.h"
+#include <ING\Utils/Utils.h>
 
-#include "../Window/Window.h"
+using namespace ING::Utils;
 
-#include "../Board/Board.h"
+
+
+
+#include <ING/Utils/Singleton/Singleton.h>
+#include <ING/Utils/Board/Board.h>
+
+
 
 namespace ING {
 
-	class Application: public Board<Application> {
+	class ING_API Application: public Board<Application> {	
 
 		/*
 		 *	Constructors And Destructor
@@ -21,7 +28,7 @@ namespace ING {
 
 
 		/*
-		 *	Events
+		 *	Init, Run, Release Methods
 		 */
 	public:
 		virtual bool Init()		override;

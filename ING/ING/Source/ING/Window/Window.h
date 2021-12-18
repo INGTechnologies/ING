@@ -1,13 +1,18 @@
 #pragma once
 
+#include <ING/EntryPoint/EntryPoint.h>
 
+
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
 
 
 namespace ING {
 
 
 
-	class Window		
+	class ING_API Window
 	{
 
 		/*
@@ -20,7 +25,7 @@ namespace ING {
 
 
 		/*
-		 *	Events
+		 *	Init, Run, Release Methods
 		 */
 	public:
 		virtual bool Init();

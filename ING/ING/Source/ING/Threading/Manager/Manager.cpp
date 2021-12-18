@@ -1,8 +1,18 @@
 #include "Manager.h"
 
+
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
+
+
+
+
 namespace ING {
 
-
+	/*
+	 *	Constructors And Destructor
+	 */
 	Thread::Manager::Manager() {
 
 
@@ -18,7 +28,7 @@ namespace ING {
 
 
 	/*
-	 *	Events
+	 *	Init, Run, Release Methods
 	 */
 	bool Thread::Manager::Init() {
 
@@ -26,8 +36,8 @@ namespace ING {
 		 *	Create Main Thread
 		 */
 
-		mainThread = new Thread();
-
+		threadMap[0] = new Thread();
+		threadMap[0]->id = 0;
 
 		return true;
 	}
@@ -42,7 +52,11 @@ namespace ING {
 	bool Thread::Manager::Release() {
 
 
+		threadMap.clear();
 
 		return true;
 	}
+
+	IMPLEMENT_SINGLETON(Thread::Manager);
+
 }
