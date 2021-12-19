@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{494bb523-139d-4782-9878-d09d012bbea1}</ProjectGuid>
-    <RootNamespace>FirstGame</RootNamespace>
+    <ProjectGuid>{9cf3cac7-abfa-4b01-88c3-646827263a73}</ProjectGuid>
+    <RootNamespace>INGEditor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -74,29 +74,21 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(ProjectDir)Libs\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(ProjectDir)Libs\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(ProjectDir)Libs\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(ProjectDir)Libs\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -104,16 +96,11 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"
@@ -128,9 +115,6 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,8 +122,6 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"
@@ -152,16 +134,11 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"
@@ -176,9 +153,6 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
-      <LanguageStandard>stdcpp17</LanguageStandard>
-      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -186,8 +160,6 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"
@@ -195,7 +167,6 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.lib" "$
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
