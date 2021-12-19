@@ -1,4 +1,9 @@
+
+/*
+ *	Include Header
+ */
 #include "Manager.h"
+
 
 
 namespace ING {

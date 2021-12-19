@@ -1,18 +1,18 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
+/*
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
-
-
-
-
-#include <ING/Utils/Singleton/Singleton.h>
-#include <ING/Utils/Board/Board.h>
 
 
 
@@ -39,6 +39,11 @@ namespace ING {
 
 	};
 
+
+
+	/*
+	 *	Define Macros
+	 */
 	#define ING_CREATE_APPLICATION	IMPLEMENT_SINGLETON(ING::Application);
 	#define ING_INIT_APPLICATION	if(!ING::Application::GetInstance()->Init()){return 1;}
 	#define ING_RUN_APPLICATION		if(!ING::Application::GetInstance()->Run()){return 1;}

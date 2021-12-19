@@ -1,7 +1,9 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING\EntryPoint\EntryPoint.h>
-
 
 
 
@@ -36,10 +38,26 @@ namespace ING {
 		};
 
 
+
+		/*
+		 *	Define Members
+		 */
+		template<class T>
+		T* Singleton<T>::mInstance;
+
+		template<class T>
+		T* Singleton<T>::GetInstance() {
+			return mInstance;
+		}
+
+
+
+		/*
+		 *	Include Macros
+		 */
 		#define IMPLEMENT_SINGLETON(T) T* TInstance = new T();
 
 	}
 
 }
 
-#include "Singleton.tpp"

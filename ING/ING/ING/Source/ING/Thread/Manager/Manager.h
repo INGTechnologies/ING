@@ -1,23 +1,27 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING/EntryPoint/EntryPoint.h>
 
 
 
+/*
+ *	Include Utils
+ */
 #include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
 
 
 
-#include <ING/Utils/Singleton/Singleton.h>
-#include <ING/Utils/Board/Square/Square.h>
-#include <ING/Utils/IdGenerator/IdGenerator.h>
-
-
-
+/*
+ *	Include Mutex, Map
+ */
 #include <mutex>
 #include <map>
+
 
 
 namespace ING {

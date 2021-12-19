@@ -1,24 +1,38 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
-#include <ING/Utils/Singleton/Singleton.tpp>
+/*
+ *	Include Singleton
+ */
+#include <ING/Utils/Singleton/Singleton.h>
 
+
+
+/*
+ *	Include Square
+ */
 #include "Square/Square.h"
 
 
-#include <map>
-#include <string>
 
+/*
+ *	Include Map And String
+ */
+#include <map>
+
+#include <string>
 
 
 
 namespace ING {
 
 	namespace Utils {
-
 
 		template<class T>
 		class ING_API Board : public Singleton<T>

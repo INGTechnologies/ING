@@ -1,14 +1,18 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
+/*
+ *	Include IOStream And Unordered Map
+ */
 #include <iostream>
 
 #include <unordered_map>
-
-
 
 
 

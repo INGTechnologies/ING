@@ -1,9 +1,15 @@
 #pragma once
 
+/*
+ *	Include Entry Point
+ */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
+/*
+ *	Include Singleton
+ */
 #include <ING/Utils/Singleton/Singleton.h>
 
 
@@ -46,7 +52,6 @@ namespace ING {
 
 				return true;
 			}
-
 
 		};
 
