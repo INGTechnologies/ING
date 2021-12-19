@@ -45,9 +45,6 @@
     <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EventManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ING\Application\EventManager\EventManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -102,9 +99,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ING\Application\EventManager\EventManager.h">

@@ -1,6 +1,7 @@
 #include "Application.h"
 
 
+
 #include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -22,7 +23,6 @@ using namespace ING::Rendering;
 #include <ING/Event/Manager/Manager.h>
 
 #include <ING/Application/EventManager/EventManager.h>
-
 
 
 
