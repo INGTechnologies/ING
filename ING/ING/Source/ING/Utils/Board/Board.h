@@ -4,7 +4,7 @@
 
 
 
-#include <ING/Utils/Singleton/Singleton.h>
+#include <ING/Utils/Singleton/Singleton.tpp>
 
 #include "Square/Square.h"
 

@@ -1,5 +1,8 @@
 #pragma once
 
+#include <ING/EntryPoint/EntryPoint.h>
+
+
 
 #include <ING/Utils/Utils.h>
 
@@ -11,8 +14,6 @@ using namespace ING::Utils;
 #include <ING/Utils/Board/Square/Square.h>
 #include <ING/Utils/IdGenerator/IdGenerator.h>
 
-#include "../Thread.h"
-
 
 
 #include <mutex>
@@ -22,8 +23,8 @@ using namespace ING::Utils;
 namespace ING {
 
 
-	class Thread::Manager :
-		public Singleton<Manager>,
+	class ING_API ThreadManager :
+		public Singleton<ThreadManager>,
 		public Square
 	{
 
@@ -31,8 +32,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		Manager();
-		~Manager();
+		ThreadManager();
+		~ThreadManager();
 
 
 

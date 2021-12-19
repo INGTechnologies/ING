@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ING/EntryPoint/EntryPoint.h>
+
 
 #include <ING/Utils/Utils.h>
 
@@ -11,8 +13,6 @@ using namespace ING::Utils;
 #include <ING/Utils/Board/Square/Square.h>
 #include <ING/Utils/IdGenerator/IdGenerator.h>
 
-#include "../Event.h"
-
 
 
 #include <mutex>
@@ -22,8 +22,8 @@ using namespace ING::Utils;
 namespace ING {
 
 
-	class Event::Manager :
-		public Singleton<Manager>,
+	class ING_API EventManager :
+		public Singleton<EventManager>,
 		public Square
 	{
 
@@ -31,8 +31,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		Manager();
-		~Manager();
+		EventManager();
+		~EventManager();
 
 
 

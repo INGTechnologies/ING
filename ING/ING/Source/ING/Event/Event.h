@@ -20,15 +20,6 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		class Manager;
-		friend class Manager;
-
-
-
-		/*
-		 *	Constructors And Destructor
-		 */
-	public:
 		Event();
 		~Event();
 

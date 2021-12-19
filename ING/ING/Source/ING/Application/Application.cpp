@@ -30,9 +30,9 @@ namespace ING {
 		 *	Add Squares
 		 */
 
-		AddSquare<Thread::Manager>();
+		AddSquare<ThreadManager>();
 
-		AddSquare<Event::Manager>();
+		AddSquare<EventManager>();
 
 
 	}

@@ -100,6 +100,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,6 +123,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -142,6 +146,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -163,6 +169,8 @@
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -175,6 +183,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp" />
     <ClCompile Include="Source\ING\Event\Manager\Manager.cpp" />
     <ClCompile Include="Source\ING\Application\Application.cpp" />
@@ -187,6 +196,7 @@
     <ClCompile Include="Source\ING\Thread\Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="EventManager.h" />
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h" />
     <ClInclude Include="Source\ING\Thread\Manager\Manager.h" />
     <ClInclude Include="Source\ING\Event\Manager\Manager.h" />
@@ -203,6 +213,9 @@
     <ClInclude Include="Source\ING\Utils\Utils.h" />
     <ClInclude Include="Source\ING\Window\Window.h" />
     <ClInclude Include="Source\ING\Thread\Thread.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\ING\Utils\Singleton\Singleton.tpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -45,6 +45,9 @@
     <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EventManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ING\Utils\Board\Board.h">
@@ -95,5 +98,11 @@
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="EventManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source\ING\Utils\Singleton\Singleton.tpp" />
   </ItemGroup>
 </Project>

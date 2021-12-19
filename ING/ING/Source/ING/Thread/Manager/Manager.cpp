@@ -6,6 +6,8 @@
 using namespace ING::Utils;
 
 
+#include "../Thread.h"
+
 
 
 namespace ING {
@@ -13,13 +15,13 @@ namespace ING {
 	/*
 	 *	Constructors And Destructor
 	 */
-	Thread::Manager::Manager() {
+	ThreadManager::ThreadManager() {
 
 
 
 	}
 
-	Thread::Manager::~Manager() {
+	ThreadManager::~ThreadManager() {
 
 
 
@@ -30,21 +32,21 @@ namespace ING {
 	/*
 	 *	Init, Run, Release Methods
 	 */
-	bool Thread::Manager::Init() {
+	bool ThreadManager::Init() {
 
 
 
 		return true;
 	}
 
-	bool Thread::Manager::Run() {
+	bool ThreadManager::Run() {
 
 
 
 		return true;
 	}
 
-	bool Thread::Manager::Release() {
+	bool ThreadManager::Release() {
 
 
 

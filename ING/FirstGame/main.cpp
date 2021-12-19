@@ -3,9 +3,13 @@
 
 #include <ING/Application/Application.h>
 
-/*
-#include <ING/Threading/Thread.h>
-#include <ING/Threading/Manager/Manager.h>
+
+#include <ING/Thread/Thread.h>
+
+#include <ING/Thread/Manager/Manager.h>
+
+
+#include <ING/Event/Manager/Manager.h>
 
 
 
@@ -22,26 +26,17 @@ using namespace ING::Utils;
 
 
 using namespace ING;
-*/
+
 
 
 int main() {
 
-
-	ING::Application* app = new ING::Application();
-
 	
-	if (!app->Init()) {
+	ING_CREATE_APPLICATION
 
-		return 1;
-	
-	}
+	ING_INIT_APPLICATION
 
-	if (!app->Run()) {
-
-		return 1;
-
-	}
+	ING_RUN_APPLICATION
 	
 
 	system("pause");

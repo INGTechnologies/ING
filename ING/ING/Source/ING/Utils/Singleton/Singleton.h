@@ -10,7 +10,7 @@ namespace ING {
 	namespace Utils {
 
 		template<class T>
-		class ING_API Singleton {
+		class Singleton {
 
 			/*
 			 *	Constructors And Destructor
@@ -35,15 +35,6 @@ namespace ING {
 
 		};
 
-#ifdef ING_EXPORTS
-
-		template<class T>
-		T* Singleton<T>::mInstance = nullptr;
-
-		template<class T>
-		T* Singleton<T>::GetInstance() { return mInstance; }
-
-#endif
 
 		#define IMPLEMENT_SINGLETON(T) T* TInstance = new T();
 
@@ -51,3 +42,4 @@ namespace ING {
 
 }
 
+#include "Singleton.tpp"

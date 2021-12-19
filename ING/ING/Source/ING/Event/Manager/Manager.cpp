@@ -6,13 +6,13 @@ namespace ING {
 	/*
 	 *	Constructors And Destructor
 	 */
-	Event::Manager::Manager() {
+	EventManager::EventManager() {
 
 
 
 	}
 
-	Event::Manager::~Manager() {
+	EventManager::~EventManager() {
 
 
 
@@ -23,21 +23,21 @@ namespace ING {
 	/*
 	 *	Init, Run, Release Methods
 	 */
-	bool Event::Manager::Init() {
+	bool EventManager::Init() {
 
 
 
 		return true;
 	}
 
-	bool Event::Manager::Run() {
+	bool EventManager::Run() {
 
 
 
 		return true;
 	}
 
-	bool Event::Manager::Release() {
+	bool EventManager::Release() {
 
 
 
