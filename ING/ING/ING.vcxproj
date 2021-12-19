@@ -99,6 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -119,6 +120,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -139,6 +141,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -159,6 +162,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
       </PrecompiledHeaderFile>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -171,24 +175,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\dllmain.cpp" />
+    <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp" />
+    <ClCompile Include="Source\ING\Event\Manager\Manager.cpp" />
     <ClCompile Include="Source\ING\Application\Application.cpp" />
-    <ClCompile Include="Source\ING\Events\Event.cpp" />
-    <ClCompile Include="Source\ING\Threading\Manager\Manager.cpp" />
-    <ClCompile Include="Source\ING\Threading\Thread.cpp" />
+    <ClCompile Include="Source\ING\Event\Event.cpp" />
     <ClCompile Include="Source\ING\Utils\Board\Board.cpp" />
     <ClCompile Include="Source\ING\Utils\Board\Square\Square.cpp" />
     <ClCompile Include="Source\ING\Utils\IdGenerator\IdGenerator.cpp" />
+    <ClCompile Include="Source\ING\Utils\Singleton\Singleton.cpp" />
     <ClCompile Include="Source\ING\Window\Window.cpp" />
+    <ClCompile Include="Source\ING\Thread\Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\Application\Application.h" />
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h" />
-    <ClInclude Include="Source\ING\Events\Event.h" />
+    <ClInclude Include="Source\ING\Thread\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Event\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Application\Application.h" />
+    <ClInclude Include="Source\ING\Event\Event.h" />
     <ClInclude Include="Source\ING\ING.h" />
     <ClInclude Include="Source\ING\Rendering\Rendering.h" />
-    <ClInclude Include="Source\ING\Threading\Manager\Manager.h" />
-    <ClInclude Include="Source\ING\Threading\Thread.h" />
     <ClInclude Include="Source\ING\Utils\Board\Board.h" />
     <ClInclude Include="Source\ING\Utils\Board\Square\Square.h" />
     <ClInclude Include="Source\ING\Utils\IdGenerator\IdGenerator.h" />
@@ -197,6 +202,7 @@
     <ClInclude Include="Source\ING\Utils\Types.h" />
     <ClInclude Include="Source\ING\Utils\Utils.h" />
     <ClInclude Include="Source\ING\Window\Window.h" />
+    <ClInclude Include="Source\ING\Thread\Thread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

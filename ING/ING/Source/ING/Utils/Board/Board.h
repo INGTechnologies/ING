@@ -1,6 +1,7 @@
 #pragma once
 
-#include <ING/EntryPoint/EntryPoint.h>
+#include <ING\EntryPoint\EntryPoint.h>
+
 
 
 #include <ING/Utils/Singleton/Singleton.h>
@@ -102,9 +103,7 @@ namespace ING {
 			void AddSquare()
 			{
 
-				T* square = T::GetInstance();
-
-
+				T* square = new T();
 
 				if (squareMap.find(typeid(T).name()) != squareMap.end())
 				{

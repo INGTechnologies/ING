@@ -27,12 +27,10 @@ using namespace ING;
 
 int main() {
 
-	IMPLEMENT_SINGLETON(ING::Application);
 
-	/*
+	ING::Application* app = new ING::Application();
 
-	ING::Application* app = ING::Application::GetInstance();
-
+	
 	if (!app->Init()) {
 
 		return 1;
@@ -44,8 +42,7 @@ int main() {
 		return 1;
 
 	}
-	*/
-
+	
 
 	system("pause");
 

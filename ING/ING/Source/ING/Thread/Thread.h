@@ -3,34 +3,34 @@
 #include <ING\EntryPoint\EntryPoint.h>
 
 
+
 #include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
 
 
+
+
+
 namespace ING {
 
-
-
-	class ING_API Window
-	{
+	class ING_API Thread {
 
 		/*
 		 *	Constructors And Destructor
 		 */
 	public:
-		Window();
-		~Window();
+		class Manager;
+		friend class Manager;
 
 
 
 		/*
-		 *	Init, Run, Release Methods
+		 *	Constructors And Destructor
 		 */
 	public:
-		virtual bool Init();
-		virtual bool Run();
-		virtual bool Release();
+		Thread();
+		~Thread();
 
 	};
 

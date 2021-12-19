@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ING/EntryPoint/EntryPoint.h>
+#include <ING\EntryPoint\EntryPoint.h>
 
 
 
@@ -37,6 +37,7 @@ namespace ING {
 		public:
 			uint8_t GenUInt8();
 			void RemoveUInt8Id(uint8_t id);
+			void RegisterUInt8Id(uint8_t id);
 
 
 
@@ -49,6 +50,7 @@ namespace ING {
 		public:
 			uint16_t GenUInt16();
 			void RemoveUInt16Id(uint16_t id);
+			void RegisterUInt16Id(uint16_t id);
 
 
 
@@ -61,6 +63,7 @@ namespace ING {
 		public:
 			uint32_t GenUInt32();
 			void RemoveUInt32Id(uint32_t id);
+			void RegisterUInt32Id(uint32_t id);
 
 
 
@@ -73,6 +76,7 @@ namespace ING {
 		public:
 			uint64_t GenUInt64();
 			void RemoveUIn64Id(uint64_t id);
+			void RegisterUInt64Id(uint64_t id);
 
 		};
 

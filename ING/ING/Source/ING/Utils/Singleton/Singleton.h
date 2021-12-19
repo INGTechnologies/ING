@@ -1,6 +1,6 @@
 #pragma once
 
-#include <ING/EntryPoint/EntryPoint.h>
+#include <ING\EntryPoint\EntryPoint.h>
 
 
 
@@ -18,6 +18,8 @@ namespace ING {
 		public:
 			Singleton() {
 
+				mInstance = (T*)this;
+
 			}
 
 
@@ -29,15 +31,23 @@ namespace ING {
 			static T* mInstance;
 
 		public:
-			static T* GetInstance() { return mInstance; }
+			static T* GetInstance();
 
 		};
 
+#ifdef ING_EXPORTS
+
 		template<class T>
 		T* Singleton<T>::mInstance = nullptr;
+
+		template<class T>
+		T* Singleton<T>::GetInstance() { return mInstance; }
+
+#endif
 
 		#define IMPLEMENT_SINGLETON(T) T* TInstance = new T();
 
 	}
 
 }
+

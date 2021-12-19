@@ -43,6 +43,11 @@ void IdGenerator::RemoveUInt8Id(uint8_t id) {
 	uint8Map.erase(id);
 
 }
+void IdGenerator::RegisterUInt8Id(uint8_t id) {
+
+	uint8Map[id] = true;
+
+}
 
 
 
@@ -69,6 +74,11 @@ void IdGenerator::RemoveUInt16Id(uint16_t id) {
 	}
 
 	uint16Map.erase(id);
+
+}
+void IdGenerator::RegisterUInt16Id(uint16_t id) {
+
+	uint16Map[id] = true;
 
 }
 
@@ -99,6 +109,11 @@ void IdGenerator::RemoveUInt32Id(uint32_t id) {
 	uint32Map.erase(id);
 
 }
+void IdGenerator::RegisterUInt32Id(uint32_t id) {
+
+	uint32Map[id] = true;
+
+}
 
 
 
@@ -125,5 +140,10 @@ void IdGenerator::RemoveUIn64Id(uint64_t id) {
 	}
 
 	uint64Map.erase(id);
+
+}
+void IdGenerator::RegisterUInt64Id(uint64_t id) {
+
+	uint64Map[id] = true;
 
 }

@@ -15,15 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\dllmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ING\Threading\Manager\Manager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ING\Threading\Thread.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ING\Utils\Board\Board.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -39,17 +30,23 @@
     <ClCompile Include="Source\ING\Application\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ING\Events\Event.cpp">
+    <ClCompile Include="Source\ING\Event\Event.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Event\Manager\Manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Utils\Singleton\Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Thread\Thread.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\Threading\Manager\Manager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ING\Threading\Thread.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ING\Utils\Board\Board.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -80,10 +77,19 @@
     <ClInclude Include="Source\ING\Application\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ING\Events\Event.h">
+    <ClInclude Include="Source\ING\Event\Event.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ING\Rendering\Rendering.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ING\Event\Manager\Manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ING\Thread\Thread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ING\Thread\Manager\Manager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h">

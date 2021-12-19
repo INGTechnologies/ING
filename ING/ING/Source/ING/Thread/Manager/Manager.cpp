@@ -32,12 +32,7 @@ namespace ING {
 	 */
 	bool Thread::Manager::Init() {
 
-		/*
-		 *	Create Main Thread
-		 */
 
-		threadMap[0] = new Thread();
-		threadMap[0]->id = 0;
 
 		return true;
 	}
@@ -52,11 +47,9 @@ namespace ING {
 	bool Thread::Manager::Release() {
 
 
-		threadMap.clear();
 
 		return true;
 	}
 
-	IMPLEMENT_SINGLETON(Thread::Manager);
 
 }

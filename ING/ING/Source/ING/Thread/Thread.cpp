@@ -5,21 +5,3 @@
 
 using namespace ING::Utils;
 
-
-
-namespace ING {
-
-
-	Thread::Thread() {
-
-
-
-	}
-
-	Thread::~Thread() {
-
-
-
-	}
-
-}
