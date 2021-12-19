@@ -14,7 +14,14 @@ using namespace ING::Rendering;
 
 
 #include <ING/Thread/Manager/Manager.h>
+
+#include <ING/Application/ThreadManager/ThreadManager.h>
+
+
+
 #include <ING/Event/Manager/Manager.h>
+
+#include <ING/Application/EventManager/EventManager.h>
 
 
 
@@ -30,10 +37,15 @@ namespace ING {
 		 *	Add Squares
 		 */
 
+		/* Thread Managers */
 		AddSquare<ThreadManager>();
 
+		AddSquare<ApplicationThreadManager>();
+
+		/* Event Managers */
 		AddSquare<EventManager>();
 
+		AddSquare<ApplicationEventManager>();
 
 	}
 

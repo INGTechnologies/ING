@@ -10,22 +10,25 @@ using namespace ING::Utils;
 
 
 
-
 #include <ING/Utils/Singleton/Singleton.h>
-#include <ING/Utils/Board/Board.h>
+#include <ING/Utils/Board/Square/Square.h>
+#include <ING/Utils/IdGenerator/IdGenerator.h>
 
 
 
 namespace ING {
 
-	class ING_API Application: public Board<Application> {	
+	class ING_API ApplicationThreadManager :
+		public Singleton<ApplicationThreadManager>,
+		public Square
+	{
 
 		/*
 		 *	Constructors And Destructor
 		 */
 	public:
-		Application();
-		~Application();
+		ApplicationThreadManager();
+		~ApplicationThreadManager();
 
 
 
@@ -38,9 +41,5 @@ namespace ING {
 		virtual bool Release()	override;
 
 	};
-
-	#define ING_CREATE_APPLICATION	IMPLEMENT_SINGLETON(ING::Application);
-	#define ING_INIT_APPLICATION	if(!ING::Application::GetInstance()->Init()){return 1;}
-	#define ING_RUN_APPLICATION		if(!ING::Application::GetInstance()->Run()){return 1;}
 
 }
