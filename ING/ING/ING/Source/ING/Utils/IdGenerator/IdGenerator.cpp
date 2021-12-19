@@ -1,12 +1,12 @@
 
-/*
+/**
  *	Include Header
  */
 #include "IdGenerator.h"
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -15,7 +15,7 @@ using namespace ING::Utils;
 
 
 
-/*
+/**
  *	Constructors And Destructor
  */
 IdGenerator::IdGenerator() {
@@ -27,7 +27,7 @@ IdGenerator::~IdGenerator() {
 
 
 
-/*
+/**
  *	UInt 8 Generator
  */
 uint8_t IdGenerator::GenUInt8() {
@@ -62,7 +62,7 @@ void IdGenerator::RegisterUInt8Id(uint8_t id) {
 
 
 
-/*
+/**
  *	UInt 16 Generator
  */
 uint16_t IdGenerator::GenUInt16() {
@@ -97,7 +97,7 @@ void IdGenerator::RegisterUInt16Id(uint16_t id) {
 
 
 
-/*
+/**
  *	UInt 32 Generator
  */
 uint32_t IdGenerator::GenUInt32() {
@@ -132,7 +132,7 @@ void IdGenerator::RegisterUInt32Id(uint32_t id) {
 
 
 
-/*
+/**
  *	UInt 64 Generator
  */
 uint64_t IdGenerator::GenUInt64() {

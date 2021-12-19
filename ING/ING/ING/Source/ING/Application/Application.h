@@ -1,13 +1,13 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING\Utils/Utils.h>
@@ -20,7 +20,7 @@ namespace ING {
 
 	class ING_API Application: public Board<Application> {	
 
-		/*
+		/**
 		 *	Constructors And Destructor
 		 */
 	public:
@@ -29,7 +29,7 @@ namespace ING {
 
 
 
-		/*
+		/**
 		 *	Init, Run, Release Methods
 		 */
 	public:
@@ -41,7 +41,7 @@ namespace ING {
 
 
 
-	/*
+	/**
 	 *	Define Macros
 	 */
 	#define ING_CREATE_APPLICATION	IMPLEMENT_SINGLETON(ING::Application);

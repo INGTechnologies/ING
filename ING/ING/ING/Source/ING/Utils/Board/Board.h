@@ -1,27 +1,27 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
-/*
+/**
  *	Include Singleton
  */
 #include <ING/Utils/Singleton/Singleton.h>
 
 
 
-/*
+/**
  *	Include Square
  */
 #include "Square/Square.h"
 
 
 
-/*
+/**
  *	Include Map And String
  */
 #include <map>
@@ -38,7 +38,7 @@ namespace ING {
 		class ING_API Board : public Singleton<T>
 		{
 
-			/*
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -51,7 +51,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Init, Run, Release Methods
 			 */
 		public:
@@ -106,7 +106,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Squares
 			 */
 		private:

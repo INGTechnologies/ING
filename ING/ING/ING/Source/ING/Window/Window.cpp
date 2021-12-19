@@ -1,12 +1,12 @@
 
-/*
+/**
  *	Include Header
  */
 #include "Window.h"
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -17,7 +17,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	/*
+	/**
 	 *	Constructors And Destructor
 	 */
 	Window::Window() 
@@ -36,7 +36,7 @@ namespace ING {
 
 
 
-	/*
+	/**
 	 *	Init, Run, Release Methods
 	 */
 	bool Window::Init() 

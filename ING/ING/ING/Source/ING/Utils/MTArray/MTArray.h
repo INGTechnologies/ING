@@ -1,13 +1,13 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
-/*
+/**
  *	Include Vector
  */
 #include <vector>
@@ -20,7 +20,7 @@ namespace ING {
 
 		class ING_API MTArray {
 
-			/*
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -42,7 +42,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Classes And Structs
 			 */
 		public:
@@ -76,7 +76,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Size
 			 */
 		private:
@@ -139,7 +139,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	vector
 			 */
 		private:
@@ -147,7 +147,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Clear Method
 			 */
 		public:
@@ -172,7 +172,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Operators
 			 */
 		public:

@@ -1,6 +1,6 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING\EntryPoint\EntryPoint.h>
@@ -14,7 +14,7 @@ namespace ING {
 		template<class T>
 		class Singleton {
 
-			/*
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -26,7 +26,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	Instance
 			 */
 		private:
@@ -39,7 +39,7 @@ namespace ING {
 
 
 
-		/*
+		/**
 		 *	Define Members
 		 */
 		template<class T>
@@ -52,7 +52,7 @@ namespace ING {
 
 
 
-		/*
+		/**
 		 *	Include Macros
 		 */
 		#define IMPLEMENT_SINGLETON(T) T* TInstance = new T();

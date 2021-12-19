@@ -1,12 +1,12 @@
 
-/*
+/**
  *	Include Header
  */
 #include "Square.h"
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>

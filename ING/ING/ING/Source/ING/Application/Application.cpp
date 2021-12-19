@@ -1,12 +1,12 @@
 
-/*
+/**
  *	Include Header
  */
 #include "Application.h"
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -15,7 +15,7 @@ using namespace ING::Utils;
 
 
 
-/*
+/**
  *	Include Rendering
  */
 #include <ING/Rendering/Rendering.h>
@@ -24,7 +24,7 @@ using namespace ING::Rendering;
 
 
 
-/*
+/**
  *	Include Thread Managers
  */
 #include <ING/Thread/Manager/Manager.h>
@@ -33,7 +33,7 @@ using namespace ING::Rendering;
 
 
 
-/*
+/**
  *	Include Event Managers
  */
 #include <ING/Event/Manager/Manager.h>
@@ -44,12 +44,12 @@ using namespace ING::Rendering;
 
 namespace ING {
 
-	/*
+	/**
 	 *	Constructors And Destructor
 	 */
 	Application::Application() {
 
-		/*
+		/**
 		 *	Add Squares
 		 */
 
@@ -73,7 +73,7 @@ namespace ING {
 
 
 
-	/*
+	/**
 	 *	Init, Run, Release Methods
 	 */
 	bool Application::Init() {

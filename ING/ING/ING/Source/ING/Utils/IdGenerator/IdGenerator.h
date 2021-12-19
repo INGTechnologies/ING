@@ -1,13 +1,13 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING\EntryPoint\EntryPoint.h>
 
 
 
-/*
+/**
  *	Include IOStream And Unordered Map
  */
 #include <iostream>
@@ -23,7 +23,7 @@ namespace ING {
 		class ING_API IdGenerator
 		{
 
-			/*
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -32,7 +32,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	UInt 8 Generator
 			 */
 		private:
@@ -45,7 +45,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	UInt 16 Generator
 			 */
 		private:
@@ -58,7 +58,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	UInt 32 Generator
 			 */
 		private:
@@ -71,7 +71,7 @@ namespace ING {
 
 
 
-			/*
+			/**
 			 *	UInt 64 Generator
 			 */
 		private:

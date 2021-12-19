@@ -1,5 +1,5 @@
 
-/*
+/**
  *	Include Header
  */
 #include "EventManager.h"
@@ -8,7 +8,7 @@
 
 namespace ING {
 
-	/*
+	/**
 	 *	Constructors And Destructor
 	 */
 	ApplicationEventManager::ApplicationEventManager() {
@@ -25,7 +25,7 @@ namespace ING {
 
 
 
-	/*
+	/**
 	 *	Init, Run, Release Methods
 	 */
 	bool ApplicationEventManager::Init() {

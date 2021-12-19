@@ -1,12 +1,12 @@
 
-/*
+/**
  *	Include Header
  */
 #include "Manager.h"
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -15,7 +15,7 @@ using namespace ING::Utils;
 
 
 
-/*
+/**
  *	Include Thread
  */
 #include "../Thread.h"
@@ -24,7 +24,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	/*
+	/**
 	 *	Constructors And Destructor
 	 */
 	ThreadManager::ThreadManager() {
@@ -41,7 +41,7 @@ namespace ING {
 
 
 
-	/*
+	/**
 	 *	Init, Run, Release Methods
 	 */
 	bool ThreadManager::Init() {

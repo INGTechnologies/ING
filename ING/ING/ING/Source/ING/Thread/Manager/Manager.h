@@ -1,13 +1,13 @@
 #pragma once
 
-/*
+/**
  *	Include Entry Point
  */
 #include <ING/EntryPoint/EntryPoint.h>
 
 
 
-/*
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -16,7 +16,7 @@ using namespace ING::Utils;
 
 
 
-/*
+/**
  *	Include Mutex, Map
  */
 #include <mutex>
@@ -32,7 +32,7 @@ namespace ING {
 		public Square
 	{
 
-		/*
+		/**
 		 *	Constructors And Destructor
 		 */
 	public:
@@ -41,7 +41,7 @@ namespace ING {
 
 
 
-		/*
+		/**
 		 *	Init, Run, Release Methods
 		 */
 	public:
