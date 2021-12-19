@@ -73,26 +73,26 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\FirstGame\</OutDir>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\FirstGame\</OutDir>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\FirstGame\</OutDir>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Build\$(Platform)\$(Configuration)\FirstGame\</OutDir>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\FirstGame\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -112,7 +112,7 @@
       </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -137,7 +137,7 @@
       </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -158,7 +158,7 @@
       </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -183,7 +183,7 @@
       </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Build\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
