@@ -51,7 +51,7 @@ namespace ING {
 
 	Application::~Application() {
 
-
+		
 
 	}
 
@@ -62,28 +62,25 @@ namespace ING {
 	 */
 	bool Application::Init() {
 
+		
 
-		Board<Application>::Init();
-
-		return true;
+		return Board<Application>::Init();
 	}
 
 
 	bool Application::Run() {
 
+				
 
-		Board<Application>::Run();
-
-		return true;
+		return Board<Application>::Run();
 	}
 
 
 	bool Application::Release() {
 
+		
 
-		Board<Application>::Release();
-
-		return true;
+		return Board<Application>::Release();
 	}
 
 
