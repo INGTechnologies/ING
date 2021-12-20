@@ -24,31 +24,6 @@ using namespace ING::Rendering;
 
 
 
-/**
- *	Include Core
- */
-#include <ING/Core/Core.h>
-
-
-
-/**
- *	Include Thread Managers
- */
-#include <ING/Thread/Manager/Manager.h>
-
-#include <ING/Application/ThreadManager/ThreadManager.h>
-
-
-
-/**
- *	Include Event Managers
- */
-#include <ING/Event/Manager/Manager.h>
-
-#include <ING/Application/EventManager/EventManager.h>
-
-
-
 namespace ING {
 
 	/**
@@ -59,7 +34,6 @@ namespace ING {
 		/**
 		 *	Add Squares
 		 */
-
 		/* Core */
 		AddSquare<Core>();
 

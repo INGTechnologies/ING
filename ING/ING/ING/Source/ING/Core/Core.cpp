@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Utils
+ */
+#include <ING/Core/Memory/Memory.h>
+
+
+
 namespace ING {
 
 	/**
@@ -22,7 +29,11 @@ namespace ING {
 	 */
 	Core::Core() {
 
-
+		/**
+		 *	Add Squares
+		 */
+		/* Memory */
+		AddSquare<Memory>();
 
 	}
 
@@ -41,7 +52,7 @@ namespace ING {
 
 
 
-		return true;
+		return Board<Core>::Init();
 	}
 
 
@@ -49,7 +60,7 @@ namespace ING {
 
 
 
-		return true;
+		return Board<Core>::Run();
 	}
 
 
@@ -57,7 +68,7 @@ namespace ING {
 
 
 
-		return true;
+		return Board<Core>::Release();
 	}
 
 
