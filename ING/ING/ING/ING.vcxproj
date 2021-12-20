@@ -207,6 +207,9 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Core\Memory\Memory.cpp" />
+    <ClCompile Include="Source\ING\Core\Assert\Assert.cpp" />
+    <ClCompile Include="Source\ING\Core\Core.cpp" />
     <ClCompile Include="Source\ING\Application\EventManager\EventManager.cpp" />
     <ClCompile Include="Source\ING\Thread\Manager\Manager.cpp" />
     <ClCompile Include="Source\ING\Event\Manager\Manager.cpp" />
@@ -220,6 +223,9 @@
     <ClCompile Include="Source\ING\Application\ThreadManager\ThreadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Core\Memory\Memory.h" />
+    <ClInclude Include="Source\ING\Core\Assert\Assert.h" />
+    <ClInclude Include="Source\ING\Core\Core.h" />
     <ClInclude Include="Source\ING\Application\EventManager\EventManager.h" />
     <ClInclude Include="Source\ING\EntryPoint\EntryPoint.h" />
     <ClInclude Include="Source\ING\Thread\Manager\Manager.h" />

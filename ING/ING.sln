@@ -24,10 +24,19 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "INGEditor", "ING\INGEditor\
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiThreadingExample", "Examples\MultiThreadingExample\MultiThreadingExample.vcxproj", "{5D743394-A4C8-4D91-BA88-4B0AE01DDF38}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B493F4A1-CD82-465D-8212-FD99FA0145B1} = {B493F4A1-CD82-465D-8212-FD99FA0145B1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EventExample", "Examples\EventExample\EventExample.vcxproj", "{9A425136-C4D1-48B9-ABAA-E9AA04DC1B2C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B493F4A1-CD82-465D-8212-FD99FA0145B1} = {B493F4A1-CD82-465D-8212-FD99FA0145B1}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "FirstExample", "Examples\FirstExample\FirstExample.vcxproj", "{494BB523-139D-4782-9878-D09D012BBEA1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B493F4A1-CD82-465D-8212-FD99FA0145B1} = {B493F4A1-CD82-465D-8212-FD99FA0145B1}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{6C796121-EB21-4338-9A77-3328B1734820}"
 EndProject

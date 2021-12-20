@@ -25,6 +25,13 @@ using namespace ING::Rendering;
 
 
 /**
+ *	Include Core
+ */
+#include <ING/Core/Core.h>
+
+
+
+/**
  *	Include Thread Managers
  */
 #include <ING/Thread/Manager/Manager.h>
@@ -52,6 +59,9 @@ namespace ING {
 		/**
 		 *	Add Squares
 		 */
+
+		/* Core */
+		AddSquare<Core>();
 
 		/* Thread Managers */
 		AddSquare<ThreadManager>();
