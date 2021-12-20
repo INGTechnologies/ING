@@ -44,14 +44,12 @@ namespace ING {
 		return true;
 	}
 
-
 	bool Memory::Run() {
 
 
 
 		return true;
 	}
-
 
 	bool Memory::Release() {
 
@@ -61,4 +59,29 @@ namespace ING {
 	}
 
 
+
+	/**
+	 *	Allocate, Deallocate Methods
+	 */
+	void* Memory::Allocate(ui64 size) {
+
+#ifdef _DEBUG
+
+		/*  */
+
+#endif
+
+		return malloc(size);
+	}
+
+	void Memory::Deallocate(void* ptr) {
+
+#ifdef _DEBUG
+
+		/*  */
+
+#endif
+
+		free(ptr);
+	}
 }

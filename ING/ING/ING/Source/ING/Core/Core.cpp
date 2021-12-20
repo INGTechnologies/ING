@@ -15,13 +15,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Utils
- */
-#include <ING/Core/Memory/Memory.h>
-
-
-
 namespace ING {
 
 	/**
@@ -55,14 +48,12 @@ namespace ING {
 		return Board<Core>::Init();
 	}
 
-
 	bool Core::Run() {
 
 
 
 		return Board<Core>::Run();
 	}
-
 
 	bool Core::Release() {
 

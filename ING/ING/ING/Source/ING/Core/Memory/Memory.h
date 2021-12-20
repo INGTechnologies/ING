@@ -40,6 +40,15 @@ namespace ING {
 		virtual bool Run()		override;
 		virtual bool Release()	override;
 
+
+
+		/**
+		 *	Allocate, Deallocate Methods
+		 */
+	public:
+		void* Allocate(ui64 size);
+		void Deallocate(void* ptr);
+
 	};
 
 
@@ -47,6 +56,8 @@ namespace ING {
 	/**
 	 *	Define Macros
 	 */
+#define ALLOCATE(size)	ING::Memory::GetInstance()->Allocate(size)
+#define DEALLOCATE(size)	ING::Memory::GetInstance()->Deallocate(size)
 
 
 }
