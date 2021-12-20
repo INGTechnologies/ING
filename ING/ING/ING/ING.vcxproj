@@ -74,28 +74,28 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)ING\ING\Libs\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)ING\ING\Libs\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)ING\ING\Libs\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)ING\ING\Libs\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -120,7 +120,8 @@
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\DirectXTex.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -149,7 +150,8 @@
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\DirectXTex.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -174,7 +176,8 @@
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\DirectXTex.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -203,7 +206,8 @@
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)ING\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\DirectXTex.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

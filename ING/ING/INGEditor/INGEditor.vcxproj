@@ -114,8 +114,7 @@
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -138,8 +137,7 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -158,8 +156,7 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -182,8 +179,7 @@ xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"
-xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.lib" "$(ProjectDir)Libs\"</Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
