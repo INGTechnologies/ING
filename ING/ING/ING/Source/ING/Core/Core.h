@@ -16,13 +16,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Memory
- */
-#include <ING/Core/Memory/Memory.h>
-
-
-
 namespace ING {
 
 	class ING_API Core :

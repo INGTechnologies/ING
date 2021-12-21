@@ -16,11 +16,34 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Core
+ */
+#include <ING/Core/Core.h>
+
+
+
+ /**
+  *	Include Thread Managers
+  */
+#include <ING/Thread/Manager/Manager.h>
+
+#include <ING/Application/ThreadManager/ThreadManager.h>
+
+
+
+/**
  *	Include Rendering
  */
 #include <ING/Rendering/Rendering.h>
 
-using namespace ING::Rendering;
+
+
+/**
+ *	Include Event Managers
+ */
+#include <ING/Event/Manager/Manager.h>
+
+#include <ING/Application/EventManager/EventManager.h>
 
 
 
@@ -46,6 +69,9 @@ namespace ING {
 		AddSquare<EventManager>();
 
 		AddSquare<ApplicationEventManager>();
+
+		/* Rendering Engine */
+		AddSquare<Rendering::Engine>();
 
 	}
 

@@ -211,10 +211,20 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Rendering\Shader\Manager\Manager.cpp" />
+    <ClCompile Include="Source\ING\Rendering\Scene\Manager\Manager.cpp" />
+    <ClCompile Include="Source\ING\Rendering\Mesh\Manager\Manager.cpp" />
+    <ClCompile Include="Source\ING\Rendering\Material\Manager\Manager.cpp" />
     <ClCompile Include="Source\**\*.cpp" />
+    <ClCompile Include="Source\ING\Rendering\System\System.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Rendering\Shader\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Rendering\Scene\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Rendering\Mesh\Manager\Manager.h" />
+    <ClInclude Include="Source\ING\Rendering\Material\Manager\Manager.h" />
     <ClInclude Include="Source\**\*.h" />
+    <ClInclude Include="Source\ING\Rendering\System\System.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
