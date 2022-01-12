@@ -15,9 +15,9 @@
 
 
 /**
- *	Include MTArray
+ *	Include MultiTypeArray
  */
-#include "MTArray/MTArray.h"
+#include "MultiTypeArray/MultiTypeArray.h"
 
 
 
@@ -46,6 +46,34 @@
  *	Include Square
  */
 #include "Board/Square/Square.h"
+
+
+
+ /**
+  *	Include NoDuplicatesList
+  */
+#include "NoDuplicatesList/NoDuplicatesList.h"
+
+
+
+/**
+ *	Include List
+ */
+#include "List/List.h"
+
+
+
+/**
+ *	Include UniquePtr
+ */
+#include "UniquePtr/UniquePtr.h"
+
+
+
+/**
+ *	Include SharedPtr
+ */
+#include "SharedPtr/SharedPtr.h"
 
 
 

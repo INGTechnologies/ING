@@ -53,11 +53,11 @@ int main() {
 
 
 	
-	ING_CREATE_APPLICATION
+	ING::Application::CreateInstance();
 
-	ING_INIT_APPLICATION
+	ING::Application::GetInstance()->Init();
 
-	ING_RUN_APPLICATION
+	ING::Application::GetInstance()->Run();
 	
 
 

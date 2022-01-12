@@ -35,6 +35,18 @@ namespace ING {
 		public:
 			static T* GetInstance();
 
+
+
+			/**
+			 *	CreateInstance Method
+			 */
+		public:
+			static T* CreateInstance() {
+
+				return new T();
+
+			}
+
 		};
 
 
@@ -43,7 +55,7 @@ namespace ING {
 		 *	Define Members
 		 */
 		template<class T>
-		T* Singleton<T>::mInstance;
+		T* Singleton<T>::mInstance= nullptr;
 
 		template<class T>
 		T* Singleton<T>::GetInstance() {

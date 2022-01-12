@@ -93,14 +93,12 @@ namespace ING {
 		return Board<Application>::Init();
 	}
 
-
 	bool Application::Run() {
 
 				
 
 		return Board<Application>::Run();
 	}
-
 
 	bool Application::Release() {
 

@@ -30,12 +30,12 @@ namespace ING {
 
 
 		/**
-		 *	Init, Run, Release Methods
+		 *	Init, Run, Release, Create Methods
 		 */
 	public:
-		virtual bool Init()		override;
-		virtual bool Run()		override;
-		virtual bool Release()	override;
+		virtual bool			Init()		override;
+		virtual bool			Run()		override;
+		virtual bool			Release()	override;
 
 	};
 

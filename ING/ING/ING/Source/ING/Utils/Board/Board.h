@@ -101,6 +101,8 @@ namespace ING {
 
 				squareMap.clear();
 
+				delete this;
+
 				return true;
 			}
 

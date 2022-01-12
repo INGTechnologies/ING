@@ -53,12 +53,25 @@ int main() {
 
 
 	
-	ING_CREATE_APPLICATION
+	ING::Application::CreateInstance();
 
-	ING_INIT_APPLICATION
+	ING::Application::GetInstance()->Init();
 
-	ING_RUN_APPLICATION
-	
+	ING::Application::GetInstance()->Run();
+
+
+	while(true){
+
+		{
+
+			SharedPtr<int> sptr0 = SharedPtr<int>(5);
+
+			SharedPtr<int> sptr1 = sptr0;
+
+		}
+
+	}
+
 
 
 	system("pause");

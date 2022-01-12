@@ -41,21 +41,21 @@ namespace ING {
 
 
 
-		return true;
+		return Square::Init();
 	}
 
 	bool Memory::Run() {
 
 
 
-		return true;
+		return Square::Run();
 	}
 
 	bool Memory::Release() {
 
 
 
-		return true;
+		return Square::Release();
 	}
 
 

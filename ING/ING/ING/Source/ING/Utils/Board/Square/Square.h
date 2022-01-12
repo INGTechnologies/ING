@@ -50,6 +50,8 @@ namespace ING {
 
 			virtual bool Release() {
 
+				delete this;
+
 				return true;
 			}
 

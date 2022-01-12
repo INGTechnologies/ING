@@ -32,21 +32,21 @@ namespace ING {
 
 
 
-		return true;
+		return Square::Init();
 	}
 
 	bool EventManager::Run() {
 
 
 
-		return true;
+		return Square::Run();
 	}
 
 	bool EventManager::Release() {
 
 
 
-		return true;
+		return Square::Release();
 	}
 
 

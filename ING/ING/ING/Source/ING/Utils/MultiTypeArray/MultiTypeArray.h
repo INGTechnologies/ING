@@ -18,34 +18,15 @@ namespace ING {
 
 	namespace Utils {
 
-		class ING_API MTArray {
+		class ING_API MultiTypeArray {
 
 			/**
-			 *	Constructors And Destructor
+			 *	 Nested Classes, Structs
 			 */
 		public:
-			MTArray(ui64 size) {
-
-				Resize(size);
-
-			}
-			MTArray() :
-				MTArray(0)
-			{
-
-			}
-			~MTArray() {
-
-				Clear();
-
-			}
-
-
-
 			/**
-			 *	Classes And Structs
+			 *	 Element Struct
 			 */
-		public:
 			struct Element {
 			private:
 				void* pData;
@@ -68,11 +49,33 @@ namespace ING {
 				}
 
 				template<typename T>
-				T GetData() {
+				T& As() {
 					return *((T*)pData);
 				}
 
 			};
+
+
+
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			MultiTypeArray(ui64 size) {
+				mSize = 0;
+				Resize(size);
+
+			}
+			MultiTypeArray() :
+				MultiTypeArray(0)
+			{
+
+			}
+			~MultiTypeArray() {
+
+				Clear();
+
+			}
 
 
 
