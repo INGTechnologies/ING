@@ -35,7 +35,7 @@ namespace ING {
 	namespace Utils {
 
 		template<class T>
-		class ING_API Board : public Singleton<T>
+		class Board : public Singleton<T>
 		{
 
 			/**
