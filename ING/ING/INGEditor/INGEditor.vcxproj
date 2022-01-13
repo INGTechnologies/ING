@@ -72,29 +72,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\INGSDK\Lib\Source\;$(SolutionDir)ING\INGShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\INGSDK\Lib\Source\;$(SolutionDir)ING\INGShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\INGSDK\Lib\Source\;$(SolutionDir)ING\INGShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\INGSDK\Lib\Source\;$(SolutionDir)ING\INGShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>

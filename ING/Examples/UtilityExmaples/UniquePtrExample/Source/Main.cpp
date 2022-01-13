@@ -60,6 +60,19 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
+	while (true) {
+
+		{
+
+			UniquePtr<int> sptr0 = UniquePtr<int>(5);
+
+			UniquePtr<int> sptr1 = sptr0;
+
+		}
+
+	}
+
+
 
 	system("pause");
 	return 0;

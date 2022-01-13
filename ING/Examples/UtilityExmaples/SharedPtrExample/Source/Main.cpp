@@ -60,6 +60,19 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
+	while (true) {
+
+		{
+
+			SharedPtr<int> sptr0 = SharedPtr<int>(5);
+
+			SharedPtr<int> sptr1 = sptr0;
+
+		}
+
+	}
+
+
 
 	system("pause");
 	return 0;
