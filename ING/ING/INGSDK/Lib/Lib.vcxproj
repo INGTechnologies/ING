@@ -168,11 +168,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\SDK\Project\Project.h" />
     <ClInclude Include="Source/**/*.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\SDK\Project\Project.cpp" />
     <ClCompile Include="Source/**/*.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
