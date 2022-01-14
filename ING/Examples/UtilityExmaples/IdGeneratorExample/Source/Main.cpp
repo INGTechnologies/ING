@@ -78,11 +78,27 @@ int main() {
 
 
 
+	//Create Ids
+	ui8		id8		= generator.GenUInt8();
+	ui16	id16	= generator.GenUInt16();
+	ui32	id32	= generator.GenUInt32();
+	ui64	id64	= generator.GenUInt64();
+
+
+	
 	//Log Ids
-	Debug::Log((int)generator.GenUInt8());
-	Debug::Log(generator.GenUInt16());
-	Debug::Log(generator.GenUInt32());
-	Debug::Log(generator.GenUInt64());
+	Debug::Log(id8);
+	Debug::Log(id16);
+	Debug::Log(id32);
+	Debug::Log(id64);
+
+
+
+	//Remove Ids
+	generator.RemoveUInt8Id(id8);
+	generator.RemoveUInt16Id(id16);
+	generator.RemoveUInt32Id(id32);
+	generator.RemoveUInt64Id(id64);
 
 
 

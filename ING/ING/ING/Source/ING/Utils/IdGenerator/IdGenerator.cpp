@@ -169,7 +169,7 @@ uint64_t IdGenerator::GenUInt64() {
 
 }
 
-void IdGenerator::RemoveUIn64Id(uint64_t id) {
+void IdGenerator::RemoveUInt64Id(uint64_t id) {
 
 	if (uint64Map.find(id) == uint64Map.end()) {
 		return;

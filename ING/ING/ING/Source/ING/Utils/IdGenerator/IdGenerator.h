@@ -79,7 +79,7 @@ namespace ING {
 
 		public:
 			uint64_t GenUInt64();
-			void RemoveUIn64Id(uint64_t id);
+			void RemoveUInt64Id(uint64_t id);
 			void RegisterUInt64Id(uint64_t id);
 
 		};
