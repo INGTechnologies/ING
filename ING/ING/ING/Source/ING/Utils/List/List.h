@@ -82,7 +82,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void AddAt(T& obj, Node* node2) {
+			Node* AddAt(T& obj, Node* node2) {
 
 				Node* node = new Node();
 
@@ -103,8 +103,10 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
-			void AddAfter(T& obj, Node* node2) {
+			Node* AddAfter(T& obj, Node* node2) {
 
 				Node* node = new Node();
 
@@ -125,17 +127,21 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
 
-			void Add(T& obj) {
+			Node* Add(T& obj) {
+
+				Node* node = nullptr;
 
 				if (tailNode != nullptr) {
 
-					AddAfter(obj, tailNode);
+					node = AddAfter(obj, tailNode);
 
 				}
 				else {
-					Node* node = new Node();
+					node = new Node();
 
 					node->pValue = malloc(sizeof(T));
 
@@ -147,17 +153,21 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
 
-			void Add(T obj) {
+			Node* Add(T obj) {
+
+				Node* node = nullptr;
 
 				if (tailNode != nullptr) {
 
-					AddAfter(obj, tailNode);
+					node = AddAfter(obj, tailNode);
 
 				}
 				else {
-					Node* node = new Node();
+					node = new Node();
 
 					node->pValue = malloc(sizeof(T));
 
@@ -168,6 +178,8 @@ namespace ING {
 				}
 
 				size++;
+
+				return node;
 
 			}
 

@@ -86,10 +86,10 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void AddAt(T& obj, T& obj2) {
+			Node* AddAt(T& obj, T& obj2) {
 
 				if (nodeMap.find(obj2) == nodeMap.end()) {
-					return;
+					return nullptr;
 				}
 
 				Node* node = new Node();
@@ -113,11 +113,13 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
-			void AddAfter(T& obj, T& obj2) {
+			Node* AddAfter(T& obj, T& obj2) {
 
 				if (nodeMap.find(obj2) == nodeMap.end()) {
-					return;
+					return nullptr;
 				}
 
 				Node* node = new Node();
@@ -141,18 +143,22 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
 
-			void Add(T& obj) {
+			Node* Add(T& obj) {
+
+				Node* node = nullptr;
 
 				if (tailNode != nullptr) {
 
 					T obj2 = *((T*)tailNode->pValue);
-					AddAfter(obj, obj2);
+					node = AddAfter(obj, obj2);
 
 				}
 				else {
-					Node* node = new Node();
+					node = new Node();
 
 					node->pValue = malloc(sizeof(T));
 
@@ -166,18 +172,22 @@ namespace ING {
 
 				size++;
 
+				return node;
+
 			}
 
-			void Add(T obj) {
+			Node* Add(T obj) {
+
+				Node* node = nullptr;
 
 				if (tailNode != nullptr) {
 
 					T obj2 = *((T*)tailNode->pValue);
-					AddAfter(obj, obj2);
+					node = AddAfter(obj, obj2);
 
 				}
 				else {
-					Node* node = new Node();
+					node = new Node();
 
 					node->pValue = malloc(sizeof(T));
 
@@ -190,6 +200,8 @@ namespace ING {
 
 					size++;
 				}
+
+				return node;
 
 			}
 
