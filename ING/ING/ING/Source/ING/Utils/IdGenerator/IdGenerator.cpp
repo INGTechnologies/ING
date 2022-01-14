@@ -34,13 +34,18 @@ uint8_t IdGenerator::GenUInt8() {
 
 	uint8_t result = rand() % 254 + 1;
 
-	while (uint8Map.find(result) == uint8Map.end()) {
-		result = GenUInt8();
+	if (uint8Map.find(result) == uint8Map.end()) {
+
+		uint8Map[result] = true;
+
+		return result;
+
 	}
+	else {
 
-	uint8Map[result] = true;
+		return GenUInt8();
 
-	return result;
+	}
 
 }
 
@@ -69,13 +74,18 @@ uint16_t IdGenerator::GenUInt16() {
 
 	uint16_t result = rand() % 65534 + 1;
 
-	while (uint16Map.find(result) == uint16Map.end()) {
-		result = GenUInt16();
+	if (uint16Map.find(result) == uint16Map.end()) {
+
+		uint16Map[result] = true;
+
+		return result;
+
 	}
+	else {
 
-	uint32Map[result] = true;
+		return GenUInt16();
 
-	return result;
+	}
 
 }
 
@@ -104,13 +114,18 @@ uint32_t IdGenerator::GenUInt32() {
 
 	uint32_t result = rand() % 4294967294 + 1;
 
-	while (uint32Map.find(result) == uint32Map.end()) {
-		result = GenUInt32();
+	if (uint32Map.find(result) == uint32Map.end()) {
+
+		uint32Map[result] = true;
+
+		return result;
+
 	}
+	else {
 
-	uint32Map[result] = true;
+		return GenUInt32();
 
-	return result;
+	}
 
 }
 
@@ -139,13 +154,18 @@ uint64_t IdGenerator::GenUInt64() {
 
 	uint64_t result = rand() % 18446744073709551614 + 1;
 
-	while (uint64Map.find(result) == uint64Map.end()) {
-		result = GenUInt64();
+	if (uint64Map.find(result) == uint64Map.end()) {
+
+		uint64Map[result] = true;
+
+		return result;
+
 	}
+	else {
 
-	uint64Map[result] = true;
+		return GenUInt64();
 
-	return result;
+	}
 
 }
 
