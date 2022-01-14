@@ -18,7 +18,7 @@ namespace ING {
 
 	namespace Utils {
 
-		class ING_API MultiTypeArray {
+		class MultiTypeArray {
 
 			/**
 			 *	 Nested Classes, Structs
@@ -28,6 +28,21 @@ namespace ING {
 			 *	 Element Struct
 			 */
 			struct Element {
+
+			public:
+				Element() {
+
+					typeName = "null";
+
+					pData = nullptr;
+
+				}
+				~Element() {
+
+
+
+				}
+
 			private:
 				void* pData;
 
@@ -38,9 +53,13 @@ namespace ING {
 				template<typename T>
 				void operator = (T next) {
 
-					if (pData != nullptr) {
-						free(pData);
-					}
+					DeleteData();
+
+
+
+					typeName = typeid(T).name();
+
+
 
 					pData = malloc(sizeof(T));
 
@@ -50,7 +69,26 @@ namespace ING {
 
 				template<typename T>
 				T& As() {
+
 					return *((T*)pData);
+				}
+
+				void DeleteData() {
+
+					if (pData != nullptr) {
+
+						free(pData);
+
+					}
+
+				}
+
+			private:
+				std::string typeName;
+
+			public:
+				std::string& GetTypeName() {
+					return typeName;
 				}
 
 			};
@@ -62,6 +100,11 @@ namespace ING {
 			 */
 		public:
 			MultiTypeArray(ui64 size) {
+				mSize = 0;
+				Resize(size);
+
+			}
+			MultiTypeArray(int size) {
 				mSize = 0;
 				Resize(size);
 
@@ -99,7 +142,7 @@ namespace ING {
 						for (ui64 i = size; i < mSize; ++i) {
 
 							if (vector[i].GetPData() != nullptr)
-								free(vector[i].GetPData());
+								vector[i].DeleteData();
 
 						}
 
@@ -185,6 +228,73 @@ namespace ING {
 
 			}
 
+
+
+		public:
+			/**
+			 *	Ref Class
+			 */
+			class Ref {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Ref(MultiTypeArray* arrayPtr) {
+					this->arrayPtr = arrayPtr;
+				}
+				~Ref() {
+
+					this->arrayPtr->Clear();
+
+				}
+
+
+
+				/**
+				 *	Array Pointer
+				 */
+			private:
+				MultiTypeArray* arrayPtr;
+
+			public:
+				MultiTypeArray* GetArrayPtr() {
+					return arrayPtr;
+				}
+
+
+
+				/**
+				 *	Basic Methods
+				 */
+			public:
+				ui64 GetSize() { return arrayPtr->GetSize(); }
+
+				void Resize(ui64 size) {
+				
+					arrayPtr->Resize(size);
+				
+				};
+
+				void Clear() {
+
+					arrayPtr->Clear();
+
+				}
+
+
+
+				/**
+				 *	Operators
+				 */
+			public:
+				Element& operator[](ui64 index) {
+
+					return (*arrayPtr)[index];
+
+				}
+
+			};
 
 		};
 

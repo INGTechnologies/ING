@@ -20,13 +20,36 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Thread::Thread() {
+	Thread::Thread(ThreadFunction function) {
+
+		this->function = function;
+
+	}
+
+	Thread::~Thread() {
 
 
 
 	}
 
-	Thread::~Thread() {
+
+
+	/**
+	 *	Start, Join, Kill Methods
+	 */
+	void Thread::Start() {
+
+
+
+	}
+
+	void Thread::Join() {
+
+
+
+	}
+
+	void Thread::Kill() {
 
 
 

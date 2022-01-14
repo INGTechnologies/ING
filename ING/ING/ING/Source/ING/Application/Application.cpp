@@ -47,6 +47,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**

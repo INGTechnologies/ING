@@ -52,13 +52,14 @@ using namespace ING::Utils;
 int main() {
 
 
-	
+
+	//Create ING Application
 	ING::Application::CreateInstance();
 
 	ING::Application::GetInstance()->Init();
 
 	ING::Application::GetInstance()->Run();
-	
+
 
 
 	system("pause");

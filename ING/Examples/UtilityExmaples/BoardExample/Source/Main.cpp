@@ -276,7 +276,8 @@ bool ExampleBoard::Release() {
 int main() {
 
 
-	
+
+	//Create ING Application
 	ING::Application::CreateInstance();
 
 	ING::Application::GetInstance()->Init();
@@ -285,12 +286,22 @@ int main() {
 
 
 
+	//Create Example Board
 	ExampleBoard::CreateInstance();
 
+
+
+	//Init Example Board
 	ExampleBoard::GetInstance()->Init();
 
+
+
+	//Run Example Board
 	ExampleBoard::GetInstance()->Run();
 
+
+
+	//Release Example Board
 	ExampleBoard::GetInstance()->Release();
 
 
