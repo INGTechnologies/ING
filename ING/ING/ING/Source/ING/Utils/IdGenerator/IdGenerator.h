@@ -82,6 +82,18 @@ namespace ING {
 			void RemoveUInt64Id(uint64_t id);
 			void RegisterUInt64Id(uint64_t id);
 
+
+
+			/**
+			 *	Clear Methods
+			 */
+		public:
+			void ClearUInt8Ids();
+			void ClearUInt16Ids();
+			void ClearUInt32Ids();
+			void ClearUInt64Ids();
+			void ClearIds();
+
 		};
 
 	}

@@ -184,3 +184,48 @@ void IdGenerator::RegisterUInt64Id(uint64_t id) {
 	uint64Map[id] = true;
 
 }
+
+void IdGenerator::ClearUInt8Ids() {
+
+	for (auto& it : uint8Map) {
+
+		uint8Map.erase(it.first);
+	}
+
+}
+
+void IdGenerator::ClearUInt16Ids() {
+
+	for (auto& it : uint16Map) {
+
+		uint16Map.erase(it.first);
+	}
+
+}
+
+void IdGenerator::ClearUInt32Ids() {
+
+	for (auto& it : uint32Map) {
+
+		uint32Map.erase(it.first);
+	}
+
+}
+
+void IdGenerator::ClearUInt64Ids() {
+
+	for (auto& it : uint64Map) {
+
+		uint64Map.erase(it.first);
+	}
+
+}
+
+void IdGenerator::ClearIds() {
+
+	ClearUInt8Ids();
+	ClearUInt16Ids();
+	ClearUInt32Ids();
+	ClearUInt64Ids();
+
+}

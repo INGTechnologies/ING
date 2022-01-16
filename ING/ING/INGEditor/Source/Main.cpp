@@ -17,9 +17,11 @@ int main() {
 
 
 
-	ING_CREATE_APPLICATION
-	ING_INIT_APPLICATION
-	ING_RUN_APPLICATION
+	ING::Application::CreateInstance();
+	
+	ING::Application::GetInstance()->Init();
+
+	ING::Application::GetInstance()->Run();
 
 
 

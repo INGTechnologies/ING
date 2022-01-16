@@ -240,12 +240,25 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Ref(MultiTypeArray* arrayPtr) {
-					this->arrayPtr = arrayPtr;
+				Ref() {
+
+					arrayPtr = nullptr;
+
 				}
+
+				Ref(MultiTypeArray* arrayPtr) {
+
+					this->arrayPtr = arrayPtr;
+
+				}
+
 				~Ref() {
 
-					this->arrayPtr->Clear();
+					if (this->arrayPtr != nullptr) {
+
+						this->arrayPtr->Clear();
+
+					}
 
 				}
 

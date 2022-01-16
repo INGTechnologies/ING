@@ -86,6 +86,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ListExample", "Examples\Uti
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IdGeneratorExample", "Examples\UtilityExmaples\IdGeneratorExample\IdGeneratorExample.vcxproj", "{CE1E3885-CC18-4926-AD19-F60840C6BADD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThreadingExamples", "ThreadingExamples", "{3B8F1E4E-78EA-4E7E-B8FB-B4A86D509481}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicExample", "Examples\ThreadingExamples\BasicExample\BasicExample.vcxproj", "{BCB1F173-8FF9-401B-8A15-2DDF6303D583}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -312,6 +316,18 @@ Global
 		{CE1E3885-CC18-4926-AD19-F60840C6BADD}.Release|x64.Build.0 = Release|x64
 		{CE1E3885-CC18-4926-AD19-F60840C6BADD}.Release|x86.ActiveCfg = Release|Win32
 		{CE1E3885-CC18-4926-AD19-F60840C6BADD}.Release|x86.Build.0 = Release|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Debug|x64.ActiveCfg = Debug|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Debug|x64.Build.0 = Debug|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Debug|x86.ActiveCfg = Debug|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Debug|x86.Build.0 = Debug|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Profile|x64.ActiveCfg = Debug|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Profile|x64.Build.0 = Debug|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Profile|x86.ActiveCfg = Debug|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Profile|x86.Build.0 = Debug|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Release|x64.ActiveCfg = Release|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Release|x64.Build.0 = Release|x64
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Release|x86.ActiveCfg = Release|Win32
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -345,6 +361,8 @@ Global
 		{5C95EC5A-716F-4127-AA24-7272D634D5CA} = {58162956-50B1-428B-9464-713AF5CB33A6}
 		{86DDBCCA-E0DD-4BBD-BF00-0712E2C0DF3E} = {58162956-50B1-428B-9464-713AF5CB33A6}
 		{CE1E3885-CC18-4926-AD19-F60840C6BADD} = {58162956-50B1-428B-9464-713AF5CB33A6}
+		{3B8F1E4E-78EA-4E7E-B8FB-B4A86D509481} = {BEEDEADD-59C0-41CE-B168-8033D6D28B71}
+		{BCB1F173-8FF9-401B-8A15-2DDF6303D583} = {3B8F1E4E-78EA-4E7E-B8FB-B4A86D509481}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46D85E63-7E12-4E3D-8B5C-E5E2CFD04116}

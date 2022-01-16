@@ -60,6 +60,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
+	private:
+		Thread();
+		
 	public:
 		Thread(ThreadFunction function);
 		~Thread();
@@ -67,24 +70,47 @@ namespace ING {
 
 
 		/**
-		 *	STDThread And Function	
+		 *	STDThread, Function And ID	
 		 */
 	private:
 		std::thread stdThread;
 		ThreadFunction function;
+		unsigned int id;
+		bool isReady;
+		bool isSTDThreadCreated;
+
+	public:
+		unsigned int&	GetID() {
+
+			return id;
+
+		}
+
+		ThreadFunction& GetFunction() {
+
+			return function;
+
+		}
+
+		std::thread&	GetSTDThread() {
+
+			return stdThread;
+
+		}
 
 
 
 	public:
-		MultiTypeArray* params;
+		MultiTypeArray::Ref params;
 
 
 
 		/**
-		 *	Start, Join, Kill Methods
+		 *	Start, WaitReady, Join, Kill Methods
 		 */
 	public:
 		void Start();
+		void WaitReady();
 		void Join();
 		void Kill();
 
