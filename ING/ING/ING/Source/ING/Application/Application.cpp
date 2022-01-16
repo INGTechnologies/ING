@@ -50,7 +50,7 @@ using namespace ING::Utils;
 /**
  *	Include Debug
  */
-#include <ING/Debug/Debug.h>
+#include <ING/_Debug/Debug.h>
 
 
 
