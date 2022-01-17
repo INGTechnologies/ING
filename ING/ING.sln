@@ -103,6 +103,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoExample", "Examples\Uti
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoDestructorExample", "Examples\UtilityExmaples\NoDestructorExample\NoDestructorExample.vcxproj", "{FBFEED7D-12E7-4A8B-B4AC-2FF891C330C0}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NoConstructorExample", "Examples\UtilityExmaples\NoConstructorExample\NoConstructorExample.vcxproj", "{A5163FFE-185E-4190-9087-8572DEBBBF40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -401,6 +403,18 @@ Global
 		{FBFEED7D-12E7-4A8B-B4AC-2FF891C330C0}.Release|x64.Build.0 = Release|x64
 		{FBFEED7D-12E7-4A8B-B4AC-2FF891C330C0}.Release|x86.ActiveCfg = Release|Win32
 		{FBFEED7D-12E7-4A8B-B4AC-2FF891C330C0}.Release|x86.Build.0 = Release|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Debug|x64.ActiveCfg = Debug|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Debug|x64.Build.0 = Debug|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Debug|x86.ActiveCfg = Debug|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Debug|x86.Build.0 = Debug|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Profile|x64.ActiveCfg = Debug|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Profile|x64.Build.0 = Debug|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Profile|x86.ActiveCfg = Debug|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Profile|x86.Build.0 = Debug|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Release|x64.ActiveCfg = Release|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Release|x64.Build.0 = Release|x64
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Release|x86.ActiveCfg = Release|Win32
+		{A5163FFE-185E-4190-9087-8572DEBBBF40}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -444,6 +458,7 @@ Global
 		{DB3BA344-0825-4947-B41F-F3868A64DCC3} = {53592266-EA1B-4B14-8289-963CEB5675C5}
 		{02AF0CC6-64A7-42D2-AB84-32BABDDBB4D0} = {58162956-50B1-428B-9464-713AF5CB33A6}
 		{FBFEED7D-12E7-4A8B-B4AC-2FF891C330C0} = {58162956-50B1-428B-9464-713AF5CB33A6}
+		{A5163FFE-185E-4190-9087-8572DEBBBF40} = {58162956-50B1-428B-9464-713AF5CB33A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {46D85E63-7E12-4E3D-8B5C-E5E2CFD04116}
