@@ -79,8 +79,11 @@ int main() {
 
 
 	//Add Elements
-	List<int>::Node* firstNode = list.Add(5);
-	List<int>::Node* secondNode = list.Add(3);
+	int firstElement = 5;
+	List<int>::Node* firstNode = list.Add(firstElement);
+
+	int secondElement = 3;
+	List<int>::Node* secondNode = list.Add(secondElement);
 
 
 

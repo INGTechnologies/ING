@@ -80,6 +80,27 @@ namespace ING {
 			Node* tailNode;
 			unsigned int size;
 
+		public:
+			T& GetHead() {
+				return *((T*)headNode->pValue);
+			}
+
+			T& GetTail() {
+				return *((T*)tailNode->pValue);
+			}
+
+			Node* GetHeadNode() {
+				return headNode;
+			}
+
+			Node* GetTailNode() {
+				return tailNode;
+			}
+
+			unsigned int GetSize() {
+				return size;
+			}
+
 
 
 			/**
@@ -176,62 +197,7 @@ namespace ING {
 
 			}
 
-			Node* Add(T obj) {
-
-				Node* node = nullptr;
-
-				if (tailNode != nullptr) {
-
-					T obj2 = *((T*)tailNode->pValue);
-					node = AddAfter(obj, obj2);
-
-				}
-				else {
-					node = new Node();
-
-					node->pValue = malloc(sizeof(T));
-
-					memcpy(node->pValue, &obj, sizeof(T));
-
-					tailNode = node;
-					headNode = node;
-
-					nodeMap[obj] = node;
-
-					size++;
-				}
-
-				return node;
-
-			}
-
 			void Remove(T& obj) {
-
-				Node* node = nodeMap[obj];
-
-				free(node->pValue);
-
-				if (node->next == nullptr) {
-					tailNode = node->prev;
-				}
-				else {
-					node->next->prev = node->prev;
-				}
-
-				if (node->prev == nullptr) {
-					headNode = node->next;
-				}
-				else {
-					node->prev->next = node->next;
-				}
-
-				delete node;
-
-				size--;
-
-			}
-
-			void Remove(T obj) {
 
 				Node* node = nodeMap[obj];
 
@@ -278,14 +244,6 @@ namespace ING {
 
 				size = 0;
 
-			}
-
-			T GetHead() {
-				return *((T*)headNode->pValue);
-			}
-
-			unsigned int GetSize() {
-				return size;
 			}
 
 			void Foreach(void (*callback)(T& item)) {
@@ -353,6 +311,147 @@ namespace ING {
 				}
 
 			}
+
+
+
+			/**
+			 *	Ref Class
+			 */
+		public:
+			class Ref {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Ref() {
+
+					listPtr = nullptr;
+
+				}
+
+				Ref(NoDuplicatesList<T>* listPtr) {
+
+					this->listPtr = listPtr;
+
+				}
+
+				~Ref() {
+
+					if (this->listPtr != nullptr) {
+
+						this->listPtr->Clear();
+
+					}
+
+				}
+
+
+
+				/**
+				 *	List Pointer
+				 */
+			private:
+				NoDuplicatesList<T>* listPtr;
+
+			public:
+				NoDuplicatesList<T>* GetListPtr() {
+					return listPtr;
+				}
+
+
+
+				/**
+				 *	Property Getters
+				 */
+			public:
+				T& GetHead() {
+
+					return listPtr->GetHead();
+				}
+
+				T& GetTail() {
+
+					return listPtr->GetTail();
+				}
+
+				Node* GetHeadNode() {
+
+					return listPtr->GetHeadNode();
+				}
+
+				Node* GetTailNode() {
+
+					return listPtr->GetTailNode();
+				}
+
+				unsigned int GetSize() {
+
+					return listPtr->GetSize();
+				}
+
+
+
+				/**
+				 *	Basic Methods
+				 */
+			public:
+				Node* AddAt(T& obj, T& obj2) {
+
+					return listPtr->AddAt(obj, obj2);
+
+				}
+				Node* AddAfter(T& obj, T& obj2) {
+
+					return listPtr->AddAfter(obj, obj2);
+
+				}
+
+				Node* Add(T& obj) {
+
+					return listPtr->Add(obj);
+
+				}
+
+				void Remove(T& obj) {
+
+					listPtr->Remove(obj);
+
+				}
+
+				void Clear() {
+
+					listPtr->Clear();
+
+				}
+
+				void Foreach(void (*callback)(T& item)) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, const int& index)) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, MultiTypeArray& captureVariables), MultiTypeArray& captureVariables) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, const int& index, MultiTypeArray& captureVariables), MultiTypeArray& captureVariables) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+
+
+			};
 
 		};
 

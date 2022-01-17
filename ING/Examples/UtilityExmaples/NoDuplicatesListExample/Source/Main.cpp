@@ -79,8 +79,11 @@ int main() {
 
 
 	//Add Elements
-	list.Add(5);
-	list.Add(3);
+	int firstElement = 5;
+	list.Add(firstElement);
+
+	int secondElement = 3;
+	list.Add(secondElement);
 
 
 
@@ -98,7 +101,7 @@ int main() {
 
 
 	//Remove First Element
-	list.Remove(5);
+	list.Remove(firstElement);
 
 
 

@@ -72,34 +72,31 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
-	List<int>::Ref list = new List<int>();
 
-	int firstElement = 5;
-
-	list.Add(firstElement);
+	//Create Array
+	MultiTypeArray::Ref array = new MultiTypeArray(2);
 
 
-	/*
-	while (true) {
 
-		Thread* exThread = new Thread([](Thread* thread) {
+	//Set Array Elements
+	array[0] = std::string("Hello World");
 
-			thread->WaitReady();
+	array[1] = 5;
 
-			ThreadManager::GetInstance()->RegisterThread(thread);
 
-			std::cout << "new thread is running..." << std::endl;
 
-			ThreadManager::GetInstance()->UnregisterThread(thread);
+	//Log Array
+	Debug::Log(array[0].As<std::string>());
 
-		});
+	Debug::Log(array[1].As<int>());
+	
 
-		exThread->Start();
 
-		exThread->Join();
+	//Clear Array
+	array.Clear();
 
-	}
-	*/
+	array.~Ref();
+
 
 
 	system("pause");

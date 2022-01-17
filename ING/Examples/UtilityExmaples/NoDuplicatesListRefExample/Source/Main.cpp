@@ -72,34 +72,53 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
-	List<int>::Ref list = new List<int>();
 
+	//Create List
+	NoDuplicatesList<int>::Ref list = new NoDuplicatesList<int>();
+
+
+
+	//Add Elements
 	int firstElement = 5;
-
 	list.Add(firstElement);
 
+	int secondElement = 3;
+	list.Add(secondElement);
 
-	/*
-	while (true) {
 
-		Thread* exThread = new Thread([](Thread* thread) {
 
-			thread->WaitReady();
+	//Log List
+	list.Foreach([](int& item) {
+	
+		Debug::Log(item);
+		
+	});
 
-			ThreadManager::GetInstance()->RegisterThread(thread);
 
-			std::cout << "new thread is running..." << std::endl;
 
-			ThreadManager::GetInstance()->UnregisterThread(thread);
+	Debug::Log();
 
-		});
 
-		exThread->Start();
 
-		exThread->Join();
+	//Remove First Element
+	list.Remove(firstElement);
 
-	}
-	*/
+
+
+	//Log List
+	list.Foreach([](int& item) {
+
+		Debug::Log(item);
+
+	});
+	
+
+
+	//Clear List
+	list.Clear();
+
+	list.~Ref();
+
 
 
 	system("pause");

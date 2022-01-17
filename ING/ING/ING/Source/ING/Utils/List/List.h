@@ -76,6 +76,27 @@ namespace ING {
 			Node* tailNode;
 			unsigned int size;
 
+		public:
+			T& GetHead() {
+				return *((T*)headNode->pValue);
+			}
+
+			T& GetTail() {
+				return *((T*)tailNode->pValue);
+			}
+
+			Node* GetHeadNode() {
+				return headNode;
+			}
+
+			Node* GetTailNode() {
+				return tailNode;
+			}
+
+			unsigned int GetSize() {
+				return size;
+			}
+
 
 
 			/**
@@ -157,32 +178,6 @@ namespace ING {
 
 			}
 
-			Node* Add(T obj) {
-
-				Node* node = nullptr;
-
-				if (tailNode != nullptr) {
-
-					node = AddAfter(obj, tailNode);
-
-				}
-				else {
-					node = new Node();
-
-					node->pValue = malloc(sizeof(T));
-
-					memcpy(node->pValue, &obj, sizeof(T));
-
-					tailNode = node;
-					headNode = node;
-				}
-
-				size++;
-
-				return node;
-
-			}
-
 			void Remove(Node* node) {
 
 				if(node->pValue != nullptr)
@@ -228,22 +223,6 @@ namespace ING {
 
 				size = 0;
 
-			}
-
-			T& GetHead() {
-				return *((T*)headNode->pValue);
-			}
-
-			T& GetTail() {
-				return *((T*)tailNode->pValue);
-			}
-
-			Node* GetHeadNode() {
-				return headNode;
-			}
-
-			Node* GetTailNode() {
-				return tailNode;
 			}
 
 			void Foreach(void (*callback)(T& item)) {
@@ -311,6 +290,147 @@ namespace ING {
 				}
 
 			}
+
+
+
+			/**
+			 *	Ref Class
+			 */
+		public:
+			class Ref {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Ref() {
+
+					listPtr = nullptr;
+
+				}
+
+				Ref(List<T>* listPtr) {
+
+					this->listPtr = listPtr;
+
+				}
+
+				~Ref() {
+
+					if (this->listPtr != nullptr) {
+
+						this->listPtr->Clear();
+
+					}
+
+				}
+
+
+
+				/**
+				 *	List Pointer
+				 */
+			private:
+				List<T>* listPtr;
+
+			public:
+				List<T>* GetListPtr() {
+					return listPtr;
+				}
+
+
+
+				/**
+				 *	Property Getters
+				 */
+			public:
+				T& GetHead() {
+
+					return listPtr->GetHead();
+				}
+
+				T& GetTail() {
+
+					return listPtr->GetTail();
+				}
+
+				Node* GetHeadNode() {
+
+					return listPtr->GetHeadNode();
+				}
+
+				Node* GetTailNode() {
+
+					return listPtr->GetTailNode();
+				}
+
+				unsigned int GetSize() {
+
+					return listPtr->GetSize();
+				}
+
+
+
+				/**
+				 *	Basic Methods
+				 */
+			public:
+				Node* AddAt(T& obj, Node* node2) {
+
+					return listPtr->AddAt(obj,node2);
+
+				}
+				Node* AddAfter(T& obj, Node* node2) {
+
+					return listPtr->AddAfter(obj, node2);
+
+				}
+
+				Node* Add(T& obj) {
+
+					return listPtr->Add(obj);
+
+				}
+
+				void Remove(Node* node) {
+
+					listPtr->Remove(node);
+
+				}
+
+				void Clear() {
+
+					listPtr->Clear();
+
+				}
+
+				void Foreach(void (*callback)(T& item)) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, const int& index)) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, MultiTypeArray& captureVariables), MultiTypeArray& captureVariables) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+				void Foreach(void (*callback)(T& item, const int& index, MultiTypeArray& captureVariables), MultiTypeArray& captureVariables) {
+
+					listPtr->Foreach(callback);
+
+				}
+
+
+
+			};
 			
 
 		};

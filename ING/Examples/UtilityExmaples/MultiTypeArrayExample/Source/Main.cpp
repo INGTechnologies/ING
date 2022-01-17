@@ -74,7 +74,7 @@ int main() {
 
 
 	//Create Array
-	MultiTypeArray::Ref array = new MultiTypeArray(2);
+	MultiTypeArray array(2);
 
 
 

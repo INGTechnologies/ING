@@ -230,10 +230,10 @@ namespace ING {
 
 
 
-		public:
 			/**
 			 *	Ref Class
 			 */
+		public:
 			class Ref {
 
 				/**
