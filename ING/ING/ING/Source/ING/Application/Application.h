@@ -18,6 +18,8 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class ApplicationConfiguration;
+
 	class ING_API Application: public Board<Application> {	
 
 		/**
@@ -36,6 +38,21 @@ namespace ING {
 		virtual bool			Init()		override;
 		virtual bool			Run()		override;
 		virtual bool			Release()	override;
+
+
+
+		/**
+		 *	Configuration
+		 */
+	private:
+		ApplicationConfiguration* configuration;
+
+	public:
+		ApplicationConfiguration* GetConfiguration() {
+
+			return configuration;
+
+		}
 
 	};
 

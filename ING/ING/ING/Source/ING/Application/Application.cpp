@@ -54,6 +54,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include JobSystem
+ */
+#include <ING/Job/System/System.h>
+
+
+
+/**
+ *	Include ApplicationConfiguration
+ */
+#include <ING/Application/Configuration/Configuration.h>
+
+
+
 namespace ING {
 
 	/**
@@ -79,6 +93,16 @@ namespace ING {
 
 		/* Rendering Engine */
 		AddSquare<Rendering::Engine>();
+
+		/* Job System */
+		AddSquare<JobSystem>();
+
+
+
+		/**
+		 *	Create Configuration
+		 */
+		configuration = new ApplicationConfiguration();
 
 	}
 
@@ -109,7 +133,7 @@ namespace ING {
 
 	bool Application::Release() {
 
-		
+		delete configuration;
 
 		return Board<Application>::Release();
 	}
