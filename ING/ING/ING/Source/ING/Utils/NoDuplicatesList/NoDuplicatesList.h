@@ -39,9 +39,27 @@ namespace ING {
 			 *	Node Struct
 			 */
 			struct Node {
+			public:
+				Node() {
+
+					next = nullptr;
+					prev = nullptr;
+
+				}
+				~Node() {
+
+
+
+				}
+
+
+
+			public:
 				void* pValue;
 				Node* next;
 				Node* prev;
+
+
 
 			public:
 				template<typename T>
@@ -115,9 +133,9 @@ namespace ING {
 
 				Node* node = new Node();
 
-				node->pValue = malloc(sizeof(T));
+				node->pValue = new T();
 
-				memcpy(node->pValue, &obj, sizeof(T));
+				*((T*)node->pValue) = obj;
 
 				if (nodeMap[obj2]->prev != nullptr) {
 					nodeMap[obj2]->prev->next = node;
@@ -145,9 +163,9 @@ namespace ING {
 
 				Node* node = new Node();
 
-				node->pValue = malloc(sizeof(T));
+				node->pValue = new T();
 
-				memcpy(node->pValue, &obj, sizeof(T));
+				*((T*)node->pValue) = obj;
 
 				if (nodeMap[obj2]->next != nullptr) {
 					nodeMap[obj2]->next->prev = node;
@@ -181,9 +199,9 @@ namespace ING {
 				else {
 					node = new Node();
 
-					node->pValue = malloc(sizeof(T));
+					node->pValue = new T();
 
-					memcpy(node->pValue, &obj, sizeof(T));
+					*((T*)node->pValue) = obj;
 
 					tailNode = node;
 					headNode = node;
@@ -201,7 +219,11 @@ namespace ING {
 
 				Node* node = nodeMap[obj];
 
-				free(node->pValue);
+				if (node->pValue != nullptr) {
+
+					delete ((T*)(node->pValue));
+
+				}
 
 				if (node->next == nullptr) {
 					tailNode = node->prev;
@@ -230,7 +252,11 @@ namespace ING {
 				while (node != nullptr) {
 					Node* nextNode = node->next;
 
-					free(node->pValue);
+					if (node->pValue != nullptr) {
+
+						delete ((T*)(node->pValue));
+
+					}
 
 					delete node;
 

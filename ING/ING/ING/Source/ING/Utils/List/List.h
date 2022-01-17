@@ -7,17 +7,24 @@
 
 
 
- /**
-  *	Include Unordered Map
-  */
+/**
+ *	Include Unordered Map
+ */
 #include <unordered_map>
 
 
 
-  /**
-   *	Include MultiTypeArray
-   */
+/**
+ *	Include MultiTypeArray
+ */
 #include <ING\Utils\MultiTypeArray\MultiTypeArray.h>
+
+
+
+/**
+ *	Include Debug
+ */
+#include <ING\_Debug\Debug.h>
 
 
 
@@ -36,9 +43,27 @@ namespace ING {
 			 *	Node Struct
 			 */
 			struct Node {
+			public:
+				Node() {
+
+					next = nullptr;
+					prev = nullptr;
+
+				}
+				~Node() {
+
+
+
+				}
+
+
+
+			public:
 				void* pValue;
 				Node* next;
 				Node* prev;
+
+
 
 			public:
 				template<typename T>
@@ -107,9 +132,9 @@ namespace ING {
 
 				Node* node = new Node();
 
-				node->pValue = malloc(sizeof(T));
+				node->pValue = new T();
 
-				memcpy(node->pValue, &obj, sizeof(T));
+				*((T*)node->pValue) = obj;
 
 				if (node2->prev != nullptr) {
 					node2->prev->next = node;
@@ -131,9 +156,9 @@ namespace ING {
 
 				Node* node = new Node();
 
-				node->pValue = malloc(sizeof(T));
+				node->pValue = new T();
 
-				memcpy(node->pValue, &obj, sizeof(T));
+				*((T*)node->pValue) = obj;
 
 				if (node2->next != nullptr) {
 					node2->next->prev = node;
@@ -164,9 +189,9 @@ namespace ING {
 				else {
 					node = new Node();
 
-					node->pValue = malloc(sizeof(T));
+					node->pValue = new T();
 
-					memcpy(node->pValue, &obj, sizeof(T));
+					*((T*)node->pValue) = obj;
 
 					tailNode = node;
 					headNode = node;
@@ -180,8 +205,11 @@ namespace ING {
 
 			void Remove(Node* node) {
 
-				if(node->pValue != nullptr)
-					free(node->pValue);
+				if (node->pValue != nullptr) {
+
+					delete ((T*)(node->pValue));
+
+				}
 
 				if (node->next == nullptr) {
 					tailNode = node->prev;
@@ -210,8 +238,13 @@ namespace ING {
 				while (node != nullptr) {
 					Node* nextNode = node->next;
 
-					if(node->pValue != nullptr)
-						free(node->pValue);
+					if (node->pValue != nullptr) {
+
+						Debug::Log(((Auto*)(node->pValue))->As<int>());
+						
+						delete ((T*)(node->pValue));
+
+					}
 
 					delete node;
 

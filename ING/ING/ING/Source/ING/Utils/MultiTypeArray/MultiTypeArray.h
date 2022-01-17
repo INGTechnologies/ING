@@ -14,86 +14,25 @@
 
 
 
+ /**
+  *	Include String
+  */
+#include <string>
+
+
+
+/**
+ *	Include Auto
+ */
+#include <ING/Utils/Auto/Auto.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
 
 		class MultiTypeArray {
-
-			/**
-			 *	 Nested Classes, Structs
-			 */
-		public:
-			/**
-			 *	 Element Struct
-			 */
-			struct Element {
-
-			public:
-				Element() {
-
-					typeName = "null";
-
-					pData = nullptr;
-
-				}
-				~Element() {
-
-
-
-				}
-
-			private:
-				void* pData;
-
-			public:
-				void* GetPData() { return pData; }
-
-			public:
-				template<typename T>
-				void operator = (T next) {
-
-					DeleteData();
-
-
-
-					typeName = typeid(T).name();
-
-
-
-					pData = malloc(sizeof(T));
-
-					memcpy(pData, &next, sizeof(T));
-
-				}
-
-				template<typename T>
-				T& As() {
-
-					return *((T*)pData);
-				}
-
-				void DeleteData() {
-
-					if (pData != nullptr) {
-
-						free(pData);
-
-					}
-
-				}
-
-			private:
-				std::string typeName;
-
-			public:
-				std::string& GetTypeName() {
-					return typeName;
-				}
-
-			};
-
-
 
 			/**
 			 *	Constructors And Destructor
@@ -141,8 +80,7 @@ namespace ING {
 
 						for (ui64 i = size; i < mSize; ++i) {
 
-							if (vector[i].GetPData() != nullptr)
-								vector[i].DeleteData();
+							vector[i].~Auto();
 
 						}
 
@@ -160,7 +98,7 @@ namespace ING {
 
 						for (ui64 i = mSize; i < size; ++i) {
 
-							vector[i] = Element();
+							vector[i] = Auto();
 
 						}
 
@@ -189,7 +127,7 @@ namespace ING {
 			 *	vector
 			 */
 		private:
-			std::vector<Element> vector;
+			std::vector<Auto> vector;
 
 
 
@@ -203,8 +141,7 @@ namespace ING {
 
 					for (ui64 i = 0; i < mSize; ++i) {
 
-						if (vector[i].GetPData() != nullptr)
-							free(vector[i].GetPData());
+						vector[i].~Auto();
 
 					}
 
@@ -222,7 +159,7 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Element& operator[](ui64 index) {
+			Auto& operator[](ui64 index) {
 
 				return vector[index];
 
@@ -301,7 +238,7 @@ namespace ING {
 				 *	Operators
 				 */
 			public:
-				Element& operator[](ui64 index) {
+				Auto& operator[](ui64 index) {
 
 					return (*arrayPtr)[index];
 

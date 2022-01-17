@@ -77,6 +77,20 @@
 
 
 
+/**
+ *	Include NoDestructor
+ */
+#include "NoDestructor/NoDestructor.h"
+
+
+
+/**
+ *	Include NoConstructor
+ */
+#include "NoConstructor/NoConstructor.h"
+
+
+
 namespace ING {
 
 	namespace Utils {
