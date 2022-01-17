@@ -17,8 +17,6 @@ namespace ING {
 		public:
 			NoDestructor() {
 
-				pData = nullptr;
-
 				pData = new T();
 
 			}

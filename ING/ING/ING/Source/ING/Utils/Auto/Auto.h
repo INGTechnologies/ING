@@ -25,7 +25,7 @@ namespace ING {
 
 	namespace Utils {
 
-		struct Auto {
+		class Auto {
 
 		public:
 			Auto() {
@@ -42,6 +42,8 @@ namespace ING {
 
 				pData = malloc(sizeof(T));
 
+				size = sizeof(T);
+
 				memcpy(pData, &next, sizeof(T));
 
 			}
@@ -53,9 +55,11 @@ namespace ING {
 
 		private:
 			void* pData;
+			unsigned int size;
 
 		public:
-			void* GetPData() { return pData; }
+			void*			GetPData() { return pData; }
+			unsigned int	GetSize() { return size; }
 
 		public:
 			template<typename T>
@@ -64,6 +68,8 @@ namespace ING {
 				DeleteData();
 
 				pData = malloc(sizeof(T));
+
+				size = sizeof(T);
 
 				memcpy(pData, &next, sizeof(T));
 
@@ -84,6 +90,30 @@ namespace ING {
 					pData = nullptr;
 
 				}
+
+			}
+
+			void CopyFrom(Auto& src) {
+
+				DeleteData();
+
+				pData = malloc(src.size);
+
+				size = src.size;
+
+				memcpy(pData, src.pData, size);
+
+			}
+
+			void CopyTo(Auto& target) {
+
+				target.DeleteData();
+
+				target.pData = malloc(size);
+
+				target.size = size;
+
+				memcpy(target.pData, pData, size);
 
 			}
 

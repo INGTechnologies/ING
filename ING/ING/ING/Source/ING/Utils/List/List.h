@@ -239,8 +239,6 @@ namespace ING {
 					Node* nextNode = node->next;
 
 					if (node->pValue != nullptr) {
-
-						Debug::Log(((Auto*)(node->pValue))->As<int>());
 						
 						delete ((T*)(node->pValue));
 

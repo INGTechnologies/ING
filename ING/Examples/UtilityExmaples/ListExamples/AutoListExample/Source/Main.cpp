@@ -6,34 +6,34 @@
 
 
 
- /**
-  *	Include Application
-  */
+/**
+ *	Include Application
+ */
 #include <ING/Application/Application.h>
 
 
 
-  /**
-   *	Include Thread And Thread Manager
-   */
+/**
+ *	Include Thread And Thread Manager
+ */
 #include <ING/Thread/Thread.h>
 
 #include <ING/Thread/Manager/Manager.h>
 
 
 
-   /**
-	*	Include Event And Event Manager
-	*/
+/**
+ *	Include Event And Event Manager
+ */
 #include <ING/Event/Event.h>
 
 #include <ING/Event/Manager/Manager.h>
 
 
 
-	/**
-	 *	Include Rendering
-	 */
+/**
+ *	Include Rendering
+ */
 #include <ING/Rendering/Rendering.h>
 
 using namespace ING::Rendering;
@@ -72,6 +72,7 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
+
 	//Create List
 	List<Auto> list;
 
@@ -79,11 +80,13 @@ int main() {
 
 	NoDestructor<Auto> a = 5;
 
-	list.Add(a.GetData());
-
 
 
 	NoDestructor<Auto> b = std::string("Hello World");
+
+
+
+	list.Add(a.GetData());
 
 	list.Add(b.GetData());
 
@@ -92,6 +95,7 @@ int main() {
 	Debug::Log(list.GetHead().As<int>());
 
 	Debug::Log(list.GetTail().As<std::string>());
+
 
 
 	system("pause");
