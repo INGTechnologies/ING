@@ -76,6 +76,13 @@ namespace ING {
 	Application::Application() {
 
 		/**
+		 *	Create Configuration
+		 */
+		configuration = new ApplicationConfiguration();
+
+
+
+		/**
 		 *	Add Squares
 		 */
 		/* Core */
@@ -96,13 +103,6 @@ namespace ING {
 
 		/* Job System */
 		AddSquare<JobSystem>();
-
-
-
-		/**
-		 *	Create Configuration
-		 */
-		configuration = new ApplicationConfiguration();
 
 	}
 

@@ -58,10 +58,10 @@ namespace ING {
 			virtual bool Init()
 			{
 
-				for (std::map<std::string, void*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
+				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
 				{
 
-					if (!((Square*)(square->second))->Init())
+					if (!(square->second->Init()))
 					{
 						return false;
 					}
@@ -73,10 +73,10 @@ namespace ING {
 
 			virtual bool Run() {
 
-				for (std::map<std::string, void*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
+				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
 				{
 
-					if (!((Square*)(square->second))->Run())
+					if (!(square->second->Run()))
 					{
 						return false;
 					}
@@ -89,10 +89,10 @@ namespace ING {
 			virtual bool Release()
 			{
 
-				for (std::map<std::string, void*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
+				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
 				{
 
-					if (!((Square*)(square->second))->Release())
+					if (!(square->second->Release()))
 					{
 						return false;
 					}
@@ -112,7 +112,7 @@ namespace ING {
 			 *	Squares
 			 */
 		private:
-			std::map<std::string, void*> squareMap;
+			std::map<std::string, Square*> squareMap;
 
 		public:
 			template<class T>

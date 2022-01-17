@@ -108,6 +108,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JobSystemExamples", "JobSystemExamples", "{A64C0C01-F7AF-4B0C-B3CB-F20F4FA8B08D}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicExample", "Examples\JobSystemExamples\BasicExample\BasicExample.vcxproj", "{4124E71F-80BC-4D6B-B5EA-410AE0F9D477}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B493F4A1-CD82-465D-8212-FD99FA0145B1} = {B493F4A1-CD82-465D-8212-FD99FA0145B1}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
