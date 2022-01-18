@@ -158,7 +158,7 @@ namespace ING {
 	/**
 	 *	Job Management Methods
 	 */
-	void JobSystem::ScheduleJob(Job* job) {
+	void JobSystem::ScheduleJob(Job* job, void* customData) {
 
 		//Find Most Free Thread
 		unsigned int mostFreeThreadIndex = 0;
@@ -202,7 +202,7 @@ namespace ING {
 
 
 		//Schedule Job
-		threads[mostFreeThreadIndex]->ScheduleJob(job);
+		threads[mostFreeThreadIndex]->ScheduleJob(job, customData);
 
 	}
 

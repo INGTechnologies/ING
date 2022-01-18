@@ -34,7 +34,7 @@ namespace ING {
 	public:
 		CustomJob() {
 
-			executor = [](Job* job) -> void{
+			executor = [](Job* job, void* customData) -> void{
 			
 				((T*)job)->Execute();
 			

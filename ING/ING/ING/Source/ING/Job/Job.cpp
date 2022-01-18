@@ -35,9 +35,35 @@ namespace ING {
 
 		queue		= 0;
 
+		scheduler	= [](Job* job, void* customData) {
+		
+			job->SetIsDone(false);
+
+			job->SetIsRunning(true);
+
+			JobSystem::GetInstance()->ScheduleJob(job, nullptr);
+		
+		};
+
+		runner		= [](Job* job, void* customData) {
+
+			job->GetExecutor()(job,nullptr);
+
+			job->SetIsDone(true);
+
+			job->SetIsRunning(false);
+
+		};
+
+		executor	= [](Job* job, void* customData) {
+
+
+
+		};
+
 	}
 
-	Job::Job(void (*executor)(Job* job)):
+	Job::Job(Func executor):
 		Job()
 	{
 
@@ -56,23 +82,15 @@ namespace ING {
 	/**
 	 *	Run, Schedule, Complete Methods
 	 */
-	void Job::Run() {
+	void Job::Run(void* customData) {
 
-		executor(this);
-
-		isDone = true;
-
-		isRunning = false;
+		runner(this, customData);
 
 	}
 
 	void Job::Schedule() {
 
-		isDone		= false;
-
-		isRunning	= true;
-
-		JobSystem::GetInstance()->ScheduleJob(this);
+		scheduler(this, nullptr);
 
 	}
 

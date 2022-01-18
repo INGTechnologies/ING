@@ -25,24 +25,53 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	typedef void (*JobExecutor)(void* job);
-
-
 
 	struct ING_API Job {
+
+		/**
+		 *	Nested Members
+		 */
+	public:
+		typedef void (*Func)		(Job* job, void* customData);
+
+
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
 		Job();
-		Job(void (*executor)(Job* job));
+		Job(Func executor);
 		~Job();
 
 
 
+		/**
+		 *	Virtual Methods
+		 */
 	protected:
-		void (*executor)(Job* job);
+		Func executor;
+		Func scheduler;
+		Func runner;
+
+	public:
+		Func GetExecutor() {
+
+			return executor;
+
+		}
+
+		Func GetScheduler() {
+
+			return scheduler;
+
+		}
+
+		Func GetRunner() {
+
+			return runner;
+
+		}
 
 
 
@@ -52,6 +81,21 @@ namespace ING {
 		unsigned int	queue;
 
 	public:
+
+		void			SetIsRunning(bool value) 
+		{
+
+			isRunning = value;
+
+		}
+
+		void			SetIsDone(bool value) 
+		{
+
+			isDone = value;
+
+		}
+
 		bool			IsDone() { return isDone; }
 
 		void			SetQueue(unsigned int queue) 
@@ -77,7 +121,7 @@ namespace ING {
 		 *	Run, Schedule, Complete Method
 		 */
 	public:
-		void Run();
+		void Run(void* customData);
 		void Schedule();
 		void Complete();
 

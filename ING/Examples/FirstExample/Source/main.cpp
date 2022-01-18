@@ -61,6 +61,7 @@ using namespace ING::Utils;
  */
 #include <ING/Job/Job.h>
 #include <ING/Job/CustomJob.h>
+#include <ING/Job/CustomParallelJob.h>
 #include <ING/Job/System/System.h>
 
 
@@ -83,6 +84,28 @@ struct ExampleJob : public CustomJob<ExampleJob> {
 
 
 
+struct ExampleParallelJob: public CustomParallelJob<ExampleParallelJob>{
+
+	ExampleParallelJob(unsigned int threadCount):
+		CustomParallelJob<ExampleParallelJob>(threadCount)
+	{
+
+
+
+	}
+
+	int a;
+
+	void Execute(unsigned int index) {
+
+		Debug::Log(index);
+
+	};
+
+};
+
+
+
 int main() {
 
 
@@ -95,34 +118,14 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
+	
+	ExampleParallelJob* job = new ExampleParallelJob(10);
 
-	/*
-	for (int i = 0; i < 20; ++i) {
+	job->SetQueue(0);
 
-		ExampleJob* job = new ExampleJob();
-
-		job->SetQueue(i);
-
-		job->a = i;
-
-		job->Schedule();
-
-	}*/
-
-
-
-	Job* job = new Job([](Job* job) {
-		
-		Debug::Log(std::string("Default Job Executed"));
-
-		delete job;
-
-	});
-
-	job->SetQueue(1);
+	job->a = 0;
 
 	job->Schedule();
-
 
 
 

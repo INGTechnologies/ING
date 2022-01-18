@@ -82,9 +82,10 @@ namespace ING {
 		 */
 	private:
 		List<Job*> queueJobs;
+		List<void*> customDatas;
 
 	public:
-		void ScheduleJob(Job* job);
+		void ScheduleJob(Job* job, void* customData);
 
 
 

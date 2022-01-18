@@ -107,7 +107,7 @@ namespace ING {
 		 *	Job Management Methods
 		 */
 	public:
-		void ScheduleJob(Job* job);
+		void ScheduleJob(Job* job, void* customData);
 
 	};
 

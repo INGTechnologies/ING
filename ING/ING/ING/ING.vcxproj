@@ -244,6 +244,7 @@
     <ClCompile Include="Source\ING\_Debug\Debug.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Job\CustomParallelJob.h" />
     <ClInclude Include="Source\ING\Job\Thread\Thread.h" />
     <ClInclude Include="Source\ING\Application\Configuration\Configuration.h" />
     <ClInclude Include="Source\ING\Application\Application.h" />
