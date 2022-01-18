@@ -84,6 +84,28 @@ struct ExampleJob : public CustomJob<ExampleJob> {
 
 
 
+struct ExampleParallelJob : public CustomParallelJob<ExampleParallelJob> {
+
+	ExampleParallelJob(unsigned int threadCount) :
+		CustomParallelJob<ExampleParallelJob>(threadCount)
+	{
+
+
+
+	}
+
+	int a;
+
+	void Execute(unsigned int index) {
+
+		Debug::Log(String(index) + " " + String(a));
+
+	};
+
+};
+
+
+
 int main() {
 
 
@@ -97,7 +119,7 @@ int main() {
 
 
 
-	ExampleJob* job = new ExampleJob();
+	ExampleParallelJob* job = new ExampleParallelJob(10);
 
 	job->SetQueue(0);
 

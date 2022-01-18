@@ -91,6 +91,13 @@
 
 
 
+ /**
+  *	Include String
+  */
+#include <ING/Utils/String/String.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

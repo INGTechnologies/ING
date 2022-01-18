@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include String
+ */
+#include <string>
+
+
+
 namespace ING {
 
 
@@ -84,6 +91,12 @@ namespace ING {
 		}
 
 		static void Log(bool content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Log(const char* content) {
 
 			std::cout << content << std::endl;
 

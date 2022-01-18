@@ -7,22 +7,25 @@
 
 
 
-
+/**
+ *	Include IOStream
+ */
 #include <iostream>
+
 
 
 namespace ING {
 
 	namespace Utils {
 
-		/*
+		/**
 		 *	bool types
 		 */
 		typedef bool		b8;
 
 
 
-		/*
+		/**
 		 *	unsigned int types
 		 */
 		typedef uint8_t		ui8;
@@ -32,7 +35,7 @@ namespace ING {
 
 
 
-		/*
+		/**
 		 *	int types
 		 */
 		typedef int8_t		i8;

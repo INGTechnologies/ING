@@ -70,42 +70,6 @@ using namespace ING;
 
 
 
-struct ExampleJob : public CustomJob<ExampleJob> {
-
-	int a;
-
-	void Execute() {
-
-		Debug::Log(a);
-
-	};
-
-};
-
-
-
-struct ExampleParallelJob: public CustomParallelJob<ExampleParallelJob>{
-
-	ExampleParallelJob(unsigned int threadCount):
-		CustomParallelJob<ExampleParallelJob>(threadCount)
-	{
-
-
-
-	}
-
-	int a;
-
-	void Execute(unsigned int index) {
-
-		Debug::Log(index);
-
-	};
-
-};
-
-
-
 int main() {
 
 
@@ -118,18 +82,6 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
-	
-	ExampleParallelJob* job = new ExampleParallelJob(10);
-
-	job->SetQueue(0);
-
-	job->a = 0;
-
-	job->Schedule();
-
-
-
-	while (true) {}
 
 	system("pause");
 	return 0;

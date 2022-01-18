@@ -240,6 +240,7 @@
     <ClCompile Include="Source\ING\Utils\Board\Board.cpp" />
     <ClCompile Include="Source\ING\Utils\Board\Square\Square.cpp" />
     <ClCompile Include="Source\ING\Utils\IdGenerator\IdGenerator.cpp" />
+    <ClCompile Include="Source\ING\Utils\String\String.cpp" />
     <ClCompile Include="Source\ING\Window\Window.cpp" />
     <ClCompile Include="Source\ING\_Debug\Debug.cpp" />
   </ItemGroup>
@@ -282,6 +283,7 @@
     <ClInclude Include="Source\ING\Utils\NoDuplicatesList\NoDuplicatesList.h" />
     <ClInclude Include="Source\ING\Utils\SharedPtr\SharedPtr.h" />
     <ClInclude Include="Source\ING\Utils\Singleton\Singleton.h" />
+    <ClInclude Include="Source\ING\Utils\String\String.h" />
     <ClInclude Include="Source\ING\Utils\Types.h" />
     <ClInclude Include="Source\ING\Utils\UniquePtr\UniquePtr.h" />
     <ClInclude Include="Source\ING\Utils\Utils.h" />
