@@ -110,6 +110,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>INGShaderCompiler\Lib\Lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib\Lib.dll" "$(OutDir)"</Command>
@@ -148,6 +149,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>INGShaderCompiler\Lib\Lib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGShaderCompiler\Lib\Lib.dll" "$(OutDir)"</Command>

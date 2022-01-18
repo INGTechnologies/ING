@@ -74,28 +74,28 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\UtilityExmaples\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\JobSystemExamples\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\UtilityExmaples\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\JobSystemExamples\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\UtilityExmaples\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\JobSystemExamples\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)ING\ING\Source\;$(SolutionDir)ING\Source\ING\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\UtilityExmaples\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\JobSystemExamples\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -114,6 +114,7 @@
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
@@ -160,6 +161,7 @@
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>

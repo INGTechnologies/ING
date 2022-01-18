@@ -20,10 +20,17 @@
 
 
 
- /**
-  *	Include JobThread
-  */
+/**
+ *	Include JobThread
+ */
 #include <ING/Job/Thread/Thread.h>
+
+
+
+/**
+ *	Include Job
+ */
+#include <ING/Job/Job.h>
 
 
 
@@ -39,7 +46,7 @@ namespace ING {
 
 		Application::GetInstance()->GetConfiguration()->Add<unsigned int>("JobSystem::threadCount");
 
-		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("JobSystem::threadCount",1);
+		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("JobSystem::threadCount",8);
 
 	}
 
@@ -70,7 +77,7 @@ namespace ING {
 
 	bool JobSystem::Release() {
 
-		DeleteThreads();
+		JoinThreads();
 
 		return Square::Release();
 	}
@@ -90,7 +97,7 @@ namespace ING {
 
 	void JobSystem::CreateThreads() {
 
-		threadCount = Application::GetInstance()->GetConfiguration()->Get<int>("JobSystem::threadCount");
+		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("JobSystem::threadCount");
 
 		threads.resize(threadCount);
 
@@ -103,6 +110,8 @@ namespace ING {
 	}
 
 	void JobSystem::RunThreads() {
+
+		isRunning = true;
 
 		unsigned int currentThreadCount = threads.size();
 
@@ -139,6 +148,61 @@ namespace ING {
 			delete threads[i];
 
 		}
+
+		threads.clear();
+
+	}
+
+
+
+	/**
+	 *	Job Management Methods
+	 */
+	void JobSystem::ScheduleJob(Job* job) {
+
+		//Find Most Free Thread
+		unsigned int mostFreeThreadIndex = 0;
+
+		unsigned int currentThreadCount = threads.size();
+
+		if (currentThreadCount == 0) return;
+
+		unsigned int minQueue = 0;
+
+		for (unsigned int i = 0; i < currentThreadCount; ++i) {
+
+			threads[i]->GetForTotalQueue_Mutex().lock();
+
+			unsigned currentThreadTotalQueue = threads[i]->GetTotalQueue();
+
+			if (currentThreadTotalQueue == 0) {
+
+				mostFreeThreadIndex = i;
+
+				minQueue = 0;
+
+				threads[i]->GetForTotalQueue_Mutex().unlock();
+
+				break;
+
+			}
+
+			if (currentThreadTotalQueue < minQueue || i == 0) {
+
+				mostFreeThreadIndex = i;
+
+				minQueue = currentThreadTotalQueue;
+
+			}
+
+			threads[i]->GetForTotalQueue_Mutex().unlock();
+
+		}
+
+
+
+		//Schedule Job
+		threads[mostFreeThreadIndex]->ScheduleJob(job);
 
 	}
 

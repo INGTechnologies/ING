@@ -47,14 +47,37 @@ namespace ING {
 
 
 	private:
-		bool isDone;
+		bool			isRunning;
+		bool			isDone;
+		unsigned int	queue;
+
+	public:
+		bool			IsDone() { return isDone; }
+
+		void			SetQueue(unsigned int queue) 
+		{
+
+			if (isRunning || isDone) return;
+
+			this->queue = queue;
+
+		}
+
+		unsigned int	GetQueue() 
+		{
+
+			return queue;
+
+		}
+		
 
 
 
 		/**
-		 *	Schedule, Complete Method
+		 *	Run, Schedule, Complete Method
 		 */
 	public:
+		void Run();
 		void Schedule();
 		void Complete();
 

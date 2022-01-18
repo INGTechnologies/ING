@@ -112,6 +112,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
@@ -154,6 +155,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>

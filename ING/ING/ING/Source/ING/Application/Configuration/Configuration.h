@@ -68,7 +68,9 @@ namespace ING {
 
 			}
 
-			return *((T*)(ptrMap[name]));
+			T data = *((T*)(ptrMap[name]));
+
+			return data;
 
 		}
 

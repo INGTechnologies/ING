@@ -49,6 +49,40 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
+/**
+ *	Include JobSystem
+ */
+#include <ING/Job/Job.h>
+#include <ING/Job/CustomJob.h>
+#include <ING/Job/System/System.h>
+
+
+
+using namespace ING;
+
+
+
+struct ExampleJob : public CustomJob<ExampleJob> {
+
+	int a;
+
+	void Execute() {
+
+		Debug::Log(a);
+
+	};
+
+};
+
+
+
 int main() {
 
 
@@ -61,6 +95,22 @@ int main() {
 	ING::Application::GetInstance()->Run();
 
 
+
+	for (int i = 0; i < 20; ++i) {
+
+		ExampleJob* job = new ExampleJob();
+
+		job->SetQueue(i);
+
+		job->a = i;
+
+		job->Schedule();
+
+	}
+
+
+
+	while (true) {}
 
 	system("pause");
 	return 0;

@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include JobSystem
+ */
+#include <ING/Job/System/System.h>
+
+
+
 namespace ING {
 
 	/**
@@ -22,7 +29,9 @@ namespace ING {
 	 */
 	Job::Job() {
 
-		isDone = false;
+		isRunning	= false;
+
+		isDone		= false;
 
 	}
 
@@ -36,22 +45,32 @@ namespace ING {
 
 	Job::~Job() {
 
-
+		
 
 	}
 
 
 
 	/**
-	 *	Schedule, Complete Methods
+	 *	Run, Schedule, Complete Methods
 	 */
-	void Job::Schedule() {
-
-		isDone = false;
+	void Job::Run() {
 
 		executor(this);
 
 		isDone = true;
+
+		isRunning = false;
+
+	}
+
+	void Job::Schedule() {
+
+		isDone		= false;
+
+		isRunning	= true;
+
+		JobSystem::GetInstance()->ScheduleJob(this);
 
 	}
 

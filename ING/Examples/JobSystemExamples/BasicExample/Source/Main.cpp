@@ -107,13 +107,15 @@ int main() {
 	
 	ExampleJob* job = new ExampleJob();
 
+	job->SetQueue(5);
+
 	job->a = 5;
 
 	job->Schedule();
 
 	job->Complete();
 
-	delete job;
+	Debug::Log(std::string("test"));
 	
 
 	system("pause");

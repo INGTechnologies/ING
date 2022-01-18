@@ -118,6 +118,8 @@
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>
+      </AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -174,6 +176,8 @@
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>
+      </AssemblyDebug>
     </Link>
     <PreBuildEvent>
       <Command>

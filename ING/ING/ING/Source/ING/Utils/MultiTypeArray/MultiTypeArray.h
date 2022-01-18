@@ -244,6 +244,14 @@ namespace ING {
 
 				}
 
+				Ref& operator=(MultiTypeArray* arrayPtr) {
+
+					this->arrayPtr = arrayPtr;
+
+					return *this;
+
+				}
+
 			};
 
 		};

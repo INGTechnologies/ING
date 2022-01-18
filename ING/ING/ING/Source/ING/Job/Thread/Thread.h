@@ -16,7 +16,16 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mutex
+ */
+#include <mutex>
+
+
+
 namespace ING {
+
+	class Job;
 
 	class Thread;
 
@@ -41,6 +50,54 @@ namespace ING {
 		Thread* GetINGThread() {
 
 			return ingThread;
+
+		}
+		
+
+
+		/**
+		 *	Mutex
+		 */
+	private:
+		std::mutex mutex;
+		std::mutex forTotalQueue_Mutex;
+
+	public:
+		std::mutex& GetMutex() {
+
+			return mutex;
+
+		}
+
+		std::mutex& GetForTotalQueue_Mutex() {
+
+			return forTotalQueue_Mutex;
+
+		}
+
+
+
+		/**
+		 *	Queue Jobs
+		 */
+	private:
+		List<Job*> queueJobs;
+
+	public:
+		void ScheduleJob(Job* job);
+
+
+
+		/**
+		 *	Total Queue
+		 */
+	private:
+		unsigned int totalQueue;
+
+	public:
+		unsigned int GetTotalQueue() {
+
+			return totalQueue;
 
 		}
 

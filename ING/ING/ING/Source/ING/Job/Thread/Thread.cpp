@@ -22,6 +22,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include JobSystem
+ */
+#include <ING/Job/System/System.h>
+
+
+
+/**
+ *	Include Job
+ */
+#include <ING/Job/Job.h>
+
+
+
 namespace ING {
 
 	/**
@@ -42,6 +56,21 @@ namespace ING {
 
 
 	/**
+	 *	Queue Jobs
+	 */
+	void JobThread::ScheduleJob(Job* job) {
+
+		mutex.lock();
+
+		queueJobs.Add(job);
+
+		mutex.unlock();
+
+	}
+
+
+
+	/**
 	 *	Start, Join, Loop Method
 	 */
 	void JobThread::Start() {
@@ -49,10 +78,10 @@ namespace ING {
 		ingThread = new Thread([](Thread* ingThread) {
 
 			JobThread* jobThread = ingThread->params[0].As<JobThread*>();
-
-
 			
 			ingThread->params.~Ref();
+
+			jobThread->Loop();
 			
 		});
 
@@ -66,6 +95,14 @@ namespace ING {
 
 	void JobThread::Join() {
 
+		queueJobs.Foreach([](Job*& job) {
+			
+			delete job;
+			
+		});
+
+		queueJobs.Clear();
+
 		delete ingThread;
 
 		delete this;
@@ -74,7 +111,53 @@ namespace ING {
 
 	void JobThread::Loop() {
 
+		while (JobSystem::GetInstance()->IsRunning()) {
 
+			mutex.lock();
+
+
+
+
+
+			//Compute Total Queue
+
+			MultiTypeArray params(1);
+
+			params[0] = (unsigned int)0;
+
+			queueJobs.Foreach([](Job*& job, MultiTypeArray& params) {
+
+				params[0] = (unsigned int)(params[0].As<unsigned int>() + job->GetQueue());
+
+			}, params);
+
+
+			forTotalQueue_Mutex.lock();
+
+			totalQueue = params[0].As<unsigned int>();
+
+			forTotalQueue_Mutex.unlock();
+
+
+			params.Clear();
+
+
+
+
+
+			queueJobs.Foreach([](Job*& job) {
+
+				job->Run();
+
+			});
+
+			queueJobs.Clear();
+
+
+
+			mutex.unlock();
+
+		}
 
 	}
 
