@@ -33,6 +33,8 @@ namespace ING {
 
 		isDone		= false;
 
+		queue		= 0;
+
 	}
 
 	Job::Job(void (*executor)(Job* job)):

@@ -96,6 +96,7 @@ int main() {
 
 
 
+	/*
 	for (int i = 0; i < 20; ++i) {
 
 		ExampleJob* job = new ExampleJob();
@@ -106,7 +107,22 @@ int main() {
 
 		job->Schedule();
 
-	}
+	}*/
+
+
+
+	Job* job = new Job([](Job* job) {
+		
+		Debug::Log(std::string("Default Job Executed"));
+
+		delete job;
+
+	});
+
+	job->SetQueue(1);
+
+	job->Schedule();
+
 
 
 
