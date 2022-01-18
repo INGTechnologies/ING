@@ -118,12 +118,13 @@ namespace ING {
 
 
 		/**
-		 *	Run, Schedule, Complete Method
+		 *	Run, Schedule, Complete, Release Method
 		 */
 	public:
 		void Run(void* customData);
 		void Schedule();
 		void Complete();
+		void Release();
 
 	};
 

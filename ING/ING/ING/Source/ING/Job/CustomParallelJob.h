@@ -17,9 +17,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Job
+ *	Include ParallelJob
  */
-#include <ING/Job/Job.h>
+#include <ING/Job/ParallelJob.h>
 
 
 
@@ -40,59 +40,27 @@ using namespace ING::Utils;
 namespace ING {
 
 	template<typename T>
-	struct CustomParallelJob : Job {
+	struct CustomParallelJob : ParallelJob {
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		CustomParallelJob() {
+		CustomParallelJob(unsigned int threadCount) :
+			ParallelJob(
 
-			executor = [](Job* job, void* pIndex) -> void {
+				threadCount,
 
-				unsigned int index = *((unsigned int*)pIndex);
+				[](ParallelJob* job, unsigned int index) -> void {
 
-				((T*)job)->Execute(index);
-
-				delete pIndex;
-
-			};
-
-			runner = [](Job* job, void* pIndex) {
-				
-				unsigned int index = *((unsigned int*)pIndex);
-
-				job->GetExecutor()(job, pIndex);
-
-				job->SetIsDone(true);
-
-				job->SetIsRunning(false);
-
-			};
-
-			scheduler = [](Job* job, void* customData) {
-
-				job->SetIsDone(false);
-
-				job->SetIsRunning(true);
-
-				for (unsigned int i = 0; i < ((CustomParallelJob<T>*)job)->GetThreadCount(); ++i) {
-
-					unsigned int* customData = new unsigned int(i);
-
-					JobSystem::GetInstance()->ScheduleJob(job, customData);
+					((T*)job)->Execute(index);
 
 				}
 
-			};
-
-		}
-
-		CustomParallelJob(unsigned int threadCount) :
-			CustomParallelJob()
+			)
 		{
 
-			this->threadCount = threadCount;
+
 
 		}
 
@@ -101,14 +69,6 @@ namespace ING {
 
 
 		}
-
-
-
-	protected:
-		unsigned int threadCount;
-
-	public:
-		unsigned int GetThreadCount() { return threadCount; }
 
 
 	};

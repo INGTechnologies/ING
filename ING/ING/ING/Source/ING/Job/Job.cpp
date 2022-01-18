@@ -104,4 +104,10 @@ namespace ING {
 
 	}
 
+	void Job::Release() {
+
+		delete this;
+
+	}
+
 }

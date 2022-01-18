@@ -62,6 +62,7 @@ using namespace ING::Utils;
 #include <ING/Job/Job.h>
 #include <ING/Job/CustomJob.h>
 #include <ING/Job/CustomParallelJob.h>
+#include <ING/Job/ParallelJob.h>
 #include <ING/Job/System/System.h>
 
 
@@ -77,6 +78,8 @@ struct ExampleJob : public CustomJob<ExampleJob> {
 	void Execute() {
 
 		Debug::Log(a);
+
+
 
 	};
 
@@ -119,6 +122,9 @@ int main() {
 
 
 
+
+
+
 	ExampleParallelJob* job = new ExampleParallelJob(10);
 
 	job->SetQueue(0);
@@ -127,9 +133,13 @@ int main() {
 
 	job->Schedule();
 
+	job->Complete();
+
+	job->Release();
 
 
-	while (true) {}
+	Debug::Log("Done");
+
 
 	system("pause");
 	return 0;
