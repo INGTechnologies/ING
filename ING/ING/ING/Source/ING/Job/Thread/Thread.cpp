@@ -60,11 +60,25 @@ namespace ING {
 	 */
 	void JobThread::ScheduleJob(Job* job, void* customData) {
 
-		mutex.lock();
+		bool isNeedLockMutex = true;
+
+		if (std::this_thread::get_id() == ingThread->GetSTDThread().get_id()) {
+
+			isNeedLockMutex = false;
+
+		}
+
+
+
+		if(isNeedLockMutex) mutex.lock();
+
+
 
 		queueJobs.Add(job);
 
 		customDatas.Add(customData);
+
+
 
 		forTotalQueue_Mutex.lock();
 
@@ -72,7 +86,9 @@ namespace ING {
 
 		forTotalQueue_Mutex.unlock();
 
-		mutex.unlock();
+
+
+		if (isNeedLockMutex) mutex.unlock();
 
 	}
 
