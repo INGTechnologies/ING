@@ -6,39 +6,39 @@
 
 
 
-/**
- *	Include Application
- */
+ /**
+  *	Include Application
+  */
 #include <ING/Application/Application.h>
 
 
 
-/**
- *	Include Thread And Thread Manager
- */
+  /**
+   *	Include Thread And Thread Manager
+   */
 #include <ING/Thread/Thread.h>
 
 #include <ING/Thread/Manager/Manager.h>
 
 
 
-/**
- *	Include Event And Event Manager
- */
+   /**
+	*	Include Event And Event Manager
+	*/
 #include <ING/Event/Event.h>
 
 #include <ING/Event/Manager/Manager.h>
 
 
 
-/**
- *	Include Rendering
- */
+	/**
+	 *	Include Rendering
+	 */
 #include <ING/Rendering/Rendering.h>
 
 using namespace ING::Rendering;
 
- 
+
 
 /**
  *	Include Utils
@@ -53,20 +53,6 @@ using namespace ING::Utils;
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
-
-
-
-/**
- *	Include JobSystem
- */
-#include <ING/Job/Job.h>
-#include <ING/Job/CustomJob.h>
-#include <ING/Job/CustomParallelJob.h>
-#include <ING/Job/System/System.h>
-
-
-
-using namespace ING;
 
 
 

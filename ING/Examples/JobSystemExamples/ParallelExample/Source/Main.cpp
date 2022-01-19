@@ -77,9 +77,11 @@ struct ExampleJob : public CustomJob<ExampleJob> {
 
 	void Execute() {
 
-		Debug::Log(a);
+		for (unsigned int index = 0; index < 800000000; ++index) {
 
+			int b = 1 + 3;
 
+		}
 
 	};
 
@@ -101,11 +103,18 @@ struct ExampleParallelJob : public CustomParallelJob<ExampleParallelJob> {
 
 	void Execute(unsigned int index) {
 
-		Debug::Log(String(index) + " " + String(a));
+		for (unsigned int i = 0; i < 100000000; ++i) {
+
+			int b = 1 + 3;
+
+		}
 
 	};
 
 };
+
+
+#include <ctime>
 
 
 
@@ -124,10 +133,13 @@ int main() {
 
 
 
+	
+	//ExampleJob* job = new ExampleJob();
+	ExampleParallelJob* job = new ExampleParallelJob(5);
 
-	ExampleParallelJob* job = new ExampleParallelJob(10);
+	unsigned int t = clock();
 
-	job->SetQueue(0);
+	job->SetQueue(1);
 
 	job->a = 0;
 
@@ -137,9 +149,11 @@ int main() {
 
 	job->Release();
 
+	t = clock() - t;
 
-	Debug::Log("Done");
 
+	Debug::Log(String("Done In ") + String(t) + String("ms"));
+	
 
 	system("pause");
 	return 0;

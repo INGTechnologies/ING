@@ -66,6 +66,12 @@ namespace ING {
 
 		customDatas.Add(customData);
 
+		forTotalQueue_Mutex.lock();
+
+		totalQueue += job->GetQueue();
+
+		forTotalQueue_Mutex.unlock();
+
 		mutex.unlock();
 
 	}
@@ -122,7 +128,7 @@ namespace ING {
 
 
 			//Compute Total Queue
-
+			/*
 			MultiTypeArray params(1);
 
 			params[0] = (unsigned int)0;
@@ -141,7 +147,7 @@ namespace ING {
 			forTotalQueue_Mutex.unlock();
 
 			params.Clear();
-
+			*/
 
 
 			List<Job*>::Node* node = queueJobs.GetHeadNode();
@@ -163,6 +169,12 @@ namespace ING {
 			queueJobs.Clear();
 
 			customDatas.Clear();
+
+			forTotalQueue_Mutex.lock();
+
+			totalQueue = 0;
+
+			forTotalQueue_Mutex.unlock();
 
 			mutex.unlock();
 

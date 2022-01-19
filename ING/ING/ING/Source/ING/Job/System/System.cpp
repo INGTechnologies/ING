@@ -44,9 +44,9 @@ namespace ING {
 		isRunning = false;
 		threadCount = 1;
 
-		Application::GetInstance()->GetConfiguration()->Add<unsigned int>("JobSystem::threadCount");
+		Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::JobSystem::threadCount");
 
-		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("JobSystem::threadCount",8);
+		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount",5);
 
 	}
 
@@ -97,7 +97,7 @@ namespace ING {
 
 	void JobSystem::CreateThreads() {
 
-		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("JobSystem::threadCount");
+		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING::JobSystem::threadCount");
 
 		threads.resize(threadCount);
 
