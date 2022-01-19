@@ -215,6 +215,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Rendering\API\DirectX11\API.cpp" />
     <ClCompile Include="Source\ING\Job\Thread\Thread.cpp" />
     <ClCompile Include="Source\ING\Application\Configuration\Configuration.cpp" />
     <ClCompile Include="Source\ING\Application\Application.cpp" />
@@ -246,6 +247,8 @@
     <ClCompile Include="Source\ING\Utils\WString\WString.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Rendering\API\APIFlag.h" />
+    <ClInclude Include="Source\ING\Rendering\API\DirectX11\API.h" />
     <ClInclude Include="Source\ING\Job\CustomParallelJob.h" />
     <ClInclude Include="Source\ING\Job\ParallelJob.h" />
     <ClInclude Include="Source\ING\Job\Thread\Thread.h" />

@@ -135,7 +135,7 @@ int main() {
 
 	
 	//ExampleJob* job = new ExampleJob();
-	ExampleParallelJob* job = new ExampleParallelJob(1000);
+	ExampleParallelJob* job = new ExampleParallelJob(3);
 
 	unsigned int t = clock();
 

@@ -1272,6 +1272,9 @@
     <ClCompile Include="Source\ING\Utils\WString\WString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ING\Rendering\API\DirectX11\API.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ING\Application\EventManager\EventManager.h">
@@ -3189,6 +3192,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\ING\Utils\WString\WString.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ING\Rendering\API\DirectX11\API.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ING\Rendering\API\APIFlag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

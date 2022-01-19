@@ -53,7 +53,7 @@ namespace ING {
 		template<typename T>
 		void Add(std::string name) {
 
-			void* pData = malloc(sizeof(T));
+			void* pData = new T();
 
 			ptrMap[name] = pData;
 
@@ -64,7 +64,7 @@ namespace ING {
 
 			if (ptrMap.find(name) == ptrMap.end()) {
 
-				return NULL;
+				return T();
 
 			}
 
