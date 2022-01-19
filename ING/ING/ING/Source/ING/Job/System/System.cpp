@@ -46,7 +46,7 @@ namespace ING {
 
 		Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::JobSystem::threadCount");
 
-		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount",5);
+		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount",3);
 
 	}
 

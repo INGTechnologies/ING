@@ -77,7 +77,7 @@ struct ExampleJob : public CustomJob<ExampleJob> {
 
 	void Execute() {
 
-		for (unsigned int index = 0; index < 800000000; ++index) {
+		for (unsigned int index = 0; index < 1000000000; ++index) {
 
 			int b = 1 + 3;
 
@@ -103,7 +103,7 @@ struct ExampleParallelJob : public CustomParallelJob<ExampleParallelJob> {
 
 	void Execute(unsigned int index) {
 
-		for (unsigned int i = 0; i < 100000000; ++i) {
+		for (unsigned int i = 0; i < 1000000; ++i) {
 
 			int b = 1 + 3;
 
@@ -135,7 +135,7 @@ int main() {
 
 	
 	//ExampleJob* job = new ExampleJob();
-	ExampleParallelJob* job = new ExampleParallelJob(5);
+	ExampleParallelJob* job = new ExampleParallelJob(1000);
 
 	unsigned int t = clock();
 
