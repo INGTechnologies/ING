@@ -8,32 +8,9 @@
 
 
 /**
- *	Include Utils
- */
-#include <ING/Utils/Utils.h>
-
-using namespace ING::Utils;
-
-
-
-/**
  *	Include ParallelJob
  */
 #include <ING/Job/ParallelJob.h>
-
-
-
-/**
- *	Include JobSystem
- */
-#include <ING/Job/System/System.h>
-
-
-
-/**
- *	Include Vector
- */
-#include <vector>
 
 
 

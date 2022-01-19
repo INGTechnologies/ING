@@ -30,13 +30,6 @@ using namespace ING::Utils;
 
 
 
- /**
-  *	Include Vector
-  */
-#include <vector>
-
-
-
 /**
  *	Include Mutex
  */
