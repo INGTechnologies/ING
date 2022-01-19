@@ -102,6 +102,18 @@ namespace ING {
 
 		}
 
+		static void Log(const wchar_t* content) {
+
+			std::wcout << content << std::endl;
+
+		}
+
+		static void Log(std::wstring content) {
+
+			std::wcout << content << std::endl;
+
+		}
+
 	};
 
 

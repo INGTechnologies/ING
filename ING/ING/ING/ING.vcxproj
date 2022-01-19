@@ -243,6 +243,7 @@
     <ClCompile Include="Source\ING\Utils\String\String.cpp" />
     <ClCompile Include="Source\ING\Window\Window.cpp" />
     <ClCompile Include="Source\ING\_Debug\Debug.cpp" />
+    <ClCompile Include="Source\ING\Utils\WString\WString.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ING\Job\CustomParallelJob.h" />
@@ -290,6 +291,7 @@
     <ClInclude Include="Source\ING\Utils\Utils.h" />
     <ClInclude Include="Source\ING\Window\Window.h" />
     <ClInclude Include="Source\ING\_Debug\Debug.h" />
+    <ClInclude Include="Source\ING\Utils\WString\WString.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-
+﻿
 /**
  *	Include IOStream
  */
@@ -56,6 +56,10 @@ using namespace ING::Utils;
 
 
 
+using namespace ING;
+
+
+
 int main() {
 
 
@@ -66,6 +70,8 @@ int main() {
 	ING::Application::GetInstance()->Init();
 
 	ING::Application::GetInstance()->Run();
+
+
 
 
 

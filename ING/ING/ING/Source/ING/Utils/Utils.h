@@ -91,10 +91,17 @@
 
 
 
- /**
-  *	Include String
-  */
+/**
+ *	Include String
+ */
 #include <ING/Utils/String/String.h>
+
+
+
+/**
+  *	Include WString
+  */
+#include <ING/Utils/WString/WString.h>
 
 
 
