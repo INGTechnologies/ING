@@ -44,12 +44,13 @@ namespace ING {
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Init, Init API, Run, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			virtual bool	Init()		override;
+					bool	InitAPI();
+			virtual bool	Run()		override;
+			virtual bool	Release()	override;
 
 
 
@@ -73,9 +74,6 @@ namespace ING {
 				return api;
 
 			}
-
-		public:
-			bool InitAPI();
 
 		};
 

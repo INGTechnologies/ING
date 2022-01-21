@@ -20,49 +20,37 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
-		 *	Declare Classes
-		 */
 		class Device;
 
-
-
-		/**
-		 *	API Class
-		 */
-		class ING_API API
+		class ING_API DeviceContext
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			API();
-			~API();
+			DeviceContext(Device* device);
+			~DeviceContext();
 
 
 
 			/**
-			 *	Init, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init();
-			virtual bool Release();
+			static  DeviceContext*	Create(Device* device);
+			virtual void			Release();
 
 
 
 			/**
-			 *	Main Device
+			 *	Device Context
 			 */
-		private:
+		protected:
 			Device* device;
 
 		public:
-			Device* GetDevice() {
-
-				return device;
-
-			}
+			Device* GetDevice() { return device; }
 
 		};
 

@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Device
+ */
+#include <ING/Rendering/API/Device/Device.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -41,7 +48,7 @@ namespace ING {
 		 */
 		bool API::Init() {
 
-
+			device = Device::Create();
 
 			return true;
 		}

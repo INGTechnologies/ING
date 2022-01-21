@@ -67,7 +67,7 @@ namespace ING {
 
 
 		/**
-		 *	Init, Run, Release Methods
+		 *	Init, Init API, Run, Release Methods
 		 */
 		bool APIManager::Init() {
 
@@ -82,6 +82,32 @@ namespace ING {
 			}
 
 			return true;
+		}
+
+		bool APIManager::InitAPI() {
+
+			switch (apiFlag)
+			{
+
+			case NONE_API_FLAG:
+
+				return false;
+
+				break;
+
+			case DIRECTX11_API_FLAG:
+
+				api = new DirectX11::API();
+
+				api->Init();
+
+				break;
+
+			default:
+				break;
+
+			}
+
 		}
 
 		bool APIManager::Run() {
@@ -100,32 +126,7 @@ namespace ING {
 			}
 
 			return true;
-		}
-
-
-
-		/**
-		 *	API Management Methods, Properties
-		 */
-		bool APIManager::InitAPI() {
-
-			switch (apiFlag)
-			{
-			case NONE_API_FLAG:
-				return false;
-				break;
-			case DIRECTX11_API_FLAG:
-
-				api = new DirectX11::API();
-
-				api->Init();
-
-				break;
-			default:
-				break;
-			}
-
-		}
+		}		
 
 	}
 }

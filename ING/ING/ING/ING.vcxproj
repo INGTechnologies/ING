@@ -117,7 +117,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -149,7 +149,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -175,7 +175,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -207,7 +207,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -215,6 +215,11 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Rendering\API\Device\Context\Context.cpp" />
+    <ClCompile Include="Source\ING\Rendering\API\DirectX11\Device\Context\Context.cpp" />
+    <ClCompile Include="Source\ING\Rendering\API\DirectX11\Device\Device.cpp" />
+    <ClCompile Include="Source\ING\Rendering\API\Device\Device.cpp" />
+    <ClCompile Include="Source\ING\Rendering\Shader\Shader.cpp" />
     <ClCompile Include="Source\ING\Rendering\API\DirectX11\API.cpp" />
     <ClCompile Include="Source\ING\Job\Thread\Thread.cpp" />
     <ClCompile Include="Source\ING\Application\Configuration\Configuration.cpp" />
@@ -247,6 +252,11 @@
     <ClCompile Include="Source\ING\Utils\WString\WString.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Rendering\API\Device\Context\Context.h" />
+    <ClInclude Include="Source\ING\Rendering\API\DirectX11\Device\Context\Context.h" />
+    <ClInclude Include="Source\ING\Rendering\API\DirectX11\Device\Device.h" />
+    <ClInclude Include="Source\ING\Rendering\API\Device\Device.h" />
+    <ClInclude Include="Source\ING\Rendering\Shader\Shader.h" />
     <ClInclude Include="Source\ING\Rendering\API\APIFlag.h" />
     <ClInclude Include="Source\ING\Rendering\API\DirectX11\API.h" />
     <ClInclude Include="Source\ING\Job\CustomParallelJob.h" />
