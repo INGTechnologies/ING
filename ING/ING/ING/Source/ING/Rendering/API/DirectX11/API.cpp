@@ -43,16 +43,16 @@ namespace ING {
 			 */
 			bool API::Init() {
 
+				
 
-
-				return true;
+				return Rendering::API::Init();
 			}
 
 			bool API::Release() {
 
 
 
-				return true;
+				return Rendering::API::Release();
 			}
 
 		}

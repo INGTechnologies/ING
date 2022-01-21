@@ -114,6 +114,84 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Error Loggers
+		 */
+	public:
+		static void Error() {
+
+			std::cout << std::endl;
+
+		}
+
+		static void Error(std::string content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(int content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(long content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(ui8 content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(ui16 content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(ui32 content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(ui64 content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(bool content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(const char* content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(const wchar_t* content) {
+
+			std::wcout << content << std::endl;
+
+		}
+
+		static void Error(std::wstring content) {
+
+			std::wcout << content << std::endl;
+
+		}
+
 	};
 
 
