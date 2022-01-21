@@ -1,1 +1,1 @@
-# ing-engine
+# An Open Source Game Engine
