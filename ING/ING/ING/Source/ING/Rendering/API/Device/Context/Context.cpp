@@ -59,6 +59,18 @@ namespace ING {
 
 				break;
 
+			case DIRECTX12_API_FLAG:
+
+				break;
+
+			case VULKAN_API_FLAG:
+
+				break;
+
+			case OPENGL_API_FLAG:
+
+				break;
+
 			default:
 				break;
 			}
