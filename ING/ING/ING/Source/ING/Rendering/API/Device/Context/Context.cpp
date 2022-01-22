@@ -51,8 +51,6 @@ namespace ING {
 
 			case NONE_API_FLAG:
 
-				return nullptr;
-
 				break;
 
 			case DIRECTX11_API_FLAG:
@@ -61,9 +59,25 @@ namespace ING {
 
 				break;
 
+			case DIRECTX12_API_FLAG:
+
+				break;
+
+			case VULKAN_API_FLAG:
+
+				break;
+
+			case OPENGL_API_FLAG:
+
+				break;
+
 			default:
 				break;
 			}
+
+
+
+			return nullptr;
 
 		}
 
