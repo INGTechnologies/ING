@@ -117,6 +117,16 @@ namespace ING {
 
 			}
 
+			Auto Clone() {
+
+				Auto result;
+
+				CopyTo(result);
+
+				return result;
+
+			}
+
 		};
 
 	}
