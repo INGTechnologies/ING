@@ -22,18 +22,18 @@
 
 
 
-   /**
-	*	Include Event And Event Manager
-	*/
+/**
+ *	Include Event And Event Manager
+ */
 #include <ING/Event/Event.h>
 
 #include <ING/Event/Manager/Manager.h>
 
 
 
-	/**
-	 *	Include Rendering
-	 */
+/**
+ *	Include Rendering
+ */
 #include <ING/Rendering/Rendering.h>
 
 using namespace ING::Rendering;
@@ -56,12 +56,13 @@ using namespace ING::Utils;
 
 
 
+
 using namespace ING;
 
 
 
 int main() {
-
+	 
 
 
 	//Create ING Application

@@ -16,29 +16,76 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window Manager
+ */
+#include <ING/Window/Manager/Manager.h>
+
+
+
+/**
+ *	Include Windows
+ */
+#include <Windows.h>
+
+
+
+/**
+ *	Include WindowDesc
+ */
+#include <ING/Window/Desc/Desc.h>
+
+
+
 namespace ING {
 
 	class ING_API Window
 	{
 
 		/**
+		 *	Friend Classes
+		 */
+	public:
+		friend class WindowManager;
+
+
+
+		/**
 		 *	Constructors And Destructor
 		 */
 	public:
 		Window();
+		Window(WindowDesc desc);
 		~Window();
 
 
 
 		/**
-		 *	Init, Run, Release Methods
+		 *	InitWithDesc, Release Methods
 		 */
+	private:
+		virtual void InitWithDesc(WindowDesc desc);
+		
 	public:
-		virtual bool Init();
-		virtual bool Run();
-		virtual bool Release();
+		virtual void Release();
+
+
+
+		/**
+		 *	Properties
+		 */
+	private:
+		bool	isMain;
+		HWND	handle;
+		WindowDesc desc;
+
+	public:
+		bool		IsMain		() { return isMain; }
+
+		HWND		GetHandle	() { return handle; }
+
+		WindowDesc	GetDesc		() { return desc; }
 
 	};
-
 
 }

@@ -36,6 +36,20 @@ namespace ING {
 			Shader();
 			~Shader();
 
+
+
+			/**
+			 *	Child Shaders
+			 */
+		protected:
+			List<Shader*> childShaderList;
+
+		public:
+			List<Shader*>::Node*	GetHeadShaderNode	();
+			List<Shader*>::Node*	GetTailShaderNode	();
+			List<Shader*>::Node*	AddShader			(Shader* shader);
+			void					RemoveShader		(List<Shader*>::Node* shaderNode);
+
 		};
 
 	}

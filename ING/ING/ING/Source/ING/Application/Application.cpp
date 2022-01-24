@@ -68,12 +68,23 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window Manager
+ */
+#include <ING/Window/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
 	 *	Constructors And Destructor
 	 */
 	Application::Application() {
+
+		state = NONE_APPLICATION_STATE;
+
+
 
 		/**
 		 *	Create Configuration
@@ -98,11 +109,18 @@ namespace ING {
 
 		AddSquare<ApplicationEventManager>();
 
+		/* Window Manager */
+		AddSquare<WindowManager>();
+
 		/* Rendering Engine */
 		AddSquare<Rendering::Engine>();
 
 		/* Job System */
 		AddSquare<JobSystem>();
+
+
+
+		state = CREATED_APPLICATION_STATE;
 
 	}
 
@@ -126,9 +144,17 @@ namespace ING {
 
 	bool Application::Run() {
 
-				
+		bool squaresRunResult = Board<Application>::Run();
 
-		return Board<Application>::Run();
+		state = RUNNING_APPLICATION_STATE;
+
+		while (state == RUNNING_APPLICATION_STATE) {
+
+			//Debug::Log("Running");
+
+		}
+
+		return squaresRunResult;
 	}
 
 	bool Application::Release() {
