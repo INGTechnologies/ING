@@ -52,14 +52,16 @@ namespace ING {
 		 *	Configuration
 		 */
 	private:
-		ApplicationConfiguration* configuration;
+		ApplicationConfiguration*	configuration;
 
 	public:
-		ApplicationConfiguration* GetConfiguration() {
+		ApplicationConfiguration*	GetConfiguration() {
 
 			return configuration;
 
 		}
+
+		void						LoadConfig();
 
 
 
@@ -71,6 +73,17 @@ namespace ING {
 
 	public:
 		ApplicationState GetState() { return state; }
+
+
+
+		/**
+		 *	AutoCreateWindow
+		 */
+	private:
+		bool autoCreateWindow;
+
+	public:
+		bool IsAutoCreateWindow() { return autoCreateWindow; }
 
 	};
 

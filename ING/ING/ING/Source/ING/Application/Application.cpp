@@ -137,7 +137,7 @@ namespace ING {
 	 */
 	bool Application::Init() {
 
-		
+		LoadConfig();
 
 		return Board<Application>::Init();
 	}
@@ -150,7 +150,7 @@ namespace ING {
 
 		while (state == RUNNING_APPLICATION_STATE) {
 
-			//Debug::Log("Running");
+
 
 		}
 
@@ -162,6 +162,17 @@ namespace ING {
 		delete configuration;
 
 		return Board<Application>::Release();
+	}
+
+
+
+	/**
+	 *	Configuration
+	 */
+	void Application::LoadConfig() {
+
+
+
 	}
 
 
