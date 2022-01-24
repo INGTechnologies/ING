@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include File System
+ */
+#include <filesystem>
+
+
+
 namespace ING {
 
 	/**
@@ -61,7 +68,13 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
-	std::wstring	ResourceManager::ReadFile(std::wstring path) {
+	std::wstring	ResourceManager::ReadFile(std::wstring path, bool isPacked) {
+
+
+
+		std::wstring parsedPath = path;
+
+
 
 		std::wstring result;
 
@@ -107,13 +120,24 @@ namespace ING {
 
 	}
 
-	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content) {
+	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content, bool isNeedPack) {
+
+
+
+		std::wstring parsedPath = path;
+
+
 
 		std::wstring result;
 
 		std::wfstream fileStream;
 
 		unsigned long fileSize = content.length();
+
+
+
+		/* Resize File */
+		std::filesystem::resize_file(path, fileSize);
 
 
 

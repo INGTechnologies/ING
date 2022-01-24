@@ -18,16 +18,14 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Resource;
-
-	class ING_API ResourceLoader {
+	class ING_API Coder {
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ResourceLoader();
-		~ResourceLoader();
+		Coder();
+		~Coder();
 
 
 
@@ -40,10 +38,14 @@ namespace ING {
 
 
 		/**
-		 *	Loade Method
+		 *	Encode, Decode, Check Methods
 		 */
 	public:
-		virtual Resource* Load(std::wstring path, bool isPacked);
+		virtual std::wstring	Encode	(std::wstring content, std::wstring key);
+
+		virtual std::wstring	Decode	(std::wstring content, std::wstring key);
+
+		virtual bool			Check	(std::wstring content, std::wstring key);
 
 	};
 

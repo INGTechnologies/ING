@@ -86,9 +86,9 @@ int main() {
 
 
 
-	FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(L"Assets/exampleFile.txt");
+	FileResource* fileResource = new FileResource(L"Assets/exampleFile.txt");
 
-	fileResource->content += fileResource->content;
+	fileResource->content = L"sgdsg";
 
 	ResourceManager::GetInstance()->SaveResource<FileResource>(fileResource);
 

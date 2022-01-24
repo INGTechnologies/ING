@@ -48,7 +48,7 @@ namespace ING {
 	/**
 	 *	Loader Method
 	 */
-	void ResourceSaver::Save(Resource* resource) {
+	void ResourceSaver::Save(Resource* resource, bool isNeedPack) {
 
 
 

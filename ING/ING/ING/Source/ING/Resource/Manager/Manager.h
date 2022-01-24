@@ -23,6 +23,7 @@ using namespace ING::Utils;
 
 
 
+
 namespace ING {
 
 	class Resource;
@@ -30,6 +31,8 @@ namespace ING {
 	class ResourceLoader;
 
 	class ResourceSaver;
+
+	class Coder;
 
 
 
@@ -61,11 +64,29 @@ namespace ING {
 		 *	Resource Management
 		 */
 	public:
-		std::wstring	ReadFile		(std::wstring path);
-		void			WriteFile		(std::wstring path, std::wstring& content);
+		std::wstring	ReadFile		(std::wstring path, bool isNeedPack);
+		std::wstring	ReadFile(std::wstring path) {
+
+			return ReadFile(path, false);
+
+		}
+
+		void			WriteFile		(std::wstring path, std::wstring& content, bool isPacked);
+		void			WriteFile(std::wstring path, std::wstring& content) {
+
+			WriteFile(path,content, false);
+
+		}
 
 		template<class T>
-		T*				LoadResource	(std::wstring path) {
+		T* LoadResource(std::wstring path) {
+
+			return LoadResource<T>(path, false);
+
+		}
+
+		template<class T>
+		T*				LoadResource	(std::wstring path, bool isPacked) {
 
 			if (typeid(T) == typeid(Resource)) {
 
@@ -78,7 +99,7 @@ namespace ING {
 
 				ResourceLoader* loader = T::GetLoader();
 
-				T* result = (T*)loader->Load(path);
+				T* result = (T*)loader->Load(path, isPacked);
 
 				return result;
 
@@ -89,6 +110,13 @@ namespace ING {
 		template<class T>
 		void			SaveResource(T* resource) {
 
+			return SaveResource<T>(resource, false);
+
+		}
+
+		template<class T>
+		void			SaveResource(T* resource, bool isNeedPack) {
+
 			if (typeid(T) == typeid(Resource)) {
 
 				
@@ -98,7 +126,7 @@ namespace ING {
 
 				ResourceSaver* saver = T::GetSaver();
 
-				saver->Save(resource);
+				saver->Save(resource, isNeedPack);
 
 			}
 

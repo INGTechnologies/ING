@@ -44,7 +44,7 @@ namespace ING {
 		 *	Save Method
 		 */
 	public:
-		virtual void Save(Resource* resource);
+		virtual void Save(Resource* resource, bool isNeedPack);
 
 	};
 

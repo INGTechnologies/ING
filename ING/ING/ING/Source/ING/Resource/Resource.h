@@ -20,6 +20,8 @@ namespace ING {
 
 	class Loader;
 
+	class Coder;
+
 
 
 	class ING_API Resource {

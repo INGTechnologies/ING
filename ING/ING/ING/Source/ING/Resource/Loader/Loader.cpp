@@ -48,7 +48,7 @@ namespace ING {
 	/**
 	 *	Loade Method
 	 */
-	Resource* ResourceLoader::Load(std::wstring path) {
+	Resource* ResourceLoader::Load(std::wstring path, bool isPacked) {
 
 		return nullptr;
 

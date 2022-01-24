@@ -63,7 +63,7 @@ namespace ING {
 	/**
 	 *	Load Method
 	 */
-	Resource* FileLoader::Load(std::wstring path) {
+	Resource* FileLoader::Load(std::wstring path, bool isPacked) {
 
 		FileResource* result = new FileResource();
 
@@ -118,7 +118,7 @@ namespace ING {
 	/**
 	 *	Save Method
 	 */
-	void FileSaver::Save(Resource* resource) {
+	void FileSaver::Save(Resource* resource, bool isNeedPack) {
 
 		FileResource* fileResource = (FileResource*)resource;
 
@@ -140,6 +140,18 @@ namespace ING {
 	FileResource::FileResource() {
 
 
+
+	}
+
+	FileResource::FileResource(std::wstring path) {
+
+		this->path = path;
+
+	}
+
+	FileResource::FileResource(const wchar_t* path) {
+
+		this->path = path;
 
 	}
 
