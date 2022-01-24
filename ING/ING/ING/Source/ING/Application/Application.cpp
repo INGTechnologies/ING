@@ -75,6 +75,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Resource Manager
+ */
+#include <ING/Resource/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -98,6 +105,9 @@ namespace ING {
 		 */
 		/* Core */
 		AddSquare<Core>();
+
+		/* Resource Manager */
+		AddSquare<ResourceManager>();
 
 		/* Thread Managers */
 		AddSquare<ThreadManager>();
