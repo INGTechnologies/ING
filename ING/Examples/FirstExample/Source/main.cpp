@@ -22,18 +22,18 @@
 
 
 
-   /**
-	*	Include Event And Event Manager
-	*/
+/**
+ *	Include Event And Event Manager
+ */
 #include <ING/Event/Event.h>
 
 #include <ING/Event/Manager/Manager.h>
 
 
 
-	/**
-	 *	Include Rendering
-	 */
+/**
+ *	Include Rendering
+ */
 #include <ING/Rendering/Rendering.h>
 
 using namespace ING::Rendering;
@@ -56,12 +56,48 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering API
+ */
+#include <ING/Rendering/API/API.h> 
+
+
+
+/**
+ *	Include Rendering Device
+ */
+#include <ING/Rendering/API/Device/Device.h> 
+
+
+
+/**
+ *	Include Rendering Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h> 
+
+
+
+/**
+ *	Include Rendering Shader
+ */
+#include <ING/Rendering/Shader/Shader.h> 
+
+
+
+/**
+ *	Include Window
+ */
+#include <ING/Window/Window.h> 
+
+
+
+
 using namespace ING;
 
 
 
 int main() {
-
+	 
 
 
 	//Create ING Application
@@ -70,6 +106,24 @@ int main() {
 	ING::Application::GetInstance()->Init();
 
 	ING::Application::GetInstance()->Run();
+
+
+
+	Rendering::API* api = Rendering::API::GetInstance();
+
+
+
+	Rendering::Device* device = api->GetDevice();
+
+	Rendering::DeviceContext* deviceContext = device->GetContext();
+
+
+
+	Rendering::Shader* shader = new Rendering::Shader();
+
+
+
+	Window* mainWindow = new Window();
 
 
 

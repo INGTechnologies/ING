@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Application State
+ */
+#include <ING/Application/State/State.h>
+
+
+
 namespace ING {
 
 	class ApplicationConfiguration;
@@ -53,6 +60,17 @@ namespace ING {
 			return configuration;
 
 		}
+
+
+
+		/**
+		 *	State
+		 */
+	private:
+		ApplicationState state;
+
+	public:
+		ApplicationState GetState() { return state; }
 
 	};
 

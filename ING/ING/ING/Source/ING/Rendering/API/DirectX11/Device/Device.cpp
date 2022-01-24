@@ -20,6 +20,13 @@
 
 
 
+/**
+ *	Include Rendering SwapChain
+ */
+#include <ING\Rendering\API\SwapChain\SwapChain.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -126,6 +133,13 @@ namespace ING {
 				 *	Create Context
 				 */
 				context = Rendering::DeviceContext::Create(this);
+
+
+
+				/**
+				 *	Create SwapChain
+				 */
+				swapChain = Rendering::SwapChain::Create(this);
 
 			}
 

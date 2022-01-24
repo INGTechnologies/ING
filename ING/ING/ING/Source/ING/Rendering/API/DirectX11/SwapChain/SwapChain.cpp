@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "SwapChain.h"
 
 
 
@@ -14,7 +14,7 @@
 
 
 /**
- *	Include Device
+ *	Include Rendering Device
  */
 #include <ING/Rendering/API/Device/Device.h>
 
@@ -36,15 +36,17 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			DeviceContext::DeviceContext(Rendering::Device* device):
-				Rendering::DeviceContext(device)
+			SwapChain::SwapChain(Rendering::Device* device) :
+				Rendering::SwapChain(device)
 			{
 
-				((DirectX11::Device*)device)->GetD3D11Device()->GetImmediateContext(&d3d11DeviceContext);
+				IDXGIFactory* dxgiFactory = ((DirectX11::Device*)device)->GetDXGIFactory();
+
+				//dxgiFactory->CreateSwapChain();
 
 			}
 
-			DeviceContext::~DeviceContext() {
+			SwapChain::~SwapChain() {
 
 
 
@@ -55,11 +57,9 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void DeviceContext::Release() {
+			void SwapChain::Release() {
 
-
-
-				Rendering::DeviceContext::Release();
+				Rendering::SwapChain::Release();
 
 			}
 
