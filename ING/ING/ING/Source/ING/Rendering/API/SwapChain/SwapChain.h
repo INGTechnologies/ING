@@ -20,50 +20,37 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
-		 *	Declare Classes
-		 */
 		class Device;
 
-
-
-		/**
-		 *	API Class
-		 */
-		class ING_API API :
-			public Singleton<API>
+		class ING_API SwapChain
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			API();
-			~API();
+			SwapChain(Device* device);
+			~SwapChain();
 
 
 
 			/**
-			 *	Init, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init();
-			virtual bool Release();
+			static  SwapChain*	Create(Device* device);
+			virtual void		Release();
 
 
 
 			/**
-			 *	Main Device
+			 *	Device
 			 */
 		private:
 			Device* device;
 
 		public:
-			Device* GetDevice() {
-
-				return device;
-
-			}
+			Device* GetDevice() { return device; }
 
 		};
 

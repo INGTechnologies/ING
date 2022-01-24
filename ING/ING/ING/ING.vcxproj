@@ -215,6 +215,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Window\Manager\Manager.cpp" />
     <ClCompile Include="Source\ING\Rendering\API\Device\Context\Context.cpp" />
     <ClCompile Include="Source\ING\Rendering\API\DirectX11\Device\Context\Context.cpp" />
     <ClCompile Include="Source\ING\Rendering\API\DirectX11\Device\Device.cpp" />
@@ -250,8 +251,13 @@
     <ClCompile Include="Source\ING\Window\Window.cpp" />
     <ClCompile Include="Source\ING\_Debug\Debug.cpp" />
     <ClCompile Include="Source\ING\Utils\WString\WString.cpp" />
+    <ClCompile Include="Source\ING\Rendering\API\SwapChain\SwapChain.cpp" />
+    <ClCompile Include="Source\ING\Rendering\API\DirectX11\SwapChain\SwapChain.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Application\State\State.h" />
+    <ClInclude Include="Source\ING\Window\Desc\Desc.h" />
+    <ClInclude Include="Source\ING\Window\Manager\Manager.h" />
     <ClInclude Include="Source\ING\Rendering\API\Device\Context\Context.h" />
     <ClInclude Include="Source\ING\Rendering\API\DirectX11\Device\Context\Context.h" />
     <ClInclude Include="Source\ING\Rendering\API\DirectX11\Device\Device.h" />
@@ -305,6 +311,8 @@
     <ClInclude Include="Source\ING\Window\Window.h" />
     <ClInclude Include="Source\ING\_Debug\Debug.h" />
     <ClInclude Include="Source\ING\Utils\WString\WString.h" />
+    <ClInclude Include="Source\ING\Rendering\API\SwapChain\SwapChain.h" />
+    <ClInclude Include="Source\ING\Rendering\API\DirectX11\SwapChain\SwapChain.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
