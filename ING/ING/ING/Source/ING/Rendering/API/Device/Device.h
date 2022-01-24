@@ -22,6 +22,10 @@ namespace ING {
 
 		class DeviceContext;
 
+		class SwapChain;
+
+
+
 		class ING_API Device
 		{
 
@@ -51,6 +55,17 @@ namespace ING {
 
 		public:
 			DeviceContext* GetContext() { return context; }
+
+
+
+			/**
+			 *	SwapChain
+			 */
+		protected:
+			SwapChain* swapChain;
+
+		public:
+			SwapChain* GetSwapChain() { return swapChain; }
 
 		};
 
