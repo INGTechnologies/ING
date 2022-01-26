@@ -7,7 +7,6 @@
 
 
 ## Free And Open Source
-
 ING is free and under the MIT license.
 
 
@@ -15,12 +14,11 @@ ING is free and under the MIT license.
 ## How To Get ING Engine?
 
 
-### Binaries
+### From Binaries
 Comming soon in another repository.
 
 
 ### From Source
-
 You can get ING Engine from source by these steps:
 
 Step 1: Clone ING repository.\
