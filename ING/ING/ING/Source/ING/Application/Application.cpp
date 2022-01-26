@@ -64,7 +64,7 @@ using namespace ING::Utils;
 /**
  *	Include ApplicationConfiguration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING/Configuration/Configuration.h>
 
 
 
@@ -96,7 +96,14 @@ namespace ING {
 		/**
 		 *	Create Configuration
 		 */
-		configuration = new ApplicationConfiguration();
+		configuration = new Configuration();
+
+
+
+		/**
+		 *	Load Configuration
+		 */
+		LoadConfiguration();
 
 
 
@@ -137,6 +144,17 @@ namespace ING {
 	Application::~Application() {
 
 		
+
+	}
+
+
+
+	/**
+	 *	Configuration 
+	 */
+	void Application::LoadConfiguration() {
+
+
 
 	}
 
