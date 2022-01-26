@@ -18,12 +18,12 @@
     <ClInclude Include="Source/**/*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ING\SDK\Project\Project.h">
+    <ClInclude Include="Source/**/*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\SDK\Project\Project.cpp">
+    <ClCompile Include="Source/**/*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
