@@ -47,9 +47,25 @@ namespace ING {
 
 
 		/**
-		 *	Add, Set, Get Methods
+		 *	Exist, Add, Set, Get Methods
 		 */
 	public:
+		bool Exist(std::string name) {
+
+			return (ptrMap.find(name) != ptrMap.end());
+
+		}
+
+		void Add(std::string name, unsigned int size) {
+
+			if (ptrMap.find(name) != ptrMap.end()) return;
+
+			void* pData = malloc(size);
+
+			ptrMap[name] = pData;
+
+		}
+
 		template<typename T>
 		void Add(std::string name) {
 

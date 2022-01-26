@@ -13,13 +13,6 @@ namespace ING {
 	 */
 	Configuration::Configuration() {
 
-		/**
-		 *	Add Default Properties
-		 */
-		Add<bool>("ING::Application::autoCreateWindow");
-
-		Set<bool>("ING::Application::autoCreateWindow", true);
-
 	}
 
 	Configuration::~Configuration() {

@@ -154,6 +154,13 @@ namespace ING {
 	 */
 	void Application::LoadConfiguration() {
 
+		/**
+		 *	Add Default Properties
+		 */
+		configuration->Add<bool>("ING::Application::autoCreateWindow");
+
+		configuration->Set<bool>("ING::Application::autoCreateWindow", true);
+
 
 
 	}
@@ -165,7 +172,7 @@ namespace ING {
 	 */
 	bool Application::Init() {
 
-		LoadConfig();
+		//LoadConfiguration();
 
 		return Board<Application>::Init();
 	}
@@ -190,17 +197,6 @@ namespace ING {
 		delete configuration;
 
 		return Board<Application>::Release();
-	}
-
-
-
-	/**
-	 *	Configuration
-	 */
-	void Application::LoadConfig() {
-
-
-
 	}
 
 
