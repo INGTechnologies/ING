@@ -1,3 +1,4 @@
 # ING Engine
 <img src="https://i.ibb.co/NnJxgc1/Artboard-1.png" alt="1-tr-bg" border="0" width = "100%"></img>
 ## Free And Open Source
+ING is free and under the MIT license.
