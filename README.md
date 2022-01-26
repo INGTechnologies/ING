@@ -21,7 +21,7 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
     - Step 1: Clone ING repository.
     - Step 2: Open "Source/ING.sln" with Visual Studio 2019.
     - Step 3: Set any example project as startup project and run it.
-    - Step 4: Game engine binaries will be built to "Source/Binaries/ING"
+    - Step 4: ING binaries will be built to "Source/Binaries/ING"
   
 
 ## Community
