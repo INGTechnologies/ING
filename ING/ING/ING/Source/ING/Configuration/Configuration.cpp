@@ -11,7 +11,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationConfiguration::ApplicationConfiguration() {
+	Configuration::Configuration() {
 
 		/**
 		 *	Add Default Properties
@@ -22,7 +22,7 @@ namespace ING {
 
 	}
 
-	ApplicationConfiguration::~ApplicationConfiguration() {
+	Configuration::~Configuration() {
 
 		for (auto& it : ptrMap) {
 

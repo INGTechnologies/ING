@@ -25,7 +25,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class ApplicationConfiguration;
+	class Configuration;
 
 	class ING_API Application: public Board<Application> {	
 
@@ -52,16 +52,16 @@ namespace ING {
 		 *	Configuration
 		 */
 	private:
-		ApplicationConfiguration*	configuration;
+		Configuration* configuration;
 
 	public:
-		ApplicationConfiguration*	GetConfiguration() {
+		Configuration* GetConfiguration() {
 
 			return configuration;
 
 		}
 
-		void						LoadConfig();
+		void LoadConfiguration();
 
 
 
@@ -73,17 +73,6 @@ namespace ING {
 
 	public:
 		ApplicationState GetState() { return state; }
-
-
-
-		/**
-		 *	AutoCreateWindow
-		 */
-	private:
-		bool autoCreateWindow;
-
-	public:
-		bool IsAutoCreateWindow() { return autoCreateWindow; }
 
 	};
 

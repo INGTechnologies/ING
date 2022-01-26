@@ -16,7 +16,7 @@
 /**
  *	Include Application Configuration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING/Configuration/Configuration.h>
 
 
 

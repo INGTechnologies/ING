@@ -26,15 +26,15 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class ING_API ApplicationConfiguration
+	class ING_API Configuration
 	{
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ApplicationConfiguration();
-		~ApplicationConfiguration();
+		Configuration();
+		~Configuration();
 
 
 
@@ -53,6 +53,8 @@ namespace ING {
 		template<typename T>
 		void Add(std::string name) {
 
+			if (ptrMap.find(name) != ptrMap.end()) return;
+
 			void* pData = new T();
 
 			ptrMap[name] = pData;
@@ -61,6 +63,8 @@ namespace ING {
 
 		template<typename T>
 		T Get(std::string name) {
+
+			if (ptrMap.find(name) == ptrMap.end()) return T();
 
 			if (ptrMap.find(name) == ptrMap.end()) {
 
@@ -76,6 +80,8 @@ namespace ING {
 
 		template<typename T>
 		void Set(std::string name, T data) {
+
+			if (ptrMap.find(name) == ptrMap.end()) return;
 
 			*((T*)(ptrMap[name])) = data;
 

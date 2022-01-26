@@ -16,7 +16,7 @@
 /**
  *	Include Application Configuration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING//Configuration/Configuration.h>
 
 
 
@@ -52,9 +52,9 @@ namespace ING {
 		 */
 		APIManager::APIManager() {
 
-			Application::GetInstance()->GetConfiguration()->Add<APIFlag>("ING::Rendering::APIManager::apiName");
+			Application::GetInstance()->GetConfiguration()->Add<APIFlag>("ING::Rendering::APIManager::apiFlag");
 
-			Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiName", DIRECTX11_API_FLAG);
+			Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiFlag", DIRECTX11_API_FLAG);
 
 		}
 
@@ -71,7 +71,7 @@ namespace ING {
 		 */
 		bool APIManager::Init() {
 
-			apiFlag = Application::GetInstance()->GetConfiguration()->Get<APIFlag>("ING::Rendering::APIManager::apiName");
+			apiFlag = Application::GetInstance()->GetConfiguration()->Get<APIFlag>("ING::Rendering::APIManager::apiFlag");
 
 			if (!InitAPI()) {
 

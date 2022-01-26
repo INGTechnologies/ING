@@ -64,7 +64,7 @@ using namespace ING::Utils;
 /**
  *	Include ApplicationConfiguration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING/Configuration/Configuration.h>
 
 
 
@@ -72,6 +72,13 @@ using namespace ING::Utils;
  *	Include Window Manager
  */
 #include <ING/Window/Manager/Manager.h>
+
+
+
+/**
+ *	Include Resource Manager
+ */
+#include <ING/Resource/Manager/Manager.h>
 
 
 
@@ -89,7 +96,14 @@ namespace ING {
 		/**
 		 *	Create Configuration
 		 */
-		configuration = new ApplicationConfiguration();
+		configuration = new Configuration();
+
+
+
+		/**
+		 *	Load Configuration
+		 */
+		LoadConfiguration();
 
 
 
@@ -98,6 +112,9 @@ namespace ING {
 		 */
 		/* Core */
 		AddSquare<Core>();
+
+		/* Resource Manager */
+		AddSquare<ResourceManager>();
 
 		/* Thread Managers */
 		AddSquare<ThreadManager>();
@@ -127,6 +144,17 @@ namespace ING {
 	Application::~Application() {
 
 		
+
+	}
+
+
+
+	/**
+	 *	Configuration 
+	 */
+	void Application::LoadConfiguration() {
+
+
 
 	}
 
