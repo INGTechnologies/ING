@@ -1,4 +1,4 @@
-# ING Engine
+# ING Engine #
 
 
 
@@ -6,12 +6,12 @@
 
 
 
-## Free And Open Source
+## Free And Open Source ##
 ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
 
 
 
-## How To Get ING Engine?
+## How To Get ING Engine? ##
 
 
 ** From Binaries **
