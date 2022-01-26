@@ -72,7 +72,7 @@ namespace ING {
 		 *	Load Method
 		 */
 	public:
-		virtual Resource* Load(std::wstring path, bool isPacked) override;
+		virtual Resource* Load(std::wstring path, CoderOption& coderOption) override;
 
 	};
 
@@ -106,7 +106,7 @@ namespace ING {
 		 *	Save Method
 		 */
 	public:
-		virtual void Save(Resource* resource, bool isNeedPack) override;
+		virtual void Save(Resource* resource, CoderOption& coderOption) override;
 
 	};
 

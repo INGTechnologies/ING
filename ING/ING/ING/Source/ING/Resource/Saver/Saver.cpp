@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Coder
+ */
+#include <ING/Coder/Coder.h>
+
+
+
 namespace ING {
 
 	/**
@@ -48,7 +55,7 @@ namespace ING {
 	/**
 	 *	Loader Method
 	 */
-	void ResourceSaver::Save(Resource* resource, bool isNeedPack) {
+	void ResourceSaver::Save(Resource* resource, CoderOption& coderOption) {
 
 
 

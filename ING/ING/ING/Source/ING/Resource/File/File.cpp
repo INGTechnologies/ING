@@ -63,11 +63,11 @@ namespace ING {
 	/**
 	 *	Load Method
 	 */
-	Resource* FileLoader::Load(std::wstring path, bool isPacked) {
+	Resource* FileLoader::Load(std::wstring path, CoderOption& coderOption) {
 
 		FileResource* result = new FileResource();
 
-		result->content = ResourceManager::GetInstance()->ReadFile(path);
+		result->content = ResourceManager::GetInstance()->ReadFile(path, coderOption);
 
 		result->path	= path;
 
@@ -118,11 +118,11 @@ namespace ING {
 	/**
 	 *	Save Method
 	 */
-	void FileSaver::Save(Resource* resource, bool isNeedPack) {
+	void FileSaver::Save(Resource* resource, CoderOption& coderOption) {
 
 		FileResource* fileResource = (FileResource*)resource;
 
-		ResourceManager::GetInstance()->WriteFile(fileResource->path, fileResource->content);
+		ResourceManager::GetInstance()->WriteFile(fileResource->path, fileResource->content, coderOption);
 
 	}
 

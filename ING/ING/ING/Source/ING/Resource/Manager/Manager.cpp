@@ -20,6 +20,14 @@
 
 
 
+/**
+ *	Include Coder
+ */
+#include <ING/Coder/Coder.h>
+
+
+
+
 namespace ING {
 
 	/**
@@ -68,7 +76,7 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
-	std::wstring	ResourceManager::ReadFile(std::wstring path, bool isPacked) {
+	std::wstring	ResourceManager::ReadFile(std::wstring path, CoderOption& coderOption) {
 
 
 
@@ -80,7 +88,7 @@ namespace ING {
 
 		std::wfstream fileStream;
 
-		unsigned long fileSize = 0;
+		std::streampos fileSize = 0;
 
 
 
@@ -99,15 +107,9 @@ namespace ING {
 
 
 		/* Read File */
-		while (fileStream.tellg() < fileSize) {
+		result.resize(fileSize);
 
-			wchar_t wchr;
-
-			fileStream.read(&wchr, 1);
-
-			result += wchr;
-
-		}
+		fileStream.read((wchar_t*)result.c_str(), fileSize);
 
 
 
@@ -116,11 +118,19 @@ namespace ING {
 
 
 
+		if (coderOption.coder != nullptr) {
+
+			result = coderOption.coder->Decode(result, coderOption.key);
+
+		}
+
+
+
 		return result;
 
 	}
 
-	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content, bool isNeedPack) {
+	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content, CoderOption& coderOption) {
 
 
 
@@ -128,11 +138,19 @@ namespace ING {
 
 
 
-		std::wstring result;
+		std::wstring& parsedContent = content;
+
+
+
+		if (coderOption.coder != nullptr) {
+
+			parsedContent = coderOption.coder->Encode(content, coderOption.key);
+
+		}
 
 		std::wfstream fileStream;
 
-		unsigned long fileSize = content.length();
+		unsigned long fileSize = parsedContent.length();
 
 
 
@@ -146,11 +164,7 @@ namespace ING {
 
 
 
-		for (unsigned long i = 0; i < fileSize; ++i) {
-
-			fileStream << content[i];
-
-		}
+		fileStream << parsedContent;
 
 
 

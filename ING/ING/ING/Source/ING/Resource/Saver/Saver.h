@@ -16,9 +16,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Coder Option
+ */
+#include <ING/Coder/Option/Option.h>
+
+
+
 namespace ING {
 
 	class Resource;
+
+	class Coder;
+
+
 
 	class ING_API ResourceSaver {
 
@@ -44,7 +55,7 @@ namespace ING {
 		 *	Save Method
 		 */
 	public:
-		virtual void Save(Resource* resource, bool isNeedPack);
+		virtual void Save(Resource* resource, CoderOption& coderOption);
 
 	};
 

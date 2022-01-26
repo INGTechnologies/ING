@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Coder
+ */
+#include <ING/Coder/Coder.h>
+
+
+
 namespace ING {
 
 	/**
@@ -48,7 +55,7 @@ namespace ING {
 	/**
 	 *	Loade Method
 	 */
-	Resource* ResourceLoader::Load(std::wstring path, bool isPacked) {
+	Resource* ResourceLoader::Load(std::wstring path, CoderOption& coderOption) {
 
 		return nullptr;
 

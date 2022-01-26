@@ -16,9 +16,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Coder Option
+ */
+#include <ING/Coder/Option/Option.h>
+
+
+
 namespace ING {
 
 	class Resource;
+
+	class Coder;
+
+
 
 	class ING_API ResourceLoader {
 
@@ -43,7 +54,7 @@ namespace ING {
 		 *	Loade Method
 		 */
 	public:
-		virtual Resource* Load(std::wstring path, bool isPacked);
+		virtual Resource* Load(std::wstring path, CoderOption& coderOption);
 
 	};
 

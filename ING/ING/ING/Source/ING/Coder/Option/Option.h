@@ -18,32 +18,14 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Loader;
-
-	class Saver;
-
 	class Coder;
 
+	struct CoderOption {
 
+		Coder* coder = nullptr;
 
-	class ING_API Resource {
-
-		/**
-		 *	Constructors And Destructor
-		 */
-	public:
-		Resource();
-		~Resource();
-
-
-
-		/**
-		 *	Release Method
-		 */
-	public:
-		virtual void Release();
+		std::wstring key = L"";
 
 	};
-
 
 }

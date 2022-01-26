@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Coder Option
+ */
+#include <ING/Coder/Option/Option.h>
+
+
+
 
 namespace ING {
 
@@ -64,29 +71,35 @@ namespace ING {
 		 *	Resource Management
 		 */
 	public:
-		std::wstring	ReadFile		(std::wstring path, bool isNeedPack);
-		std::wstring	ReadFile(std::wstring path) {
+		std::wstring	ReadFile		(std::wstring path, CoderOption& coderOption);
+		std::wstring	ReadFile		(std::wstring path) {
 
-			return ReadFile(path, false);
+			CoderOption coderOption;
 
-		}
-
-		void			WriteFile		(std::wstring path, std::wstring& content, bool isPacked);
-		void			WriteFile(std::wstring path, std::wstring& content) {
-
-			WriteFile(path,content, false);
+			return ReadFile(path, coderOption);
 
 		}
 
-		template<class T>
-		T* LoadResource(std::wstring path) {
+		void			WriteFile		(std::wstring path, std::wstring& content, CoderOption& coderOption);
+		void			WriteFile		(std::wstring path, std::wstring& content) {
 
-			return LoadResource<T>(path, false);
+			CoderOption coderOption;
+
+			WriteFile(path,content, coderOption);
 
 		}
 
 		template<class T>
-		T*				LoadResource	(std::wstring path, bool isPacked) {
+		T*				LoadResource	(std::wstring path) {
+
+			CoderOption coderOption;
+
+			return LoadResource<T>(path, coderOption);
+
+		}
+
+		template<class T>
+		T*				LoadResource	(std::wstring path, CoderOption& coderOption) {
 
 			if (typeid(T) == typeid(Resource)) {
 
@@ -99,7 +112,7 @@ namespace ING {
 
 				ResourceLoader* loader = T::GetLoader();
 
-				T* result = (T*)loader->Load(path, isPacked);
+				T* result = (T*)loader->Load(path, coderOption);
 
 				return result;
 
@@ -108,14 +121,16 @@ namespace ING {
 		}
 
 		template<class T>
-		void			SaveResource(T* resource) {
+		void			SaveResource	(T* resource) {
 
-			return SaveResource<T>(resource, false);
+			CoderOption coderOption;
+
+			return SaveResource<T>(resource, coderOption);
 
 		}
 
 		template<class T>
-		void			SaveResource(T* resource, bool isNeedPack) {
+		void			SaveResource	(T* resource, CoderOption& coderOption) {
 
 			if (typeid(T) == typeid(Resource)) {
 
@@ -126,7 +141,7 @@ namespace ING {
 
 				ResourceSaver* saver = T::GetSaver();
 
-				saver->Save(resource, isNeedPack);
+				saver->Save(resource, coderOption);
 
 			}
 

@@ -104,12 +104,12 @@ namespace ING {
 
 
 	template<class T, class TLoader, class TSaver>
-	TLoader* CustomResource<T, TLoader, TSaver>::loader = new TLoader();
+	TLoader*	CustomResource<T, TLoader, TSaver>::loader	= new TLoader();
 
 
 
 	template<class T, class TLoader, class TSaver>
-	TSaver* CustomResource<T, TLoader, TSaver>::saver = new TSaver();
+	TSaver*		CustomResource<T, TLoader, TSaver>::saver	= new TSaver();
 
 
 }
