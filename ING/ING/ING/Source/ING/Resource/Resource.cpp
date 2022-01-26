@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Event.h"
+#include "Resource.h"
 
 
 
@@ -20,15 +20,26 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Event::Event() {
+	Resource::Resource() {
 
 
 
 	}
 
-	Event::~Event() {
+	Resource::~Resource() {
 
 
+
+	}
+
+
+
+	/**
+	 *	Release Method
+	 */
+	void Resource::Release() {
+
+		delete this;
 
 	}
 

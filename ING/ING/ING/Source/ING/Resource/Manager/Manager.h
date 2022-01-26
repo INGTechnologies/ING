@@ -1,0 +1,153 @@
+#pragma once
+
+/**
+ *	Include Entry Point
+ */
+#include <ING/EntryPoint/EntryPoint.h>
+
+
+
+/**
+ *	Include Utils
+ */
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
+
+
+
+/**
+ *	Include String
+ */
+#include <string>
+
+
+
+/**
+ *	Include Coder Option
+ */
+#include <ING/Coder/Option/Option.h>
+
+
+
+
+namespace ING {
+
+	class Resource;
+
+	class ResourceLoader;
+
+	class ResourceSaver;
+
+	class Coder;
+
+
+
+	class ING_API ResourceManager :
+		public Singleton<ResourceManager>,
+		public Square
+	{
+
+		/**
+		 *	Constructors And Destructor
+		 */
+	public:
+		ResourceManager();
+		~ResourceManager();
+
+
+
+		/**
+		 *	Init, Run, Release Methods
+		 */
+	public:
+		virtual bool Init()		override;
+		virtual bool Run()		override;
+		virtual bool Release()	override;
+
+
+
+		/**
+		 *	Resource Management
+		 */
+	public:
+		std::wstring	ReadFile		(std::wstring path, CoderOption& coderOption);
+		std::wstring	ReadFile		(std::wstring path) {
+
+			CoderOption coderOption;
+
+			return ReadFile(path, coderOption);
+
+		}
+
+		void			WriteFile		(std::wstring path, std::wstring& content, CoderOption& coderOption);
+		void			WriteFile		(std::wstring path, std::wstring& content) {
+
+			CoderOption coderOption;
+
+			WriteFile(path,content, coderOption);
+
+		}
+
+		template<class T>
+		T*				LoadResource	(std::wstring path) {
+
+			CoderOption coderOption;
+
+			return LoadResource<T>(path, coderOption);
+
+		}
+
+		template<class T>
+		T*				LoadResource	(std::wstring path, CoderOption& coderOption) {
+
+			if (typeid(T) == typeid(Resource)) {
+
+				T* result = new T();
+
+				return result;
+
+			}
+			else {
+
+				ResourceLoader* loader = T::GetLoader();
+
+				T* result = (T*)loader->Load(path, coderOption);
+
+				return result;
+
+			}
+
+		}
+
+		template<class T>
+		void			SaveResource	(T* resource) {
+
+			CoderOption coderOption;
+
+			return SaveResource<T>(resource, coderOption);
+
+		}
+
+		template<class T>
+		void			SaveResource	(T* resource, CoderOption& coderOption) {
+
+			if (typeid(T) == typeid(Resource)) {
+
+				
+
+			}
+			else {
+
+				ResourceSaver* saver = T::GetSaver();
+
+				saver->Save(resource, coderOption);
+
+			}
+
+		}
+
+	};
+
+
+}

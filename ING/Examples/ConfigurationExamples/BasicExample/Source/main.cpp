@@ -91,6 +91,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering API Flag
+ */
+#include <ING/Rendering/API/APIFlag.h> 
+
+
+
 
 using namespace ING;
 
@@ -105,25 +112,9 @@ int main() {
 
 	ING::Application::GetInstance()->Init();
 
+
+
 	ING::Application::GetInstance()->Run();
-
-
-
-	Rendering::API* api = Rendering::API::GetInstance();
-
-
-
-	Rendering::Device* device = api->GetDevice();
-
-	Rendering::DeviceContext* deviceContext = device->GetContext();
-
-
-
-	Rendering::Shader* shader = new Rendering::Shader();
-
-
-
-	Window* mainWindow = new Window();
 
 
 
