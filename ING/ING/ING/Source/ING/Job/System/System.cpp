@@ -16,7 +16,7 @@
 /**
  *	Include Application Configuration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING/Configuration/Configuration.h>
 
 
 
@@ -44,9 +44,13 @@ namespace ING {
 		isRunning = false;
 		threadCount = 1;
 
-		Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::JobSystem::threadCount");
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::JobSystem::threadCount")) {
 
-		Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount",3);
+			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::JobSystem::threadCount");
+
+			Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount", 3);
+
+		}
 
 	}
 

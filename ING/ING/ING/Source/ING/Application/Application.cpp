@@ -64,7 +64,7 @@ using namespace ING::Utils;
 /**
  *	Include ApplicationConfiguration
  */
-#include <ING/Application/Configuration/Configuration.h>
+#include <ING/Configuration/Configuration.h>
 
 
 
@@ -72,6 +72,13 @@ using namespace ING::Utils;
  *	Include Window Manager
  */
 #include <ING/Window/Manager/Manager.h>
+
+
+
+/**
+ *	Include Resource Manager
+ */
+#include <ING/Resource/Manager/Manager.h>
 
 
 
@@ -89,7 +96,14 @@ namespace ING {
 		/**
 		 *	Create Configuration
 		 */
-		configuration = new ApplicationConfiguration();
+		configuration = new Configuration();
+
+
+
+		/**
+		 *	Load Configuration
+		 */
+		LoadConfiguration();
 
 
 
@@ -98,6 +112,9 @@ namespace ING {
 		 */
 		/* Core */
 		AddSquare<Core>();
+
+		/* Resource Manager */
+		AddSquare<ResourceManager>();
 
 		/* Thread Managers */
 		AddSquare<ThreadManager>();
@@ -133,11 +150,29 @@ namespace ING {
 
 
 	/**
+	 *	Configuration 
+	 */
+	void Application::LoadConfiguration() {
+
+		/**
+		 *	Add Default Properties
+		 */
+		configuration->Add<bool>("ING::Application::autoCreateWindow");
+
+		configuration->Set<bool>("ING::Application::autoCreateWindow", true);
+
+
+
+	}
+
+
+
+	/**
 	 *	Init, Run, Release Methods
 	 */
 	bool Application::Init() {
 
-		
+		//LoadConfiguration();
 
 		return Board<Application>::Init();
 	}
@@ -150,7 +185,7 @@ namespace ING {
 
 		while (state == RUNNING_APPLICATION_STATE) {
 
-			//Debug::Log("Running");
+
 
 		}
 

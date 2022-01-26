@@ -11,13 +11,11 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationConfiguration::ApplicationConfiguration() {
-
-
+	Configuration::Configuration() {
 
 	}
 
-	ApplicationConfiguration::~ApplicationConfiguration() {
+	Configuration::~Configuration() {
 
 		for (auto& it : ptrMap) {
 
