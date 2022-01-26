@@ -30,4 +30,4 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 
 
 ## Community
-Discord: https://discord.gg/5BYVT6QJkf
++ Discord: https://discord.gg/5BYVT6QJkf
