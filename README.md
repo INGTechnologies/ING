@@ -14,11 +14,11 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 ## How To Get ING Engine? ##
 
 
-** From Binaries **
++ From Binaries 
 - Available in [ING Binaries](https://github.com/INGTechnologies/INGBinaries)
 
 
-** From Source **
++ From Source 
 - You can get ING Engine from source by these steps:
   - Step 1: Clone ING repository.
   - Step 2: Open "Source/ING.sln" with Visual Studio 2019.
