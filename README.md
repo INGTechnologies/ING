@@ -1,2 +1,2 @@
-# ING
+# ING Game Engine
 
