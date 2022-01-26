@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "Device.h"
 
 
 
@@ -14,9 +14,9 @@
 
 
 /**
- *	Include DirectX11 DeviceContext
+ *	Include DirectX11 Device
  */
-#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+#include <ING/Rendering/API/DirectX11/Device/Device.h>
 
 
 
@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DeviceContext::DeviceContext(Device* device) {
+		Device::Device() {
 
-			this->device = device;
+
 
 		}
 
-		DeviceContext::~DeviceContext() {
+		Device::~Device() {
 
 
 
@@ -44,18 +44,20 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		DeviceContext* DeviceContext::Create(Device* device) {
+		Device* Device::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
 
 			case NONE_API_FLAG:
 
+				return nullptr;
+
 				break;
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::DeviceContext(device);
+				return new DirectX11::Device();
 
 				break;
 
@@ -75,13 +77,9 @@ namespace ING {
 				break;
 			}
 
-
-
-			return nullptr;
-
 		}
 
-		void DeviceContext::Release() {
+		void Device::Release() {
 
 			delete this;
 
