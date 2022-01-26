@@ -24,9 +24,9 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
     - Step 4: ING binaries will be built to "Source/Binaries/ING"
     
 
-## Links
-+[ING Binaries](https://github.com/INGTechnologies/INGBinaries)
-+[ING Hub](https://github.com/INGTechnologies/INGHub)
+## Links ##
++ [ING Binaries](https://github.com/INGTechnologies/INGBinaries)
++ [ING Hub](https://github.com/INGTechnologies/INGHub)
 
 
 ## Community
