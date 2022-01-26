@@ -425,41 +425,14 @@ int main() {
 	ING::Application::GetInstance()->Init();
 
 
-	CoderOption coderOption;
 
-	//coderOption.coder = nullptr;
-	coderOption.coder = new ExampleCoder();
+	FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(L"Assets/exampleFile.txt");
 
-	coderOption.key += L"1234";
 
-	Debug::Log("Start Load Resource");
+	Debug::Log(fileResource->content);
 
-	FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(L"Assets/ex.txt", coderOption);
 
-	Debug::Log("Load Resource Done");
-
-	CoderOption coderOption2;
-
-	coderOption2.coder = nullptr;
-	//coderOption2.coder =  new ExampleCoder();
-
-	coderOption2.key += L"1234";
-
-	
-	/*
-	fileResource->content = L"";
-	for (unsigned long i = 0; i < 100000000; ++i) {
-
-		fileResource->content += (wchar_t)(i % 10);
-	}
-	*/
-	
-
-	Debug::Log("Start Save Resource");
-
-	ResourceManager::GetInstance()->SaveResource<FileResource>(fileResource, coderOption2);
-
-	Debug::Log("Save Resource Done");
+	ResourceManager::GetInstance()->SaveResource<FileResource>(fileResource);
 
 
 
