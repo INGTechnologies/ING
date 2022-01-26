@@ -24,4 +24,4 @@ You can get ING Engine from source by these steps:
 Step 1: Clone ING repository.\
 Step 2: Open Source/ING.sln with Visual Studio 2019.\
 Step 3: Set any example project as startup project and run it.\
-Step 4: Game engine binaries will be build in Source/Binaries/ING\
+Step 4: Game engine binaries will be build in Source/Binaries/ING
