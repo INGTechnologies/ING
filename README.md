@@ -15,7 +15,7 @@ ING is free and under the MIT license.
 
 
 ### From Binaries
-Comming soon in another repository.
+Comming soon.
 
 
 ### From Source
