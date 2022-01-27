@@ -30,6 +30,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window Desc
+ */
+#include <ING/Window/Desc/Desc.h>
+
+
+
 namespace ING {
 
 	class Window;
@@ -62,17 +69,30 @@ namespace ING {
 		 *	Window Management
 		 */
 	private:
-		static	Window* mainWindow;
+		static	Window*			mainWindow;
+
 		std::map<HWND, Window*> windowMap;
 
+		bool					autoCreateWindow;
+
+		WindowDesc				defaultDesc;
+
 	public:
-		static	Window* GetMainWindow	() { return mainWindow; }
+		Window*							GetMainWindow		() { return mainWindow; }
 
-				void	AddWindow		(Window* window);
+		std::map<HWND, Window*>&		GetWindowMap		() { return windowMap; }
 
-				void	RemoveWindow	(Window* window);
+		bool							IsAutoCreateWindow	() { return autoCreateWindow; }
 
-				Window*	GetWindow		(HWND handle);
+		void							AddWindow			(Window* window);
+
+		void							RemoveWindow		(Window* window);
+
+		Window*							GetWindow			(HWND handle);
+
+		WindowDesc						GetDefaultDesc		() { return defaultDesc; }
+
+		void							SetDefaultDesc		(WindowDesc desc) { defaultDesc = desc; }
 
 	};
 

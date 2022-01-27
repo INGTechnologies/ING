@@ -56,17 +56,6 @@ namespace ING {
 		public:
 			DeviceContext* GetContext() { return context; }
 
-
-
-			/**
-			 *	SwapChain
-			 */
-		protected:
-			SwapChain* swapChain;
-
-		public:
-			SwapChain* GetSwapChain() { return swapChain; }
-
 		};
 
 	}

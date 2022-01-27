@@ -134,13 +134,6 @@ namespace ING {
 				 */
 				context = Rendering::DeviceContext::Create(this);
 
-
-
-				/**
-				 *	Create SwapChain
-				 */
-				swapChain = Rendering::SwapChain::Create(this);
-
 			}
 
 			Device::~Device() {

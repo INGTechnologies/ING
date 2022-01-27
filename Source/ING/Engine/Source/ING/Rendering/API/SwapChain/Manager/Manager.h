@@ -16,21 +16,18 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include APIFlag
- */
-#include <ING\Rendering/API/APIFlag.h>
-
-
-
 namespace ING {
 
 	namespace Rendering {
 
+		class SwapChain;
+
 		class API;
 
-		class ING_API APIManager :
-			public Board<APIManager>,
+
+
+		class ING_API SwapChainManager :
+			public Singleton<SwapChainManager>,
 			public Square
 		{
 
@@ -38,8 +35,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			APIManager();
-			~APIManager();
+			SwapChainManager();
+			~SwapChainManager();
 
 
 
@@ -48,32 +45,21 @@ namespace ING {
 			 */
 		public:
 			virtual bool	Init()		override;
-					bool	InitAPI();
 			virtual bool	Run()		override;
 			virtual bool	Release()	override;
 
 
 
 			/**
-			 *	API Management Methods, Properties
+			 *	SwapChain Management
 			 */
 		protected:
-			APIFlag apiFlag;
-
-			API* api;
+			List<SwapChain*> swapChainList;
 
 		public:
-			APIFlag GetAPIFlag() {
-
-				return apiFlag;
-
-			}
-
-			API* GetAPI() {
-
-				return api;
-
-			}
+			SwapChain*	GetMainSwapChain	() { return swapChainList.GetHead(); }
+			void		AddSwapChain		(SwapChain* swapChain);
+			void		RemoveSwapChain		(List<SwapChain*>::Node node);
 
 		};
 

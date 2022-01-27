@@ -20,9 +20,9 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include SwapChain Manager
+ */
+#include <ING/Rendering/API/SwapChain/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -52,6 +59,7 @@ namespace ING {
 		 */
 		APIManager::APIManager() {
 
+			/* Setup Configuration */
 			if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Rendering::APIManager::apiFlag")) {
 
 				Application::GetInstance()->GetConfiguration()->Add<APIFlag>("ING::Rendering::APIManager::apiFlag");
@@ -59,6 +67,13 @@ namespace ING {
 				Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiFlag", DIRECTX11_API_FLAG);
 
 			}
+
+
+
+			/**
+			 *	Add Squares
+			 */
+			AddSquare<SwapChainManager>();
 		}
 
 		APIManager::~APIManager() {
@@ -84,7 +99,7 @@ namespace ING {
 
 			}
 
-			return true;
+			return Board<APIManager>::Init();
 		}
 
 		bool APIManager::InitAPI() {
@@ -117,10 +132,12 @@ namespace ING {
 
 
 
-			return true;
+			return Board<APIManager>::Run();
 		}
 
 		bool APIManager::Release() {
+
+			bool boardReleaseRs = Board<APIManager>::Release();
 
 			if (api != nullptr) {
 
@@ -128,7 +145,9 @@ namespace ING {
 
 			}
 
-			return true;
+			delete this;
+
+			return boardReleaseRs;
 		}		
 
 	}

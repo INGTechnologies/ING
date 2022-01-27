@@ -22,6 +22,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Configuration
+ */
+#include <ING/Configuration/Configuration.h>
+
+
+
 namespace ING {
 
 	/**
@@ -30,7 +44,13 @@ namespace ING {
 	WindowManager::WindowManager()
 	{
 
-		
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Application::autoCreateWindow")) {
+
+			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::Application::autoCreateWindow");
+
+			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::Application::autoCreateWindow", true);
+
+		}
 
 	}
 
@@ -49,7 +69,13 @@ namespace ING {
 	bool WindowManager::Init()
 	{
 
+		autoCreateWindow = Application::GetInstance()->GetConfiguration()->Get<bool>("ING::Application::autoCreateWindow");
 
+		if (autoCreateWindow) {
+
+			new Window(defaultDesc);
+
+		}
 
 		return true;
 	}

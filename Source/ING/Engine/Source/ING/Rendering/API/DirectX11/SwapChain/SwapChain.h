@@ -43,7 +43,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				SwapChain(Rendering::Device* device);
+				SwapChain(Rendering::Device* device, Window* window);
 				~SwapChain();
 
 
