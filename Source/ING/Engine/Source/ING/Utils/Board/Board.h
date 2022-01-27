@@ -30,6 +30,13 @@
 
 
 
+/**
+ *	Include Vector
+ */
+#include <vector>
+
+
+
 namespace ING {
 
 	namespace Utils {
@@ -58,10 +65,9 @@ namespace ING {
 			virtual bool Init()
 			{
 
-				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
-				{
+				for (auto& item : squareVector) {
 
-					if (!(square->second->Init()))
+					if (!(item->Init()))
 					{
 						return false;
 					}
@@ -73,10 +79,9 @@ namespace ING {
 
 			virtual bool Run() {
 
-				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
-				{
+				for (auto& item : squareVector) {
 
-					if (!(square->second->Run()))
+					if (!(item->Run()))
 					{
 						return false;
 					}
@@ -88,18 +93,23 @@ namespace ING {
 
 			virtual bool Release()
 			{
+				
+				for (auto& item : squareVector) {
 
-				for (std::map<std::string, Square*>::iterator square = squareMap.begin(); square != squareMap.end(); ++square)
-				{
-
-					if (!(square->second->Release()))
+					if (!(item->Release()))
 					{
 						return false;
 					}
 
 				}
 
+
+
 				squareMap.clear();
+
+				squareVector.clear();
+
+
 
 				delete this;
 
@@ -112,7 +122,8 @@ namespace ING {
 			 *	Squares
 			 */
 		private:
-			std::map<std::string, Square*> squareMap;
+			std::map<std::string, Square*>	squareMap;
+			std::vector<Square*>			squareVector;
 
 		public:
 			template<class T>
@@ -125,6 +136,8 @@ namespace ING {
 				{
 					return;
 				}
+
+				squareVector.push_back(square);
 
 				squareMap[typeid(T).name()] = square;
 

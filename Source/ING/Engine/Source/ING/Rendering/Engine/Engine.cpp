@@ -89,8 +89,6 @@ namespace ING {
 		 */
 		bool Engine::Init() {
 
-
-
 			return Board<Engine>::Init();
 		}
 

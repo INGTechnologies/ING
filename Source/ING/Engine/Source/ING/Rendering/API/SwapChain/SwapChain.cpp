@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include SwapChain Manager
+ */
+#include <ING/Rendering/API/SwapChain/Manager/Manager.h>
+
+
+
+/**
  *	Include DirectX11 SwapChain
  */
 #include <ING/Rendering/API/DirectX11/SwapChain/SwapChain.h>
@@ -27,9 +34,11 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		SwapChain::SwapChain(Device* device) {
+		SwapChain::SwapChain(Device* device, Window* window) {
 
 			this->device = device;
+
+			SwapChainManager::GetInstance()->AddSwapChain(this);
 
 		}
 
@@ -44,7 +53,7 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		SwapChain* SwapChain::Create(Device* device) {
+		SwapChain* SwapChain::Create(Device* device, Window* window) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +64,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::SwapChain(device);
+				return new DirectX11::SwapChain(device, window);
 
 				break;
 

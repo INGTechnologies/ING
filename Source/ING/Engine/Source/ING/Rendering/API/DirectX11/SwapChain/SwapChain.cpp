@@ -36,13 +36,13 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			SwapChain::SwapChain(Rendering::Device* device) :
-				Rendering::SwapChain(device)
+			SwapChain::SwapChain(Rendering::Device* device, Window* window) :
+				Rendering::SwapChain(device, window)
 			{
 
 				IDXGIFactory* dxgiFactory = ((DirectX11::Device*)device)->GetDXGIFactory();
 
-				//dxgiFactory->CreateSwapChain();
+
 
 			}
 

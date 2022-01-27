@@ -39,6 +39,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Screen;
+
+
+
 	class ING_API Window
 	{
 
@@ -79,12 +83,22 @@ namespace ING {
 		HWND	handle;
 		WindowDesc desc;
 
+		Screen* screen;
+
 	public:
 		bool		IsMain		() { return isMain; }
 
 		HWND		GetHandle	() { return handle; }
 
 		WindowDesc	GetDesc		() { return desc; }
+
+		Screen*		GetScreen	() { return screen; }
+
+
+
+		/**
+		 *	Events
+		 */
 
 	};
 

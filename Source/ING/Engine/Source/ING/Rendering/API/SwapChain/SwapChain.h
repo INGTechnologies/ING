@@ -18,9 +18,13 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Window;
+
 	namespace Rendering {
 
 		class Device;
+
+
 
 		class ING_API SwapChain
 		{
@@ -29,7 +33,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			SwapChain(Device* device);
+			SwapChain(Device* device, Window* window);
 			~SwapChain();
 
 
@@ -38,7 +42,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static  SwapChain*	Create(Device* device);
+			static  SwapChain*	Create(Device* device, Window* window);
 			virtual void		Release();
 
 
@@ -51,6 +55,28 @@ namespace ING {
 
 		public:
 			Device* GetDevice() { return device; }
+
+
+
+			/**
+			 *	Node
+			 */
+		private:
+			List<SwapChain*>::Node node;
+
+		public:
+			List<SwapChain*>::Node GetNode() { return node; }
+
+
+
+			/**
+			 *	Window
+			 */
+		private:
+			Window* window;
+
+		public:
+			Window* GetWindow() { return window; }
 
 		};
 

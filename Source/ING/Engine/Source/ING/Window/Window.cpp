@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
+/**
  *	WndProc
  */
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
@@ -157,9 +164,20 @@ namespace ING {
 		if (!::RegisterClassEx(&wc))
 			return;
 
+		/* Create Window Ex */
 		handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"INGWindowClass", desc.title,
 			WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, desc.clientWidth, desc.clientHeight,
 			NULL, NULL, NULL, this);
+
+
+		/* Create Screen */
+		ScreenDesc screenDesc;
+
+		screenDesc.clientWidth = desc.clientWidth;
+		screenDesc.clientHeight = desc.clientHeight;
+
+		screen = new Screen(screenDesc);
+
 
 		WindowManager::GetInstance()->AddWindow(this);
 
@@ -167,6 +185,8 @@ namespace ING {
 
 	void Window::Release() 
 	{
+
+		screen->Release();
 
 		delete this;
 
