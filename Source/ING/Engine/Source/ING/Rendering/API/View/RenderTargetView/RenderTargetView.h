@@ -7,12 +7,19 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
+
+
+
+/**
+ *	Include View
+ */
+#include <ING/Rendering/API/View/View.h>
 
 
 
@@ -20,27 +27,25 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Engine :
-			public Board<Engine>,
-			public Square
+		class ING_API RenderTargetView: public View
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Engine();
-			~Engine();
+			RenderTargetView();
+			~RenderTargetView();
 
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			static RenderTargetView* Create();
+
+			virtual void Release() override;
 
 		};
 

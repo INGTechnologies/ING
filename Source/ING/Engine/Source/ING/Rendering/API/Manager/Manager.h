@@ -30,7 +30,7 @@ namespace ING {
 		class API;
 
 		class ING_API APIManager :
-			public Board<APIManager>,
+			public Singleton<APIManager>,
 			public Square
 		{
 

@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "Texture2D.h"
 
 
 
@@ -14,9 +14,9 @@
 
 
 /**
- *	Include DirectX11 DeviceContext
+ *	Include DirectX11 Texture2D
  */
-#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+#include <ING/Rendering/API/DirectX11/Resource/Texture2D/Texture2D.h>
 
 
 
@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DeviceContext::DeviceContext(Device* device) {
+		Texture2D::Texture2D() {
 
-			this->device = device;
+
 
 		}
 
-		DeviceContext::~DeviceContext() {
+		Texture2D::~Texture2D() {
 
 
 
@@ -42,9 +42,9 @@ namespace ING {
 
 
 		/**
-		 *	Create, Release Methods
+		 *	Create, Release Method
 		 */
-		DeviceContext* DeviceContext::Create(Device* device) {
+		Texture2D* Texture2D::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +55,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::DeviceContext(device);
+				return new DirectX11::Texture2D();
 
 				break;
 
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void DeviceContext::Release() {
+		void Texture2D::Release() {
 
 			delete this;
 

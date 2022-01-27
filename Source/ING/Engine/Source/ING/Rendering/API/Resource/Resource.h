@@ -20,27 +20,23 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Engine :
-			public Board<Engine>,
-			public Square
+		class ING_API Resource
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Engine();
-			~Engine();
+			Resource();
+			~Resource();
 
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			virtual void Release();
 
 		};
 

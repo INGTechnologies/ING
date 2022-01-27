@@ -77,6 +77,8 @@ namespace ING {
 				break;
 			}
 
+			return nullptr;
+
 		}
 
 		void Device::Release() {

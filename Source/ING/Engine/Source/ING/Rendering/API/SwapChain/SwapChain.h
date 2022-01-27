@@ -24,6 +24,8 @@ namespace ING {
 
 		class Device;
 
+		class RenderTargetView;
+
 
 
 		class ING_API SwapChain
@@ -62,10 +64,10 @@ namespace ING {
 			 *	Node
 			 */
 		private:
-			List<SwapChain*>::Node node;
+			List<SwapChain*>::Node* node;
 
 		public:
-			List<SwapChain*>::Node GetNode() { return node; }
+			List<SwapChain*>::Node* GetNode() { return node; }
 
 
 
@@ -77,6 +79,17 @@ namespace ING {
 
 		public:
 			Window* GetWindow() { return window; }
+
+
+
+			/**
+			 *	Views
+			 */
+		private:
+			RenderTargetView* renderTargetView;
+			
+		public:
+			RenderTargetView* GetRenderTargetView() { return renderTargetView; }
 
 		};
 

@@ -32,6 +32,16 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	namespace Rendering {
+
+		class SwapChain;
+
+	}
+
+	class Window;
+
+
+
 	class ING_API Screen
 	{
 
@@ -47,8 +57,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		Screen();
-		Screen(ScreenDesc desc);
+		Screen(Window* window);
+		Screen(Window* window, ScreenDesc desc);
 		~Screen();
 
 
@@ -68,13 +78,22 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		bool	isMain;
-		ScreenDesc desc;
+		bool					isMain;
+
+		ScreenDesc				desc;
+
+		Rendering::SwapChain*	swapChain;
+
+		Window*					window;
 
 	public:
-		bool		IsMain() { return isMain; }
+		bool							IsMain				() { return isMain; }
 
-		ScreenDesc	GetDesc() { return desc; }
+		ScreenDesc						GetDesc				() { return desc; }
+
+		Rendering::SwapChain*			GetSwapChain		() { return swapChain; }
+
+		Window*							GetWindow			() { return window; }
 
 	};
 

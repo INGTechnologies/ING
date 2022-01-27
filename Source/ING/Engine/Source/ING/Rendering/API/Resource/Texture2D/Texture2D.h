@@ -7,12 +7,19 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
+
+
+
+/**
+ *	Include Resource
+ */
+#include <ING/Rendering/API/Resource/Resource.h>
 
 
 
@@ -20,27 +27,25 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Engine :
-			public Board<Engine>,
-			public Square
+		class ING_API Texture2D : public Resource
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Engine();
-			~Engine();
+			Texture2D();
+			~Texture2D();
 
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			static Texture2D* Create();
+
+			virtual void Release() override;
 
 		};
 

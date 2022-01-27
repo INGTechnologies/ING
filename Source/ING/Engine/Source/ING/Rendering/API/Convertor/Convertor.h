@@ -7,9 +7,9 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -20,27 +20,29 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Engine :
-			public Board<Engine>,
-			public Square
+		/**
+		 *	API Class
+		 */
+		class ING_API Convertor :
+			public Singleton<Convertor>
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Engine();
-			~Engine();
+			Convertor();
+			~Convertor();
 
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			static Convertor* Create();
+			
+			virtual void Release();
 
 		};
 

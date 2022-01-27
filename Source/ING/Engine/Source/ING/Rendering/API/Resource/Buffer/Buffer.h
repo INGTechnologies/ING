@@ -16,31 +16,34 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Resource
+ */
+#include <ING/Rendering/API/Resource/Resource.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Engine :
-			public Board<Engine>,
-			public Square
+		class ING_API Buffer : public Resource
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Engine();
-			~Engine();
+			Buffer();
+			~Buffer();
 
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Create, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			virtual void Release() override;
 
 		};
 

@@ -43,13 +43,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include SwapChain Manager
- */
-#include <ING/Rendering/API/SwapChain/Manager/Manager.h>
-
-
-
 namespace ING {
 
 	namespace Rendering {
@@ -68,12 +61,6 @@ namespace ING {
 
 			}
 
-
-
-			/**
-			 *	Add Squares
-			 */
-			AddSquare<SwapChainManager>();
 		}
 
 		APIManager::~APIManager() {
@@ -99,7 +86,7 @@ namespace ING {
 
 			}
 
-			return Board<APIManager>::Init();
+			return true;
 		}
 
 		bool APIManager::InitAPI() {
@@ -109,8 +96,6 @@ namespace ING {
 
 			case NONE_API_FLAG:
 
-				return false;
-
 				break;
 
 			case DIRECTX11_API_FLAG:
@@ -119,6 +104,8 @@ namespace ING {
 
 				api->Init();
 
+				return true;
+
 				break;
 
 			default:
@@ -126,18 +113,18 @@ namespace ING {
 
 			}
 
+			return false;
+
 		}
 
 		bool APIManager::Run() {
 
 
 
-			return Board<APIManager>::Run();
+			return true;
 		}
 
 		bool APIManager::Release() {
-
-			bool boardReleaseRs = Board<APIManager>::Release();
 
 			if (api != nullptr) {
 
@@ -147,7 +134,8 @@ namespace ING {
 
 			delete this;
 
-			return boardReleaseRs;
+			return true;
+
 		}		
 
 	}

@@ -126,11 +126,11 @@ namespace ING {
 
 		AddSquare<ApplicationEventManager>();
 
-		/* Window Manager */
-		AddSquare<WindowManager>();
-
 		/* Rendering Engine */
 		AddSquare<Rendering::Engine>();
+
+		/* Window Manager */
+		AddSquare<WindowManager>();
 
 		/* Job System */
 		AddSquare<JobSystem>();
@@ -178,7 +178,7 @@ namespace ING {
 
 		while (state == RUNNING_APPLICATION_STATE) {
 
-
+			WindowManager::GetInstance()->FrameUpdate();
 
 		}
 
@@ -192,5 +192,12 @@ namespace ING {
 		return Board<Application>::Release();
 	}
 
+	void Application::Shutdown() {
+
+		state = CLOSED_APPLICATION_STATE;
+
+		Release();
+
+	}
 
 }

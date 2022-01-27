@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "RenderTargetView.h"
 
 
 
@@ -14,9 +14,9 @@
 
 
 /**
- *	Include DirectX11 DeviceContext
+ *	Include DirectX11 RenderTargetView
  */
-#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+#include <ING/Rendering/API/DirectX11/View/RenderTargetView/RenderTargetView.h>
 
 
 
@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DeviceContext::DeviceContext(Device* device) {
+		RenderTargetView::RenderTargetView() {
 
-			this->device = device;
+
 
 		}
 
-		DeviceContext::~DeviceContext() {
+		RenderTargetView::~RenderTargetView() {
 
 
 
@@ -42,9 +42,9 @@ namespace ING {
 
 
 		/**
-		 *	Create, Release Methods
+		 *	Release Method
 		 */
-		DeviceContext* DeviceContext::Create(Device* device) {
+		RenderTargetView* RenderTargetView::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +55,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::DeviceContext(device);
+				return new DirectX11::RenderTargetView();
 
 				break;
 
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void DeviceContext::Release() {
+		void RenderTargetView::Release() {
 
 			delete this;
 

@@ -14,16 +14,23 @@
 
 
 /**
- *	Include SwapChain Manager
+ *	Include DirectX11 SwapChain
  */
-#include <ING/Rendering/API/SwapChain/Manager/Manager.h>
+#include <ING/Rendering/API/DirectX11/SwapChain/SwapChain.h>
 
 
 
 /**
- *	Include DirectX11 SwapChain
+ *	Include RenderTargetView
  */
-#include <ING/Rendering/API/DirectX11/SwapChain/SwapChain.h>
+#include <ING/Rendering/API/View/RenderTargetView/RenderTargetView.h>
+
+
+
+/**
+ *	Include Texture2D
+ */
+#include <ING/Rendering/API/Resource/Texture2D/Texture2D.h>
 
 
 
@@ -38,7 +45,11 @@ namespace ING {
 
 			this->device = device;
 
-			SwapChainManager::GetInstance()->AddSwapChain(this);
+			this->window = window;
+
+			renderTargetView = RenderTargetView::Create();
+
+			renderTargetView->SetResource(Texture2D::Create());
 
 		}
 
