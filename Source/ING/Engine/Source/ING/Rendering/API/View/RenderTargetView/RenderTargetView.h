@@ -43,6 +43,8 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
+			static RenderTargetView* Create();
+
 			virtual void Release() override;
 
 		};

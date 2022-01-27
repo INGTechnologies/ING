@@ -19,9 +19,8 @@ using namespace ING::Utils;
 namespace ING {
 
 	class ING_API Core :
-		public Singleton<Core>,
-		public Square,
-		public Board<Core>
+		public Board<Core>,
+		public Square
 	{
 
 		/**

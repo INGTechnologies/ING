@@ -24,18 +24,12 @@ namespace ING {
 
 		class Device;
 
+		class RenderTargetView;
+
 
 
 		class ING_API SwapChain
 		{
-
-			/**
-			 *	Friend Classes
-			 */
-		public:
-			friend class SwapChainManager;
-
-
 
 			/**
 			 *	Constructors And Destructor
@@ -85,6 +79,17 @@ namespace ING {
 
 		public:
 			Window* GetWindow() { return window; }
+
+
+
+			/**
+			 *	Views
+			 */
+		private:
+			RenderTargetView* renderTargetView;
+			
+		public:
+			RenderTargetView* GetRenderTargetView() { return renderTargetView; }
 
 		};
 

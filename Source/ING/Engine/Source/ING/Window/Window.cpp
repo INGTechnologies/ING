@@ -28,17 +28,21 @@ using namespace ING::Utils;
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 {
 
+	ING::Window* window = ING::WindowManager::GetInstance()->GetWindow(hwnd);
+
+
+
 	switch (msg)
 	{
 	case WM_CREATE:
 	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
+		
 		break;
 	}
 
 	case WM_DESTROY:
 	{
-
+		window->Shutdown();
 		::PostQuitMessage(0);
 		break;
 	}
@@ -170,16 +174,22 @@ namespace ING {
 			NULL, NULL, NULL, this);
 
 
+		WindowManager::GetInstance()->AddWindow(this);
+
+
+
+		::ShowWindow(handle, SW_SHOW);
+		::UpdateWindow(handle);
+
+
+
 		/* Create Screen */
 		ScreenDesc screenDesc;
 
 		screenDesc.clientWidth = desc.clientWidth;
 		screenDesc.clientHeight = desc.clientHeight;
 
-		screen = new Screen(screenDesc);
-
-
-		WindowManager::GetInstance()->AddWindow(this);
+		screen = new Screen(this,screenDesc);
 
 	}
 
@@ -188,7 +198,15 @@ namespace ING {
 
 		screen->Release();
 
+		WindowManager::GetInstance()->RemoveWindow(this);
+
 		delete this;
+
+	}
+
+	void Window::Shutdown() {
+
+		Release();
 
 	}
 

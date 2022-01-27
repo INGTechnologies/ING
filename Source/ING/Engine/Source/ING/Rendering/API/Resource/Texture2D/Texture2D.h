@@ -43,6 +43,8 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
+			static Texture2D* Create();
+
 			virtual void Release() override;
 
 		};

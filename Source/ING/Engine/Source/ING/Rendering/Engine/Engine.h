@@ -21,9 +21,8 @@ namespace ING {
 	namespace Rendering {
 
 		class ING_API Engine :
-			public Singleton<Engine>,
-			public Square,
-			public Board<Engine>
+			public Board<Engine>,
+			public Square
 		{
 
 			/**

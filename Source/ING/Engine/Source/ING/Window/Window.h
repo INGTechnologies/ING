@@ -73,6 +73,8 @@ namespace ING {
 	public:
 		virtual void Release();
 
+				void Shutdown();
+
 
 
 		/**

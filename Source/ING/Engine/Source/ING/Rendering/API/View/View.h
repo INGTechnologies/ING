@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class Resource;
+
+
+
 		class ING_API View
 		{
 
@@ -37,6 +41,19 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
+
+
+
+			/**
+			 *	Resource
+			 */
+		private:
+			Resource* resource;
+
+		public:
+			Resource*	GetResource	() { return resource; }
+			
+			void		SetResource	(Resource* resource) { this->resource = resource; }
 
 		};
 

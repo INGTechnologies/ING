@@ -93,14 +93,19 @@ namespace ING {
 
 			virtual bool Release()
 			{
-				
-				for (auto& item : squareVector) {
 
-					if (!(item->Release()))
+				int squareCount = squareVector.size();
+
+				for (int i = squareCount - 1; i >= 0; --i) {
+
+					Square* square = squareVector[i];
+
+					if (!(square->Release()))
 					{
 						return false;
 					}
 
+					int a = 5;
 				}
 
 

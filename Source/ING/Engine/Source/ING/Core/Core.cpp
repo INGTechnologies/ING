@@ -67,6 +67,7 @@ namespace ING {
 
 
 		return Board<Core>::Release();
+	
 	}
 
 

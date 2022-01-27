@@ -119,6 +119,8 @@ namespace ING {
 
 	void JobThread::Join() {
 
+		ingThread->Join();
+
 		queueJobs.Foreach([](Job*& job) {
 			
 			delete job;
@@ -126,8 +128,6 @@ namespace ING {
 		});
 
 		queueJobs.Clear();
-
-		delete ingThread;
 
 		delete this;
 
@@ -138,33 +138,6 @@ namespace ING {
 		while (JobSystem::GetInstance()->IsRunning()) {
 
 			mutex.lock();
-
-
-
-
-
-			//Compute Total Queue
-			/*
-			MultiTypeArray params(1);
-
-			params[0] = (unsigned int)0;
-
-			queueJobs.Foreach([](Job*& job, MultiTypeArray& params) {
-
-				params[0] = (unsigned int)(params[0].As<unsigned int>() + job->GetQueue());
-
-			}, params);
-
-
-			forTotalQueue_Mutex.lock();
-
-			totalQueue = params[0].As<unsigned int>();
-
-			forTotalQueue_Mutex.unlock();
-
-			params.Clear();
-			*/
-
 
 			List<Job*>::Node* node = queueJobs.GetHeadNode();
 

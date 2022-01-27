@@ -129,7 +129,29 @@ namespace ING {
 
 	Window* WindowManager::GetWindow	(HWND handle)		{
 
+		if (windowMap.find(handle) == windowMap.end()) return nullptr;
+
 		return windowMap[handle];
+
+	}
+
+	void	WindowManager::FrameUpdate() {
+
+		MSG msg = { 0 };
+
+		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+
+		unsigned int windowCount = windowMap.size();
+
+		if (autoCreateWindow && windowCount == 0) {
+
+			Application::GetInstance()->Shutdown();
+
+		}
 
 	}
 

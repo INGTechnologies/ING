@@ -39,12 +39,13 @@ namespace ING {
 
 
 		/**
-		 *	Init, Run, Release, Create Methods
+		 *	Init, Run, Release, Shutdown Methods
 		 */
 	public:
 		virtual bool			Init()		override;
 		virtual bool			Run()		override;
 		virtual bool			Release()	override;
+		void					Shutdown();
 
 
 

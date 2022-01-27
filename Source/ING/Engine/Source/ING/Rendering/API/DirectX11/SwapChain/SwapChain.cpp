@@ -34,6 +34,27 @@
 
 
 
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
+/**
+ *	Include DirectX11 Texture2D
+ */
+#include <ING/Rendering/API/DirectX11/Resource/Texture2D/Texture2D.h>
+
+
+
+/**
+ *	Include DirectX11 RenderTargetView
+ */
+#include <ING/Rendering/API/DirectX11/View/RenderTargetView/RenderTargetView.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -51,10 +72,15 @@ namespace ING {
 
 				IDXGIFactory* dxgiFactory = ((DirectX11::Device*)device)->GetDXGIFactory();
 
+
+
 				UINT clientWidth = window->GetDesc().clientWidth;
 				UINT clientHeight = window->GetDesc().clientHeight;
 				HWND hwnd = window->GetHandle();
 
+
+
+				/* Create DXGI SwapChain */
 				DXGI_SWAP_CHAIN_DESC desc;
 				ZeroMemory(&desc, sizeof(desc));
 				desc.BufferCount = 1;
@@ -71,12 +97,23 @@ namespace ING {
 
 				HRESULT hr = dxgiFactory->CreateSwapChain(d3d11Device, &desc, &dxgiSwapChain);
 
-				ID3D11Texture2D* buffer = NULL;
-				hr = dxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&buffer);
+
+
+				ID3D11Texture2D* d3d11buffer = NULL;
+				hr = dxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&d3d11buffer);
+
+
 
 				ID3D11RenderTargetView* d3d11RTV = nullptr;
 
-				HRESULT hr2 = d3d11Device->CreateRenderTargetView(buffer, NULL, &d3d11RTV);
+				HRESULT hr2 = d3d11Device->CreateRenderTargetView(d3d11buffer, NULL, &d3d11RTV);
+
+
+
+				((DirectX11::RenderTargetView*)	GetRenderTargetView())					->	SetD3D11RenderTargetView	(d3d11RTV);
+
+				((DirectX11::Texture2D*)		(GetRenderTargetView()->GetResource()))	->	SetD3D11Texture2D			(d3d11buffer);
+				
 
 			}
 
