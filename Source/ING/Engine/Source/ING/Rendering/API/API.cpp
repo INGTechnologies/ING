@@ -22,6 +22,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Convertor
+ */
+#include <ING/Rendering/API/Convertor/Convertor.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -31,7 +38,7 @@ namespace ING {
 		 */
 		API::API() {
 
-
+			convertor = Convertor::Create();
 
 		}
 

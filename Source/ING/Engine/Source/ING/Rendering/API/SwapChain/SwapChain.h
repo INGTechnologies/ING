@@ -30,6 +30,14 @@ namespace ING {
 		{
 
 			/**
+			 *	Friend Classes
+			 */
+		public:
+			friend class SwapChainManager;
+
+
+
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -62,10 +70,10 @@ namespace ING {
 			 *	Node
 			 */
 		private:
-			List<SwapChain*>::Node node;
+			List<SwapChain*>::Node* node;
 
 		public:
-			List<SwapChain*>::Node GetNode() { return node; }
+			List<SwapChain*>::Node* GetNode() { return node; }
 
 
 

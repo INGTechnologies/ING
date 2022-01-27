@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "Convertor.h"
 
 
 
@@ -14,9 +14,9 @@
 
 
 /**
- *	Include DirectX11 DeviceContext
+ *	Include DirectX11 Convertor
  */
-#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+#include <ING/Rendering/API/DirectX11/Convertor/Convertor.h>
 
 
 
@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DeviceContext::DeviceContext(Device* device) {
+		Convertor::Convertor() {
 
-			this->device = device;
+
 
 		}
 
-		DeviceContext::~DeviceContext() {
+		Convertor::~Convertor() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		DeviceContext* DeviceContext::Create(Device* device) {
+		Convertor* Convertor::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +55,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::DeviceContext(device);
+				return new DirectX11::Convertor();
 
 				break;
 
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void DeviceContext::Release() {
+		void Convertor::Release() {
 
 			delete this;
 

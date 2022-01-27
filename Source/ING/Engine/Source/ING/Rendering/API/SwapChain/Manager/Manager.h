@@ -58,8 +58,10 @@ namespace ING {
 
 		public:
 			SwapChain*	GetMainSwapChain	() { return swapChainList.GetHead(); }
+
 			void		AddSwapChain		(SwapChain* swapChain);
-			void		RemoveSwapChain		(List<SwapChain*>::Node node);
+
+			void		RemoveSwapChain		(List<SwapChain*>::Node* node);
 
 		};
 

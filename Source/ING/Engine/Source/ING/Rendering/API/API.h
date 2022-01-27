@@ -25,6 +25,8 @@ namespace ING {
 		 */
 		class Device;
 
+		class Convertor;
+
 
 
 		/**
@@ -62,6 +64,21 @@ namespace ING {
 			Device* GetDevice() {
 
 				return device;
+
+			}
+
+
+
+			/**
+			 *	Convertor
+			 */
+		private:
+			Convertor* convertor;
+
+		public:
+			Convertor* GetConvertor() {
+
+				return convertor;
 
 			}
 

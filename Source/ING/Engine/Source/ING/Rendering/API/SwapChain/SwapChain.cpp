@@ -38,6 +38,8 @@ namespace ING {
 
 			this->device = device;
 
+			this->window = window;
+
 			SwapChainManager::GetInstance()->AddSwapChain(this);
 
 		}
@@ -91,6 +93,8 @@ namespace ING {
 		}
 
 		void SwapChain::Release() {
+
+			SwapChainManager::GetInstance()->RemoveSwapChain(node);
 
 			delete this;
 

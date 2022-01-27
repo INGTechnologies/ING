@@ -132,13 +132,15 @@ namespace ING {
 		 */
 		void SwapChainManager::AddSwapChain		(SwapChain* swapChain) {
 
+			List<SwapChain*>::Node* node = swapChainList.Add(swapChain);
 
+			swapChain->node = node;
 
 		}
 
-		void SwapChainManager::RemoveSwapChain	(List<SwapChain*>::Node node) {
+		void SwapChainManager::RemoveSwapChain	(List<SwapChain*>::Node* node) {
 
-
+			swapChainList.Remove(node);
 
 		}
 	}
