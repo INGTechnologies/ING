@@ -75,6 +75,14 @@ namespace ING {
 	public:
 		ApplicationState GetState() { return state; }
 
+
+
+		/**
+		 *	FrameUpdate Method
+		 */
+	public:
+		void FrameUpdate();
+
 	};
 
 

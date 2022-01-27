@@ -94,7 +94,7 @@ namespace ING {
 
 		void							SetDefaultDesc		(WindowDesc desc) { defaultDesc = desc; }
 
-		void							FrameUpdate();
+		bool							CheckMessage		();
 
 	};
 

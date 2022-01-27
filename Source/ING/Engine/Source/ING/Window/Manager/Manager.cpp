@@ -135,7 +135,9 @@ namespace ING {
 
 	}
 
-	void	WindowManager::FrameUpdate() {
+	bool	WindowManager::CheckMessage() {
+
+		bool result = false;
 
 		MSG msg = { 0 };
 
@@ -143,6 +145,9 @@ namespace ING {
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
+
+			result = true;
+
 		}
 
 		unsigned int windowCount = windowMap.size();
@@ -152,6 +157,8 @@ namespace ING {
 			Application::GetInstance()->Shutdown();
 
 		}
+
+		return result;
 
 	}
 
