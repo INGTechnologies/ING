@@ -27,6 +27,8 @@ namespace ING {
 
 	class Configuration;
 
+
+
 	class ING_API Application: public Board<Application> {	
 
 		/**
@@ -93,5 +95,14 @@ namespace ING {
 	#define ING_CREATE_APPLICATION	IMPLEMENT_SINGLETON(ING::Application);
 	#define ING_INIT_APPLICATION	if(!ING::Application::GetInstance()->Init()){return 1;}
 	#define ING_RUN_APPLICATION		if(!ING::Application::GetInstance()->Run()){return 1;}
+
+	#define APPLICATION_CONFIG_PROP(T, name, value) \
+	if (!Application::GetInstance()->GetConfiguration()->Exist(name)) {\
+\
+		Application::GetInstance()->GetConfiguration()->Add<T>(name);\
+\
+		Application::GetInstance()->GetConfiguration()->Set<T>(name, value);\
+\
+	}
 
 }

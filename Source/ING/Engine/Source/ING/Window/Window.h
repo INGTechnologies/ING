@@ -83,13 +83,13 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		bool	isMain;
-		HWND	handle;
-		WindowDesc desc;
+		bool		isMain;
+		HWND		handle;
+		WindowDesc	desc;
 
-		std::wstring classId;
+		ui16		classId;
 
-		Screen* screen;
+		Screen*		screen;
 
 	public:
 		bool		IsMain		() { return isMain; }
@@ -106,9 +106,21 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void Show();
+		void			Show();
 
-		void Hide();
+		void			Hide();
+
+
+		/* Title */
+		void			SetTitle(std::wstring title);
+
+		void			SetTitle(const wchar_t* title) {
+
+			SetTitle(WString(title));
+
+		}
+
+		std::wstring	GetTitle();
 
 	};
 

@@ -110,9 +110,9 @@ namespace ING {
 
 		bool							CheckMessage			();
 
-		std::wstring					NewClassId				();
+		ui16							NewClassId				();
 
-		void							RemoveClassId			(std::wstring id);
+		void							RemoveClassId			(ui16 id);
 
 	};
 

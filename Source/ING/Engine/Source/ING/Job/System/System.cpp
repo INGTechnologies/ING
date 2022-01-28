@@ -44,13 +44,7 @@ namespace ING {
 		isRunning = false;
 		threadCount = 1;
 
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::JobSystem::threadCount")) {
-
-			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::JobSystem::threadCount");
-
-			Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::JobSystem::threadCount", 3);
-
-		}
+		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::threadCount", 3);
 
 	}
 

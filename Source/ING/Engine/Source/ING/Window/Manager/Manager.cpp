@@ -51,29 +51,11 @@ namespace ING {
 	WindowManager::WindowManager()
 	{
 
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoCreateWindow")) {
+		APPLICATION_CONFIG_PROP(unsigned int, "ING::WindowManager::startupWindowCount", 1);
 
-			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::startupWindowCount");
+		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::autoShutdown", true);
 
-			Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::WindowManager::startupWindowCount", 1);
-
-		}
-
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoShutdown")) {
-
-			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::WindowManager::autoShutdown");
-
-			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::autoShutdown", true);
-
-		}
-
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::showConsoleWindow")) {
-
-			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::WindowManager::showConsoleWindow");
-
-			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::showConsoleWindow", false);
-
-		}
+		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", false);
 
 	}
 
@@ -84,7 +66,7 @@ namespace ING {
 
 	}
 
-
+	
 
 	/**
 	 *	Init, Run, Release Methods
@@ -168,7 +150,7 @@ namespace ING {
 
 		HWND handle = window->GetHandle();
 
-		if (mainWindow == nullptr) {
+		if (mainWindow == nullptr && window != consoleWindow) {
 
 			mainWindow = window;
 
@@ -215,15 +197,15 @@ namespace ING {
 
 	}
 
-	std::wstring	WindowManager::NewClassId() {
+	ui16			WindowManager::NewClassId() {
 
-		return WString(idGenerator.GenUInt16());
+		return idGenerator.GenUInt16();
 
 	}
 
-	void			WindowManager::RemoveClassId(std::wstring id) {
+	void			WindowManager::RemoveClassId(ui16 id) {
 
-
+		idGenerator.RemoveUInt16Id(id);
 
 	}
 

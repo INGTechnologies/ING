@@ -105,6 +105,10 @@ int main() {
 
 	ING::Application::GetInstance()->Init();
 
+	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
+
+	mainWindow->SetTitle(L"First ING Application");
+
 	ING::Application::GetInstance()->Run();
 
 	return 0;

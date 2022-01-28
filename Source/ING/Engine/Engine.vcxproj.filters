@@ -7571,8 +7571,5 @@
     <ClInclude Include="Source\**\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ING\Window\MessageFlag\MessageFlag.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

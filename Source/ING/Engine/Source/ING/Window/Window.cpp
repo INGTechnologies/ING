@@ -152,7 +152,7 @@ namespace ING {
 
 		classId = WindowManager::GetInstance()->NewClassId();
 
-		std::wstring className = WString(L"INGWindowClass_") + classId;
+		std::wstring className = WString(L"INGWindowClass_") + WString(classId);
 
 		/* Create Class */
 		WNDCLASSEX wc;
@@ -232,15 +232,29 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void Window::Show() {
+	void			Window::Show() {
 
 		::ShowWindow(handle, SW_SHOW);
 
 	}
 
-	void Window::Hide() {
+	void			Window::Hide() {
 
 		::ShowWindow(handle, SW_HIDE);
+
+	}
+
+	void			Window::SetTitle(std::wstring title) {
+
+		desc.title = title.c_str();
+
+		SetWindowTextW(handle, title.c_str());
+
+	}
+
+	std::wstring	Window::GetTitle() {
+
+		return WString(desc.title);
 
 	}
 
