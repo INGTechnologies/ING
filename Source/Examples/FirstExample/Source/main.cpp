@@ -107,26 +107,5 @@ int main() {
 
 	ING::Application::GetInstance()->Run();
 
-
-
-	Rendering::API* api = Rendering::API::GetInstance();
-
-
-
-	Rendering::Device* device = api->GetDevice();
-
-	Rendering::DeviceContext* deviceContext = device->GetContext();
-
-
-
-	Rendering::Shader* shader = new Rendering::Shader();
-
-
-
-	Window* mainWindow = new Window();
-
-
-
-	system("pause");
 	return 0;
 }

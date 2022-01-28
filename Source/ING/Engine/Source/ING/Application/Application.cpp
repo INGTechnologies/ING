@@ -176,17 +176,22 @@ namespace ING {
 
 		state = RUNNING_APPLICATION_STATE;
 
+		/* Game Loop */
 		while (state == RUNNING_APPLICATION_STATE) {
 
+			/* Check Message */
 			if (!WindowManager::GetInstance()->CheckMessage()) {
 
 				FrameUpdate();
 
 			}
 
+
+
+			/* Check For Shutting Down */
 			unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
 
-			if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 0) {
+			if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 1) {
 
 				Application::GetInstance()->Shutdown();
 

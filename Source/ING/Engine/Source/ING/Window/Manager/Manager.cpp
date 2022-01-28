@@ -36,6 +36,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
 namespace ING {
 
 	/**
@@ -54,9 +61,17 @@ namespace ING {
 
 		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoShutdown")) {
 
-			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::autoShutdown");
+			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::WindowManager::autoShutdown");
 
 			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::autoShutdown", true);
+
+		}
+
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::showConsoleWindow")) {
+
+			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::WindowManager::showConsoleWindow");
+
+			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::showConsoleWindow", false);
 
 		}
 
@@ -81,6 +96,42 @@ namespace ING {
 
 		autoShutdown		= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::autoShutdown");
 
+		showConsoleWindow	= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::showConsoleWindow");
+
+
+
+		/* Create Console Window */
+		consoleWindow = new Window();
+
+		consoleWindow->handle = ::GetConsoleWindow();
+
+		AddWindow(consoleWindow);
+
+		RECT rect;
+		if (GetWindowRect(consoleWindow->handle, &rect))
+		{
+			ScreenDesc screenDesc;
+
+			screenDesc.clientWidth = rect.right - rect.left;
+			screenDesc.clientHeight = rect.bottom - rect.top;
+
+			consoleWindow->screen = new Screen(consoleWindow, screenDesc);
+		}
+
+		if (showConsoleWindow) {
+
+			consoleWindow->Show();
+
+		}
+		else {
+
+			consoleWindow->Hide();
+
+		}
+
+
+
+		/* Create Startup Window */
 		for (unsigned int i = 0; i < startupWindowCount; ++i) {
 
 			new Window(defaultDesc);
@@ -113,8 +164,6 @@ namespace ING {
 	/**
 	 *	Window Management
 	 */
-	Window*			WindowManager::mainWindow = nullptr;
-
 	void			WindowManager::AddWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();

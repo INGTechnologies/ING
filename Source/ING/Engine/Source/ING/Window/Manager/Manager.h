@@ -69,13 +69,17 @@ namespace ING {
 		 *	Window Management
 		 */
 	private:
-		static	Window*			mainWindow;
+		Window*					mainWindow;
+
+		Window*					consoleWindow;
 
 		std::map<HWND, Window*> windowMap;
 
 		unsigned int			startupWindowCount;
 
 		bool					autoShutdown;
+
+		bool					showConsoleWindow;
 
 		WindowDesc				defaultDesc;
 
@@ -84,11 +88,15 @@ namespace ING {
 	public:
 		Window*							GetMainWindow			() { return mainWindow; }
 
+		Window*							GetConsoleWindow		() { return consoleWindow; }
+
 		std::map<HWND, Window*>&		GetWindowMap			() { return windowMap; }
 
 		unsigned int					GetStartupWindowCount	() { return startupWindowCount; }
 
 		bool							IsAutoShutdown			() { return autoShutdown; }
+
+		bool							IsShowConsoleWindow		() { return showConsoleWindow; }
 
 		void							AddWindow				(Window* window);
 

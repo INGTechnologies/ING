@@ -57,8 +57,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-	public:
+	private:
 		Window();
+
+	public:
 		Window(WindowDesc desc);
 		~Window();
 
@@ -101,8 +103,12 @@ namespace ING {
 
 
 		/**
-		 *	Events
+		 *	Methods
 		 */
+	public:
+		void Show();
+
+		void Hide();
 
 	};
 

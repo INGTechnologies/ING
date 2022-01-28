@@ -122,9 +122,9 @@ namespace ING {
 		isMain(false), handle(NULL)
 	{
 
-		WindowDesc desc;
+		//WindowDesc desc;
 
-		InitWithDesc(desc);
+		//InitWithDesc(desc);
 
 	}
 
@@ -182,8 +182,18 @@ namespace ING {
 		WindowManager::GetInstance()->AddWindow(this);
 
 
+		if (desc.show) {
 
-		::ShowWindow(handle, SW_SHOW);
+			Show();
+
+		}
+		else {
+
+			Hide();
+
+		}
+
+
 		::UpdateWindow(handle);
 
 
@@ -214,6 +224,23 @@ namespace ING {
 	void Window::Shutdown() {
 
 		Release();
+
+	}
+
+
+
+	/**
+	 *	Methods
+	 */
+	void Window::Show() {
+
+		::ShowWindow(handle, SW_SHOW);
+
+	}
+
+	void Window::Hide() {
+
+		::ShowWindow(handle, SW_HIDE);
 
 	}
 

@@ -60,9 +60,7 @@ int main() {
 
 	ING::Application::GetInstance()->Run();
 
-	
 
 
-	system("pause");
 	return 0;
 }
