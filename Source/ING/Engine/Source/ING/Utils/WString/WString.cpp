@@ -43,7 +43,7 @@ namespace ING {
 
 			std::wstring wstr;
 
-			ss.str(wstr);
+			ss >> wstr;
 
 			return wstr;
 
@@ -57,7 +57,7 @@ namespace ING {
 
 			std::wstring wstr;
 
-			ss.str(wstr);
+			ss >> wstr;
 
 			return wstr;
 
@@ -71,7 +71,7 @@ namespace ING {
 
 			std::wstring wstr;
 
-			ss.str(wstr);
+			ss >> wstr;
 
 			return wstr;
 
@@ -85,7 +85,7 @@ namespace ING {
 
 			std::wstring wstr;
 
-			ss.str(wstr);
+			ss >> wstr;
 
 			return wstr;
 
@@ -99,7 +99,7 @@ namespace ING {
 
 			std::wstring wstr;
 
-			ss.str(wstr);
+			ss >> wstr;
 
 			return wstr;
 

@@ -85,6 +85,8 @@ namespace ING {
 		HWND	handle;
 		WindowDesc desc;
 
+		std::wstring classId;
+
 		Screen* screen;
 
 	public:

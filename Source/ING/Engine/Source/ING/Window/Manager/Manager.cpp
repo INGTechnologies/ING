@@ -75,6 +75,8 @@ namespace ING {
 
 			new Window(defaultDesc);
 
+			new Window(defaultDesc);
+
 		}
 
 		return true;
@@ -91,6 +93,8 @@ namespace ING {
 	bool WindowManager::Release()
 	{
 
+		idGenerator.ClearIds();
+
 		windowMap.clear();
 
 		return true;
@@ -101,9 +105,9 @@ namespace ING {
 	/**
 	 *	Window Management
 	 */
-	Window* WindowManager::mainWindow = nullptr;
+	Window*			WindowManager::mainWindow = nullptr;
 
-	void	WindowManager::AddWindow	(Window* window)	{
+	void			WindowManager::AddWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();
 
@@ -119,7 +123,7 @@ namespace ING {
 
 	}
 
-	void	WindowManager::RemoveWindow	(Window* window)	{
+	void			WindowManager::RemoveWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();
 
@@ -127,7 +131,7 @@ namespace ING {
 
 	}
 
-	Window* WindowManager::GetWindow	(HWND handle)		{
+	Window*			WindowManager::GetWindow	(HWND handle)		{
 
 		if (windowMap.find(handle) == windowMap.end()) return nullptr;
 
@@ -135,7 +139,7 @@ namespace ING {
 
 	}
 
-	bool	WindowManager::CheckMessage() {
+	bool			WindowManager::CheckMessage() {
 
 		bool result = false;
 
@@ -159,6 +163,18 @@ namespace ING {
 		}
 
 		return result;
+
+	}
+
+	std::wstring	WindowManager::NewClassId() {
+
+		return WString(idGenerator.GenUInt16());
+
+	}
+
+	void			WindowManager::RemoveClassId(std::wstring id) {
+
+
 
 	}
 

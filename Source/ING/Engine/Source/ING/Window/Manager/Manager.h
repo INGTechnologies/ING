@@ -77,6 +77,8 @@ namespace ING {
 
 		WindowDesc				defaultDesc;
 
+		IdGenerator				idGenerator;
+
 	public:
 		Window*							GetMainWindow		() { return mainWindow; }
 
@@ -95,6 +97,10 @@ namespace ING {
 		void							SetDefaultDesc		(WindowDesc desc) { defaultDesc = desc; }
 
 		bool							CheckMessage		();
+
+		std::wstring					NewClassId			();
+
+		void							RemoveClassId		(std::wstring id);
 
 	};
 
