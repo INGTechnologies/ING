@@ -150,6 +150,10 @@ namespace ING {
 	 */
 	void Window::InitWithDesc(WindowDesc desc) {
 
+		classId = WindowManager::GetInstance()->NewClassId();
+
+		std::wstring className = WString(L"INGWindowClass_") + classId;
+
 		/* Create Class */
 		WNDCLASSEX wc;
 		wc.cbClsExtra = NULL;
@@ -160,16 +164,17 @@ namespace ING {
 		wc.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 		wc.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 		wc.hInstance = NULL;
-		wc.lpszClassName = L"INGWindowClass";
+		wc.lpszClassName = className.c_str();
 		wc.lpszMenuName = L"";
 		wc.style = NULL;
 		wc.lpfnWndProc = &WndProc;
+
 
 		if (!::RegisterClassEx(&wc))
 			return;
 
 		/* Create Window Ex */
-		handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, L"INGWindowClass", desc.title,
+		handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, className.c_str(), desc.title,
 			WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, desc.clientWidth, desc.clientHeight,
 			NULL, NULL, NULL, this);
 
@@ -197,6 +202,8 @@ namespace ING {
 	{
 
 		screen->Release();
+
+		WindowManager::GetInstance()->RemoveClassId(classId);
 
 		WindowManager::GetInstance()->RemoveWindow(this);
 

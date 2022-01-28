@@ -11,17 +11,11 @@ namespace ING {
 
 	namespace Rendering {
 
-		enum APIFlag {
+		enum MessageFlag {
 
-			NONE_API_FLAG,
+			CAN_UPDATE_FRAME,
 
-			DIRECTX11_API_FLAG,
-
-			DIRECTX12_API_FLAG,
-
-			VULKAN_API_FLAG,
-
-			OPENGL_API_FLAG
+			SHUTDOWN
 
 		};
 

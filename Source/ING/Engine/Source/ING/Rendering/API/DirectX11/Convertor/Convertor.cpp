@@ -34,6 +34,20 @@ namespace ING {
 			 */
 			void Convertor::Release() {
 
+
+				/* Clear Maps */
+				clearFlagMap.clear();
+
+				cullModeMap.clear();
+				
+				fillModeMap.clear();
+				
+				formatMap.clear();
+				
+				primitiveTopologyMap.clear();
+
+
+
 				Rendering::Convertor::Release();
 
 			}

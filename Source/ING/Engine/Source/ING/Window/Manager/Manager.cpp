@@ -44,11 +44,19 @@ namespace ING {
 	WindowManager::WindowManager()
 	{
 
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Application::autoCreateWindow")) {
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoCreateWindow")) {
 
-			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::Application::autoCreateWindow");
+			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::startupWindowCount");
 
-			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::Application::autoCreateWindow", true);
+			Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::WindowManager::startupWindowCount", 1);
+
+		}
+
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoShutdown")) {
+
+			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::autoShutdown");
+
+			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::autoShutdown", true);
 
 		}
 
@@ -69,9 +77,11 @@ namespace ING {
 	bool WindowManager::Init()
 	{
 
-		autoCreateWindow = Application::GetInstance()->GetConfiguration()->Get<bool>("ING::Application::autoCreateWindow");
+		startupWindowCount	= Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING::WindowManager::startupWindowCount");
 
-		if (autoCreateWindow) {
+		autoShutdown		= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::autoShutdown");
+
+		for (unsigned int i = 0; i < startupWindowCount; ++i) {
 
 			new Window(defaultDesc);
 
@@ -91,6 +101,8 @@ namespace ING {
 	bool WindowManager::Release()
 	{
 
+		idGenerator.ClearIds();
+
 		windowMap.clear();
 
 		return true;
@@ -101,9 +113,9 @@ namespace ING {
 	/**
 	 *	Window Management
 	 */
-	Window* WindowManager::mainWindow = nullptr;
+	Window*			WindowManager::mainWindow = nullptr;
 
-	void	WindowManager::AddWindow	(Window* window)	{
+	void			WindowManager::AddWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();
 
@@ -119,7 +131,7 @@ namespace ING {
 
 	}
 
-	void	WindowManager::RemoveWindow	(Window* window)	{
+	void			WindowManager::RemoveWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();
 
@@ -127,7 +139,7 @@ namespace ING {
 
 	}
 
-	Window* WindowManager::GetWindow	(HWND handle)		{
+	Window*			WindowManager::GetWindow	(HWND handle)		{
 
 		if (windowMap.find(handle) == windowMap.end()) return nullptr;
 
@@ -135,7 +147,9 @@ namespace ING {
 
 	}
 
-	void	WindowManager::FrameUpdate() {
+	bool			WindowManager::CheckMessage() {
+
+		bool result = false;
 
 		MSG msg = { 0 };
 
@@ -143,15 +157,24 @@ namespace ING {
 		{
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
-		}
 
-		unsigned int windowCount = windowMap.size();
-
-		if (autoCreateWindow && windowCount == 0) {
-
-			Application::GetInstance()->Shutdown();
+			result = true;
 
 		}
+
+		return result;
+
+	}
+
+	std::wstring	WindowManager::NewClassId() {
+
+		return WString(idGenerator.GenUInt16());
+
+	}
+
+	void			WindowManager::RemoveClassId(std::wstring id) {
+
+
 
 	}
 

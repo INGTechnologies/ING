@@ -21,6 +21,21 @@ namespace ING {
 	namespace Rendering {
 
 		/**
+		 * Convert Method Macro
+		 */
+#define CONVERT_METHOD(mapName, T, TResult)\
+private:\
+std::map<T, TResult> mapName;\
+public:\
+TResult T(T key){\
+		\
+	return mapName[key];	\
+		\
+}
+
+
+
+		/**
 		 *	API Class
 		 */
 		class ING_API Convertor :

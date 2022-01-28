@@ -178,7 +178,21 @@ namespace ING {
 
 		while (state == RUNNING_APPLICATION_STATE) {
 
-			WindowManager::GetInstance()->FrameUpdate();
+			if (!WindowManager::GetInstance()->CheckMessage()) {
+
+				FrameUpdate();
+
+			}
+
+			unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
+
+			if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 0) {
+
+				Application::GetInstance()->Shutdown();
+
+				break;
+
+			}
 
 		}
 
@@ -197,6 +211,17 @@ namespace ING {
 		state = CLOSED_APPLICATION_STATE;
 
 		Release();
+
+	}
+
+
+
+	/**
+	 *	FrameUpdate Method
+	 */
+	void Application::FrameUpdate() {
+
+
 
 	}
 
