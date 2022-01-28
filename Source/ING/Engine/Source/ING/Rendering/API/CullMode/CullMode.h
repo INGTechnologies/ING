@@ -11,17 +11,11 @@ namespace ING {
 
 	namespace Rendering {
 
-		enum APIFlag {
+		enum CullMode {
 
-			NONE_API_FLAG,
-
-			DIRECTX11_API_FLAG,
-
-			DIRECTX12_API_FLAG,
-
-			VULKAN_API_FLAG,
-
-			OPENGL_API_FLAG
+			CULL_BACK,
+			CULL_FRONT,
+			CULL_NONE
 
 		};
 

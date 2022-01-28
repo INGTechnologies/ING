@@ -11,17 +11,10 @@ namespace ING {
 
 	namespace Rendering {
 
-		enum APIFlag {
+		enum ClearFlag {
 
-			NONE_API_FLAG,
-
-			DIRECTX11_API_FLAG,
-
-			DIRECTX12_API_FLAG,
-
-			VULKAN_API_FLAG,
-
-			OPENGL_API_FLAG
+			CLEAR_DEPTH_FLAG,
+			CLEAR_STENCIL_FLAG
 
 		};
 

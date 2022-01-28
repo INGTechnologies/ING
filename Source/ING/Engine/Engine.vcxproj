@@ -218,7 +218,8 @@
     <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\**\*.h" />
+    <ClInclude Include="Source\ING\Rendering\API\PrimitiveTopology\PrimitiveTopology.h" />
+    <ClInclude Include="Source\ING\Window\MessageFlag\MessageFlag.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

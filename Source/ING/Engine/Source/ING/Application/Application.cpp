@@ -184,6 +184,16 @@ namespace ING {
 
 			}
 
+			unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
+
+			if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 0) {
+
+				Application::GetInstance()->Shutdown();
+
+				break;
+
+			}
+
 		}
 
 		return squaresRunResult;

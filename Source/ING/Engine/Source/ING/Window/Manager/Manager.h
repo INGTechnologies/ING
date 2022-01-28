@@ -73,34 +73,38 @@ namespace ING {
 
 		std::map<HWND, Window*> windowMap;
 
-		bool					autoCreateWindow;
+		unsigned int			startupWindowCount;
+
+		bool					autoShutdown;
 
 		WindowDesc				defaultDesc;
 
 		IdGenerator				idGenerator;
 
 	public:
-		Window*							GetMainWindow		() { return mainWindow; }
+		Window*							GetMainWindow			() { return mainWindow; }
 
-		std::map<HWND, Window*>&		GetWindowMap		() { return windowMap; }
+		std::map<HWND, Window*>&		GetWindowMap			() { return windowMap; }
 
-		bool							IsAutoCreateWindow	() { return autoCreateWindow; }
+		unsigned int					GetStartupWindowCount	() { return startupWindowCount; }
 
-		void							AddWindow			(Window* window);
+		bool							IsAutoShutdown			() { return autoShutdown; }
 
-		void							RemoveWindow		(Window* window);
+		void							AddWindow				(Window* window);
 
-		Window*							GetWindow			(HWND handle);
+		void							RemoveWindow			(Window* window);
 
-		WindowDesc						GetDefaultDesc		() { return defaultDesc; }
+		Window*							GetWindow				(HWND handle);
 
-		void							SetDefaultDesc		(WindowDesc desc) { defaultDesc = desc; }
+		WindowDesc						GetDefaultDesc			() { return defaultDesc; }
 
-		bool							CheckMessage		();
+		void							SetDefaultDesc			(WindowDesc desc) { defaultDesc = desc; }
 
-		std::wstring					NewClassId			();
+		bool							CheckMessage			();
 
-		void							RemoveClassId		(std::wstring id);
+		std::wstring					NewClassId				();
+
+		void							RemoveClassId			(std::wstring id);
 
 	};
 

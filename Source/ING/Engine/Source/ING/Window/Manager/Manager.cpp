@@ -44,11 +44,19 @@ namespace ING {
 	WindowManager::WindowManager()
 	{
 
-		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Application::autoCreateWindow")) {
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoCreateWindow")) {
 
-			Application::GetInstance()->GetConfiguration()->Add<bool>("ING::Application::autoCreateWindow");
+			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::startupWindowCount");
 
-			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::Application::autoCreateWindow", true);
+			Application::GetInstance()->GetConfiguration()->Set<unsigned int>("ING::WindowManager::startupWindowCount", 1);
+
+		}
+
+		if (!Application::GetInstance()->GetConfiguration()->Exist("ING::WindowManager::autoShutdown")) {
+
+			Application::GetInstance()->GetConfiguration()->Add<unsigned int>("ING::WindowManager::autoShutdown");
+
+			Application::GetInstance()->GetConfiguration()->Set<bool>("ING::WindowManager::autoShutdown", true);
 
 		}
 
@@ -69,11 +77,11 @@ namespace ING {
 	bool WindowManager::Init()
 	{
 
-		autoCreateWindow = Application::GetInstance()->GetConfiguration()->Get<bool>("ING::Application::autoCreateWindow");
+		startupWindowCount	= Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING::WindowManager::startupWindowCount");
 
-		if (autoCreateWindow) {
+		autoShutdown		= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::autoShutdown");
 
-			new Window(defaultDesc);
+		for (unsigned int i = 0; i < startupWindowCount; ++i) {
 
 			new Window(defaultDesc);
 
@@ -151,14 +159,6 @@ namespace ING {
 			DispatchMessage(&msg);
 
 			result = true;
-
-		}
-
-		unsigned int windowCount = windowMap.size();
-
-		if (autoCreateWindow && windowCount == 0) {
-
-			Application::GetInstance()->Shutdown();
 
 		}
 
