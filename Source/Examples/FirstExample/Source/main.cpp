@@ -112,6 +112,24 @@ int main() {
 
 	ING::Application::GetInstance()->Init();
 
+
+
+	Window* consoleWindow = WindowManager::GetInstance()->GetConsoleWindow();
+
+	consoleWindow->Show();
+
+
+
+	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
+
+	mainWindow->GetEvent("RESIZE")->AddListener([](Event* event) {
+		
+		Debug::Log("Window Resized");
+	
+	});
+
+
+
 	ING::Application::GetInstance()->Run();
 
 	return 0;
