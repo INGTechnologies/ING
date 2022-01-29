@@ -31,6 +31,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Map
+ */
+#include <map>
+
+
+
+/**
  *	Include WindowDesc
  */
 #include <ING/Window/Desc/Desc.h>
@@ -40,6 +47,10 @@ using namespace ING::Utils;
 namespace ING {
 
 	class Screen;
+
+	class Event;
+
+	class WindowEvent;
 
 
 
@@ -67,10 +78,12 @@ namespace ING {
 
 
 		/**
-		 *	InitWithDesc, Release Methods
+		 *	InitWithDesc, InitEvents, Release Methods
 		 */
 	private:
 		virtual void InitWithDesc(WindowDesc desc);
+
+				void InitEvents();
 		
 	public:
 		virtual void Release();
@@ -121,6 +134,34 @@ namespace ING {
 		}
 
 		std::wstring	GetTitle();
+
+
+
+		/**
+		 *	Events
+		 */
+	private:
+		List<Event*> eventList;
+
+		std::map<std::string, Event*> eventMap;
+
+	public:
+		const List<Event*>&		GetEventList() { return eventList; }
+
+		Event*					GetEvent(std::string name);
+
+		List<Event*>::Node*		AddEvent(Event* event);
+
+		template<class T>
+		List<Event*>::Node* AddEvent() {
+
+			T* event = new T();
+
+			return AddEvent(event);
+
+		}
+
+		void					RemoveEvent(List<Event*>::Node* eventNode);
 
 	};
 

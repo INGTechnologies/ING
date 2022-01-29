@@ -23,6 +23,33 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
+ *	Include Events
+ */
+/* Destroy */
+#include <ING/Window/Event/Destroy/Destroy.h>
+
+/* Key Events */
+#include <ING/Window/Event/Key/Down/Down.h>
+#include <ING/Window/Event/Key/Up/Up.h>
+
+/* Mouse Events */
+#include <ING/Window/Event/Mouse/Button/Down/Down.h>
+#include <ING/Window/Event/Mouse/Button/Up/Up.h>
+#include <ING/Window/Event/Mouse/Move/Move.h>
+
+/* Resize Events */
+#include <ING/Window/Event/Resize/Resize.h>
+
+
+
+/**
  *	WndProc
  */
 LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
@@ -48,7 +75,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 	}
 	case WM_SIZE:
 	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
+
+		ING::WindowResizeEvent* event = (ING::WindowResizeEvent*)window->GetEvent("RESIZE");
+
+		event->newWidth		= LOWORD(lparam);
+		event->newHeight	= HIWORD(lparam);
+
+		event->Execute();
+
 		break;
 	}
 	case WM_MOUSEMOVE:
@@ -122,15 +156,15 @@ namespace ING {
 		isMain(false), handle(NULL)
 	{
 
-		//WindowDesc desc;
-
-		//InitWithDesc(desc);
+		InitEvents();
 
 	}
 
 	Window::Window(WindowDesc desc) :
 		isMain(false), handle(NULL)
 	{
+
+		InitEvents();
 
 		InitWithDesc(desc);
 
@@ -146,7 +180,7 @@ namespace ING {
 
 
 	/**
-	 *	InitWithDesc, Release Methods
+	 *	InitWithDesc, InitEvents, Release Methods
 	 */
 	void Window::InitWithDesc(WindowDesc desc) {
 
@@ -208,8 +242,52 @@ namespace ING {
 
 	}
 
+	void Window::InitEvents() {
+
+		/**
+		 *	Destroy Event
+		 */
+		AddEvent<WindowDestroyEvent>();
+
+
+
+		/**
+		 *	Key Events
+		 */
+		AddEvent<WindowKeyDownEvent>();
+
+		AddEvent<WindowKeyUpEvent>();
+
+
+
+		/**
+		 *	Mouse Events
+		 */
+		AddEvent<WindowMouseBtnDownEvent>();
+
+		AddEvent<WindowMouseBtnUpEvent>();
+
+		AddEvent<WindowMouseMoveEvent>();
+
+
+
+		/**
+		 *	Mouse Events
+		 */
+		AddEvent<WindowResizeEvent>();
+
+	}
+
 	void Window::Release() 
 	{
+
+		eventList.Foreach([](Event*& e) {
+			
+			e->Release();
+			
+		});
+
+		eventMap.clear();
 
 		screen->Release();
 
@@ -255,6 +333,35 @@ namespace ING {
 	std::wstring	Window::GetTitle() {
 
 		return WString(desc.title);
+
+	}
+
+
+
+	/**
+	 *	Events
+	 */
+	Event*					Window::GetEvent(std::string name) {
+
+		return eventMap[name];
+
+	}
+
+	List<Event*>::Node*		Window::AddEvent(Event* event) {
+
+		((WindowEvent*)event)->window = this;
+
+		eventMap[event->GetName()] = event;
+
+		return eventList.Add(event);
+
+	}
+
+	void					Window::RemoveEvent(List<Event*>::Node* eventNode) {
+
+		eventMap.erase(((Event*)(eventNode->pValue))->GetName());
+
+		eventList.Remove(eventNode);
 
 	}
 

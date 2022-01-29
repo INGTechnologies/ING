@@ -20,19 +20,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
-		 * Convert Method Macro
-		 */
-#define CONVERT_METHOD(mapName, T, TResult)\
-private:\
-std::map<T, TResult> mapName;\
-public:\
-TResult T(T key){\
-		\
-	return mapName[key];	\
-		\
-}
-
 
 
 		/**
@@ -60,6 +47,21 @@ TResult T(T key){\
 			virtual void Release();
 
 		};
+
+
+
+		/**
+		 * Define Macros
+		 */
+#define CONVERTOR_METHOD(mapName, T, TResult)\
+private:\
+std::map<T, TResult> mapName;\
+public:\
+TResult T(T key){\
+		\
+	return mapName[key];	\
+		\
+}
 
 	}
 
