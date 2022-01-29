@@ -91,6 +91,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Configuration
+ */
+#include <ING/Configuration/Configuration.h> 
+
+
+
 
 using namespace ING;
 
@@ -103,30 +110,29 @@ int main() {
 	//Create ING Application
 	ING::Application::CreateInstance();
 
+
+
+	APPLICATION_SET_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", true);
+
+
+
 	ING::Application::GetInstance()->Init();
+
+
+
+	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
+
+	mainWindow->SetTitle(L"First ING Application");
+
+
+
+	Window* consoleWindow = WindowManager::GetInstance()->GetConsoleWindow();
+
+	consoleWindow->SetTitle(L"First ING Console");
+
+
 
 	ING::Application::GetInstance()->Run();
 
-
-
-	Rendering::API* api = Rendering::API::GetInstance();
-
-
-
-	Rendering::Device* device = api->GetDevice();
-
-	Rendering::DeviceContext* deviceContext = device->GetContext();
-
-
-
-	Rendering::Shader* shader = new Rendering::Shader();
-
-
-
-	Window* mainWindow = new Window();
-
-
-
-	system("pause");
 	return 0;
 }
