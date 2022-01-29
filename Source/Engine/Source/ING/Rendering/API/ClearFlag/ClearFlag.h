@@ -13,8 +13,8 @@ namespace ING {
 
 		enum ClearFlag {
 
-			CLEAR_DEPTH_FLAG,
-			CLEAR_STENCIL_FLAG
+			CLEAR_DEPTH,
+			CLEAR_STENCIL
 
 		};
 

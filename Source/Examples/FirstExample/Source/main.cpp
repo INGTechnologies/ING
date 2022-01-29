@@ -110,27 +110,7 @@ int main() {
 	//Create ING Application
 	ING::Application::CreateInstance();
 
-
-
-	APPLICATION_SET_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", true);
-
-
-
 	ING::Application::GetInstance()->Init();
-
-
-
-	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
-
-	mainWindow->SetTitle(L"First ING Application");
-
-
-
-	Window* consoleWindow = WindowManager::GetInstance()->GetConsoleWindow();
-
-	consoleWindow->SetTitle(L"First ING Console");
-
-
 
 	ING::Application::GetInstance()->Run();
 

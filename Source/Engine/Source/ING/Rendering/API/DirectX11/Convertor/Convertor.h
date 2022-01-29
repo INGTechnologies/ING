@@ -107,19 +107,19 @@ namespace ING {
 				 */
 			public:
 				/* Clear Flag */
-				CONVERT_METHOD(clearFlagMap,			ClearFlag,				D3D11_CLEAR_FLAG);
+				CONVERTOR_METHOD(clearFlagMap,			ClearFlag,				D3D11_CLEAR_FLAG);
 
 				/* Cull Mode */
-				CONVERT_METHOD(cullModeMap,				CullMode,				D3D11_CULL_MODE);
+				CONVERTOR_METHOD(cullModeMap,			CullMode,				D3D11_CULL_MODE);
 
 				/* FillMode */
-				CONVERT_METHOD(fillModeMap,				FillMode,				D3D11_FILL_MODE);
+				CONVERTOR_METHOD(fillModeMap,			FillMode,				D3D11_FILL_MODE);
 
 				/* Format */
-				CONVERT_METHOD(formatMap,				Format,					DXGI_FORMAT);
+				CONVERTOR_METHOD(formatMap,				Format,					DXGI_FORMAT);
 
 				/* PrimitiveTopology */
-				CONVERT_METHOD(primitiveTopologyMap,	PrimitiveTopology,		D3D11_PRIMITIVE_TOPOLOGY);
+				CONVERTOR_METHOD(primitiveTopologyMap,	PrimitiveTopology,		D3D11_PRIMITIVE_TOPOLOGY);
 
 			};
 
