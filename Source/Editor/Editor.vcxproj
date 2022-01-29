@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{494bb523-139d-4782-9878-d09d012bbea1}</ProjectGuid>
-    <RootNamespace>FirstGame</RootNamespace>
+    <ProjectGuid>{9cf3cac7-abfa-4b01-88c3-646827263a73}</ProjectGuid>
+    <RootNamespace>INGEditor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -72,30 +72,30 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -112,13 +112,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
       <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -139,12 +136,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -161,13 +155,10 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
       <AssemblyDebug>true</AssemblyDebug>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -188,12 +179,9 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
     <PreBuildEvent>
-      <Command>
-      </Command>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
