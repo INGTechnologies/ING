@@ -112,6 +112,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Time
+ */
+#include <ING/Time/Time.h> 
+
+
+
 
 using namespace ING;
 
@@ -138,6 +145,29 @@ int main() {
 
 	mainWindow->Show();
 
+
+
+	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
+		
+		Debug::Log("Running...");
+		
+	});
+
+
+
+	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+
+
+
+	});
+
+
+
+	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+
+
+
+	});
 
 
 	ING::Application::GetInstance()->Run();

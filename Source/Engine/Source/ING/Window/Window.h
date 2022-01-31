@@ -44,6 +44,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include EventStorage
+ */
+#include <ING/Event/Storage/Storage.h>
+
+
+
 namespace ING {
 
 	class Screen;
@@ -54,7 +61,8 @@ namespace ING {
 
 
 
-	class ING_API Window
+	class ING_API Window :
+		public EventStorage
 	{
 
 		/**
@@ -138,30 +146,9 @@ namespace ING {
 
 
 		/**
-		 *	Events
+		 *	Event Management
 		 */
-	private:
-		List<Event*> eventList;
-
-		std::map<std::string, Event*> eventMap;
-
-	public:
-		const List<Event*>&		GetEventList() { return eventList; }
-
-		Event*					GetEvent(std::string name);
-
-		List<Event*>::Node*		AddEvent(Event* event);
-
-		template<class T>
-		List<Event*>::Node*		AddEvent() {
-
-			T* event = new T();
-
-			return AddEvent(event);
-
-		}
-
-		void					RemoveEvent(List<Event*>::Node* eventNode);
+		virtual List<Event*>::Node*		AddEvent(Event* event) override;
 
 	};
 

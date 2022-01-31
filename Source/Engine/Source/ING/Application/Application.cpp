@@ -39,11 +39,18 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
  *	Include Event Managers
  */
 #include <ING/Event/Manager/Manager.h>
 
-#include <ING/Application/EventManager/EventManager.h>
+#include <ING/Application/Event/Manager/Manager.h>
 
 
 
@@ -82,6 +89,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Time
+ */
+#include <ING/Time/Time.h>
+
+
+
 namespace ING {
 
 	/**
@@ -113,18 +127,21 @@ namespace ING {
 		/* Core */
 		AddSquare<Core>();
 
+		/* Time */
+		AddSquare<Time>();
+
 		/* Resource Manager */
 		AddSquare<ResourceManager>();
-
-		/* Thread Managers */
-		AddSquare<ThreadManager>();
-
-		AddSquare<ApplicationThreadManager>();
 
 		/* Event Managers */
 		AddSquare<EventManager>();
 
 		AddSquare<ApplicationEventManager>();
+
+		/* Thread Managers */
+		AddSquare<ThreadManager>();
+
+		AddSquare<ApplicationThreadManager>();
 
 		/* Rendering Engine */
 		AddSquare<Rendering::Engine>();
@@ -176,6 +193,8 @@ namespace ING {
 
 		state = RUNNING_APPLICATION_STATE;
 
+		GetEvent("RUN")->Execute();
+
 		/* Game Loop */
 		while (state == RUNNING_APPLICATION_STATE) {
 
@@ -208,6 +227,8 @@ namespace ING {
 
 		delete configuration;
 
+		RELEASE_EVENT_STORAGE;
+
 		return Board<Application>::Release();
 	}
 
@@ -226,7 +247,13 @@ namespace ING {
 	 */
 	void Application::FrameUpdate() {
 
+		Time::GetInstance()->StartFrame();
 
+		GetEvent("START_FRAME_UPDATE")->Execute();
+
+		GetEvent("END_FRAME_UPDATE")->Execute();
+
+		Time::GetInstance()->EndFrame();
 
 	}
 

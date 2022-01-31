@@ -218,7 +218,7 @@
     <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\Utils\AsMethod\AsMethod.h" />
+    <ClInclude Include="Source\**\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

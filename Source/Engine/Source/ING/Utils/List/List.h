@@ -195,9 +195,9 @@ namespace ING {
 
 					tailNode = node;
 					headNode = node;
-				}
 
-				size++;
+					size++;
+				}
 
 				return node;
 

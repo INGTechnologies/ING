@@ -23,13 +23,23 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Event Storage
+ */
+#include <ING/Event/Storage/Storage.h>
+
+
+
 namespace ING {
 
 	class Configuration;
 
 
 
-	class ING_API Application: public Board<Application> {	
+	class ING_API Application: 
+		public Board<Application>,
+		public EventStorage
+	{	
 
 		/**
 		 *	Constructors And Destructor
