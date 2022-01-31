@@ -89,7 +89,11 @@ namespace ING {
 	float Time::GetDeltaTime() {
 
 		return Time::GetInstance()->deltaTime;
+	}
 
+	float Time::GetFPS() {
+
+		return 1.0f / GetDeltaTime();
 	}
 
 }

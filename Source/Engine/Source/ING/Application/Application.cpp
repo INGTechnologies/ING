@@ -251,6 +251,8 @@ namespace ING {
 
 		GetEvent("START_FRAME_UPDATE")->Execute();
 
+
+
 		GetEvent("END_FRAME_UPDATE")->Execute();
 
 		Time::GetInstance()->EndFrame();

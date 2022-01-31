@@ -216,9 +216,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\**\*.cpp" />
+    <ClCompile Include="Source\ING\Waiter\Waiter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\**\*.h" />
+    <ClInclude Include="Source\ING\Waiter\Waiter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

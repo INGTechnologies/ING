@@ -6,6 +6,20 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include "ING/Application/Application.h"
+
+
+
+/**
+ *	Include Event
+ */
+#include "ING/Event/Event.h"
+
+
+
 namespace ING {
 
 	/**
@@ -30,7 +44,18 @@ namespace ING {
 	 */
 	bool ApplicationThreadManager::Init() {
 
+		/* Add Event Listeners */
+		Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* event) {
+			
+			ApplicationThreadManager::GetInstance()->StartFrame();
+			
+		});
 
+		Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+
+			ApplicationThreadManager::GetInstance()->EndFrame();
+
+		});
 
 		return Square::Init();
 	}
@@ -48,5 +73,23 @@ namespace ING {
 
 		return Square::Release();
 	}
+
+
+
+	/**
+	 *	StartFrame, EndFrame Method
+	 */
+	void ApplicationThreadManager::StartFrame() {
+
+
+
+	}
+
+	void ApplicationThreadManager::EndFrame() {
+
+
+
+	}
+
 
 }
