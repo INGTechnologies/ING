@@ -149,6 +149,18 @@ namespace ING {
 			 */
 			void Device::Release() {
 
+				if(d3d11Device != nullptr)
+					d3d11Device->Release();
+
+				if (dxgiDevice != nullptr)
+					dxgiDevice->Release();
+
+				if (dxgiAdapter != nullptr)
+					dxgiAdapter->Release();
+
+				if (dxgiFactory != nullptr)
+					dxgiFactory->Release();
+
 				Rendering::Device::Release();
 
 			}

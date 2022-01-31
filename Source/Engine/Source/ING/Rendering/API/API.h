@@ -33,7 +33,8 @@ namespace ING {
 		 *	API Class
 		 */
 		class ING_API API :
-			public Singleton<API>
+			public Singleton<API>,
+			public AsMethod
 		{
 
 			/**

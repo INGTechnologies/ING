@@ -69,7 +69,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 
 	case WM_DESTROY:
 	{
+		window->GetEvent("DESTROY")->Execute();
+
 		window->Shutdown();
+
 		::PostQuitMessage(0);
 		break;
 	}
@@ -247,53 +250,47 @@ namespace ING {
 		/**
 		 *	Destroy Event
 		 */
-		AddEvent<WindowDestroyEvent>();
+		AddEvent( new WindowDestroyEvent());
 
 
 
 		/**
 		 *	Key Events
 		 */
-		AddEvent<WindowKeyDownEvent>();
+		AddEvent( new WindowKeyDownEvent());
 
-		AddEvent<WindowKeyUpEvent>();
-
-
-
-		/**
-		 *	Mouse Events
-		 */
-		AddEvent<WindowMouseBtnDownEvent>();
-
-		AddEvent<WindowMouseBtnUpEvent>();
-
-		AddEvent<WindowMouseMoveEvent>();
+		AddEvent( new WindowKeyUpEvent());
 
 
 
 		/**
 		 *	Mouse Events
 		 */
-		AddEvent<WindowResizeEvent>();
+		AddEvent( new WindowMouseBtnDownEvent());
+
+		AddEvent( new WindowMouseBtnUpEvent());
+
+		AddEvent( new WindowMouseMoveEvent());
+
+
+
+		/**
+		 *	Mouse Events
+		 */
+		AddEvent( new WindowResizeEvent() );
 
 	}
 
 	void Window::Release() 
 	{
-
-		eventList.Foreach([](Event*& e) {
-			
-			e->Release();
-			
-		});
-
-		eventMap.clear();
-
-		screen->Release();
+		if(screen != nullptr)
+			screen->Release();
 
 		WindowManager::GetInstance()->RemoveClassId(classId);
 
 		WindowManager::GetInstance()->RemoveWindow(this);
+
+		RELEASE_EVENT_STORAGE;
 
 		delete this;
 
@@ -339,29 +336,13 @@ namespace ING {
 
 
 	/**
-	 *	Events
+	 *	Event Management
 	 */
-	Event*					Window::GetEvent(std::string name) {
-
-		return eventMap[name];
-
-	}
-
 	List<Event*>::Node*		Window::AddEvent(Event* event) {
 
 		((WindowEvent*)event)->window = this;
 
-		eventMap[event->GetName()] = event;
-
-		return eventList.Add(event);
-
-	}
-
-	void					Window::RemoveEvent(List<Event*>::Node* eventNode) {
-
-		eventMap.erase(((Event*)(eventNode->pValue))->GetName());
-
-		eventList.Remove(eventNode);
+		return EventStorage::AddEvent(event);
 
 	}
 

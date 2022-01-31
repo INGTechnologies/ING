@@ -98,6 +98,27 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Convertor
+ */
+#include <ING/Rendering/API/Convertor/Convertor.h> 
+
+
+
+/**
+ *	Include DX11 Convertor
+ */
+#include <ING/Rendering/API/DirectX11/Convertor/Convertor.h> 
+
+
+
+/**
+ *	Include Time
+ */
+#include <ING/Time/Time.h> 
+
+
+
 
 using namespace ING;
 
@@ -122,12 +143,31 @@ int main() {
 
 	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
 
-	mainWindow->GetEvent("RESIZE")->AddListener([](Event* event) {
+	mainWindow->Show();
+
+
+
+	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 		
-		Debug::Log("Window Resized");
-	
+		Debug::Log("Running...");
+		
 	});
 
+
+
+	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+
+
+
+	});
+
+
+
+	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+
+
+
+	});
 
 
 	ING::Application::GetInstance()->Run();

@@ -28,7 +28,8 @@ namespace ING {
 
 
 
-		class ING_API SwapChain
+		class ING_API SwapChain :
+			public AsMethod
 		{
 
 			/**
@@ -41,10 +42,11 @@ namespace ING {
 
 
 			/**
-			 *	Create, Release Methods
+			 *	Create, InitEvents Release Methods
 			 */
 		public:
 			static  SwapChain*	Create(Device* device, Window* window);
+			virtual void		InitEvents();
 			virtual void		Release();
 
 

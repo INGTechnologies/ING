@@ -54,6 +54,18 @@ namespace ING {
 
 		}
 
+		static void Log(float content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Log(double content) {
+
+			std::cout << content << std::endl;
+
+		}
+
 		static void Log(int content) {
 
 			std::cout << content << std::endl;

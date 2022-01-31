@@ -26,7 +26,8 @@ namespace ING {
 
 
 
-		class ING_API Device
+		class ING_API Device :
+			public AsMethod
 		{
 
 			/**

@@ -105,6 +105,13 @@
 
 
 
+/**
+ *	Include AsMethod
+ */
+#include <ING/Utils/AsMethod/AsMethod.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

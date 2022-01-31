@@ -82,7 +82,8 @@ namespace ING {
 			 *	API Class
 			 */
 			class ING_API Convertor :
-				public Rendering::Convertor
+				public Rendering::Convertor,
+				public Singleton<Convertor>
 			{
 
 				/**
@@ -105,7 +106,6 @@ namespace ING {
 				/**
 				 *	Convert Methods
 				 */
-			public:
 				/* Clear Flag */
 				CONVERTOR_METHOD(clearFlagMap,			ClearFlag,				D3D11_CLEAR_FLAG);
 

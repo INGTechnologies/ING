@@ -26,7 +26,7 @@ namespace ING {
 		 *	API Class
 		 */
 		class ING_API Convertor :
-			public Singleton<Convertor>
+			public AsMethod
 		{
 
 			/**
