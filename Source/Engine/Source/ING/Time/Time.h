@@ -71,6 +71,8 @@ namespace ING {
 	public:
 		static float GetDeltaTime();
 
+		static float GetFPS();
+
 	};
 
 

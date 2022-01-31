@@ -106,13 +106,14 @@ namespace ING {
 
 
 		/**
-		 *	Start, WaitReady, Join, Kill Methods
+		 *	Start, WaitReady, Join, Kill, Release Methods
 		 */
 	public:
 		void Start();
 		void WaitReady();
 		void Join();
 		void Kill();
+		virtual void Release();
 
 	};
 

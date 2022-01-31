@@ -44,6 +44,41 @@
 
 
 
+/**
+ *	Include ScreenManager
+ */
+#include <ING\Screen/Manager/Manager.h>
+
+
+
+/**
+ *	Include Screen
+ */
+#include <ING\Screen/Screen.h>
+
+
+
+/**
+ *	Include WindowManager
+ */
+#include <ING\Window/Manager/Manager.h>
+
+
+
+/**
+ *	Include Window
+ */
+#include <ING\Window/Window.h>
+
+
+
+/**
+ *	Include SwapChain
+ */
+#include <ING/Rendering/API/SwapChain/SwapChain.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -104,6 +139,31 @@ namespace ING {
 
 
 			return Board<Engine>::Release();
+		}
+
+
+
+		/**
+		 *	Update Method
+		 */
+		void Engine::Update() {
+
+			const std::map<HWND, Window*>& windowMap = WindowManager::GetInstance()->GetWindowMap();
+
+			for (auto& item : windowMap) {
+
+				Window* window = item.second;
+
+				Screen* screen = window->GetScreen();
+
+				if (screen->GetDesc().initSwapChain) {
+
+					SwapChain* swapChain = screen->GetSwapChain();
+
+				}
+
+			}
+
 		}
 
 	}

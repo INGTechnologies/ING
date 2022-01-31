@@ -47,7 +47,7 @@ namespace ING {
 
 
 	/**
-	 *	Start, Join, Kill Methods
+	 *	Start, Join, Kill, Release Methods
 	 */
 	void Thread::Start() {
 
@@ -79,13 +79,19 @@ namespace ING {
 
 		stdThread.join();
 
-		delete this;
+		Release();
 
 	}
 
 	void Thread::Kill() {
 
 		stdThread.detach();
+
+		Release();
+
+	}
+
+	void Thread::Release() {
 
 		delete this;
 
