@@ -153,7 +153,7 @@ namespace ING {
 		List<Event*>::Node*		AddEvent(Event* event);
 
 		template<class T>
-		List<Event*>::Node* AddEvent() {
+		List<Event*>::Node*		AddEvent() {
 
 			T* event = new T();
 

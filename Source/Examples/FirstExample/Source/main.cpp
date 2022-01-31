@@ -98,6 +98,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Convertor
+ */
+#include <ING/Rendering/API/Convertor/Convertor.h> 
+
+
+
+/**
+ *	Include DX11 Convertor
+ */
+#include <ING/Rendering/API/DirectX11/Convertor/Convertor.h> 
+
+
+
 
 using namespace ING;
 
@@ -122,11 +136,7 @@ int main() {
 
 	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
 
-	mainWindow->GetEvent("RESIZE")->AddListener([](Event* event) {
-		
-		Debug::Log("Window Resized");
-	
-	});
+	mainWindow->Show();
 
 
 

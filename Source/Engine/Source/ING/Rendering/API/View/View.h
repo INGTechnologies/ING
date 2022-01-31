@@ -24,7 +24,8 @@ namespace ING {
 
 
 
-		class ING_API View
+		class ING_API View :
+			public AsMethod
 		{
 
 			/**

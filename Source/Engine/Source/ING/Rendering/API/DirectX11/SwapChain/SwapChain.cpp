@@ -130,6 +130,9 @@ namespace ING {
 			 */
 			void SwapChain::Release() {
 
+				if(dxgiSwapChain != nullptr)
+					dxgiSwapChain->Release();
+
 				Rendering::SwapChain::Release();
 
 			}

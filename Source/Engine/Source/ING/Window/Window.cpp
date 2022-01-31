@@ -69,7 +69,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
 
 	case WM_DESTROY:
 	{
+		window->GetEvent("DESTROY")->Execute();
+
 		window->Shutdown();
+
 		::PostQuitMessage(0);
 		break;
 	}
@@ -289,7 +292,8 @@ namespace ING {
 
 		eventMap.clear();
 
-		screen->Release();
+		if(screen != nullptr)
+			screen->Release();
 
 		WindowManager::GetInstance()->RemoveClassId(classId);
 

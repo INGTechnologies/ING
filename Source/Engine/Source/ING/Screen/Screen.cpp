@@ -86,17 +86,26 @@ namespace ING {
 	 */
 	void Screen::InitWithDesc(ScreenDesc desc) {
 
-		/* Create SwapChain */
-		Rendering::Device* device = Rendering::APIManager::GetInstance()->GetAPI()->GetDevice();
+		this->desc = desc;
 
-		Rendering::SwapChain::Create(device, window);
+		if (desc.initSwapChain) {
 
-		ScreenManager::GetInstance()->InitScreen(this);
+			/* Create SwapChain */
+			Rendering::Device* device = Rendering::APIManager::GetInstance()->GetAPI()->GetDevice();
+
+			swapChain = Rendering::SwapChain::Create(device, window);
+
+			ScreenManager::GetInstance()->InitScreen(this);
+
+		}
 
 	}
 
 	void Screen::Release()
 	{
+
+		if(swapChain != nullptr)
+			swapChain->Release();
 
 		delete this;
 

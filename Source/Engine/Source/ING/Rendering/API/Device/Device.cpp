@@ -7,6 +7,13 @@
 
 
 /**
+ *	Include Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h>
+
+
+
+/**
  *	Include API Manager
  */
 #include <ING/Rendering/API/Manager/Manager.h>
@@ -82,6 +89,12 @@ namespace ING {
 		}
 
 		void Device::Release() {
+
+			if (context != nullptr) {
+
+				context->Release();
+
+			}
 
 			delete this;
 

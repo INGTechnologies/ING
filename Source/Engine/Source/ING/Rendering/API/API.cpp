@@ -62,7 +62,11 @@ namespace ING {
 
 		bool API::Release() {
 
+			if (device != nullptr) {
 
+				device->Release();
+
+			}
 
 			return true;
 		}

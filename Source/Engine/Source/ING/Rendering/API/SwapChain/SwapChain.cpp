@@ -34,6 +34,34 @@
 
 
 
+/**
+ *	Include Window
+ */
+#include <ING/Window/Window.h>
+
+
+
+/**
+ *	Include WindowEvent
+ */
+#include <ING/Window/Event/Event.h>
+
+
+
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -51,6 +79,8 @@ namespace ING {
 
 			renderTargetView->SetResource(Texture2D::Create());
 
+			InitEvents();
+
 		}
 
 		SwapChain::~SwapChain() {
@@ -62,7 +92,7 @@ namespace ING {
 
 
 		/**
-		 *	Create, Release Methods
+		 *	Create, InitEvents, Release Methods
 		 */
 		SwapChain* SwapChain::Create(Device* device, Window* window) {
 
@@ -98,6 +128,16 @@ namespace ING {
 
 
 			return nullptr;
+
+		}
+
+		void SwapChain::InitEvents() {
+
+			window->GetEvent("RESIZE")->AddListener([](Event* event) {
+
+				SwapChain* swapChain = ((WindowEvent*)event)->GetWindow()->GetScreen()->GetSwapChain();
+
+			});
 
 		}
 

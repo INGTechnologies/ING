@@ -94,8 +94,10 @@ namespace ING {
 		{
 			ScreenDesc screenDesc;
 
-			screenDesc.clientWidth = rect.right - rect.left;
-			screenDesc.clientHeight = rect.bottom - rect.top;
+			screenDesc.clientWidth		= rect.right - rect.left;
+			screenDesc.clientHeight		= rect.bottom - rect.top;
+
+			screenDesc.initSwapChain	= false;
 
 			consoleWindow->screen = new Screen(consoleWindow, screenDesc);
 		}
@@ -133,6 +135,8 @@ namespace ING {
 
 	bool WindowManager::Release()
 	{
+
+		consoleWindow->Release();
 
 		idGenerator.ClearIds();
 

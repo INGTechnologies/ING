@@ -57,7 +57,11 @@ namespace ING {
 			 */
 			void DeviceContext::Release() {
 
+				if (d3d11DeviceContext != nullptr) {
 
+					d3d11DeviceContext->Release();
+
+				}
 
 				Rendering::DeviceContext::Release();
 
