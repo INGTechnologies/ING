@@ -42,6 +42,14 @@ namespace ING {
 			virtual bool Run()		override;
 			virtual bool Release()	override;
 
+
+
+			/**
+			 *	Update Method
+			 */
+		public:
+			void Update();
+
 		};
 
 	}

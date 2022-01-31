@@ -27,7 +27,7 @@ using namespace ING::Utils;
   */
 #include <ING/Thread/Manager/Manager.h>
 
-#include <ING/Application/ThreadManager/ThreadManager.h>
+#include <ING/Application/Thread/Manager/Manager.h>
 
 
 
@@ -251,7 +251,17 @@ namespace ING {
 
 		GetEvent("START_FRAME_UPDATE")->Execute();
 
+		if (!configuration->Get<bool>("ING::ApplicationThreadManager::usePhysicsThread")) {
 
+
+
+		}
+
+		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
+
+			Rendering::Engine::GetInstance()->Update();
+
+		}
 
 		GetEvent("END_FRAME_UPDATE")->Execute();
 

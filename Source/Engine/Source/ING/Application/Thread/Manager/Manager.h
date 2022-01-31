@@ -16,9 +16,18 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mutex
+ */
+#include <mutex>
+
+
+
 namespace ING {
 
 	class Thread;
+
+	class ApplicationThread;
 
 
 
@@ -50,12 +59,17 @@ namespace ING {
 		 *	Thread Management
 		 */
 	private:
-		Thread* renderingThread;
-		Thread* physicsThread;
+		ApplicationThread* renderingThread;
+		ApplicationThread* physicsThread;
+
+		List<ApplicationThread*> applicationThreadList;
 
 	public:
-		Thread* GetRenderingThread () { return renderingThread; }
-		Thread* GetPhysicsThread () { return physicsThread; }
+		ApplicationThread*					GetRenderingThread () { return renderingThread; }
+		ApplicationThread*					GetPhysicsThread () { return physicsThread; }
+
+		List<ApplicationThread*>::Node*		AddThread(ApplicationThread* thread);
+		void								RemoveThread(List<ApplicationThread*>::Node* node);
 
 
 
@@ -65,6 +79,14 @@ namespace ING {
 	public:
 		void StartFrame();
 		void EndFrame();
+
+
+
+		/**
+		 *	Mutex
+		 */
+	private:
+		std::mutex mutex;
 
 	};
 
