@@ -17,12 +17,20 @@ namespace ING {
 
 	namespace Math {
 
+		/**
+		 *	Methods
+		 */
 		Vector3 CVector3::Transpose() {
 			return Vector3(
 				x, y, z
 			);
 		}
 
+
+
+		/**
+		 *	Operators
+		 */
 		Matrix3x4 CVector3::operator*(Vector4 next) {
 			return Matrix3x4(
 				next * x,

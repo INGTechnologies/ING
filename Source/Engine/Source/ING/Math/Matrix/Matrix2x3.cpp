@@ -17,6 +17,9 @@ namespace ING {
 
 	namespace Math {
 
+		/**
+		 *	Methods
+		 */
 		Matrix3x2 Matrix2x3::Transpose() {
 			return Matrix3x2(
 				Vector2(rows[0].x, rows[1].x),
@@ -26,6 +29,10 @@ namespace ING {
 		}
 
 
+
+		/**
+		 *	Operators
+		 */
 		Matrix2x4 Matrix2x3::operator*(Matrix3x4 next) {
 
 			Matrix4x3 tNext = next.Transpose();

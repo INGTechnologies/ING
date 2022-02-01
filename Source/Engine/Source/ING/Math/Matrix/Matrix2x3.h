@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ *	Include Entry Point
+ */
+#include <ING\EntryPoint\EntryPoint.h>
+
 
 
 /**
@@ -33,7 +38,13 @@ namespace ING {
 		struct Vector3;
 		struct Vector4;
 
-		struct Matrix2x3 {
+
+
+		struct ING_API Matrix2x3 {
+
+			/**
+			 *	Constructors
+			 */
 		public:
 			Matrix2x3(Vector3 _x, Vector3 _y) {
 				rows[0] = _x;
@@ -48,30 +59,45 @@ namespace ING {
 
 			}
 
-		public:
-			Vector3 rows[2];
 
-		public:
-			Matrix3x2 Transpose();
 
+			/**
+			 *	Properties
+			 */
 		public:
-			Matrix2x3 operator+(Matrix2x3 next) {
+			Vector3		rows[2];
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			Matrix3x2	Transpose();
+
+
+
+			/**
+			 *	Operators
+			 */
+		public:
+			Matrix2x3	operator+(Matrix2x3 next) {
 				return Matrix2x3(rows[0] + next.rows[0], rows[1] + next.rows[1]);
 			}
-			Matrix2x3 operator-(Matrix2x3 next) {
+			Matrix2x3	operator-(Matrix2x3 next) {
 				return Matrix2x3(rows[0] - next.rows[0], rows[1] - next.rows[1]);
 			}
-			Matrix2x3 operator*(float a) {
+			Matrix2x3	operator*(float a) {
 				return Matrix2x3(rows[0] * a, rows[1] * a);
 			}
-			Matrix2x3 operator/(float a) {
+			Matrix2x3	operator/(float a) {
 				return Matrix2x3(rows[0] / a, rows[1] / a);
 			}
 
-			Matrix2x4 operator*(Matrix3x4 next);
-			Matrix2x3 operator*(Matrix3x3 next);
-			Matrix2x2 operator*(Matrix3x2 next);
-			CVector2 operator*(CVector3 next);
+			Matrix2x4	operator*(Matrix3x4 next);
+			Matrix2x3	operator*(Matrix3x3 next);
+			Matrix2x2	operator*(Matrix3x2 next);
+			CVector2	operator*(CVector3 next);
 
 		};
 

@@ -17,11 +17,18 @@ namespace ING {
 
 	namespace Math {
 
+		/**
+		 *	Methods
+		 */
 		CVector2 Vector2::Transpose() {
 			return CVector2(x, y);
 		}
 
 
+
+		/**
+		 *	Operators
+		 */
 		Vector4 Vector2::operator*(Matrix2x4 next) {
 			Matrix4x2 tNext = next.Transpose();
 			return Vector4(

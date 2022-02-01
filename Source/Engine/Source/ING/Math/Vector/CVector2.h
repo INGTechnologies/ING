@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ *	Include Entry Point
+ */
+#include <ING\EntryPoint\EntryPoint.h>
+
 
 
 namespace ING {
@@ -26,7 +31,13 @@ namespace ING {
 		struct Vector3;
 		struct Vector4;
 
-		struct CVector2 {
+
+
+		struct ING_API CVector2 {
+
+			/**
+			 *	Constructors
+			 */
 		public:
 			CVector2(float _x, float _y) {
 				x = _x;
@@ -38,40 +49,52 @@ namespace ING {
 
 			}
 
+
+
+			/**
+			 *	Properties
+			 */
 		public:
 			float x;
 			float y;
 
-		public:
-			Vector2 Transpose();
 
+
+			/**
+			 *	Methods
+			 */
 		public:
-			CVector2 operator+(CVector2 next) {
+					Vector2 Transpose();
+
+			static	float	DotProduct(CVector2 a, CVector2 b) {
+				return a.x * b.x + a.y * b.y;
+			}
+
+
+
+			/**
+			 *	Operators
+			 */
+		public:
+			CVector2	operator+(CVector2 next) {
 				return CVector2(x + next.x, y + next.y);
 			}
-			CVector2 operator-(CVector2 next) {
+			CVector2	operator-(CVector2 next) {
 				return CVector2(x - next.x, y - next.y);
 			}
-			CVector2 operator*(float a) {
+			CVector2	operator*(float a) {
 				return CVector2(x * a, y * a);
 			}
-			CVector2 operator/(float a) {
+			CVector2	operator/(float a) {
 				return CVector2(x / a, y / a);
 			}
 
-			Matrix2x4 operator*(Vector4 next);
-			Matrix2x3 operator*(Vector3 next);
-			Matrix2x2 operator*(Vector2 next);
-
-		public:
-			static float DotProduct(CVector2 a, CVector2 b) {
-				return a.x * b.x + a.y * b.y;
-			}
+			Matrix2x4	operator*(Vector4 next);
+			Matrix2x3	operator*(Vector3 next);
+			Matrix2x2	operator*(Vector2 next);
 
 		};
 
 	}
 
 }
-
-#endif

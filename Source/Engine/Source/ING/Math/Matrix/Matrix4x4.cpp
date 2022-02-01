@@ -17,7 +17,10 @@ namespace ING {
 
 	namespace Math {
 
-		Matrix4x4 Matrix4x4::Transpose() {
+		/**
+		 *	Methods
+		 */
+		Matrix4x4	Matrix4x4::Transpose() {
 			return Matrix4x4(
 				Vector4(rows[0].x, rows[1].x, rows[2].x, rows[3].x),
 				Vector4(rows[0].y, rows[1].y, rows[2].y, rows[3].y),
@@ -26,6 +29,40 @@ namespace ING {
 			);
 		}
 
+		float		Matrix4x4::Det() {
+
+			Matrix3x3 a = Matrix3x3(
+				Vector3(rows[1].y, rows[1].z, rows[1].w),
+				Vector3(rows[2].y, rows[2].z, rows[2].w),
+				Vector3(rows[3].y, rows[3].z, rows[3].w)
+			);
+
+			Matrix3x3 b = Matrix3x3(
+				Vector3(rows[1].x, rows[1].z, rows[1].w),
+				Vector3(rows[2].x, rows[2].z, rows[2].w),
+				Vector3(rows[3].x, rows[3].z, rows[3].w)
+			);
+
+			Matrix3x3 c = Matrix3x3(
+				Vector3(rows[1].x, rows[1].y, rows[1].w),
+				Vector3(rows[2].x, rows[2].y, rows[2].w),
+				Vector3(rows[3].x, rows[3].y, rows[3].w)
+			);
+
+			Matrix3x3 d = Matrix3x3(
+				Vector3(rows[1].x, rows[1].y, rows[1].z),
+				Vector3(rows[2].x, rows[2].y, rows[2].z),
+				Vector3(rows[3].x, rows[3].y, rows[3].z)
+			);
+
+			return rows[0].x * a.Det() - rows[0].y * b.Det() + rows[0].z * c.Det() - rows[0].w * d.Det();
+		}
+
+
+
+		/**
+		 *	Operators
+		 */
 		Matrix4x4 Matrix4x4::operator*(Matrix4x4 next) {
 
 			Matrix4x4 tNext = next.Transpose();
@@ -72,35 +109,6 @@ namespace ING {
 				Vector4::DotProduct(tNext, rows[2]),
 				Vector4::DotProduct(tNext, rows[3])
 			);
-		}
-
-		float Matrix4x4::Det() {
-
-			Matrix3x3 a = Matrix3x3(
-				Vector3(rows[1].y, rows[1].z, rows[1].w),
-				Vector3(rows[2].y, rows[2].z, rows[2].w),
-				Vector3(rows[3].y, rows[3].z, rows[3].w)
-			);
-
-			Matrix3x3 b = Matrix3x3(
-				Vector3(rows[1].x, rows[1].z, rows[1].w),
-				Vector3(rows[2].x, rows[2].z, rows[2].w),
-				Vector3(rows[3].x, rows[3].z, rows[3].w)
-			);
-
-			Matrix3x3 c = Matrix3x3(
-				Vector3(rows[1].x, rows[1].y, rows[1].w),
-				Vector3(rows[2].x, rows[2].y, rows[2].w),
-				Vector3(rows[3].x, rows[3].y, rows[3].w)
-			);
-
-			Matrix3x3 d = Matrix3x3(
-				Vector3(rows[1].x, rows[1].y, rows[1].z),
-				Vector3(rows[2].x, rows[2].y, rows[2].z),
-				Vector3(rows[3].x, rows[3].y, rows[3].z)
-			);
-
-			return rows[0].x * a.Det() - rows[0].y * b.Det() + rows[0].z * c.Det() - rows[0].w * d.Det();
 		}
 
 	}

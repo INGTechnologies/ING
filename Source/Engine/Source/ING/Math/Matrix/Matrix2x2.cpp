@@ -17,15 +17,28 @@ namespace ING {
 
 	namespace Math {
 
-		Matrix2x2 Matrix2x2::Transpose() {
+
+
+		/**
+		 *	Methods
+		 */
+		Matrix2x2	Matrix2x2::Transpose() {
 			return Matrix2x2(
 				Vector2(rows[0].x, rows[1].x),
 				Vector2(rows[0].y, rows[1].y)
 			);
 		}
 
+		float		Matrix2x2::Det() {
+			return rows[0].x * rows[1].y - rows[0].y * rows[1].x;
+		}
 
-		Matrix2x4 Matrix2x2::operator*(Matrix2x4 next) {
+
+
+		/**
+		 *	Operators
+		 */
+		Matrix2x4	Matrix2x2::operator*(Matrix2x4 next) {
 
 			Matrix4x2 tNext = next.Transpose();
 
@@ -35,7 +48,7 @@ namespace ING {
 			);
 		}
 
-		Matrix2x3 Matrix2x2::operator*(Matrix2x3 next) {
+		Matrix2x3	Matrix2x2::operator*(Matrix2x3 next) {
 
 			Matrix3x2 tNext = next.Transpose();
 
@@ -45,7 +58,7 @@ namespace ING {
 			);
 		}
 
-		Matrix2x2 Matrix2x2::operator*(Matrix2x2 next) {
+		Matrix2x2	Matrix2x2::operator*(Matrix2x2 next) {
 
 			Matrix2x2 tNext = next.Transpose();
 
@@ -55,7 +68,7 @@ namespace ING {
 			);
 		}
 
-		CVector2 Matrix2x2::operator*(CVector2 next) {
+		CVector2	Matrix2x2::operator*(CVector2 next) {
 
 			Vector2 tNext = next.Transpose();
 
@@ -63,12 +76,6 @@ namespace ING {
 				Vector2::DotProduct(tNext, rows[0]),
 				Vector2::DotProduct(tNext, rows[1])
 			);
-		}
-
-
-
-		float Matrix2x2::Det() {
-			return rows[0].x * rows[1].y - rows[0].y * rows[1].x;
 		}
 
 	}

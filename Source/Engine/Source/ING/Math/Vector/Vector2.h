@@ -1,5 +1,10 @@
 #pragma once
 
+/**
+ *	Include Entry Point
+ */
+#include <ING\EntryPoint\EntryPoint.h>
+
 
 
 namespace ING {
@@ -26,7 +31,13 @@ namespace ING {
 		struct Vector3;
 		struct Vector4;
 
-		struct Vector2 {
+
+
+		struct ING_API Vector2 {
+
+			/**
+			 *	Constructors
+			 */
 		public:
 			Vector2(float _x,float _y) {
 				x = _x;
@@ -38,13 +49,32 @@ namespace ING {
 
 			}
 
+
+
+			/**
+			 *	Properties
+			 */
 		public:
 			float x;
 			float y;
 
-		public:
-			CVector2 Transpose();
 
+
+			/**
+			 *	Methods
+			 */
+		public:
+					CVector2	Transpose();
+
+			static	float		DotProduct(Vector2 a, Vector2 b) {
+				return a.x * b.x + a.y * b.y;
+			}
+
+
+
+			/**
+			 *	Operators
+			 */
 		public:
 			Vector2 operator+(Vector2 next) {
 				return Vector2(x+next.x,y+next.y);
@@ -62,17 +92,10 @@ namespace ING {
 			Vector4 operator*(Matrix2x4 next);
 			Vector3 operator*(Matrix2x3 next);
 			Vector2 operator*(Matrix2x2 next);
-			float operator*(CVector2 next);
-
-		public:
-			static float DotProduct(Vector2 a, Vector2 b) {
-				return a.x*b.x+a.y*b.y;
-			}
+			float	operator*(CVector2 next);
 
 		};
 
 	}
 
 }
-
-#endif

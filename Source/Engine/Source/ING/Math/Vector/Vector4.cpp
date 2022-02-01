@@ -17,11 +17,18 @@ namespace ING {
 
 	namespace Math {
 
+		/**
+		 *	Methods
+		 */
 		CVector4 Vector4::Transpose() {
 			return CVector4(x, y, z, w);
 		}
 
 
+
+		/**
+		 *	Operators
+		 */
 		Vector4 Vector4::operator*(Matrix4x4 next) {
 			Matrix4x4 tNext = next.Transpose();
 			return Vector4(
@@ -53,7 +60,7 @@ namespace ING {
 			Vector4 tNext = next.Transpose();
 			return (
 				Vector4::DotProduct(tNext, *this)
-				);
+			);
 		}
 
 	}
