@@ -16,11 +16,22 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Color
+ */
+#include <ING\Color/Color.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
 
+		class RenderTargetView;
+
 		class Device;
+
+
 
 		class ING_API DeviceContext :
 			public AsMethod
@@ -52,6 +63,14 @@ namespace ING {
 
 		public:
 			Device* GetDevice() { return device; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		//public:
+			//virtual void ClearRenderTargetView(RenderTargetView* rtv, Color color);
 
 		};
 

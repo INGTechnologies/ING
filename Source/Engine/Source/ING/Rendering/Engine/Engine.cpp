@@ -79,6 +79,20 @@
 
 
 
+/**
+ *	Include Device
+ */
+#include <ING/Rendering/API/Device/Device.h>
+
+
+
+/**
+ *	Include Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -159,6 +173,12 @@ namespace ING {
 				if (screen->GetDesc().initSwapChain) {
 
 					SwapChain* swapChain = screen->GetSwapChain();
+
+					Device* device = swapChain->GetDevice();
+
+					DeviceContext* deviceContext = device->GetContext();
+
+
 
 				}
 
