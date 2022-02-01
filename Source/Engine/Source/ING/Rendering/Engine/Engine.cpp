@@ -144,9 +144,9 @@ namespace ING {
 
 
 		/**
-		 *	Update Method
+		 *	FrameUpdate Method
 		 */
-		void Engine::Update() {
+		void Engine::FrameUpdate() {
 
 			const std::map<HWND, Window*>& windowMap = WindowManager::GetInstance()->GetWindowMap();
 

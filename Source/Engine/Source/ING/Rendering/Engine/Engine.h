@@ -45,10 +45,10 @@ namespace ING {
 
 
 			/**
-			 *	Update Method
+			 *	FrameUpdate Method
 			 */
 		public:
-			void Update();
+			void FrameUpdate();
 
 		};
 

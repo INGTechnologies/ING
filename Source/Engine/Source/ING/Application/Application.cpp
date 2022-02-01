@@ -259,7 +259,7 @@ namespace ING {
 
 		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
 
-			Rendering::Engine::GetInstance()->Update();
+			Rendering::Engine::GetInstance()->FrameUpdate();
 
 		}
 

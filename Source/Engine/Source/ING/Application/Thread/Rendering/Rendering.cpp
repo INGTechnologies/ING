@@ -20,6 +20,13 @@
 
 
 
+/**
+ *	Include Rendering
+ */
+#include <ING/Rendering/Rendering.h>
+
+
+
 namespace ING {
 
 	/**
@@ -28,7 +35,7 @@ namespace ING {
 	ApplicationRenderingThread::ApplicationRenderingThread() :
 		ApplicationThread([](ApplicationThread* thread) {
 			
-
+			Rendering::Engine::GetInstance()->FrameUpdate();
 			
 		})
 	{
