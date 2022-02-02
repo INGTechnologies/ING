@@ -189,9 +189,9 @@ namespace ING {
 
 	bool Application::Run() {
 
-		bool squaresRunResult = Board<Application>::Run();
-
 		state = RUNNING_APPLICATION_STATE;
+
+		bool squaresRunResult = Board<Application>::Run();
 
 		GetEvent("RUN")->Execute();
 
@@ -259,7 +259,7 @@ namespace ING {
 
 		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
 
-			Rendering::Engine::GetInstance()->FrameUpdate();
+			//Rendering::Engine::GetInstance()->FrameUpdate();
 
 		}
 

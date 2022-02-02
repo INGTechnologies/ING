@@ -35,7 +35,7 @@ namespace ING {
 	ApplicationRenderingThread::ApplicationRenderingThread() :
 		ApplicationThread([](ApplicationThread* thread) {
 			
-			Rendering::Engine::GetInstance()->FrameUpdate();
+			//Rendering::Engine::GetInstance()->FrameUpdate();
 			
 		})
 	{
