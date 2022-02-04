@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Math
+ */
+#include <ING/Math/Math.h>
+
+
+
 namespace ING {
 
 
@@ -138,6 +145,42 @@ namespace ING {
 
 		}
 
+		/**
+		 *	Math
+		 */
+		/* Vector */
+		static void Log(Math::Vector2 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ")" << std::endl;
+
+		}
+
+		static void Log(Math::Vector3 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ")" << std::endl;
+
+		}
+
+		static void Log(Math::Vector4 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ", " << content.w << ")" << std::endl;
+
+		}
+
+		/* Complex */
+		static void Log(Math::Complex4 content) {
+
+			std::wcout << "" << content.factors[0] << " + " << content.factors[1] << " * i + " << content.factors[2] << " * j + " << content.factors[3] << " * k" << std::endl;
+
+		}
+
+		/* Quaternion */
+		static void Log(Math::Quaternion content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ", " << content.w << ")" << std::endl;
+
+		}
+
 
 
 		/**
@@ -151,6 +194,18 @@ namespace ING {
 		}
 
 		static void Error(std::string content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(float content) {
+
+			std::cout << content << std::endl;
+
+		}
+
+		static void Error(double content) {
 
 			std::cout << content << std::endl;
 
@@ -213,6 +268,42 @@ namespace ING {
 		static void Error(std::wstring content) {
 
 			std::wcout << content << std::endl;
+
+		}
+
+		/**
+		 *	Math
+		 */
+		 /* Vector */
+		static void Error(Math::Vector2 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ")" << std::endl;
+
+		}
+
+		static void Error(Math::Vector3 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ")" << std::endl;
+
+		}
+
+		static void Error(Math::Vector4 content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ", " << content.w << ")" << std::endl;
+
+		}
+
+		/* Complex */
+		static void Error(Math::Complex4 content) {
+
+			std::wcout << "" << content.factors[0] << " + " << content.factors[1] << " * i + " << content.factors[2] << " * j + " << content.factors[3] << " * k" << std::endl;
+
+		}
+
+		/* Quaternion */
+		static void Error(Math::Quaternion content) {
+
+			std::wcout << "(" << content.x << ", " << content.y << ", " << content.z << ", " << content.w << ")" << std::endl;
 
 		}
 

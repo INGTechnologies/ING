@@ -20,6 +20,10 @@
 
 
 
+std::string str = "";
+
+
+
 namespace ING {
 
 	/**
@@ -92,11 +96,11 @@ namespace ING {
 
 	void ApplicationThread::Update() {
 
-		while (!isFrameStart) {
-		
-			if (Application::GetInstance()->GetState() != RUNNING_APPLICATION_STATE) {
+		while (true) {
 
-				mutex.lock();
+			mutex.lock();
+
+			if (Application::GetInstance()->GetState() != RUNNING_APPLICATION_STATE) {
 
 				isFrameStart = false;
 
@@ -107,28 +111,47 @@ namespace ING {
 				return;
 
 			}
+
+			if (isFrameStart) {
+
+
+
+				updateFunction(this);
+
+
+
+				isFrameStart = false;
+
+				isFrameEnd = true;
+
+				mutex.unlock();
+
+				return;
+
+			}
+
+			mutex.unlock();
 		
 		}
-
-
-
-		updateFunction(this);
-
-
-
-		mutex.lock();
-
-		isFrameStart	= false;
-
-		isFrameEnd		= true;
-
-		mutex.unlock();
 
 	}
 
 	void ApplicationThread::WaitUpdate() {
 
-		while (!isFrameEnd) {}
+		while (true) {
+
+			mutex.lock();
+
+			if (isFrameEnd) {
+
+				mutex.unlock();
+
+				return;
+
+			}
+
+			mutex.unlock();
+		}
 
 	}
 

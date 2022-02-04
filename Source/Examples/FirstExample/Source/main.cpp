@@ -119,6 +119,15 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Math
+ */
+#include <ING/Math/Math.h> 
+
+using namespace ING::Math;
+
+
+
 
 using namespace ING;
 
@@ -149,13 +158,19 @@ int main() {
 
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 		
-		Debug::Log("Running...");
+		Quaternion q = Vector4(1,2,3,4);
+
+		Debug::Log(q);
+
+		Vector3 c	= q * Vector3(1,2,3);
+
+		Debug::Log(c);
 		
 	});
 
 
 
-	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+	ING::Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* event) {
 
 
 

@@ -48,6 +48,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -108,9 +115,11 @@ namespace ING {
 		/**
 		 *	Start Threads
 		 */
-		renderingThread->Start();
+		applicationThreadList.Foreach([](ApplicationThread*& thread) {
 
-		physicsThread->Start();
+			thread->Start();
+
+		});
 
 
 
@@ -124,6 +133,10 @@ namespace ING {
 			thread->Join();
 
 		});
+
+		applicationThreadList.Clear();
+
+		Debug::Log("ApplicationThreadManager::Release");
 
 		return Square::Release();
 	}

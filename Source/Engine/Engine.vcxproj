@@ -216,11 +216,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\**\*.cpp" />
-    <ClCompile Include="Source\ING\Application\Thread\Thread.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\**\*.h" />
-    <ClInclude Include="Source\ING\Application\Thread\Thread.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

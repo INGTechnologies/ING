@@ -79,6 +79,20 @@
 
 
 
+/**
+ *	Include Device
+ */
+#include <ING/Rendering/API/Device/Device.h>
+
+
+
+/**
+ *	Include Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -144,9 +158,9 @@ namespace ING {
 
 
 		/**
-		 *	Update Method
+		 *	FrameUpdate Method
 		 */
-		void Engine::Update() {
+		void Engine::FrameUpdate() {
 
 			const std::map<HWND, Window*>& windowMap = WindowManager::GetInstance()->GetWindowMap();
 
@@ -159,6 +173,12 @@ namespace ING {
 				if (screen->GetDesc().initSwapChain) {
 
 					SwapChain* swapChain = screen->GetSwapChain();
+
+					Device* device = swapChain->GetDevice();
+
+					DeviceContext* deviceContext = device->GetContext();
+
+
 
 				}
 

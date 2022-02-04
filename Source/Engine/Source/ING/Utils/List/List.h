@@ -21,13 +21,6 @@
 
 
 
-/**
- *	Include Debug
- */
-#include <ING\_Debug\Debug.h>
-
-
-
 namespace ING {
 
 	namespace Utils {
