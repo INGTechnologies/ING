@@ -1,6 +1,22 @@
 #pragma once
 
 /**
+ *	Include Entry Point
+ */
+#include <ING/EntryPoint/EntryPoint.h>
+
+
+
+/**
+ *	Include Utils
+ */
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
+
+
+
+/**
  *	Include Vector
  */
 #include <ING/Math/Vector/Vector.h>
@@ -31,7 +47,7 @@ namespace ING {
 		struct Matrix4x2;
 
 		struct CVector2;
-		struct CVector3;
+		struct CVector4;
 		struct CVector4;
 
 		struct Vector2;
@@ -40,32 +56,31 @@ namespace ING {
 
 
 
-		struct ING_API Quaternion : public Vector4 {
+		struct ING_API Complex4 {
 
 			/**
-			 *	Constructors
+			 *	Constructors And Destructor
 			 */
 		public:
-			Quaternion(float _x, float _y, float _z, float _w) {
-				x = _x;
-				y = _y;
-				z = _z;
-				w = _w;
-			}
+			Complex4	(Vector4	v);
 
-			Quaternion(Vector4 v) :
-				Quaternion(v.x, v.y, v.z, v.w)
-			{
+			Complex4	(Vector3	v);
+
+			Complex4	(Vector2	v);
+
+			Complex4	(float		v);
+
+			Complex4	();
+
+			~Complex4	();
 
 
 
-			}
-
-			Quaternion() :
-				Quaternion(0, 0, 0, 0)
-			{
-
-			}
+			/**
+			 *	Properties
+			 */
+		public:
+			float factors[4];
 
 
 
@@ -73,7 +88,7 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Vector3 operator*(Vector3 next);
+			Complex4 operator*(Complex4 next);
 
 		};
 

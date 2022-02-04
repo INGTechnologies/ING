@@ -158,7 +158,13 @@ int main() {
 
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 		
-		
+		Quaternion q = Vector4(1,2,3,4);
+
+		Debug::Log(q);
+
+		Vector3 c	= q * Vector3(1,2,3);
+
+		Debug::Log(c);
 		
 	});
 
