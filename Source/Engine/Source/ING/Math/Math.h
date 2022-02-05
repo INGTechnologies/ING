@@ -24,3 +24,10 @@
  *	Include Quaternion
  */
 #include <ING/Math/Quaternion/Quaternion.h>
+
+
+
+/**
+ *	Include Constants
+ */
+#include <ING/Math/Constants.h>

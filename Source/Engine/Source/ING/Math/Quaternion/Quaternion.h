@@ -70,6 +70,14 @@ namespace ING {
 
 
 			/**
+			 *	Methods
+			 */
+		public:
+			static Quaternion Euler(Vector3 eulerAngles);
+
+
+
+			/**
 			 *	Operators
 			 */
 		public:

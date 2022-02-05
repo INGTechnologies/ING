@@ -18,6 +18,31 @@ namespace ING {
 	namespace Math {
 
 		/**
+		 *	Methods
+		 */
+		Quaternion Quaternion::Euler(Vector3 eulerAngles) {
+
+			Quaternion result;
+
+			float cy = cos(eulerAngles.z * 0.5f);
+			float sy = sin(eulerAngles.z * 0.5f);
+			float cp = cos(eulerAngles.y * 0.5f);
+			float sp = sin(eulerAngles.y * 0.5f);
+			float cr = cos(eulerAngles.x * 0.5f);
+			float sr = sin(eulerAngles.x * 0.5f);
+
+			result.w = cr * cp * cy + sr * sp * sy;
+			result.x = sr * cp * cy - cr * sp * sy;
+			result.y = cr * sp * cy + sr * cp * sy;
+			result.z = cr * cp * sy - sr * sp * cy;
+
+			return result;
+
+		}
+
+
+
+		/**
 		 *	Operators
 		 */
 		Vector3 Quaternion::operator*(Vector3 next) {

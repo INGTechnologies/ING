@@ -92,7 +92,7 @@ namespace ING {
 
 			return Vector4(
 
-				x1 * w2 * ( 1)   +   y1 * z1 * ( 1)   +   z1 * y2 * (-1)   +   w1 * x2,
+				x1 * w2 * ( 1)   +   y1 * z2 * ( 1)   +   z1 * y2 * (-1)   +   w1 * x2,
 
 				x1 * z2 * (-1)   +   y1 * w2 * ( 1)   +   z1 * x2 * ( 1)   +   w1 * y2,
 
