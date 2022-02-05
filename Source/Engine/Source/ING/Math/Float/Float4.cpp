@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Complex4.h"
+#include "Float4.h"
 
 
 
@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Complex4::Complex4(Vector4 v) {
+		Float4::Float4(Vector4 v) {
 
 			factors[0] = v.w;
 
@@ -25,7 +25,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(Vector3 v) {
+		Float4::Float4(Vector3 v) {
 
 			factors[0] = 0;
 
@@ -37,7 +37,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(Vector2 v) {
+		Float4::Float4(Vector2 v) {
 
 			factors[0] = 0;
 
@@ -49,7 +49,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(float v) {
+		Float4::Float4(float v) {
 
 			factors[0] = 0;
 
@@ -61,13 +61,13 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4() : Complex4(0) {
+		Float4::Float4() : Float4(0) {
 
 
 
 		}
 
-		Complex4::~Complex4() {
+		Float4::~Float4() {
 
 
 
@@ -78,7 +78,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Complex4 Complex4::operator*(Complex4 next) {
+		Float4 Float4::operator*(Float4 next) {
 
 			float w1 = factors[0];
 			float x1 = factors[1];

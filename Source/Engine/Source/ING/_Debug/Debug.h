@@ -167,8 +167,8 @@ namespace ING {
 
 		}
 
-		/* Complex */
-		static void Log(Math::Complex4 content) {
+		/* Float */
+		static void Log(Math::Float4 content) {
 
 			std::wcout << "" << content.factors[0] << " + " << content.factors[1] << " * i + " << content.factors[2] << " * j + " << content.factors[3] << " * k" << std::endl;
 
@@ -293,8 +293,8 @@ namespace ING {
 
 		}
 
-		/* Complex */
-		static void Error(Math::Complex4 content) {
+		/* Float */
+		static void Error(Math::Float4 content) {
 
 			std::wcout << "" << content.factors[0] << " + " << content.factors[1] << " * i + " << content.factors[2] << " * j + " << content.factors[3] << " * k" << std::endl;
 
