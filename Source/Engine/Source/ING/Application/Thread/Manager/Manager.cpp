@@ -142,33 +142,6 @@ namespace ING {
 
 
 	/**
-	 *	Thread Management
-	 */
-	List<ApplicationThread*>::Node*		ApplicationThreadManager::AddThread(ApplicationThread* thread) {
-
-		mutex.lock();
-
-		List<ApplicationThread*>::Node* node = applicationThreadList.Add(thread);
-
-		mutex.unlock();
-
-		return node;
-
-	}
-
-	void								ApplicationThreadManager::RemoveThread(List<ApplicationThread*>::Node* node) {
-
-		mutex.lock();
-
-		applicationThreadList.Remove(node);
-
-		mutex.unlock();
-
-	}
-
-
-
-	/**
 	 *	StartFrame, EndFrame Method
 	 */
 	void ApplicationThreadManager::StartFrame() {

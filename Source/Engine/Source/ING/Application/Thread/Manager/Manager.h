@@ -68,9 +68,6 @@ namespace ING {
 		ApplicationThread*					GetRenderingThread () { return renderingThread; }
 		ApplicationThread*					GetPhysicsThread () { return physicsThread; }
 
-		List<ApplicationThread*>::Node*		AddThread(ApplicationThread* thread);
-		void								RemoveThread(List<ApplicationThread*>::Node* node);
-
 
 
 		/**
