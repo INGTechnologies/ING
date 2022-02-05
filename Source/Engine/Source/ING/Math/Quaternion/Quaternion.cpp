@@ -48,18 +48,18 @@ namespace ING {
 		Vector3 Quaternion::operator*(Vector3 next) {
 
 			/* Find q (Quaternion In Float4 Type)*/
-			Float4 q = *this;
+			F4IJK q = *this;
 
 			/* Find Inverted q (Inverted Quaternion In Float4 Type)*/
-			Float4 invQ = *this;
+			F4IJK invQ = *this;
 			invQ.factors[1] = -invQ.factors[1];
 			invQ.factors[2] = -invQ.factors[2];
 			invQ.factors[3] = -invQ.factors[3];
 
 			/* Find v (Position In Float4 Type)*/
-			Float4 v = next;
+			F4IJK v = next;
 
-			Float4 result = q * v * invQ;
+			F4IJK result = q * v * invQ;
 
 			return Vector3(result.factors[1], result.factors[2], result.factors[3]);
 		}

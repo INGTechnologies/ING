@@ -136,8 +136,6 @@ namespace ING {
 
 		applicationThreadList.Clear();
 
-		Debug::Log("ApplicationThreadManager::Release");
-
 		return Square::Release();
 	}
 
@@ -148,13 +146,23 @@ namespace ING {
 	 */
 	List<ApplicationThread*>::Node*		ApplicationThreadManager::AddThread(ApplicationThread* thread) {
 
-		return applicationThreadList.Add(thread);
+		mutex.lock();
+
+		List<ApplicationThread*>::Node* node = applicationThreadList.Add(thread);
+
+		mutex.unlock();
+
+		return node;
 
 	}
 
 	void								ApplicationThreadManager::RemoveThread(List<ApplicationThread*>::Node* node) {
 
+		mutex.lock();
+
 		applicationThreadList.Remove(node);
+
+		mutex.unlock();
 
 	}
 
