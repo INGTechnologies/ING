@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Complex4.h"
+#include "F4IJK.h"
 
 
 
@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Complex4::Complex4(Vector4 v) {
+		F4IJK::F4IJK(Vector4 v) {
 
 			factors[0] = v.w;
 
@@ -25,7 +25,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(Vector3 v) {
+		F4IJK::F4IJK(Vector3 v) {
 
 			factors[0] = 0;
 
@@ -37,7 +37,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(Vector2 v) {
+		F4IJK::F4IJK(Vector2 v) {
 
 			factors[0] = 0;
 
@@ -49,7 +49,7 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4(float v) {
+		F4IJK::F4IJK(float v) {
 
 			factors[0] = 0;
 
@@ -61,13 +61,13 @@ namespace ING {
 
 		}
 
-		Complex4::Complex4() : Complex4(0) {
+		F4IJK::F4IJK() : F4IJK(0) {
 
 
 
 		}
 
-		Complex4::~Complex4() {
+		F4IJK::~F4IJK() {
 
 
 
@@ -78,7 +78,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Complex4 Complex4::operator*(Complex4 next) {
+		F4IJK F4IJK::operator*(F4IJK next) {
 
 			float w1 = factors[0];
 			float x1 = factors[1];
@@ -92,7 +92,7 @@ namespace ING {
 
 			return Vector4(
 
-				x1 * w2 * ( 1)   +   y1 * z1 * ( 1)   +   z1 * y2 * (-1)   +   w1 * x2,
+				x1 * w2 * ( 1)   +   y1 * z2 * ( 1)   +   z1 * y2 * (-1)   +   w1 * x2,
 
 				x1 * z2 * (-1)   +   y1 * w2 * ( 1)   +   z1 * x2 * ( 1)   +   w1 * y2,
 

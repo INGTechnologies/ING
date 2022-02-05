@@ -56,23 +56,23 @@ namespace ING {
 
 
 
-		struct ING_API Complex4 {
+		struct ING_API F4IJK {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Complex4	(Vector4	v);
+			F4IJK	(Vector4	v);
 
-			Complex4	(Vector3	v);
+			F4IJK	(Vector3	v);
 
-			Complex4	(Vector2	v);
+			F4IJK	(Vector2	v);
 
-			Complex4	(float		v);
+			F4IJK	(float		v);
 
-			Complex4	();
+			F4IJK	();
 
-			~Complex4	();
+			~F4IJK	();
 
 
 
@@ -88,7 +88,7 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Complex4 operator*(Complex4 next);
+			F4IJK operator*(F4IJK next);
 
 		};
 

@@ -136,26 +136,7 @@ namespace ING {
 
 		applicationThreadList.Clear();
 
-		Debug::Log("ApplicationThreadManager::Release");
-
 		return Square::Release();
-	}
-
-
-
-	/**
-	 *	Thread Management
-	 */
-	List<ApplicationThread*>::Node*		ApplicationThreadManager::AddThread(ApplicationThread* thread) {
-
-		return applicationThreadList.Add(thread);
-
-	}
-
-	void								ApplicationThreadManager::RemoveThread(List<ApplicationThread*>::Node* node) {
-
-		applicationThreadList.Remove(node);
-
 	}
 
 

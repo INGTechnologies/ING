@@ -54,8 +54,6 @@ namespace ING {
 
 		this->updateFunction = updateFunction;
 
-		node = ApplicationThreadManager::GetInstance()->AddThread(this);
-
 	}
 
 	ApplicationThread::~ApplicationThread() {
@@ -70,8 +68,6 @@ namespace ING {
 	 *	Release Method
 	 */
 	void ApplicationThread::Release() {
-
-		ApplicationThreadManager::GetInstance()->RemoveThread(node);
 
 		Thread::Release();
 
