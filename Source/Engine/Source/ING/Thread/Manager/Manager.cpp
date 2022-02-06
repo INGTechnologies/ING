@@ -73,7 +73,7 @@ namespace ING {
 
 		threadIdMap.clear();
 
-		return true;
+		return Square::Release();
 	}
 
 

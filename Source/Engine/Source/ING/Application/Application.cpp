@@ -96,6 +96,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Camera Manager
+ */
+#include <ING/Camera/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -151,6 +158,9 @@ namespace ING {
 
 		/* Job System */
 		AddSquare<JobSystem>();
+
+		/* Resource Manager */
+		AddSquare<CameraManager>();
 
 
 
