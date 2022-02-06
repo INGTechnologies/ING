@@ -178,7 +178,7 @@ namespace ING {
 
 
 	/**
-	 *	Init, Run, Release Methods
+	 *	Init, Run, Release, Shutdown Methods
 	 */
 	bool Application::Init() {
 
@@ -259,7 +259,7 @@ namespace ING {
 
 		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
 
-			//Rendering::Engine::GetInstance()->FrameUpdate();
+			Rendering::Engine::GetInstance()->FrameUpdate();
 
 		}
 

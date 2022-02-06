@@ -57,7 +57,7 @@ namespace ING {
 		virtual bool			Init()		override;
 		virtual bool			Run()		override;
 		virtual bool			Release()	override;
-		void					Shutdown();
+				void			Shutdown();
 
 
 
