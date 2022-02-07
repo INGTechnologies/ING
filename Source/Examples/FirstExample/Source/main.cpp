@@ -158,17 +158,17 @@ int main() {
 
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 		
-		Quaternion q	= Quaternion::Euler(Vector3(0, 90.0f * Deg2Rad,0));
+		Quaternion q = Quaternion::Euler(Vector3(0, 90.0f * Deg2Rad,0));
 
 		Debug::Log(q);
 
 		F4IJK qF4 = q;
 
-		Debug::Log(qF4);
+		Debug::Warning(qF4); 
 
-		Vector3 c		= q * Vector3(1,5,1);
+		Vector3 c = q * Vector3(1,5,1);
 
-		Debug::Log(c);
+		Debug::Error(c);
 		
 	});
 

@@ -49,108 +49,120 @@ using namespace ING::Utils;
 
 
 
-/**
- *	WndProc
- */
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
-{
-
-	ING::Window* window = ING::WindowManager::GetInstance()->GetWindow(hwnd);
-
-
-
-	switch (msg)
-	{
-	case WM_CREATE:
-	{
-		
-		break;
-	}
-
-	case WM_DESTROY:
-	{
-		window->GetEvent("DESTROY")->Execute();
-
-		window->Shutdown();
-
-		::PostQuitMessage(0);
-		break;
-	}
-	case WM_SIZE:
-	{
-
-		ING::WindowResizeEvent* event = (ING::WindowResizeEvent*)window->GetEvent("RESIZE");
-
-		event->newWidth		= LOWORD(lparam);
-		event->newHeight	= HIWORD(lparam);
-
-		event->Execute();
-
-		break;
-	}
-	case WM_MOUSEMOVE:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_LBUTTONDOWN:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_MBUTTONDOWN:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_RBUTTONDOWN:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_LBUTTONUP:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_MBUTTONUP:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_RBUTTONUP:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_KEYDOWN:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_KEYUP:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-	case WM_MOUSELEAVE:
-	{
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-		break;
-	}
-
-	default:
-		return ::DefWindowProc(hwnd, msg, wparam, lparam);
-	}
-
-	return NULL;
-}
-
-
-
-
-
 namespace ING {
+
+	/**
+	 *	WndProc
+	 */
+	LRESULT CALLBACK Window::WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam)
+	{
+
+		ING::Window* window = ING::WindowManager::GetInstance()->GetWindow(hwnd);
+
+
+
+		switch (msg)
+		{
+		case WM_CREATE:
+		{
+
+			break;
+		}
+
+		case WM_DESTROY:
+		{
+			window->GetEvent("DESTROY")->Execute();
+
+			window->Shutdown();
+
+			::PostQuitMessage(0);
+			break;
+		}
+		case WM_SIZE:
+		{
+
+			if (!window->IsResizing()) {
+
+				ING::WindowResizeEvent* event = (ING::WindowResizeEvent*)window->GetEvent("RESIZE");
+
+				event->newWidth = LOWORD(lparam);
+				event->newHeight = HIWORD(lparam);
+
+				event->Execute();
+
+			}
+
+			break;
+		}
+		case WM_ENTERSIZEMOVE:
+
+			window->isResizing = true;
+
+			break;
+		case WM_EXITSIZEMOVE:
+
+			window->isResizing = false;
+
+			break;
+		case WM_MOUSEMOVE:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_LBUTTONDOWN:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_MBUTTONDOWN:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_RBUTTONDOWN:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_LBUTTONUP:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_MBUTTONUP:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_RBUTTONUP:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_KEYDOWN:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_KEYUP:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+		case WM_MOUSELEAVE:
+		{
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+			break;
+		}
+
+		default:
+			return ::DefWindowProc(hwnd, msg, wparam, lparam);
+		}
+
+		return NULL;
+	}
+
+
 
 	/**
 	 *	Constructors And Destructor

@@ -93,6 +93,14 @@ namespace ING {
 		public:
 			RenderTargetView* GetRenderTargetView() { return renderTargetView; }
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Resize(unsigned int width, unsigned int height);
+
 		};
 
 	}

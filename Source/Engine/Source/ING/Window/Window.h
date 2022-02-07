@@ -74,6 +74,14 @@ namespace ING {
 
 
 		/**
+		 *	WndProc
+		 */
+	public:
+		static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
+
+
+
+		/**
 		 *	Constructors And Destructor
 		 */
 	private:
@@ -112,6 +120,8 @@ namespace ING {
 
 		Screen*		screen;
 
+		bool		isResizing;
+
 	public:
 		bool		IsMain		() { return isMain; }
 
@@ -120,6 +130,8 @@ namespace ING {
 		WindowDesc	GetDesc		() { return desc; }
 
 		Screen*		GetScreen	() { return screen; }
+
+		bool		IsResizing	() { return isResizing; }
 
 
 

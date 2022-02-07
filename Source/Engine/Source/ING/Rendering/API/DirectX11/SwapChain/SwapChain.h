@@ -65,6 +65,14 @@ namespace ING {
 			public:
 				IDXGISwapChain* GetDXGISwapChain() { return dxgiSwapChain; }
 
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void Resize(unsigned int width, unsigned int height) override;
+
 			};
 
 		}

@@ -56,6 +56,13 @@
 
 
 /**
+ *	Include WindowResizeEvent
+ */
+#include <ING/Window/Event/Resize/Resize.h>
+
+
+
+/**
  *	Include Screen
  */
 #include <ING/Screen/Screen.h>
@@ -76,8 +83,6 @@ namespace ING {
 			this->window = window;
 
 			renderTargetView = RenderTargetView::Create();
-
-			renderTargetView->SetResource(Texture2D::Create());
 
 			InitEvents();
 
@@ -137,6 +142,10 @@ namespace ING {
 
 				SwapChain* swapChain = ((WindowEvent*)event)->GetWindow()->GetScreen()->GetSwapChain();
 
+				WindowResizeEvent* resizeEvent = (WindowResizeEvent*)event;
+
+				swapChain->Resize(resizeEvent->newWidth, resizeEvent->newHeight);
+
 			});
 
 		}
@@ -144,6 +153,17 @@ namespace ING {
 		void SwapChain::Release() {
 
 			delete this;
+
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void SwapChain::Resize(unsigned int width, unsigned int height) {
+
+
 
 		}
 
