@@ -64,7 +64,12 @@ namespace ING {
 
 
 		/**
-		 *	Loggers
+		 *	Print Methods
+		 */
+		#pragma region Log_Methods
+
+		/**
+		 *	Log Methods
 		 */
 	public:
 		/* Category Macro */
@@ -78,7 +83,7 @@ namespace ING {
 		std::wcout << " ";
 
 
-		
+
 		static void Log() {
 
 			PRINT_LOG_FLAG();
@@ -249,7 +254,7 @@ namespace ING {
 		/**
 		 *	Math
 		 */
-		/* Vector */
+		 /* Vector */
 		static void Log(Math::Vector2 content) {
 
 			PRINT_LOG_FLAG();
@@ -462,10 +467,12 @@ namespace ING {
 
 		}
 
+		#pragma endregion
 
+		#pragma region Error_Methods
 
 		/**
-		 *	Error Loggers
+		 *	Error Methods
 		 */
 	public:
 		/* Category Macro */
@@ -847,10 +854,12 @@ namespace ING {
 
 		}
 
+		#pragma endregion
 
+		#pragma region Warning_Methods
 
 		/**
-		 *	Warning Loggers
+		 *	Warning Methods
 		 */
 	public:
 		/* Category Macro */
@@ -1231,6 +1240,8 @@ namespace ING {
 			std::wcout << " )" << std::endl;
 
 		}
+
+		#pragma endregion
 
 	};
 
