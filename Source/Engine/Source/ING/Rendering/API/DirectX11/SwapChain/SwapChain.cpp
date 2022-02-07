@@ -98,22 +98,15 @@ namespace ING {
 				HRESULT hr = dxgiFactory->CreateSwapChain(d3d11Device, &desc, &dxgiSwapChain);
 
 
+				/* Release Buffer */
+				ID3D11Texture2D* d3d11buffer = nullptr;
+				dxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&d3d11buffer);
 
-				ID3D11Texture2D* d3d11buffer = NULL;
-				hr = dxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&d3d11buffer);
-
-
-
-				ID3D11RenderTargetView* d3d11RTV = nullptr;
-
-				HRESULT hr2 = d3d11Device->CreateRenderTargetView(d3d11buffer, NULL, &d3d11RTV);
+				d3d11buffer->Release();
 
 
-
-				((DirectX11::RenderTargetView*)	GetRenderTargetView())					->	SetD3D11RenderTargetView	(d3d11RTV);
-
-				((DirectX11::Texture2D*)		(GetRenderTargetView()->GetResource()))	->	SetD3D11Texture2D			(d3d11buffer);
 				
+				Resize(clientWidth, clientHeight);
 
 			}
 
@@ -135,6 +128,50 @@ namespace ING {
 
 				Rendering::SwapChain::Release();
 
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+			void SwapChain::Resize(unsigned int width, unsigned int height) {
+
+				ID3D11Device* d3d11Device = ((DirectX11::Device*)GetDevice())->GetD3D11Device();
+
+
+
+				/**
+				 *	Release Render Target View
+				 */
+				ID3D11RenderTargetView* d3d11RTV = ((DirectX11::RenderTargetView*)GetRenderTargetView())->GetD3D11RenderTargetView();
+
+				if (d3d11RTV != nullptr) {
+
+					d3d11RTV->Release();
+
+				}
+
+
+
+				unsigned int FrameCount = 1;
+
+
+
+				dxgiSwapChain->ResizeBuffers(FrameCount, width, height, DXGI_FORMAT_R8G8B8A8_UNORM, 0);
+
+
+
+				ID3D11Texture2D* d3d11buffer = nullptr;
+				dxgiSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), (void**)&d3d11buffer);
+
+				d3d11Device->CreateRenderTargetView(d3d11buffer, NULL, &d3d11RTV);
+
+				d3d11buffer->Release();
+
+
+
+				//((DirectX11::RenderTargetView*)GetRenderTargetView())->SetD3D11RenderTargetView(d3d11RTV);
 			}
 
 		}

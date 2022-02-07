@@ -74,7 +74,7 @@ namespace ING {
 	public:
 		/* Category Macro */
 #define PRINT_LOG_FLAG() \
-		SetConsoleColor(0x30);\
+		SetConsoleColor(0x70);\
 \
 		std::wcout << " ";\
 			\

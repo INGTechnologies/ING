@@ -113,6 +113,8 @@ namespace ING {
 
 		}
 
+		consoleWindow->SetTitle(L"Console");
+
 
 
 		/* Create Startup Window */
