@@ -68,7 +68,7 @@ namespace ING {
 		 */
 	public:
 		/* Category Macro */
-#define LOG_CATEGORY() \
+#define PRINT_LOG_FLAG() \
 		SetConsoleColor(0x30);\
 \
 		std::wcout << " LOG ";\
@@ -81,7 +81,7 @@ namespace ING {
 		
 		static void Log() {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << std::endl;
 
@@ -89,7 +89,7 @@ namespace ING {
 
 		static void Log(std::string content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -97,7 +97,7 @@ namespace ING {
 
 		static void Log(float content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -105,7 +105,7 @@ namespace ING {
 
 		static void Log(double content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -113,7 +113,7 @@ namespace ING {
 
 		static void Log(int content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -121,7 +121,7 @@ namespace ING {
 
 		static void Log(long content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -129,7 +129,7 @@ namespace ING {
 
 		static void Log(ui8 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -137,7 +137,7 @@ namespace ING {
 
 		static void Log(ui16 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -145,7 +145,7 @@ namespace ING {
 
 		static void Log(ui32 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -153,7 +153,7 @@ namespace ING {
 
 		static void Log(ui64 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -161,7 +161,7 @@ namespace ING {
 
 		static void Log(bool content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -169,7 +169,7 @@ namespace ING {
 
 		static void Log(const char* content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -177,7 +177,7 @@ namespace ING {
 
 		static void Log(const wchar_t* content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::wcout << content << std::endl;
 
@@ -185,7 +185,7 @@ namespace ING {
 
 		static void Log(char content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -193,7 +193,7 @@ namespace ING {
 
 		static void Log(wchar_t content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::wcout << content << std::endl;
 
@@ -201,7 +201,7 @@ namespace ING {
 
 		static void Log(std::wstring content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			std::wcout << content << std::endl;
 
@@ -213,7 +213,7 @@ namespace ING {
 		/* Vector */
 		static void Log(Math::Vector2 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			SetConsoleColor(7);
 
@@ -239,7 +239,7 @@ namespace ING {
 
 		static void Log(Math::Vector3 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			SetConsoleColor(7);
 
@@ -273,7 +273,7 @@ namespace ING {
 
 		static void Log(Math::Vector4 content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			SetConsoleColor(7);
 
@@ -316,7 +316,7 @@ namespace ING {
 		/* Float */
 		static void Log(Math::F4IJK content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			SetConsoleColor(7);
 
@@ -383,7 +383,7 @@ namespace ING {
 		/* Quaternion */
 		static void Log(Math::Quaternion content) {
 
-			LOG_CATEGORY()
+			PRINT_LOG_FLAG();
 
 			SetConsoleColor(7);
 
@@ -430,7 +430,7 @@ namespace ING {
 		 */
 	public:
 		/* Category Macro */
-#define ERROR_CATEGORY() \
+#define PRINT_ERROR_FLAG() \
 		SetConsoleColor(0x40);\
 \
 		std::wcout << " ERROR ";\
@@ -443,7 +443,7 @@ namespace ING {
 
 		static void Error() {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << std::endl;
 
@@ -451,7 +451,7 @@ namespace ING {
 
 		static void Error(std::string content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -459,7 +459,7 @@ namespace ING {
 
 		static void Error(float content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -467,7 +467,7 @@ namespace ING {
 
 		static void Error(double content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -475,7 +475,7 @@ namespace ING {
 
 		static void Error(int content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -483,7 +483,7 @@ namespace ING {
 
 		static void Error(long content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -491,7 +491,7 @@ namespace ING {
 
 		static void Error(ui8 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -499,7 +499,7 @@ namespace ING {
 
 		static void Error(ui16 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -507,7 +507,7 @@ namespace ING {
 
 		static void Error(ui32 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -515,7 +515,7 @@ namespace ING {
 
 		static void Error(ui64 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -523,7 +523,7 @@ namespace ING {
 
 		static void Error(bool content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -531,7 +531,7 @@ namespace ING {
 
 		static void Error(const char* content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::cout << content << std::endl;
 
@@ -539,7 +539,7 @@ namespace ING {
 
 		static void Error(const wchar_t* content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::wcout << content << std::endl;
 
@@ -547,7 +547,7 @@ namespace ING {
 
 		static void Error(std::wstring content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			std::wcout << content << std::endl;
 
@@ -559,7 +559,7 @@ namespace ING {
 		 /* Vector */
 		static void Error(Math::Vector2 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			SetConsoleColor(7);
 
@@ -585,7 +585,7 @@ namespace ING {
 
 		static void Error(Math::Vector3 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			SetConsoleColor(7);
 
@@ -619,7 +619,7 @@ namespace ING {
 
 		static void Error(Math::Vector4 content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			SetConsoleColor(7);
 
@@ -662,7 +662,7 @@ namespace ING {
 		/* Float */
 		static void Error(Math::F4IJK content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			SetConsoleColor(7);
 
@@ -729,7 +729,7 @@ namespace ING {
 		/* Quaternion */
 		static void Error(Math::Quaternion content) {
 
-			ERROR_CATEGORY();
+			PRINT_ERROR_FLAG();
 
 			SetConsoleColor(7);
 
