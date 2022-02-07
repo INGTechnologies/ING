@@ -168,10 +168,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\SDK\Coder\EntryPoint\EntryPoint.h" />
+    <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\SDK\Coder\Project\Project.cpp" />
+    <ClInclude Include="Source\**\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

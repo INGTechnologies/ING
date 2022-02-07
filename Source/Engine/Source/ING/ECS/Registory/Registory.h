@@ -3,7 +3,7 @@
 /**
  *	Include Entry Point
  */
-#include <ING\EntryPoint\EntryPoint.h>
+#include <ING/EntryPoint/EntryPoint.h>
 
 
 
@@ -16,34 +16,19 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Rendering Scene Manager
- */
-#include <ING/Rendering/Scene/Manager/Manager.h>
-
-
-
 namespace ING {
 
-	namespace Rendering {
+	namespace ECS {
 
-		class ING_API Scene
+		class ING_API Registory
 		{
-
-			/**
-			 *	Friend Classes
-			 */
-		public:
-			friend class SceneManager;
-
-
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Scene();
-			~Scene();
+			Registory();
+			~Registory();
 
 
 
