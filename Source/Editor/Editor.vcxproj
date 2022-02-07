@@ -185,7 +185,7 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Main.cpp" />
+    <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\**\*.h" />
