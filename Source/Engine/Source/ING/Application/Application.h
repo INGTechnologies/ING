@@ -127,4 +127,9 @@ namespace ING {
 	ING::Application::GetInstance()->GetConfiguration()->Set<T>(name, value);\
 \
 
+#define APPLICATION_GET_CONFIG_PROP(T, name, value) \
+\
+	ING::Application::GetInstance()->GetConfiguration()->Get<T>(name);\
+\
+
 }

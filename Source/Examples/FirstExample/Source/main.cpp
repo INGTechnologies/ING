@@ -128,8 +128,76 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Color
+ */
+#include <ING/Color/Color.h> 
+
+
+
+/**
+ *	Include ECS System
+ */
+#include <ING/ECS/System/System.h> 
+
+
+
+/**
+ *	Include ECS Entity
+ */
+#include <ING/ECS/Entity/Entity.h> 
+
+
+
+/**
+ *	Include ECS Component
+ */
+#include <ING/ECS/Component/Component.h>
+
+
+
+/**
+ *	Include ECS Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include ECS Component Array
+ */
+#include <ING/ECS/Component/Array/Array.h>
+
+
 
 using namespace ING;
+
+
+
+static struct Transform {
+
+	Vector3 pos;
+
+};
+
+
+
+static class TransformSystem : public ECS::ComponentSystem<Transform>{
+
+public:
+	TransformSystem() {
+
+
+
+	}
+
+	~TransformSystem() {
+
+
+
+	}
+
+};
 
 
 
@@ -150,25 +218,43 @@ int main() {
 
 
 
-	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
-
-	mainWindow->Show();
-
-
-
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
-		
-		Quaternion q = Quaternion::Euler(Vector3(0, 90.0f * Deg2Rad,0));
 
-		Debug::Log(q);
+		ECS::System* system = new ECS::System();
 
-		F4IJK qF4 = q;
+		TransformSystem* transformSystem = new TransformSystem();
 
-		Debug::Warning(qF4); 
+		ECS::ComponentArray<Transform>& cArray = transformSystem->GetArray();
 
-		Vector3 c = q * Vector3(1,5,1);
 
-		Debug::Error(c);
+
+		Transform transform1;
+
+		transform1.pos = Vector3(1,1,-1);
+
+		cArray.Add(transform1);
+
+
+
+		Transform transform2;
+
+		transform2.pos = Vector3(1, -1, -1);
+
+		cArray.Add(transform2);
+
+
+
+		Transform transform3;
+
+		transform3.pos = Vector3(-1, -1, -1);
+
+		cArray.Add(transform3);
+
+
+
+		cArray.Erase(0);
+		cArray.Erase(1);
+		cArray.Erase(2);
 		
 	});
 

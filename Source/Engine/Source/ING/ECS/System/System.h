@@ -16,13 +16,22 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
 
-		class ING_API System :
-			public Singleton<System>,
-			public Square
+		class Component;
+
+
+
+		class ING_API System
 		{
 
 			/**
@@ -35,12 +44,32 @@ namespace ING {
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			virtual void Release();
+
+
+
+			/**
+			 *	Component Management
+			 */
+		public:
+			template<typename TComponentSystem>
+			TComponentSystem* RegisterComponentSystem() {
+
+				TComponentSystem* result = new TComponentSystem();
+
+				return result;
+
+			}
+
+			template<typename TComponentSystem>
+			void DeregisterComponentSystem() {
+
+
+
+			}
 
 		};
 

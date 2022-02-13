@@ -103,6 +103,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include System
+ */
+#include <ING/System/System.h>
+
+
+
+/**
+ *	Include ECS System Manager
+ */
+#include <ING/ECS/System/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -131,6 +145,9 @@ namespace ING {
 		/**
 		 *	Add Squares
 		 */
+		/* System */
+		AddSquare<System>();
+
 		/* Core */
 		AddSquare<Core>();
 
@@ -161,6 +178,9 @@ namespace ING {
 
 		/* Resource Manager */
 		AddSquare<CameraManager>();
+
+		/* ECS System Manager */
+		AddSquare<ECS::SystemManager>();
 
 
 

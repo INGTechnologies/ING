@@ -20,23 +20,27 @@ namespace ING {
 
 	namespace ECS {
 
-		class ING_API Registory
+		class ING_API SystemManager :
+			public Singleton<SystemManager>,
+			public Square
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Registory();
-			~Registory();
+			SystemManager();
+			~SystemManager();
 
 
 
 			/**
-			 *	Release Methods
+			 *	Init, Run, Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual bool Init()		override;
+			virtual bool Run()		override;
+			virtual bool Release()	override;
 
 		};
 

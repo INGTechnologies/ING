@@ -28,27 +28,12 @@ namespace ING {
 
 
 		/**
-		 *	Init, Run, Release Methods
+		 *	Release Methods
 		 */
-		bool System::Init() {
+		void System::Release() {
 
+			delete this;
 
-
-			return true;
-		}
-
-		bool System::Run() {
-
-
-
-			return true;
-		}
-
-		bool System::Release() {
-
-
-
-			return Square::Release();
 		}
 
 	}

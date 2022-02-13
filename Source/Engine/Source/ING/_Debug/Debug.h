@@ -31,6 +31,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Color
+ */
+#include <ING/Color/Color.h>
+
+
+
+/**
  *	Include Windows
  */
 #include <windows.h>
@@ -467,6 +474,51 @@ namespace ING {
 
 		}
 
+		/**
+		 *	Color
+		 */
+		static void Log(Color content) {
+
+			PRINT_LOG_FLAG();
+
+			SetConsoleColor(7);
+
+			std::wcout << "Color( ";
+
+			SetConsoleColor(4);
+
+			std::wcout << content.x;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(2);
+
+			std::wcout << content.y;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(1);
+
+			std::wcout << content.z;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(6);
+
+			std::wcout << content.w;
+
+			SetConsoleColor(7);
+
+			std::wcout << " )" << std::endl;
+
+		}
+
 		#pragma endregion
 
 		#pragma region Error_Methods
@@ -854,6 +906,51 @@ namespace ING {
 
 		}
 
+		/**
+		 *	Color
+		 */
+		static void Error(Color content) {
+
+			PRINT_ERROR_FLAG();
+
+			SetConsoleColor(7);
+
+			std::wcout << "Color( ";
+
+			SetConsoleColor(4);
+
+			std::wcout << content.x;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(2);
+
+			std::wcout << content.y;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(1);
+
+			std::wcout << content.z;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(6);
+
+			std::wcout << content.w;
+
+			SetConsoleColor(7);
+
+			std::wcout << " )" << std::endl;
+
+		}
+
 		#pragma endregion
 
 		#pragma region Warning_Methods
@@ -1206,6 +1303,51 @@ namespace ING {
 			SetConsoleColor(7);
 
 			std::wcout << "Quaternion( ";
+
+			SetConsoleColor(4);
+
+			std::wcout << content.x;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(2);
+
+			std::wcout << content.y;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(1);
+
+			std::wcout << content.z;
+
+			SetConsoleColor(8);
+
+			std::wcout << ", ";
+
+			SetConsoleColor(6);
+
+			std::wcout << content.w;
+
+			SetConsoleColor(7);
+
+			std::wcout << " )" << std::endl;
+
+		}
+
+		/**
+		 *	Color
+		 */
+		static void Warning(Color content) {
+
+			PRINT_WARNING_FLAG();
+
+			SetConsoleColor(7);
+
+			std::wcout << "Color( ";
 
 			SetConsoleColor(4);
 

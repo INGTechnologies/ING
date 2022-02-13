@@ -20,15 +20,25 @@ namespace ING {
 
 	namespace ECS {
 
-		class ING_API View
+		template<typename T>
+		class View
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			View();
-			~View();
+			View() {
+
+
+
+			}
+
+			~View() {
+
+
+
+			}
 
 
 
@@ -36,7 +46,11 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual void Release() {
+
+				delete this;
+
+			}
 
 		};
 

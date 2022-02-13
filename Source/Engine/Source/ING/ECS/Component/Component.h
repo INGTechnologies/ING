@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace ECS {
 
+		using ComponentId = unsigned long;
+
+
+
 		struct ING_API Component
 		{
 
@@ -29,14 +33,6 @@ namespace ING {
 		public:
 			Component();
 			~Component();
-
-
-
-			/**
-			 *	Release Methods
-			 */
-		public:
-			virtual void Release();
 
 		};
 

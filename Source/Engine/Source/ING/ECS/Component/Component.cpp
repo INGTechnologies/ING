@@ -25,17 +25,6 @@ namespace ING {
 
 		}
 
-
-
-		/**
-		 *	Release Methods
-		 */
-		void Component::Release() {
-
-			delete this;
-
-		}
-
 	}
 
 }

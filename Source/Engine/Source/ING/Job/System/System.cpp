@@ -34,6 +34,20 @@
 
 
 
+/**
+ *	Include System
+ */
+#include <ING/System/System.h>
+
+
+
+/**
+ *	Include ApplicationThreadManager
+ */
+#include <ING/Application/Thread/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -44,7 +58,41 @@ namespace ING {
 		isRunning = false;
 		threadCount = 1;
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::threadCount", 3);
+
+
+		int maxThreadCount = 3;
+
+		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::maxThreadCount", (unsigned int)maxThreadCount);
+
+		maxThreadCount = APPLICATION_GET_CONFIG_PROP(unsigned int, "ING::JobSystem::maxThreadCount");
+
+
+
+		int defaultThreadCount = System::GetInstance()->GetNumberOfProcessors();
+
+		defaultThreadCount = (
+
+			System::GetInstance()->GetNumberOfProcessors()
+
+			- ApplicationThreadManager::GetInstance()->GetThreadList().GetSize()
+
+			- 1
+			
+		);
+
+		if (defaultThreadCount <= 0) {
+
+			defaultThreadCount = 1;
+
+		}
+
+		if (defaultThreadCount > maxThreadCount && maxThreadCount != -1) {
+
+			defaultThreadCount = maxThreadCount;
+			
+		}
+
+		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::threadCount", (unsigned int)defaultThreadCount);
 
 	}
 
