@@ -136,9 +136,16 @@ using namespace ING::Math;
 
 
 /**
- *	Include ECS System
+ *	Include ECS Repository Manager
  */
-#include <ING/ECS/System/System.h> 
+#include <ING/ECS/Repository/Manager/Manager.h> 
+
+
+
+/**
+ *	Include ECS Repository
+ */
+#include <ING/ECS/Repository/Repository.h> 
 
 
 
@@ -220,53 +227,22 @@ int main() {
 
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 
-		ECS::System* system = new ECS::System();
+		ECS::Repository* repository = new ECS::Repository();
 
 		TransformSystem* transformSystem = new TransformSystem();
 
 		ECS::ComponentArray<Transform>& cArray = transformSystem->GetArray();
 
+		ECS::Entity* entity = new ECS::Entity();
 
+		ECS::ComponentId id = transformSystem->AddComponent(entity);
 
-		Transform transform1;
+		transformSystem->Foreach([](Transform& transform) {
+			
+			Debug::Log(transform.pos);
+			
+		});
 
-		transform1.pos = Vector3(1,1,-1);
-
-		cArray.Add(transform1);
-
-
-
-		Transform transform2;
-
-		transform2.pos = Vector3(1, -1, -1);
-
-		cArray.Add(transform2);
-
-
-
-		Transform transform3;
-
-		transform3.pos = Vector3(-1, -1, -1);
-
-		cArray.Add(transform3);
-
-
-
-		cArray.Erase(cArray.GetIndex2IdMap()[0]);
-		cArray.Erase(cArray.GetIndex2IdMap()[1]);
-		cArray.Erase(cArray.GetIndex2IdMap()[2]);
-
-
-
-		Transform transform4;
-
-		transform4.pos = Vector3(-1, -1, -1);
-
-		cArray.Add(transform4);
-
-
-
-		cArray.Erase(cArray.GetIndex2IdMap()[0]);
 	});
 
 

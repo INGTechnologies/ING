@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		SystemManager::SystemManager() {
+		RepositoryManager::RepositoryManager() {
 
 
 
 		}
 
-		SystemManager::~SystemManager() {
+		RepositoryManager::~RepositoryManager() {
 
 
 
@@ -30,21 +30,21 @@ namespace ING {
 		/**
 		 *	Init, Run, Release Methods
 		 */
-		bool SystemManager::Init() {
+		bool RepositoryManager::Init() {
 
 
 
 			return true;
 		}
 
-		bool SystemManager::Run() {
+		bool RepositoryManager::Run() {
 
 
 
 			return true;
 		}
 
-		bool SystemManager::Release() {
+		bool RepositoryManager::Release() {
 
 
 

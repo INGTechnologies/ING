@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "System.h"
+#include "Repository.h"
 
 
 
@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		System::System() {
+		Repository::Repository() {
 
 
 
 		}
 
-		System::~System() {
+		Repository::~Repository() {
 
 
 
@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void System::Release() {
+		void Repository::Release() {
 
 			delete this;
 

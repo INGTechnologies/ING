@@ -20,8 +20,8 @@ namespace ING {
 
 	namespace ECS {
 
-		class ING_API SystemManager :
-			public Singleton<SystemManager>,
+		class ING_API RepositoryManager :
+			public Singleton<RepositoryManager>,
 			public Square
 		{
 
@@ -29,8 +29,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			SystemManager();
-			~SystemManager();
+			RepositoryManager();
+			~RepositoryManager();
 
 
 

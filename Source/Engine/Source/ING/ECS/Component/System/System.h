@@ -55,7 +55,9 @@ namespace ING {
 
 
 		template<typename T>
-		class ComponentSystem : public IComponentSystem
+		class ComponentSystem : 
+			public IComponentSystem,
+			public Singleton<T>
 		{
 
 			/**
@@ -72,6 +74,8 @@ namespace ING {
 
 				array.Clear();
 
+				idGenerator.ClearIds();
+
 			}
 
 
@@ -82,8 +86,12 @@ namespace ING {
 		private:
 			ComponentArray<T>			array;
 
+			IdGenerator					idGenerator;
+
 		public:
 			ComponentArray<T>&			GetArray		()					{ return array; }
+
+			IdGenerator&				GetIdGenerator	()					{ return idGenerator;}
 
 
 
@@ -91,11 +99,37 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void						AddComponent	(Entity* entity)	{
+			ComponentId					AddComponent	(Entity* entity, T& component)	{
+
+				ComponentId id = idGenerator.GenUInt32();
+
+				array.Add(component, id);
+
+				return id;
+
+			}
+
+			ComponentId					AddComponent	(Entity* entity) {
 
 				T component;
 
-				array.Add(component);
+				ComponentId id = idGenerator.GenUInt32();
+
+				array.Add(component, id);
+
+				return id;
+
+			}
+
+			T&							GetComponent	(Entity* entity) {
+
+				T component;
+
+				//ComponentId id = idGenerator.GenUInt32();
+
+				//array.Get(id);
+
+				return component;
 
 			}
 
@@ -103,6 +137,16 @@ namespace ING {
 
 				
 
+			}
+
+			void						Foreach			(void (*callback)(T& component)){
+			
+				for (unsigned int index = 0; index < array.GetCount(); ++index) {
+
+					callback(array.GetPData()[index]);
+
+				}
+			
 			}
 
 		};

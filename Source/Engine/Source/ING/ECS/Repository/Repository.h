@@ -31,15 +31,15 @@ namespace ING {
 
 
 
-		class ING_API System
+		class ING_API Repository
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			System();
-			~System();
+			Repository();
+			~Repository();
 
 
 

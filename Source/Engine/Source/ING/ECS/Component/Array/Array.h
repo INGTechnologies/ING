@@ -74,8 +74,6 @@ namespace ING {
 
 				size		= 1;
 
-				//AllocateData();
-
 			}
 
 			~ComponentArray() {
@@ -104,8 +102,6 @@ namespace ING {
 
 			std::unordered_map <unsigned int , ComponentId>	 index2IdMap;
 
-			IdGenerator		idGenerator;
-
 		public:
 			unsigned int	GetStride		() { return stride; }
 
@@ -113,7 +109,7 @@ namespace ING {
 
 			unsigned int	GetSize			() { return size; }
 
-			void*			GetPData		() { return pData; }
+			T*				GetPData		() { return pData; }
 
 			unsigned int	GetSizeInByte	() { return sizeInByte; }
 
@@ -167,9 +163,7 @@ namespace ING {
 
 			}
 
-			void			Add		(T& component) {
-
-				ComponentId id = idGenerator.GenUInt32();
+			void			Add		(T& component, ComponentId id) {
 
 				unsigned int index = count;
 
@@ -185,6 +179,12 @@ namespace ING {
 				}
 
 				pData[index] = component;
+
+			}
+
+			T&				Get		(ComponentId id) {
+
+				return pData[id2IndexMap[id]];
 
 			}
 
@@ -222,8 +222,6 @@ namespace ING {
 
 				id2IndexMap.clear();
 				index2IdMap.clear();
-
-				idGenerator.ClearIds();
 
 				if (pData != nullptr) {
 
