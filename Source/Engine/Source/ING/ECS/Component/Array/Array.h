@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Unordered Map
+ */
+#include <unordered_map>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -65,11 +72,9 @@ namespace ING {
 
 				count		= 0;
 
-				lastFilledComponentIndex = 0;
-
 				size		= 1;
 
-				AllocateData();
+				//AllocateData();
 
 			}
 
@@ -89,26 +94,32 @@ namespace ING {
 
 			unsigned int	count;
 
-			unsigned int	lastFilledComponentIndex;
-
 			unsigned int	size;
 
 			T*				pData;
 
 			unsigned int	sizeInByte;
 
+			std::unordered_map <ComponentId  , unsigned int> id2IndexMap;
+
+			std::unordered_map <unsigned int , ComponentId>	 index2IdMap;
+
+			IdGenerator		idGenerator;
+
 		public:
 			unsigned int	GetStride		() { return stride; }
 
 			unsigned int	GetCount		() { return count; }
-
-			unsigned int	GetLastFilledComponentIndex() { return lastFilledComponentIndex; }
 
 			unsigned int	GetSize			() { return size; }
 
 			void*			GetPData		() { return pData; }
 
 			unsigned int	GetSizeInByte	() { return sizeInByte; }
+
+			std::unordered_map <ComponentId, unsigned int>& GetId2IndexMap() { return id2IndexMap; }
+
+			std::unordered_map <unsigned int, ComponentId>& GetIndex2IdMap() { return index2IdMap; }
 
 
 
@@ -118,7 +129,7 @@ namespace ING {
 		public:
 			void			AllocateData() {
 
-				size = ((lastFilledComponentIndex + 1) * 2);
+				size = (count * 2);
 
 				unsigned int sizeInByte = size * stride;
 
@@ -158,34 +169,48 @@ namespace ING {
 
 			void			Add		(T& component) {
 
-				if(count != 0)
-					++lastFilledComponentIndex;
+				ComponentId id = idGenerator.GenUInt32();
+
+				unsigned int index = count;
+
+				id2IndexMap[id] = index;
+				index2IdMap[index] = id;
 
 				++count;
 
-				if (lastFilledComponentIndex >= size) {
+				if (count > size || count == 1) {
 
 					AllocateData();
 
 				}
 
-				pData[lastFilledComponentIndex] = component;
+				pData[index] = component;
 
 			}
 
 			void			Erase	(ComponentId id) {
 
-				--count;
+				unsigned int index = id2IndexMap[id];
 
-				if (count < 0) count = 0;
+				if (count > 1) {
 
-				if (lastFilledComponentIndex == id) {
+					ComponentId lastComponentId = index2IdMap[count - 1];
 
-					--lastFilledComponentIndex;
+					pData[index] = pData[count - 1];
+
+					index2IdMap[index] = lastComponentId;
+
+					id2IndexMap[lastComponentId] = index;
+
+					index2IdMap.erase(count - 1);
+
+					id2IndexMap.erase(id);
 
 				}
 
-				if (lastFilledComponentIndex + 1 <= (size / 4)) {
+				--count;
+
+				if (count < size / 4 || count == 0) {
 
 					AllocateData();
 
@@ -194,6 +219,11 @@ namespace ING {
 			}
 
 			void			Clear	() {
+
+				id2IndexMap.clear();
+				index2IdMap.clear();
+
+				idGenerator.ClearIds();
 
 				if (pData != nullptr) {
 

@@ -252,10 +252,21 @@ int main() {
 
 
 
-		cArray.Erase(0);
-		cArray.Erase(1);
-		cArray.Erase(2);
-		
+		cArray.Erase(cArray.GetIndex2IdMap()[0]);
+		cArray.Erase(cArray.GetIndex2IdMap()[1]);
+		cArray.Erase(cArray.GetIndex2IdMap()[2]);
+
+
+
+		Transform transform4;
+
+		transform4.pos = Vector3(-1, -1, -1);
+
+		cArray.Add(transform4);
+
+
+
+		cArray.Erase(cArray.GetIndex2IdMap()[0]);
 	});
 
 
