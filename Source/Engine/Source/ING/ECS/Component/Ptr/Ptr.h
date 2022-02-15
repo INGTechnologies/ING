@@ -46,7 +46,26 @@ namespace ING {
 		 */
 		class IComponentPtr {
 
+			/**
+			 *	Properties
+			 */
+		protected:
+			ComponentId id;
+			Repository* repository;
 
+		public:
+			ComponentId	GetId() { return id; }
+			Repository* GetRepository() { return repository; }
+
+			void		SetId(ComponentId id) {
+
+				this->id = id;
+			}
+
+			void		SetRepository(Repository* repository) {
+
+				this->repository = repository;
+			}
 
 		};
 
@@ -69,6 +88,13 @@ namespace ING {
 
 			}
 
+			ComponentPtr(IComponentPtr iPtr) {
+
+				id = iPtr.GetId();
+				repository = iPtr.GetRepository();
+
+			}
+
 			~ComponentPtr() {
 
 
@@ -78,33 +104,11 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-		private:
-			ComponentId id;
-			Repository* repository;
-
-		public:
-			ComponentId	GetId() { return id; }
-			Repository* GetRepository() { return repository; }
-
-			void		SetId(ComponentId id) {
-
-				this->id = id;
-			}
-
-			void		SetRepository(Repository* repository) {
-
-				this->repository = repository;
-			}
-
-
-
-			/**
-			 *	Methods
+			 *	Operators
 			 */
 		public:
 			T& operator * ();
+			T* operator -> ();
 
 		};
 
@@ -135,12 +139,24 @@ namespace ING {
 
 	namespace ECS {
 
+		/**
+		 *	Operators
+		 */
 		template<typename T, class TComponentSystem>
 		T&	ComponentPtr<T, TComponentSystem>::operator * () {
 
 			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
 
 			return componentSystem->GetComponentFromId(id);
+
+		}
+
+		template<typename T, class TComponentSystem>
+		T* ComponentPtr<T, TComponentSystem>::operator -> () {
+
+			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
+
+			return componentSystem->GetComponentDataPtrFromId(id);
 
 		}
 

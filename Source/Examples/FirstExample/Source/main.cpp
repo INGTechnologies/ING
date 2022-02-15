@@ -242,25 +242,30 @@ int main() {
 
 
 
-		ECS::ComponentArray<Transform>& cArray = transformSystem->GetArray();
+		ECS::ComponentArray<Transform>& transformArray = transformSystem->GetArray();
 
 
 
 		ECS::Entity* entity = new ECS::Entity();
+		ECS::Entity* entity2 = new ECS::Entity();
 
 
 
 		ECS::ComponentPtr<Transform, TransformSystem> transformPtr = transformSystem->AddComponent(entity);
-
-		transformSystem->Foreach([](Transform& transform) {
 			
-			transform.pos = Vector3(1,2,3);
-			
-		});
+		transformPtr->pos = Vector3(1,2,3);
+
+		Debug::Log(entity->GetComponent<Transform, TransformSystem>()->pos);
 
 
 
-		Debug::Log((*transformPtr).pos);
+		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
+
+		transform2Ptr->pos = Vector3(2, 1, 3);
+
+		Debug::Log(entity2->GetComponent<Transform, TransformSystem>()->pos);
+
+		transformSystem->RemoveComponent(entity2);
 
 
 

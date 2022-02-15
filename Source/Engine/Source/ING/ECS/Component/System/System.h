@@ -107,19 +107,21 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			ComponentPtr<T, TComponentSystem>	AddComponent(Entity* entity, T& component);
+			ComponentPtr<T, TComponentSystem>	AddComponent				(Entity* entity, T& component);
 
-			ComponentPtr<T, TComponentSystem>	AddComponent(Entity* entity);
+			ComponentPtr<T, TComponentSystem>	AddComponent				(Entity* entity);
 
-			T& GetComponent(Entity* entity);
+			ComponentPtr<T, TComponentSystem>	GetComponent				(Entity* entity);
 
-			T& GetComponentFromId(ComponentId id);
+			T&									GetComponentFromId			(ComponentId id); 
 
-			void								RemoveComponent(Entity* entity);
+			T*									GetComponentDataPtrFromId	(ComponentId id);
 
-			void								Foreach(void (*callback)(T& component));
+			void								RemoveComponent				(Entity* entity);
 
-			std::string							GetComponentTypeId();
+			void								Foreach						(void (*callback)(T& component));
+
+			std::string							GetComponentTypeId			();
 
 		};
 
@@ -165,6 +167,13 @@ namespace ING {
 
 
 /**
+ *	Include ECS Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
+
+
+
+/**
  *	Define Class Members,...
  */
 namespace ING {
@@ -182,6 +191,8 @@ namespace ING {
 
 			result.SetId(id);
 			result.SetRepository(repository);
+
+			entity->AddComponent<T, TComponentSystem>(result);
 
 			return result;
 
@@ -201,20 +212,18 @@ namespace ING {
 			result.SetId(id);
 			result.SetRepository(repository);
 
+			entity->AddComponent<T, TComponentSystem>(result);
+
 			return result;
 
 		}
 
 		template<typename T, class TComponentSystem>
-		T&							ComponentSystem<T, TComponentSystem>::GetComponent	(Entity* entity) {
+		ComponentPtr<T, TComponentSystem>	ComponentSystem<T, TComponentSystem>::GetComponent	(Entity* entity) {
 
-			T component;
+			ComponentPtr<T, TComponentSystem> componentPtr = entity->GetComponent<T, TComponentSystem>();
 
-			//ComponentId id = idGenerator.GenUInt32();
-
-			//array.Get(id);
-
-			return component;
+			return componentPtr;
 
 		}
 
@@ -228,9 +237,22 @@ namespace ING {
 		}
 
 		template<typename T, class TComponentSystem>
+		T*							ComponentSystem<T, TComponentSystem>::GetComponentDataPtrFromId(ComponentId id) {
+
+			T* componentDataPtr = array.GetDataPtr(id);
+
+			return componentDataPtr;
+
+		}
+
+		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::RemoveComponent	(Entity* entity)	{
 
-				
+			ComponentId id = GetComponent(entity).GetId();
+
+			array.Erase(id);
+
+			entity->RemoveComponent<T>();
 
 		}
 

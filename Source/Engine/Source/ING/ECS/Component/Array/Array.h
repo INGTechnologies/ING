@@ -138,6 +138,8 @@ namespace ING {
 
 			T&				Get				(ComponentId id);
 
+			T*				GetDataPtr		(ComponentId id);
+
 			void			Erase			(ComponentId id);
 
 			void			Clear			();
@@ -222,6 +224,13 @@ namespace ING {
 		T&				ComponentArray<T>::Get(ComponentId id) {
 
 			return pData[id2IndexMap[id]];
+
+		}
+
+		template<typename T>
+		T*				ComponentArray<T>::GetDataPtr(ComponentId id) {
+
+			return pData + id2IndexMap[id];
 
 		}
 
