@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "System.h"
+#include "Manager.h"
 
 
 
@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		System::System() {
+		RepositoryManager::RepositoryManager() {
 
 
 
 		}
 
-		System::~System() {
+		RepositoryManager::~RepositoryManager() {
 
 
 
@@ -30,21 +30,21 @@ namespace ING {
 		/**
 		 *	Init, Run, Release Methods
 		 */
-		bool System::Init() {
+		bool RepositoryManager::Init() {
 
 
 
 			return true;
 		}
 
-		bool System::Run() {
+		bool RepositoryManager::Run() {
 
 
 
 			return true;
 		}
 
-		bool System::Release() {
+		bool RepositoryManager::Release() {
 
 
 

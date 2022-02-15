@@ -59,10 +59,18 @@ namespace ING {
 	private:
 		unsigned int threadCount;
 
+		unsigned int maxThreadCount;
+
 	public:
 		unsigned int GetThreadCount() {
 
 			return threadCount;
+
+		}
+
+		unsigned int GetMaxThreadCount() {
+
+			return maxThreadCount;
 
 		}
 

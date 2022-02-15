@@ -20,25 +20,7 @@ namespace ING {
 
 	namespace ECS {
 
-		class ING_API Registory
-		{
-
-			/**
-			 *	Constructors And Destructor
-			 */
-		public:
-			Registory();
-			~Registory();
-
-
-
-			/**
-			 *	Release Methods
-			 */
-		public:
-			virtual void Release();
-
-		};
+		using ComponentId = unsigned int;
 
 	}
 

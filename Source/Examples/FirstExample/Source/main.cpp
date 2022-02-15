@@ -128,8 +128,90 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Color
+ */
+#include <ING/Color/Color.h> 
+
+
+
+/**
+ *	Include ECS Repository Manager
+ */
+#include <ING/ECS/Repository/Manager/Manager.h> 
+
+
+
+/**
+ *	Include ECS Repository
+ */
+#include <ING/ECS/Repository/Repository.h> 
+
+
+
+/**
+ *	Include ECS Entity
+ */
+#include <ING/ECS/Entity/Entity.h> 
+
+
+
+/**
+ *	Include ECS Component
+ */
+#include <ING/ECS/Component/Component.h>
+
+
+
+/**
+ *	Include ECS Component Ptr
+ */
+#include <ING/ECS/Component/Ptr/Ptr.h>
+
+
+
+/**
+ *	Include ECS Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include ECS Component Array
+ */
+#include <ING/ECS/Component/Array/Array.h>
+
+
 
 using namespace ING;
+
+
+
+static struct Transform {
+
+	Vector3 pos;
+
+};
+
+
+
+static ECS_COMPONENT_SYSTEM_CLASS(Transform, TransformSystem){
+
+public:
+	ECS_COMPONENT_SYSTEM_CONSTRUCTOR(Transform, TransformSystem) {
+
+
+
+	}
+
+	ECS_COMPONENT_SYSTEM_DESTRUCTOR(Transform, TransformSystem) {
+
+
+
+	}
+
+};
 
 
 
@@ -150,26 +232,45 @@ int main() {
 
 
 
-	Window* mainWindow = WindowManager::GetInstance()->GetMainWindow();
-
-	mainWindow->Show();
-
-
-
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
-		
-		Quaternion q = Quaternion::Euler(Vector3(0, 90.0f * Deg2Rad,0));
 
-		Debug::Log(q);
+		ECS::Repository* repository = new ECS::Repository();
 
-		F4IJK qF4 = q;
 
-		Debug::Warning(qF4); 
 
-		Vector3 c = q * Vector3(1,5,1);
+		TransformSystem* transformSystem = repository->CreateComponentSystem<TransformSystem>();
 
-		Debug::Error(c);
-		
+
+
+		ECS::ComponentArray<Transform>& transformArray = transformSystem->GetArray();
+
+
+
+		ECS::Entity* entity = new ECS::Entity();
+		ECS::Entity* entity2 = new ECS::Entity();
+
+
+
+		ECS::ComponentPtr<Transform, TransformSystem> transformPtr = transformSystem->AddComponent(entity);
+			
+		transformPtr->pos = Vector3(1,2,3);
+
+		Debug::Log(entity->GetComponent<Transform, TransformSystem>()->pos);
+
+
+
+		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
+
+		transform2Ptr->pos = Vector3(2, 1, 3);
+
+		Debug::Log(entity2->GetComponent<Transform, TransformSystem>()->pos);
+
+		transformSystem->RemoveComponent(entity2);
+
+
+
+		repository->ReleaseComponentSystem<TransformSystem>();
+
 	});
 
 

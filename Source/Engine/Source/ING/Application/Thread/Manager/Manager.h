@@ -65,8 +65,10 @@ namespace ING {
 		List<ApplicationThread*> applicationThreadList;
 
 	public:
-		ApplicationThread*					GetRenderingThread () { return renderingThread; }
-		ApplicationThread*					GetPhysicsThread () { return physicsThread; }
+		ApplicationThread*					GetRenderingThread	() { return renderingThread; }
+		ApplicationThread*					GetPhysicsThread	() { return physicsThread; }
+
+		List<ApplicationThread*>&			GetThreadList		() { return applicationThreadList; }
 
 
 

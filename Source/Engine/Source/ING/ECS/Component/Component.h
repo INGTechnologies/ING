@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Id
+ */
+#include <ING/ECS/Component/Id/Id.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -29,14 +36,6 @@ namespace ING {
 		public:
 			Component();
 			~Component();
-
-
-
-			/**
-			 *	Release Methods
-			 */
-		public:
-			virtual void Release();
 
 		};
 
