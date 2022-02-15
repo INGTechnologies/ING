@@ -164,6 +164,13 @@ using namespace ING::Math;
 
 
 /**
+ *	Include ECS Component Ptr
+ */
+#include <ING/ECS/Component/Ptr/Ptr.h>
+
+
+
+/**
  *	Include ECS Component System
  */
 #include <ING/ECS/Component/System/System.h>
@@ -189,16 +196,16 @@ static struct Transform {
 
 
 
-static class TransformSystem : public ECS::ComponentSystem<Transform>{
+static ECS_COMPONENT_SYSTEM_CLASS(Transform, TransformSystem){
 
 public:
-	TransformSystem() {
+	ECS_COMPONENT_SYSTEM_CONSTRUCTOR(Transform, TransformSystem) {
 
 
 
 	}
 
-	~TransformSystem() {
+	ECS_COMPONENT_SYSTEM_DESTRUCTOR(Transform, TransformSystem) {
 
 
 
@@ -229,19 +236,35 @@ int main() {
 
 		ECS::Repository* repository = new ECS::Repository();
 
-		TransformSystem* transformSystem = new TransformSystem();
+
+
+		TransformSystem* transformSystem = repository->CreateComponentSystem<TransformSystem>();
+
+
 
 		ECS::ComponentArray<Transform>& cArray = transformSystem->GetArray();
 
+
+
 		ECS::Entity* entity = new ECS::Entity();
 
-		ECS::ComponentId id = transformSystem->AddComponent(entity);
+
+
+		ECS::ComponentPtr<Transform, TransformSystem> transformPtr = transformSystem->AddComponent(entity);
 
 		transformSystem->Foreach([](Transform& transform) {
 			
-			Debug::Log(transform.pos);
+			transform.pos = Vector3(1,2,3);
 			
 		});
+
+
+
+		Debug::Log((*transformPtr).pos);
+
+
+
+		repository->ReleaseComponentSystem<TransformSystem>();
 
 	});
 

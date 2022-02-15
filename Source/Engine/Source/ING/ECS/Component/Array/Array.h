@@ -17,9 +17,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS Component
+ *	Include ECS Component Id
  */
-#include <ING/ECS/Component/Component.h>
+#include <ING/ECS/Component/Id/Id.h>
 
 
 
@@ -30,6 +30,9 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Define And Declares Classes, Structs,... 
+ */
 namespace ING {
 
 	namespace ECS {
@@ -38,6 +41,9 @@ namespace ING {
 
 
 
+		/**
+		 *	Interface Class
+		 */
 		class IComponentArray {
 
 			/**
@@ -54,6 +60,9 @@ namespace ING {
 
 
 
+		/**
+		 *	Main Class
+		 */
 		template<typename T>
 		class ComponentArray : public IComponentArray
 		{
@@ -123,115 +132,143 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void			AllocateData() {
+			void			AllocateData	();
 
-				size = (count * 2);
+			void			Add				(T& component, ComponentId id);
 
-				unsigned int sizeInByte = size * stride;
+			T&				Get				(ComponentId id);
 
-				unsigned int oldSizeInByte = this->sizeInByte;
+			void			Erase			(ComponentId id);
 
-				T* newPData = (T*)malloc(sizeInByte);
+			void			Clear			();
+
+		};
+
+	}
+
+}
 
 
 
-				if (pData != nullptr) {
+/**
+ *	Define Class Members,...
+ */
+namespace ING {
 
-					memcpy(newPData, pData, ([](unsigned int sizeInByte, unsigned int oldSizeInByte)->unsigned int {
+	namespace ECS {
 
-						if (sizeInByte > oldSizeInByte) {
+		template<typename T>
+		void			ComponentArray<T>::AllocateData() {
 
-							return oldSizeInByte;
+			size = (count * 2);
 
-						}
+			unsigned int sizeInByte = size * stride;
 
-						return sizeInByte;
+			unsigned int oldSizeInByte = this->sizeInByte;
+
+			T* newPData = (T*)malloc(sizeInByte);
+
+
+
+			if (pData != nullptr) {
+
+				memcpy(newPData, pData, ([](unsigned int sizeInByte, unsigned int oldSizeInByte)->unsigned int {
+
+					if (sizeInByte > oldSizeInByte) {
+
+						return oldSizeInByte;
+
+					}
+
+					return sizeInByte;
 
 					})(sizeInByte, oldSizeInByte));
 
-					free(pData);
-
-				}
-
-
-
-				this->sizeInByte = sizeInByte;
-
-
-
-				pData = newPData;
+				free(pData);
 
 			}
 
-			void			Add		(T& component, ComponentId id) {
 
-				unsigned int index = count;
 
-				id2IndexMap[id] = index;
-				index2IdMap[index] = id;
+			this->sizeInByte = sizeInByte;
 
-				++count;
 
-				if (count > size || count == 1) {
 
-					AllocateData();
+			pData = newPData;
 
-				}
+		}
 
-				pData[index] = component;
+		template<typename T>
+		void			ComponentArray<T>::Add(T& component, ComponentId id) {
 
-			}
+			unsigned int index = count;
 
-			T&				Get		(ComponentId id) {
+			id2IndexMap[id] = index;
+			index2IdMap[index] = id;
 
-				return pData[id2IndexMap[id]];
+			++count;
 
-			}
+			if (count > size || count == 1) {
 
-			void			Erase	(ComponentId id) {
-
-				unsigned int index = id2IndexMap[id];
-
-				if (count > 1) {
-
-					ComponentId lastComponentId = index2IdMap[count - 1];
-
-					pData[index] = pData[count - 1];
-
-					index2IdMap[index] = lastComponentId;
-
-					id2IndexMap[lastComponentId] = index;
-
-					index2IdMap.erase(count - 1);
-
-					id2IndexMap.erase(id);
-
-				}
-
-				--count;
-
-				if (count < size / 4 || count == 0) {
-
-					AllocateData();
-
-				}
+				AllocateData();
 
 			}
 
-			void			Clear	() {
+			pData[index] = component;
 
-				id2IndexMap.clear();
-				index2IdMap.clear();
+		}
 
-				if (pData != nullptr) {
+		template<typename T>
+		T&				ComponentArray<T>::Get(ComponentId id) {
 
-					free(pData);
+			return pData[id2IndexMap[id]];
 
-				}
+		}
+
+		template<typename T>
+		void			ComponentArray<T>::Erase(ComponentId id) {
+
+			unsigned int index = id2IndexMap[id];
+
+			if (count > 1) {
+
+				ComponentId lastComponentId = index2IdMap[count - 1];
+
+				pData[index] = pData[count - 1];
+
+				index2IdMap[index] = lastComponentId;
+
+				id2IndexMap[lastComponentId] = index;
+
+				index2IdMap.erase(count - 1);
+
+				id2IndexMap.erase(id);
 
 			}
 
-		};
+			--count;
+
+			if (count < size / 4 || count == 0) {
+
+				AllocateData();
+
+			}
+
+		}
+
+		template<typename T>
+		void			ComponentArray<T>::Clear() {
+
+			id2IndexMap.clear();
+			index2IdMap.clear();
+
+			if (pData != nullptr) {
+
+				free(pData);
+
+			}
+
+		}
 
 	}
 
