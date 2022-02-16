@@ -19,6 +19,20 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Event Storage
+ */
+#include <ING/Event/Storage/Storage.h>
+
+
+
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
  *	Define And Declares Classes, Structs,... 
  */
 namespace ING {
@@ -35,18 +49,41 @@ namespace ING {
 		template<typename T>
 		class ComponentArray;
 
+		template<typename T, class TComponentSystem>
+		class ComponentSystemUpdateEvent;
+
 
 
 		/**
 		 *	Interface Class
 		 */
-		class IComponentSystem {
+		class IComponentSystem : public EventStorage {
 
 			/**
-			 *	Release Methods
+			 *	Constructor
 			 */
 		public:
+			IComponentSystem() {
+
+
+
+			}
+
+
+
+			/**
+			 *	Init, Release Methods
+			 */
+		public:
+			virtual void Init() {
+
+
+
+			}
+
 			virtual void Release() {
+
+				RELEASE_EVENT_STORAGE();
 
 				delete this;
 
@@ -68,11 +105,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ComponentSystem(Repository* repository) {
-
-				this->repository = repository;
-
-			}
+			ComponentSystem(Repository* repository);
 
 			~ComponentSystem() {
 
@@ -95,11 +128,11 @@ namespace ING {
 			Repository* repository;
 
 		public:
-			ComponentArray<T>& GetArray() { return array; }
+			ComponentArray<T>&	GetArray		() { return array;			}
 
-			IdGenerator& GetIdGenerator() { return idGenerator; }
+			IdGenerator&		GetIdGenerator	() { return idGenerator;	}
 
-			Repository* GetRepository() { return repository; }
+			Repository*			GetRepository	() { return repository;		}
 
 
 
@@ -124,20 +157,6 @@ namespace ING {
 			std::string							GetComponentTypeId			();
 
 		};
-
-
-
-		/**
-		 *	Define Macros
-		 */
-#define ECS_COMPONENT_SYSTEM_CLASS(T, TComponentSystem)\
-		class TComponentSystem : public ING::ECS::ComponentSystem<T, TComponentSystem>
-
-#define ECS_COMPONENT_SYSTEM_CONSTRUCTOR(T, TComponentSystem)\
-		TComponentSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<T, TComponentSystem>(repository)
-
-#define ECS_COMPONENT_SYSTEM_DESTRUCTOR(T, TComponentSystem)\
-		~TComponentSystem()
 
 	}
 
@@ -174,11 +193,40 @@ namespace ING {
 
 
 /**
+ *	Include ECS Component System Events
+ */
+#include <ING/ECS/Component/System/Event/Update/Update.h>
+
+#include <ING/ECS/Component/System/Event/Awake/Awake.h>
+
+
+
+/**
  *	Define Class Members,...
  */
 namespace ING {
 
 	namespace ECS {
+
+		template<typename T, class TComponentSystem>
+		ComponentSystem<T,TComponentSystem>::ComponentSystem(Repository* repository) : IComponentSystem() {
+
+			this->repository = repository;
+
+
+
+			/**
+			 *	Add Events
+			 */
+			//AddEvent(new ComponentSystemAwakeEvent	<T, TComponentSystem> ());
+
+			AddEvent(new ComponentSystemUpdateEvent	<T, TComponentSystem>((TComponentSystem*)this));
+
+			AddEvent(new ComponentSystemAwakeEvent	<T, TComponentSystem>((TComponentSystem*)this));
+
+		}
+
+
 		
 		template<typename T, class TComponentSystem>
 		ComponentPtr<T, TComponentSystem>	ComponentSystem<T, TComponentSystem>::AddComponent	(Entity* entity, T& component)	{

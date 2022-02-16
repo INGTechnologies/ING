@@ -196,22 +196,29 @@ static struct Transform {
 
 
 
-static ECS_COMPONENT_SYSTEM_CLASS(Transform, TransformSystem){
+static class TransformSystem :
+	public ECS::ComponentSystem<Transform, TransformSystem>
+{
+public:
+	TransformSystem(ECS::Repository* repository) : ComponentSystem(repository) {}
 
 public:
-	ECS_COMPONENT_SYSTEM_CONSTRUCTOR(Transform, TransformSystem) {
-
-
-
-	}
-
-	ECS_COMPONENT_SYSTEM_DESTRUCTOR(Transform, TransformSystem) {
-
-
-
-	}
+	virtual void Init		() override;
+	virtual void Release	() override;
 
 };
+
+void TransformSystem::Init() {
+
+	
+
+}
+
+void TransformSystem::Release() {
+
+	ComponentSystem<Transform, TransformSystem>::Release();
+
+}
 
 
 
@@ -255,17 +262,27 @@ int main() {
 			
 		transformPtr->pos = Vector3(1,2,3);
 
-		Debug::Log(entity->GetComponent<Transform, TransformSystem>()->pos);
-
 
 
 		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
 
 		transform2Ptr->pos = Vector3(2, 1, 3);
 
-		Debug::Log(entity2->GetComponent<Transform, TransformSystem>()->pos);
 
-		transformSystem->RemoveComponent(entity2);
+
+		transformSystem->GetEvent("UPDATE")->AddListener([](Event* event) {
+			
+			TransformSystem* transformSystem = (TransformSystem*)(((ECS::ComponentSystemEvent<Transform, TransformSystem>*)event)->GetComponentSystem());
+
+			transformSystem->Foreach([](Transform& transform) {
+				
+				Debug::Log(transform.pos);
+				
+			});
+			
+		});
+
+		transformSystem->GetEvent("UPDATE")->Execute();
 
 
 

@@ -63,7 +63,7 @@ namespace ING {
 	/**
 	 *	Define Macros
 	 */
-#define RELEASE_EVENT_STORAGE\
+#define RELEASE_EVENT_STORAGE()\
 	eventList.Foreach([](Event*& e) {\
 		\
 		e->Release();\

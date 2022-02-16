@@ -302,7 +302,7 @@ namespace ING {
 
 		WindowManager::GetInstance()->RemoveWindow(this);
 
-		RELEASE_EVENT_STORAGE;
+		RELEASE_EVENT_STORAGE();
 
 		delete this;
 
