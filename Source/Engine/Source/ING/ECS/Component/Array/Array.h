@@ -37,7 +37,7 @@ namespace ING {
 
 	namespace ECS {
 
-		class Entity;
+		struct Entity;
 
 
 

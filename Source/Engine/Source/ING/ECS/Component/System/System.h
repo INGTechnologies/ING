@@ -39,7 +39,7 @@ namespace ING {
 
 	namespace ECS {
 
-		class Entity;
+		struct Entity;
 
 		class Repository;
 
@@ -218,8 +218,6 @@ namespace ING {
 			/**
 			 *	Add Events
 			 */
-			//AddEvent(new ComponentSystemAwakeEvent	<T, TComponentSystem> ());
-
 			AddEvent(new ComponentSystemUpdateEvent	<T, TComponentSystem>((TComponentSystem*)this));
 
 			AddEvent(new ComponentSystemAwakeEvent	<T, TComponentSystem>((TComponentSystem*)this));
