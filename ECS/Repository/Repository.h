@@ -1,6 +1,13 @@
 #pragma once
 
 /**
+ *	Include ECS Entry Point
+ */
+#include <ING/ECS/EntryPoint/EntryPoint.h>
+
+
+
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>

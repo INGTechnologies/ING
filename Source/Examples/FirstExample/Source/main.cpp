@@ -136,51 +136,9 @@ using namespace ING::Math;
 
 
 /**
- *	Include ECS Repository Manager
+ *	Include ECS
  */
-#include <ING/ECS/Repository/Manager/Manager.h> 
-
-
-
-/**
- *	Include ECS Repository
- */
-#include <ING/ECS/Repository/Repository.h> 
-
-
-
-/**
- *	Include ECS Entity
- */
-#include <ING/ECS/Entity/Entity.h> 
-
-
-
-/**
- *	Include ECS Component
- */
-#include <ING/ECS/Component/Component.h>
-
-
-
-/**
- *	Include ECS Component Ptr
- */
-#include <ING/ECS/Component/Ptr/Ptr.h>
-
-
-
-/**
- *	Include ECS Component System
- */
-#include <ING/ECS/Component/System/System.h>
-
-
-
-/**
- *	Include ECS Component Array
- */
-#include <ING/ECS/Component/Array/Array.h>
+#include <ING/ECS/ECS.h> 
 
 
 
@@ -243,6 +201,8 @@ int main() {
 
 		ECS::Repository* repository = new ECS::Repository();
 
+		repository->SetActive(true);
+
 
 
 		TransformSystem* transformSystem = repository->CreateComponentSystem<TransformSystem>();
@@ -267,22 +227,6 @@ int main() {
 		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
 
 		transform2Ptr->pos = Vector3(2, 1, 3);
-
-
-
-		transformSystem->GetEvent("UPDATE")->AddListener([](Event* event) {
-			
-			TransformSystem* transformSystem = (TransformSystem*)(((ECS::ComponentSystemEvent<Transform, TransformSystem>*)event)->GetComponentSystem());
-
-			transformSystem->Foreach([](Transform& transform) {
-				
-				Debug::Log(transform.pos);
-				
-			});
-			
-		});
-
-		transformSystem->GetEvent("UPDATE")->Execute();
 
 
 
