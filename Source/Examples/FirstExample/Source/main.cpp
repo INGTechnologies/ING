@@ -136,51 +136,9 @@ using namespace ING::Math;
 
 
 /**
- *	Include ECS Repository Manager
+ *	Include ECS
  */
-#include <ING/ECS/Repository/Manager/Manager.h> 
-
-
-
-/**
- *	Include ECS Repository
- */
-#include <ING/ECS/Repository/Repository.h> 
-
-
-
-/**
- *	Include ECS Entity
- */
-#include <ING/ECS/Entity/Entity.h> 
-
-
-
-/**
- *	Include ECS Component
- */
-#include <ING/ECS/Component/Component.h>
-
-
-
-/**
- *	Include ECS Component Ptr
- */
-#include <ING/ECS/Component/Ptr/Ptr.h>
-
-
-
-/**
- *	Include ECS Component System
- */
-#include <ING/ECS/Component/System/System.h>
-
-
-
-/**
- *	Include ECS Component Array
- */
-#include <ING/ECS/Component/Array/Array.h>
+#include <ING/ECS/ECS.h> 
 
 
 
@@ -196,22 +154,29 @@ static struct Transform {
 
 
 
-static ECS_COMPONENT_SYSTEM_CLASS(Transform, TransformSystem){
+static class TransformSystem :
+	public ECS::ComponentSystem<Transform, TransformSystem>
+{
+public:
+	TransformSystem(ECS::Repository* repository) : ComponentSystem(repository) {}
 
 public:
-	ECS_COMPONENT_SYSTEM_CONSTRUCTOR(Transform, TransformSystem) {
-
-
-
-	}
-
-	ECS_COMPONENT_SYSTEM_DESTRUCTOR(Transform, TransformSystem) {
-
-
-
-	}
+	virtual void Init		() override;
+	virtual void Release	() override;
 
 };
+
+void TransformSystem::Init() {
+
+	
+
+}
+
+void TransformSystem::Release() {
+
+	ComponentSystem<Transform, TransformSystem>::Release();
+
+}
 
 
 
@@ -236,6 +201,8 @@ int main() {
 
 		ECS::Repository* repository = new ECS::Repository();
 
+		repository->SetActive(true);
+
 
 
 		TransformSystem* transformSystem = repository->CreateComponentSystem<TransformSystem>();
@@ -255,17 +222,11 @@ int main() {
 			
 		transformPtr->pos = Vector3(1,2,3);
 
-		Debug::Log(entity->GetComponent<Transform, TransformSystem>()->pos);
-
 
 
 		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
 
 		transform2Ptr->pos = Vector3(2, 1, 3);
-
-		Debug::Log(entity2->GetComponent<Transform, TransformSystem>()->pos);
-
-		transformSystem->RemoveComponent(entity2);
 
 
 

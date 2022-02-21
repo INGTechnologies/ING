@@ -257,7 +257,7 @@ namespace ING {
 
 		delete configuration;
 
-		RELEASE_EVENT_STORAGE;
+		RELEASE_EVENT_STORAGE();
 
 		return Board<Application>::Release();
 	}

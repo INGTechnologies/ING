@@ -1,13 +1,6 @@
 #pragma once
 
 /**
- *	Include Entry Point
- */
-#include <ING/EntryPoint/EntryPoint.h>
-
-
-
-/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -34,8 +27,17 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Component();
-			~Component();
+			Component() {
+
+
+
+			}
+
+			~Component() {
+
+
+
+			}
 
 		};
 

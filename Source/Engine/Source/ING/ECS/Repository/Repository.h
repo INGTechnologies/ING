@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 /**
  *	Include Utils
  */
@@ -18,9 +16,9 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Define And Declares Classes, Structs,... 
- */
+ /**
+  *	Define And Declares Classes, Structs,...
+  */
 namespace ING {
 
 	namespace ECS {
@@ -41,18 +39,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Repository() {
+			Repository();
 
-
-
-			}
-
-			~Repository() {
-
-				componentSystemTypeId2ComponentSystemMap.clear();
-				componentTypeId2ComponentSystemMap.clear();
-
-			}
+			~Repository();
 
 
 
@@ -75,9 +64,13 @@ namespace ING {
 			std::map<std::string, IComponentSystem*> componentSystemTypeId2ComponentSystemMap;
 			std::map<std::string, IComponentSystem*> componentTypeId2ComponentSystemMap;
 
+			bool isActive;
+
 		public:
-			std::map<std::string, IComponentSystem*>& GetComponentSystemTypeId2ComponentSystemMap	() { return componentSystemTypeId2ComponentSystemMap; }
-			std::map<std::string, IComponentSystem*>& GetComponentTypeId2ComponentSystemMap			() { return componentTypeId2ComponentSystemMap; }
+			std::map<std::string, IComponentSystem*>& GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
+			std::map<std::string, IComponentSystem*>& GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
+
+			bool IsActive() { return isActive; }
 
 
 
@@ -86,84 +79,20 @@ namespace ING {
 			 */
 		public:
 			template<class TComponentSystem>
-			TComponentSystem* CreateComponentSystem();
+			TComponentSystem*	CreateComponentSystem();
 
 			template<class TComponentSystem>
-			TComponentSystem* GetComponentSystem();
+			TComponentSystem*	GetComponentSystem();
 
 			template<class T>
-			IComponentSystem* GetComponentSystemFromComponentType();
+			IComponentSystem*	GetComponentSystemFromComponentType();
 
 			template<typename TComponentSystem>
 			void				ReleaseComponentSystem();
 
+			void				SetActive(bool isActive);
+
 		};
-
-	}
-
-}
-
-
-
-/**
- *	Include Component System
- */
-#include <ING/ECS/Component/System/System.h>
-
-
-
-/**
- *	Define Class Members,...
- */
-namespace ING {
-
-	namespace ECS {
-
-		/**
-		 *	Methods
-		 */
-		template<class TComponentSystem>
-		TComponentSystem*	Repository::CreateComponentSystem() {
-
-			TComponentSystem* componentSystem = new TComponentSystem(this);
-
-			componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()] = componentSystem;
-			componentTypeId2ComponentSystemMap[componentSystem->GetComponentTypeId()] = componentSystem;
-
-			return componentSystem;
-
-		}
-
-		template<class TComponentSystem>
-		TComponentSystem*	Repository::GetComponentSystem() {
-
-			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
-
-			return componentSystem;
-
-		}
-
-		template<class T>
-		IComponentSystem*	Repository::GetComponentSystemFromComponentType() {
-
-			IComponentSystem* componentSystem = componentSystemTypeId2ComponentSystemMap[typeid(T).name()];
-
-			return componentSystem;
-
-		}
-
-		template<typename TComponentSystem>
-		void				Repository::ReleaseComponentSystem() {
-
-			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
-
-			componentTypeId2ComponentSystemMap.erase(componentSystem->GetComponentTypeId());
-
-			componentSystem->Release();
-
-			componentSystemTypeId2ComponentSystemMap.erase(typeid(TComponentSystem).name());
-
-		}
 
 	}
 
