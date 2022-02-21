@@ -31,6 +31,8 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		class ComponentSystem;
 
+		class Repository;
+
 
 
 		/**
@@ -38,22 +40,21 @@ namespace ING {
 		 */
 		struct Entity
 		{
+			/**
+			 *	Friend Class
+			 */
+			friend class Repository;
+
+
 
 			/**
 			 *	Constructors And Destructor
 			 */
+		protected:
+			Entity	(Repository* repository);
+
 		public:
-			Entity  () {
-
-
-
-			}
-
-			~Entity () {
-
-
-
-			}
+			~Entity	();
 
 
 
@@ -74,12 +75,16 @@ namespace ING {
 		private:
 			std::map<std::string, IComponentPtr>	componentMap;
 
+			Repository* repository;
+
 		public:
 			std::map<std::string, IComponentPtr>&	GetComponentMap() {
 
 				return componentMap;
 
 			}
+
+			Repository*								GetRepository() { return repository; }
 
 
 

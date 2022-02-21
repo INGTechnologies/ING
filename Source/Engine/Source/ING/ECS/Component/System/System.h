@@ -82,13 +82,20 @@ namespace ING {
 		class ComponentSystem :
 			public IComponentSystem
 		{
+			/**
+			 *	Friend Class
+			 */
+			friend class Repository;
+
+
 
 			/**
 			 *	Constructors And Destructor
 			 */
-		public:
+		protected:
 			ComponentSystem(Repository* repository);
 
+		public:
 			~ComponentSystem() {
 
 				array.Clear();
@@ -155,3 +162,17 @@ namespace ING {
 	}
 
 }
+
+
+
+/**
+ *	Define Macros
+ */
+#define ECS_COMPONENT_SYSTEM(TComponentSystem, T)\
+class TComponentSystem : public ING::ECS::ComponentSystem<T, TComponentSystem> {\
+\
+public:\
+	friend class ING::ECS::Repository;\
+\
+protected:\
+	TComponentSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<T, TComponentSystem>(repository) {}\
