@@ -6,16 +6,16 @@
 
 
 
- /**
-  *	Include Application
-  */
+/**
+ *	Include Application
+ */
 #include <ING/Application/Application.h>
 
 
 
-  /**
-   *	Include Thread And Thread Manager
-   */
+/**
+ *	Include Thread And Thread Manager
+ */
 #include <ING/Thread/Thread.h>
 
 #include <ING/Thread/Manager/Manager.h>
@@ -160,6 +160,16 @@ public:
 	virtual void Init		() override;
 	virtual void Release	() override;
 
+
+
+	/**
+	 *	Event Methods
+	 */
+public:
+	virtual void Awake(ECS::ComponentPtr<Transform, TransformSystem> componentPtr) override;
+	virtual void Start(ECS::ComponentPtr<Transform, TransformSystem> componentPtr) override;
+	virtual void Update() override;
+
 };
 
 		
@@ -173,6 +183,28 @@ void TransformSystem::Init() {
 void TransformSystem::Release() {
 
 	ComponentSystem<Transform, TransformSystem>::Release();
+
+}
+
+
+
+void TransformSystem::Awake(ECS::ComponentPtr<Transform, TransformSystem> componentPtr) {
+
+	Debug::Log(String("Transform ") + String(componentPtr.GetId()) + String(" Awake"));
+
+}
+
+void TransformSystem::Start(ECS::ComponentPtr<Transform, TransformSystem> componentPtr) {
+
+	Debug::Log(String("Transform  ") + String(componentPtr.GetId()) + String(" Start"));
+
+}
+
+void TransformSystem::Update() {
+
+	ECS::ComponentSystem<Transform, TransformSystem>::Update();
+
+	Debug::Log("Transform System Update");
 
 }
 
@@ -225,6 +257,10 @@ int main() {
 		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
 
 		transform2Ptr->pos = Vector3(2, 1, 3);
+
+
+
+		transformSystem->Update();
 
 
 

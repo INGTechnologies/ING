@@ -93,16 +93,10 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		protected:
-			ComponentSystem(Repository* repository);
+			ComponentSystem		(Repository* repository);
 
 		public:
-			~ComponentSystem() {
-
-				array.Clear();
-
-				idGenerator.ClearIds();
-
-			}
+			~ComponentSystem	();
 
 
 
@@ -112,16 +106,20 @@ namespace ING {
 		private:
 			ComponentArray<T>			array;
 
+			ComponentArray<bool>		isStartedArray;
+
 			IdGenerator					idGenerator;
 
 			Repository* repository;
 
 		public:
-			ComponentArray<T>&	GetArray		() { return array;			}
+			ComponentArray<T>&		GetArray			() { return array;			}
 
-			IdGenerator&		GetIdGenerator	() { return idGenerator;	}
+			ComponentArray<bool>&	GetIsStartedArray	() { return isStartedArray;			}
 
-			Repository*			GetRepository	() { return repository;		}
+			IdGenerator&			GetIdGenerator		() { return idGenerator;	}
+
+			Repository*				GetRepository		() { return repository;		}
 
 
 
@@ -155,7 +153,7 @@ namespace ING {
 
 			virtual void Start  (ComponentPtr<T, TComponentSystem> componentPtr)	{ }
 
-			virtual void Update ()													{ }
+			virtual void Update ();
 
 		};
 
