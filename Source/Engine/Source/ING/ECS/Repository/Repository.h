@@ -27,6 +27,8 @@ namespace ING {
 
 		class IComponentSystem;
 
+		class Entity;
+
 
 
 		/**
@@ -67,10 +69,12 @@ namespace ING {
 			bool isActive;
 
 		public:
-			std::map<std::string, IComponentSystem*>& GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
-			std::map<std::string, IComponentSystem*>& GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
+			std::map<std::string, IComponentSystem*>&	GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
+			std::map<std::string, IComponentSystem*>&	GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
 
-			bool IsActive() { return isActive; }
+			bool										IsActive() { return isActive; }
+
+			void										SetActive(bool isActive);
 
 
 
@@ -90,7 +94,7 @@ namespace ING {
 			template<typename TComponentSystem>
 			void				ReleaseComponentSystem();
 
-			void				SetActive(bool isActive);
+			Entity*				CreateEntity();
 
 		};
 

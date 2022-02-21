@@ -154,17 +154,15 @@ static struct Transform {
 
 
 
-static class TransformSystem :
-	public ECS::ComponentSystem<Transform, TransformSystem>
-{
-public:
-	TransformSystem(ECS::Repository* repository) : ComponentSystem(repository) {}
+static ECS_COMPONENT_SYSTEM(TransformSystem, Transform)
 
 public:
 	virtual void Init		() override;
 	virtual void Release	() override;
 
 };
+
+		
 
 void TransformSystem::Init() {
 
@@ -213,8 +211,8 @@ int main() {
 
 
 
-		ECS::Entity* entity = new ECS::Entity();
-		ECS::Entity* entity2 = new ECS::Entity();
+		ECS::Entity* entity  = repository->CreateEntity();
+		ECS::Entity* entity2 = repository->CreateEntity();
 
 
 

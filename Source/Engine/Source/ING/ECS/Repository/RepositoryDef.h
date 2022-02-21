@@ -8,6 +8,13 @@
 
 
 /**
+ *	Include Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
+
+
+
+/**
  *	Define Class Members,...
  */
 namespace ING {
@@ -27,6 +34,17 @@ namespace ING {
 
 			componentSystemTypeId2ComponentSystemMap.clear();
 			componentTypeId2ComponentSystemMap.clear();
+
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		void				Repository::SetActive(bool isActive) {
+
+			this->isActive = isActive;
 
 		}
 
@@ -78,10 +96,11 @@ namespace ING {
 
 		}
 
-		void				Repository::SetActive(bool isActive) {
+		Entity*				Repository::CreateEntity() {
+		
+			Entity* result = new Entity(this);
 
-			this->isActive = isActive;
-
+			return result;		
 		}
 
 	}

@@ -22,6 +22,23 @@ namespace ING {
 	namespace ECS {
 
 		/**
+		 *	Constructors And Destructor
+		 */
+		Entity::Entity	(Repository* repository) {
+
+			this->repository = repository;
+
+		}
+
+		Entity::~Entity	() {
+
+
+
+		}
+
+
+
+		/**
 		 *	Methods
 		 */
 		template<typename T, class TComponentSystem>
