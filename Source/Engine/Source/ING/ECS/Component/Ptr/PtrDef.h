@@ -36,7 +36,7 @@ namespace ING {
 
 			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
 
-			return componentSystem->GetComponentFromId(id);
+			return componentSystem->GetComponentFromPtr(*this);
 
 		}
 
@@ -45,7 +45,7 @@ namespace ING {
 
 			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
 
-			return componentSystem->GetComponentDataPtrFromId(id);
+			return componentSystem->GetComponentDataPtrFromPtr(*this);
 
 		}
 

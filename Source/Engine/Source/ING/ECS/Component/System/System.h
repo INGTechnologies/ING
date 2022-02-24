@@ -30,9 +30,6 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		class ComponentPtr;
 
-		template<typename T>
-		class ComponentArray;
-
 		template<typename T, class TComponentSystem>
 		class ComponentSystemUpdateEvent;
 
@@ -71,6 +68,18 @@ namespace ING {
 
 			}
 
+
+
+			/**
+			 *	Event Methods
+			 */
+		public:
+			virtual void Update() {
+
+
+
+			}
+
 		};
 
 
@@ -104,18 +113,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			ComponentArray<T>			array;
+			SmartArray<T>			array;
 
-			ComponentArray<bool>		isStartedArray;
+			IdGenerator				idGenerator;
 
-			IdGenerator					idGenerator;
-
-			Repository* repository;
+			Repository*				repository;
 
 		public:
-			ComponentArray<T>&		GetArray			() { return array;			}
-
-			ComponentArray<bool>&	GetIsStartedArray	() { return isStartedArray;			}
+			SmartArray<T>&			GetArray			() { return array;			}
 
 			IdGenerator&			GetIdGenerator		() { return idGenerator;	}
 
@@ -133,13 +138,14 @@ namespace ING {
 
 			ComponentPtr<T, TComponentSystem>	GetComponent				(Entity* entity);
 
-			T&									GetComponentFromId			(ComponentId id); 
+			T&									GetComponentFromPtr			(ComponentPtr<T, TComponentSystem>& ptr); 
 
-			T*									GetComponentDataPtrFromId	(ComponentId id);
+			T*									GetComponentDataPtrFromPtr	(ComponentPtr<T, TComponentSystem>& ptr);
 
 			void								RemoveComponent				(Entity* entity);
 
 			void								Foreach						(void (*callback)(T& component));
+			void								Foreach						(void (*callback)(T& component, ECS::ComponentPtr<T, TComponentSystem>& ptr));
 
 			std::string							GetComponentTypeId			();
 
@@ -153,7 +159,7 @@ namespace ING {
 
 			virtual void Start  (ComponentPtr<T, TComponentSystem> componentPtr)	{ }
 
-			virtual void Update ();
+			virtual void Update () override;
 
 		};
 

@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace ECS {
 
+		class Repository;
+
+
+
 		class ING_API RepositoryManager :
 			public Singleton<RepositoryManager>,
 			public Square
@@ -41,6 +45,34 @@ namespace ING {
 			virtual bool Init()		override;
 			virtual bool Run()		override;
 			virtual bool Release()	override;
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			List<Repository*>	repositoryList;
+
+		public:
+			List<Repository*>&	GetRepositoryList() { return repositoryList; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			List<Repository*>::Node*	AddRepository		(Repository* repository);
+			void						RemoveRepository	(List<Repository*>::Node* node);
+
+
+
+			/**
+			 *	Event Methods
+			 */
+		public:
+			void Update();
 
 		};
 

@@ -48,19 +48,19 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			ComponentId id;
-			Repository* repository;
+			ComponentId		id;
+			Repository*		repository;
 
 		public:
-			ComponentId	GetId() { return id; }
-			Repository* GetRepository() { return repository; }
+			ComponentId		GetId				() { return id; }
+			Repository*		GetRepository		() { return repository; }
 
-			void		SetId(ComponentId id) {
+			void			SetId(ComponentId id) {
 
 				this->id = id;
 			}
 
-			void		SetRepository(Repository* repository) {
+			void			SetRepository(Repository* repository) {
 
 				this->repository = repository;
 			}
@@ -88,8 +88,8 @@ namespace ING {
 
 			ComponentPtr(IComponentPtr iPtr) {
 
-				id = iPtr.GetId();
-				repository = iPtr.GetRepository();
+				id			= iPtr.GetId();
+				repository	= iPtr.GetRepository();
 
 			}
 

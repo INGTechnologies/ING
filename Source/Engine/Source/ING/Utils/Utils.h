@@ -112,6 +112,13 @@
 
 
 
+/**
+ *	Include SmartArray
+ */
+#include <ING/Utils/SmartArray/SmartArray.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
