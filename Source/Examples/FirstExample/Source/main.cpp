@@ -245,8 +245,7 @@ int main() {
 
 
 
-		//32721
-		for (unsigned int i = 0; i < 20000000; ++i) {
+		for (unsigned int i = 0; i < 1000; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 

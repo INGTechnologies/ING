@@ -63,7 +63,7 @@ namespace ING {
 
 			ComponentPtr<T, TComponentSystem> result;
 
-			ComponentId id = idGenerator.GenUInt16();
+			ComponentId id = idGenerator.GenUInt64();
 
 			array.Add(component, id);
 
@@ -121,7 +121,7 @@ namespace ING {
 
 			array.Erase(id);
 
-			idGenerator.RemoveUInt16Id(id);
+			idGenerator.RemoveUInt64Id(id);
 
 			entity->RemoveComponent<T>();
 
@@ -130,15 +130,9 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::Foreach			(void (*callback)(T& component)){
 
-			std::vector<SmartArrayBlock<T>*> arrayBlockVector = array.GetBlockVector();
+			for (unsigned int index = 0; index < array.filledCount; ++index) {
 
-			for (SmartArrayBlock<T>* block : arrayBlockVector) {
-
-				for (unsigned int index = 0; index < block->filledCount; ++index) {
-
-					callback(block->pData[index]);
-
-				}
+				callback(array.GetPData()[index]);
 
 			}
 			
@@ -147,21 +141,15 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::Foreach(void (*callback)(T& component, ECS::ComponentPtr<T, TComponentSystem>& ptr)) {
 
-			std::vector<SmartArrayBlock<T>*> arrayBlockVector = array.GetBlockVector();
+			for (unsigned int index = 0; index < array.filledCount; ++index) {
 
-			for (SmartArrayBlock<T>* block : arrayBlockVector) {
+				ECS::ComponentPtr<T, TComponentSystem> ptr;
 
-				for (unsigned int index = 0; index < block->filledCount; ++index) {
+				ptr.SetId(array.Index2Id(index));
 
-					ECS::ComponentPtr<T, TComponentSystem> ptr;
+				ptr.SetRepository(repository);
 
-					ptr.SetId(block->index2IdMap[index]);
-
-					ptr.SetRepository(repository);
-
-					callback(block->pData[index], ptr);
-
-				}
+				callback(array.GetPData()[index], ptr);
 
 			}
 

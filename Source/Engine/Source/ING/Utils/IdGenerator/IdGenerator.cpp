@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Random
+ */
+#include <random>
+
+
+
+/**
  *	Constructors And Destructor
  */
 IdGenerator::IdGenerator() {
@@ -32,22 +39,43 @@ IdGenerator::~IdGenerator() {
  */
 uint8_t IdGenerator::GenUInt8() {
 
-	uint8_t result = rand() % 254 + 1;
+	uint8_t result = rand() % (256 - 2) + 1;
+
+	bool isRepeat = false;
 
 	for (std::unordered_map<uint8_t, bool>*& uint8Map : uint8MapVector) {
 
-		if (uint8Map->find(result) == uint8Map->end()) {
+		if (uint8Map->find(result) != uint8Map->end()) {
 
-			return GenUInt8();
-
-		}
-		else if(uint8Map->size() < uint8Map->max_size()){
-
-			(*uint8Map)[result] = true;
-
-			return result;
+			isRepeat = true;
+			break;
 
 		}
+
+	}
+
+	if (isRepeat) {
+
+		return GenUInt8();
+
+	}
+	else {
+
+		for (std::unordered_map<uint8_t, bool>*& uint8Map : uint8MapVector) {
+
+			if (uint8Map->size() < uint8Map->max_size()) {
+
+				(*uint8Map)[result] = true;
+
+				return result;
+
+			}
+
+		}
+
+		uint8MapVector.push_back(new std::unordered_map<uint8_t, bool>());
+
+		(*(uint8MapVector[uint8MapVector.size() - 1]))[result] = true;
 
 	}
 
@@ -90,22 +118,43 @@ void IdGenerator::RegisterUInt8Id(uint8_t id) {
  */
 uint16_t IdGenerator::GenUInt16() {
 
-	uint16_t result = rand() % 254 + 1;
+	uint16_t result = rand() % 65534 + 1;
+
+	bool isRepeat = false;
 
 	for (std::unordered_map<uint16_t, bool>*& uint16Map : uint16MapVector) {
 
-		if (uint16Map->find(result) == uint16Map->end()) {
+		if (uint16Map->find(result) != uint16Map->end()) {
 
-			return GenUInt16();
-
-		}
-		else if (uint16Map->size() < uint16Map->max_size()) {
-
-			(*uint16Map)[result] = true;
-
-			return result;
+			isRepeat = true;
+			break;
 
 		}
+
+	}
+
+	if (isRepeat) {
+
+		return GenUInt16();
+
+	}
+	else {
+
+		for (std::unordered_map<uint16_t, bool>*& uint16Map : uint16MapVector) {
+
+			if (uint16Map->size() < uint16Map->max_size()) {
+
+				(*uint16Map)[result] = true;
+
+				return result;
+
+			}
+
+		}
+
+		uint16MapVector.push_back(new std::unordered_map<uint16_t, bool>());
+
+		(*(uint16MapVector[uint16MapVector.size() - 1]))[result] = true;
 
 	}
 
@@ -148,22 +197,43 @@ void IdGenerator::RegisterUInt16Id(uint16_t id) {
  */
 uint32_t IdGenerator::GenUInt32() {
 
-	uint32_t result = rand() % 254 + 1;
+	uint32_t result = rand() % 4294967294 + 1;
+
+	bool isRepeat = false;
 
 	for (std::unordered_map<uint32_t, bool>*& uint32Map : uint32MapVector) {
 
-		if (uint32Map->find(result) == uint32Map->end()) {
+		if (uint32Map->find(result) != uint32Map->end()) {
 
-			return GenUInt32();
-
-		}
-		else if (uint32Map->size() < uint32Map->max_size()) {
-
-			(*uint32Map)[result] = true;
-
-			return result;
+			isRepeat = true;
+			break;
 
 		}
+
+	}
+
+	if (isRepeat) {
+
+		return GenUInt32();
+
+	}
+	else {
+
+		for (std::unordered_map<uint32_t, bool>*& uint32Map : uint32MapVector) {
+
+			if (uint32Map->size() < uint32Map->max_size()) {
+
+				(*uint32Map)[result] = true;
+
+				return result;
+
+			}
+
+		}
+
+		uint32MapVector.push_back(new std::unordered_map<uint32_t, bool>());
+
+		(*(uint32MapVector[uint32MapVector.size() - 1]))[result] = true;
 
 	}
 
@@ -206,22 +276,51 @@ void IdGenerator::RegisterUInt32Id(uint32_t id) {
  */
 uint64_t IdGenerator::GenUInt64() {
 
-	uint64_t result = rand() % 254 + 1;
+	std::random_device rd;
+
+	/* Random number generator */
+	std::default_random_engine generator(rd());
+
+	/* Distribution on which to apply the generator */
+	std::uniform_int_distribution<long long unsigned> distribution(0, 0xFFFFFFFFFFFFFFFF);
+
+	uint64_t result = distribution(generator);//rand() % 18446744073709551614 + 1;
+
+	bool isRepeat = false;
 
 	for (std::unordered_map<uint64_t, bool>*& uint64Map : uint64MapVector) {
 
-		if (uint64Map->find(result) == uint64Map->end()) {
+		if (uint64Map->find(result) != uint64Map->end()) {
 
-			return GenUInt8();
-
-		}
-		else if (uint64Map->size() < uint64Map->max_size()) {
-
-			(*uint64Map)[result] = true;
-
-			return result;
+			isRepeat = true;
+			break;
 
 		}
+
+	}
+
+	if (isRepeat) {
+
+		return GenUInt64();
+
+	}
+	else {
+
+		for (std::unordered_map<uint64_t, bool>*& uint64Map : uint64MapVector) {
+
+			if (uint64Map->size() < uint64Map->max_size()) {
+
+				(*uint64Map)[result] = true;
+
+				return result;
+
+			}
+
+		}
+
+		uint64MapVector.push_back(new std::unordered_map<uint64_t, bool>());
+
+		(*(uint64MapVector[uint64MapVector.size() - 1]))[result] = true;
 
 	}
 
@@ -268,6 +367,8 @@ void IdGenerator::ClearUInt8Ids() {
 			uint8Map->erase(it++);
 		}
 
+		delete uint8Map;
+
 	}
 
 }
@@ -280,6 +381,8 @@ void IdGenerator::ClearUInt16Ids() {
 		{
 			uint16Map->erase(it++);
 		}
+
+		delete uint16Map;
 
 	}
 
@@ -294,6 +397,8 @@ void IdGenerator::ClearUInt32Ids() {
 			uint32Map->erase(it++);
 		}
 
+		delete uint32Map;
+
 	}
 
 }
@@ -306,6 +411,8 @@ void IdGenerator::ClearUInt64Ids() {
 		{
 			uint64Map->erase(it++);
 		}
+
+		delete uint64Map;
 
 	}
 
