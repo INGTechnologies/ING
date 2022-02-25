@@ -30,9 +30,6 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		class ComponentPtr;
 
-		template<typename T>
-		class ComponentArray;
-
 		template<typename T, class TComponentSystem>
 		class ComponentSystemUpdateEvent;
 
@@ -71,6 +68,38 @@ namespace ING {
 
 			}
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void RemoveComponent(Entity* entity);
+
+
+
+			/**
+			 *	Event Methods
+			 */
+		public:
+			virtual void IAwake(IComponentPtr componentPtr) {
+			
+				
+			
+			}
+
+			virtual void IStart(IComponentPtr componentPtr) {
+			
+				
+			
+			}
+
+			virtual void Update() {
+
+
+
+			}
+
 		};
 
 
@@ -93,16 +122,10 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		protected:
-			ComponentSystem(Repository* repository);
+			ComponentSystem		(Repository* repository);
 
 		public:
-			~ComponentSystem() {
-
-				array.Clear();
-
-				idGenerator.ClearIds();
-
-			}
+			~ComponentSystem	();
 
 
 
@@ -110,18 +133,18 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			ComponentArray<T>			array;
+			SmartArray<T>			array;
 
-			IdGenerator					idGenerator;
+			IdGenerator				idGenerator;
 
-			Repository* repository;
+			Repository*				repository;
 
 		public:
-			ComponentArray<T>&	GetArray		() { return array;			}
+			SmartArray<T>&			GetArray			() { return array;			}
 
-			IdGenerator&		GetIdGenerator	() { return idGenerator;	}
+			IdGenerator&			GetIdGenerator		() { return idGenerator;	}
 
-			Repository*			GetRepository	() { return repository;		}
+			Repository*				GetRepository		() { return repository;		}
 
 
 
@@ -135,13 +158,14 @@ namespace ING {
 
 			ComponentPtr<T, TComponentSystem>	GetComponent				(Entity* entity);
 
-			T&									GetComponentFromId			(ComponentId id); 
+			T&									GetComponentFromPtr			(ComponentPtr<T, TComponentSystem>& ptr); 
 
-			T*									GetComponentDataPtrFromId	(ComponentId id);
+			T*									GetComponentDataPtrFromPtr	(ComponentPtr<T, TComponentSystem>& ptr);
 
-			void								RemoveComponent				(Entity* entity);
+			virtual void						RemoveComponent				(Entity* entity) override;
 
 			void								Foreach						(void (*callback)(T& component));
+			void								Foreach						(void (*callback)(T& component, ECS::ComponentPtr<T, TComponentSystem>& ptr));
 
 			std::string							GetComponentTypeId			();
 
@@ -155,7 +179,11 @@ namespace ING {
 
 			virtual void Start  (ComponentPtr<T, TComponentSystem> componentPtr)	{ }
 
-			virtual void Update ()													{ }
+			virtual void IAwake	(IComponentPtr componentPtr)	override;
+
+			virtual void IStart	(IComponentPtr componentPtr)	override;
+
+			virtual void Update ()								override;
 
 		};
 

@@ -15,6 +15,13 @@
 
 
 /**
+ *	Include Repository Manager
+ */
+#include "Manager/Manager.h"
+
+
+
+/**
  *	Define Class Members,...
  */
 namespace ING {
@@ -28,12 +35,16 @@ namespace ING {
 
 			isActive = true;
 
+			node = RepositoryManager::GetInstance()->AddRepository(this);
+
 		}
 
 		Repository::~Repository() {
 
 			componentSystemTypeId2ComponentSystemMap.clear();
 			componentTypeId2ComponentSystemMap.clear();
+
+			RepositoryManager::GetInstance()->RemoveRepository(node);
 
 		}
 
@@ -101,6 +112,29 @@ namespace ING {
 			Entity* result = new Entity(this);
 
 			return result;		
+		}
+
+		void				Repository::ReleaseEntity(Entity* entity) {
+
+			entity->Release();
+
+		}
+
+
+
+		/**
+		 *	Event Methods
+		 */
+		void				Repository::Update() {
+
+			for (auto& item : componentSystemTypeId2ComponentSystemMap) {
+
+				IComponentSystem* isystem = item.second;
+
+				isystem->Update();
+
+			}
+
 		}
 
 	}

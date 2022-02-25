@@ -34,6 +34,8 @@ namespace ING {
 
 		class Repository;
 
+		class IComponentSystem;
+
 		template<typename T, class TComponentSystem>
 		class ComponentSystem;
 
@@ -48,21 +50,21 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			ComponentId id;
-			Repository* repository;
+			ComponentId			id;
+			IComponentSystem*	icomponentSystem;
 
 		public:
-			ComponentId	GetId() { return id; }
-			Repository* GetRepository() { return repository; }
+			ComponentId			GetId				() { return id; }
+			IComponentSystem*	GetIComponentSystem	() { return icomponentSystem; }
 
-			void		SetId(ComponentId id) {
+			void				SetId(ComponentId id) {
 
 				this->id = id;
 			}
 
-			void		SetRepository(Repository* repository) {
+			void				SetIComponentSystem(IComponentSystem* icomponentSystem) {
 
-				this->repository = repository;
+				this->icomponentSystem = icomponentSystem;
 			}
 
 		};
@@ -88,14 +90,26 @@ namespace ING {
 
 			ComponentPtr(IComponentPtr iPtr) {
 
-				id = iPtr.GetId();
-				repository = iPtr.GetRepository();
+				id					= iPtr.GetId();
+				icomponentSystem	= iPtr.GetIComponentSystem();
 
 			}
 
 			~ComponentPtr() {
 
 
+
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			TComponentSystem* GetComponentSystem() {
+
+				return (TComponentSystem*)icomponentSystem;
 
 			}
 

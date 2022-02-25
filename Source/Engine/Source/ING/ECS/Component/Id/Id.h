@@ -13,7 +13,7 @@ namespace ING {
 
 	namespace ECS {
 
-		using ComponentId = unsigned int;
+		using ComponentId = unsigned long;
 
 	}
 

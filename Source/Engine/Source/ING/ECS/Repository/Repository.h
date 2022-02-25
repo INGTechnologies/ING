@@ -68,6 +68,8 @@ namespace ING {
 
 			bool isActive;
 
+			List<Repository*>::Node* node;
+
 		public:
 			std::map<std::string, IComponentSystem*>&	GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
 			std::map<std::string, IComponentSystem*>&	GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
@@ -75,6 +77,8 @@ namespace ING {
 			bool										IsActive() { return isActive; }
 
 			void										SetActive(bool isActive);
+
+			List<Repository*>::Node*					GetNode(){ return node; }
 
 
 
@@ -95,6 +99,16 @@ namespace ING {
 			void				ReleaseComponentSystem();
 
 			Entity*				CreateEntity();
+
+			void				ReleaseEntity(Entity* entity);
+
+
+
+			/**
+			 *	Event Methods
+			 */
+		public:
+			virtual void Update();
 
 		};
 

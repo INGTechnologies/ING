@@ -36,7 +36,7 @@ namespace ING {
 			 *	UInt 8 Generator
 			 */
 		private:
-			std::unordered_map<uint8_t, bool> uint8Map;
+			std::vector < std::unordered_map<uint8_t, bool>*> uint8MapVector;
 
 		public:
 			uint8_t GenUInt8();
@@ -49,7 +49,7 @@ namespace ING {
 			 *	UInt 16 Generator
 			 */
 		private:
-			std::unordered_map<uint16_t, bool> uint16Map;
+			std::vector < std::unordered_map<uint16_t, bool>*> uint16MapVector;
 
 		public:
 			uint16_t GenUInt16();
@@ -62,7 +62,7 @@ namespace ING {
 			 *	UInt 32 Generator
 			 */
 		private:
-			std::unordered_map<uint32_t, bool> uint32Map;
+			std::vector < std::unordered_map<uint32_t, bool>*> uint32MapVector;
 
 		public:
 			uint32_t GenUInt32();
@@ -75,7 +75,7 @@ namespace ING {
 			 *	UInt 64 Generator
 			 */
 		private:
-			std::unordered_map<uint64_t, bool> uint64Map;
+			std::vector < std::unordered_map<uint64_t, bool>*> uint64MapVector;
 
 		public:
 			uint64_t GenUInt64();

@@ -287,6 +287,13 @@ namespace ING {
 
 		}
 
+
+
+		/* Update Repositories */
+		ECS::RepositoryManager::GetInstance()->Update();
+
+
+
 		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
 
 			Rendering::Engine::GetInstance()->FrameUpdate();

@@ -6,16 +6,16 @@
 
 
 
- /**
-  *	Include Application
-  */
+/**
+ *	Include Application
+ */
 #include <ING/Application/Application.h>
 
 
 
-  /**
-   *	Include Thread And Thread Manager
-   */
+/**
+ *	Include Thread And Thread Manager
+ */
 #include <ING/Thread/Thread.h>
 
 #include <ING/Thread/Manager/Manager.h>
@@ -146,41 +146,69 @@ using namespace ING;
 
 
 
-static struct Transform {
+static struct ExampleC {
 
-	Vector3 pos;
+	ECS::ComponentId id;
 
 };
 
 
 
-static ECS_COMPONENT_SYSTEM(TransformSystem, Transform)
+static ECS_COMPONENT_SYSTEM(ExampleCSystem, ExampleC)
 
 public:
 	virtual void Init		() override;
 	virtual void Release	() override;
 
+
+
+	/**
+	 *	Event Methods
+	 */
+public:
+	virtual void Awake(ECS::ComponentPtr<ExampleC, ExampleCSystem> componentPtr) override;
+	virtual void Start(ECS::ComponentPtr<ExampleC, ExampleCSystem> componentPtr) override;
+	virtual void Update() override;
+
 };
 
 		
 
-void TransformSystem::Init() {
+void ExampleCSystem::Init() {
 
 	
 
 }
 
-void TransformSystem::Release() {
+void ExampleCSystem::Release() {
 
-	ComponentSystem<Transform, TransformSystem>::Release();
+	ComponentSystem<ExampleC, ExampleCSystem>::Release();
+
+}
+
+
+
+void ExampleCSystem::Awake(ECS::ComponentPtr<ExampleC, ExampleCSystem> componentPtr) {
+
+	Debug::Log(String("ExampleC ") + String(componentPtr.GetId()) + String(" Awake"));
+
+}
+
+void ExampleCSystem::Start(ECS::ComponentPtr<ExampleC, ExampleCSystem> componentPtr) {
+
+	//Debug::Log(String("ExampleC ") + String(componentPtr.GetId()) + String(" Start"));
+
+}
+
+void ExampleCSystem::Update() {
+
+	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
 
 }
 
 
 
 int main() {
-	 
-
 
 	//Create ING Application
 	ING::Application::CreateInstance();
@@ -203,32 +231,21 @@ int main() {
 
 
 
-		TransformSystem* transformSystem = repository->CreateComponentSystem<TransformSystem>();
+		ExampleCSystem* exampleCSystem = repository->CreateComponentSystem<ExampleCSystem>();
 
 
 
-		ECS::ComponentArray<Transform>& transformArray = transformSystem->GetArray();
+		for (unsigned long i = 0; i < 5; ++i) {
 
+			ECS::Entity* entity = repository->CreateEntity();
 
+			exampleCSystem->AddComponent(entity);
 
-		ECS::Entity* entity  = repository->CreateEntity();
-		ECS::Entity* entity2 = repository->CreateEntity();
+			repository->ReleaseEntity(entity);
 
+		}
 
-
-		ECS::ComponentPtr<Transform, TransformSystem> transformPtr = transformSystem->AddComponent(entity);
-			
-		transformPtr->pos = Vector3(1,2,3);
-
-
-
-		ECS::ComponentPtr<Transform, TransformSystem> transform2Ptr = transformSystem->AddComponent(entity2);
-
-		transform2Ptr->pos = Vector3(2, 1, 3);
-
-
-
-		repository->ReleaseComponentSystem<TransformSystem>();
+		ExampleCSystem* exampleCSystem2 = repository->CreateComponentSystem<ExampleCSystem>();
 
 	});
 
@@ -247,6 +264,7 @@ int main() {
 
 
 	});
+
 
 
 	ING::Application::GetInstance()->Run();
