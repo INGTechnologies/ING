@@ -34,18 +34,14 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		T&	ComponentPtr<T, TComponentSystem>::operator * () {
 
-			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
-
-			return componentSystem->GetComponentFromPtr(*this);
+			return GetComponentSystem()->GetComponentFromPtr(*this);
 
 		}
 
 		template<typename T, class TComponentSystem>
 		T* ComponentPtr<T, TComponentSystem>::operator -> () {
 
-			TComponentSystem* componentSystem = repository->GetComponentSystem<TComponentSystem>();
-
-			return componentSystem->GetComponentDataPtrFromPtr(*this);
+			return GetComponentSystem()->GetComponentDataPtrFromPtr(*this);
 
 		}
 

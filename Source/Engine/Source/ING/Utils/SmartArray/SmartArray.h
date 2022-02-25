@@ -135,7 +135,7 @@ namespace ING {
 
 				if (id2IndexMap->find(id) != id2IndexMap->end()) {
 
-					return id2IndexMap[id];
+					return (*id2IndexMap)[id];
 
 				}
 
@@ -152,7 +152,7 @@ namespace ING {
 
 				if (index2IdMap->find(index) != index2IdMap->end()) {
 
-					return index2IdMap[index];
+					return (*index2IdMap)[index];
 
 				}
 

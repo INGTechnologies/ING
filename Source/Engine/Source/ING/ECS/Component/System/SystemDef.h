@@ -68,7 +68,7 @@ namespace ING {
 			array.Add(component, id);
 
 			result.SetId(id);
-			result.SetRepository(repository);
+			result.SetIComponentSystem(this);
 
 			entity->AddComponent<T, TComponentSystem>(result);
 
@@ -130,7 +130,7 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::Foreach			(void (*callback)(T& component)){
 
-			for (unsigned int index = 0; index < array.filledCount; ++index) {
+			for (unsigned int index = 0; index < array.GetFilledCount(); ++index) {
 
 				callback(array.GetPData()[index]);
 
@@ -141,13 +141,13 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::Foreach(void (*callback)(T& component, ECS::ComponentPtr<T, TComponentSystem>& ptr)) {
 
-			for (unsigned int index = 0; index < array.filledCount; ++index) {
+			for (unsigned int index = 0; index < array.GetFilledCount(); ++index) {
 
 				ECS::ComponentPtr<T, TComponentSystem> ptr;
 
 				ptr.SetId(array.Index2Id(index));
 
-				ptr.SetRepository(repository);
+				ptr.SetIComponentSystem(this);
 
 				callback(array.GetPData()[index], ptr);
 

@@ -39,7 +39,7 @@ IdGenerator::~IdGenerator() {
  */
 uint8_t IdGenerator::GenUInt8() {
 
-	uint8_t result = rand() % (256 - 2) + 1;
+	uint8_t result = rand() % 254 + 1;
 
 	bool isRepeat = false;
 
@@ -197,7 +197,15 @@ void IdGenerator::RegisterUInt16Id(uint16_t id) {
  */
 uint32_t IdGenerator::GenUInt32() {
 
-	uint32_t result = rand() % 4294967294 + 1;
+	std::random_device rd;
+
+	/* Random number generator */
+	std::default_random_engine generator(rd());
+
+	/* Distribution on which to apply the generator */
+	std::uniform_int_distribution<unsigned int> distribution(0, 0xFFFFFFFF - 1);
+
+	uint32_t result = distribution(generator) + 1;
 
 	bool isRepeat = false;
 
@@ -282,9 +290,9 @@ uint64_t IdGenerator::GenUInt64() {
 	std::default_random_engine generator(rd());
 
 	/* Distribution on which to apply the generator */
-	std::uniform_int_distribution<long long unsigned> distribution(0, 0xFFFFFFFFFFFFFFFF);
+	std::uniform_int_distribution<unsigned long> distribution(0, 0xFFFFFFFFFFFFFFFF - 1);
 
-	uint64_t result = distribution(generator);//rand() % 18446744073709551614 + 1;
+	uint64_t result = distribution(generator) + 1;//rand() % 18446744073709551614 + 1;
 
 	bool isRepeat = false;
 
@@ -321,6 +329,8 @@ uint64_t IdGenerator::GenUInt64() {
 		uint64MapVector.push_back(new std::unordered_map<uint64_t, bool>());
 
 		(*(uint64MapVector[uint64MapVector.size() - 1]))[result] = true;
+
+		return result;
 
 	}
 

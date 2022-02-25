@@ -148,8 +148,7 @@ using namespace ING;
 
 static struct ExampleC {
 
-	Vector3 v3;
-	Vector4 v4;
+	ECS::ComponentId id;
 
 };
 
@@ -205,15 +204,6 @@ void ExampleCSystem::Update() {
 
 	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
 
-	//Foreach([](ExampleC& component, ECS::ComponentPtr<ExampleC, ExampleCSystem>& ptr) {
-		
-	//	component.v3 = Vector3(1,0,0);
-	//	component.v4 = Vector4(1,0,0,0);
-		
-	//});
-	
-	Debug::Log(Time::GetFPS());
-
 }
 
 
@@ -245,13 +235,38 @@ int main() {
 
 
 
-		for (unsigned int i = 0; i < 1000; ++i) {
+		for (unsigned long i = 0; i < 199990; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 
 			exampleCSystem->AddComponent(entity);
 
 		}
+
+		
+		exampleCSystem->Foreach([](ExampleC& component, ECS::ComponentPtr<ExampleC, ExampleCSystem>& ptr) {
+
+			component.id = ptr.GetId();
+
+		});
+
+		//exampleCSystem->Foreach([](ExampleC& component, ECS::ComponentPtr<ExampleC, ExampleCSystem>& ptr) {
+
+		//	Debug::Log(String(ptr.GetComponentSystem()->GetArray().Id2Index(component.id)));
+
+		//});
+
+		/* Check If Id Repeated */
+		for (unsigned long i = 0; i < exampleCSystem->GetArray().GetFilledCount() - 1; ++i) {
+
+			if (i != exampleCSystem->GetArray().Id2Index(exampleCSystem->GetArray().Index2Id(i))) {
+
+				Debug::Log(false);
+
+			}
+
+		}
+		
 
 
 
