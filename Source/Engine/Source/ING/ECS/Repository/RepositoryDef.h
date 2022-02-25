@@ -114,6 +114,12 @@ namespace ING {
 			return result;		
 		}
 
+		void				Repository::ReleaseEntity(Entity* entity) {
+
+			entity->Release();
+
+		}
+
 
 
 		/**

@@ -39,6 +39,18 @@ namespace ING {
 
 
 		/**
+		 *	Release Methods
+		 */
+		void Entity::Release() {
+
+			
+
+			delete this;
+		}
+
+
+
+		/**
 		 *	Methods
 		 */
 		template<typename T, class TComponentSystem>

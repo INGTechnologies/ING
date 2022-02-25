@@ -62,10 +62,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release() {
-
-				delete this;
-			}
+			virtual void Release();
 
 
 

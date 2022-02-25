@@ -58,6 +58,17 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void	IComponentSystem::RemoveComponent(Entity* entity) {
+
+
+
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
 		template<typename T, class TComponentSystem>
 		ComponentPtr<T, TComponentSystem>	ComponentSystem<T, TComponentSystem>::AddComponent	(Entity* entity, T& component)	{
 
@@ -167,6 +178,30 @@ namespace ING {
 		/**
 		 *	Event Methods
 		 */
+		template<typename T, class TComponentSystem>
+		void						ComponentSystem<T, TComponentSystem>::IAwake(IComponentPtr componentPtr) {
+
+			ComponentPtr<T, TComponentSystem> tPtr;
+
+			tPtr.SetId(componentPtr.GetId());
+			tPtr.SetIComponentSystem(componentPtr.GetIComponentSystem());
+
+			Awake(tPtr);
+
+		}
+
+		template<typename T, class TComponentSystem>
+		void						ComponentSystem<T, TComponentSystem>::IStart(IComponentPtr componentPtr) {
+
+			ComponentPtr<T, TComponentSystem> tPtr;
+
+			tPtr.SetId(componentPtr.GetId());
+			tPtr.SetIComponentSystem(componentPtr.GetIComponentSystem());
+
+			Start(tPtr);
+
+		}
+
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::Update() {
 

@@ -190,7 +190,7 @@ void ExampleCSystem::Release() {
 
 void ExampleCSystem::Awake(ECS::ComponentPtr<ExampleC, ExampleCSystem> componentPtr) {
 
-	//Debug::Log(String("ExampleC ") + String(componentPtr.GetId()) + String(" Awake"));
+	Debug::Log(String("ExampleC ") + String(componentPtr.GetId()) + String(" Awake"));
 
 }
 
@@ -235,40 +235,15 @@ int main() {
 
 
 
-		for (unsigned long i = 0; i < 199990; ++i) {
+		for (unsigned long i = 0; i < 5; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 
 			exampleCSystem->AddComponent(entity);
 
-		}
-
-		
-		exampleCSystem->Foreach([](ExampleC& component, ECS::ComponentPtr<ExampleC, ExampleCSystem>& ptr) {
-
-			component.id = ptr.GetId();
-
-		});
-
-		//exampleCSystem->Foreach([](ExampleC& component, ECS::ComponentPtr<ExampleC, ExampleCSystem>& ptr) {
-
-		//	Debug::Log(String(ptr.GetComponentSystem()->GetArray().Id2Index(component.id)));
-
-		//});
-
-		/* Check If Id Repeated */
-		for (unsigned long i = 0; i < exampleCSystem->GetArray().GetFilledCount() - 1; ++i) {
-
-			if (i != exampleCSystem->GetArray().Id2Index(exampleCSystem->GetArray().Index2Id(i))) {
-
-				Debug::Log(false);
-
-			}
+			repository->ReleaseEntity(entity);
 
 		}
-		
-
-
 
 		ExampleCSystem* exampleCSystem2 = repository->CreateComponentSystem<ExampleCSystem>();
 

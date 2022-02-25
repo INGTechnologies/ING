@@ -71,9 +71,29 @@ namespace ING {
 
 
 			/**
+			 *	Methods
+			 */
+		public:
+			virtual void RemoveComponent(Entity* entity);
+
+
+
+			/**
 			 *	Event Methods
 			 */
 		public:
+			virtual void IAwake(IComponentPtr componentPtr) {
+			
+				
+			
+			}
+
+			virtual void IStart(IComponentPtr componentPtr) {
+			
+				
+			
+			}
+
 			virtual void Update() {
 
 
@@ -142,7 +162,7 @@ namespace ING {
 
 			T*									GetComponentDataPtrFromPtr	(ComponentPtr<T, TComponentSystem>& ptr);
 
-			void								RemoveComponent				(Entity* entity);
+			virtual void						RemoveComponent				(Entity* entity) override;
 
 			void								Foreach						(void (*callback)(T& component));
 			void								Foreach						(void (*callback)(T& component, ECS::ComponentPtr<T, TComponentSystem>& ptr));
@@ -159,7 +179,11 @@ namespace ING {
 
 			virtual void Start  (ComponentPtr<T, TComponentSystem> componentPtr)	{ }
 
-			virtual void Update () override;
+			virtual void IAwake	(IComponentPtr componentPtr)	override;
+
+			virtual void IStart	(IComponentPtr componentPtr)	override;
+
+			virtual void Update ()								override;
 
 		};
 

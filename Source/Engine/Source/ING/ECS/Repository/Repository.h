@@ -100,6 +100,8 @@ namespace ING {
 
 			Entity*				CreateEntity();
 
+			void				ReleaseEntity(Entity* entity);
+
 
 
 			/**
