@@ -148,7 +148,7 @@ using namespace ING;
 
 static struct ExampleC {
 
-	ECS::ComponentId id;
+	ECS::ComponentId id = 0;
 
 };
 
@@ -239,11 +239,21 @@ int main() {
 
 			ECS::Entity* entity = repository->CreateEntity();
 
-			exampleCSystem->AddComponent(entity);
+			ECS::ComponentPtr<ExampleC,ExampleCSystem> cptr = exampleCSystem->AddComponent(entity);
 
-			repository->ReleaseEntity(entity);
+			cptr->id = i;
 
 		}
+
+
+
+		for (auto item : *exampleCSystem) {
+
+			Debug::Log(String(item.id));
+
+		}
+
+
 
 		ExampleCSystem* exampleCSystem2 = repository->CreateComponentSystem<ExampleCSystem>();
 
