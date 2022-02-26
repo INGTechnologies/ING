@@ -204,6 +204,14 @@ void ExampleCSystem::Update() {
 
 	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
 
+	for (ExampleC& component : *this) {
+
+		component.id = component.id * component.id * component.id;
+
+	}
+
+	//Debug::Log(Time::GetFPS());
+
 }
 
 
@@ -235,27 +243,13 @@ int main() {
 
 
 
-		for (unsigned long i = 0; i < 5; ++i) {
+		for (unsigned long i = 0; i < 20; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 
-			ECS::ComponentPtr<ExampleC,ExampleCSystem> cptr = exampleCSystem->AddComponent(entity);
-
-			cptr->id = i;
+			exampleCSystem->AddComponent(entity)->id = i;
 
 		}
-
-
-
-		for (auto item : *exampleCSystem) {
-
-			Debug::Log(String(item.id));
-
-		}
-
-
-
-		ExampleCSystem* exampleCSystem2 = repository->CreateComponentSystem<ExampleCSystem>();
 
 	});
 

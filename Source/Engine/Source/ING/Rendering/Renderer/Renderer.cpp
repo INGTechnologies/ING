@@ -2,7 +2,9 @@
 /**
  *	Include Header
  */
-#include "Resource.h"
+#include "Renderer.h"
+
+
 
 
 
@@ -13,13 +15,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Resource::Resource(Rendering::Device* device) {
+		Renderer::Renderer()
+		{
 
-			this->device = device;
+
 
 		}
 
-		Resource::~Resource() {
+		Renderer::~Renderer()
+		{
 
 
 
@@ -28,9 +32,10 @@ namespace ING {
 
 
 		/**
-		 *	Release Method
+		 *	Release Methods
 		 */
-		void Resource::Release() {
+		void Renderer::Release()
+		{
 
 			delete this;
 

@@ -22,6 +22,8 @@ namespace ING {
 
 		class Resource;
 
+		class Device;
+
 
 
 		class ING_API View :
@@ -32,7 +34,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			View();
+			View(Device* device);
 			~View();
 
 
@@ -46,15 +48,21 @@ namespace ING {
 
 
 			/**
-			 *	Resource
+			 *	Properties
 			 */
 		private:
-			Resource* resource;
+			Resource*	resource;
+
+			Device*		device;
 
 		public:
-			Resource*	GetResource	() { return resource; }
+			Resource*	GetResource	()						{ return resource; }
 			
-			void		SetResource	(Resource* resource) { this->resource = resource; }
+			void		SetResource	(Resource* resource)	{ this->resource = resource; }
+
+			Device*		GetDevice	()						{ return device; }
+
+			void		SetDevice	(Device* device)		{ this->device = device; }
 
 		};
 

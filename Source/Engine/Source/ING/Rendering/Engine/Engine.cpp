@@ -158,9 +158,26 @@ namespace ING {
 
 
 		/**
-		 *	FrameUpdate Method
+		 *	Properties
+		 */
+		void Engine::SetRenderer(Renderer* renderer) {
+
+			/* New Renderer Will Be Used In Next Frame */
+			targetRenderer = renderer;
+
+		}
+
+
+
+		/**
+		 *	Methods
 		 */
 		void Engine::FrameUpdate() {
+
+			/* Set Renderer */
+			renderer = targetRenderer;
+
+
 
 			const std::map<HWND, Window*>& windowMap = WindowManager::GetInstance()->GetWindowMap();
 

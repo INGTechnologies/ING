@@ -25,7 +25,7 @@ namespace ING {
 	Camera::Camera()
 	{
 
-
+		node = CameraManager::GetInstance()->AddCamera(this);
 
 	}
 
@@ -43,6 +43,8 @@ namespace ING {
 	 */
 	void Camera::Release()
 	{
+
+		CameraManager::GetInstance()->RemoveCamera(node);
 
 		delete this;
 
