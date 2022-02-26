@@ -82,7 +82,7 @@ namespace ING {
 
 			this->window = window;
 
-			renderTargetView = RenderTargetView::Create();
+			renderTargetView = RenderTargetView::Create(device);
 
 			InitEvents();
 

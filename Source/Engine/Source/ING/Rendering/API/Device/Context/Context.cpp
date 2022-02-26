@@ -85,6 +85,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void DeviceContext::ClearRenderTargetView(RenderTargetView* rtv, Color color) {
+
+
+
+		}
+
 	}
 
 }
