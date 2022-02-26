@@ -75,6 +75,16 @@ namespace ING {
 
 		}
 
+		std::string String(float content) {
+
+			std::stringstream ss;
+
+			ss << content;
+
+			return ss.str();
+
+		}
+
 		std::string String(void* content) {
 
 			std::stringstream ss;

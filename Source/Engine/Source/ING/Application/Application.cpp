@@ -117,6 +117,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Profiler
+ */
+#include <ING/Profiler/Profiler.h>
+
+
+
 namespace ING {
 
 	/**
@@ -153,6 +160,9 @@ namespace ING {
 
 		/* Time */
 		AddSquare<Time>();
+
+		/* Profiler */
+		AddSquare<Profiler>();
 
 		/* Resource Manager */
 		AddSquare<ResourceManager>();

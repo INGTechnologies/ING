@@ -142,6 +142,13 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Profiler
+ */
+#include <ING/Profiler/Profiler.h> 
+
+
+
 using namespace ING;
 
 
@@ -240,6 +247,11 @@ int main() {
 
 
 		ExampleCSystem* exampleCSystem = repository->CreateComponentSystem<ExampleCSystem>();
+
+
+
+		Profiler::BeginSession	("Create Entity", "ECS Test");
+		Profiler::EndSession	("Create Entity", "ECS Test");
 
 
 
