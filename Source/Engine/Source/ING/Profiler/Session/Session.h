@@ -50,6 +50,8 @@ namespace ING {
 
 		std::chrono::duration<float>		completeTime;
 
+		List<ProfilerSession*>::Node*		node;
+
 	public:
 		const std::string&					GetName			() { return name; }
 
@@ -60,6 +62,8 @@ namespace ING {
 		const std::chrono::duration<float>& GetEndTime		() { return endTime; }
 
 		const std::chrono::duration<float>& GetCompleteTime	() { return completeTime; }
+
+		List<ProfilerSession*>::Node*		GetNode			() { return node; }
 
 
 

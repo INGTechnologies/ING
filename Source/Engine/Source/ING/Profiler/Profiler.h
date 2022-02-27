@@ -58,11 +58,14 @@ namespace ING {
 		 */
 	private:
 		std::map<std::pair<std::string, std::string>, ProfilerSession*> sessionMap;
+		std::map<std::string, List<ProfilerSession*>::Ref >				category2SessionListMap;
 
-		bool logSessionInConsole;
+		bool															logSessionInConsole;
 
 	public:
-		bool IsLogSessionInConsole() { return logSessionInConsole; }
+		bool															IsLogSessionInConsole	()											{ return logSessionInConsole; }
+
+		ProfilerSession*												GetSession				(std::string name, std::string category)	{ return sessionMap[std::pair<std::string, std::string>(name, category)]; }
 
 
 
@@ -70,11 +73,15 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		static ProfilerSession* BeginSession	(std::string name, std::string category);
-		static ProfilerSession* BeginSession	(const char* name, const char* category);
+		static ProfilerSession*			BeginSession	(std::string name, std::string category);
+		static ProfilerSession*			BeginSession	(const char* name, const char* category);
 
-		static void				EndSession		(std::string name, std::string category);
-		static void				EndSession		(const char* name, const char* category);
+		static void						EndSession		(std::string name, std::string category);
+		static void						EndSession		(const char* name, const char* category);
+
+		List<ProfilerSession*>::Node*	AddSession		(ProfilerSession* session);
+
+		void							RemoveSession	(ProfilerSession* session);
 
 	};
 

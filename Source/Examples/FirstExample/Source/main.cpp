@@ -210,12 +210,14 @@ void ExampleCSystem::Start(ECS::ComponentPtr<ExampleC, ExampleCSystem> component
 void ExampleCSystem::Update() {
 
 	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
-
+	 
+	Profiler::BeginSession	("Update Example Component System", "ECS Test");
 	for (ExampleC& component : *this) {
 
 		component.id = component.id * component.id * component.id;
 
 	}
+	Profiler::EndSession	("Update Example Component System", "ECS Test");
 
 	//Debug::Log(Time::GetFPS());
 

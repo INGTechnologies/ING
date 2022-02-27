@@ -399,6 +399,16 @@ namespace ING {
 				 *	Basic Methods
 				 */
 			public:
+				void  ReleasePtr() {
+
+					Clear();
+
+					delete listPtr;
+
+					listPtr = nullptr;
+
+				}
+
 				Node* AddAt(T& obj, Node* node2) {
 
 					return listPtr->AddAt(obj,node2);
@@ -423,6 +433,8 @@ namespace ING {
 				}
 
 				void Clear() {
+
+					if (listPtr == nullptr) return;
 
 					listPtr->Clear();
 

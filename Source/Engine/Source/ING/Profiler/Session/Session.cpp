@@ -6,6 +6,13 @@
 
 
 
+/**
+ *	Include Profiler
+ */
+#include <ING/Profiler/Profiler.h>
+
+
+
 static auto appStart = std::chrono::steady_clock::now();
 
 
@@ -22,6 +29,8 @@ namespace ING {
 		this->category	= category;
 
 		startTime		= std::chrono::steady_clock::now() - appStart;
+
+		node = Profiler::GetInstance()->AddSession(this);
 
 	}
 
@@ -41,6 +50,8 @@ namespace ING {
 		endTime = std::chrono::steady_clock::now() - appStart;
 
 		completeTime = (endTime - startTime);
+
+		Profiler::GetInstance()->RemoveSession(this);
 
 	}
 

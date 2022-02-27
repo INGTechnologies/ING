@@ -83,19 +83,23 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	ProfilerSession* Profiler::BeginSession	(std::string name, std::string category)	{
+	ProfilerSession*				Profiler::BeginSession	(std::string name, std::string category)	{
 
 		ProfilerSession* session = new ProfilerSession(name, category);
 
-		Profiler::GetInstance()->sessionMap[std::pair<std::string, std::string>(name, category)] = session;
+		Profiler* profiler = Profiler::GetInstance();
+
+		profiler->sessionMap[std::pair<std::string, std::string>(name, category)] = session;
 
 		if (Profiler::GetInstance()->logSessionInConsole) {
 
-			Debug::SetConsoleColor(0x30);
+			Debug::SetConsoleColor(0xF0);
 
-			std::wcout << " ";
+			std::wcout << " BEGIN ";
 
-			std::cout << String("Begin Session ");
+			Debug::SetConsoleColor(0x20);
+
+			std::cout << String(" SESSION ");
 
 			Debug::SetConsoleColor(0x07);
 
@@ -140,9 +144,9 @@ namespace ING {
 		return session;
 
 	}
-	ProfilerSession* Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(String(name), String(category)); }
+	ProfilerSession*				Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(String(name), String(category)); }
 
-	void			 Profiler::EndSession	(std::string name, std::string category)	{
+	void							Profiler::EndSession	(std::string name, std::string category)	{
 
 		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<std::string, std::string>(name, category)];
 
@@ -152,11 +156,13 @@ namespace ING {
 
 			float completeTime = session->GetCompleteTime().count();
 
+			Debug::SetConsoleColor(0x70);
+
+			std::wcout << "  END  ";
+
 			Debug::SetConsoleColor(0x20);
 
-			std::wcout << " ";
-
-			std::cout << String("End   Session ");
+			std::cout << String(" SESSION ");
 
 			Debug::SetConsoleColor(0x07);
 
@@ -209,10 +215,6 @@ namespace ING {
 			Debug::SetConsoleColor(0x07);
 
 			std::cout << String(" )") << std::endl;
-			
-			//std::cout << String("( Name: '") + name + String("', Category: '") + category + String("', Complete Time: ") + String(completeTime * 1000) + String("ms)") << std::endl;
-			
-			//std::cout << String("( Name: '") + name + String("', Category: '") + category + String("', Complete Time: ") + String(completeTime * 1000) + String("ms)") << std::endl;
 
 		}
 
@@ -221,7 +223,32 @@ namespace ING {
 		delete session;
 
 	}
-	void			 Profiler::EndSession	(const char* name, const char* category)	{ return EndSession		(String(name), String(category)); }
+	void							Profiler::EndSession	(const char* name, const char* category)	{ return EndSession		(String(name), String(category)); }
 
+	List<ProfilerSession*>::Node*	Profiler::AddSession	(ProfilerSession* session) {
+
+		if (category2SessionListMap.find(session->GetCategory()) == category2SessionListMap.end()) {
+
+			category2SessionListMap[session->GetCategory()] = new List<ProfilerSession*>();
+
+		}
+
+		return category2SessionListMap[session->GetCategory()].Add(session);
+
+	}
+
+	void							Profiler::RemoveSession	(ProfilerSession* session) {
+
+		category2SessionListMap[session->GetCategory()].Remove(session->GetNode());
+
+		if (category2SessionListMap[session->GetCategory()].GetSize() == 0) {
+
+			category2SessionListMap[session->GetCategory()].ReleasePtr();
+
+			category2SessionListMap.erase(session->GetCategory());
+
+		}
+
+	}
 
 }
