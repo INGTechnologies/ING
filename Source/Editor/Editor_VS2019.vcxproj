@@ -24,6 +24,7 @@
     <ProjectGuid>{9cf3cac7-abfa-4b01-88c3-646827263a73}</ProjectGuid>
     <RootNamespace>INGEditor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Editor</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

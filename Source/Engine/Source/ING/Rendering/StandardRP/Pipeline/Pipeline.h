@@ -25,6 +25,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Camera;
+
+
+
 	namespace Rendering {
 
 		class IRenderer;

@@ -18,6 +18,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Camera;
+
+
+
 	namespace Rendering {
 
 		class IRenderer;
@@ -27,8 +31,6 @@ namespace ING {
 		class DeviceContext;
 
 		class IPass;
-
-		class Camera;
 
 
 
