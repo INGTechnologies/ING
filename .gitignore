@@ -350,4 +350,4 @@ MigrationBackup/
 .ionide/
 /.nide
 
-/**/*.vcxproj.filters
+**/*.filters
