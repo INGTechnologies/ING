@@ -75,29 +75,29 @@
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Examples\$(ProjectName)\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
