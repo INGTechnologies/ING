@@ -104,6 +104,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Screen Manager
+ */
+#include <ING/Screen/Manager/Manager.h>
+
+
+
+/**
  *	Include System
  */
 #include <ING/System/System.h>
@@ -114,6 +121,13 @@ using namespace ING::Utils;
  *	Include ECS Repository Manager
  */
 #include <ING/ECS/Repository/Manager/Manager.h>
+
+
+
+/**
+ *	Include Profiler
+ */
+#include <ING/Profiler/Profiler.h>
 
 
 
@@ -154,6 +168,9 @@ namespace ING {
 		/* Time */
 		AddSquare<Time>();
 
+		/* Profiler */
+		AddSquare<Profiler>();
+
 		/* Resource Manager */
 		AddSquare<ResourceManager>();
 
@@ -169,6 +186,9 @@ namespace ING {
 
 		/* Rendering Engine */
 		AddSquare<Rendering::Engine>();
+
+		/* Screen Manager */
+		AddSquare<ScreenManager>();
 
 		/* Window Manager */
 		AddSquare<WindowManager>();

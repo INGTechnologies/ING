@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class Renderer;
+
+
+
 		class ING_API Engine :
 			public Board<Engine>,
 			public Square
@@ -45,10 +49,10 @@ namespace ING {
 
 
 			/**
-			 *	FrameUpdate Method
+			 *	Methods
 			 */
 		public:
-			void FrameUpdate();
+			void		FrameUpdate();
 
 		};
 

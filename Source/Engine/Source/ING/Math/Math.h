@@ -31,3 +31,10 @@
  *	Include Constants
  */
 #include <ING/Math/Constants.h>
+
+
+
+/**
+ *	Include Functions
+ */
+#include <ING/Math/Functions/Functions.h>

@@ -142,6 +142,34 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Profiler
+ */
+#include <ING/Profiler/Profiler.h> 
+
+
+
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h> 
+
+
+
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h> 
+
+
+
+/**
+ *	Include Rendering Scene
+ */
+#include <ING/Rendering/Scene/Scene.h> 
+
+
+
 using namespace ING;
 
 
@@ -204,6 +232,29 @@ void ExampleCSystem::Update() {
 
 	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
 
+
+
+	/**
+	 *	Show FPS In Window Title
+	 */
+	static float t = 0;
+	 
+	t += Time::GetDeltaTime();
+
+	if (t >= 1.0f) {
+
+		t = 0;
+
+		WindowManager::GetInstance()->GetMainWindow()->SetTitle(WString(L"FPS: ") + WString(Time::GetFPS()));
+
+	}
+
+	for (ExampleC& component : *this) {
+
+		component.id = component.id * component.id * component.id;
+
+	}
+
 }
 
 
@@ -235,27 +286,38 @@ int main() {
 
 
 
-		for (unsigned long i = 0; i < 5; ++i) {
+		Camera* camera = new Camera();
+
+		camera->SetActive(true);
+
+
+
+		camera->SetScreen(ScreenManager::GetInstance()->GetMainScreen());
+
+
+
+		camera->SetFOV(Math::Deg2Rad * 90.0f);
+
+		camera->SetFarPlane(1000.0f);
+
+		camera->SetNearPlane(0.1f);
+
+
+
+		Rendering::Scene* renderingScene = new Rendering::Scene("Example Rendering Scene");
+
+		camera->SetRenderingScene(renderingScene);
+
+
+
+
+		for (unsigned long i = 0; i < 0; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 
-			ECS::ComponentPtr<ExampleC,ExampleCSystem> cptr = exampleCSystem->AddComponent(entity);
-
-			cptr->id = i;
+			exampleCSystem->AddComponent(entity)->id = i;
 
 		}
-
-
-
-		for (auto item : *exampleCSystem) {
-
-			Debug::Log(String(item.id));
-
-		}
-
-
-
-		ExampleCSystem* exampleCSystem2 = repository->CreateComponentSystem<ExampleCSystem>();
 
 	});
 

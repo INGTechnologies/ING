@@ -36,6 +36,10 @@ namespace ING {
 			 *	Node Struct
 			 */
 			struct Node {
+
+				/**
+				 *	Constructors And Destructor
+				 */
 			public:
 				Node() {
 
@@ -51,6 +55,9 @@ namespace ING {
 
 
 
+				/**
+				 *	Properties
+				 */
 			public:
 				void* pValue;
 				Node* next;
@@ -58,11 +65,69 @@ namespace ING {
 
 
 
+				/**
+				 *	Methods
+				 */
 			public:
 				template<typename T>
 				T& As() {
 					return *((T*)pValue);
 				}
+
+			};
+
+			/**
+			 *	Iterable Struct
+			 */
+			struct Iterable {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Iterable(Node* node) {
+
+					this->node = node;
+
+				}
+				~Iterable() {
+
+
+
+				}
+
+
+
+				/**
+				 *	Properties
+				 */
+			public:
+				Node* node;
+
+
+
+				/**
+				 *	Operators
+				 */
+			public:
+				T&		operator *  () {
+
+					return *((T*)(node->pValue));
+
+				}
+
+				void	operator ++ () {
+
+					node = node->next;
+
+				}
+
+				bool	operator != (Iterable a) {
+
+					return !(a.node == node);
+
+				}
+
 
 			};
 
@@ -121,6 +186,9 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
+			Iterable begin	() { return Iterable(headNode); }
+			Iterable end	() { return Iterable(nullptr); }
+
 			Node* AddAt(T& obj, Node* node2) {
 
 				Node* node = new Node();
@@ -399,6 +467,16 @@ namespace ING {
 				 *	Basic Methods
 				 */
 			public:
+				void  ReleasePtr() {
+
+					Clear();
+
+					delete listPtr;
+
+					listPtr = nullptr;
+
+				}
+
 				Node* AddAt(T& obj, Node* node2) {
 
 					return listPtr->AddAt(obj,node2);
@@ -423,6 +501,8 @@ namespace ING {
 				}
 
 				void Clear() {
+
+					if (listPtr == nullptr) return;
 
 					listPtr->Clear();
 

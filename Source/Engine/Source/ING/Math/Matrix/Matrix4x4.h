@@ -75,8 +75,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Matrix4x4	Transpose();
-			float		Det();
+			Matrix4x4			Transpose();
+			Matrix4x4			Cofactor();
+			Matrix4x4			Inverse();
+			static	Matrix4x4	Identity();
+			float				Det();
 
 
 

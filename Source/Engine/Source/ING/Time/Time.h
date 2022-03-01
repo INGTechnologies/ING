@@ -17,7 +17,7 @@ using namespace ING::Utils;
 
 
 /**
- *	Include STD Time
+ *	Include Chrono
  */
 #include <chrono>
 

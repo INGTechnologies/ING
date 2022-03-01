@@ -44,6 +44,28 @@ namespace ING {
 		virtual bool Run()		override;
 		virtual bool Release()	override;
 
+
+
+		/**
+		 *	Properties
+		 */
+	private:
+		List<Camera*>  cameraList;
+		std::unordered_map< Camera*>  cameraList;
+
+	public:
+		List<Camera*>& GetCameraList () { return cameraList; }
+
+
+
+		/**
+		 *	Method
+		 */
+	public:
+		List<Camera*>::Node*	AddCamera		(Camera* camera);
+
+		void					RemoveCamera	(List<Camera*>::Node* node);
+
 	};
 
 

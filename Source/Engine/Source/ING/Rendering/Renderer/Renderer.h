@@ -16,34 +16,28 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Rendering Scene Manager
- */
-#include <ING/Rendering/Scene/Manager/Manager.h>
-
-
-
 namespace ING {
+
+	class Camera;
+
+
 
 	namespace Rendering {
 
-		class ING_API Scene
+		class Device;
+
+		class DeviceContext;
+
+
+
+		class ING_API IRenderer
 		{
-
-			/**
-			 *	Friend Classes
-			 */
-		public:
-			friend class SceneManager;
-
-
-
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Scene	(std::string name);
-			~Scene	();
+			IRenderer	();
+			~IRenderer	();
 
 
 
@@ -56,13 +50,10 @@ namespace ING {
 
 
 			/**
-			 *	Properties
+			 *	Methods
 			 */
-		private:
-			std::string			name;
-
 		public:
-			std::string			GetName () { return name; }
+			virtual void Render(Camera* camera, DeviceContext* context);
 
 		};
 

@@ -31,10 +31,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Scene::Scene()
+		Scene::Scene(std::string name)
 		{
 
+			this->name = name;
 
+			SceneManager::GetInstance()->AddScene(this);
 
 		}
 
@@ -52,6 +54,8 @@ namespace ING {
 		 */
 		void Scene::Release()
 		{
+
+			SceneManager::GetInstance()->RemoveScene(this);
 
 			delete this;
 

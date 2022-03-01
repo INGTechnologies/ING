@@ -7,9 +7,9 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -41,12 +41,5 @@ namespace ING {
 		virtual bool Release()	override;
 
 	};
-
-
-
-	/**
-	 *	Define Macros
-	 */
-
 
 }
