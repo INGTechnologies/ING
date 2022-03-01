@@ -173,20 +173,6 @@ namespace ING {
 
 		}
 
-		template<typename T, class TComponentSystem>
-		T*							ComponentSystem<T, TComponentSystem>::begin() {
-
-			return array.GetPData();
-
-		}
-
-		template<typename T, class TComponentSystem>
-		T*							ComponentSystem<T, TComponentSystem>::end() {
-
-			return begin() + array.GetFilledCount();
-
-		}
-
 
 
 		/**

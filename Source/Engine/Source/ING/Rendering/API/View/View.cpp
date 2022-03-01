@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		View::View(Device* device) {
+		View::View() {
 
 
 

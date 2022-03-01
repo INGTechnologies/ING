@@ -69,8 +69,8 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-		public:
-			virtual void ClearRenderTargetView(RenderTargetView* rtv, Color color);
+		//public:
+			//virtual void ClearRenderTargetView(RenderTargetView* rtv, Color color);
 
 		};
 

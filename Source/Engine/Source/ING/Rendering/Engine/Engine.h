@@ -20,10 +20,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Renderer;
-
-
-
 		class ING_API Engine :
 			public Board<Engine>,
 			public Square
@@ -49,31 +45,10 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-		private:
-			Renderer*	defaultRenderer;
-
-			Renderer*	renderer;
-
-			Renderer*	targetRenderer;
-
-		public:
-			Renderer*	GetDefaultRenderer	() { return defaultRenderer; }
-
-			Renderer*	GetRenderer			() { return renderer; }
-
-			Renderer*	GetTargetRenderer   () { return targetRenderer; }
-
-			void		SetRenderer			(Renderer* renderer);
-
-
-
-			/**
-			 *	Methods
+			 *	FrameUpdate Method
 			 */
 		public:
-			void		FrameUpdate();
+			void FrameUpdate();
 
 		};
 

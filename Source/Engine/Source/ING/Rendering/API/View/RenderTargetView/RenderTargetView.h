@@ -27,10 +27,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
-
-
-
 		class ING_API RenderTargetView: public View
 		{
 
@@ -38,7 +34,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			RenderTargetView(Device* device);
+			RenderTargetView();
 			~RenderTargetView();
 
 
@@ -47,9 +43,9 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static  RenderTargetView*	Create(Rendering::Device* device);
+			static RenderTargetView* Create();
 
-			virtual void				Release() override;
+			virtual void Release() override;
 
 		};
 
