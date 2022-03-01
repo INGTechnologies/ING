@@ -34,7 +34,15 @@ namespace ING {
 
 	namespace Rendering {
 
+		class Device;
+
+
+
 		namespace DirectX11 {
+
+			class Device;
+
+
 
 			class ING_API RenderTargetView : public Rendering::RenderTargetView
 			{
@@ -45,8 +53,8 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				RenderTargetView();
-				~RenderTargetView();
+				RenderTargetView	(Rendering::Device* device);
+				~RenderTargetView	();
 
 
 

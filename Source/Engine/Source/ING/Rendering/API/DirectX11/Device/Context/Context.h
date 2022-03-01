@@ -34,6 +34,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class RenderTargetView;
+
+
+
 		namespace DirectX11 {
 
 			class ING_API DeviceContext : public Rendering::DeviceContext
@@ -64,6 +68,14 @@ namespace ING {
 
 			public:
 				ID3D11DeviceContext* GetD3D11DeviceContext() { return d3d11DeviceContext; }
+
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void ClearRenderTargetView(Rendering::RenderTargetView* rtv, Color color) override;
 
 			};
 

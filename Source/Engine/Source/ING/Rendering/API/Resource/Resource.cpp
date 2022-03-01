@@ -13,9 +13,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Resource::Resource() {
+		Resource::Resource(Rendering::Device* device) {
 
-
+			this->device = device;
 
 		}
 

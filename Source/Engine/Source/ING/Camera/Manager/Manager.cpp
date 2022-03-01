@@ -60,9 +60,26 @@ namespace ING {
 
 	bool CameraManager::Release() {
 
-
+		cameraList.Clear();
 
 		return Square::Release();
+	}
+
+
+
+	/**
+	 *	Method
+	 */
+	List<Camera*>::Node*	CameraManager::AddCamera(Camera* camera) {
+
+		return cameraList.Add(camera);
+
+	}
+
+	void					CameraManager::RemoveCamera(List<Camera*>::Node* node) {
+
+		cameraList.Remove(node);
+
 	}
 
 }

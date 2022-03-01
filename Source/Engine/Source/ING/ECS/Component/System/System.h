@@ -169,6 +169,9 @@ namespace ING {
 
 			std::string							GetComponentTypeId			();
 
+			T*									begin						();
+			T*									end							();
+
 
 
 			/**
@@ -184,6 +187,13 @@ namespace ING {
 			virtual void IStart	(IComponentPtr componentPtr)	override;
 
 			virtual void Update ()								override;
+
+
+
+			/**
+			 *	Operators
+			 */
+		public:
 
 		};
 

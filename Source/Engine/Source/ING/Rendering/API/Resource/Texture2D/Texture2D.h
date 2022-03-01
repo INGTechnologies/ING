@@ -27,6 +27,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class Device;
+
+
+
 		class ING_API Texture2D : public Resource
 		{
 
@@ -34,7 +38,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Texture2D();
+			Texture2D(Rendering::Device* device);
 			~Texture2D();
 
 
@@ -43,9 +47,9 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static Texture2D* Create();
+			static  Texture2D*	Create(Rendering::Device* device);
 
-			virtual void Release() override;
+			virtual void		Release() override;
 
 		};
 

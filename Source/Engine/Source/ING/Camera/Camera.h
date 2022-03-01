@@ -51,6 +51,17 @@ namespace ING {
 	public:
 		virtual void Release();
 
+
+
+		/**
+		 *	Properties
+		 */
+	private:
+		List<Camera*>::Node* node;
+
+	public:
+		List<Camera*>::Node* GetNode () { return node; }
+
 	};
 
 }
