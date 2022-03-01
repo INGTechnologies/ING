@@ -20,10 +20,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
-
-
-
 		class ING_API Resource :
 			public AsMethod
 		{
@@ -32,7 +28,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Resource(Rendering::Device* device);
+			Resource();
 			~Resource();
 
 
@@ -42,19 +38,6 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
-
-
-
-			/**
-			 *	Properties
-			 */
-		private:
-			Rendering::Device*	device;
-
-		public:
-			Rendering::Device*	GetDevice	() { return device; }
-
-			void				SetDevice	(Rendering::Device* device) { this->device = device; }
 
 		};
 

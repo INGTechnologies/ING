@@ -15,8 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			RenderTargetView::RenderTargetView(Rendering::Device* device) : Rendering::RenderTargetView(device)
-			{
+			RenderTargetView::RenderTargetView() {
 
 
 
