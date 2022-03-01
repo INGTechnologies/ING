@@ -351,3 +351,5 @@ MigrationBackup/
 /.nide
 
 **/*.filters
+
+**/*.users
