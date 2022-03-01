@@ -27,15 +27,15 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Texture2D : public Resource
+		class ING_API ITexture2D : public IResource
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Texture2D();
-			~Texture2D();
+			ITexture2D();
+			~ITexture2D();
 
 
 
@@ -43,7 +43,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static Texture2D* Create();
+			static ITexture2D* Create();
 
 			virtual void Release() override;
 

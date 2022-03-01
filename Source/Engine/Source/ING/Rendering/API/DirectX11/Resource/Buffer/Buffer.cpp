@@ -34,7 +34,7 @@ namespace ING {
 			 */
 			void Buffer::Release() {
 
-				Rendering::Buffer::Release();
+				IBuffer::Release();
 
 			}
 

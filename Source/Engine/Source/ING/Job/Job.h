@@ -25,14 +25,16 @@ using namespace ING::Utils;
 
 namespace ING {
 
-
-	struct ING_API Job {
+	/**
+	 *	Interface Class
+	 */
+	struct ING_API IJob {
 
 		/**
 		 *	Nested Members
 		 */
 	public:
-		typedef void (*Func)		(Job* job, void* customData);
+		typedef void (*Func)		(IJob* job, void* customData);
 
 
 
@@ -40,9 +42,9 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		Job();
-		Job(Func executor);
-		~Job();
+		IJob	();
+		IJob	(Func executor);
+		~IJob	();
 
 
 
@@ -128,5 +130,34 @@ namespace ING {
 
 	};
 
+
+
+	/**
+	 *	Main Class
+	 */
+	template<typename T>
+	struct Job : IJob {
+
+		/**
+		 *	Constructors And Destructor
+		 */
+	public:
+		Job() {
+
+			executor = [](IJob* job, void* customData) -> void {
+
+				((T*)job)->Execute();
+
+			};
+
+		}
+
+		~Job() {
+
+
+
+		}
+
+	};
 
 }

@@ -27,7 +27,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class API;
+		class IAPI;
 
 		class ING_API APIManager :
 			public Singleton<APIManager>,
@@ -60,7 +60,7 @@ namespace ING {
 		protected:
 			APIFlag apiFlag;
 
-			API* api;
+			IAPI* api;
 
 		public:
 			APIFlag GetAPIFlag() {
@@ -69,7 +69,7 @@ namespace ING {
 
 			}
 
-			API* GetAPI() {
+			IAPI* GetAPI() {
 
 				return api;
 

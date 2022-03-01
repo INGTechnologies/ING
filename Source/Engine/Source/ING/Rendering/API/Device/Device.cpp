@@ -34,13 +34,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Device::Device() {
+		IDevice::IDevice() {
 
 
 
 		}
 
-		Device::~Device() {
+		IDevice::~IDevice() {
 
 
 
@@ -51,7 +51,7 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		Device* Device::Create() {
+		IDevice* IDevice::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -88,7 +88,7 @@ namespace ING {
 
 		}
 
-		void Device::Release() {
+		void IDevice::Release() {
 
 			if (context != nullptr) {
 

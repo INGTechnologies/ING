@@ -198,7 +198,7 @@ namespace ING {
 
 
 
-				Rendering::Convertor::Release();
+				IConvertor::Release();
 
 			}
 

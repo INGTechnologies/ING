@@ -27,15 +27,15 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API RenderTargetView: public View
+		class ING_API IRenderTargetView: public IView
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			RenderTargetView();
-			~RenderTargetView();
+			IRenderTargetView();
+			~IRenderTargetView();
 
 
 
@@ -43,9 +43,9 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static RenderTargetView* Create();
+			static IRenderTargetView*	Create();
 
-			virtual void Release() override;
+			virtual void				Release() override;
 
 		};
 

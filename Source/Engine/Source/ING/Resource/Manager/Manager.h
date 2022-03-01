@@ -33,11 +33,11 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Resource;
+	class IResource;
 
-	class ResourceLoader;
+	class IResourceLoader;
 
-	class ResourceSaver;
+	class IResourceSaver;
 
 	class Coder;
 
@@ -101,7 +101,7 @@ namespace ING {
 		template<class T>
 		T*				LoadResource	(std::wstring path, CoderOption& coderOption) {
 
-			if (typeid(T) == typeid(Resource)) {
+			if (typeid(T) == typeid(IResource)) {
 
 				T* result = new T();
 
@@ -110,7 +110,7 @@ namespace ING {
 			}
 			else {
 
-				ResourceLoader* loader = T::GetLoader();
+				IResourceLoader* loader = T::GetLoader();
 
 				T* result = (T*)loader->Load(path, coderOption);
 
@@ -132,14 +132,14 @@ namespace ING {
 		template<class T>
 		void			SaveResource	(T* resource, CoderOption& coderOption) {
 
-			if (typeid(T) == typeid(Resource)) {
+			if (typeid(T) == typeid(IResource)) {
 
 				
 
 			}
 			else {
 
-				ResourceSaver* saver = T::GetSaver();
+				IResourceSaver* saver = T::GetSaver();
 
 				saver->Save(resource, coderOption);
 

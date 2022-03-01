@@ -62,7 +62,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPass::Render(DeviceContext* context, Camera* camera, void* input, void* output) {
+		void IPass::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
 
 
 

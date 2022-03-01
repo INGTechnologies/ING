@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DeviceContext::DeviceContext(Device* device) {
+		IDeviceContext::IDeviceContext(IDevice* device) {
 
 			this->device = device;
 
 		}
 
-		DeviceContext::~DeviceContext() {
+		IDeviceContext::~IDeviceContext() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		DeviceContext* DeviceContext::Create(Device* device) {
+		IDeviceContext* IDeviceContext::Create(IDevice* device) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void DeviceContext::Release() {
+		void IDeviceContext::Release() {
 
 			delete this;
 

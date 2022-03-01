@@ -81,7 +81,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::Render(Camera* camera, DeviceContext* context) {
+		void IRenderer::Render(Camera* camera, IDeviceContext* context) {
 
 
 

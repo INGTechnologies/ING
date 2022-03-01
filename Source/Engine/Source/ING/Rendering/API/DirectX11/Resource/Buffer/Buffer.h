@@ -36,7 +36,7 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API Buffer : public Rendering::Buffer
+			class ING_API Buffer : public IBuffer
 			{
 
 				/**

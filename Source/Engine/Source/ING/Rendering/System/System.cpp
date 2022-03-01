@@ -126,7 +126,7 @@ namespace ING {
 
 
 
-			pipeline->Render(Rendering::API::GetInstance()->GetDevice()->GetContext());
+			pipeline->Render(Rendering::IAPI::GetInstance()->GetDevice()->GetContext());
 
 		}
 

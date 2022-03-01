@@ -27,7 +27,7 @@ namespace ING {
 
 	class JobThread;
 
-	class Job;
+	class IJob;
 
 	class ING_API JobSystem :
 		public Singleton<JobSystem>,
@@ -115,7 +115,7 @@ namespace ING {
 		 *	Job Management Methods
 		 */
 	public:
-		void ScheduleJob(Job* job, void* customData);
+		void ScheduleJob(IJob* job, void* customData);
 
 	};
 

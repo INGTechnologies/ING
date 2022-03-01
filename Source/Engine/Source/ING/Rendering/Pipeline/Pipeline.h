@@ -26,9 +26,9 @@ namespace ING {
 
 		class IRenderer;
 
-		class Device;
+		class IDevice;
 
-		class DeviceContext;
+		class IDeviceContext;
 
 		class IPass;
 
@@ -83,8 +83,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Setup	(DeviceContext* context, Camera* camera);
-			virtual void Render	(DeviceContext* context);
+			virtual void Setup	(IDeviceContext* context, Camera* camera);
+			virtual void Render	(IDeviceContext* context);
 
 		};
 

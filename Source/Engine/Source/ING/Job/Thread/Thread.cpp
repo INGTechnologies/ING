@@ -58,7 +58,7 @@ namespace ING {
 	/**
 	 *	Queue Jobs
 	 */
-	void JobThread::ScheduleJob(Job* job, void* customData) {
+	void JobThread::ScheduleJob(IJob* job, void* customData) {
 
 		bool isNeedLockMutex = true;
 
@@ -121,7 +121,7 @@ namespace ING {
 
 		ingThread->Join();
 
-		queueJobs.Foreach([](Job*& job) {
+		queueJobs.Foreach([](IJob*& job) {
 			
 			delete job;
 			
@@ -139,15 +139,15 @@ namespace ING {
 
 			mutex.lock();
 
-			List<Job*>::Node* node = queueJobs.GetHeadNode();
+			List<IJob*>::Node* node = queueJobs.GetHeadNode();
 
 			List<void*>::Node* customData_node = customDatas.GetHeadNode();
 
 			while (node != nullptr) {
-				List<Job*>::Node* nextNode = node->next;
+				List<IJob*>::Node* nextNode = node->next;
 				List<void*>::Node* customData_next_node = customData_node->next;
 
-				Job* job = *((Job**)(node->pValue));
+				IJob* job = *((IJob**)(node->pValue));
 
 				job->Run(*((void**)(customData_node->pValue)));
 

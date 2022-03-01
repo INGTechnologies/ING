@@ -29,11 +29,11 @@ namespace ING {
 
 		class RenderTargetView;
 
-		class Device;
+		class IDevice;
 
 
 
-		class ING_API DeviceContext :
+		class ING_API IDeviceContext :
 			public AsMethod
 		{
 
@@ -41,8 +41,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			DeviceContext(Device* device);
-			~DeviceContext();
+			IDeviceContext(IDevice* device);
+			~IDeviceContext();
 
 
 
@@ -50,19 +50,19 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static  DeviceContext*	Create(Device* device);
+			static  IDeviceContext*	Create(IDevice* device);
 			virtual void			Release();
 
 
 
 			/**
-			 *	Device Context
+			 *	IDevice Context
 			 */
 		protected:
-			Device* device;
+			IDevice* device;
 
 		public:
-			Device* GetDevice() { return device; }
+			IDevice* GetIDevice() { return device; }
 
 
 

@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		RenderTargetView::RenderTargetView() {
+		IRenderTargetView::IRenderTargetView() {
 
 
 
 		}
 
-		RenderTargetView::~RenderTargetView() {
+		IRenderTargetView::~IRenderTargetView() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		RenderTargetView* RenderTargetView::Create() {
+		IRenderTargetView* IRenderTargetView::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void RenderTargetView::Release() {
+		void IRenderTargetView::Release() {
 
 			delete this;
 

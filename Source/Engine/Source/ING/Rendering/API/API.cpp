@@ -36,13 +36,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		API::API() {
+		IAPI::IAPI() {
 
-			convertor = Convertor::Create();
+			convertor = IConvertor::Create();
 
 		}
 
-		API::~API() {
+		IAPI::~IAPI() {
 
 
 
@@ -53,14 +53,14 @@ namespace ING {
 		/**
 		 *	Init, Run, Release Methods
 		 */
-		bool API::Init() {
+		bool IAPI::Init() {
 
-			device = Device::Create();
+			device = IDevice::Create();
 
 			return true;
 		}
 
-		bool API::Release() {
+		bool IAPI::Release() {
 
 			if (device != nullptr) {
 

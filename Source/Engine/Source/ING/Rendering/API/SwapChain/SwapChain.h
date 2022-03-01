@@ -22,13 +22,13 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
+		class IDevice;
 
-		class RenderTargetView;
+		class IRenderTargetView;
 
 
 
-		class ING_API SwapChain :
+		class ING_API ISwapChain :
 			public AsMethod
 		{
 
@@ -36,8 +36,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			SwapChain(Device* device, Window* window);
-			~SwapChain();
+			ISwapChain(IDevice* device, Window* window);
+			~ISwapChain();
 
 
 
@@ -45,7 +45,7 @@ namespace ING {
 			 *	Create, InitEvents Release Methods
 			 */
 		public:
-			static  SwapChain*	Create(Device* device, Window* window);
+			static  ISwapChain*	Create(IDevice* device, Window* window);
 			virtual void		InitEvents();
 			virtual void		Release();
 
@@ -55,10 +55,10 @@ namespace ING {
 			 *	Device
 			 */
 		private:
-			Device* device;
+			IDevice* device;
 
 		public:
-			Device* GetDevice() { return device; }
+			IDevice* GetDevice() { return device; }
 
 
 
@@ -66,10 +66,10 @@ namespace ING {
 			 *	Node
 			 */
 		private:
-			List<SwapChain*>::Node* node;
+			List<ISwapChain*>::Node* node;
 
 		public:
-			List<SwapChain*>::Node* GetNode() { return node; }
+			List<ISwapChain*>::Node* GetNode() { return node; }
 
 
 
@@ -88,10 +88,10 @@ namespace ING {
 			 *	Views
 			 */
 		private:
-			RenderTargetView* renderTargetView;
+			IRenderTargetView* renderTargetView;
 			
 		public:
-			RenderTargetView* GetRenderTargetView() { return renderTargetView; }
+			IRenderTargetView* GetRenderTargetView() { return renderTargetView; }
 
 
 

@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Resource::Resource() {
+		IResource::IResource() {
 
 
 
 		}
 
-		Resource::~Resource() {
+		IResource::~IResource() {
 
 
 
@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		void Resource::Release() {
+		void IResource::Release() {
 
 			delete this;
 

@@ -76,19 +76,19 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		SwapChain::SwapChain(Device* device, Window* window) {
+		ISwapChain::ISwapChain(IDevice* device, Window* window) {
 
 			this->device = device;
 
 			this->window = window;
 
-			renderTargetView = RenderTargetView::Create();
+			renderTargetView = IRenderTargetView::Create();
 
 			InitEvents();
 
 		}
 
-		SwapChain::~SwapChain() {
+		ISwapChain::~ISwapChain() {
 
 
 
@@ -99,7 +99,7 @@ namespace ING {
 		/**
 		 *	Create, InitEvents, Release Methods
 		 */
-		SwapChain* SwapChain::Create(Device* device, Window* window) {
+		ISwapChain* ISwapChain::Create(IDevice* device, Window* window) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -136,11 +136,11 @@ namespace ING {
 
 		}
 
-		void SwapChain::InitEvents() {
+		void ISwapChain::InitEvents() {
 
 			window->GetEvent("RESIZE")->AddListener([](Event* event) {
 
-				SwapChain* swapChain = ((WindowEvent*)event)->GetWindow()->GetScreen()->GetSwapChain();
+				ISwapChain* swapChain = ((WindowEvent*)event)->GetWindow()->GetScreen()->GetSwapChain();
 
 				WindowResizeEvent* resizeEvent = (WindowResizeEvent*)event;
 
@@ -150,7 +150,7 @@ namespace ING {
 
 		}
 
-		void SwapChain::Release() {
+		void ISwapChain::Release() {
 
 			delete this;
 
@@ -161,7 +161,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void SwapChain::Resize(unsigned int width, unsigned int height) {
+		void ISwapChain::Resize(unsigned int width, unsigned int height) {
 
 
 

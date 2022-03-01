@@ -34,7 +34,7 @@ namespace ING {
 			 */
 			void Texture2D::Release() {
 
-				Rendering::Texture2D::Release();
+				Rendering::ITexture2D::Release();
 
 			}
 

@@ -25,7 +25,7 @@ namespace ING {
 		/**
 		 *	API Class
 		 */
-		class ING_API Convertor :
+		class ING_API IConvertor :
 			public AsMethod
 		{
 
@@ -33,8 +33,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Convertor();
-			~Convertor();
+			IConvertor();
+			~IConvertor();
 
 
 
@@ -42,7 +42,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static Convertor* Create();
+			static IConvertor* Create();
 			
 			virtual void Release();
 

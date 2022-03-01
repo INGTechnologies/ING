@@ -32,6 +32,13 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Camera Id
+ */
+#include <ING/Camera/Id.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -81,6 +88,8 @@ namespace ING {
 	private:
 		List<Camera*>::Node*	node;
 
+		CameraId				id;
+
 		bool					isActive;
 
 		Matrix4x4				viewMatrix;
@@ -101,6 +110,8 @@ namespace ING {
 
 	public:
 		List<Camera*>::Node*	GetNode				()							{ return node; }
+
+		CameraId				GetId				()							{ return id; }
 
 		bool					IsActive			()							{ return isActive; }
 

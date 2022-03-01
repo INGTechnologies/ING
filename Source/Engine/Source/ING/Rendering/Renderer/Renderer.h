@@ -24,9 +24,9 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
+		class IDevice;
 
-		class DeviceContext;
+		class IDeviceContext;
 
 
 
@@ -53,7 +53,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render(Camera* camera, DeviceContext* context);
+			virtual void Render(Camera* camera, IDeviceContext* context);
 
 		};
 

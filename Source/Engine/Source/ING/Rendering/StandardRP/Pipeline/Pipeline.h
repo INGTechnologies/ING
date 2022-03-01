@@ -33,9 +33,9 @@ namespace ING {
 
 		class IRenderer;
 
-		class Device;
+		class IDevice;
 
-		class DeviceContext;
+		class IDeviceContext;
 
 		class IPass;
 
@@ -70,12 +70,17 @@ namespace ING {
 				IPass*	mainPass;
 				IPass*	targetMainPass;
 
+				IPass*	finalPass;
+				IPass*	targetFinalPass;
+
 			public:
-				IPass*	GetMainPass() { return mainPass; }
+				IPass*	GetMainPass			() { return mainPass; }
+				IPass*	GetTargetMainPass	() { return targetMainPass; }
+				void	SetMainPass			(IPass* mainPass);
 
-				IPass*	GetTargetMainPass() { return targetMainPass; }
-
-				void	SetMainPass(IPass* mainPass);
+				IPass*	GetFinalPass		() { return finalPass; }
+				IPass*	GetTargetFinalPass	() { return targetFinalPass; }
+				void	SetFinalPass		(IPass* finalPass);
 
 
 
@@ -83,7 +88,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Render(DeviceContext* context) override;
+				virtual void Render(IDeviceContext* context) override;
 
 			};
 

@@ -55,6 +55,13 @@
 
 
 
+/**
+ *	Include StandardRP Final Pass
+ */
+#include <ING/Rendering/StandardRP/Pass/Final/Final.h>
+
+
+
 
 namespace ING {
 
@@ -67,9 +74,14 @@ namespace ING {
 			 */
 			Pipeline::Pipeline(std::string name) : IPipeline(name) {
 
+				/**
+				 *	Create Default Passes
+				 */
 				targetMainPass	= new MainPass("Standard Main Pass");
-
 				mainPass		= targetMainPass;
+
+				targetFinalPass = new MainPass("Standard Final Pass");
+				finalPass		= targetFinalPass;
 
 			}
 
@@ -95,10 +107,17 @@ namespace ING {
 			/**
 			 *	Properties
 			 */
-			void Pipeline::SetMainPass(IPass* mainPass) {
+			void Pipeline::SetMainPass	(IPass* mainPass) {
 
 				/* New Main Pass Will Be Used In Next Frame */
 				targetMainPass = mainPass;
+
+			}
+
+			void Pipeline::SetFinalPass	(IPass* finalPass) {
+
+				/* New Main Pass Will Be Used In Next Frame */
+				targetFinalPass = finalPass;
 
 			}
 
@@ -107,7 +126,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void Pipeline::Render(DeviceContext* context) {
+			void Pipeline::Render(IDeviceContext* context) {
 
 				IPipeline::Render(context);
 
@@ -123,6 +142,16 @@ namespace ING {
 					MainPassOutput	mainPassOutput;
 
 					mainPass->Render(context, camera, &mainPassInput, &mainPassOutput);
+
+
+
+					/* Get Final Pass */
+					finalPass = targetFinalPass;
+
+					FinalPassInput	finalPassInput;
+					FinalPassOutput	finalPassOutput;
+
+					finalPass->Render(context, camera, &finalPassInput, &finalPassOutput);
 
 				}
 

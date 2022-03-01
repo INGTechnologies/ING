@@ -139,7 +139,7 @@ namespace ING {
 				/**
 				 *	Create Context
 				 */
-				context = Rendering::DeviceContext::Create(this);
+				context = Rendering::IDeviceContext::Create(this);
 
 			}
 
@@ -168,7 +168,7 @@ namespace ING {
 				if (dxgiFactory != nullptr)
 					dxgiFactory->Release();
 
-				Rendering::Device::Release();
+				Rendering::IDevice::Release();
 
 			}
 

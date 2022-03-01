@@ -36,7 +36,7 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API RenderTargetView : public Rendering::RenderTargetView
+			class ING_API RenderTargetView : public Rendering::IRenderTargetView
 			{
 
 

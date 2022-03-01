@@ -39,10 +39,13 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	struct ParallelJob : Job {
+	/**
+	 *	Interface Class
+	 */
+	struct IParallelJob : IJob {
 
 	public:
-		typedef void (*SecondExecutor)(ParallelJob*, unsigned int);
+		typedef void (*SecondExecutor)(IParallelJob*, unsigned int);
 
 
 
@@ -50,31 +53,31 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		ParallelJob() {
+		IParallelJob() {
 
 			threadDoneCount = 0;
 
-			executor = [](Job* job, void* pIndex) -> void {
+			executor = [](IJob* job, void* pIndex) -> void {
 
 				unsigned int index = *((unsigned int*)pIndex);
 
-				((ParallelJob*)job)->GetSecondExecutor()((ParallelJob*)job, index);
+				((IParallelJob*)job)->GetSecondExecutor()((IParallelJob*)job, index);
 
 				delete pIndex;
 
 			};
 
-			runner = [](Job* job, void* pIndex) {
+			runner = [](IJob* job, void* pIndex) {
 
 				unsigned int index = *((unsigned int*)pIndex);
 
 				job->GetExecutor()(job, pIndex);
 
-				((ParallelJob*)job)->GetMutex().lock();
+				((IParallelJob*)job)->GetMutex().lock();
 
-				((ParallelJob*)job)->threadDoneCount++;
+				((IParallelJob*)job)->threadDoneCount++;
 
-				if (((ParallelJob*)job)->threadDoneCount == ((ParallelJob*)job)->GetThreadCount()) {
+				if (((IParallelJob*)job)->threadDoneCount == ((IParallelJob*)job)->GetThreadCount()) {
 
 					job->SetIsDone(true);
 
@@ -82,19 +85,19 @@ namespace ING {
 
 				}
 
-				((ParallelJob*)job)->GetMutex().unlock();
+				((IParallelJob*)job)->GetMutex().unlock();
 
 			};
 
-			scheduler = [](Job* job, void* customData) {
+			scheduler = [](IJob* job, void* customData) {
 
-				((ParallelJob*)job)->threadDoneCount = 0;
+				((IParallelJob*)job)->threadDoneCount = 0;
 
 				job->SetIsDone(false);
 
 				job->SetIsRunning(true);
 
-				for (unsigned int i = 0; i < ((ParallelJob*)job)->GetThreadCount(); ++i) {
+				for (unsigned int i = 0; i < ((IParallelJob*)job)->GetThreadCount(); ++i) {
 
 					unsigned int* customData = new unsigned int(i);
 
@@ -106,8 +109,8 @@ namespace ING {
 
 		}
 
-		ParallelJob(unsigned int threadCount, SecondExecutor secondExecutor) :
-			ParallelJob()
+		IParallelJob(unsigned int threadCount, SecondExecutor secondExecutor) :
+			IParallelJob()
 		{
 
 			this->secondExecutor = secondExecutor;
@@ -116,7 +119,7 @@ namespace ING {
 
 		}
 
-		~ParallelJob() {
+		~IParallelJob() {
 
 
 
@@ -154,6 +157,45 @@ namespace ING {
 
 	public:
 		std::mutex& GetMutex() { return mutex; }
+
+
+	};
+
+
+
+	/**
+	 *	Main Class
+	 */
+	template<typename T>
+	struct ParallelJob : IParallelJob {
+
+		/**
+		 *	Constructors And Destructor
+		 */
+	public:
+		ParallelJob(unsigned int threadCount) :
+			IParallelJob(
+
+				threadCount,
+
+				[](IParallelJob* job, unsigned int index) -> void {
+
+					((T*)job)->Execute(index);
+
+				}
+
+			)
+		{
+
+
+
+		}
+
+				~ParallelJob() {
+
+
+
+				}
 
 
 	};

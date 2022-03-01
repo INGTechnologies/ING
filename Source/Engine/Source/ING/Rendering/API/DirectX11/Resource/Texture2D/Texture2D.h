@@ -36,7 +36,7 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API Texture2D : public Rendering::Texture2D
+			class ING_API Texture2D : public ITexture2D
 			{
 
 				/**

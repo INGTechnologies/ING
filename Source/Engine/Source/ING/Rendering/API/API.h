@@ -23,17 +23,17 @@ namespace ING {
 		/**
 		 *	Declare Classes
 		 */
-		class Device;
+		class IDevice;
 
-		class Convertor;
+		class IConvertor;
 
 
 
 		/**
 		 *	API Class
 		 */
-		class ING_API API :
-			public Singleton<API>,
+		class ING_API IAPI :
+			public Singleton<IAPI>,
 			public AsMethod
 		{
 
@@ -41,8 +41,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			API();
-			~API();
+			IAPI();
+			~IAPI();
 
 
 
@@ -59,10 +59,10 @@ namespace ING {
 			 *	Main Device
 			 */
 		private:
-			Device* device;
+			IDevice* device;
 
 		public:
-			Device* GetDevice() {
+			IDevice* GetDevice() {
 
 				return device;
 
@@ -74,10 +74,10 @@ namespace ING {
 			 *	Convertor
 			 */
 		private:
-			Convertor* convertor;
+			IConvertor* convertor;
 
 		public:
-			Convertor* GetConvertor() {
+			IConvertor* GetConvertor() {
 
 				return convertor;
 

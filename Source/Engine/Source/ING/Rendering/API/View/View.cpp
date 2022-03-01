@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		View::View() {
+		IView::IView	() {
 
 
 
 		}
 
-		View::~View() {
+		IView::~IView	() {
 
 
 
@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		void View::Release() {
+		void IView::Release() {
 
 			delete this;
 
