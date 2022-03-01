@@ -25,21 +25,24 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Resource;
+	class IResource;
 
 	class Coder;
 
 
 
-	class ING_API ResourceSaver {
+	/**
+	 *	Interface Class
+	 */
+	class ING_API IResourceSaver {
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ResourceSaver();
+		IResourceSaver();
 
-		~ResourceSaver();
+		~IResourceSaver();
 
 
 
@@ -55,9 +58,53 @@ namespace ING {
 		 *	Save Method
 		 */
 	public:
-		virtual void Save(Resource* resource, CoderOption& coderOption);
+		virtual void Save(IResource* resource, CoderOption& coderOption);
 
 	};
 
+
+
+	/**
+	 *	Main Class
+	 */
+	template<class T>
+	class ResourceSaver : public IResourceSaver {
+
+		/**
+		 *	Constructors And Destructor
+		 */
+	public:
+		ResourceSaver() {
+
+
+
+		}
+
+		~ResourceSaver() {
+
+
+
+		}
+
+
+
+		/**
+		 *	Release Method
+		 */
+	public:
+		virtual void Release() override;
+
+	};
+
+
+
+	template<class T>
+	void ResourceSaver<T>::Release() {
+
+
+
+		IResourceSaver::Release();
+
+	}
 
 }

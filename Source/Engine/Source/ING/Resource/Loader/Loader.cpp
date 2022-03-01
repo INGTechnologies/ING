@@ -27,13 +27,13 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ResourceLoader::ResourceLoader() {
+	IResourceLoader::IResourceLoader() {
 
 
 
 	}
 
-	ResourceLoader::~ResourceLoader() {
+	IResourceLoader::~IResourceLoader() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 	/**
 	 *	Release Method
 	 */
-	void ResourceLoader::Release() {
+	void IResourceLoader::Release() {
 
 		delete this;
 
@@ -55,7 +55,7 @@ namespace ING {
 	/**
 	 *	Loade Method
 	 */
-	Resource* ResourceLoader::Load(std::wstring path, CoderOption& coderOption) {
+	IResource* IResourceLoader::Load(std::wstring path, CoderOption& coderOption) {
 
 		return nullptr;
 

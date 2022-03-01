@@ -27,7 +27,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Job::Job() {
+	IJob::IJob() {
 
 		isRunning	= false;
 
@@ -35,7 +35,7 @@ namespace ING {
 
 		queue		= 0;
 
-		scheduler	= [](Job* job, void* customData) {
+		scheduler	= [](IJob* job, void* customData) {
 		
 			job->SetIsDone(false);
 
@@ -45,7 +45,7 @@ namespace ING {
 		
 		};
 
-		runner		= [](Job* job, void* customData) {
+		runner		= [](IJob* job, void* customData) {
 
 			job->GetExecutor()(job,nullptr);
 
@@ -55,7 +55,7 @@ namespace ING {
 
 		};
 
-		executor	= [](Job* job, void* customData) {
+		executor	= [](IJob* job, void* customData) {
 
 
 
@@ -63,15 +63,15 @@ namespace ING {
 
 	}
 
-	Job::Job(Func executor):
-		Job()
+	IJob::IJob(Func executor):
+		IJob()
 	{
 
 		this->executor = executor;
 
 	}
 
-	Job::~Job() {
+	IJob::~IJob() {
 
 		
 
@@ -82,19 +82,19 @@ namespace ING {
 	/**
 	 *	Run, Schedule, Complete Methods
 	 */
-	void Job::Run(void* customData) {
+	void IJob::Run(void* customData) {
 
 		runner(this, customData);
 
 	}
 
-	void Job::Schedule() {
+	void IJob::Schedule() {
 
 		scheduler(this, nullptr);
 
 	}
 
-	void Job::Complete() {
+	void IJob::Complete() {
 
 		while (!isDone) {
 
@@ -104,7 +104,7 @@ namespace ING {
 
 	}
 
-	void Job::Release() {
+	void IJob::Release() {
 
 		delete this;
 

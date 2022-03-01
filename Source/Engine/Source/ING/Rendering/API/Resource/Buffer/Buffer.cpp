@@ -13,13 +13,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Buffer::Buffer() {
+		IBuffer::IBuffer	() {
 
 
 
 		}
 
-		Buffer::~Buffer() {
+		IBuffer::~IBuffer	() {
 
 
 
@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		void Buffer::Release() {
+		void IBuffer::Release() {
 
 			delete this;
 

@@ -20,7 +20,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Resource :
+		class ING_API IResource :
 			public AsMethod
 		{
 
@@ -28,8 +28,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Resource();
-			~Resource();
+			IResource();
+			~IResource();
 
 
 

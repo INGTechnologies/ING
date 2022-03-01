@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void MainPass::CustomRender(DeviceContext* context, Camera* camera, MainPassInput* input, MainPassOutput* output) {
+			void MainPass::CustomRender(IDeviceContext* context, Camera* camera, MainPassInput* input, MainPassOutput* output) {
 
 
 

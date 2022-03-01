@@ -17,30 +17,23 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Custom Resource
+ *	Include Resource
  */
-#include <ING/Resource/CustomResource.h>
+#include <ING/Resource/Resource.h>
 
 
 
 /**
- *	Include Custom Resource
+ *	Include Resource Loader
  */
-#include <ING/Resource/CustomResource.h>
+#include <ING/Resource/Loader/Loader.h>
 
 
 
 /**
- *	Include Custom Resource Loader
+ *	Include Resource Saver
  */
-#include <ING/Resource/Loader/CustomLoader.h>
-
-
-
-/**
- *	Include Custom Resource Saver
- */
-#include <ING/Resource/Saver/CustomSaver.h>
+#include <ING/Resource/Saver/Saver.h>
 
 
 
@@ -49,7 +42,7 @@ namespace ING {
 	/**
 	 *	Loader Class
 	 */
-	class ING_API FileLoader : public CustomResourceLoader<FileLoader> {
+	class ING_API FileLoader : public ResourceLoader<FileLoader> {
 
 		/**
 		 *	Constructors And Destructor
@@ -72,7 +65,7 @@ namespace ING {
 		 *	Load Method
 		 */
 	public:
-		virtual Resource* Load(std::wstring path, CoderOption& coderOption) override;
+		virtual IResource* Load(std::wstring path, CoderOption& coderOption) override;
 
 	};
 
@@ -83,7 +76,7 @@ namespace ING {
 	/**
 	 *	Saver Class
 	 */
-	class ING_API FileSaver : public CustomResourceSaver<FileSaver> {
+	class ING_API FileSaver : public ResourceSaver<FileSaver> {
 
 		/**
 		 *	Constructors And Destructor
@@ -106,7 +99,7 @@ namespace ING {
 		 *	Save Method
 		 */
 	public:
-		virtual void Save(Resource* resource, CoderOption& coderOption) override;
+		virtual void Save(IResource* resource, CoderOption& coderOption) override;
 
 	};
 
@@ -117,7 +110,7 @@ namespace ING {
 	/**
 	 *	Resource Class
 	 */
-	class ING_API FileResource : public CustomResource<FileResource, FileLoader, FileSaver> {
+	class ING_API FileResource : public Resource<FileResource, FileLoader, FileSaver> {
 
 		/**
 		 *	Friend Classes

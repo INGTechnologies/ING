@@ -36,14 +36,14 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API DeviceContext : public Rendering::DeviceContext
+			class ING_API DeviceContext : public IDeviceContext
 			{
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				DeviceContext(Rendering::Device* device);
+				DeviceContext(IDevice* device);
 				~DeviceContext();
 
 

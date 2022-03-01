@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Convertor::Convertor() {
+		IConvertor::IConvertor() {
 
 
 
 		}
 
-		Convertor::~Convertor() {
+		IConvertor::~IConvertor() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Create, Release Methods
 		 */
-		Convertor* Convertor::Create() {
+		IConvertor* IConvertor::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void Convertor::Release() {
+		void IConvertor::Release() {
 
 			delete this;
 

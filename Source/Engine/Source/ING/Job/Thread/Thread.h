@@ -25,7 +25,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Job;
+	class IJob;
 
 	class Thread;
 
@@ -81,11 +81,11 @@ namespace ING {
 		 *	Queue Jobs
 		 */
 	private:
-		List<Job*> queueJobs;
+		List<IJob*> queueJobs;
 		List<void*> customDatas;
 
 	public:
-		void ScheduleJob(Job* job, void* customData);
+		void ScheduleJob(IJob* job, void* customData);
 
 
 

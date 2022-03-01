@@ -36,7 +36,7 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API Device : public Rendering::Device
+			class ING_API Device : public IDevice
 			{
 
 				/**

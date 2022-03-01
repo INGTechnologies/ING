@@ -25,20 +25,23 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Resource;
+	class IResource;
 
 	class Coder;
 
 
 
-	class ING_API ResourceLoader {
+	/**
+	 *	Interface Class 
+	 */
+	class ING_API IResourceLoader {
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ResourceLoader();
-		~ResourceLoader();
+		IResourceLoader();
+		~IResourceLoader();
 
 
 
@@ -54,9 +57,54 @@ namespace ING {
 		 *	Loade Method
 		 */
 	public:
-		virtual Resource* Load(std::wstring path, CoderOption& coderOption);
+		virtual IResource* Load(std::wstring path, CoderOption& coderOption);
 
 	};
+
+
+
+	/**
+	 *	Main Class
+	 */
+	template<class T>
+	class ResourceLoader : public IResourceLoader {
+
+		/**
+		 *	Constructors And Destructor
+		 */
+	public:
+		ResourceLoader() {
+
+
+
+		}
+
+		~ResourceLoader() {
+
+
+
+		}
+
+
+
+		/**
+		 *	Release Method
+		 */
+	public:
+		virtual void Release() override;
+
+	};
+
+
+
+	template<class T>
+	void ResourceLoader<T>::Release() {
+
+
+
+		IResourceLoader::Release();
+
+	}
 
 
 }

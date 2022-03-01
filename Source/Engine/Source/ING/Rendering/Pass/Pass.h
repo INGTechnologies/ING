@@ -24,7 +24,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class DeviceContext;
+		class IDeviceContext;
 
 
 
@@ -66,7 +66,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render(DeviceContext* context, Camera* camera, void* input, void* output);
+			virtual void Render(IDeviceContext* context, Camera* camera, void* input, void* output);
 
 		};
 
@@ -100,9 +100,9 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render			(DeviceContext* context, Camera* camera, void* input, void* output) override;
+			virtual void Render			(IDeviceContext* context, Camera* camera, void* input, void* output) override;
 
-			virtual void CustomRender	(DeviceContext* context, Camera* camera, TInput* input, TOutput* output);
+			virtual void CustomRender	(IDeviceContext* context, Camera* camera, TInput* input, TOutput* output);
 
 		};
 
@@ -154,14 +154,14 @@ namespace ING {
 		 *	Methods
 		 */
 		template<typename TInput, typename TOutput>
-		void	Pass<TInput, TOutput>::Render(DeviceContext* context, Camera* camera, void* input, void* output) {
+		void	Pass<TInput, TOutput>::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
 
 			CustomRender(context, camera, (TInput*)input, (TOutput*)output);
 
 		}
 
 		template<typename TInput, typename TOutput>
-		void	Pass<TInput, TOutput>::CustomRender(DeviceContext* context, Camera* camera, TInput* input, TOutput* output) {
+		void	Pass<TInput, TOutput>::CustomRender(IDeviceContext* context, Camera* camera, TInput* input, TOutput* output) {
 
 
 

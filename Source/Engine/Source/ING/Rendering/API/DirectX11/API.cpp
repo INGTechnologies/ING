@@ -45,14 +45,14 @@ namespace ING {
 
 				
 
-				return Rendering::API::Init();
+				return Rendering::IAPI::Init();
 			}
 
 			bool API::Release() {
 
 
 
-				return Rendering::API::Release();
+				return Rendering::IAPI::Release();
 			}
 
 		}

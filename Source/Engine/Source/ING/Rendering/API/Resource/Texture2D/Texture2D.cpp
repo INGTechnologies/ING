@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Texture2D::Texture2D() {
+		ITexture2D::ITexture2D	() {
 
 
 
 		}
 
-		Texture2D::~Texture2D() {
+		ITexture2D::~ITexture2D	() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Create, Release Method
 		 */
-		Texture2D* Texture2D::Create() {
+		ITexture2D* ITexture2D::Create() {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -79,7 +79,7 @@ namespace ING {
 
 		}
 
-		void Texture2D::Release() {
+		void ITexture2D::Release() {
 
 			delete this;
 

@@ -27,13 +27,13 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ResourceSaver::ResourceSaver() {
+	IResourceSaver::IResourceSaver() {
 
 
 
 	}
 
-	ResourceSaver::~ResourceSaver() {
+	IResourceSaver::~IResourceSaver() {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 	/**
 	 *	Release Method
 	 */
-	void ResourceSaver::Release() {
+	void IResourceSaver::Release() {
 
 		delete this;
 
@@ -55,7 +55,7 @@ namespace ING {
 	/**
 	 *	Loader Method
 	 */
-	void ResourceSaver::Save(Resource* resource, CoderOption& coderOption) {
+	void IResourceSaver::Save(IResource* resource, CoderOption& coderOption) {
 
 
 

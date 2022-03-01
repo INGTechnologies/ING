@@ -98,9 +98,9 @@ namespace ING {
 		if (desc.initSwapChain) {
 
 			/* Create SwapChain */
-			Rendering::Device* device = Rendering::APIManager::GetInstance()->GetAPI()->GetDevice();
+			Rendering::IDevice* device = Rendering::APIManager::GetInstance()->GetAPI()->GetDevice();
 
-			swapChain = Rendering::SwapChain::Create(device, window);
+			swapChain = Rendering::ISwapChain::Create(device, window);
 
 			ScreenManager::GetInstance()->InitScreen(this);
 

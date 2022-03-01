@@ -20,11 +20,11 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Resource;
+		class IResource;
 
 
 
-		class ING_API View :
+		class ING_API IView :
 			public AsMethod
 		{
 
@@ -32,8 +32,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			View();
-			~View();
+			IView	();
+			~IView	();
 
 
 
@@ -49,12 +49,12 @@ namespace ING {
 			 *	Resource
 			 */
 		private:
-			Resource* resource;
+			IResource* resource;
 
 		public:
-			Resource*	GetResource	() { return resource; }
+			IResource*	GetResource	() { return resource; }
 			
-			void		SetResource	(Resource* resource) { this->resource = resource; }
+			void		SetResource	(IResource* resource) { this->resource = resource; }
 
 		};
 

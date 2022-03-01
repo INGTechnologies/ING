@@ -107,7 +107,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void Pipeline::Render(DeviceContext* context) {
+			void Pipeline::Render(IDeviceContext* context) {
 
 				IPipeline::Render(context);
 

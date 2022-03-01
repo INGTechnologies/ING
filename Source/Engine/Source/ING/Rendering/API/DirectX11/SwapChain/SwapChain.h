@@ -36,14 +36,14 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API SwapChain : public Rendering::SwapChain
+			class ING_API SwapChain : public ISwapChain
 			{
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				SwapChain(Rendering::Device* device, Window* window);
+				SwapChain(IDevice* device, Window* window);
 				~SwapChain();
 
 

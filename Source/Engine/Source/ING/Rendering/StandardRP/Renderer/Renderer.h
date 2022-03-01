@@ -56,7 +56,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Render(Camera* camera, DeviceContext* context) override;
+				virtual void Render(Camera* camera, IDeviceContext* context) override;
 
 			};
 

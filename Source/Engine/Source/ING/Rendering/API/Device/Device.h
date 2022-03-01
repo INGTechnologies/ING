@@ -20,13 +20,13 @@ namespace ING {
 
 	namespace Rendering {
 
-		class DeviceContext;
+		class IDeviceContext;
 
 		class SwapChain;
 
 
 
-		class ING_API Device :
+		class ING_API IDevice :
 			public AsMethod
 		{
 
@@ -34,8 +34,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Device();
-			~Device();
+			IDevice();
+			~IDevice();
 
 
 
@@ -43,19 +43,19 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static  Device*	Create();
-			virtual void	Release();
+			static  IDevice*	Create();
+			virtual void		Release();
 
 
 
 			/**
-			 *	Device Context
+			 *	IDevice Context
 			 */
 		protected:
-			DeviceContext* context;
+			IDeviceContext* context;
 
 		public:
-			DeviceContext* GetContext() { return context; }
+			IDeviceContext* GetContext() { return context; }
 
 		};
 

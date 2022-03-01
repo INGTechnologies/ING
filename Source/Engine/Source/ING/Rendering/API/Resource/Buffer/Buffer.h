@@ -27,15 +27,15 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Buffer : public Resource
+		class ING_API IBuffer : public IResource
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Buffer();
-			~Buffer();
+			IBuffer	();
+			~IBuffer();
 
 
 

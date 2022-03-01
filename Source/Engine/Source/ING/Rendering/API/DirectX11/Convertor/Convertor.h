@@ -82,7 +82,7 @@ namespace ING {
 			 *	API Class
 			 */
 			class ING_API Convertor :
-				public Rendering::Convertor,
+				public Rendering::IConvertor,
 				public Singleton<Convertor>
 			{
 

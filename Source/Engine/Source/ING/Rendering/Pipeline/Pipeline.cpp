@@ -53,7 +53,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
+		/**IIDeviceContext
 		 *	Constructors And Destructor
 		 */
 		IPipeline::IPipeline	(std::string name) {
@@ -96,13 +96,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPipeline::Setup	(DeviceContext* context, Camera* camera) {
+		void IPipeline::Setup	(IDeviceContext* context, Camera* camera) {
 
 
 
 		}
 
-		void IPipeline::Render	(DeviceContext* context) {
+		void IPipeline::Render	(IDeviceContext* context) {
 
 			/* Set Renderer */
 			renderer = targetRenderer;

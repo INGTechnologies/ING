@@ -34,7 +34,7 @@ namespace ING {
 			 */
 			void RenderTargetView::Release() {
 
-				Rendering::RenderTargetView::Release();
+				Rendering::IRenderTargetView::Release();
 
 			}
 

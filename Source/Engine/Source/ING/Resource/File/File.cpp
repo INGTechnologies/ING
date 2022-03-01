@@ -54,7 +54,7 @@ namespace ING {
 
 
 
-		CustomResourceLoader<FileLoader>::Release();
+		ResourceLoader<FileLoader>::Release();
 
 	}
 
@@ -63,7 +63,7 @@ namespace ING {
 	/**
 	 *	Load Method
 	 */
-	Resource* FileLoader::Load(std::wstring path, CoderOption& coderOption) {
+	IResource* FileLoader::Load(std::wstring path, CoderOption& coderOption) {
 
 		FileResource* result = new FileResource();
 
@@ -109,7 +109,7 @@ namespace ING {
 
 
 
-		CustomResourceSaver<FileSaver>::Release();
+		ResourceSaver<FileSaver>::Release();
 
 	}
 
@@ -118,7 +118,7 @@ namespace ING {
 	/**
 	 *	Save Method
 	 */
-	void FileSaver::Save(Resource* resource, CoderOption& coderOption) {
+	void FileSaver::Save(IResource* resource, CoderOption& coderOption) {
 
 		FileResource* fileResource = (FileResource*)resource;
 
@@ -170,7 +170,7 @@ namespace ING {
 
 
 
-		CustomResource<FileResource, FileLoader, FileSaver>::Release();
+		Resource<FileResource, FileLoader, FileSaver>::Release();
 
 	}
 

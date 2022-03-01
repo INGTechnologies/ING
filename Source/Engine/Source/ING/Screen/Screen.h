@@ -34,7 +34,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class SwapChain;
+		class ISwapChain;
 
 	}
 
@@ -78,20 +78,20 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		bool					isMain;
+		bool							isMain;
 
-		ScreenDesc				desc;
+		ScreenDesc						desc;
 
-		Rendering::SwapChain*	swapChain;
+		Rendering::ISwapChain*			swapChain;
 
-		Window*					window;
+		Window*							window;
 
 	public:
 		bool							IsMain				() { return isMain; }
 
 		ScreenDesc						GetDesc				() { return desc; }
 
-		Rendering::SwapChain*			GetSwapChain		() { return swapChain; }
+		Rendering::ISwapChain*			GetSwapChain		() { return swapChain; }
 
 		Window*							GetWindow			() { return window; }
 

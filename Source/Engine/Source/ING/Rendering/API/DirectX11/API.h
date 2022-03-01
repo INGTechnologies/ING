@@ -29,7 +29,7 @@ namespace ING {
 
 		namespace DirectX11 {
 
-			class ING_API API : public ING::Rendering::API
+			class ING_API API : public ING::Rendering::IAPI
 			{
 
 				/**
