@@ -1,22 +1,8 @@
 
 /**
- *	Include Header
+ * Include Header
  */
-#include "Renderer.h"
-
-
-
-/**
- *	Include Scene
- */
-#include <ING/Rendering/Scene/Scene.h>
-
-
-
-/**
- *	Include Camera
- */
-#include <ING/Camera/Camera.h>
+#include "Pass.h"
 
 
 
@@ -41,8 +27,6 @@
 
 
 
-
-
 namespace ING {
 
 	namespace Rendering {
@@ -50,15 +34,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IRenderer::IRenderer()
-		{
+		IPass::IPass	(std::string name) {
 
-
+			this->name = name;
 
 		}
 
-		IRenderer::~IRenderer()
-		{
+		IPass::~IPass	() {
 
 
 
@@ -69,8 +51,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IRenderer::Release()
-		{
+		void IPass::Release	() {
 
 			delete this;
 
@@ -81,7 +62,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::Render(Camera* camera, DeviceContext* context) {
+		void IPass::Render(DeviceContext* context, Camera* camera, void* input, void* output) {
 
 
 

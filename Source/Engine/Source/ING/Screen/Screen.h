@@ -95,6 +95,11 @@ namespace ING {
 
 		Window*							GetWindow			() { return window; }
 
+		float							GetAspectRatio		();
+
+		float							GetClientHeight		();
+		float							GetClientWidth		();
+
 	};
 
 }

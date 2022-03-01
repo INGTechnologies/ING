@@ -18,16 +18,26 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Camera;
+
+
+
 	namespace Rendering {
 
-		class ING_API Renderer
+		class Device;
+
+		class DeviceContext;
+
+
+
+		class ING_API IRenderer
 		{
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Renderer	();
-			~Renderer	();
+			IRenderer	();
+			~IRenderer	();
 
 
 
@@ -36,6 +46,14 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Render(Camera* camera, DeviceContext* context);
 
 		};
 

@@ -91,6 +91,34 @@ namespace ING {
 
 		}
 
+		std::wstring WString(float content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			std::wstring wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		std::wstring WString(double content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			std::wstring wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
 		std::wstring WString(void* content) {
 
 			std::wstringstream ss;

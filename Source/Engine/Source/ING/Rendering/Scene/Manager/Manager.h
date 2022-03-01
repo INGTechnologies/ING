@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class Scene;
+
+
+
 		class ING_API SceneManager :
 			public Singleton<SceneManager>,
 			public Square
@@ -41,6 +45,26 @@ namespace ING {
 			virtual bool Init()		override;
 			virtual bool Run()		override;
 			virtual bool Release()	override;
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			std::unordered_map<std::string, Scene*>		sceneMap;
+
+		public:
+			std::unordered_map<std::string, Scene*>&	GetSceneMap () { return sceneMap; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void	AddScene	(Scene* scene);
+			void	RemoveScene	(Scene* scene);
 
 		};
 

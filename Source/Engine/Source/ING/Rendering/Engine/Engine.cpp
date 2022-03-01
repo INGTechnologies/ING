@@ -93,6 +93,13 @@
 
 
 
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -158,48 +165,11 @@ namespace ING {
 
 
 		/**
-		 *	Properties
-		 */
-		void Engine::SetRenderer(Renderer* renderer) {
-
-			/* New Renderer Will Be Used In Next Frame */
-			targetRenderer = renderer;
-
-		}
-
-
-
-		/**
 		 *	Methods
 		 */
 		void Engine::FrameUpdate() {
 
-			/* Set Renderer */
-			renderer = targetRenderer;
-
-
-
-			const std::map<HWND, Window*>& windowMap = WindowManager::GetInstance()->GetWindowMap();
-
-			for (auto& item : windowMap) {
-
-				Window* window = item.second;
-
-				Screen* screen = window->GetScreen();
-
-				if (screen->GetDesc().initSwapChain) {
-
-					SwapChain* swapChain = screen->GetSwapChain();
-
-					Device* device = swapChain->GetDevice();
-
-					DeviceContext* deviceContext = device->GetContext();
-
-
-
-				}
-
-			}
+			Rendering::System::GetInstance()->FrameUpdate();
 
 		}
 

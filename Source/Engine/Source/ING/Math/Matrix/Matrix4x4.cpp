@@ -29,6 +29,209 @@ namespace ING {
 			);
 		}
 
+		Matrix4x4	Matrix4x4::Cofactor() {
+
+			return Matrix4x4(
+
+				Vector4(
+
+					Matrix3x3(
+
+						Vector3(rows[1].y, rows[1].z, rows[1].w),
+
+						Vector3(rows[2].y, rows[2].z, rows[2].w),
+
+						Vector3(rows[3].y, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[1].x, rows[1].z, rows[1].w),
+
+						Vector3(rows[2].x, rows[2].z, rows[2].w),
+
+						Vector3(rows[3].x, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[1].x, rows[1].y, rows[1].w),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].w),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[1].x, rows[1].y, rows[1].z),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].z),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].z)
+
+					).Det()
+
+				),
+
+				Vector4(
+
+					Matrix3x3(
+
+						Vector3(rows[0].y, rows[0].z, rows[0].w),
+
+						Vector3(rows[2].y, rows[2].z, rows[2].w),
+
+						Vector3(rows[3].y, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].z, rows[0].w),
+
+						Vector3(rows[2].x, rows[2].z, rows[2].w),
+
+						Vector3(rows[3].x, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].w),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].w),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].z),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].z),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].z)
+
+					).Det()
+
+				),
+
+				Vector4(
+
+					Matrix3x3(
+
+						Vector3(rows[0].y, rows[0].z, rows[0].w),
+
+						Vector3(rows[1].y, rows[1].z, rows[1].w),
+
+						Vector3(rows[3].y, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].z, rows[0].w),
+
+						Vector3(rows[1].x, rows[1].z, rows[1].w),
+
+						Vector3(rows[3].x, rows[3].z, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].w),
+
+						Vector3(rows[1].x, rows[1].y, rows[1].w),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].z),
+
+						Vector3(rows[1].x, rows[1].y, rows[1].z),
+
+						Vector3(rows[3].x, rows[3].y, rows[3].z)
+
+					).Det()
+
+				),
+
+				Vector4(
+
+					Matrix3x3(
+
+						Vector3(rows[0].y, rows[0].z, rows[0].w),
+
+						Vector3(rows[1].y, rows[1].z, rows[1].w),
+
+						Vector3(rows[2].y, rows[2].z, rows[2].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].z, rows[0].w),
+
+						Vector3(rows[1].x, rows[1].z, rows[1].w),
+
+						Vector3(rows[2].x, rows[2].z, rows[2].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].w),
+
+						Vector3(rows[1].x, rows[1].y, rows[1].w),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].w)
+
+					).Det(),
+
+					Matrix3x3(
+
+						Vector3(rows[0].x, rows[0].y, rows[0].z),
+
+						Vector3(rows[1].x, rows[1].y, rows[1].z),
+
+						Vector3(rows[2].x, rows[2].y, rows[2].z)
+
+					).Det()
+
+				)
+
+			);
+
+		}
+
+		Matrix4x4	Matrix4x4::Inverse() {
+
+			return (*this).Cofactor() / Det();
+
+		}
+
+		Matrix4x4	Matrix4x4::Identity() {
+
+			return Matrix4x4(	
+
+				Vector4(1,0,0,0),
+				Vector4(0,1,0,0),
+				Vector4(0,0,1,0),
+				Vector4(0,0,0,1)
+
+			);
+
+		}
+
 		float		Matrix4x4::Det() {
 
 			Matrix3x3 a = Matrix3x3(

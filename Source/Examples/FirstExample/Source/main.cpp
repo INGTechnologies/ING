@@ -149,6 +149,27 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h> 
+
+
+
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h> 
+
+
+
+/**
+ *	Include Rendering Scene
+ */
+#include <ING/Rendering/Scene/Scene.h> 
+
+
+
 using namespace ING;
 
 
@@ -210,16 +231,29 @@ void ExampleCSystem::Start(ECS::ComponentPtr<ExampleC, ExampleCSystem> component
 void ExampleCSystem::Update() {
 
 	ECS::ComponentSystem<ExampleC, ExampleCSystem>::Update();
+
+
+
+	/**
+	 *	Show FPS In Window Title
+	 */
+	static float t = 0;
 	 
-	Profiler::BeginSession	("Update Example Component System", "ECS Test");
+	t += Time::GetDeltaTime();
+
+	if (t >= 1.0f) {
+
+		t = 0;
+
+		WindowManager::GetInstance()->GetMainWindow()->SetTitle(WString(L"FPS: ") + WString(Time::GetFPS()));
+
+	}
+
 	for (ExampleC& component : *this) {
 
 		component.id = component.id * component.id * component.id;
 
 	}
-	Profiler::EndSession	("Update Example Component System", "ECS Test");
-
-	//Debug::Log(Time::GetFPS());
 
 }
 
@@ -252,12 +286,32 @@ int main() {
 
 
 
-		Profiler::BeginSession	("Create Entity", "ECS Test");
-		Profiler::EndSession	("Create Entity", "ECS Test");
+		Camera* camera = new Camera();
+
+		camera->SetActive(true);
 
 
 
-		for (unsigned long i = 0; i < 20; ++i) {
+		camera->SetScreen(ScreenManager::GetInstance()->GetMainScreen());
+
+
+
+		camera->SetFOV(Math::Deg2Rad * 90.0f);
+
+		camera->SetFarPlane(1000.0f);
+
+		camera->SetNearPlane(0.1f);
+
+
+
+		Rendering::Scene* renderingScene = new Rendering::Scene("Example Rendering Scene");
+
+		camera->SetRenderingScene(renderingScene);
+
+
+
+
+		for (unsigned long i = 0; i < 0; ++i) {
 
 			ECS::Entity* entity = repository->CreateEntity();
 

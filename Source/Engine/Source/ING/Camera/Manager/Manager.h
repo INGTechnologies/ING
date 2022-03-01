@@ -51,6 +51,7 @@ namespace ING {
 		 */
 	private:
 		List<Camera*>  cameraList;
+		std::unordered_map< Camera*>  cameraList;
 
 	public:
 		List<Camera*>& GetCameraList () { return cameraList; }

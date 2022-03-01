@@ -42,8 +42,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Scene();
-			~Scene();
+			Scene	(std::string name);
+			~Scene	();
 
 
 
@@ -52,6 +52,17 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			std::string			name;
+
+		public:
+			std::string			GetName () { return name; }
 
 		};
 

@@ -37,6 +37,10 @@ namespace ING {
 
 		std::wstring ING_API WString(unsigned long content);
 
+		std::wstring ING_API WString(float content);
+
+		std::wstring ING_API WString(double content);
+
 		std::wstring ING_API WString(void* content);
 
 	}

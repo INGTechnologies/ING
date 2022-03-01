@@ -48,7 +48,7 @@ namespace ING {
 		 *	Window Management
 		 */
 	private:
-		static	Screen* mainScreen;
+		Screen* mainScreen;
 
 	public:
 		Screen* GetMainScreen() { return mainScreen; }

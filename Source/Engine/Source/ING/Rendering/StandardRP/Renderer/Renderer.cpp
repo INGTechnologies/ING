@@ -47,43 +47,49 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
-		 *	Constructors And Destructor
-		 */
-		IRenderer::IRenderer()
-		{
+		namespace StandardRP {
+
+			/**
+			 *	Constructors And Destructor
+			 */
+			Renderer::Renderer()
+			{
 
 
 
-		}
+			}
 
-		IRenderer::~IRenderer()
-		{
-
-
-
-		}
+			Renderer::~Renderer()
+			{
 
 
 
-		/**
-		 *	Release Methods
-		 */
-		void IRenderer::Release()
-		{
-
-			delete this;
-
-		}
+			}
 
 
 
-		/**
-		 *	Methods
-		 */
-		void IRenderer::Render(Camera* camera, DeviceContext* context) {
+			/**
+			 *	Release Methods
+			 */
+			void Renderer::Release()
+			{
+
+				IRenderer::Release();
+
+			}
 
 
+
+			/**
+			 *	Methods
+			 */
+			void Renderer::Render(Camera* camera, DeviceContext* context) {
+
+				IRenderer::Render(camera, context);
+
+				Rendering::Scene* renderingScene = camera->GetRenderingScene();
+
+			}
 
 		}
 

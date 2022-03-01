@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window
+ */
+#include <ING/Window/Window.h>
+
+
+
 
 
 namespace ING {
@@ -111,4 +118,26 @@ namespace ING {
 
 	}
 
+
+
+	/**
+	 *	Properties
+	 */
+	float	Screen::GetAspectRatio	() {
+
+		return (window->GetDesc().clientWidth) / (window->GetDesc().clientHeight);
+
+	}
+
+	float	Screen::GetClientHeight	() {
+
+		return (window->GetDesc().clientHeight);
+
+	}
+	float	Screen::GetClientWidth	() {
+
+		return (window->GetDesc().clientWidth);
+
+	}
+	
 }

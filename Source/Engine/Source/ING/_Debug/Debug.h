@@ -99,6 +99,22 @@ namespace ING {
 
 		}
 
+		static void Log(void* content) {
+
+			PRINT_LOG_FLAG();
+
+			SetConsoleColor(0x08);
+
+			std::cout << "0x";
+
+			SetConsoleColor(0x06);
+
+			std::cout << content << std::endl;
+
+			SetConsoleColor(0x07);
+
+		}
+
 		static void Log(float content) {
 
 			PRINT_LOG_FLAG();

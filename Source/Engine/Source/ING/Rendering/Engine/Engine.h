@@ -49,27 +49,6 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-		private:
-			Renderer*	defaultRenderer;
-
-			Renderer*	renderer;
-
-			Renderer*	targetRenderer;
-
-		public:
-			Renderer*	GetDefaultRenderer	() { return defaultRenderer; }
-
-			Renderer*	GetRenderer			() { return renderer; }
-
-			Renderer*	GetTargetRenderer   () { return targetRenderer; }
-
-			void		SetRenderer			(Renderer* renderer);
-
-
-
-			/**
 			 *	Methods
 			 */
 		public:

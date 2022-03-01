@@ -44,7 +44,7 @@ namespace ING {
 	ScreenManager::ScreenManager()
 	{
 
-
+		mainScreen = nullptr;
 
 	}
 
@@ -89,8 +89,6 @@ namespace ING {
 	/**
 	 *	Screen Management
 	 */
-	Screen* ScreenManager::mainScreen = nullptr;
-
 	void ScreenManager::InitScreen(Screen* screen) {
 
 		if (mainScreen != nullptr) return;
