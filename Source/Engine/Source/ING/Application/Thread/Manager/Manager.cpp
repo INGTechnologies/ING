@@ -86,13 +86,9 @@ namespace ING {
 		 */
 		/* Rendering Thread */
 		renderingThread = new ApplicationRenderingThread();
-
-		applicationThreadList.Add(renderingThread);
 		
 		/* Physics Thread */
 		physicsThread = new ApplicationPhysicsThread();
-
-		applicationThreadList.Add(physicsThread);
 
 
 

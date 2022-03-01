@@ -34,10 +34,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
-
-
-
 		namespace DirectX11 {
 
 			class ING_API Texture2D : public Rendering::Texture2D
@@ -47,8 +43,8 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Texture2D	(Rendering::Device* device);
-				~Texture2D	();
+				Texture2D();
+				~Texture2D();
 
 
 

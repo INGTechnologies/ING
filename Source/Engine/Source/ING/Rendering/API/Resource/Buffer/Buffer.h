@@ -27,10 +27,6 @@ namespace ING {
 
 	namespace Rendering {
 
-		class Device;
-
-
-
 		class ING_API Buffer : public Resource
 		{
 
@@ -38,8 +34,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Buffer	(Rendering::Device* device);
-			~Buffer	();
+			Buffer();
+			~Buffer();
 
 
 
@@ -47,9 +43,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static  Buffer* Create(Rendering::Device* device);
-
-			virtual void	Release() override;
+			virtual void Release() override;
 
 		};
 

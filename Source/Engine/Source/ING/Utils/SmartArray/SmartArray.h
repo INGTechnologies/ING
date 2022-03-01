@@ -238,8 +238,6 @@ namespace ING {
 
 			}
 
-			id2IndexMapVector.clear();
-
 			for (std::unordered_map<unsigned long, unsigned long>*& index2IdMap : index2IdMapVector) {
 
 				index2IdMap->clear();
@@ -247,8 +245,6 @@ namespace ING {
 				delete index2IdMap;
 
 			}
-
-			index2IdMapVector.clear();
 			
 		}
 
@@ -442,7 +438,7 @@ namespace ING {
 
 
 			unsigned int index2IdMapVectorSize = index2IdMapVector.size();
-			for (unsigned int i = 0; i < index2IdMapVectorSize;) {
+			for (unsigned int i = 0; i < index2IdMapVectorSize; ++i) {
 
 				std::unordered_map<unsigned long, unsigned long>*& index2IdMap = index2IdMapVector[i];
 
@@ -451,29 +447,19 @@ namespace ING {
 					index2IdMapVector.erase(index2IdMapVector.begin() + i);
 
 				}
-				else {
-
-					++i;
-
-				}
 
 			}
 
 
 
 			unsigned int id2IndexMapVectorSize = id2IndexMapVector.size();
-			for (unsigned int i = 0; i < id2IndexMapVectorSize;) {
+			for (unsigned int i = 0; i < id2IndexMapVectorSize; ++i) {
 
 				std::unordered_map<unsigned long, unsigned long>*& id2IndexMap = id2IndexMapVector[i];
 
 				if (id2IndexMap->size() == 0) {
 
 					id2IndexMapVector.erase(id2IndexMapVector.begin() + i);
-
-				}
-				else {
-
-					++i;
 
 				}
 

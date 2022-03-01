@@ -43,18 +43,7 @@ namespace ING {
 		 */
 		void Entity::Release() {
 
-			for (auto it = componentMap.cbegin(); it != componentMap.cend();)
-			{
-
-				IComponentPtr componentPtr = it->second;
-
-				IComponentSystem* componentSystem = componentPtr.GetIComponentSystem();
-
-				++it;
-
-				componentSystem->RemoveComponent(this);
-
-			}
+			
 
 			delete this;
 		}
