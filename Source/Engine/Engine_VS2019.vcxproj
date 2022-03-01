@@ -216,9 +216,13 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ING\Rendering\StandardRP\Pass\Final\Final.cpp" />
     <ClCompile Include="Source\**\*.cpp" />
+    <ClCompile Include="Source\ING\Utils\VirtualStruct\VirtualStruct.cpp" />
+    <ClCompile Include="Source\ING\Utils\VirtualObject\VirtualObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\Rendering\StandardRP\Pass\Final\Final.h" />
     <ClInclude Include="Source\ING\Application\Application.h" />
     <ClInclude Include="Source\ING\Application\Event\FrameUpdate\End.h" />
     <ClInclude Include="Source\ING\Application\Event\FrameUpdate\Start.h" />
@@ -231,7 +235,7 @@
     <ClInclude Include="Source\ING\Application\Thread\Rendering\Rendering.h" />
     <ClInclude Include="Source\ING\Application\Thread\Thread.h" />
     <ClInclude Include="Source\ING\Camera\Camera.h" />
-    <ClInclude Include="Source\ING\Camera\CameraId.h" />
+    <ClInclude Include="Source\ING\Camera\Id.h" />
     <ClInclude Include="Source\ING\Camera\Manager\Manager.h" />
     <ClInclude Include="Source\ING\Coder\Coder.h" />
     <ClInclude Include="Source\ING\Coder\Option\Option.h" />
@@ -326,6 +330,7 @@
     <ClInclude Include="Source\ING\Rendering\Scene\Scene.h" />
     <ClInclude Include="Source\ING\Rendering\Shader\Manager\Manager.h" />
     <ClInclude Include="Source\ING\Rendering\Shader\Shader.h" />
+    <ClInclude Include="Source\ING\Rendering\StandardRP\Pass\Final\Final.h" />
     <ClInclude Include="Source\ING\Rendering\StandardRP\Pass\Main\Main.h" />
     <ClInclude Include="Source\ING\Rendering\StandardRP\Pipeline\Pipeline.h" />
     <ClInclude Include="Source\ING\Rendering\StandardRP\Renderer\Renderer.h" />
@@ -358,11 +363,12 @@
     <ClInclude Include="Source\ING\Utils\SharedPtr\SharedPtr.h" />
     <ClInclude Include="Source\ING\Utils\Singleton\Singleton.h" />
     <ClInclude Include="Source\ING\Utils\SmartArray\SmartArray.h" />
-    <ClInclude Include="Source\ING\Utils\SmartArray\UnsafeSmartArray.h" />
     <ClInclude Include="Source\ING\Utils\String\String.h" />
     <ClInclude Include="Source\ING\Utils\Types.h" />
     <ClInclude Include="Source\ING\Utils\UniquePtr\UniquePtr.h" />
     <ClInclude Include="Source\ING\Utils\Utils.h" />
+    <ClInclude Include="Source\ING\Utils\VirtualObject\VirtualObject.h" />
+    <ClInclude Include="Source\ING\Utils\VirtualStruct\VirtualStruct.h" />
     <ClInclude Include="Source\ING\Utils\WString\WString.h" />
     <ClInclude Include="Source\ING\Window\Desc\Desc.h" />
     <ClInclude Include="Source\ING\Window\Event\Destroy\Destroy.h" />
@@ -376,6 +382,8 @@
     <ClInclude Include="Source\ING\Window\Manager\Manager.h" />
     <ClInclude Include="Source\ING\Window\Window.h" />
     <ClInclude Include="Source\ING\_Debug\Debug.h" />
+    <ClInclude Include="Source\ING\Utils\VirtualStruct\VirtualStruct.h" />
+    <ClInclude Include="Source\ING\Utils\VirtualObject\VirtualObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

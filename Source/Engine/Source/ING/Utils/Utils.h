@@ -119,6 +119,15 @@
 
 
 
+/**
+ *	Include Virtual Object And Virtual Struct
+ */
+#include <ING/Utils/VirtualObject/VirtualObject.h>
+
+#include <ING/Utils/VirtualStruct/VirtualStruct.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

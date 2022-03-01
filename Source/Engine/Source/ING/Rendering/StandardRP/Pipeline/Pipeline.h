@@ -70,12 +70,17 @@ namespace ING {
 				IPass*	mainPass;
 				IPass*	targetMainPass;
 
+				IPass*	finalPass;
+				IPass*	targetFinalPass;
+
 			public:
 				IPass*	GetMainPass			() { return mainPass; }
-
 				IPass*	GetTargetMainPass	() { return targetMainPass; }
-
 				void	SetMainPass			(IPass* mainPass);
+
+				IPass*	GetFinalPass		() { return finalPass; }
+				IPass*	GetTargetFinalPass	() { return targetFinalPass; }
+				void	SetFinalPass		(IPass* finalPass);
 
 
 

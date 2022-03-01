@@ -169,15 +169,15 @@ namespace ING {
 
 			if (newCount != 0) {
 
-				unsigned long sizeInByte = newCount * sizeof(T);
+				size_t sizeInByte = newCount * sizeof(T);
 
-				unsigned long oldSizeInByte = count * sizeof(T);
+				size_t oldSizeInByte = count * sizeof(T);
 
 				T* newPData = (T*)malloc(sizeInByte);
 
 				if (pData != nullptr) {
 
-					memcpy(newPData, pData, ([](unsigned long sizeInByte, unsigned long oldSizeInByte)->unsigned long {
+					memcpy(newPData, pData, ([](size_t sizeInByte, size_t oldSizeInByte)->size_t {
 
 						if (sizeInByte > oldSizeInByte) {
 
