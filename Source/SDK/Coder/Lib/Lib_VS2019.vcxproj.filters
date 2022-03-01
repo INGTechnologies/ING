@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\SDK\Coder\EntryPoint\EntryPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ING\SDK\Project\Project.h">
+    <ClInclude Include="Source\ING\SDK\Coder\Project\Project.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source/**/*.h">
@@ -27,12 +24,15 @@
     <ClInclude Include="Source/**/*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source/**/*.h">
+    <ClInclude Include="Source\**\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\**\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\SDK\Coder\Project\Project.cpp">
+    <ClCompile Include="Source\**\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

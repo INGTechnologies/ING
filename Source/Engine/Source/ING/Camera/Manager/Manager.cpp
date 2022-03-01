@@ -65,4 +65,21 @@ namespace ING {
 		return Square::Release();
 	}
 
+
+
+	/**
+	 *	Methods
+	 */
+	List<Camera*>::Node*	CameraManager::AddCamera(Camera* camera) {
+
+		return cameraList.Add(camera);
+
+	}
+
+	void					CameraManager::RemoveCamera(List<Camera*>::Node* node) {
+
+		cameraList.Remove(node);
+
+	}
+
 }

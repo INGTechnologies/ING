@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source/**/*.h">
+    <ClInclude Include="Source\ING\SDK\ShaderCompiler\EntryPoint\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source/**/*.h">
@@ -25,11 +25,17 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source/**/*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\**\*.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\**\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\SDK\ShaderCompiler\Context\Context.cpp">
+    <ClCompile Include="Source\**\*.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
