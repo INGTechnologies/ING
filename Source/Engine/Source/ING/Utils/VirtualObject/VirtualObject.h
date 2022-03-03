@@ -98,6 +98,15 @@ namespace ING {
 			}
 
 			template<typename T>
+			void	TrySetProperty(std::string name, T& data) {
+
+				if (name2propertyMap.find(name) == name2propertyMap.end()) return;
+
+				*((T*)(name2propertyMap[name].pData)) = data;
+
+			}
+
+			template<typename T>
 			T&		GetProperty		(std::string name) {
 
 				return *((T*)(name2propertyMap[name].pData));
@@ -129,6 +138,11 @@ namespace ING {
 			/**
 			 *	Operators
 			 */
+		public:
+			VirtualObject& operator =	(VirtualObject& b);
+
+			bool		   operator ==	(VirtualObject& b);
+			bool		   operator !=	(VirtualObject& b);
 
 		};
 

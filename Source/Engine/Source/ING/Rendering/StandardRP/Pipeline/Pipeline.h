@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include SubRP Pipeline
+ */
+#include <ING/Rendering/SubRP/Pipeline/Pipeline.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -67,20 +74,26 @@ namespace ING {
 				 *	Properties
 				 */
 			private:
-				IPass*	mainPass;
-				IPass*	targetMainPass;
+				IPass*				firstPass;
+				IPass*				targetFirstPass;
 
-				IPass*	finalPass;
-				IPass*	targetFinalPass;
+				IPass*				finalPass;
+				IPass*				targetFinalPass;
+
+				SubRP::Pipeline*	afterFirstPassSubPipeline;
+				SubRP::Pipeline*	beforeFinalPassSubPipeline;
 
 			public:
-				IPass*	GetMainPass			() { return mainPass; }
-				IPass*	GetTargetMainPass	() { return targetMainPass; }
-				void	SetMainPass			(IPass* mainPass);
+				IPass*				GetFirstPass					() { return firstPass; }
+				IPass*				GetTargetFirstPass				() { return targetFirstPass; }
+				void				SetFirstPass					(IPass* firstPass);
 
-				IPass*	GetFinalPass		() { return finalPass; }
-				IPass*	GetTargetFinalPass	() { return targetFinalPass; }
-				void	SetFinalPass		(IPass* finalPass);
+				IPass*				GetFinalPass					() { return finalPass; }
+				IPass*				GetTargetFinalPass				() { return targetFinalPass; }
+				void				SetFinalPass					(IPass* finalPass);
+
+				SubRP::Pipeline*	GetAfterFirstPassSubPipeline	() { return afterFirstPassSubPipeline; }
+				SubRP::Pipeline*	GetBeforeFinalPassSubPipeline	() { return beforeFinalPassSubPipeline; }
 
 
 

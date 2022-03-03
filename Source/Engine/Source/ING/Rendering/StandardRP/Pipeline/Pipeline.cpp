@@ -49,9 +49,9 @@
 
 
 /**
- *	Include StandardRP Main Pass
+ *	Include StandardRP First Pass
  */
-#include <ING/Rendering/StandardRP/Pass/Main/Main.h>
+#include <ING/Rendering/StandardRP/Pass/First/First.h>
 
 
 
@@ -77,11 +77,20 @@ namespace ING {
 				/**
 				 *	Create Default Passes
 				 */
-				targetMainPass	= new MainPass("Standard Main Pass");
-				mainPass		= targetMainPass;
-
-				targetFinalPass = new MainPass("Standard Final Pass");
+				targetFirstPass	= new FirstPass	("Standard Main Pass");
+				firstPass		= targetFirstPass;
+				 
+				targetFinalPass = new FinalPass	("Standard Final Pass");
 				finalPass		= targetFinalPass;
+
+
+
+				/**
+				 *	Create SubRPs
+				 */
+				afterFirstPassSubPipeline	= new SubRP::Pipeline("After First Pass Sub Pipeline");
+
+				beforeFinalPassSubPipeline	= new SubRP::Pipeline("Befrore Final Pass Sub Pipeline");
 
 			}
 
@@ -107,10 +116,10 @@ namespace ING {
 			/**
 			 *	Properties
 			 */
-			void Pipeline::SetMainPass	(IPass* mainPass) {
+			void Pipeline::SetFirstPass	(IPass* firstPass) {
 
-				/* New Main Pass Will Be Used In Next Frame */
-				targetMainPass = mainPass;
+				/* New First Pass Will Be Used In Next Frame */
+				targetFirstPass = firstPass;
 
 			}
 
@@ -132,16 +141,27 @@ namespace ING {
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
-					/**
-					 *	Draw Main Pass
-					 */
-					/* Get Main Pass */
-					mainPass = targetMainPass;
+					/* Draw First Pass */
+					firstPass = targetFirstPass;
 
-					MainPassInput	mainPassInput;
-					MainPassOutput	mainPassOutput;
+					FirstPassInput	firstPassInput;
+					FirstPassOutput	firstPassOutput;
 
-					mainPass->Render(context, camera, &mainPassInput, &mainPassOutput);
+					firstPass->Render(context, camera, &firstPassInput, &firstPassOutput);
+
+
+
+					SubRP::PassInput	afterFirstPassSubPipelineInput;
+					SubRP::PassOutput	afterFirstPassSubPipelineOutput;
+
+					afterFirstPassSubPipeline->SubRender(context, camera, &afterFirstPassSubPipelineInput, &afterFirstPassSubPipelineOutput);
+
+
+
+					SubRP::PassInput	beforeFinalPassSubPipelineInput = afterFirstPassSubPipelineOutput;
+					SubRP::PassOutput	beforeFinalPassSubPipelineOutput;
+
+					beforeFinalPassSubPipeline->SubRender(context, camera, &beforeFinalPassSubPipelineInput, &beforeFinalPassSubPipelineOutput);
 
 
 

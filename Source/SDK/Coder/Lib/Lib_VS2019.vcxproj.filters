@@ -21,7 +21,7 @@
     <ClInclude Include="Source/**/*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Source/**/*.h">
+    <ClInclude Include="Source\**\*.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Source\**\*.h">
