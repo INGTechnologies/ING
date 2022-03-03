@@ -68,9 +68,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-					CVector4	Transpose();
+					CVector4	Transpose	();
 
-			static	float		DotProduct(Vector4 a, Vector4 b) {
+					float		Length		();
+
+			static	float		DotProduct	(Vector4 a, Vector4 b) {
 				return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
 			}
 

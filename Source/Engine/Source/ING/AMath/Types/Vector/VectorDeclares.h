@@ -3,7 +3,11 @@ namespace ING {
 
 	namespace AMath {
 
-		union Vector4;
+		struct Vector2;
+
+		struct Vector3;
+
+		struct Vector4;
 
 	}
 

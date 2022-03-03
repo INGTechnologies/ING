@@ -13,6 +13,10 @@
 
 
 
+#include <math.h>
+
+
+
 namespace ING {
 
 	namespace Math {
@@ -22,6 +26,12 @@ namespace ING {
 		 */
 		CVector4 Vector4::Transpose() {
 			return CVector4(x, y, z, w);
+		}
+
+		float	Vector4::Length() {
+
+			return sqrt(x*x + y*y + z*z + w*w);
+
 		}
 
 

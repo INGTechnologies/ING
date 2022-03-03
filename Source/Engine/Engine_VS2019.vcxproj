@@ -179,6 +179,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -265,6 +266,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -430,9 +432,16 @@
     <ClCompile Include="Source\ING\_Debug\Debug.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ING\AMath\Types\Float\Float.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Float\FloatDeclares.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Float\FloatDef.h" />
     <ClInclude Include="Source\ING\AMath\Types\Types.h" />
     <ClInclude Include="Source\ING\AMath\Types\TypesDef.h" />
     <ClInclude Include="Source\ING\AMath\Types\Vector\Vector.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Vector\Vector2.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Vector\Vector2Def.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Vector\Vector3.h" />
+    <ClInclude Include="Source\ING\AMath\Types\Vector\Vector3Def.h" />
     <ClInclude Include="Source\ING\AMath\Types\Vector\Vector4.h" />
     <ClInclude Include="Source\ING\AMath\Types\Vector\Vector4Def.h" />
     <ClInclude Include="Source\ING\AMath\Types\Vector\VectorDeclares.h" />

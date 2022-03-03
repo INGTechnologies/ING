@@ -1,3 +1,2 @@
-#pragma once
 
-#include "FunctionsDef.h"
+#include "CGFunctionsDef.h"
