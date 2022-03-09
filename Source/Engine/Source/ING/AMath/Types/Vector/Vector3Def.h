@@ -1,6 +1,9 @@
 #pragma once
 
-#include "Vector3.h"
+/**
+ *	Include AMath Types
+ */
+#include "../Types.h"
 
 
 
@@ -11,9 +14,9 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		float Vector3::DotProduct(Vector3 v1, Vector3 v2) {
+		CVector3 Vector3::Transpose() const {
 
-			return 0;
+			return m128;
 
 		}
 

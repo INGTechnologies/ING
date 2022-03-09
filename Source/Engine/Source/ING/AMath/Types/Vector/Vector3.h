@@ -1,11 +1,17 @@
 #pragma once
 
+/**
+ *	Include Utils
+ */
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
 
 
-#include <ING/Utils/Intrinsics/Intrinsics.h>
 
-
-
+/**
+ *	Declares Vectors
+ */
 #include "VectorDeclares.h"
 
 
@@ -20,13 +26,15 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Vector3(float x, float y, float z) : m128(_mm_set_ps(0,z,y,x)) {}
+			inline Vector3(float x, float y, float z) : m128(_mm_set_ps(0,z,y,x)) {}
 
-			Vector3() : Vector3(0,0,0) {}
+			inline Vector3() : Vector3(m128_0_0_0_0) {}
 
-			Vector3(__m128 m) : m128(m) {}
+			inline Vector3(Vector3& a) : m128(a.m128) {}
 
-			~Vector3() {}
+			inline Vector3(__m128 m) : m128(m) {}
+
+			inline ~Vector3() {}
 
 
 
@@ -35,7 +43,6 @@ namespace ING {
 			 */
 		public:
 			union {
-
 				__m128 m128;
 
 				struct {
@@ -43,7 +50,6 @@ namespace ING {
 					float x, y, z;
 
 				};
-
 			};
 
 
@@ -52,7 +58,21 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			static float	DotProduct		(Vector3 v1, Vector3 v2);
+			static float		DotProduct(const Vector3& v1, const Vector3& v2) {
+
+				__m128 mR = _mm_mul_ps(v1.m128, v2.m128);
+
+				return mR.m128_f32[0] + mR.m128_f32[1] + mR.m128_f32[2] + mR.m128_f32[3];
+
+			}
+
+			float				Length() const {
+
+				return sqrt(x*x + y*y + z*z);
+
+			}
+
+			CVector3			Transpose() const;
 
 
 
@@ -60,20 +80,46 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Vector3 operator+(Vector3& a) { return _mm_add_ps(m128,a.m128); }
-
-			Vector3 operator-(Vector3& a) { return _mm_sub_ps(m128,a.m128); }
-
-			Vector3 operator*(float a) { return _mm_mul_ps(m128,_mm_set1_ps(a)); }
-
-			Vector3 operator/(float a) { return _mm_div_ps(m128, _mm_set1_ps(a)); }
-
-			float&	operator[](unsigned char i) {
-
+			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
+			}
+			void			operator=(const Vector3& a) {
+			
+				m128 = a.m128;
+			
+			}
+			void			operator=(__m128 m128) {
+
+				this->m128 = m128;
+
 			}
 
 		};
+
+
+
+		static inline Vector3 operator+(const Vector3& a, const Vector3& b)	{ return _mm_add_ps(a.m128, a.m128); }
+
+		static inline Vector3 operator-(const Vector3& a, const Vector3& b)	{ return _mm_sub_ps(a.m128, b.m128); }
+
+		static inline Vector3 operator*(const Vector3& a, float b)			{ return _mm_set_ps(0, a.z * b, a.y * b, a.x * b); }
+
+		static inline Vector3 operator/(const Vector3& a, float b)			{ return _mm_set_ps(0, a.z / b, a.y / b, a.x / b); }
+
+
+
+		static inline Vector3 operator+(const Vector3& a)					{ return a.m128; }
+		static inline Vector3 operator-(const Vector3& a)					{ return _mm_mul_ps(a.m128, m128_i1_i1_i1_i1); }
+
+
+
+		static inline void    operator+=(Vector3& a, const Vector3& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+
+		static inline void    operator-=(Vector3& a, const Vector3& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
+
+		static inline void    operator*=(Vector3& a, float b)				{ a.m128 = _mm_set_ps(0, a.z * b, a.y * b, a.x * b); }
+
+		static inline void    operator/=(Vector3& a, float b)				{ a.m128 = _mm_set_ps(0, a.z / b, a.y / b, a.x / b); }
 
 	}
 

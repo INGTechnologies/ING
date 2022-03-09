@@ -1,16 +1,18 @@
 #pragma once
 
+/**
+ *	Include Utils
+ */
+#include <ING/Utils/Utils.h>
+
+using namespace ING::Utils;
 
 
-#include <ING/Utils/Intrinsics/Intrinsics.h>
 
-
-
+/**
+ *	Declares Vectors
+ */
 #include "VectorDeclares.h"
-
-
-
-#include <math.h>
 
 
 
@@ -26,7 +28,9 @@ namespace ING {
 		public:
 			inline Vector4(float x, float y, float z, float w) : m128(_mm_set_ps(w,z,y,x)) {}
 
-			inline Vector4() : Vector4(0,0,0,0) {}
+			inline Vector4() : Vector4(m128_0_0_0_0) {}
+
+			inline Vector4(Vector4& a) : m128(a.m128) {}
 
 			inline Vector4(__m128 m) : m128(m) {}
 
@@ -38,12 +42,14 @@ namespace ING {
 			 *	Properties
 			 */
 		public:
-			__m128 m128;
+			union {
+				__m128 m128;
 
-			struct {
+				struct {
 
-				float x, y, z, w;
+					float x, y, z, w;
 
+				};
 			};
 
 
@@ -60,11 +66,13 @@ namespace ING {
 
 			}
 
-			float				Length() {
+			float				Length() const {
 
 				return sqrt(x*x + y*y + z*z +w*w);
 
 			}
+
+			CVector4			Transpose() const;
 
 
 
@@ -72,20 +80,46 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			inline float&	operator[](unsigned char i) {
-
+			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
+			}
+			void			operator=(const Vector4& a) { 
+			
+				m128 = a.m128;
+			
+			}
+			void			operator=(__m128 m128) {
+
+				this->m128 = m128;
+
 			}
 
 		};
 
-		static inline Vector4 operator+(Vector4& a, Vector4& b) { return _mm_add_ps(a.m128, a.m128); }
 
-		static inline Vector4 operator-(Vector4& a, Vector4& b) { return _mm_sub_ps(a.m128, b.m128); }
 
-		static inline Vector4 operator*(Vector4& a, float b)	{ return _mm_mul_ps(a.m128, _mm_set1_ps(b)); }
+		static inline Vector4 operator+(const Vector4& a, const Vector4& b)	{ return _mm_add_ps(a.m128, a.m128); }
 
-		static inline Vector4 operator/(Vector4& a, float b)	{ return _mm_div_ps(a.m128, _mm_set1_ps(b)); }
+		static inline Vector4 operator-(const Vector4& a, const Vector4& b)	{ return _mm_sub_ps(a.m128, b.m128); }
+
+		static inline Vector4 operator*(const Vector4& a, float b)			{ return _mm_set_ps(a.w * b, a.z * b, a.y * b, a.x * b); }
+
+		static inline Vector4 operator/(const Vector4& a, float b)			{ return _mm_set_ps(a.w / b, a.z / b, a.y / b, a.x / b); }
+
+
+
+		static inline Vector4 operator+(const Vector4& a)					{ return a.m128; }
+		static inline Vector4 operator-(const Vector4& a)					{ return _mm_mul_ps(a.m128, m128_i1_i1_i1_i1); }
+
+
+
+		static inline void    operator+=(Vector4& a, const Vector4& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+
+		static inline void    operator-=(Vector4& a, const Vector4& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
+
+		static inline void    operator*=(Vector4& a, float b)				{ a.m128 = _mm_set_ps(a.w * b, a.z * b, a.y * b, a.x * b); }
+
+		static inline void    operator/=(Vector4& a, float b)				{ a.m128 = _mm_set_ps(a.w / b, a.z / b, a.y / b, a.x / b); }
 
 	}
 
