@@ -79,12 +79,50 @@ namespace ING {
 			/**
 			 *	Operators
 			 */
+#ifdef __AVX__ 
 		public:
 			inline Vector2& operator[](unsigned char i) {
 				return *((Vector2*)this + i);
 			}
+#else
+
+
+
+#endif
 
 		};
+
+
+
+#ifdef __AVX__
+		static inline Matrix2x2 operator+(const Matrix2x2& a, const Matrix2x2& b) { return _mm_add_ps(a.m128, b.m128); }
+		static inline Matrix2x2 operator-(const Matrix2x2& a, const Matrix2x2& b) { return _mm_sub_ps(a.m128, b.m128); }
+		static inline Matrix2x2 operator*(const Matrix2x2& a, float b) {
+			__m128 mR = _mm_set_ps(b, b, b, b);
+			return _mm_mul_ps(a.m128, mR);
+		}
+		static inline Matrix2x2 operator/(const Matrix2x2& a, float b) {
+			__m128 mR = _mm_set_ps(b, b, b, b);
+			return _mm_div_ps(a.m128, mR);
+		}
+
+
+
+		static inline void operator+=(Matrix2x2& a, const Matrix2x2& b) { a.m128 = _mm_add_ps(a.m128, b.m128); }
+		static inline void operator-=(Matrix2x2& a, const Matrix2x2& b) { a.m128 = _mm_sub_ps(a.m128, b.m128); }
+		static inline void operator*=(Matrix2x2& a, float b) {
+			__m128 mR = _mm_set_ps(b, b, b, b);
+			a.m128 = _mm_mul_ps(a.m128, mR);
+		}
+		static inline void operator/=(Matrix2x2& a, float b) {
+			__m128 mR = _mm_set_ps(b, b, b, b);
+			a.m128 = _mm_div_ps(a.m128, mR);
+		}
+#else
+
+
+
+#endif
 
 	}
 

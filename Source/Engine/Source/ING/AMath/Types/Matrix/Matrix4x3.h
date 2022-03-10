@@ -37,11 +37,9 @@ namespace ING {
 
 			inline Matrix4x3(const Matrix4x3& a) : Matrix4x3(a.m256_1, a.m256_2) {}
 
-			inline Matrix4x3(__m256 m1, __m256 m2) : m256_1(m1) {
+			inline Matrix4x3(__m256 m1, __m256 m2) : m256_1(m1), m256_2(m2) {}
 
-				m256_2 = m2;
-			
-			}
+			inline Matrix4x3(__m128 m1, __m128 m2, __m128 m3, __m128 m4) : m128_1(m1), m128_2(m2), m128_3(m3), m128_4(m4) {}
 
 			inline ~Matrix4x3() {}
 #else
@@ -61,6 +59,13 @@ namespace ING {
 				struct {
 					__m256 m256_1;
 					__m256 m256_2;
+				};
+
+				struct {
+					__m128 m128_1;
+					__m128 m128_2;
+					__m128 m128_3;
+					__m128 m128_4;
 				};
 
 				struct {
@@ -111,15 +116,22 @@ namespace ING {
 			/**
 			 *	Operators
 			 */
+#ifdef __AVX__
 		public:
 			inline Vector4& operator[](unsigned char i) {
 				return *((Vector4*)((char*)this + i * 4));
 			}
+#else
+
+
+
+#endif
 
 		};
 
 
 
+#ifdef __AVX__
 		static inline Matrix4x3 operator+(const Matrix4x3& a, const Matrix4x3& b) { return Matrix4x3(_mm256_add_ps(a.m256_1, b.m256_1), _mm256_add_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x3 operator-(const Matrix4x3& a, const Matrix4x3& b) { return Matrix4x3(_mm256_sub_ps(a.m256_1, b.m256_1), _mm256_sub_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x3 operator*(const Matrix4x3& a, float b) {
@@ -145,6 +157,11 @@ namespace ING {
 			a.m256_1 = _mm256_div_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_div_ps(a.m256_2, mR);
 		}
+#else
+
+
+
+#endif
 
 	}
 

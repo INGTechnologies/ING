@@ -42,6 +42,8 @@ namespace ING {
 
 			inline Matrix2x4(__m256 m) : m256(m) {}
 
+			inline Matrix2x4(__m128 m1, __m128 m2) : m128_1(m1), m128_2(m2) {}
+
 			inline ~Matrix2x4() {}
 #else
 
@@ -58,6 +60,11 @@ namespace ING {
 		public:
 			union {
 				__m256 m256;
+
+				struct {
+					__m128 m128_1;
+					__m128 m128_2;
+				};
 
 				struct {
 
@@ -93,12 +100,50 @@ namespace ING {
 			/**
 			 *	Operators
 			 */
+#ifdef __AVX__
 		public:
 			inline Vector4& operator[](unsigned char i) {
 				return *((Vector4*)this + i);
 			}
+#else
+
+
+
+#endif
 
 		};
+
+
+
+#ifdef __AVX__
+		static inline Matrix2x4 operator+(const Matrix2x4& a, const Matrix2x4& b) { return _mm256_add_ps(a.m256, b.m256); }
+		static inline Matrix2x4 operator-(const Matrix2x4& a, const Matrix2x4& b) { return _mm256_sub_ps(a.m256, b.m256); }
+		static inline Matrix2x4 operator*(const Matrix2x4& a, float b) {
+			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+			return _mm256_mul_ps(a.m256, mR);
+		}
+		static inline Matrix2x4 operator/(const Matrix2x4& a, float b) {
+			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+			return _mm256_div_ps(a.m256, mR);
+		}
+
+
+
+		static inline void operator+=(Matrix2x4& a, const Matrix2x4& b) { a.m256 = _mm256_add_ps(a.m256, b.m256); }
+		static inline void operator-=(Matrix2x4& a, const Matrix2x4& b) { a.m256 = _mm256_sub_ps(a.m256, b.m256); }
+		static inline void operator*=(Matrix2x4& a, float b) {
+			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+			a.m256 = _mm256_mul_ps(a.m256, mR);
+		}
+		static inline void operator/=(Matrix2x4& a, float b) {
+			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+			a.m256 = _mm256_div_ps(a.m256, mR);
+		}
+#else
+
+
+
+#endif
 
 	}
 
