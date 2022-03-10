@@ -1,30 +1,9 @@
 #pragma once
 
 /**
- *	Include Matrix
+ *	Include Math Types
  */
-#include <ING/Math/Matrix/Matrix.h>
-
-
-
-/**
- *	Include Vector
- */
-#include <ING/Math/Vector/Vector.h>
-
-
-
-/**
- *	Include Quaternion
- */
-#include <ING/Math/Quaternion/Quaternion.h>
-
-
-
-/**
- *	Include Float
- */
-#include <ING/Math/Float/Float.h>
+#include <ING/Math/Types/Types.h>
 
 
 

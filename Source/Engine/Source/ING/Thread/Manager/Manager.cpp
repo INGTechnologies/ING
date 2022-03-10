@@ -53,7 +53,7 @@ namespace ING {
 
 		threadIdMap[std::this_thread::get_id()] = 0;
 
-		threadIdGenerator.RegisterUInt16Id(0);
+		threadIdGenerator.RegisterUInt32Id(0);
 
 		return true;
 	}
@@ -85,7 +85,7 @@ namespace ING {
 		
 		mutex.lock();
 
-		thread->id = threadIdGenerator.GenUInt16();
+		thread->id = threadIdGenerator.GenUInt32();
 
 		threadMap[thread->id] = thread;
 
@@ -97,7 +97,7 @@ namespace ING {
 
 	void ThreadManager::UnregisterThread(Thread* thread) {
 
-		threadIdGenerator.RemoveUInt16Id(thread->GetID());
+		threadIdGenerator.RemoveUInt32Id(thread->GetID());
 
 		threadMap.erase(thread->GetID());
 

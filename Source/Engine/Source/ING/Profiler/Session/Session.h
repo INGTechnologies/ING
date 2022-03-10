@@ -72,6 +72,7 @@ namespace ING {
 		 */
 	public:
 		void	End();
+		float	CheckTime();
 
 	};
 
