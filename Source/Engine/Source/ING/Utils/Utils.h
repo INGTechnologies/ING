@@ -128,6 +128,17 @@
 
 
 
+/**
+ *	Include Intrinsics
+ */
+#include <ING\Utils\Intrinsics\Intrinsics.h>
+
+
+
+#include <math.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

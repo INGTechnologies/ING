@@ -55,4 +55,10 @@ namespace ING {
 
 	}
 
+	float	ProfilerSession::CheckTime				() {
+
+		return ((std::chrono::steady_clock::now() - appStart) - startTime).count();
+
+	}
+
 }

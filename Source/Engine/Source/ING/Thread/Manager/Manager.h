@@ -57,10 +57,10 @@ namespace ING {
 		 *	Thread Management
 		 */
 	private:
-		std::unordered_map<ui16, Thread*>			threadMap;
-		std::unordered_map<std::thread::id, ui16>	threadIdMap;
-		IdGenerator									threadIdGenerator;
-		std::mutex									mutex;
+		std::unordered_map<unsigned int, Thread*>			threadMap;
+		std::unordered_map<std::thread::id, unsigned int>	threadIdMap;
+		IdGenerator											threadIdGenerator;
+		std::mutex											mutex;
 
 	public:
 		void	RegisterThread(Thread* thread);
