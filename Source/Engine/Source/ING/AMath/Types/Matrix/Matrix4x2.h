@@ -103,9 +103,23 @@ namespace ING {
 
 
 
-			  /**
-			   *	Operators
-			   */
+			/**
+			 *	Methods
+			 */
+#ifdef __AVX__
+		public:
+			Matrix2x4 Transpose() const;
+#else
+
+
+
+#endif
+
+
+
+			/**
+			 *	Operators
+			 */
 #ifdef __AVX__
 		public:
 			inline Vector2& operator[](unsigned char i) {

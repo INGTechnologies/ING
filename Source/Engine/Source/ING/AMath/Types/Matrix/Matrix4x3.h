@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Vector
+ */
+#include "../Vector/Vector.h"
+
+
+
 namespace ING {
 
 	namespace AMath {
@@ -27,11 +34,10 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			inline Matrix4x3(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33, float m41, float m42, float m43) : m256_1(_mm256_set_ps(0, m23, m22, m21, 0, m13, m12, m11)) {
-			
-				m256_2 = _mm256_set_ps(0, m43, m42, m41, 0, m33, m32, m31);
-			
-			}
+			inline Matrix4x3(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33, float m41, float m42, float m43) : 
+				m256_1(_mm256_set_ps(0, m23, m22, m21, 0, m13, m12, m11)),
+				m256_2(_mm256_set_ps(0, m43, m42, m41, 0, m33, m32, m31))
+			{}
 
 			inline Matrix4x3() : Matrix4x3(m256_0_0_0_0_0_0_0_0, m256_0_0_0_0_0_0_0_0) {}
 
@@ -94,13 +100,13 @@ namespace ING {
 
 				struct {
 
-					Vector4 r1;
+					Vector3 r1;
 
-					Vector4 r2;
+					Vector3 r2;
 
-					Vector4 r3;
+					Vector3 r3;
 
-					Vector4 r4;
+					Vector3 r4;
 
 				};
 
@@ -114,12 +120,26 @@ namespace ING {
 
 
 			/**
+			 *	Methods
+			 */
+#ifdef __AVX__
+		public:
+			Matrix3x4 Transpose() const;
+#else
+
+
+
+#endif
+
+
+
+			/**
 			 *	Operators
 			 */
 #ifdef __AVX__
 		public:
-			inline Vector4& operator[](unsigned char i) {
-				return *((Vector4*)((char*)this + i * 4));
+			inline Vector3& operator[](unsigned char i) {
+				return *((Vector3*)((char*)this + i * 4));
 			}
 #else
 

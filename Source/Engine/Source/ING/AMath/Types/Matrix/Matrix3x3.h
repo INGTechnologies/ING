@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Vector
+ */
+#include "../Vector/Vector.h"
+
+
+
 namespace ING {
 
 	namespace AMath {
@@ -29,7 +36,7 @@ namespace ING {
 		public:
 			inline Matrix3x3(float m11, float m12, float m13, float m21, float m22, float m23, float m31, float m32, float m33) : 
 				m256(_mm256_set_ps(0, m23, m22, m21, 0, m13, m12, m11)),
-				m128(_mm_set_ps(0, m13, m12, m11))
+				m128(_mm_set_ps(0, m33, m32, m31))
 			{}
 
 			inline Matrix3x3() : Matrix3x3(m256_0_0_0_0_0_0_0_0, m128_0_0_0_0) {}
@@ -97,6 +104,20 @@ namespace ING {
 				};
 
 			};
+#else
+
+
+
+#endif
+
+
+
+			 /**
+			  *	Methods
+			  */
+#ifdef __AVX__
+		public:
+			Matrix3x3 Transpose() const;
 #else
 
 

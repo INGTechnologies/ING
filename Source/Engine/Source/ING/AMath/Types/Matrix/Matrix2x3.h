@@ -100,6 +100,20 @@ namespace ING {
 
 
 			/**
+			 *	Methods
+			 */
+#ifdef __AVX__
+		public:
+			Matrix3x2 Transpose() const;
+#else
+
+
+
+#endif
+
+
+
+			/**
 			 *	Operators
 			 */
 #ifdef __AVX__

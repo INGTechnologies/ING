@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Vector
+ */
+#include "../Vector/Vector.h"
+
+
+
 namespace ING {
 
 	namespace AMath {
@@ -83,6 +90,20 @@ namespace ING {
 				};
 
 			};
+#else
+
+
+
+#endif
+
+
+
+			/**
+			 *	Methods
+			 */
+#ifdef __AVX__
+		public:
+			Matrix2x3 Transpose() const;
 #else
 
 
