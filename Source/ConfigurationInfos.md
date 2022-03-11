@@ -1,5 +1,6 @@
-Debug1: 
-    Enable SSE
+## Configurations: ##
++ Debug1:
+    - Enable SSE
 
-Debug2:
-    Enable AVX2
++ Debug2:
+    - Enable AVX2
