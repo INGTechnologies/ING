@@ -1,14 +1,32 @@
 
 /**
- *	Include Types
+ *	Include Math Types
  */
 #include <ING\Math\Types\Types.h>
+
+
+
+/**
+ *	Include AMath Types
+ */
+#include <ING\AMath\Types\Types.h>
 
 
 
 namespace ING {
 
 	namespace Math {
+
+		/**
+		 *	Constructors
+		 */
+		Vector3::Vector3(const AMath::Vector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
+		}
+
+
 
 		/**
 		 *	Methods
@@ -60,6 +78,12 @@ namespace ING {
 			return (
 				Vector3::DotProduct(tNext, *this)
 			);
+		}
+
+		void  Vector3::operator=(const AMath::Vector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
 		}
 
 	}

@@ -36,8 +36,7 @@ namespace ING {
 #ifdef __AVX__
 		static inline Matrix4x4 operator*(const CVector4& a, const Vector4& b) {
 
-			__m128_x2 mR3(b.m128, b.m128);
-
+			__m128_x2 mR3(&b.m128);
 
 			__m128_x2 mR(a.m128, m128_0_0_0_0);
 

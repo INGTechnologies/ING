@@ -1,8 +1,15 @@
 
 /**
- *	Include Types
+ *	Include Math Types
  */
 #include <ING\Math\Types\Types.h>
+
+
+
+/**
+ *	Include AMath Types
+ */
+#include <ING\AMath\Types\Types.h>
 
 
 

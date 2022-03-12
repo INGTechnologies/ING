@@ -10,9 +10,16 @@ using namespace ING::Utils;
 
 
 /**
- *	Declares Vectors
+ *	Include Math Type Declares
  */
-#include "VectorDeclares.h"
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
+/**
+ *	Include AMath Type Declares
+ */
+#include <ING\AMath\Types\TypeDeclares.h>
 
 
 

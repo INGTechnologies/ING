@@ -1,14 +1,32 @@
 
 /**
- *	Include Types
+ *	Include Math Types
  */
 #include <ING\Math\Types\Types.h>
+
+
+
+/**
+ *	Include AMath Types
+ */
+#include <ING\AMath\Types\Types.h>
 
 
 
 namespace ING {
 
 	namespace Math {
+
+		/**
+		 *	Constructors
+		 */
+		CVector3::CVector3(const AMath::CVector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
+		}
+
+
 
 		/**
 		 *	Methods
@@ -52,6 +70,12 @@ namespace ING {
 				next * y,
 				next * z
 			);
+		}
+
+		void  CVector3::operator=(const AMath::CVector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
 		}
 
 	}

@@ -14,6 +14,13 @@
 
 
 
+/**
+ *	Include AMath Type Declares
+ */
+#include <ING\AMath\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {

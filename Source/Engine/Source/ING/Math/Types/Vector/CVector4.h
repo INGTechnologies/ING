@@ -14,6 +14,13 @@
 
 
 
+/**
+ *	Include AMath Type Declares
+ */
+#include <ING\AMath\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
@@ -35,6 +42,8 @@ namespace ING {
 			{
 
 			}
+
+			CVector4(const AMath::CVector4& amathV);
 
 
 
@@ -73,6 +82,8 @@ namespace ING {
 			Matrix4x4			operator*(const Vector4& next);
 			Matrix4x3			operator*(const Vector3& next);
 			Matrix4x2			operator*(const Vector2& next);
+
+			void				operator=(const AMath::CVector4& amathV);
 
 		};
 
