@@ -137,9 +137,14 @@ namespace ING {
 
 
 		static inline float   operator*(const Vector4& a, const CVector4&  b);
-		static inline Vector2 operator*(const Vector4& a, const Matrix4x2& b);
-		static inline Vector3 operator*(const Vector4& a, const Matrix4x3& b);
 
+		static inline Vector2 operator*(const Vector4& a, const Matrix4x2& b);
+		static inline Vector2 operator*(const Vector4& a, const CMatrix4x2& b);
+
+		static inline Vector3 operator*(const Vector4& a, const Matrix4x3& b);
+		static inline Vector3 operator*(const Vector4& a, const CMatrix4x3& b);
+
+		static inline Vector4 operator*(const Vector4& a, const Matrix4x4& b);
 		static inline Vector4 operator*(const Vector4& a, const CMatrix4x4& b);
 
 	}
