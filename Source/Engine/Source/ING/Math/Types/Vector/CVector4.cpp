@@ -1,14 +1,32 @@
 
 /**
- *	Include Types
+ *	Include Math Types
  */
 #include <ING\Math\Types\Types.h>
+
+
+
+/**
+ *	Include AMath Types
+ */
+#include <ING\AMath\Types\Types.h>
 
 
 
 namespace ING {
 
 	namespace Math {
+
+		/**
+		 *	Constructors
+		 */
+		CVector4::CVector4(const AMath::CVector4& amathV) {
+
+			memcpy(this, &amathV, 16);
+
+		}
+
+
 
 		/**
 		 *	Methods
@@ -28,7 +46,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Matrix4x4 CVector4::operator*(Vector4 next) {
+		Matrix4x4 CVector4::operator*(const Vector4& next) {
 			return Matrix4x4(
 				next * x,
 				next * y,
@@ -37,7 +55,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x3 CVector4::operator*(Vector3 next) {
+		Matrix4x3 CVector4::operator*(const Vector3& next) {
 			return Matrix4x3(
 				next * x,
 				next * y,
@@ -46,13 +64,19 @@ namespace ING {
 			);
 		}
 
-		Matrix4x2 CVector4::operator*(Vector2 next) {
+		Matrix4x2 CVector4::operator*(const Vector2& next) {
 			return Matrix4x2(
 				next * x,
 				next * y,
 				next * z,
 				next * w
 			);
+		}
+
+		void  CVector4::operator=(const AMath::CVector4& amathV) {
+
+			memcpy(this, &amathV, 16);
+
 		}
 
 	}

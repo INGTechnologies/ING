@@ -62,11 +62,18 @@ namespace ING {
 
 
 
+		static const __m256i M128_DUPLICATE_PERMUTE = _mm256_set_epi32(3,2,1,0,3,2,1,0);
+
 		union __m128_x2 {
 
 			__m128_x2(){}
 			__m128_x2(__m256 m):m256(m){}
 			__m128_x2(__m128 m1, __m128 m2):m128_1(m1),m128_2(m2){}
+			__m128_x2(const __m128* m){
+			
+				m256 = _mm256_permutevar8x32_ps(*((__m256*)m), M128_DUPLICATE_PERMUTE);
+			
+			}
 
 			__m256 m256;
 

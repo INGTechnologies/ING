@@ -17,9 +17,23 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include AMath Type Declares
+ */
+#include <ING\AMath\Types\TypeDeclares.h>
+
+
+
+/**
  *	Declares Vectors
  */
 #include "VectorDeclares.h"
+
+
+
+/**
+ *	Include Non-SIMD Vector4
+ */
+#include <ING\Math\Types\Vector\Vector4.h>
 
 
 
@@ -40,6 +54,12 @@ namespace ING {
 			inline Vector4(Vector4& a) : m128(a.m128) {}
 
 			inline Vector4(__m128 m) : m128(m) {}
+
+			inline Vector4(const Math::Vector4& m) {
+			
+				memcpy(this, &m, 16);
+			
+			}
 
 			inline ~Vector4() {}
 
@@ -104,6 +124,11 @@ namespace ING {
 			void			operator=(__m128 m128) {
 
 				this->m128 = m128;
+
+			}
+			void			operator=(const Math::Vector4& mathV) {
+
+				memcpy(this, &mathV, 16);
 
 			}
 

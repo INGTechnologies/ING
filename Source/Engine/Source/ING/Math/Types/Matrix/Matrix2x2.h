@@ -14,31 +14,16 @@
 
 
 
+/**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
-
-		struct Matrix2x4;
-		struct Matrix2x3;
-		struct Matrix2x2;
-
-		struct Matrix3x4;
-		struct Matrix3x3;
-		struct Matrix3x2;
-
-		struct Matrix4x4;
-		struct Matrix4x3;
-		struct Matrix4x2;
-
-		struct CVector2;
-		struct CVector4;
-		struct CVector4;
-
-		struct Vector2;
-		struct Vector3;
-		struct Vector4;
-
-
 
 		struct ING_API Matrix2x2 {
 
@@ -46,7 +31,7 @@ namespace ING {
 			 *	Constructors
 			 */
 		public:
-			Matrix2x2(Vector2 _x, Vector2 _y) {
+			Matrix2x2(const Vector2& _x, const Vector2& _y) {
 				rows[0] = _x;
 				rows[1] = _y;
 			}
@@ -73,8 +58,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Matrix2x2	Transpose();
-			float		Det();
+			Matrix2x2	Transpose() const;
+			float		Det() const;
 
 
 
@@ -82,10 +67,10 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Matrix2x2	operator+(Matrix2x2 next) {
+			Matrix2x2	operator+(const Matrix2x2& next) {
 				return Matrix2x2(rows[0] + next.rows[0], rows[1] + next.rows[1]);
 			}
-			Matrix2x2	operator-(Matrix2x2 next) {
+			Matrix2x2	operator-(const Matrix2x2& next) {
 				return Matrix2x2(rows[0] - next.rows[0], rows[1] - next.rows[1]);
 			}
 			Matrix2x2	operator*(float a) {
@@ -95,10 +80,10 @@ namespace ING {
 				return Matrix2x2(rows[0] / a, rows[1] / a);
 			}
 
-			Matrix2x4	operator*(Matrix2x4 next);
-			Matrix2x3	operator*(Matrix2x3 next);
-			Matrix2x2	operator*(Matrix2x2 next);
-			CVector2	operator*(CVector2 next);
+			Matrix2x4	operator*(const Matrix2x4& next);
+			Matrix2x3	operator*(const Matrix2x3& next);
+			Matrix2x2	operator*(const Matrix2x2& next);
+			CVector2	operator*(const CVector2& next);
 
 		};
 
