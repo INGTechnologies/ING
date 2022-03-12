@@ -124,7 +124,8 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix3x4 Transpose() const;
+			Matrix3x4  Transpose() const;
+			CMatrix4x3 ToCMatrix() const;
 #else
 
 
@@ -155,11 +156,19 @@ namespace ING {
 		static inline Matrix4x3 operator+(const Matrix4x3& a, const Matrix4x3& b) { return Matrix4x3(_mm256_add_ps(a.m256_1, b.m256_1), _mm256_add_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x3 operator-(const Matrix4x3& a, const Matrix4x3& b) { return Matrix4x3(_mm256_sub_ps(a.m256_1, b.m256_1), _mm256_sub_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x3 operator*(const Matrix4x3& a, float b) {
-			__m256 mR = _mm256_set_ps(0, b, b, b, 0, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			return Matrix4x3(_mm256_mul_ps(a.m256_1, mR), _mm256_mul_ps(a.m256_2, mR));
 		}
 		static inline Matrix4x3 operator/(const Matrix4x3& a, float b) {
-			__m256 mR = _mm256_set_ps(0, b, b, b, 0, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			return Matrix4x3(_mm256_div_ps(a.m256_1, mR), _mm256_div_ps(a.m256_2, mR));
 		}
 
@@ -168,12 +177,20 @@ namespace ING {
 		static inline void operator+=(Matrix4x3& a, const Matrix4x3& b) { a.m256_1 = _mm256_add_ps(a.m256_1, b.m256_1); a.m256_2 = _mm256_add_ps(a.m256_2, b.m256_2); }
 		static inline void operator-=(Matrix4x3& a, const Matrix4x3& b) { a.m256_1 = _mm256_sub_ps(a.m256_1, b.m256_1); a.m256_2 = _mm256_sub_ps(a.m256_2, b.m256_2); }
 		static inline void operator*=(Matrix4x3& a, float b) {
-			__m256 mR = _mm256_set_ps(0, b, b, b, 0, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			a.m256_1 = _mm256_mul_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_mul_ps(a.m256_2, mR);
 		}
 		static inline void operator/=(Matrix4x3& a, float b) {
-			__m256 mR = _mm256_set_ps(0, b, b, b, 0, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			a.m256_1 = _mm256_div_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_div_ps(a.m256_2, mR);
 		}

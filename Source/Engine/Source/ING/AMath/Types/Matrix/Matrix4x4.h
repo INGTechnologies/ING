@@ -125,7 +125,8 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix4x4 Transpose() const;
+			Matrix4x4  Transpose() const;
+			CMatrix4x4 ToCMatrix() const;
 #else
 
 
@@ -156,11 +157,19 @@ namespace ING {
 		static inline Matrix4x4 operator+(const Matrix4x4& a, const Matrix4x4& b) { return Matrix4x4(_mm256_add_ps(a.m256_1, b.m256_1), _mm256_add_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x4 operator-(const Matrix4x4& a, const Matrix4x4& b) { return Matrix4x4(_mm256_sub_ps(a.m256_1, b.m256_1), _mm256_sub_ps(a.m256_2, b.m256_2)); }
 		static inline Matrix4x4 operator*(const Matrix4x4& a, float b) {
-			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			return Matrix4x4(_mm256_mul_ps(a.m256_1, mR), _mm256_mul_ps(a.m256_2, mR));
 		}
-		static inline Matrix4x4 operator/(const Matrix4x4& a, float b) { 
-			__m256 mR = _mm256_set_ps(b,b,b,b,b,b,b,b);
+		static inline Matrix4x4 operator/(const Matrix4x4& a, float b) {
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			return Matrix4x4(_mm256_div_ps(a.m256_1, mR), _mm256_div_ps(a.m256_2, mR));
 		}
 
@@ -169,15 +178,27 @@ namespace ING {
 		static inline void operator+=(Matrix4x4& a, const Matrix4x4& b) { a.m256_1 = _mm256_add_ps(a.m256_1, b.m256_1); a.m256_2 = _mm256_add_ps(a.m256_2, b.m256_2); }
 		static inline void operator-=(Matrix4x4& a, const Matrix4x4& b) { a.m256_1 = _mm256_sub_ps(a.m256_1, b.m256_1); a.m256_2 = _mm256_sub_ps(a.m256_2, b.m256_2); }
 		static inline void operator*=(Matrix4x4& a, float b) {
-			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			a.m256_1 = _mm256_mul_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_mul_ps(a.m256_2, mR);
 		}
 		static inline void operator/=(Matrix4x4& a, float b) {
-			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
+
+			__m256 mR;
+			mR.m256_f32[0] = b;
+			mR = _mm256_permutevar8x32_ps(mR, _M256_FP0_TO_ALL);
+
 			a.m256_1 = _mm256_div_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_div_ps(a.m256_2, mR);
 		}
+
+
+
+		//static inline Vector4 operator * (const Vector4& a, const Matrix4x4& b);
 #else
 
 

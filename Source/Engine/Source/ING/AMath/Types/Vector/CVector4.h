@@ -62,13 +62,19 @@ namespace ING {
 
 				__m128 mR = _mm_mul_ps(v1.m128, v2.m128);
 
-				return mR.m128_f32[0] + mR.m128_f32[1] + mR.m128_f32[2] + mR.m128_f32[3];
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return _mm_hadd_ps(mR, mR).m128_f32[0];
 
 			}
 
 			float				Length() const {
 
-				return sqrt(x*x + y*y + z*z +w*w);
+				__m128 mR = _mm_mul_ps(m128, m128);
+
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return sqrt(_mm_hadd_ps(mR, mR).m128_f32[0]);
 
 			}
 
@@ -120,6 +126,10 @@ namespace ING {
 		static inline void    operator*=(CVector4& a, float b)					{ a.m128 = _mm_set_ps(a.w * b, a.z * b, a.y * b, a.x * b); }
 
 		static inline void    operator/=(CVector4& a, float b)					{ a.m128 = _mm_set_ps(a.w / b, a.z / b, a.y / b, a.x / b); }
+
+
+
+		static inline Matrix4x4 operator*(const CVector4& a, const Vector4& b);
 
 	}
 
