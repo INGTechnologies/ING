@@ -1,14 +1,32 @@
 
 /**
- *	Include Types
+ *	Include Math Types
  */
 #include <ING\Math\Types\Types.h>
+
+
+
+/**
+ *	Include AMath Types
+ */
+#include <ING\AMath\Types\Types.h>
 
 
 
 namespace ING {
 
 	namespace Math {
+
+		/**
+		 *	Constructors
+		 */
+		Vector3::Vector3(const AMath::Vector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
+		}
+
+
 
 		/**
 		 *	Methods
@@ -28,7 +46,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Vector4 Vector3::operator*(Matrix3x4 next) {
+		Vector4 Vector3::operator*(const Matrix3x4& next) {
 			Matrix4x3 tNext = next.Transpose();
 			return Vector4(
 				Vector3::DotProduct(tNext.rows[0], *this),
@@ -38,7 +56,7 @@ namespace ING {
 			);
 		}
 
-		Vector3 Vector3::operator*(Matrix3x3 next) {
+		Vector3 Vector3::operator*(const Matrix3x3& next) {
 			Matrix3x3 tNext = next.Transpose();
 			return Vector3(
 				Vector3::DotProduct(tNext.rows[0], *this),
@@ -47,7 +65,7 @@ namespace ING {
 			);
 		}
 
-		Vector2 Vector3::operator*(Matrix3x2 next) {
+		Vector2 Vector3::operator*(const Matrix3x2& next) {
 			Matrix2x3 tNext = next.Transpose();
 			return Vector2(
 				Vector3::DotProduct(tNext.rows[0], *this),
@@ -55,11 +73,17 @@ namespace ING {
 			);
 		}
 
-		float Vector3::operator*(CVector3 next) {
+		float Vector3::operator*(const CVector3& next) {
 			Vector3 tNext = next.Transpose();
 			return (
 				Vector3::DotProduct(tNext, *this)
 			);
+		}
+
+		void  Vector3::operator=(const AMath::Vector3& amathV) {
+
+			memcpy(this, &amathV, 12);
+
 		}
 
 	}

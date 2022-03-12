@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		F4IJK::F4IJK(Vector4 v) {
+		F4IJK::F4IJK(const Vector4& v) {
 
 			factors[0] = v.w;
 
@@ -25,7 +25,7 @@ namespace ING {
 
 		}
 
-		F4IJK::F4IJK(Vector3 v) {
+		F4IJK::F4IJK(const Vector3& v) {
 
 			factors[0] = 0;
 
@@ -37,7 +37,7 @@ namespace ING {
 
 		}
 
-		F4IJK::F4IJK(Vector2 v) {
+		F4IJK::F4IJK(const Vector2& v) {
 
 			factors[0] = 0;
 
@@ -78,7 +78,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		F4IJK F4IJK::operator*(F4IJK next) {
+		F4IJK F4IJK::operator*(const F4IJK& next) {
 
 			float w1 = factors[0];
 			float x1 = factors[1];
