@@ -46,16 +46,7 @@ namespace ING {
 
 			inline ~Matrix3x2() {}
 #else
-		public:
-			inline Matrix3x2(float m11, float m12, float m13, float m21, float m22, float m23) : m128_1(_mm_set_ps(0, m23, m22, m21)), m128_2(_mm_set_ps(0, m13, m12, m11)) {}
 
-			inline Matrix3x2() : Matrix3x2(m128_0_0_0_0, m128_0_0_0_0) {}
-
-			inline Matrix3x2(const Matrix3x2& a) : m128_1(a.m128_1), m128_2(a.m128_2) {}
-
-			inline Matrix3x2(__m128 m1, __m128 m2) : m128_1(m1), m128_2(m2) {}
-
-			inline ~Matrix3x2() {}
 #endif
 
 
@@ -98,38 +89,7 @@ namespace ING {
 
 			};
 #else
-		public:
-			union {
-				struct {
-					__m128 m128_1;
-					__m128 m128_2;
-				};
 
-				struct {
-
-					float m11;
-					float m12;
-					float m13;
-
-					float m1x;
-
-					float m21;
-					float m22;
-					float m23;
-
-					float m2x;
-
-				};
-
-				struct {
-
-					Vector4 r1;
-
-					Vector4 r2;
-
-				};
-
-			};
 #endif
 
 
@@ -139,10 +99,10 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix2x3 Transpose() const;
+			Matrix2x3  Transpose() const;
+			CMatrix3x2 ToCMatrix() const;
 #else
-		public:
-			Matrix2x3 Transpose() const;
+
 #endif
 
 
@@ -156,10 +116,7 @@ namespace ING {
 				return *((Vector2*)this + i);
 			}
 #else
-		public:
-			inline Vector2& operator[](unsigned char i) {
-				return *((Vector2*)this + i);
-			}
+
 #endif
 
 		};
@@ -191,31 +148,7 @@ namespace ING {
 			a.m256 = _mm256_div_ps(a.m256, mR);
 		}
 #else
-		static inline Matrix3x2 operator+(const Matrix3x2& a, const Matrix3x2& b) { return Matrix3x2(_mm_add_ps(a.m128_1, b.m128_1), _mm_add_ps(a.m128_2, b.m128_2)); }
-		static inline Matrix3x2 operator-(const Matrix3x2& a, const Matrix3x2& b) { return Matrix3x2(_mm_sub_ps(a.m128_1, b.m128_1), _mm_sub_ps(a.m128_2, b.m128_2)); }
-		static inline Matrix3x2 operator*(const Matrix3x2& a, float b) {
-			__m128 mR = _mm_set_ps(b, b, b, b);
-			return Matrix3x2(_mm_mul_ps(a.m128_1, mR), _mm_mul_ps(a.m128_2, mR));
-		}
-		static inline Matrix3x2 operator/(const Matrix3x2& a, float b) {
-			__m128 mR = _mm_set_ps(b, b, b, b);
-			return Matrix3x2(_mm_div_ps(a.m128_1, mR), _mm_div_ps(a.m128_2, mR));
-		}
 
-
-
-		static inline void operator+=(Matrix3x2& a, const Matrix3x2& b) { a.m128_1 = _mm_add_ps(a.m128_1, b.m128_1); a.m128_2 = _mm_add_ps(a.m128_1, b.m128_1); }
-		static inline void operator-=(Matrix3x2& a, const Matrix3x2& b) { a.m128_1 = _mm_sub_ps(a.m128_1, b.m128_1); a.m128_2 = _mm_sub_ps(a.m128_2, b.m128_2); }
-		static inline void operator*=(Matrix3x2& a, float b) {
-			__m128 mR = _mm_set_ps(b, b, b, b);
-			a.m128_1 = _mm_mul_ps(a.m128_1, mR);
-			a.m128_2 = _mm_mul_ps(a.m128_2, mR);
-		}
-		static inline void operator/=(Matrix3x2& a, float b) {
-			__m128 mR = _mm_set_ps(b, b, b, b);
-			a.m128_1 = _mm_div_ps(a.m128_1, mR);
-			a.m128_2 = _mm_div_ps(a.m128_2, mR);
-		}
 #endif
 
 	}

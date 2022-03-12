@@ -78,7 +78,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Matrix2x2 Transpose() const;
+			Matrix2x2  Transpose() const;
+			CMatrix2x2 ToCMatrix() const;
 
 
 

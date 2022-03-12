@@ -108,7 +108,8 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix2x4 Transpose() const;
+			Matrix2x4  Transpose() const;
+			CMatrix4x2 ToCMatrix() const;
 #else
 
 
