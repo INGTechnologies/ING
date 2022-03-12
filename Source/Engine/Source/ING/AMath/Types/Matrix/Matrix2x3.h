@@ -47,8 +47,6 @@ namespace ING {
 			inline ~Matrix2x3() {}
 #else
 
-
-
 #endif
 
 
@@ -56,7 +54,7 @@ namespace ING {
 			/**
 			 *	Properties
 			 */
-#ifdef __AVX2__
+#ifdef __AVX__
 		public:
 			union {
 				__m256 m256;
@@ -93,8 +91,6 @@ namespace ING {
 			};
 #else
 
-
-
 #endif
 
 
@@ -104,10 +100,9 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix3x2 Transpose() const;
+			Matrix3x2  Transpose() const;
+			CMatrix2x3 ToCMatrix() const;
 #else
-
-
 
 #endif
 
@@ -122,8 +117,6 @@ namespace ING {
 				return *((Vector3*)((char*)this + i * 4));
 			}
 #else
-
-
 
 #endif
 
@@ -156,8 +149,6 @@ namespace ING {
 			a.m256 = _mm256_div_ps(a.m256, mR);
 		}
 #else
-
-
 
 #endif
 

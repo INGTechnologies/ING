@@ -1,4 +1,14 @@
 
+#include "CMatrix2x2Def.h"
+#include "CMatrix2x3Def.h"
+#include "CMatrix2x4Def.h"
+#include "CMatrix3x2Def.h"
+#include "CMatrix3x3Def.h"
+#include "CMatrix3x4Def.h"
+#include "CMatrix4x2Def.h"
+#include "CMatrix4x3Def.h"
+#include "CMatrix4x4Def.h"
+
 #include "Matrix2x2Def.h"
 #include "Matrix2x3Def.h"
 #include "Matrix2x4Def.h"

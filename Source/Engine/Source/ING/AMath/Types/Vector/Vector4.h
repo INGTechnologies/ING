@@ -10,6 +10,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
+/**
  *	Declares Vectors
  */
 #include "VectorDeclares.h"
@@ -62,13 +69,19 @@ namespace ING {
 
 				__m128 mR = _mm_mul_ps(v1.m128, v2.m128);
 
-				return mR.m128_f32[0] + mR.m128_f32[1] + mR.m128_f32[2] + mR.m128_f32[3];
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return _mm_hadd_ps(mR, mR).m128_f32[0];
 
 			}
 
 			float				Length() const {
 
-				return sqrt(x*x + y*y + z*z +w*w);
+				__m128 mR = _mm_mul_ps(m128, m128);
+
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return sqrt(_mm_hadd_ps(mR, mR).m128_f32[0]);
 
 			}
 
@@ -120,6 +133,19 @@ namespace ING {
 		static inline void    operator*=(Vector4& a, float b)				{ a.m128 = _mm_set_ps(a.w * b, a.z * b, a.y * b, a.x * b); }
 
 		static inline void    operator/=(Vector4& a, float b)				{ a.m128 = _mm_set_ps(a.w / b, a.z / b, a.y / b, a.x / b); }
+
+
+
+		static inline float   operator*(const Vector4& a, const CVector4&  b);
+
+		static inline Vector2 operator*(const Vector4& a, const Matrix4x2& b);
+		static inline Vector2 operator*(const Vector4& a, const CMatrix4x2& b);
+
+		static inline Vector3 operator*(const Vector4& a, const Matrix4x3& b);
+		static inline Vector3 operator*(const Vector4& a, const CMatrix4x3& b);
+
+		static inline Vector4 operator*(const Vector4& a, const Matrix4x4& b);
+		static inline Vector4 operator*(const Vector4& a, const CMatrix4x4& b);
 
 	}
 

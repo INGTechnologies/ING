@@ -62,13 +62,19 @@ namespace ING {
 
 				__m128 mR = _mm_mul_ps(v1.m128, v2.m128);
 
-				return mR.m128_f32[0] + mR.m128_f32[1] + mR.m128_f32[2] + mR.m128_f32[3];
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return _mm_hadd_ps(mR, mR).m128_f32[0];
 
 			}
 
 			float				Length() const {
 
-				return sqrt(x*x + y*y + z*z);
+				__m128 mR = _mm_mul_ps(m128, m128);
+
+				mR = _mm_hadd_ps(mR, m128_0_0_0_0);
+
+				return sqrt(_mm_hadd_ps(mR, mR).m128_f32[0]);
 
 			}
 

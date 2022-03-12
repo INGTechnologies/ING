@@ -46,9 +46,16 @@ namespace ING {
 
 			inline ~Matrix2x4() {}
 #else
+		public:
+			inline Matrix2x4(float m11, float m12, float m13, float m21, float m22, float m23) : m128_1(_mm_set_ps(0, m23, m22, m21)), m128_2(_mm_set_ps(0, m13, m12, m11)) {}
 
+			inline Matrix2x4() : Matrix2x4(m128_0_0_0_0, m128_0_0_0_0) {}
 
+			inline Matrix2x4(const Matrix2x4& a) : m128_1(a.m128_1), m128_2(a.m128_2) {}
 
+			inline Matrix2x4(__m128 m1, __m128 m2) : m128_1(m1), m128_2(m2) {}
+
+			inline ~Matrix2x4() {}
 #endif
 
 
@@ -91,8 +98,6 @@ namespace ING {
 			};
 #else
 
-
-
 #endif
 
 
@@ -102,10 +107,9 @@ namespace ING {
 			 */
 #ifdef __AVX__
 		public:
-			Matrix4x2 Transpose() const;
+			Matrix4x2  Transpose() const;
+			CMatrix2x4 ToCMatrix() const;
 #else
-
-
 
 #endif
 
@@ -120,8 +124,6 @@ namespace ING {
 				return *((Vector4*)this + i);
 			}
 #else
-
-
 
 #endif
 
@@ -154,8 +156,6 @@ namespace ING {
 			a.m256 = _mm256_div_ps(a.m256, mR);
 		}
 #else
-
-
 
 #endif
 
