@@ -14,31 +14,16 @@
 
 
 
+/**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
-
-		struct Matrix2x4;
-		struct Matrix2x3;
-		struct Matrix2x2;
-
-		struct Matrix3x4;
-		struct Matrix3x3;
-		struct Matrix3x2;
-
-		struct Matrix4x4;
-		struct Matrix4x3;
-		struct Matrix4x2;
-
-		struct CVector2;
-		struct CVector3;
-		struct CVector4;
-
-		struct Vector2;
-		struct Vector3;
-		struct Vector4;
-
-
 
 		struct ING_API Quaternion : public Vector4 {
 
@@ -53,7 +38,7 @@ namespace ING {
 				w = _w;
 			}
 
-			Quaternion(Vector4 v) :
+			Quaternion(const Vector4& v) :
 				Quaternion(v.x, v.y, v.z, v.w)
 			{
 
@@ -73,7 +58,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			static Quaternion Euler(Vector3 eulerAngles);
+			static Quaternion Euler(const Vector3& eulerAngles);
 
 
 
@@ -81,7 +66,7 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Vector3 operator*(Vector3 next);
+			Vector3 operator*(const Vector3& next);
 
 		};
 

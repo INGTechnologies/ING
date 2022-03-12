@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Matrix3x4 CVector3::operator*(Vector4 next) {
+		Matrix3x4 CVector3::operator*(const Vector4& next) {
 			return Matrix3x4(
 				next * x,
 				next * y,
@@ -38,7 +38,7 @@ namespace ING {
 			);
 		}
 
-		Matrix3x3 CVector3::operator*(Vector3 next) {
+		Matrix3x3 CVector3::operator*(const Vector3& next) {
 			return Matrix3x3(
 				next * x,
 				next * y,
@@ -46,7 +46,7 @@ namespace ING {
 			);
 		}
 
-		Matrix3x2 CVector3::operator*(Vector2 next) {
+		Matrix3x2 CVector3::operator*(const Vector2& next) {
 			return Matrix3x2(
 				next * x,
 				next * y,

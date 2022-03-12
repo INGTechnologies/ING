@@ -7,31 +7,16 @@
 
 
 
+/**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
-
-		struct Matrix2x4;
-		struct Matrix2x3;
-		struct Matrix2x2;
-
-		struct Matrix3x4;
-		struct Matrix3x3;
-		struct Matrix3x2;
-
-		struct Matrix4x4;
-		struct Matrix4x3;
-		struct Matrix4x2;
-
-		struct CVector2;
-		struct CVector3;
-		struct CVector4;
-
-		struct Vector2;
-		struct Vector3;
-		struct Vector4;
-
-
 
 		struct ING_API CVector4 {
 
@@ -85,9 +70,9 @@ namespace ING {
 			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
 			}
-			Matrix4x4			operator*(Vector4 next);
-			Matrix4x3			operator*(Vector3 next);
-			Matrix4x2			operator*(Vector2 next);
+			Matrix4x4			operator*(const Vector4& next);
+			Matrix4x3			operator*(const Vector3& next);
+			Matrix4x2			operator*(const Vector2& next);
 
 		};
 

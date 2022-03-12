@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		Quaternion Quaternion::Euler(Vector3 eulerAngles) {
+		Quaternion Quaternion::Euler(const Vector3& eulerAngles) {
 
 			Quaternion result;
 
@@ -38,7 +38,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Vector3 Quaternion::operator*(Vector3 next) {
+		Vector3 Quaternion::operator*(const Vector3& next) {
 
 			/* Find q (Quaternion In Float4 Type)*/
 			F4IJK q = *this;

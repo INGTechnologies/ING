@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		Matrix4x4	Matrix4x4::Transpose() {
+		Matrix4x4	Matrix4x4::Transpose() const {
 			return Matrix4x4(
 				Vector4(rows[0].x, rows[1].x, rows[2].x, rows[3].x),
 				Vector4(rows[0].y, rows[1].y, rows[2].y, rows[3].y),
@@ -22,7 +22,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x4	Matrix4x4::Cofactor() {
+		Matrix4x4	Matrix4x4::Cofactor() const {
 
 			return Matrix4x4(
 
@@ -206,7 +206,7 @@ namespace ING {
 
 		}
 
-		Matrix4x4	Matrix4x4::Inverse() {
+		Matrix4x4	Matrix4x4::Inverse() const {
 
 			return (*this).Cofactor() / Det();
 
@@ -225,7 +225,7 @@ namespace ING {
 
 		}
 
-		float		Matrix4x4::Det() {
+		float		Matrix4x4::Det() const {
 
 			Matrix3x3 a = Matrix3x3(
 				Vector3(rows[1].y, rows[1].z, rows[1].w),
@@ -259,7 +259,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Matrix4x4 Matrix4x4::operator*(Matrix4x4 next) {
+		Matrix4x4 Matrix4x4::operator*(const Matrix4x4& next) {
 
 			Matrix4x4 tNext = next.Transpose();
 
@@ -271,7 +271,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x3 Matrix4x4::operator*(Matrix4x3 next) {
+		Matrix4x3 Matrix4x4::operator*(const Matrix4x3& next) {
 
 			Matrix3x4 tNext = next.Transpose();
 
@@ -283,7 +283,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x2 Matrix4x4::operator*(Matrix4x2 next) {
+		Matrix4x2 Matrix4x4::operator*(const Matrix4x2& next) {
 
 			Matrix2x4 tNext = next.Transpose();
 
@@ -295,7 +295,7 @@ namespace ING {
 			);
 		}
 
-		CVector4 Matrix4x4::operator*(CVector4 next) {
+		CVector4 Matrix4x4::operator*(const CVector4& next) {
 
 			Vector4 tNext = next.Transpose();
 

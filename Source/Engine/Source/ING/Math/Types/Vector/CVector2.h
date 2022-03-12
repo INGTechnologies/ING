@@ -7,31 +7,16 @@
 
 
 
+/**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
-
-		struct Matrix2x4;
-		struct Matrix2x3;
-		struct Matrix2x2;
-
-		struct Matrix3x4;
-		struct Matrix3x3;
-		struct Matrix3x2;
-
-		struct Matrix4x4;
-		struct Matrix4x3;
-		struct Matrix4x2;
-
-		struct CVector2;
-		struct CVector3;
-		struct CVector4;
-
-		struct Vector2;
-		struct Vector3;
-		struct Vector4;
-
-
 
 		struct ING_API CVector2 {
 
@@ -68,7 +53,7 @@ namespace ING {
 
 			float				Length() const;
 
-			static inline float	DotProduct(CVector2 a, CVector2 b) {
+			static inline float	DotProduct(const CVector2& a, const CVector2& b) {
 				return a.x * b.x + a.y * b.y;
 			}
 
@@ -81,9 +66,9 @@ namespace ING {
 			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
 			}
-			Matrix2x4			operator*(Vector4 next);
-			Matrix2x3			operator*(Vector3 next);
-			Matrix2x2			operator*(Vector2 next);
+			Matrix2x4			operator*(const Vector4& next);
+			Matrix2x3			operator*(const Vector3& next);
+			Matrix2x2			operator*(const Vector2& next);
 
 		};
 

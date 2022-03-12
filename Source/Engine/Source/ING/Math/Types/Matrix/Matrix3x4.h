@@ -14,31 +14,16 @@
 
 
 
+/**
+ *	Include Math Type Declares
+ */
+#include <ING\Math\Types\TypeDeclares.h>
+
+
+
 namespace ING {
 
 	namespace Math {
-
-		struct Matrix2x4;
-		struct Matrix2x3;
-		struct Matrix2x2;
-
-		struct Matrix3x4;
-		struct Matrix3x3;
-		struct Matrix3x2;
-
-		struct Matrix4x4;
-		struct Matrix4x3;
-		struct Matrix4x2;
-
-		struct CVector2;
-		struct CVector4;
-		struct CVector4;
-
-		struct Vector2;
-		struct Vector3;
-		struct Vector4;
-
-
 
 		struct ING_API Matrix3x4 {
 
@@ -46,7 +31,7 @@ namespace ING {
 			 *	Constructors
 			 */
 		public:
-			Matrix3x4(Vector4 _x, Vector4 _y, Vector4 _z) {
+			Matrix3x4(const Vector4& _x, const Vector4& _y, const Vector4& _z) {
 				rows[0] = _x;
 				rows[1] = _y;
 				rows[2] = _z;
@@ -61,7 +46,7 @@ namespace ING {
 
 			}
 
-
+				
 
 			/**
 			 *	Properties
@@ -75,7 +60,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Matrix4x3	Transpose();
+			Matrix4x3	Transpose() const;
 
 
 
@@ -83,10 +68,10 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			Matrix3x4	operator+(Matrix3x4 next) {
+			Matrix3x4	operator+(const Matrix3x4& next) {
 				return Matrix3x4(rows[0] + next.rows[0], rows[1] + next.rows[1], rows[2] + next.rows[2]);
 			}
-			Matrix3x4	operator-(Matrix3x4 next) {
+			Matrix3x4	operator-(const Matrix3x4& next) {
 				return Matrix3x4(rows[0] - next.rows[0], rows[1] - next.rows[1], rows[2] - next.rows[2]);
 			}
 			Matrix3x4	operator*(float a) {
@@ -96,10 +81,10 @@ namespace ING {
 				return Matrix3x4(rows[0] / a, rows[1] / a, rows[2] / a);
 			}
 
-			Matrix3x4	operator*(Matrix4x4 next);
-			Matrix3x3	operator*(Matrix4x3 next);
-			Matrix3x2	operator*(Matrix4x2 next);
-			CVector3	operator*(CVector4 next);
+			Matrix3x4	operator*(const Matrix4x4& next);
+			Matrix3x3	operator*(const Matrix4x3& next);
+			Matrix3x2	operator*(const Matrix4x2& next);
+			CVector3	operator*(const CVector4& next);
 
 		};
 

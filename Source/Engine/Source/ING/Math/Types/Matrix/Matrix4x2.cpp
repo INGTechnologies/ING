@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		Matrix2x4 Matrix4x2::Transpose() {
+		Matrix2x4 Matrix4x2::Transpose() const {
 			return Matrix2x4(
 				Vector4(rows[0].x, rows[1].x, rows[2].x, rows[3].x),
 				Vector4(rows[0].y, rows[1].y, rows[2].y, rows[3].y)
@@ -25,7 +25,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Matrix4x4 Matrix4x2::operator*(Matrix2x4 next) {
+		Matrix4x4 Matrix4x2::operator*(const Matrix2x4& next) {
 			Matrix4x2 tNext = next.Transpose();
 
 			return Matrix4x4(
@@ -36,7 +36,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x3 Matrix4x2::operator*(Matrix2x3 next) {
+		Matrix4x3 Matrix4x2::operator*(const Matrix2x3& next) {
 			Matrix3x2 tNext = next.Transpose();
 
 			return Matrix4x3(
@@ -47,7 +47,7 @@ namespace ING {
 			);
 		}
 
-		Matrix4x2 Matrix4x2::operator*(Matrix2x2 next) {
+		Matrix4x2 Matrix4x2::operator*(const Matrix2x2& next) {
 			Matrix2x2 tNext = next.Transpose();
 
 			return Matrix4x2(
@@ -58,7 +58,7 @@ namespace ING {
 			);
 		}
 
-		CVector4 Matrix4x2::operator*(CVector2 next) {
+		CVector4 Matrix4x2::operator*(const CVector2& next) {
 			Vector2 tNext = next.Transpose();
 
 			return CVector4(

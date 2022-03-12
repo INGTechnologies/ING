@@ -28,7 +28,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		Vector4 Vector2::operator*(Matrix2x4 next) {
+		Vector4 Vector2::operator*(const Matrix2x4& next) {
 			Matrix4x2 tNext = next.Transpose();
 			return Vector4(
 				Vector2::DotProduct(tNext.rows[0], *this),
@@ -38,7 +38,7 @@ namespace ING {
 			);
 		}
 
-		Vector3 Vector2::operator*(Matrix2x3 next) {
+		Vector3 Vector2::operator*(const Matrix2x3& next) {
 			Matrix3x2 tNext = next.Transpose();
 			return Vector3(
 				Vector2::DotProduct(tNext.rows[0], *this),
@@ -47,7 +47,7 @@ namespace ING {
 			);
 		}
 
-		Vector2 Vector2::operator*(Matrix2x2 next) {
+		Vector2 Vector2::operator*(const Matrix2x2& next) {
 			Matrix2x2 tNext = next.Transpose();
 			return Vector2(
 				Vector2::DotProduct(tNext.rows[0], *this),
@@ -55,7 +55,7 @@ namespace ING {
 			);
 		}
 
-		float Vector2::operator*(CVector2 next) {
+		float Vector2::operator*(const CVector2& next) {
 			Vector2 tNext = next.Transpose();
 			return (
 				Vector2::DotProduct(tNext, *this)
