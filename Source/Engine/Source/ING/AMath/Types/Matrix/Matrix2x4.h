@@ -46,16 +46,7 @@ namespace ING {
 
 			inline ~Matrix2x4() {}
 #else
-		public:
-			inline Matrix2x4(float m11, float m12, float m13, float m21, float m22, float m23) : m128_1(_mm_set_ps(0, m23, m22, m21)), m128_2(_mm_set_ps(0, m13, m12, m11)) {}
 
-			inline Matrix2x4() : Matrix2x4(m128_0_0_0_0, m128_0_0_0_0) {}
-
-			inline Matrix2x4(const Matrix2x4& a) : m128_1(a.m128_1), m128_2(a.m128_2) {}
-
-			inline Matrix2x4(__m128 m1, __m128 m2) : m128_1(m1), m128_2(m2) {}
-
-			inline ~Matrix2x4() {}
 #endif
 
 
@@ -155,6 +146,36 @@ namespace ING {
 			__m256 mR = _mm256_set_ps(b, b, b, b, b, b, b, b);
 			a.m256 = _mm256_div_ps(a.m256, mR);
 		}
+
+
+
+		static inline Matrix2x4 operator * (const Matrix2x4& a, const CMatrix4x4& b);
+
+		static inline Matrix2x4 operator * (const Matrix2x4& a, const Matrix4x4& b);
+
+		static inline Matrix2x4 operator * (const CMatrix2x4& a, const Matrix4x4& b);
+
+		static inline Matrix2x4 operator * (const CMatrix2x4& a, const CMatrix4x4& b);
+
+
+
+		static inline Matrix2x3 operator * (const Matrix2x4& a, const CMatrix4x3& b);
+
+		static inline Matrix2x3 operator * (const Matrix2x4& a, const Matrix4x3& b);
+
+		static inline Matrix2x3 operator * (const CMatrix2x4& a, const Matrix4x3& b);
+
+		static inline Matrix2x3 operator * (const CMatrix2x4& a, const CMatrix4x3& b);
+
+
+
+		static inline Matrix2x2 operator * (const Matrix2x4& a, const CMatrix4x2& b);
+
+		static inline Matrix2x2 operator * (const Matrix2x4& a, const Matrix4x2& b);
+
+		static inline Matrix2x2 operator * (const CMatrix2x4& a, const Matrix4x2& b);
+
+		static inline Matrix2x2 operator * (const CMatrix2x4& a, const CMatrix4x2& b);
 #else
 
 #endif

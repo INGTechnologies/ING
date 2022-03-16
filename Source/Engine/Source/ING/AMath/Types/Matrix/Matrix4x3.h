@@ -194,6 +194,36 @@ namespace ING {
 			a.m256_1 = _mm256_div_ps(a.m256_1, mR);
 			a.m256_2 = _mm256_div_ps(a.m256_2, mR);
 		}
+
+
+
+		static inline Matrix4x4 operator * (const Matrix4x3& a, const CMatrix3x4& b);
+
+		static inline Matrix4x4 operator * (const Matrix4x3& a, const Matrix3x4& b);
+
+		static inline Matrix4x4 operator * (const CMatrix4x3& a, const Matrix3x4& b);		
+
+		static inline Matrix4x4 operator * (const CMatrix4x3& a, const CMatrix3x4& b);
+
+
+
+		static inline Matrix4x3 operator * (const Matrix4x3& a, const CMatrix3x3& b);
+
+		static inline Matrix4x3 operator * (const Matrix4x3& a, const Matrix3x3& b);
+
+		static inline Matrix4x3 operator * (const CMatrix4x3& a, const Matrix3x3& b);
+
+		static inline Matrix4x3 operator * (const CMatrix4x3& a, const CMatrix3x3& b);
+
+
+
+		static inline Matrix4x2 operator * (const Matrix4x3& a, const CMatrix3x2& b);
+
+		static inline Matrix4x2 operator * (const Matrix4x3& a, const Matrix3x2& b);
+
+		static inline Matrix4x2 operator * (const CMatrix4x3& a, const Matrix3x2& b);
+
+		static inline Matrix4x2 operator * (const CMatrix4x3& a, const CMatrix3x2& b);
 #else
 
 

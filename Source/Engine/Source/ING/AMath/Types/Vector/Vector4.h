@@ -51,7 +51,7 @@ namespace ING {
 
 			inline Vector4() : Vector4(m128_0_0_0_0) {}
 
-			inline Vector4(Vector4& a) : m128(a.m128) {}
+			inline Vector4(const Vector4& a) : m128(a.m128) {}
 
 			inline Vector4(__m128 m) : m128(m) {}
 
