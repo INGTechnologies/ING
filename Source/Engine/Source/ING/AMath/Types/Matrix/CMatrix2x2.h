@@ -40,7 +40,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			inline CMatrix2x2(float m11, float m12, float m21, float m22) : m128(_mm_set_ps(m22, m21, m12, m11)) {}
+			inline CMatrix2x2(float m11, float m12, float m21, float m22) : m128(_mm_set_ps(m22, m12, m21, m11)) {}
 
 			inline CMatrix2x2() : CMatrix2x2(m128_0_0_0_0) {}
 

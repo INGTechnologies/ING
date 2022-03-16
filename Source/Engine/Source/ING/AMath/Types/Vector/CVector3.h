@@ -44,7 +44,7 @@ namespace ING {
 
 			inline CVector3() : CVector3(m128_0_0_0_0) {}
 
-			inline CVector3(CVector3& a) : m128(a.m128) {}
+			inline CVector3(const CVector3& a) : m128(a.m128) {}
 
 			inline CVector3(__m128 m) : m128(m) {}
 
