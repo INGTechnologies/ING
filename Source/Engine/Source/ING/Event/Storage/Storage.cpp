@@ -37,15 +37,13 @@ namespace ING {
 	/**
 	 *	Event Management
 	 */
-	Event*					EventStorage::GetEvent(std::string name) {
+	Event*					EventStorage::GetEvent(const std::string& name) {
 
 		return eventMap[name];
 
 	}
 
 	List<Event*>::Node*		EventStorage::AddEvent(Event* event) {
-
-		//((WindowEvent*)event)->window = this;
 
 		eventMap[event->GetName()] = event;
 

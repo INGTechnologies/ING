@@ -80,8 +80,9 @@ namespace ING {
 				IPass*				finalPass;
 				IPass*				targetFinalPass;
 
-				SubRP::Pipeline*	afterFirstPassSubPipeline;
-				SubRP::Pipeline*	beforeFinalPassSubPipeline;
+				std::vector<SubRP::Pipeline*>					subPipelineVector;
+
+				std::unordered_map<std::string, unsigned int>	subPipelineName2supPipeLineIndex;
 
 			public:
 				IPass*				GetFirstPass					() { return firstPass; }
@@ -92,8 +93,11 @@ namespace ING {
 				IPass*				GetTargetFinalPass				() { return targetFinalPass; }
 				void				SetFinalPass					(IPass* finalPass);
 
-				SubRP::Pipeline*	GetAfterFirstPassSubPipeline	() { return afterFirstPassSubPipeline; }
-				SubRP::Pipeline*	GetBeforeFinalPassSubPipeline	() { return beforeFinalPassSubPipeline; }
+				SubRP::Pipeline*	GetSubPipeline					(unsigned int index)		{ return subPipelineVector[index]; }
+				unsigned int		GetSubPipelineIndex				(const std::string& name)	{ return subPipelineName2supPipeLineIndex[name]; }
+				SubRP::Pipeline*	GetSubPipeline					(const std::string& name)	{ return subPipelineVector[GetSubPipelineIndex(name)]; }
+				unsigned int		GetSubPipelineIndex				(const char* name)			{ return GetSubPipelineIndex(String(name)); }
+				SubRP::Pipeline*	GetSubPipeline					(const char* name)			{ return GetSubPipeline(String(name)); }
 
 
 
@@ -101,7 +105,13 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Render(IDeviceContext* context) override;
+				virtual bool Render				(IDeviceContext* context) override;
+
+				virtual bool RenderSubPipelines	(IDeviceContext* context, Camera* camera, const Rendering::SubRP::PassInput& input, Rendering::SubRP::PassOutput& output);
+
+				void		 AddSubPipeline		(SubRP::Pipeline* subPipeline);
+
+				void		 AddSubPipeline		(SubRP::Pipeline* subPipeline, unsigned int index);
 
 			};
 

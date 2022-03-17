@@ -38,7 +38,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPass(std::string name);
+			IPass(const std::string& name);
 			~IPass();
 
 
@@ -66,7 +66,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render(IDeviceContext* context, Camera* camera, void* input, void* output);
+			virtual bool Render(IDeviceContext* context, Camera* camera, void* input, void* output);
 
 		};
 
@@ -83,7 +83,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Pass	(std::string name);
+			Pass	(const std::string& name);
 			~Pass	();
 
 
@@ -100,9 +100,9 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render			(IDeviceContext* context, Camera* camera, void* input, void* output) override;
+			virtual bool Render			(IDeviceContext* context, Camera* camera, void* input, void* output) override;
 
-			virtual void CustomRender	(IDeviceContext* context, Camera* camera, TInput* input, TOutput* output);
+			virtual bool CustomRender	(IDeviceContext* context, Camera* camera, const TInput& input, TOutput& output);
 
 		};
 
@@ -123,7 +123,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		template<typename TInput, typename TOutput>
-		Pass<TInput,TOutput>::Pass	(std::string name) : IPass(name) {
+		Pass<TInput,TOutput>::Pass	(const std::string& name) : IPass(name) {
 
 
 
@@ -154,17 +154,18 @@ namespace ING {
 		 *	Methods
 		 */
 		template<typename TInput, typename TOutput>
-		void	Pass<TInput, TOutput>::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
+		bool	Pass<TInput, TOutput>::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
 
-			CustomRender(context, camera, (TInput*)input, (TOutput*)output);
+			return CustomRender(context, camera, *((TInput*)input), *((TOutput*)output));
 
 		}
 
 		template<typename TInput, typename TOutput>
-		void	Pass<TInput, TOutput>::CustomRender(IDeviceContext* context, Camera* camera, TInput* input, TOutput* output) {
+		bool	Pass<TInput, TOutput>::CustomRender(IDeviceContext* context, Camera* camera, const TInput& input, TOutput& output) {
 
 
 
+			return true;
 		}
 
 	}

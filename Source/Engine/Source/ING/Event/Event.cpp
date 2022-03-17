@@ -49,6 +49,12 @@ namespace ING {
 
 	}
 
+	void							Event::RemoveCurrentListener() {
+
+		listenerList.Remove(currentNode);
+
+	}
+
 
 
 	/**
@@ -60,9 +66,13 @@ namespace ING {
 
 		while (node != nullptr) {
 
+			List<Event::Listener>::Node* nextNode = node->next;
+
+			currentNode = node;
+
 			(*((Listener*)node->pValue))(this);
 
-			node = node->next;
+			node = nextNode;
 
 		}
 

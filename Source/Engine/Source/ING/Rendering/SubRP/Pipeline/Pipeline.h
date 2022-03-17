@@ -85,9 +85,9 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Render		(IDeviceContext* context) override;
+				virtual bool Render		(IDeviceContext* context) override;
 
-				virtual void SubRender	(IDeviceContext* context, Camera* camera, PassInput* input, PassOutput* output);
+				virtual bool SubRender	(IDeviceContext* context, Camera* camera, const PassInput& input, PassOutput& output);
 
 				unsigned int AddPass	(IPass* pass);
 				void		 RemovePass	(unsigned int index);

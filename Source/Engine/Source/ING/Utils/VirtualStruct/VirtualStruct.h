@@ -62,7 +62,7 @@ namespace ING {
 			 */
 		public:
 			template<typename T>
-			void	AddProperty		(std::string name) {
+			void	AddProperty		(const std::string& name) {
 
 				VirtualStructProperty prop;
 
@@ -74,14 +74,14 @@ namespace ING {
 
 			}
 
-			void	RemoveProperty	(std::string name) {
+			void	RemoveProperty	(const std::string& name) {
 
 				name2propertyMap.erase(name);
 
 			}
 
-			void	CopyFrom	(VirtualStruct& srcStruct);
-			void	CopyTo		(VirtualStruct& destStruct);
+			void	CopyFrom	(const VirtualStruct& srcStruct);
+			void	CopyTo		(VirtualStruct& destStruct) const;
 
 			void	Clear		();
 

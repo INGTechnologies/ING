@@ -331,7 +331,7 @@ namespace ING {
 
 	}
 
-	void			Window::SetTitle(std::wstring title) {
+	void			Window::SetTitle(const std::wstring& title) {
 
 		desc.title = title.c_str();
 

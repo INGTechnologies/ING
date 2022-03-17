@@ -19,7 +19,7 @@ namespace ING {
 
 		}
 
-		VirtualObject::VirtualObject	(VirtualStruct& vstruct) : VirtualObject() {
+		VirtualObject::VirtualObject	(const VirtualStruct& vstruct) : VirtualObject() {
 
 			this->vstruct.CopyFrom(vstruct);
 
@@ -27,11 +27,11 @@ namespace ING {
 
 		}
 
-		VirtualObject::VirtualObject	(VirtualObject* srcObj) : VirtualObject(srcObj->vstruct) {
+		VirtualObject::VirtualObject	(const VirtualObject& srcObj) : VirtualObject(srcObj.vstruct) {
 
 			for (auto& item : name2propertyMap) {
 
-				memcpy(item.second.pData, srcObj->name2propertyMap[item.first].pData, item.second.size);
+				memcpy(item.second.pData, srcObj.name2propertyMap.find(item.first)->second.pData, item.second.size);
 
 			}
 
@@ -85,7 +85,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
-		VirtualObject&	VirtualObject::operator =	(VirtualObject& b) {
+		VirtualObject&	VirtualObject::operator =	(const VirtualObject& b) {
 
 			Clear();
 
@@ -95,25 +95,25 @@ namespace ING {
 
 			for (auto& item : name2propertyMap) {
 
-				memcpy(item.second.pData, b.name2propertyMap[item.first].pData, item.second.size);
+				memcpy(item.second.pData, b.name2propertyMap.find(item.first)->second.pData, item.second.size);
 
 			}
 
 			return *this;
 		}
 
-		bool			VirtualObject::operator ==	(VirtualObject& b) {
+		bool			VirtualObject::operator ==	(const VirtualObject& b) {
 
 			for (auto& item : name2propertyMap) {
 
-				if (memcmp(item.second.pData, b.name2propertyMap[item.first].pData, item.second.size) != 0) return 0;
+				if (memcmp(item.second.pData, b.name2propertyMap.find(item.first)->second.pData, item.second.size) != 0) return 0;
 
 			}
 
 			return true;
 		}
 
-		bool			VirtualObject::operator !=	(VirtualObject& b) {
+		bool			VirtualObject::operator !=	(const VirtualObject& b) {
 
 			return !(*this == b);
 		}

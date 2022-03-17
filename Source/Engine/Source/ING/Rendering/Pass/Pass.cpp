@@ -34,7 +34,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IPass::IPass	(std::string name) {
+		IPass::IPass	(const std::string& name) {
 
 			this->name = name;
 
@@ -62,10 +62,11 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPass::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
+		bool IPass::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
 
 
 
+			return true;
 		}
 
 	}
