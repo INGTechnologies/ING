@@ -11,6 +11,7 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
   - [Application](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Application/Application.md)
   - [Configuration](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Configuration/Configuration.md)
   - [Core](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Core/Core.md)
+  - [Debug](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Debug/Debug.md)
   - [Rendering](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Rendering/Rendering.md)
   - [Job System](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/JobSystem/JobSystem.md)
   - [Multithreading](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Multithreading/Multithreading.md)
