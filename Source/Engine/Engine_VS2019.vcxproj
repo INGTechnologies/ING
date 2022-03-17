@@ -167,6 +167,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <ClCompile>
@@ -196,6 +199,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -226,6 +232,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -255,6 +264,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <ClCompile>
@@ -284,6 +296,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -314,6 +329,9 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\**\*.cpp" />
