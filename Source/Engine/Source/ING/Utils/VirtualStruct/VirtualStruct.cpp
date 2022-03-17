@@ -30,7 +30,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	VirtualStruct::CopyFrom	(VirtualStruct& srcStruct) {
+		void	VirtualStruct::CopyFrom	(const VirtualStruct& srcStruct) {
 
 			Clear();
 
@@ -42,7 +42,7 @@ namespace ING {
 
 		}
 
-		void	VirtualStruct::CopyTo	(VirtualStruct& destStruct) {
+		void	VirtualStruct::CopyTo	(VirtualStruct& destStruct) const {
 
 			destStruct.CopyFrom(*this);
 

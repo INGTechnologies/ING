@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mutex
+ */
+#include <mutex>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -66,16 +73,20 @@ namespace ING {
 
 			IRenderer*	targetRenderer;
 
+			bool		isRendering;
+
 		public:
-			std::string	GetName() { return name; }
+			std::string	GetName				() { return name; }
 
-			IRenderer*	GetDefaultRenderer() { return defaultRenderer; }
+			IRenderer*	GetDefaultRenderer	() { return defaultRenderer; }
 
-			IRenderer*	GetRenderer() { return renderer; }
+			IRenderer*	GetRenderer			() { return renderer; }
 
-			IRenderer*	GetTargetRenderer() { return targetRenderer; }
+			IRenderer*	GetTargetRenderer	() { return targetRenderer; }
 
-			void		SetRenderer(IRenderer* renderer);
+			void		SetRenderer			(IRenderer* renderer);
+
+			bool		IsRendering			() { return isRendering; }
 
 
 
@@ -83,8 +94,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Setup	(IDeviceContext* context, Camera* camera);
-			virtual void Render	(IDeviceContext* context);
+			virtual void Setup			(IDeviceContext* context, Camera* camera);
+			virtual bool Render			(IDeviceContext* context);
+
+			void		 BeginRender	(IDeviceContext* context);
+			void		 EndRender		(IDeviceContext* context);
 
 		};
 

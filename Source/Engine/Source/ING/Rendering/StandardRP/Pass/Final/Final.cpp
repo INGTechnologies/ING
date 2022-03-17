@@ -43,10 +43,11 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void FinalPass::CustomRender(IDeviceContext* context, Camera* camera, FinalPassInput* input, FinalPassOutput* output) {
+			bool FinalPass::CustomRender(IDeviceContext* context, Camera* camera, const FinalPassInput& input, FinalPassOutput& output) {
 
 
 
+				return true;
 			}
 
 		}

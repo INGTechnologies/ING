@@ -62,6 +62,13 @@
 
 
 
+/**
+ *	Include Rendering System
+ */
+#include <ING/Rendering/System/System.h>
+
+
+
 
 namespace ING {
 
@@ -88,9 +95,9 @@ namespace ING {
 				/**
 				 *	Create SubRPs
 				 */
-				afterFirstPassSubPipeline	= new SubRP::Pipeline("After First Pass Sub Pipeline");
+				AddSubPipeline(new SubRP::Pipeline("After First Pipeline"), 0);
 
-				beforeFinalPassSubPipeline	= new SubRP::Pipeline("Befrore Final Pass Sub Pipeline");
+				AddSubPipeline(new SubRP::Pipeline("Befrore Final Pipeline"), 0);
 
 			}
 
@@ -132,12 +139,13 @@ namespace ING {
 
 
 
+
 			/**
 			 *	Methods
 			 */
-			void Pipeline::Render(IDeviceContext* context) {
+			bool Pipeline::Render(IDeviceContext* context) {
 
-				IPipeline::Render(context);
+				IPipeline::BeginRender(context);
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
@@ -147,21 +155,14 @@ namespace ING {
 					FirstPassInput	firstPassInput;
 					FirstPassOutput	firstPassOutput;
 
-					firstPass->Render(context, camera, &firstPassInput, &firstPassOutput);
+					RENDERING_ASSERTION(firstPass->Render(context, camera, &firstPassInput, &firstPassOutput));
 
 
 
-					SubRP::PassInput	afterFirstPassSubPipelineInput;
-					SubRP::PassOutput	afterFirstPassSubPipelineOutput;
+					SubRP::PassInput	subPipelinesInput;
+					SubRP::PassOutput	subPipelinesOutput;
 
-					afterFirstPassSubPipeline->SubRender(context, camera, &afterFirstPassSubPipelineInput, &afterFirstPassSubPipelineOutput);
-
-
-
-					SubRP::PassInput	beforeFinalPassSubPipelineInput = afterFirstPassSubPipelineOutput;
-					SubRP::PassOutput	beforeFinalPassSubPipelineOutput;
-
-					beforeFinalPassSubPipeline->SubRender(context, camera, &beforeFinalPassSubPipelineInput, &beforeFinalPassSubPipelineOutput);
+					RENDERING_ASSERTION(RenderSubPipelines(context, camera, subPipelinesInput, subPipelinesOutput));
 
 
 
@@ -171,9 +172,68 @@ namespace ING {
 					FinalPassInput	finalPassInput;
 					FinalPassOutput	finalPassOutput;
 
-					finalPass->Render(context, camera, &finalPassInput, &finalPassOutput);
+					RENDERING_ASSERTION(finalPass->Render(context, camera, &finalPassInput, &finalPassOutput));
 
 				}
+
+				IPipeline::EndRender(context);
+
+				return true;
+
+			}
+
+			bool Pipeline::RenderSubPipelines(IDeviceContext* context, Camera* camera, const Rendering::SubRP::PassInput& input, Rendering::SubRP::PassOutput& output) {
+
+				unsigned int subPipelineVectorSize = subPipelineVector.size();
+
+				SubRP::PassInput renderRS = input;
+
+				for (unsigned int i = 0; i < subPipelineVectorSize; ++i) {
+
+					SubRP::Pipeline* pipeline = subPipelineVector[i];
+
+					SubRP::PassOutput passOutput;
+
+					RENDERING_ASSERTION(pipeline->SubRender(context, camera, renderRS, passOutput));
+
+					renderRS = passOutput;
+
+				}
+
+				output = renderRS;
+
+				return true;
+			}
+
+			void Pipeline::AddSubPipeline	(SubRP::Pipeline* subPipeline) {
+
+				unsigned int index = subPipelineVector.size();
+
+				subPipelineVector.resize(index + 1);
+
+				subPipelineVector[index] = subPipeline;
+
+				subPipelineName2supPipeLineIndex[subPipeline->GetName()] = index;
+
+			}
+
+			void Pipeline::AddSubPipeline	(SubRP::Pipeline* subPipeline, unsigned int index) {
+
+				unsigned int subPipelineVectorSize = subPipelineVector.size();
+
+				subPipelineVector.resize(subPipelineVectorSize + 1);
+
+				for (unsigned int i = index + 1; i < subPipelineVector.size(); ++i) {
+
+					subPipelineVector[i] = subPipelineVector[i - 1];
+
+					subPipelineName2supPipeLineIndex[subPipelineVector[i]->GetName()] = i;
+
+				}
+
+				subPipelineVector[index] = subPipeline;
+
+				subPipelineName2supPipeLineIndex[subPipeline->GetName()] = index;
 
 			}
 

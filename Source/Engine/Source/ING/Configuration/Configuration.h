@@ -50,13 +50,13 @@ namespace ING {
 		 *	Exist, Add, Set, Get Methods
 		 */
 	public:
-		bool Exist(std::string name) {
+		bool Exist(const std::string& name) {
 
 			return (ptrMap.find(name) != ptrMap.end());
 
 		}
 
-		void Add(std::string name, unsigned int size) {
+		void Add(const std::string& name, unsigned int size) {
 
 			if (ptrMap.find(name) != ptrMap.end()) return;
 
@@ -67,7 +67,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		void Add(std::string name) {
+		void Add(const std::string& name) {
 
 			if (ptrMap.find(name) != ptrMap.end()) return;
 
@@ -78,7 +78,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		T Get(std::string name) {
+		T Get(const std::string& name) {
 
 			if (ptrMap.find(name) == ptrMap.end()) return T();
 
@@ -95,7 +95,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		void Set(std::string name, T data) {
+		void Set(const std::string& name, T data) {
 
 			if (ptrMap.find(name) == ptrMap.end()) return;
 

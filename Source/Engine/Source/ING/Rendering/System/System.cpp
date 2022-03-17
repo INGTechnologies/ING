@@ -85,6 +85,8 @@ namespace ING {
 
 			targetPipeline = defaultPipeline;
 
+			isRendering = false;
+
 			return true;
 		}
 
@@ -124,9 +126,11 @@ namespace ING {
 			/* Set Pipeline */
 			pipeline = targetPipeline;
 
-
+			isRendering = true;
 
 			pipeline->Render(Rendering::IAPI::GetInstance()->GetDevice()->GetContext());
+
+			isRendering = false;
 
 		}
 

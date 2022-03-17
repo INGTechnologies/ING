@@ -49,7 +49,9 @@ namespace ING {
 		 *	Listeners
 		 */
 	private:
-		List<Listener> listenerList;
+		List<Listener>			listenerList;
+
+		List<Listener>::Node*	currentNode;
 
 	public:
 		const List<Listener>&	GetListenerList		() { return listenerList; }
@@ -57,6 +59,8 @@ namespace ING {
 		List<Listener>::Node*	AddListener			(Listener listener);
 
 		void					RemoveListener		(List<Event::Listener>::Node* listenerNode);
+
+		void					RemoveCurrentListener();
 
 
 

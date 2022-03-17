@@ -55,7 +55,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void CustomRender(IDeviceContext* context, Camera* camera, PassInput* input, PassOutput* output) override;
+				virtual bool CustomRender(IDeviceContext* context, Camera* camera, const PassInput& input, PassOutput& output) override;
 
 			};
 

@@ -60,6 +60,8 @@ namespace ING {
 
 			this->name = name;
 
+			isRendering = false;
+
 		}
 
 		IPipeline::~IPipeline	() {
@@ -88,7 +90,6 @@ namespace ING {
 
 			/* New Renderer Will Be Used In Next Frame */
 			targetRenderer = renderer;
-
 		}
 
 
@@ -102,11 +103,26 @@ namespace ING {
 
 		}
 
-		void IPipeline::Render	(IDeviceContext* context) {
+		bool IPipeline::Render	(IDeviceContext* context) {
+
+			BeginRender(context);
+
+			EndRender(context);
+
+			return true;
+		}
+
+		void IPipeline::BeginRender(IDeviceContext* context) {
 
 			/* Set Renderer */
 			renderer = targetRenderer;
 
+			isRendering = true;
+		}
+
+		void IPipeline::EndRender(IDeviceContext* context) {
+
+			isRendering = false;
 		}
 
 	}
