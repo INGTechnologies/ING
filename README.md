@@ -1,8 +1,8 @@
 # ING #
-ING include ING Engine, ING Editor, ING SDK.
-<!---
+
 <img src="https://i.ibb.co/qgnNtD7/Artboard-1.png" alt="1-tr-bg" border="0" width = "100%"></img>
--->
+
+ING include ING Engine, ING Editor, ING SDK.
 
 
 ## Free And Open Source ##
