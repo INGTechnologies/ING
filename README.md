@@ -8,10 +8,11 @@
 
 ## Free And Open Source ##
 ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
-    
+
 
 ## Links ##
 + [ING Hub](https://github.com/INGTechnologies/INGHub)
++ [Documentation](https://github.com/INGTechnologies/ING/tree/main/Documentation)
 
 
 ## Community
