@@ -6,7 +6,7 @@ Include [ING Engine](https://github.com/INGTechnologies/ING/blob/main/Documentat
 ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
 
 
-## Documentation ##
+## Features ##
 + [Engine](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Engine.md)
   - [Rendering](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Rendering/Rendering.md)
   - [Job System](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/JobSystem/JobSystem.md)
