@@ -28,6 +28,7 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 
 ## Links ##
 + [ING Hub](https://github.com/INGTechnologies/INGHub)
++ [Youtube](https://www.youtube.com/channel/UCa4_lMxQZJ1B0prRB4w93wA)
 
 
 ## Community
