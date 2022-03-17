@@ -99,45 +99,45 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\INGSDK\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)ING\INGSDK\Lib\Source;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
