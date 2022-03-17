@@ -5,6 +5,8 @@
 
 ING include ING Engine, ING Editor and ING SDK.
 
+</div>
+
 
 ## Free And Open Source ##
 ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
