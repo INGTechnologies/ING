@@ -145,7 +145,7 @@ namespace ING {
 
 
 		/* Title */
-		void			SetTitle(std::wstring title);
+		void			SetTitle(const std::wstring& title);
 
 		void			SetTitle(const wchar_t* title) {
 

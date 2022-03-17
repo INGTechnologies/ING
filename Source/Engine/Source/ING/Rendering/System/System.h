@@ -62,6 +62,8 @@ namespace ING {
 
 			IPipeline*	targetPipeline;
 
+			bool		isRendering;
+
 		public:
 			IPipeline*	GetDefaultPipeline	() { return defaultPipeline; }
 
@@ -69,7 +71,9 @@ namespace ING {
 
 			IPipeline*	GetTargetPipeline	() { return targetPipeline; }
 
-			void		SetPipeline	(IPipeline* pipeline);
+			void		SetPipeline			(IPipeline* pipeline);
+
+			bool		IsRendering			() { return isRendering; }
 
 
 
@@ -83,4 +87,20 @@ namespace ING {
 
 	}
 
+}
+
+
+
+/**
+ *	Define Macros
+ */
+#define RENDERING_ASSERTION(A)  {\
+\
+	A;\
+	if (!Rendering::System::GetInstance()->IsRendering()){\
+	\
+		return false;\
+	\
+	}\
+\
 }

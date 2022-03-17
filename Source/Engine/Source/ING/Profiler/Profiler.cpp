@@ -83,7 +83,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	ProfilerSession*				Profiler::BeginSession	(std::string name, std::string category)	{
+	ProfilerSession*				Profiler::BeginSession	(const std::string& name, const std::string& category)	{
 
 		ProfilerSession* session = new ProfilerSession(name, category);
 
@@ -146,7 +146,7 @@ namespace ING {
 	}
 	ProfilerSession*				Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(String(name), String(category)); }
 
-	void							Profiler::EndSession	(std::string name, std::string category)	{
+	void							Profiler::EndSession	(const std::string& name, const std::string& category)	{
 
 		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<std::string, std::string>(name, category)];
 

@@ -40,8 +40,8 @@ namespace ING {
 			 */
 		public:
 			VirtualObject	();
-			VirtualObject	(VirtualStruct& vstruct);
-			VirtualObject	(VirtualObject* srcObj);
+			VirtualObject	(const VirtualStruct& vstruct);
+			VirtualObject	(const VirtualObject& srcObj);
 			~VirtualObject	();
 
 
@@ -66,7 +66,7 @@ namespace ING {
 			 */
 		public:
 			template<typename T>
-			void	AddProperty		(std::string name) {
+			void	AddProperty		(const std::string& name) {
 
 				VirtualObjectProperty prop;
 
@@ -91,14 +91,14 @@ namespace ING {
 			}
 
 			template<typename T>
-			void	SetProperty		(std::string name, T& data) {
+			void	SetProperty		(const std::string& name, T& data) {
 
 				*((T*)(name2propertyMap[name].pData)) = data;
 
 			}
 
 			template<typename T>
-			void	TrySetProperty(std::string name, T& data) {
+			void	TrySetProperty(const std::string& name, T& data) {
 
 				if (name2propertyMap.find(name) == name2propertyMap.end()) return;
 
@@ -107,13 +107,13 @@ namespace ING {
 			}
 
 			template<typename T>
-			T&		GetProperty		(std::string name) {
+			T&		GetProperty		(const std::string& name) {
 
 				return *((T*)(name2propertyMap[name].pData));
 
 			}
 
-			void	RemoveProperty	(std::string name) {
+			void	RemoveProperty	(const std::string& name) {
 
 				if (name2propertyMap[name].pData != nullptr) {
 
@@ -139,10 +139,10 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			VirtualObject& operator =	(VirtualObject& b);
+			VirtualObject& operator =	(const VirtualObject& b);
 
-			bool		   operator ==	(VirtualObject& b);
-			bool		   operator !=	(VirtualObject& b);
+			bool		   operator ==	(const VirtualObject& b);
+			bool		   operator !=	(const VirtualObject& b);
 
 		};
 

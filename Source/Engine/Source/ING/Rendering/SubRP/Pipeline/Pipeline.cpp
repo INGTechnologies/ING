@@ -69,6 +69,13 @@
 
 
 
+/**
+ *	Include Rendering System
+ */
+#include <ING/Rendering/System/System.h>
+
+
+
 
 namespace ING {
 
@@ -107,31 +114,16 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void Pipeline::Render(IDeviceContext* context) {
+			bool Pipeline::Render(IDeviceContext* context) {
 
 				IPipeline::Render(context);
 
-				/*
-				firstPass = targetFirstPass;
-
-				PassInput	firstPassInput;
-				PassOutput	firstPassOutput;
-
-				firstPass->Render(context, camera, &firstPassInput, &firstPassOutput);
 
 
-
-				finalPass = targetFinalPass;
-
-				PassInput  finalPassInput;
-				PassInput  finalPassOutput;
-
-				finalPass->Render(context, camera, &finalPassInput, &finalPassOutput);				
-				*/
-
+				return true;
 			}
 
-			void Pipeline::SubRender(IDeviceContext* context, Camera* camera, PassInput* input, PassOutput* output) {
+			bool Pipeline::SubRender(IDeviceContext* context, Camera* camera, const PassInput& input, PassOutput& output) {
 
 				unsigned int passCount = passVector.size();
 
@@ -139,21 +131,19 @@ namespace ING {
 
 				for (unsigned int i = 0; i < passCount; ++i) {
 
-
 					IPass* pass = passVector[i];
 
-					PassInput passInput = renderRS;
+					PassOutput passOutput;
 
-					PassInput passOutput;
-
-					pass->Render(context, camera, &passInput, &passOutput);
+					RENDERING_ASSERTION(pass->Render(context, camera, &renderRS, &passOutput));
 
 					renderRS = passOutput;
 
 				}
 
-				*output = renderRS;
+				output = renderRS;
 
+				return true;
 			}
 
 			unsigned int Pipeline::AddPass(IPass* pass) {

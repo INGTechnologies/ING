@@ -51,7 +51,7 @@ namespace ING {
 	public:
 		const List<Event*>&			GetEventList() { return eventList; }
 
-		Event*						GetEvent(std::string name);
+		Event*						GetEvent(const std::string& name);
 
 		virtual List<Event*>::Node*	AddEvent(Event* event);
 
