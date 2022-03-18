@@ -69,6 +69,34 @@
 
 
 
+/**
+ *	Include Rendering Data
+ */
+#include <ING/Rendering/StandardRP/Data/Data.h>
+
+
+
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
+/**
+ *	Include SwapChain
+ */
+#include <ING/Rendering/API/SwapChain/SwapChain.h>
+
+
+
+/**
+ *	Include RenderTargetView
+ */
+#include <ING/Rendering/API/View/RenderTargetView/RenderTargetView.h>
+
+
+
 
 namespace ING {
 
@@ -143,13 +171,31 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
+			void Pipeline::SetupCamera(IDeviceContext* context, Camera* camera) {
+
+				Data* renderingData = new Data();
+
+				renderingData->AddProperty<IRenderTargetView*>("OnScreenRTV");
+
+				renderingData->SetProperty<IRenderTargetView*>("OnScreenRTV", camera->GetScreen()->GetSwapChain()->GetRenderTargetView());
+
+				camera->SetRenderingData(renderingData);
+
+			}
+
+			void Pipeline::ClearRenderingData(Camera* camera) {
+
+				Data* renderingData = (Data*)camera->GetRenderingData();
+
+			}
+
 			bool Pipeline::Render(IDeviceContext* context) {
 
 				IPipeline::BeginRender(context);
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
-					/* Draw First Pass */
+					/* Render First Pass */
 					firstPass = targetFirstPass;
 
 					FirstPassInput	firstPassInput;
@@ -159,6 +205,7 @@ namespace ING {
 
 
 
+					/* Render Sub Pipelines */
 					SubRP::PassInput	subPipelinesInput;
 					SubRP::PassOutput	subPipelinesOutput;
 
@@ -166,7 +213,7 @@ namespace ING {
 
 
 
-					/* Get Final Pass */
+					/* Render Final Pass */
 					finalPass = targetFinalPass;
 
 					FinalPassInput	finalPassInput;
@@ -175,7 +222,7 @@ namespace ING {
 					RENDERING_ASSERTION(finalPass->Render(context, camera, &finalPassInput, &finalPassOutput));
 
 				}
-
+				
 				IPipeline::EndRender(context);
 
 				return true;

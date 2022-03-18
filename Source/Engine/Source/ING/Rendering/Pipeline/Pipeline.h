@@ -94,11 +94,12 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Setup			(IDeviceContext* context, Camera* camera);
-			virtual bool Render			(IDeviceContext* context);
+			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);
+			virtual void ClearRenderingData (Camera* camera);
+			virtual bool Render				(IDeviceContext* context);
 
-			void		 BeginRender	(IDeviceContext* context);
-			void		 EndRender		(IDeviceContext* context);
+			void		 BeginRender		(IDeviceContext* context);
+			void		 EndRender			(IDeviceContext* context);
 
 		};
 

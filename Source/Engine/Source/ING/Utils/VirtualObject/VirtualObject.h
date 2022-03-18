@@ -91,14 +91,14 @@ namespace ING {
 			}
 
 			template<typename T>
-			void	SetProperty		(const std::string& name, T& data) {
+			void	SetProperty		(const std::string& name, const T& data) {
 
 				*((T*)(name2propertyMap[name].pData)) = data;
 
 			}
 
 			template<typename T>
-			void	TrySetProperty(const std::string& name, T& data) {
+			void	TrySetProperty(const std::string& name, const T& data) {
 
 				if (name2propertyMap.find(name) == name2propertyMap.end()) return;
 

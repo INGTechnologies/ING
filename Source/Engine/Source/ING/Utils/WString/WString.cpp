@@ -133,6 +133,20 @@ namespace ING {
 
 		}
 
+		std::wstring WString(size_t content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			std::wstring wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
 	}
 
 }

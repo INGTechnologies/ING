@@ -146,6 +146,44 @@ namespace ING {
 				return true;
 			}
 
+			unsigned int Pipeline::GetPassIndex(const std::string& name) {
+
+				return passName2PassIndex[name];
+
+			}
+
+			IPass* Pipeline::GetPass(unsigned int index) {
+
+				return passVector[index];
+
+			}
+
+			IPass* Pipeline::GetPass(const std::string& name) {
+
+				return GetPass(GetPassIndex(name));
+
+			}
+
+			void Pipeline::AddPass(IPass* pass, unsigned int index) {
+
+				unsigned int passVectorSize = passVector.size();
+
+				passVector.resize(passVectorSize + 1);
+
+				for (unsigned int i = index + 1; i < passVectorSize; ++i) {
+
+					passVector[i] = passVector[i - 1];
+
+					passName2PassIndex[passVector[i]->GetName()] = i;
+
+				}
+
+				passVector[index] = pass;
+
+				passName2PassIndex[pass->GetName()] = index;
+
+			}
+
 			unsigned int Pipeline::AddPass(IPass* pass) {
 
 				unsigned int passIndex = passVector.size();
@@ -156,9 +194,23 @@ namespace ING {
 
 			}
 
-			void		 Pipeline::RemovePass(unsigned int index) {
+			void Pipeline::RemovePass(unsigned int index) {
+
+				std::string passName = passVector[index]->GetName();
 
 				passVector.erase(passVector.begin() + index);
+
+				unsigned int passVectorSize = passVector.size();
+
+				for (unsigned int i = index; i < passVectorSize; ++i) {
+
+					passVector[i] = passVector[i + 1];
+
+					passName2PassIndex[passVector[i]->GetName()] = i;
+
+				}
+
+				passName2PassIndex.erase(passName);
 
 			}
 
