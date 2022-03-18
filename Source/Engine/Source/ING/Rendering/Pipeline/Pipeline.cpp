@@ -97,7 +97,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPipeline::Setup	(IDeviceContext* context, Camera* camera) {
+		void IPipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
+
+
+
+		}
+
+		void IPipeline::ClearRenderingData(Camera* camera) {
 
 
 
@@ -118,6 +124,18 @@ namespace ING {
 			renderer = targetRenderer;
 
 			isRendering = true;
+
+			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+
+				if (camera->GetRenderingPipeline() != this) {
+
+					camera->SetRenderingPipeline(this);
+
+					SetupCamera(context, camera);
+
+				}
+
+			}
 		}
 
 		void IPipeline::EndRender(IDeviceContext* context) {

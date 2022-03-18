@@ -95,6 +95,16 @@ namespace ING {
 
 		}
 
+		std::string String(size_t content) {
+
+			std::stringstream ss;
+
+			ss << content;
+
+			return ss.str();
+
+		}
+
 	}
 
 }

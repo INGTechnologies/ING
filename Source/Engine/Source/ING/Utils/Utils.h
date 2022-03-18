@@ -139,6 +139,13 @@
 
 
 
+/**
+ *	Include For
+ */
+#include <ING\Utils\For\For.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

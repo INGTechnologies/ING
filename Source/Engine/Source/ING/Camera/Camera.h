@@ -45,6 +45,8 @@ namespace ING {
 
 		class Scene;
 
+		class IPipeline;
+
 	}
 
 	struct TransformS;
@@ -108,6 +110,8 @@ namespace ING {
 
 		void*					renderingData;
 
+		Rendering::IPipeline*	renderingPipeline;
+
 	public:
 		List<Camera*>::Node*	GetNode				()							{ return node; }
 
@@ -140,6 +144,9 @@ namespace ING {
 
 		void*					GetRenderingData	()							{ return renderingData; }
 		void					SetRenderingData	(void* renderingData)		{ this->renderingData = renderingData; }
+
+		Rendering::IPipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
+		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { this->renderingPipeline = renderingPipeline; }
 
 
 

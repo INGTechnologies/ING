@@ -76,6 +76,8 @@ namespace ING {
 			private:
 				std::vector<IPass*>		passVector;
 
+				std::unordered_map<std::string, unsigned int>	passName2PassIndex;
+
 			public:
 				std::vector<IPass*>&	GetPassVector		() { return passVector; }
 
@@ -89,7 +91,12 @@ namespace ING {
 
 				virtual bool SubRender	(IDeviceContext* context, Camera* camera, const PassInput& input, PassOutput& output);
 
-				unsigned int AddPass	(IPass* pass);
+				unsigned int GetPassIndex	(const std::string& name);
+
+				unsigned int AddPass	(IPass* pass); 
+				void		 AddPass	(IPass* pass, unsigned int index);
+				IPass*		 GetPass	(unsigned int index);
+				IPass*		 GetPass	(const std::string& name);
 				void		 RemovePass	(unsigned int index);
 
 			};

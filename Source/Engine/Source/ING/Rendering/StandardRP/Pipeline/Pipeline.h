@@ -30,6 +30,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include SubRP Pipeline
+ */
+#include <ING/Rendering/StandardRP/Mode/Mode.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -84,6 +91,8 @@ namespace ING {
 
 				std::unordered_map<std::string, unsigned int>	subPipelineName2supPipeLineIndex;
 
+				Mode				mode;
+
 			public:
 				IPass*				GetFirstPass					() { return firstPass; }
 				IPass*				GetTargetFirstPass				() { return targetFirstPass; }
@@ -99,12 +108,18 @@ namespace ING {
 				unsigned int		GetSubPipelineIndex				(const char* name)			{ return GetSubPipelineIndex(String(name)); }
 				SubRP::Pipeline*	GetSubPipeline					(const char* name)			{ return GetSubPipeline(String(name)); }
 
+				Mode				GetMode							() { return mode; }
+				void				SetMode							(Mode mode) { this->mode = mode; }
+
 
 
 				/**
 				 *	Methods
 				 */
 			public:
+				virtual void SetupCamera		(IDeviceContext* context, Camera* camera) override;
+				virtual void ClearRenderingData (Camera* camera) override;
+
 				virtual bool Render				(IDeviceContext* context) override;
 
 				virtual bool RenderSubPipelines	(IDeviceContext* context, Camera* camera, const Rendering::SubRP::PassInput& input, Rendering::SubRP::PassOutput& output);

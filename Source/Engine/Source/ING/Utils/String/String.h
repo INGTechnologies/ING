@@ -41,6 +41,8 @@ namespace ING {
 
 		std::string ING_API String(void* content);
 
+		std::string ING_API String(size_t content);
+
 	}
 
 }
