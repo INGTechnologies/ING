@@ -54,6 +54,20 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Operators
+		 */
+		void VirtualStruct::operator +=	(const VirtualStruct& b) {
+
+			for (auto& item : b.name2propertyMap) {
+
+				name2propertyMap[item.first] = item.second;
+
+			}
+		}
+
 	}
 
 }

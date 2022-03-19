@@ -48,6 +48,34 @@
 
 
 
+/**
+ *	Include Rendering Drawable
+ */
+#include <ING/Rendering/Drawable/Category/Category.h>
+
+
+
+/**
+ *	Include Rendering Layer
+ */
+#include <ING/Rendering/Layer/Layer.h>
+
+
+
+/**
+ *	Include Rendering Layer Manager
+ */
+#include <ING/Rendering/Layer/Manager/Manager.h>
+
+
+
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 
 namespace ING {
 
@@ -66,7 +94,7 @@ namespace ING {
 
 			MeshDrawable::~MeshDrawable() {
 
-
+				
 
 			}
 
@@ -78,6 +106,17 @@ namespace ING {
 			void MeshDrawable::Release() {
 
 				delete this;
+
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+			void MeshDrawable::Draw() {
+
+
 
 			}
 

@@ -137,11 +137,11 @@ namespace ING {
 
 					RENDERING_ASSERTION(pass->Render(context, camera, &renderRS, &passOutput));
 
-					renderRS = passOutput;
+					renderRS += passOutput;
 
 				}
 
-				output = renderRS;
+				output += renderRS;
 
 				return true;
 			}

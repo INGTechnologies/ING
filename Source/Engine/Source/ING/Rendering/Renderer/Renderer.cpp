@@ -41,6 +41,41 @@
 
 
 
+/**
+ *	Include Rendering Drawable
+ */
+#include <ING/Rendering/Drawable/Drawable.h>
+
+
+
+/**
+ *	Include Rendering Drawable Category
+ */
+#include <ING/Rendering/Drawable/Category/Category.h>
+
+
+
+/**
+ *	Include Rendering Scene
+ */
+#include <ING/Rendering/Scene/Scene.h>
+
+
+
+/**
+ *	Include Rendering Layer
+ */
+#include <ING/Rendering/Layer/Layer.h>
+
+
+
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 
 
 namespace ING {
@@ -81,9 +116,33 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::Render(Camera* camera, IDeviceContext* context) {
+		void IRenderer::RenderDrawables(Scene* scene, const std::string& categoryName) {
 
+			const std::vector<Layer*>& layerVector = scene->GetLayerVector();
 
+			unsigned int layerVectorSize = layerVector.size();
+
+			for (unsigned int i = 0; i < layerVectorSize; ++i) {
+
+				Layer* layer = layerVector[i];
+
+				unsigned int layerIndex = layer->GetIndex();
+
+				IDrawableCategory* category = layer->GetCategory(categoryName);
+
+				for (auto drawable : category->GetDrawableList()) {
+
+					RenderDrawable(drawable);
+
+				}
+
+			}
+
+		}
+
+		void IRenderer::RenderDrawable(IDrawable* drawable) {
+
+			drawable->Draw();
 
 		}
 

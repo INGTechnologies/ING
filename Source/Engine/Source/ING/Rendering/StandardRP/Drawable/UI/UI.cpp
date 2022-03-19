@@ -81,6 +81,17 @@ namespace ING {
 
 			}
 
+
+
+			/**
+			 *	Methods
+			 */
+			void UIDrawable::Draw() {
+
+
+
+			}
+
 		}
 
 	}

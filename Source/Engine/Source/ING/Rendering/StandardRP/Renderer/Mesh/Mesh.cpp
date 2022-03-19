@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Renderer.h"
+#include "Mesh.h"
 
 
 
@@ -52,29 +52,17 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Renderer::Renderer()
-			{
-
-				
-
-			}
-
-			Renderer::~Renderer()
+			MeshRenderer::MeshRenderer()
 			{
 
 
 
 			}
 
-
-
-			/**
-			 *	Release Methods
-			 */
-			void Renderer::Release()
+			MeshRenderer::~MeshRenderer()
 			{
 
-				IRenderer::Release();
+
 
 			}
 

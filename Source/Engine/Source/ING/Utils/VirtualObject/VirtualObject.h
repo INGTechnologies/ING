@@ -107,9 +107,9 @@ namespace ING {
 			}
 
 			template<typename T>
-			T&		GetProperty		(const std::string& name) {
+			T		GetProperty		(const std::string& name) const {
 
-				return *((T*)(name2propertyMap[name].pData));
+				return *((T*)(name2propertyMap.find(name)->second.pData));
 
 			}
 
@@ -140,9 +140,10 @@ namespace ING {
 			 */
 		public:
 			VirtualObject& operator =	(const VirtualObject& b);
+			VirtualObject& operator +=	(const VirtualObject& b);
 
-			bool		   operator ==	(const VirtualObject& b);
-			bool		   operator !=	(const VirtualObject& b);
+			bool		   operator ==	(const VirtualObject& b) const;
+			bool		   operator !=	(const VirtualObject& b) const;
 
 		};
 

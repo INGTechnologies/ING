@@ -96,7 +96,7 @@ namespace ING {
 			std::unordered_map<T, Node*> nodeMap;
 			Node* headNode;
 			Node* tailNode;
-			unsigned int size;
+			size_t size;
 
 		public:
 			T& GetHead() {
@@ -115,7 +115,7 @@ namespace ING {
 				return tailNode;
 			}
 
-			unsigned int GetSize() {
+			size_t GetSize() {
 				return size;
 			}
 
@@ -411,7 +411,7 @@ namespace ING {
 					return listPtr->GetTailNode();
 				}
 
-				unsigned int GetSize() {
+				size_t GetSize() {
 
 					return listPtr->GetSize();
 				}

@@ -100,6 +100,13 @@
 
 
 
+/**
+ *	Include Layer Manager
+ */
+#include <ING\Rendering/Layer/Manager/Manager.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -126,6 +133,9 @@ namespace ING {
 
 			/* Scene Manager */
 			AddSquare<SceneManager>();
+
+			/* Layer Manager */
+			AddSquare<LayerManager>();
 
 			/* System */
 			AddSquare<System>();

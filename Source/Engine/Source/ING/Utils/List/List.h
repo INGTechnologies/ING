@@ -186,8 +186,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Iterable begin	() { return Iterable(headNode); }
-			Iterable end	() { return Iterable(nullptr); }
+			Iterable begin	() const { return Iterable(headNode); }
+			Iterable end	() const { return Iterable(nullptr); }
 
 			Node* AddAt(T& obj, Node* node2) {
 

@@ -70,10 +70,16 @@ namespace ING {
 				/**
 				 *	Properties
 				 */
-			//private:
-
 			public:
 				BasicLitMesh* mesh;
+
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void Draw() override;
 
 			};
 

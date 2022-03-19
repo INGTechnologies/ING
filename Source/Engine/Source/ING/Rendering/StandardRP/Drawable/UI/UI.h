@@ -61,6 +61,14 @@ namespace ING {
 			public:
 				virtual void Release();
 
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void Draw() override;
+
 			};
 
 		}

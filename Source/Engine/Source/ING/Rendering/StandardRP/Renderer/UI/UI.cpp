@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Renderer.h"
+#include "UI.h"
 
 
 
@@ -52,29 +52,17 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Renderer::Renderer()
-			{
-
-				
-
-			}
-
-			Renderer::~Renderer()
+			UIRenderer::UIRenderer()
 			{
 
 
 
 			}
 
-
-
-			/**
-			 *	Release Methods
-			 */
-			void Renderer::Release()
+			UIRenderer::~UIRenderer()
 			{
 
-				IRenderer::Release();
+
 
 			}
 
