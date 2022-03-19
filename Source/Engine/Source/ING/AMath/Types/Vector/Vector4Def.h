@@ -32,6 +32,7 @@ namespace ING {
 		/**
 		 *	Operators
 		 */
+#ifdef __AVX__
 		static inline float operator*(const Vector4& a, const CVector4& b) {
 
 			__m128 mR = _mm_mul_ps(a.m128, b.m128);
@@ -121,6 +122,9 @@ namespace ING {
 
 			return _mm_permutevar_ps(_mm_hadd_ps(s3.m128_1,s3.m128_2), V4_MUL_CM4X4_PERMUTE_1);
 		}
+#else
+
+#endif
 
 	}
 

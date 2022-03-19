@@ -99,42 +99,42 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\$(ProjectName)\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
@@ -168,7 +168,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
@@ -200,7 +200,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -233,7 +233,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -265,7 +265,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
@@ -297,7 +297,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -330,7 +330,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2019\Demos\EngineDemo\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

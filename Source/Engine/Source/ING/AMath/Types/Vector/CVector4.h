@@ -154,7 +154,11 @@ namespace ING {
 
 
 
+#ifdef __AVX__
 		static inline Matrix4x4 operator*(const CVector4& a, const Vector4& b);
+#else
+
+#endif
 
 	}
 

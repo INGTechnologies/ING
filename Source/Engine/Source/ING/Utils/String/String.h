@@ -14,13 +14,6 @@
 
 
 
-/**
- *	Include Types
- */
-#include <ING/Utils/Types.h>
-
-
-
 namespace ING {
 
 	namespace Utils {

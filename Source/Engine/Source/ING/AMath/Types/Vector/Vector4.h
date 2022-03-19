@@ -161,6 +161,7 @@ namespace ING {
 
 
 
+#ifdef __AVX__
 		static inline float   operator*(const Vector4& a, const CVector4&  b);
 
 		static inline Vector2 operator*(const Vector4& a, const Matrix4x2& b);
@@ -171,6 +172,9 @@ namespace ING {
 
 		static inline Vector4 operator*(const Vector4& a, const Matrix4x4& b);
 		static inline Vector4 operator*(const Vector4& a, const CMatrix4x4& b);
+#else
+
+#endif
 
 	}
 
