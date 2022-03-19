@@ -57,13 +57,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -100,43 +100,43 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\Demos\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -148,6 +148,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -171,7 +172,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/arch:AVX2 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -221,6 +222,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -244,7 +246,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <AdditionalOptions>/arch:AVX2 %(AdditionalOptions)</AdditionalOptions>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -3,6 +3,10 @@
 
 
 #include <xmmintrin.h>
+#include <immintrin.h>
+#include <pmmintrin.h>
+
+
 
 namespace ING {
 
@@ -29,7 +33,6 @@ namespace ING {
 
 
 #ifdef __AVX__
-#include <immintrin.h>
 
 #define _MM256_SHUFFLE(fp7,fp6,fp5,fp4,fp3,fp2,fp1,fp0) \
  (((fp7) << 128) | ((fp6) << 64) | ((fp5) << 32) | ((fp4) << 16) | ((fp3) << 8) | ((fp2) << 4) | ((fp1) << 2) | (fp0))

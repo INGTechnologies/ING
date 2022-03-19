@@ -5,7 +5,6 @@
 #include <ING\AMath\Types\Types.h>
 
 
-
 namespace ING {
 
 	namespace AMath {

@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug2|Win32">
+      <Configuration>Debug2</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug2|x64">
+      <Configuration>Debug2</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
@@ -30,13 +38,19 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -46,10 +60,16 @@
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -61,10 +81,16 @@
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -74,32 +100,67 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)\Engine\Source\;$(SolutionDir)\SDK\Lib\Source\;$(SolutionDir)\SDK\ShaderCompiler\Lib\Source\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\$(ProjectName)\</OutDir>
+    <LibraryPath>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\ING\Engine\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDK\Lib;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\SDL\ShaderCompiler\Lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
@@ -143,6 +204,27 @@
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Engine.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AssemblyDebug>true</AssemblyDebug>
+    </Link>
+    <PreBuildEvent>
+      <Command>xcopy /y /d "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\ING\ING\ING.dll" "$(OutDir)"</Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
