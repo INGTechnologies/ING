@@ -48,6 +48,27 @@
 
 
 
+/**
+ *	Include Rendering Drawable Category
+ */
+#include <ING/Rendering/Drawable/Category/Category.h>
+
+
+
+/**
+ *	Include Rendering Layer
+ */
+#include <ING/Rendering/Layer/Layer.h>
+
+
+
+/**
+ *	Include Rendering Layer Manager
+ */
+#include <ING/Rendering/Layer/Manager/Manager.h>
+
+
+
 
 namespace ING {
 
@@ -58,7 +79,9 @@ namespace ING {
 		 */
 		IDrawable::IDrawable() {
 
+			categoryNameVector.resize(0);
 
+			SetLayer(0);
 
 		}
 
@@ -76,6 +99,83 @@ namespace ING {
 		void IDrawable::Release() {
 
 			delete this;
+
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		void	IDrawable::SetLayer(unsigned int index) {
+
+			layer = LayerManager::GetInstance()->GetLayer(index);
+
+			SetCategoryNameVector(categoryNameVector);
+
+		}
+
+		Layer*	IDrawable::GetLayer	() {
+			
+			return layer;
+		}
+
+		void	IDrawable::SetCategoryNameVector(const std::vector<std::string>& categoryNameVector) {
+
+			unsigned int categoryCount = categoryNameVector.size();
+
+			for (unsigned int i = 0; i < categoryCount; ++i) {
+
+				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
+
+				category->RemoveDrawable(this);
+
+			}
+
+			this->categoryNameVector = categoryNameVector;
+
+			for (unsigned int i = 0; i < categoryCount; ++i) {
+
+				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
+
+				category->AddDrawable(this);
+
+			}
+		
+		}
+
+		List<IDrawable*>::Node* IDrawable::GetNode(const std::string& categoryName) {
+
+			return categoryName2NodeMap[categoryName];
+
+		}
+
+		void				IDrawable::AddNode(const std::string& categoryName, List<IDrawable*>::Node* node) {
+
+			categoryName2NodeMap[categoryName] = node;
+
+		}
+
+		void				IDrawable::RemoveNode(const std::string& categoryName) {
+
+			categoryName2NodeMap.erase(categoryName);
+
+		}
+
+		bool				IDrawable::IsHaveNode(const std::string& categoryName) {
+
+			return !(categoryName2NodeMap.find(categoryName) == categoryName2NodeMap.end());
+
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void				IDrawable::Draw () {
+
+			
 
 		}
 

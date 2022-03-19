@@ -23,20 +23,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include UI Renderer
- */
-#include "UI/UI.h"
-
-
-
-/**
- *	Include Mesh Renderer
- */
-#include "Mesh/Mesh.h"
-
-
-
 namespace ING {
 
 	class Camera;
@@ -47,25 +33,14 @@ namespace ING {
 
 		namespace StandardRP {
 
-			class ING_API Renderer : 
-				public IRenderer,
-				public UIRenderer,
-				public MeshRenderer
+			class ING_API UIRenderer
 			{
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				Renderer();
-				~Renderer();
-
-
-
-				/**
-				 *	Release Methods
-				 */
-			public:
-				virtual void Release() override;
+				UIRenderer();
+				~UIRenderer();
 
 			};
 

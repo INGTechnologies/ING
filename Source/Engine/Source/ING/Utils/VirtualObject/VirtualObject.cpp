@@ -78,6 +78,8 @@ namespace ING {
 
 			}
 
+			name2propertyMap.clear();
+
 		}
 
 
@@ -86,8 +88,6 @@ namespace ING {
 		 *	Operators
 		 */
 		VirtualObject&	VirtualObject::operator =	(const VirtualObject& b) {
-
-			Clear();
 
 			vstruct.CopyFrom(b.vstruct);
 
@@ -102,7 +102,21 @@ namespace ING {
 			return *this;
 		}
 
-		bool			VirtualObject::operator ==	(const VirtualObject& b) {
+		VirtualObject& VirtualObject::operator +=	(const VirtualObject& b) {
+
+			vstruct += b.vstruct;
+
+			for (auto& item : name2propertyMap) {
+
+				if(b.name2propertyMap.find(item.first) != b.name2propertyMap.end())
+					(item.second.pData, b.name2propertyMap.find(item.first)->second.pData, item.second.size);
+
+			}
+
+			return *this;
+		}
+
+		bool			VirtualObject::operator ==	(const VirtualObject& b) const {
 
 			for (auto& item : name2propertyMap) {
 
@@ -113,7 +127,7 @@ namespace ING {
 			return true;
 		}
 
-		bool			VirtualObject::operator !=	(const VirtualObject& b) {
+		bool			VirtualObject::operator !=	(const VirtualObject& b) const {
 
 			return !(*this == b);
 		}

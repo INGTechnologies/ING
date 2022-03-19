@@ -23,9 +23,24 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mask
+ */
+#include <ING/Mask/Mask.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
+
+		class IDrawbleCategory;
+
+		class IDrawble;
+
+		class Layer;
+
+
 
 		class ING_API Scene
 		{
@@ -59,10 +74,21 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string			name;
+			std::string					name;
+
+			Mask64						mask;
+
+			std::vector<Layer*>			layerVector;
+
 
 		public:
-			std::string			GetName () { return name; }
+			std::string					GetName () { return name; }
+
+			Mask64						GetMask () { return mask; }
+
+			void						SetMask (Mask64 mask);
+
+			const std::vector<Layer*>&	GetLayerVector () { return layerVector; }
 
 		};
 

@@ -28,6 +28,10 @@ namespace ING {
 
 		class IDeviceContext;
 
+		class Scene;
+
+		class IDrawable;
+
 
 
 		class ING_API IRenderer
@@ -53,7 +57,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Render(Camera* camera, IDeviceContext* context);
+			virtual void RenderDrawables(Scene* scene, const std::string& categoryName);
+			virtual void RenderDrawable	(IDrawable* drawable);
 
 		};
 

@@ -85,6 +85,14 @@ namespace ING {
 
 			void	Clear		();
 
+
+
+			/**
+			 *	Operators
+			 */
+		public:
+			void operator +=	(const VirtualStruct& b);
+
 		};
 
 	}

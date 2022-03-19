@@ -32,6 +32,10 @@ namespace ING {
 
 		class IPass;
 
+		class IDrawableCategory;
+
+		class Layer;
+
 
 
 		class ING_API IDrawable
@@ -51,6 +55,38 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			Layer*							layer;
+
+			std::vector<std::string>		categoryNameVector;
+
+			std::unordered_map<std::string, List<IDrawable*>::Node*>	categoryName2NodeMap;
+
+		public:
+			void							SetLayer				(unsigned int index);
+			Layer*							GetLayer				();
+
+			const std::vector<std::string>& GetCategoryNameVector	() { return categoryNameVector; }
+			void							SetCategoryNameVector	(const std::vector<std::string>& categoryNameVector);
+
+			List<IDrawable*>::Node*			GetNode					(const std::string& categoryName);
+			void							AddNode					(const std::string& categoryName, List<IDrawable*>::Node* node);
+			void							RemoveNode				(const std::string& categoryName);
+			bool							IsHaveNode				(const std::string& categoryName);
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Draw();
 
 		};
 

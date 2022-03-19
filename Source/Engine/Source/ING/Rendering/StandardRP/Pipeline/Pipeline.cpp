@@ -97,6 +97,20 @@
 
 
 
+/**
+ *	Include StandardRP Renderer
+ */
+#include <ING/Rendering/StandardRP/Renderer/Renderer.h>
+
+
+
+/**
+ *	Include Rendering Layer
+ */
+#include <ING/Rendering/Layer/Layer.h>
+
+
+
 
 namespace ING {
 
@@ -126,6 +140,15 @@ namespace ING {
 				AddSubPipeline(new SubRP::Pipeline("After First Pipeline"), 0);
 
 				AddSubPipeline(new SubRP::Pipeline("Befrore Final Pipeline"), 0);
+
+
+
+				/**
+				 *	Create Renderer
+				 */
+				targetRenderer = new StandardRP::Renderer();
+
+				renderer = targetRenderer;
 
 			}
 
@@ -207,6 +230,11 @@ namespace ING {
 
 					/* Render Sub Pipelines */
 					SubRP::PassInput	subPipelinesInput;
+
+					subPipelinesInput.AddProperty<Rendering::Scene*>("Scene");
+
+					subPipelinesInput.SetProperty<Rendering::Scene*>("Scene", camera->GetRenderingScene());
+
 					SubRP::PassOutput	subPipelinesOutput;
 
 					RENDERING_ASSERTION(RenderSubPipelines(context, camera, subPipelinesInput, subPipelinesOutput));
@@ -243,11 +271,11 @@ namespace ING {
 
 					RENDERING_ASSERTION(pipeline->SubRender(context, camera, renderRS, passOutput));
 
-					renderRS = passOutput;
+					renderRS += passOutput;
 
 				}
 
-				output = renderRS;
+				output += renderRS;
 
 				return true;
 			}
