@@ -6,6 +6,15 @@ Include [ING Engine](https://github.com/INGTechnologies/ING/blob/main/Documentat
 ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
 
 
+## Getting Started ##
+- Step 1: Clone [ING repository](https://github.com/INGTechnologies/ING).
+- Step 2: Go folder "Source/Demos/EngineDemo", create "GitIgnores" folder and paste all items in "Sample" folder to "GitIgnores" folder.
+- Step 3: Open ING solution (Source/ING...sln).
+- Step 4: Set Demos/EngineDemo project as startup project.
+- Step 5: Run.
+
+
+
 ## Documentation ##
 WARNING: ONLY SUPPORT VS2019 AND VS2022
 - Low Level
