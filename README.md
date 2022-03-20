@@ -16,7 +16,9 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 
 
 ## Documentation ##
-WARNING: ONLY SUPPORT VS2019 AND VS2022
+WARNING: 
+    + ONLY SUPPORT VS2019 AND VS2022
+    + ALL DOCUMENTATION FILES ARE EMPTY
 - Low Level
   + [Engine](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Engine.md)
     - [Application](https://github.com/INGTechnologies/ING/blob/main/Documentation/Engine/Application/Application.md)
