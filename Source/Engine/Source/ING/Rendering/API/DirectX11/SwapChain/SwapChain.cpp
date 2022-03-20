@@ -28,6 +28,13 @@
 
 
 /**
+ *	Include DirectX11 Rendering Device Context
+ */
+#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+
+
+
+/**
  *	Include Window
  */
 #include <ING/Window/Window.h>
@@ -138,6 +145,7 @@ namespace ING {
 			void SwapChain::Resize(unsigned int width, unsigned int height) {
 
 				ID3D11Device* d3d11Device = ((DirectX11::Device*)GetDevice())->GetD3D11Device();
+				ID3D11DeviceContext* d3d11DeviceContext = ((DirectX11::DeviceContext*)(GetDevice()->GetContext()))->GetD3D11DeviceContext();
 
 
 
@@ -171,7 +179,16 @@ namespace ING {
 
 
 
-				//((DirectX11::RenderTargetView*)GetRenderTargetView())->SetD3D11RenderTargetView(d3d11RTV);
+				/* Set Viewport */
+				D3D11_VIEWPORT vp[1];
+				vp[0].Width = width;
+				vp[0].Height = height;
+				vp[0].MinDepth = 0;
+				vp[0].MaxDepth = 1;
+				vp[0].TopLeftX = 0;
+				vp[0].TopLeftY = 0;
+
+				d3d11DeviceContext->RSSetViewports(1, vp);
 			}
 
 		}

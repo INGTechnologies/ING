@@ -17,9 +17,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include APIFlag
+ *	Include Format
  */
-#include <ING\Rendering/API/APIFlag.h>
+#include <ING\Rendering/API/Format/Format.h>
 
 
 
@@ -29,8 +29,8 @@ namespace ING {
 
 		class IAPI;
 
-		class ING_API APIManager :
-			public Board<APIManager>,
+		class ING_API FormatManager :
+			public Singleton<FormatManager>,
 			public Square
 		{
 
@@ -38,42 +38,29 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			APIManager();
-			~APIManager();
+			FormatManager();
+			~FormatManager();
 
 
 
 			/**
-			 *	Init, Init API, Run, Release Methods
+			 *	Init, Run, Release Methods
 			 */
 		public:
 			virtual bool	Init()		override;
-					bool	InitAPI();
 			virtual bool	Run()		override;
 			virtual bool	Release()	override;
 
 
 
 			/**
-			 *	API Management Methods, Properties
+			 *	Properties
 			 */
-		protected:
-			APIFlag apiFlag;
-
-			IAPI* api;
+		private:
+			std::unordered_map<Format, unsigned int> format2StrideMap;
 
 		public:
-			APIFlag GetAPIFlag() {
-
-				return apiFlag;
-
-			}
-
-			IAPI* GetAPI() {
-
-				return api;
-
-			}
+			unsigned int GetStride(Format);
 
 		};
 

@@ -71,7 +71,10 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void IASetInputLayout(IInputLayout* inputLayout) override;
+				virtual void IASetInputLayout	(IInputLayout* inputLayout) override;
+				virtual void IASetVertexBuffers	(const std::vector<IBuffer*>& buffers) override;
+				virtual void IASetVertexBuffer	(IBuffer* buffer, unsigned int stride, unsigned int offset) override;
+				virtual void IASetIndexBuffer	(IBuffer* buffer, Format format, unsigned int offset) override;
 
 			};
 

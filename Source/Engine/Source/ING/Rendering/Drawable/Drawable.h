@@ -68,6 +68,8 @@ namespace ING {
 
 			std::unordered_map<std::string, List<IDrawable*>::Node*>	categoryName2NodeMap;
 
+			bool							isActive;
+
 		public:
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();
@@ -80,6 +82,9 @@ namespace ING {
 			void							AddNode					(const std::string& categoryName, List<IDrawable*>::Node* node);
 			void							RemoveNode				(const std::string& categoryName);
 			bool							IsHaveNode				(const std::string& categoryName);
+
+			bool							IsActive				() { return isActive; }
+			void							SetActive				(bool isActive) { this->isActive = isActive; }
 
 
 

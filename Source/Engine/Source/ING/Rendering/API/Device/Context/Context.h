@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Format
+ */
+#include <ING\Rendering/API\Format/Format.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -32,6 +39,8 @@ namespace ING {
 		class IInputLayout;
 
 		class IDevice;
+
+		class IBuffer;
 
 
 
@@ -72,8 +81,10 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			//virtual void ClearRenderTargetView(RenderTargetView* rtv, Color color);
-			virtual void IASetInputLayout(IInputLayout* inputLayout);
+			virtual void IASetInputLayout	(IInputLayout* inputLayout);
+			virtual void IASetVertexBuffers	(const std::vector<IBuffer*>& buffers);
+			virtual void IASetVertexBuffer	(IBuffer* buffer, unsigned int stride, unsigned int offset);
+			virtual void IASetIndexBuffer	(IBuffer* buffer, Format format, unsigned int offset);
 
 		};
 

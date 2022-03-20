@@ -132,7 +132,8 @@ namespace ING {
 
 				for (auto drawable : category->GetDrawableList()) {
 
-					RenderDrawable(drawable);
+					if(drawable->IsActive())
+						RenderDrawable(drawable);
 
 				}
 

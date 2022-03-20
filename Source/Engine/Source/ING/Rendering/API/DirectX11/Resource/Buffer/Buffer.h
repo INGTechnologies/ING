@@ -34,6 +34,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class IDevice;
+
+
+
 		namespace DirectX11 {
 
 			class ING_API Buffer : public IBuffer
@@ -44,6 +48,7 @@ namespace ING {
 				 */
 			public:
 				Buffer(IDevice* device);
+				Buffer(IDevice* device, ID3D11Buffer* d3d11Buffer);
 				~Buffer();
 
 

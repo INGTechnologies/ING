@@ -44,6 +44,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include FormatManager
+ */
+#include <ING\Rendering/API/Format\Manager\Manager.h>
+
+
+
+/**
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
@@ -69,6 +76,8 @@ namespace ING {
 				Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiFlag", DIRECTX11_API_FLAG);
 
 			}
+
+			AddSquare<FormatManager>();
 
 			Debug::Log("Rendering::APIManager Created");
 
@@ -100,9 +109,20 @@ namespace ING {
 
 			}
 
-			Debug::Log("Rendering::APIManager Initialized");
+			bool result = Board<APIManager>::Init();
 
-			return true;
+			if (result) {
+
+				Debug::Log("Rendering::APIManager Initialized");
+
+			}
+			else {
+
+				Debug::Log("Cant Init Rendering::APIManager");
+
+			}
+
+			return result;
 		}
 
 		bool APIManager::InitAPI() {
@@ -137,7 +157,7 @@ namespace ING {
 
 			Debug::Log("Start Running Rendering::APIManager");
 
-			return true;
+			return Board<APIManager>::Run();
 		}
 
 		bool APIManager::Release() {
@@ -150,9 +170,18 @@ namespace ING {
 
 			}
 
-			delete this;
+			bool result = Board<APIManager>::Release();
 
-			Debug::Log("Finished Releasing Rendering::APIManager");
+			if (result) {
+
+				Debug::Log("Finished Releasing Rendering::APIManager");
+
+			}
+			else {
+
+				Debug::Log("Cant Release Rendering::APIManager");
+
+			}
 
 			return true;
 

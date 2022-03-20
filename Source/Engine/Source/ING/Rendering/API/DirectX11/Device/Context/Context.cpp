@@ -34,6 +34,20 @@
 
 
 
+/**
+ *	Include DirectX11 Buffer
+ */
+#include <ING/Rendering/API/DirectX11/Resource/Buffer/Buffer.h>
+
+
+
+/**
+ *	Include DirectX11 Convertor
+ */
+#include <ING/Rendering/API/DirectX11/Convertor/Convertor.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -82,6 +96,28 @@ namespace ING {
 			void DeviceContext::IASetInputLayout(IInputLayout* inputLayout) {
 
 				d3d11DeviceContext->IASetInputLayout(inputLayout->As<DirectX11::InputLayout>()->GetD3D11InputLayout());
+
+			}
+
+			void DeviceContext::IASetVertexBuffers(const std::vector<IBuffer*>& buffers) {
+
+
+
+			}
+
+			void DeviceContext::IASetVertexBuffer(IBuffer* buffer, unsigned int stride, unsigned int offset) {
+
+				ID3D11Buffer* d3d11Buffer = buffer->As<DirectX11::Buffer>()->GetD3D11Buffer();
+
+				d3d11DeviceContext->IASetVertexBuffers(0,1,&d3d11Buffer,&stride, &offset);
+
+			}
+
+			void DeviceContext::IASetIndexBuffer(IBuffer* buffer, Format format, unsigned int offset) {
+
+				ID3D11Buffer* d3d11Buffer = buffer->As<DirectX11::Buffer>()->GetD3D11Buffer();
+
+				d3d11DeviceContext->IASetIndexBuffer(d3d11Buffer, DirectX11::Convertor::GetInstance()->Format(format), offset);
 
 			}
 

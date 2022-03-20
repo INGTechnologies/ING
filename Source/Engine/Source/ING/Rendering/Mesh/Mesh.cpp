@@ -6,6 +6,20 @@
 
 
 
+/**
+ *	Include API Manager
+ */
+#include <ING/Rendering/API/Manager/Manager.h>
+
+
+
+/**
+ *	Include API
+ */
+#include <ING/Rendering/API/API.h>
+
+
+
 
 namespace ING {
 
@@ -14,9 +28,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IMesh::IMesh() {
+		IMesh::IMesh() : IMesh(APIManager::GetInstance()->GetAPI()->GetDevice()) {
 
 
+
+		}
+
+		IMesh::IMesh(IDevice* device) {
+
+			this->device = device;
 
 		}
 
@@ -34,6 +54,17 @@ namespace ING {
 		void IMesh::Release() {
 
 			delete this;
+
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void IMesh::BuildBuffers() {
+
+
 
 		}
 
