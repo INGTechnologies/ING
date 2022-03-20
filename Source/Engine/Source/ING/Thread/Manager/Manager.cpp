@@ -22,6 +22,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -29,7 +36,9 @@ namespace ING {
 	 */
 	ThreadManager::ThreadManager() {
 
+		Debug::Log("Start Creating ThreadManager");
 
+		Debug::Log("ThreadManager Created");
 
 	}
 
@@ -46,6 +55,8 @@ namespace ING {
 	 */
 	bool ThreadManager::Init() {
 
+		Debug::Log("Start Initializing ThreadManager");
+
 		//Create Main Thread
 		threadMap[0] = new Thread();
 
@@ -55,23 +66,29 @@ namespace ING {
 
 		threadIdGenerator.RegisterUInt32Id(0);
 
+		Debug::Log("ThreadManager Initialized");
+
 		return true;
 	}
 
 	bool ThreadManager::Run() {
 
-
+		Debug::Log("Start Running ThreadManager");
 
 		return true;
 	}
 
 	bool ThreadManager::Release() {
 
+		Debug::Log("Start Releasing ThreadManager");
+
 		threadIdGenerator.ClearIds();
 
 		threadMap.clear();
 
 		threadIdMap.clear();
+
+		Debug::Log("Finished Releasing ThreadManager");
 
 		return Square::Release();
 	}

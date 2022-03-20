@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -51,11 +58,15 @@ namespace ING {
 	WindowManager::WindowManager()
 	{
 
+		Debug::Log("Start Creating WindowManager");
+
 		APPLICATION_CONFIG_PROP(unsigned int, "ING::WindowManager::startupWindowCount", 1);
 
 		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::autoShutdown", true);
 
 		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", false);
+
+		Debug::Log("WindowManager Created");
 
 	}
 
@@ -73,6 +84,8 @@ namespace ING {
 	 */
 	bool WindowManager::Init()
 	{
+
+		Debug::Log("Start Initializing WindowManager");
 
 		startupWindowCount	= Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING::WindowManager::startupWindowCount");
 
@@ -124,13 +137,15 @@ namespace ING {
 
 		}
 
+		Debug::Log("WindowManager Initialized");
+
 		return true;
 	}
 
 	bool WindowManager::Run()
 	{
 
-
+		Debug::Log("Start Running WindowManager");
 
 		return true;
 	}
@@ -138,11 +153,15 @@ namespace ING {
 	bool WindowManager::Release()
 	{
 
+		Debug::Log("Start Releasing WindowManager");
+
 		consoleWindow->Release();
 
 		idGenerator.ClearIds();
 
 		windowMap.clear();
+
+		Debug::Log("Finished Releasing WindowManager");
 
 		return true;
 	}

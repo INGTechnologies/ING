@@ -19,6 +19,13 @@ static auto appStart = std::chrono::steady_clock::now();
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -26,7 +33,9 @@ namespace ING {
 	 */
 	Time::Time() {
 
+		Debug::Log("Start Creating Time");
 
+		Debug::Log("Time Created");
 
 	}
 
@@ -43,21 +52,27 @@ namespace ING {
 	 */
 	bool Time::Init() {
 
+		Debug::Log("Start Initializing Time");
+
 		deltaTime = 0;
+
+		Debug::Log("Time Initialized");
 
 		return true;
 	}
 
 	bool Time::Run() {
 
-
+		Debug::Log("Start Running Time");
 
 		return true;
 	}
 
 	bool Time::Release() {
 
+		Debug::Log("Start Releasing Time");
 
+		Debug::Log("Finished Releasing Time");
 
 		return true;
 	}

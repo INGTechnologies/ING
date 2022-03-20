@@ -6,9 +6,9 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -22,6 +22,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -29,11 +36,15 @@ namespace ING {
 	 */
 	Core::Core() {
 
+		Debug::Log("Start Creating Core");
+
 		/**
 		 *	Add Squares
 		 */
 		/* Memory */
 		AddSquare<Memory>();
+
+		Debug::Log("Core Created");
 
 	}
 
@@ -50,23 +61,43 @@ namespace ING {
 	 */
 	bool Core::Init() {
 
+		Debug::Log("Start Initializing Core");
 
+		bool result = Board<Core>::Init();
+	
+		if (result)
+			Debug::Log("Core Initialized");
+		else {
 
-		return Board<Core>::Init();
+			Debug::Log("Cant Init Core");
+
+		}
+
+		return result;
 	}
 
 	bool Core::Run() {
 
-
+		Debug::Log("Start Running Core");
 
 		return Board<Core>::Run();
 	}
 
 	bool Core::Release() {
 
+		Debug::Log("Start Releasing Core");
 
+		bool result = Board<Core>::Release();
 
-		return Board<Core>::Release();
+		if (result)
+			Debug::Log("Finished Releasing Core");
+		else {
+
+			Debug::Log("Cant Release Core");
+
+		}
+
+		return result;
 	
 	}
 

@@ -41,7 +41,11 @@ namespace ING {
 	 */
 	Profiler::Profiler() {
 
+		Debug::Log("Start Creating Profiler");
+
 		APPLICATION_CONFIG_PROP(bool, "ING::Profiler::logSessionInConsole", true);
+
+		Debug::Log("Profiler Created");
 
 	}
 
@@ -58,21 +62,27 @@ namespace ING {
 	 */
 	bool Profiler::Init() {
 
+		Debug::Log("Start Initializing Profiler");
+
 		logSessionInConsole = APPLICATION_GET_CONFIG_PROP(bool, "ING::Profiler::logSessionInConsole");
+
+		Debug::Log("Profiler Initialized");
 
 		return true;
 	}
 
 	bool Profiler::Run() {
 
-
+		Debug::Log("Start Running Profiler");
 
 		return true;
 	}
 
 	bool Profiler::Release() {
 
+		Debug::Log("Start Releasing Profiler");
 
+		Debug::Log("Finished Releasing Profiler");
 
 		return true;
 	

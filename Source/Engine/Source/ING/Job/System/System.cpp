@@ -48,12 +48,21 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
 	 *	Constructors And Destructor
 	 */
 	JobSystem::JobSystem() {
+
+		Debug::Log("Start Creating JobSystem");
 
 		isRunning = false;
 		threadCount = 1;
@@ -94,6 +103,8 @@ namespace ING {
 
 		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::threadCount", (unsigned int)defaultThreadCount);
 
+		Debug::Log("JobSystem Created");
+
 	}
 
 	JobSystem::~JobSystem() {
@@ -109,12 +120,18 @@ namespace ING {
 	 */
 	bool JobSystem::Init() {
 
+		Debug::Log("Start Initializing JobSystem");
+
 		RecreateThreads();
+
+		Debug::Log("JobSystem Initialized");
 
 		return Square::Init();
 	}
 
 	bool JobSystem::Run() {
+
+		Debug::Log("Start Running JobSystem");
 
 		RunThreads();
 
@@ -123,7 +140,11 @@ namespace ING {
 
 	bool JobSystem::Release() {
 
+		Debug::Log("Start Releasing JobSystem");
+
 		JoinThreads();
+
+		Debug::Log("Finished Releasing JobSystem");
 
 		return Square::Release();
 	}

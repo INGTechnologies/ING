@@ -107,6 +107,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -115,6 +122,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		Engine::Engine() {
+
+			Debug::Log("Start Creating Rendering::Engine");
 
 			/**
 			 *	Add Squares
@@ -140,6 +149,8 @@ namespace ING {
 			/* System */
 			AddSquare<System>();
 
+			Debug::Log("Rendering::Engine Created");
+
 		}
 
 		Engine::~Engine() {
@@ -155,21 +166,43 @@ namespace ING {
 		 */
 		bool Engine::Init() {
 
-			return Board<Engine>::Init();
+			Debug::Log("Start Initializing Rendering::Engine");
+
+			bool result = Board<Engine>::Init();
+
+			if (result)
+				Debug::Log("Rendering::Engine Initialized");
+			else {
+
+				Debug::Log("Cant Init Rendering::Engine");
+
+			}
+
+			return result;
 		}
 
 		bool Engine::Run() {
 
-
+			Debug::Log("Start Running Rendering::Engine");
 
 			return Board<Engine>::Run();
 		}
 
 		bool Engine::Release() {
 
+			Debug::Log("Start Releasing Rendering::Engine");
 
+			bool result = Board<Engine>::Release();
 
-			return Board<Engine>::Release();
+			if (result)
+				Debug::Log("Finished Releasing Rendering::Engine");
+			else {
+
+				Debug::Log("Cant Release Rendering::Engine");
+
+			}
+
+			return result;
 		}
 
 

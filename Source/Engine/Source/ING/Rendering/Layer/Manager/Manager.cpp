@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -30,6 +37,8 @@ namespace ING {
 		 */
 		LayerManager::LayerManager() {
 
+			Debug::Log("Start Creating Rendering::LayerManager");
+
 			layerVector.resize(MAX_LAYER_COUNT);
 
 			unsigned int layerVectorSize = layerVector.size();
@@ -39,6 +48,8 @@ namespace ING {
 				layerVector[i] = 0;
 
 			}
+
+			Debug::Log("Rendering::LayerManager Created");
 
 		}
 
@@ -54,6 +65,8 @@ namespace ING {
 		 *	Init, Run, Release Methods
 		 */
 		bool LayerManager::Init() {
+
+			Debug::Log("Start Initializing Rendering::LayerManager");
 
 			/* Create Categories */
 			RecreateCategories({
@@ -75,19 +88,27 @@ namespace ING {
 
 			SetLayer(&NO_RAYCAST_LAYER, 1);
 
+			Debug::Log("Rendering::LayerManager Initialized");
+
 			return true;
 		}
 
 		bool LayerManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::LayerManager");
 
 			return true;
 		}
 
 		bool LayerManager::Release() {
 
+			Debug::Log("Start Releasing Rendering::LayerManager");
+
 			categoryNameMap.clear();
+
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::LayerManager");
 
 			return true;
 		}

@@ -142,6 +142,10 @@ namespace ING {
 
 
 
+		Debug::Log("Start Creating Application");
+
+
+
 		/**
 		 *	Create Configuration
 		 */
@@ -206,6 +210,10 @@ namespace ING {
 
 		state = CREATED_APPLICATION_STATE;
 
+
+
+		Debug::Log("Application Created");
+
 	}
 
 	Application::~Application() {
@@ -232,18 +240,28 @@ namespace ING {
 	 */
 	bool Application::Init() {
 
+		Debug::Log("Start Initializing Application");
 
+		bool result = Board<Application>::Init();
 
-		return Board<Application>::Init();
+		Debug::Log("Application Initialized");
+
+		return result;
 	}
 
 	bool Application::Run() {
 
 		state = RUNNING_APPLICATION_STATE;
 
+		Debug::Log("Start Running Application");
+
 		bool squaresRunResult = Board<Application>::Run();
 
+		Debug::Log(String("Start ") + String('"') + String("RUN") + String('"') + String(" Event"));
+
 		GetEvent("RUN")->Execute();
+
+		Debug::Log("Start Gameloop");
 
 		/* Game Loop */
 		while (state == RUNNING_APPLICATION_STATE) {
@@ -275,19 +293,36 @@ namespace ING {
 
 	bool Application::Release() {
 
+		Debug::Log("Start Releasing Application");
+
 		delete configuration;
 
 		RELEASE_EVENT_STORAGE();
 
-		return Board<Application>::Release();
+		bool result = Board<Application>::Release();
+	
+		if(result)
+			Debug::Log("Finished Releasing Application");
+		else {
+
+			Debug::Log("Cant Release Application");
+
+			exit(1);
+
+		}
+
+		return result;
 	}
 
 	void Application::Shutdown() {
 
 		state = CLOSED_APPLICATION_STATE;
 
+		Debug::Log("Start Shuting Down Application");
+
 		Release();
 
+		Debug::Log("Finished Shutting Application");
 	}
 
 

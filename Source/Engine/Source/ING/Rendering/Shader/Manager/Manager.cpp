@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -24,7 +31,9 @@ namespace ING {
 		 */
 		ShaderManager::ShaderManager() {
 
+			Debug::Log("Start Creating Rendering::ShaderManager");
 
+			Debug::Log("Rendering::ShaderManager Created");
 
 		}
 
@@ -41,21 +50,27 @@ namespace ING {
 		 */
 		bool ShaderManager::Init() {
 
+			Debug::Log("Start Initializing Rendering::ShaderManager");
 
+			Debug::Log("Rendering::ShaderManager Initialized");
 
 			return true;
 		}
 
 		bool ShaderManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::ShaderManager");
 
 			return true;
 		}
 
 		bool ShaderManager::Release() {
 
+			Debug::Log("Start Releasing Rendering::ShaderManager");
 
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::ShaderManager");
 
 			return true;
 		}

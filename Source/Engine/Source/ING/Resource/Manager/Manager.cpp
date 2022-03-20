@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 
 namespace ING {
 
@@ -35,7 +42,9 @@ namespace ING {
 	 */
 	ResourceManager::ResourceManager() {
 
+		Debug::Log("Start Creating ResourceManager");
 
+		Debug::Log("ResourceManager Created");
 
 	}
 
@@ -52,21 +61,25 @@ namespace ING {
 	 */
 	bool ResourceManager::Init() {
 
+		Debug::Log("Start Initializing ResourceManager");
 
+		Debug::Log("ResourceManager Initialized");
 
 		return Square::Init();
 	}
 
 	bool ResourceManager::Run() {
 
-
+		Debug::Log("Start Running ResourceManager");
 
 		return Square::Run();
 	}
 
 	bool ResourceManager::Release() {
 
+		Debug::Log("Start Releasing ResourceManager");
 
+		Debug::Log("Finished Releasing ResourceManager");
 
 		return Square::Release();
 	}

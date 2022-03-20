@@ -59,6 +59,8 @@ namespace ING {
 		 */
 		APIManager::APIManager() {
 
+			Debug::Log("Start Creating Rendering::APIManager");
+
 			/* Setup Configuration */
 			if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Rendering::APIManager::apiFlag")) {
 
@@ -67,6 +69,8 @@ namespace ING {
 				Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiFlag", DIRECTX11_API_FLAG);
 
 			}
+
+			Debug::Log("Rendering::APIManager Created");
 
 		}
 
@@ -83,15 +87,20 @@ namespace ING {
 		 */
 		bool APIManager::Init() {
 
+			Debug::Log("Start Initializing Rendering::APIManager");
+
 			apiFlag = Application::GetInstance()->GetConfiguration()->Get<APIFlag>("ING::Rendering::APIManager::apiFlag");
 
 			if (!InitAPI()) {
 
 				Debug::Log("Cant Init Rendering API");
+				Debug::Log("Cant Init Rendering::APIManager");
 
 				return false;
 
 			}
+
+			Debug::Log("Rendering::APIManager Initialized");
 
 			return true;
 		}
@@ -126,12 +135,14 @@ namespace ING {
 
 		bool APIManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::APIManager");
 
 			return true;
 		}
 
 		bool APIManager::Release() {
+
+			Debug::Log("Start Releasing Rendering::APIManager");
 
 			if (api != nullptr) {
 
@@ -140,6 +151,8 @@ namespace ING {
 			}
 
 			delete this;
+
+			Debug::Log("Finished Releasing Rendering::APIManager");
 
 			return true;
 
