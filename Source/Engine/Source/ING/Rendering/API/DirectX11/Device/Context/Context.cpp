@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include DirectX11 Input Layout
+ */
+#include <ING/Rendering/API/DirectX11/InputLayout/InputLayout.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -64,6 +71,17 @@ namespace ING {
 				}
 
 				IDeviceContext::Release();
+
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+			void DeviceContext::IASetInputLayout(IInputLayout* inputLayout) {
+
+				d3d11DeviceContext->IASetInputLayout(inputLayout->As<DirectX11::InputLayout>()->GetD3D11InputLayout());
 
 			}
 

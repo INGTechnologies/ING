@@ -76,7 +76,7 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
-	std::wstring	ResourceManager::ReadFile(std::wstring path, CoderOption& coderOption) {
+	std::wstring	ResourceManager::ReadFile(const std::wstring& path, CoderOption& coderOption) {
 
 
 
@@ -130,7 +130,7 @@ namespace ING {
 
 	}
 
-	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content, CoderOption& coderOption) {
+	void			ResourceManager::WriteFile(const std::wstring& path, const std::wstring& content, CoderOption& coderOption) {
 
 
 
@@ -138,13 +138,18 @@ namespace ING {
 
 
 
-		std::wstring& parsedContent = content;
+		std::wstring parsedContent;
 
 
 
 		if (coderOption.coder != nullptr) {
 
 			parsedContent = coderOption.coder->Encode(content, coderOption.key);
+
+		}
+		else {
+
+			parsedContent = content;
 
 		}
 

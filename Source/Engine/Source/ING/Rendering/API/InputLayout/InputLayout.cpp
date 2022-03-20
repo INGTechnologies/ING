@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Context.h"
+#include "InputLayout.h"
 
 
 
@@ -14,9 +14,9 @@
 
 
 /**
- *	Include DirectX11 DeviceContext
+ *	Include DirectX11 InputLayout
  */
-#include <ING/Rendering/API/DirectX11/Device/Context/Context.h>
+#include <ING/Rendering/API/DirectX11/InputLayout/InputLayout.h>
 
 
 
@@ -27,13 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDeviceContext::IDeviceContext(IDevice* device) {
+		IInputLayout::IInputLayout(IDevice* device) {
 
 			this->device = device;
 
 		}
 
-		IDeviceContext::~IDeviceContext() {
+		IInputLayout::~IInputLayout() {
 
 
 
@@ -42,9 +42,20 @@ namespace ING {
 
 
 		/**
-		 *	Create, Release Methods
+		 *	Release Method
 		 */
-		IDeviceContext* IDeviceContext::Create(IDevice* device) {
+		void IInputLayout::Release() {
+
+			delete this;
+
+		}
+
+
+
+		/**
+		 *	Create Methods
+		 */
+		IInputLayout* IInputLayout::Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IVertexShader* vshader) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +66,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::DeviceContext(device);
+				return new DirectX11::InputLayout(device, desc, vshader);
 
 				break;
 
@@ -76,13 +87,6 @@ namespace ING {
 			}
 
 			return nullptr;
-
-		}
-
-		void IDeviceContext::Release() {
-
-			delete this;
-
 		}
 
 
@@ -90,7 +94,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IDeviceContext::IASetInputLayout(IInputLayout* inputLayout) {
+		void IInputLayout::Apply() {
 
 
 

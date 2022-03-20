@@ -27,18 +27,20 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IShaderPass;
+		class IShader;
+
+		class IInputLayout;
 
 
 
-		class ING_API IShader {
+		class ING_API IShaderPass {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IShader		(const std::string& name);
-			~IShader	();
+			IShaderPass		(const std::string& name);
+			~IShaderPass	();
 
 
 
@@ -55,14 +57,16 @@ namespace ING {
 		private:
 			std::string		name;
 
-			std::unordered_map<std::string, IShaderPass*>	passName2PassMap;
+			std::unordered_map<std::string, IShader*> childShaderNameToChildShader;
+
+			IInputLayout*	inputLayout;
 
 		public:
 			std::string		GetName	() const { return name; }
 
-			const std::unordered_map<std::string, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
+			void			SetInputLayout(IInputLayout* inputLayout) { this->inputLayout = inputLayout; }
 
-			IShaderPass*	GetPass(const std::string& name);
+			IInputLayout*	GetInputLayout() { return inputLayout; }
 
 
 
@@ -70,10 +74,10 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			IShaderPass*	AddPass		(const std::string& name);
-			void			RemovePass	(const std::string& name);
+			void AddChild	(const std::string& tag, IShader* shader);
+			void RemoveChild(const std::string& tag, IShader* shader);
 
-			virtual void	Apply		(const std::string& name);
+			void Apply();
 
 		};
 

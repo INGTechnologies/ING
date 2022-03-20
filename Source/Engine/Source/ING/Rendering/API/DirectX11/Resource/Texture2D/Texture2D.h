@@ -43,8 +43,8 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Texture2D();
-				~Texture2D();
+				Texture2D	(IDevice* device);
+				~Texture2D	();
 
 
 

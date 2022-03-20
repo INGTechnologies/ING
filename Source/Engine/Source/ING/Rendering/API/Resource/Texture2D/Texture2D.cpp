@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ITexture2D::ITexture2D	() {
+		ITexture2D::ITexture2D	(IDevice* device) : IResource(device) {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Create, Release Method
 		 */
-		ITexture2D* ITexture2D::Create() {
+		ITexture2D* ITexture2D::Create(IDevice* device) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +55,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::Texture2D();
+				return new DirectX11::Texture2D(device);
 
 				break;
 

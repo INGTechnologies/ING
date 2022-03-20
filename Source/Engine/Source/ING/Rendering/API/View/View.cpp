@@ -13,9 +13,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IView::IView	() {
+		IView::IView	(IDevice* device) {
 
-
+			this->device = device;
 
 		}
 

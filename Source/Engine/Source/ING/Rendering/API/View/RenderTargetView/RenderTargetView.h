@@ -34,7 +34,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IRenderTargetView();
+			IRenderTargetView(IDevice* device);
 			~IRenderTargetView();
 
 
@@ -43,7 +43,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static IRenderTargetView*	Create();
+			static IRenderTargetView*	Create(IDevice* device);
 
 			virtual void				Release() override;
 

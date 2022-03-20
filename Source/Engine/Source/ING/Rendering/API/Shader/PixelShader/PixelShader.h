@@ -7,12 +7,19 @@
 
 
 
- /**
-  *	Include Utils
-  */
-#include <ING\Utils/Utils.h>
+/**
+ *	Include Utils
+ */
+#include <ING/Utils/Utils.h>
 
 using namespace ING::Utils;
+
+
+
+/**
+ *	Include Shader
+ */
+#include <ING/Rendering/Shader/Shader.h>
 
 
 
@@ -20,28 +27,28 @@ namespace ING {
 
 	namespace Rendering {
 
+		class IShaderPass;
+
 		class IDevice;
 
 
 
-		class ING_API IResource :
-			public AsMethod
-		{
+		class ING_API IPixelShader : public IShader {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IResource(IDevice* device);
-			~IResource();
+			IPixelShader	(IDevice* device);
+			~IPixelShader	();
 
 
 
 			/**
-			 *	Create, Release Methods
+			 *	Create Methods
 			 */
 		public:
-			virtual void Release();
+			static IPixelShader* CreateFromHLSL(IDevice* device, const std::wstring& filePath);
 
 
 

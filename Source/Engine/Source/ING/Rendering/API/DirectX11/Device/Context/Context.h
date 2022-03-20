@@ -65,6 +65,14 @@ namespace ING {
 			public:
 				ID3D11DeviceContext* GetD3D11DeviceContext() { return d3d11DeviceContext; }
 
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void IASetInputLayout(IInputLayout* inputLayout) override;
+
 			};
 
 		}

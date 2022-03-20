@@ -15,7 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Buffer::Buffer() {
+			Buffer::Buffer(IDevice* device) : IBuffer(device) {
 
 
 

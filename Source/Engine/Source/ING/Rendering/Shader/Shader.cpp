@@ -6,6 +6,13 @@
 
 
 
+/**
+ *	Include Shader Pass
+ */
+#include "Pass/Pass.h"
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -13,13 +20,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Shader::Shader() {
+		IShader::IShader(const std::string& name) {
 
-
+			this->name = name;
 
 		}
 
-		Shader::~Shader() {
+		IShader::~IShader() {
 
 
 
@@ -28,32 +35,54 @@ namespace ING {
 
 
 		/**
-		 *	Child Shaders
+		 *	Release Methods
 		 */
-		List<Shader*>::Node*	Shader::GetHeadShaderNode() {
+		void IShader::Release() {
 
-			return childShaderList.GetHeadNode();
-
-		}
-
-		List<Shader*>::Node*	Shader::GetTailShaderNode() {
-
-			return childShaderList.GetTailNode();
+			delete this;
 
 		}
 
-		List<Shader*>::Node*	Shader::AddShader(Shader* shader) {
 
-			return childShaderList.Add(shader);
+		/**
+		 *	Properties
+		 */
+		IShaderPass* IShader::GetPass(const std::string& name) {
 
-		}
-
-		void					Shader::RemoveShader(List<Shader*>::Node* shaderNode) {
-
-			childShaderList.Remove(shaderNode);
+			return passName2PassMap[name];
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		IShaderPass*	IShader::AddPass		(const std::string& name) {
+
+			IShaderPass* pass = new IShaderPass(name);
+
+			passName2PassMap[pass->GetName()] = pass;
+
+			return pass;
+
+		}
+
+		void			IShader::RemovePass	(const std::string& name) {
+
+			delete (passName2PassMap[name]);
+
+			passName2PassMap.erase(name);
+
+		}
+
+		void			IShader::Apply(const std::string& name) {
+
+			if (passName2PassMap.find(name) == passName2PassMap.end()) return;
+
+			GetPass(name)->Apply();
+
+		}
 
 	}
 

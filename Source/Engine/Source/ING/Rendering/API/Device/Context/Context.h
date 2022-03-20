@@ -27,7 +27,9 @@ namespace ING {
 
 	namespace Rendering {
 
-		class RenderTargetView;
+		class IRenderTargetView;
+
+		class IInputLayout;
 
 		class IDevice;
 
@@ -69,8 +71,9 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-		//public:
+		public:
 			//virtual void ClearRenderTargetView(RenderTargetView* rtv, Color color);
+			virtual void IASetInputLayout(IInputLayout* inputLayout);
 
 		};
 

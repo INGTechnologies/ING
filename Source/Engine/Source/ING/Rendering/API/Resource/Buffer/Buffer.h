@@ -34,7 +34,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IBuffer	();
+			IBuffer	(IDevice* device);
 			~IBuffer();
 
 
