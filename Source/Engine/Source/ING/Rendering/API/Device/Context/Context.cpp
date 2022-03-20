@@ -96,6 +96,24 @@ namespace ING {
 
 		}
 
+		void IDeviceContext::IASetVertexBuffers(const std::vector<IBuffer*>& buffers) {
+
+
+
+		}
+
+		void IDeviceContext::IASetVertexBuffer(IBuffer* buffer, unsigned int stride, unsigned int offset) {
+
+
+
+		}
+
+		void IDeviceContext::IASetIndexBuffer(IBuffer* buffer, Format format, unsigned int offset) {
+
+
+
+		}
+
 	}
 
 }

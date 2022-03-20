@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "Mesh.h"
+#include "MeshDrawable.h"
 
 
 
@@ -42,6 +42,13 @@
 
 
 /**
+ *	Include Rendering Buffer
+ */
+#include <ING/Rendering/API/Resource/Buffer/Buffer.h>
+
+
+
+/**
  *	Include Rendering Pass
  */
 #include <ING/Rendering/Pass/Pass.h>
@@ -66,6 +73,13 @@
  *	Include Rendering Layer Manager
  */
 #include <ING/Rendering/Layer/Manager/Manager.h>
+
+
+
+/**
+ *	Include Rendering Mesh
+ */
+#include <ING/Rendering/Mesh/Mesh.h>
 
 
 
@@ -116,7 +130,13 @@ namespace ING {
 			 */
 			void MeshDrawable::Draw() {
 
+				IBuffer* vertexBuffer = mesh->GetVertexBuffer();
+				IBuffer* indexBuffer  = mesh->GetIndexBuffer();
 
+				IDeviceContext* context = vertexBuffer->GetDevice()->GetContext();
+
+				context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0 );
+				context->IASetIndexBuffer(indexBuffer, FORMAT_R32_UINT, 0);
 
 			}
 

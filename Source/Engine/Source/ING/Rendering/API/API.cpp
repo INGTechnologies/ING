@@ -29,6 +29,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Format
+ */
+#include <ING/Rendering/API/Format/Format.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -55,6 +62,7 @@ namespace ING {
 		 */
 		bool IAPI::Init() {
 
+			/* Create Device */
 			device = IDevice::Create();
 
 			return true;

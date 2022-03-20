@@ -21,6 +21,12 @@ namespace ING {
 
 			}
 
+			Buffer::Buffer(IDevice* device, ID3D11Buffer* d3d11Buffer) : Buffer(device) {
+
+				this->d3d11Buffer = d3d11Buffer;
+
+			}
+
 			Buffer::~Buffer() {
 
 

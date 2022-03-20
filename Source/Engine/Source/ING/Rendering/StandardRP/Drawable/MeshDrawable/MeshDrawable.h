@@ -39,9 +39,9 @@ namespace ING {
 
 		class IPass;
 
-		class BasicLitMesh;
-
 		class IMesh;
+
+		class IMaterial;
 
 
 
@@ -70,8 +70,15 @@ namespace ING {
 				/**
 				 *	Properties
 				 */
+			private:
+				IMesh*		mesh;
+				IMaterial*	material;
+
 			public:
-				BasicLitMesh* mesh;
+				IMesh*		GetMesh		()						{ return mesh; }
+				IMaterial*	GetMaterial	()						{ return material; }
+				void		SetMesh		(IMesh* mesh)			{ this->mesh = mesh; }
+				void		SetMaterial	(IMaterial* material)	{ this->material = material; }
 
 
 
