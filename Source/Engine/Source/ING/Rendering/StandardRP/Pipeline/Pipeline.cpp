@@ -230,11 +230,6 @@ namespace ING {
 
 					/* Render Sub Pipelines */
 					SubRP::PassInput	subPipelinesInput;
-
-					subPipelinesInput.AddProperty<Rendering::Scene*>("Scene");
-
-					subPipelinesInput.SetProperty<Rendering::Scene*>("Scene", camera->GetRenderingScene());
-
 					SubRP::PassOutput	subPipelinesOutput;
 
 					RENDERING_ASSERTION(RenderSubPipelines(context, camera, subPipelinesInput, subPipelinesOutput));

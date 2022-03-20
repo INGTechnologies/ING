@@ -76,7 +76,7 @@ namespace ING {
 		private:
 			std::string					name;
 
-			Mask64						mask;
+			Mask64						layerMask;
 
 			std::vector<Layer*>			layerVector;
 
@@ -84,9 +84,10 @@ namespace ING {
 		public:
 			std::string					GetName () { return name; }
 
-			Mask64						GetMask () { return mask; }
+			Mask64						GetLayerMask () { return layerMask; }
 
-			void						SetMask (Mask64 mask);
+			void						SetLayerMask (Mask64 layerMask);
+			void						ContainLayers(const std::vector<unsigned int>& indices);
 
 			const std::vector<Layer*>&	GetLayerVector () { return layerVector; }
 

@@ -62,7 +62,7 @@ namespace ING {
 
 			this->name = name;
 
-			mask = 0;
+			layerMask = 0;
 
 			SceneManager::GetInstance()->AddScene(this);
 
@@ -94,13 +94,13 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void Scene::SetMask(Mask64 mask) { 
+		void Scene::SetLayerMask(Mask64 layerMask) {
 			
-			this->mask = mask; 
+			this->layerMask = layerMask;
 
 			unsigned int layerCount = 0;
 
-			std::bitset<MAX_LAYER_COUNT> maskBitSet = mask;
+			std::bitset<MAX_LAYER_COUNT> maskBitSet = layerMask;
 
 			for (unsigned int i = 0; i < MAX_LAYER_COUNT; ++i) {
 
@@ -122,6 +122,22 @@ namespace ING {
 
 			}
 		
+		}
+
+		void Scene::ContainLayers(const std::vector<unsigned int>& indices) {
+
+			Mask64 layerMask = 0;
+
+			unsigned int count = indices.size();
+
+			for (unsigned int i = 0; i < count; ++i) {
+
+				layerMask |= 1 << indices[i];
+
+			}
+
+			SetLayerMask(layerMask);
+
 		}
 
 	}

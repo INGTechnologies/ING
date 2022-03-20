@@ -20,7 +20,8 @@ namespace ING {
 		/**
 		 *	Layers
 		 */
-		static Layer DEFAULT_LAYER("Default");
+		static Layer DEFAULT_LAYER		("Default");
+		static Layer NO_RAYCAST_LAYER	("NoRayCast");
 
 
 
@@ -55,9 +56,13 @@ namespace ING {
 		bool LayerManager::Init() {
 
 			/* Create Categories */
-			SetCategoryNameMap({
+			RecreateCategories({
 
-				"Opaque"
+				"Opaque",
+
+				"Transparent",
+
+				"UI"
 
 			});
 
@@ -66,7 +71,9 @@ namespace ING {
 			/**
 			 *	Add Layers
 			 */
-			SetLayer(&DEFAULT_LAYER,0);
+			SetLayer(&DEFAULT_LAYER, 0);
+
+			SetLayer(&NO_RAYCAST_LAYER, 1);
 
 			return true;
 		}
@@ -134,6 +141,14 @@ namespace ING {
 
 			}
 
+			categoryNameMap.clear();
+
+			for (const std::string& categoryName : categoryNameVector) {
+
+				categoryNameMap[categoryName] = true;
+
+			}
+
 		}
 
 
@@ -144,8 +159,22 @@ namespace ING {
 		void	LayerManager::SetLayer		(Layer* layer, unsigned int index) {
 
 			layer->index = index;
-
 			layerVector[index] = layer;
+
+
+
+			/* Update Layer Category */
+			for (auto& item : categoryNameMap) {
+
+				const std::unordered_map<std::string, IDrawableCategory*>& tl_name2CategoryMap = layer->GetName2DrawableCategoryMap();
+
+				if (tl_name2CategoryMap.find(item.first) == tl_name2CategoryMap.end()) {
+
+					layer->AddCategory(item.first);
+
+				}
+
+			}
 
 		}
 
@@ -160,6 +189,12 @@ namespace ING {
 			delete layerVector[index];
 
 			layerVector[index] = 0;
+
+		}
+
+		void	LayerManager::RecreateCategories(const std::vector<std::string>& categoryNameVector) {
+
+			SetCategoryNameMap(categoryNameVector);
 
 		}
 

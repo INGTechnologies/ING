@@ -125,7 +125,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Node* AddAt(T& obj, T& obj2) {
+			Node* AddAt(const T& obj, const T& obj2) {
 
 				if (nodeMap.find(obj2) == nodeMap.end()) {
 					return nullptr;
@@ -155,7 +155,7 @@ namespace ING {
 				return node;
 
 			}
-			Node* AddAfter(T& obj, T& obj2) {
+			Node* AddAfter(const T& obj, const T& obj2) {
 
 				if (nodeMap.find(obj2) == nodeMap.end()) {
 					return nullptr;
@@ -186,7 +186,7 @@ namespace ING {
 
 			}
 
-			Node* Add(T& obj) {
+			Node* Add(const T& obj) {
 
 				Node* node = nullptr;
 
@@ -215,7 +215,7 @@ namespace ING {
 
 			}
 
-			void Remove(T& obj) {
+			void Remove(const T& obj) {
 
 				Node* node = nodeMap[obj];
 
@@ -422,24 +422,24 @@ namespace ING {
 				 *	Basic Methods
 				 */
 			public:
-				Node* AddAt(T& obj, T& obj2) {
+				Node* AddAt(const T& obj, const T& obj2) {
 
 					return listPtr->AddAt(obj, obj2);
 
 				}
-				Node* AddAfter(T& obj, T& obj2) {
+				Node* AddAfter(const T& obj, const T& obj2) {
 
 					return listPtr->AddAfter(obj, obj2);
 
 				}
 
-				Node* Add(T& obj) {
+				Node* Add(const T& obj) {
 
 					return listPtr->Add(obj);
 
 				}
 
-				void Remove(T& obj) {
+				void Remove(const T& obj) {
 
 					listPtr->Remove(obj);
 

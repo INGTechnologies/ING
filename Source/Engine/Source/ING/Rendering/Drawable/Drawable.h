@@ -74,6 +74,7 @@ namespace ING {
 
 			const std::vector<std::string>& GetCategoryNameVector	() { return categoryNameVector; }
 			void							SetCategoryNameVector	(const std::vector<std::string>& categoryNameVector);
+			void							SetCategories			(const std::vector<std::string>& categoryNameVector);
 
 			List<IDrawable*>::Node*			GetNode					(const std::string& categoryName);
 			void							AddNode					(const std::string& categoryName, List<IDrawable*>::Node* node);
