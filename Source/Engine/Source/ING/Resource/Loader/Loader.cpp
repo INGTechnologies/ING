@@ -55,7 +55,7 @@ namespace ING {
 	/**
 	 *	Loade Method
 	 */
-	IResource* IResourceLoader::Load(std::wstring path, CoderOption& coderOption) {
+	IResource* IResourceLoader::Load(const std::wstring& path, CoderOption& coderOption) {
 
 		return nullptr;
 

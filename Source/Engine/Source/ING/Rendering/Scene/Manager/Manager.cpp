@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -22,7 +29,9 @@ namespace ING {
 		 */
 		SceneManager::SceneManager() {
 
+			Debug::Log("Start Creating Rendering::SceneManager");
 
+			Debug::Log("Rendering::SceneManager Created");
 
 		}
 
@@ -39,21 +48,27 @@ namespace ING {
 		 */
 		bool SceneManager::Init() {
 
+			Debug::Log("Start Initializing Rendering::SceneManager");
 
+			Debug::Log("Rendering::SceneManager Initialized");
 
 			return true;
 		}
 
 		bool SceneManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::SceneManager");
 
 			return true;
 		}
 
 		bool SceneManager::Release() {
 
+			Debug::Log("Start Releasing Rendering::SceneManager");
 
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::SceneManager");
 
 			return true;
 		}

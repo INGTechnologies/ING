@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -20,7 +27,8 @@ namespace ING {
 		/**
 		 *	Layers
 		 */
-		static Layer DEFAULT_LAYER("Default");
+		static Layer DEFAULT_LAYER		("Default");
+		static Layer NO_RAYCAST_LAYER	("NoRayCast");
 
 
 
@@ -28,6 +36,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		LayerManager::LayerManager() {
+
+			Debug::Log("Start Creating Rendering::LayerManager");
 
 			layerVector.resize(MAX_LAYER_COUNT);
 
@@ -38,6 +48,8 @@ namespace ING {
 				layerVector[i] = 0;
 
 			}
+
+			Debug::Log("Rendering::LayerManager Created");
 
 		}
 
@@ -54,10 +66,16 @@ namespace ING {
 		 */
 		bool LayerManager::Init() {
 
-			/* Create Categories */
-			SetCategoryNameMap({
+			Debug::Log("Start Initializing Rendering::LayerManager");
 
-				"Opaque"
+			/* Create Categories */
+			RecreateCategories({
+
+				"Opaque",
+
+				"Transparent",
+
+				"UI"
 
 			});
 
@@ -66,21 +84,31 @@ namespace ING {
 			/**
 			 *	Add Layers
 			 */
-			SetLayer(&DEFAULT_LAYER,0);
+			SetLayer(&DEFAULT_LAYER, 0);
+
+			SetLayer(&NO_RAYCAST_LAYER, 1);
+
+			Debug::Log("Rendering::LayerManager Initialized");
 
 			return true;
 		}
 
 		bool LayerManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::LayerManager");
 
 			return true;
 		}
 
 		bool LayerManager::Release() {
 
+			Debug::Log("Start Releasing Rendering::LayerManager");
+
 			categoryNameMap.clear();
+
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::LayerManager");
 
 			return true;
 		}
@@ -134,6 +162,14 @@ namespace ING {
 
 			}
 
+			categoryNameMap.clear();
+
+			for (const std::string& categoryName : categoryNameVector) {
+
+				categoryNameMap[categoryName] = true;
+
+			}
+
 		}
 
 
@@ -144,8 +180,22 @@ namespace ING {
 		void	LayerManager::SetLayer		(Layer* layer, unsigned int index) {
 
 			layer->index = index;
-
 			layerVector[index] = layer;
+
+
+
+			/* Update Layer Category */
+			for (auto& item : categoryNameMap) {
+
+				const std::unordered_map<std::string, IDrawableCategory*>& tl_name2CategoryMap = layer->GetName2DrawableCategoryMap();
+
+				if (tl_name2CategoryMap.find(item.first) == tl_name2CategoryMap.end()) {
+
+					layer->AddCategory(item.first);
+
+				}
+
+			}
 
 		}
 
@@ -160,6 +210,12 @@ namespace ING {
 			delete layerVector[index];
 
 			layerVector[index] = 0;
+
+		}
+
+		void	LayerManager::RecreateCategories(const std::vector<std::string>& categoryNameVector) {
+
+			SetCategoryNameMap(categoryNameVector);
 
 		}
 

@@ -68,9 +68,10 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void	SetLayer	(Layer* layer, unsigned int index);
-			Layer*	GetLayer	(unsigned int index);
-			void	RemoveLayer	(unsigned int index);
+			void	SetLayer			(Layer* layer, unsigned int index);
+			Layer*	GetLayer			(unsigned int index);
+			void	RemoveLayer			(unsigned int index);
+			void	RecreateCategories	(const std::vector<std::string>& categoryNameVector);
 
 		};
 

@@ -34,7 +34,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ITexture2D();
+			ITexture2D(IDevice* device);
 			~ITexture2D();
 
 
@@ -43,7 +43,7 @@ namespace ING {
 			 *	Create, Release Methods
 			 */
 		public:
-			static ITexture2D* Create();
+			static ITexture2D* Create(IDevice* device);
 
 			virtual void Release() override;
 

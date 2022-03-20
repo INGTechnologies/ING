@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -22,7 +29,9 @@ namespace ING {
 		 */
 		RepositoryManager::RepositoryManager() {
 
+			Debug::Log("Start Creating RepositoryManager");
 
+			Debug::Log("RepositoryManager Created");
 
 		}
 
@@ -39,21 +48,27 @@ namespace ING {
 		 */
 		bool RepositoryManager::Init() {
 
+			Debug::Log("Start Initializing RepositoryManager");
 
+			Debug::Log("RepositoryManager Initialized");
 
 			return true;
 		}
 
 		bool RepositoryManager::Run() {
 
-
+			Debug::Log("Start Running RepositoryManager");
 
 			return true;
 		}
 
 		bool RepositoryManager::Release() {
 
+			Debug::Log("Start Releasing RepositoryManager");
+
 			repositoryList.Clear();
+
+			Debug::Log("Finished Releasing RepositoryManager");
 
 			return Square::Release();
 		}

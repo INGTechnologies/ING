@@ -45,7 +45,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				RenderTargetView();
+				RenderTargetView(IDevice* device);
 				~RenderTargetView();
 
 

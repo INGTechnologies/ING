@@ -96,7 +96,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IDrawable::Release() {
+		void	IDrawable::Release() {
 
 			delete this;
 
@@ -108,6 +108,22 @@ namespace ING {
 		 *	Properties
 		 */
 		void	IDrawable::SetLayer(unsigned int index) {
+
+			if (LayerManager::GetInstance()->GetLayerVector()[index] == 0) {
+
+				return;
+
+			}
+
+			unsigned int categoryCount = categoryNameVector.size();
+
+			for (unsigned int i = 0; i < categoryCount; ++i) {
+
+				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
+
+				category->RemoveDrawable(this);
+
+			}
 
 			layer = LayerManager::GetInstance()->GetLayer(index);
 
@@ -124,14 +140,6 @@ namespace ING {
 
 			unsigned int categoryCount = categoryNameVector.size();
 
-			for (unsigned int i = 0; i < categoryCount; ++i) {
-
-				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
-
-				category->RemoveDrawable(this);
-
-			}
-
 			this->categoryNameVector = categoryNameVector;
 
 			for (unsigned int i = 0; i < categoryCount; ++i) {
@@ -144,25 +152,31 @@ namespace ING {
 		
 		}
 
+		void	IDrawable::SetCategories(const std::vector<std::string>& categoryNameVector) {
+
+			SetCategoryNameVector(categoryNameVector);
+
+		}
+
 		List<IDrawable*>::Node* IDrawable::GetNode(const std::string& categoryName) {
 
 			return categoryName2NodeMap[categoryName];
 
 		}
 
-		void				IDrawable::AddNode(const std::string& categoryName, List<IDrawable*>::Node* node) {
+		void	IDrawable::AddNode(const std::string& categoryName, List<IDrawable*>::Node* node) {
 
 			categoryName2NodeMap[categoryName] = node;
 
 		}
 
-		void				IDrawable::RemoveNode(const std::string& categoryName) {
+		void	IDrawable::RemoveNode(const std::string& categoryName) {
 
 			categoryName2NodeMap.erase(categoryName);
 
 		}
 
-		bool				IDrawable::IsHaveNode(const std::string& categoryName) {
+		bool	IDrawable::IsHaveNode(const std::string& categoryName) {
 
 			return !(categoryName2NodeMap.find(categoryName) == categoryName2NodeMap.end());
 
@@ -173,7 +187,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void				IDrawable::Draw () {
+		void	IDrawable::Draw () {
 
 			
 

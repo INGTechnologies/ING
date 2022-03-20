@@ -15,6 +15,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -24,7 +31,9 @@ namespace ING {
 		 */
 		MaterialManager::MaterialManager() {
 
+			Debug::Log("Start Creating Rendering::MaterialManager");
 
+			Debug::Log("Rendering::MaterialManager Created");
 
 		}
 
@@ -41,21 +50,27 @@ namespace ING {
 		 */
 		bool MaterialManager::Init() {
 
+			Debug::Log("Start Initializing Rendering::MaterialManager");
 
+			Debug::Log("Rendering::MaterialManager Initialized");
 
 			return true;
 		}
 
 		bool MaterialManager::Run() {
 
-
+			Debug::Log("Start Running Rendering::MaterialManager");
 
 			return true;
 		}
 
 		bool MaterialManager::Release() {
 
+			Debug::Log("Start Releasing Rendering::MaterialManager");
 
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::MaterialManager");
 
 			return true;
 		}

@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IRenderTargetView::IRenderTargetView() {
+		IRenderTargetView::IRenderTargetView(IDevice* device) : IView(device) {
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		IRenderTargetView* IRenderTargetView::Create() {
+		IRenderTargetView* IRenderTargetView::Create(IDevice* device) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -55,7 +55,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::RenderTargetView();
+				return new DirectX11::RenderTargetView(device);
 
 				break;
 

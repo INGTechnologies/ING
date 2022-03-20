@@ -85,6 +85,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void IDeviceContext::IASetInputLayout(IInputLayout* inputLayout) {
+
+
+
+		}
+
 	}
 
 }

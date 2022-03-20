@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 
 namespace ING {
 
@@ -35,7 +42,9 @@ namespace ING {
 	 */
 	ResourceManager::ResourceManager() {
 
+		Debug::Log("Start Creating ResourceManager");
 
+		Debug::Log("ResourceManager Created");
 
 	}
 
@@ -52,21 +61,25 @@ namespace ING {
 	 */
 	bool ResourceManager::Init() {
 
+		Debug::Log("Start Initializing ResourceManager");
 
+		Debug::Log("ResourceManager Initialized");
 
 		return Square::Init();
 	}
 
 	bool ResourceManager::Run() {
 
-
+		Debug::Log("Start Running ResourceManager");
 
 		return Square::Run();
 	}
 
 	bool ResourceManager::Release() {
 
+		Debug::Log("Start Releasing ResourceManager");
 
+		Debug::Log("Finished Releasing ResourceManager");
 
 		return Square::Release();
 	}
@@ -76,7 +89,7 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
-	std::wstring	ResourceManager::ReadFile(std::wstring path, CoderOption& coderOption) {
+	std::wstring	ResourceManager::ReadFile(const std::wstring& path, CoderOption& coderOption) {
 
 
 
@@ -130,7 +143,7 @@ namespace ING {
 
 	}
 
-	void			ResourceManager::WriteFile(std::wstring path, std::wstring& content, CoderOption& coderOption) {
+	void			ResourceManager::WriteFile(const std::wstring& path, const std::wstring& content, CoderOption& coderOption) {
 
 
 
@@ -138,13 +151,18 @@ namespace ING {
 
 
 
-		std::wstring& parsedContent = content;
+		std::wstring parsedContent;
 
 
 
 		if (coderOption.coder != nullptr) {
 
 			parsedContent = coderOption.coder->Encode(content, coderOption.key);
+
+		}
+		else {
+
+			parsedContent = content;
 
 		}
 

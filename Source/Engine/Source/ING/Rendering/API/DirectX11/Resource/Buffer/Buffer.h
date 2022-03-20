@@ -43,7 +43,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Buffer();
+				Buffer(IDevice* device);
 				~Buffer();
 
 
@@ -60,7 +60,7 @@ namespace ING {
 				 *	D3D11Buffer
 				 */
 			private:
-				ID3D11Buffer* d3d11Buffer;
+				ID3D11Buffer*	d3d11Buffer;
 
 			public:
 				ID3D11Buffer*	GetD3D11Buffer	() { return d3d11Buffer; }

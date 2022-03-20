@@ -63,7 +63,7 @@ namespace ING {
 
 		public:
 			template<typename T>
-			void operator = (T next) {
+			void operator = (const T& next) {
 
 				DeleteData();
 

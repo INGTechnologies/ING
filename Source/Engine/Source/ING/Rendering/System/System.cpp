@@ -55,6 +55,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -64,7 +71,9 @@ namespace ING {
 		 */
 		System::System() {
 
+			Debug::Log("Start Creating Rendering::System");
 
+			Debug::Log("Rendering::System Created");
 
 		}
 
@@ -81,25 +90,33 @@ namespace ING {
 		 */
 		bool System::Init() {
 
+			Debug::Log("Start Initializing Rendering::System");
+
 			defaultPipeline = new StandardRP::Pipeline("Standard Rendering Pipeline");
 
 			targetPipeline = defaultPipeline;
 
 			isRendering = false;
 
+			Debug::Log("Rendering::System Initialized");
+
 			return true;
 		}
 
 		bool System::Run() {
 
-
+			Debug::Log("Start Running Rendering::System");
 
 			return true;
 		}
 
 		bool System::Release() {
 
+			Debug::Log("Start Releasing Rendering::System");
 
+			delete this;
+
+			Debug::Log("Finished Releasing Rendering::System");
 
 			return true;
 		}

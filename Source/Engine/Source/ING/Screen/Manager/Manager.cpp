@@ -36,6 +36,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -44,7 +51,11 @@ namespace ING {
 	ScreenManager::ScreenManager()
 	{
 
+		Debug::Log("Start Creating ScreenManager");
+
 		mainScreen = nullptr;
+
+		Debug::Log("ScreenManager Created");
 
 	}
 
@@ -63,7 +74,9 @@ namespace ING {
 	bool ScreenManager::Init()
 	{
 
+		Debug::Log("Start Initializing ScreenManager");
 
+		Debug::Log("ScreenManager Initialized");
 
 		return true;
 	}
@@ -71,7 +84,7 @@ namespace ING {
 	bool ScreenManager::Run()
 	{
 
-
+		Debug::Log("Start Running ScreenManager");
 
 		return true;
 	}
@@ -79,7 +92,9 @@ namespace ING {
 	bool ScreenManager::Release()
 	{
 
+		Debug::Log("Start Releasing ScreenManager");
 
+		Debug::Log("Finished Releasing ScreenManager");
 
 		return true;
 	}

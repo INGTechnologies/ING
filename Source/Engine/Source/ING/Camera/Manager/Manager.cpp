@@ -22,6 +22,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -29,7 +36,9 @@ namespace ING {
 	 */
 	CameraManager::CameraManager() {
 
+		Debug::Log("Start Creating CameraManager");
 
+		Debug::Log("CameraManager Created");
 
 	}
 
@@ -46,21 +55,25 @@ namespace ING {
 	 */
 	bool CameraManager::Init() {
 
+		Debug::Log("Start Initializing CameraManager");
 
+		Debug::Log("CameraManager Initialized");
 
 		return true;
 	}
 
 	bool CameraManager::Run() {
 
-
+		Debug::Log("Start Running CameraManager");
 
 		return true;
 	}
 
 	bool CameraManager::Release() {
 
+		Debug::Log("Start Releasing CameraManager");
 
+		Debug::Log("Finished Releasing CameraManager");
 
 		return Square::Release();
 	}

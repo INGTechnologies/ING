@@ -74,7 +74,7 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			T*												pData;
+			T*										pData;
 			size_t									filledCount;
 			size_t									count;
 
@@ -82,7 +82,7 @@ namespace ING {
 			std::vector < std::unordered_map<size_t, size_t>* >	index2IdMapVector;
 
 		public:
-			T*												GetPData		() { return pData; }
+			T*										GetPData		() { return pData; }
 
 			size_t									GetCount		() { return count; }
 
@@ -105,7 +105,7 @@ namespace ING {
 
 		public:
 			void Clear();
-			void Add(T& data, size_t id);
+			void Add(const T& data, size_t id);
 			void Erase(size_t id);
 			T&	 Get(size_t id);
 			T*	 GetDataPtr(size_t id);
@@ -253,7 +253,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		void SmartArray<T>::Add(T& data, size_t id) {
+		void SmartArray<T>::Add(const T& data, size_t id) {
 
 			if (filledCount + 1 > count) {
 

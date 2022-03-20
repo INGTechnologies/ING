@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IBuffer::IBuffer	() {
+		IBuffer::IBuffer	(IDevice* device) : IResource(device) {
 
 
 

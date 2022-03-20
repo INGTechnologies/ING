@@ -27,28 +27,53 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API Shader {
+		class IShaderPass;
+
+
+
+		class ING_API IShader {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Shader();
-			~Shader();
+			IShader		(const std::string& name);
+			~IShader	();
 
 
 
 			/**
-			 *	Child Shaders
+			 *	Release Methods
 			 */
-		protected:
-			List<Shader*> childShaderList;
+		public:
+			virtual void Release();
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			std::string		name;
+
+			std::unordered_map<std::string, IShaderPass*>	passName2PassMap;
 
 		public:
-			List<Shader*>::Node*	GetHeadShaderNode	();
-			List<Shader*>::Node*	GetTailShaderNode	();
-			List<Shader*>::Node*	AddShader			(Shader* shader);
-			void					RemoveShader		(List<Shader*>::Node* shaderNode);
+			std::string		GetName	() const { return name; }
+
+			const std::unordered_map<std::string, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
+
+			IShaderPass*	GetPass(const std::string& name);
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			IShaderPass*	AddPass		(const std::string& name);
+			void			RemovePass	(const std::string& name);
+
+			virtual void	Apply		(const std::string& name);
 
 		};
 

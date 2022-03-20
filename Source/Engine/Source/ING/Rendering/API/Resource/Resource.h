@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class IDevice;
+
+
+
 		class ING_API IResource :
 			public AsMethod
 		{
@@ -28,7 +32,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IResource();
+			IResource(IDevice* device);
 			~IResource();
 
 
@@ -38,6 +42,17 @@ namespace ING {
 			 */
 		public:
 			virtual void Release();
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			IDevice* device;
+
+		public:
+			IDevice* GetDevice() { return device; }
 
 		};
 

@@ -62,9 +62,13 @@ namespace ING {
 	 */
 	ApplicationThreadManager::ApplicationThreadManager() {
 
+		Debug::Log("Start Creating ApplicationThreadManager");
+
 		APPLICATION_CONFIG_PROP(bool, "ING::ApplicationThreadManager::usePhysicsThread", true);
 
 		APPLICATION_CONFIG_PROP(bool, "ING::ApplicationThreadManager::useRenderingThread", true);
+
+		Debug::Log("ApplicationThreadManager Created");
 
 	}
 
@@ -80,6 +84,8 @@ namespace ING {
 	 *	Init, Run, Release Methods
 	 */
 	bool ApplicationThreadManager::Init() {
+
+		Debug::Log("Start Initializing ApplicationThreadManager");
 
 		/**
 		 *	Create Threads
@@ -109,10 +115,14 @@ namespace ING {
 
 		});
 
+		Debug::Log("ApplicationThreadManager Initialized");
+
 		return Square::Init();
 	}
 
 	bool ApplicationThreadManager::Run() {
+
+		Debug::Log("Start Running ApplicationThreadManager");
 
 		/**
 		 *	Start Threads
@@ -130,6 +140,8 @@ namespace ING {
 
 	bool ApplicationThreadManager::Release() {
 
+		Debug::Log("Start Releasing ApplicationThreadManager");
+
 		applicationThreadList.Foreach([](ApplicationThread*& thread) {
 
 			thread->Join();
@@ -137,6 +149,8 @@ namespace ING {
 		});
 
 		applicationThreadList.Clear();
+
+		Debug::Log("Finished Releasing ApplicationThreadManager");
 
 		return Square::Release();
 	}

@@ -104,8 +104,6 @@ namespace ING {
 					{
 						return false;
 					}
-
-					int a = 5;
 				}
 
 

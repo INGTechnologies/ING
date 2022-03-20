@@ -41,6 +41,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	/**
@@ -48,7 +55,9 @@ namespace ING {
 	 */
 	ApplicationEventManager::ApplicationEventManager() {
 
+		Debug::Log("Start Creating ApplicationEventManager");
 
+		Debug::Log("ApplicationEventManager Created");
 
 	}
 
@@ -65,6 +74,8 @@ namespace ING {
 	 */
 	bool ApplicationEventManager::Init() {
 
+		Debug::Log("Start Initializing ApplicationEventManager");
+
 		/**
 		 *	Add Events
 		 */
@@ -80,19 +91,23 @@ namespace ING {
 		/* End Frame Update Event */
 		Application::GetInstance()->AddEvent( new ApplicationEndFrameUpdateEvent());
 
+		Debug::Log("ApplicationEventManager Initialized");
+
 		return Square::Init();
 	}
 
 	bool ApplicationEventManager::Run() {
 
-
+		Debug::Log("Start Running ApplicationEventManager");
 
 		return Square::Run();
 	}
 
 	bool ApplicationEventManager::Release() {
 
+		Debug::Log("Start Releasing ApplicationEventManager");
 
+		Debug::Log("Finished Releasing ApplicationEventManager");
 
 		return Square::Release();
 	}
