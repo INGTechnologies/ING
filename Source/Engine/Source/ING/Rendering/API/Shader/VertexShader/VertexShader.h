@@ -33,7 +33,7 @@ namespace ING {
 
 
 
-		class ING_API IVertexShader : public IShader {
+		class ING_API IVertexShader : public IShader, public AsMethod {
 
 			/**
 			 *	Constructors And Destructor
@@ -60,6 +60,14 @@ namespace ING {
 
 		public:
 			IDevice* GetDevice() { return device; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Apply(const std::string& name) override;
 
 		};
 

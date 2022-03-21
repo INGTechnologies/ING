@@ -51,8 +51,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Apply(const std::string& passName);
-
+			virtual void Apply(const std::string& passName) override;
 
 		};
 

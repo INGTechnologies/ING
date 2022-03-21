@@ -18,11 +18,39 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class Camera;
+
+
+
 	namespace Rendering {
+
+		class IRenderTargetView;
+
+
 
 		namespace StandardRP {
 
-			using Data = VirtualObject;
+			struct ING_API Data {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Data(Camera* camera);
+				~Data();
+
+
+
+				/**
+				 *	Properties
+				 */
+			private:
+				IRenderTargetView* mainRTV;
+
+			public:
+				IRenderTargetView* GetMainRTV () { return mainRTV; }
+
+			};
 
 		}
 

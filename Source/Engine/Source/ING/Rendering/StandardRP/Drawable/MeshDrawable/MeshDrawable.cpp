@@ -49,6 +49,13 @@
 
 
 /**
+ *	Include Rendering Primitive Topology
+ */
+#include <ING/Rendering/API/PrimitiveTopology/PrimitiveTopology.h>
+
+
+
+/**
  *	Include Rendering Pass
  */
 #include <ING/Rendering/Pass/Pass.h>
@@ -80,6 +87,13 @@
  *	Include Rendering Mesh
  */
 #include <ING/Rendering/Mesh/Mesh.h>
+
+
+
+/**
+ *	Include Rendering Material
+ */
+#include <ING/Rendering/Material/Material.h>
 
 
 
@@ -128,15 +142,24 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void MeshDrawable::Draw() {
+			void MeshDrawable::Draw(const std::string& passName) {
 
+				material->Apply(passName);
+
+
+				/* Bind Buffers */
 				IBuffer* vertexBuffer = mesh->GetVertexBuffer();
 				IBuffer* indexBuffer  = mesh->GetIndexBuffer();
 
 				IDeviceContext* context = vertexBuffer->GetDevice()->GetContext();
 
+				context->IASetPrimitiveTopology(TRIANGLE_LIST);
+
 				context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0 );
 				context->IASetIndexBuffer(indexBuffer, FORMAT_R32_UINT, 0);
+
+
+				context->DrawIndexed(mesh->GetIndexCount(),0,0);
 
 			}
 

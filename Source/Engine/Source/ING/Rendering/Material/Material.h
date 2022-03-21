@@ -73,6 +73,14 @@ namespace ING {
 
 			void			SetShader		(IShader* shader) { this->shader = shader; }
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Apply(const std::string& passName);
+
 		};
 
 	}

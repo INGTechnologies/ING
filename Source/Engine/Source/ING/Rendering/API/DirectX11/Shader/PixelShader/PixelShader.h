@@ -67,9 +67,19 @@ namespace ING {
 				 */
 			private:
 				ID3DBlob* blob;
+				ID3D11PixelShader* d3d11PixelShader;
 
 			public:
 				ID3DBlob* GetBlob() { return blob; }
+				ID3D11PixelShader* GetD3D11PixelShader () { return d3d11PixelShader; }
+
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void Apply(const std::string& name) override;
 
 			};
 

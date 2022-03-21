@@ -91,11 +91,14 @@ namespace ING {
 
 		public:
 			IBuffer* GetVertexBuffer() { return vertexBuffer; }
-			IBuffer* GetIndexBuffer	() { return vertexBuffer; }
+			IBuffer* GetIndexBuffer	() { return indexBuffer; }
 
 			unsigned int GetStride	() { return stride; }
 
 			IDevice* GetDevice		() { return device; }
+
+			virtual unsigned int GetVertexCount () { return 0; }
+			virtual unsigned int GetIndexCount  () { return 0; }
 
 
 
@@ -135,6 +138,9 @@ namespace ING {
 		public:
 			std::vector<T>&				GetVertexVector () { return vertexVector; }
 			std::vector<unsigned int>&	GetIndexVector  () { return indexVector; }
+
+			virtual unsigned int GetVertexCount() override;
+			virtual unsigned int GetIndexCount() override;
 
 
 
@@ -183,6 +189,25 @@ namespace ING {
 		Mesh<T>::~Mesh() {
 
 
+
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		template<typename T>
+		unsigned int Mesh<T>::GetVertexCount() {
+
+			return vertexVector.size();
+
+		}
+
+		template<typename T>
+		unsigned int Mesh<T>::GetIndexCount() {
+
+			return indexVector.size();
 
 		}
 

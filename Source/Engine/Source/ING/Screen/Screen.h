@@ -40,6 +40,8 @@ namespace ING {
 
 	class Window;
 
+	class Camera;
+
 
 
 	class ING_API Screen
@@ -86,6 +88,8 @@ namespace ING {
 
 		Window*							window;
 
+		NoDuplicatesList<Camera*>		cameraList;
+
 	public:
 		bool							IsMain				() { return isMain; }
 
@@ -99,6 +103,15 @@ namespace ING {
 
 		float							GetClientHeight		();
 		float							GetClientWidth		();
+
+
+
+		/**
+		 *	Methods
+		 */
+	public:
+		void							AddCamera			(Camera* camera);
+		void							RemoveCamera		(Camera* camera);
 
 	};
 

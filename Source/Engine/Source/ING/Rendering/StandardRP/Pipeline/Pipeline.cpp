@@ -196,11 +196,7 @@ namespace ING {
 			 */
 			void Pipeline::SetupCamera(IDeviceContext* context, Camera* camera) {
 
-				Data* renderingData = new Data();
-
-				renderingData->AddProperty<IRenderTargetView*>("OnScreenRTV");
-
-				renderingData->SetProperty<IRenderTargetView*>("OnScreenRTV", camera->GetScreen()->GetSwapChain()->GetRenderTargetView());
+				Data* renderingData = new Data(camera);
 
 				camera->SetRenderingData(renderingData);
 
@@ -218,6 +214,11 @@ namespace ING {
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
+					Data* renderingData = (Data*)camera->GetRenderingData();
+
+					context->OMSetRenderTargets(renderingData->GetMainRTV(),0);
+
+
 					/* Render First Pass */
 					firstPass = targetFirstPass;
 
@@ -230,6 +231,7 @@ namespace ING {
 
 					/* Render Sub Pipelines */
 					SubRP::PassInput	subPipelinesInput;
+
 					SubRP::PassOutput	subPipelinesOutput;
 
 					RENDERING_ASSERTION(RenderSubPipelines(context, camera, subPipelinesInput, subPipelinesOutput));
@@ -243,6 +245,13 @@ namespace ING {
 					FinalPassOutput	finalPassOutput;
 
 					RENDERING_ASSERTION(finalPass->Render(context, camera, &finalPassInput, &finalPassOutput));
+
+
+					if (camera->GetTargetMode() == CAMERA_TARGET_SCREEN) {
+
+						camera->GetScreen()->GetSwapChain()->Present();
+
+					}
 
 				}
 				

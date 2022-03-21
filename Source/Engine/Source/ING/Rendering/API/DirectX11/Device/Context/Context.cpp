@@ -48,6 +48,27 @@
 
 
 
+/**
+ *	Include DirectX11 RenderTargetView
+ */
+#include <ING/Rendering/API/DirectX11/View/RenderTargetView/RenderTargetView.h>
+
+
+
+/**
+ *	Include DirectX11 VertexShader
+ */
+#include <ING/Rendering/API/DirectX11/Shader/VertexShader/VertexShader.h>
+
+
+
+/**
+ *	Include DirectX11 PixelShader
+ */
+#include <ING/Rendering/API/DirectX11/Shader/PixelShader/PixelShader.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -99,6 +120,12 @@ namespace ING {
 
 			}
 
+			void DeviceContext::IASetPrimitiveTopology(PrimitiveTopology primitiveTopology) {
+
+				d3d11DeviceContext->IASetPrimitiveTopology(DirectX11::Convertor::GetInstance()->PrimitiveTopology(primitiveTopology));
+
+			}
+
 			void DeviceContext::IASetVertexBuffers(const std::vector<IBuffer*>& buffers) {
 
 
@@ -118,6 +145,39 @@ namespace ING {
 				ID3D11Buffer* d3d11Buffer = buffer->As<DirectX11::Buffer>()->GetD3D11Buffer();
 
 				d3d11DeviceContext->IASetIndexBuffer(d3d11Buffer, DirectX11::Convertor::GetInstance()->Format(format), offset);
+
+			}
+
+			void DeviceContext::OMSetRenderTargets(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv) {
+
+
+
+			}
+
+			void DeviceContext::OMSetRenderTargets(IRenderTargetView* rtv, IDepthStencilVIew* dsv) {
+
+				ID3D11RenderTargetView* d3d11RTV = rtv->As<DirectX11::RenderTargetView>()->GetD3D11RenderTargetView();
+
+				if(dsv == 0)
+					d3d11DeviceContext->OMSetRenderTargets(1, &d3d11RTV, 0);
+
+			}
+
+			void DeviceContext::VSSetShader(IVertexShader* vertexShader) {
+
+				d3d11DeviceContext->VSSetShader(vertexShader->As<DirectX11::VertexShader>()->GetD3D11VertexShader(),0,0);
+
+			}
+
+			void DeviceContext::PSSetShader(IPixelShader* pixelShader) {
+
+				d3d11DeviceContext->PSSetShader(pixelShader->As<DirectX11::PixelShader>()->GetD3D11PixelShader(), 0, 0);
+
+			}
+
+			void DeviceContext::DrawIndexed(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) {
+
+				d3d11DeviceContext->DrawIndexed(indexCount, startIndexLocation, baseVertexLocation);
 
 			}
 

@@ -161,6 +161,8 @@ namespace ING {
 
 		windowMap.clear();
 
+		delete this;
+
 		Debug::Log("Finished Releasing WindowManager");
 
 		return true;

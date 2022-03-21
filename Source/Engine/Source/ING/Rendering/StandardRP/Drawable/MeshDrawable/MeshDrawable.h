@@ -86,7 +86,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Draw() override;
+				virtual void Draw(const std::string& passName) override;
 
 			};
 

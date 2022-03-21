@@ -71,10 +71,19 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void IASetInputLayout	(IInputLayout* inputLayout) override;
-				virtual void IASetVertexBuffers	(const std::vector<IBuffer*>& buffers) override;
-				virtual void IASetVertexBuffer	(IBuffer* buffer, unsigned int stride, unsigned int offset) override;
-				virtual void IASetIndexBuffer	(IBuffer* buffer, Format format, unsigned int offset) override;
+				virtual void IASetInputLayout		(IInputLayout* inputLayout) override;
+				virtual void IASetPrimitiveTopology	(PrimitiveTopology primitiveTopology);
+				virtual void IASetVertexBuffers		(const std::vector<IBuffer*>& buffers) override;
+				virtual void IASetVertexBuffer		(IBuffer* buffer, unsigned int stride, unsigned int offset) override;
+				virtual void IASetIndexBuffer		(IBuffer* buffer, Format format, unsigned int offset) override;
+
+				virtual void OMSetRenderTargets		(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv) override;
+				virtual void OMSetRenderTargets		(IRenderTargetView* rtv, IDepthStencilVIew* dsv) override;
+
+				virtual void VSSetShader			(IVertexShader* vertexShader) override;
+				virtual void PSSetShader			(IPixelShader* pixelShader) override;
+
+				virtual void DrawIndexed			(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) override;
 
 			};
 

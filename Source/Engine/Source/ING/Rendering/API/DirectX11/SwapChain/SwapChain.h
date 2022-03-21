@@ -73,6 +73,8 @@ namespace ING {
 			public:
 				virtual void Resize(unsigned int width, unsigned int height) override;
 
+				virtual void Present() override;
+
 			};
 
 		}

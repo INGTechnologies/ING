@@ -57,8 +57,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void RenderDrawables(Scene* scene, const std::string& categoryName);
-			virtual void RenderDrawable	(IDrawable* drawable);
+			virtual void RenderDrawables(Scene* scene, const std::string& categoryName, const std::string& passName);
+			virtual void RenderDrawable	(IDrawable* drawable, const std::string& passName);
 
 		};
 

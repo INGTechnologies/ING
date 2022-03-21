@@ -167,6 +167,12 @@ namespace ING {
 
 		}
 
+		void ISwapChain::Present() {
+
+
+
+		}
+
 	}
 
 }

@@ -116,7 +116,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Scene* scene, const std::string& categoryName) {
+		void IRenderer::RenderDrawables(Scene* scene, const std::string& categoryName, const std::string& passName) {
 
 			const std::vector<Layer*>& layerVector = scene->GetLayerVector();
 
@@ -133,7 +133,7 @@ namespace ING {
 				for (auto drawable : category->GetDrawableList()) {
 
 					if(drawable->IsActive())
-						RenderDrawable(drawable);
+						RenderDrawable(drawable, passName);
 
 				}
 
@@ -141,9 +141,9 @@ namespace ING {
 
 		}
 
-		void IRenderer::RenderDrawable(IDrawable* drawable) {
+		void IRenderer::RenderDrawable(IDrawable* drawable, const std::string& passName) {
 
-			drawable->Draw();
+			drawable->Draw(passName);
 
 		}
 

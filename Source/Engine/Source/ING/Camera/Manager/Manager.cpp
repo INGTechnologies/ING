@@ -95,4 +95,14 @@ namespace ING {
 
 	}
 
+	void					CameraManager::FrameUpdate() {
+
+		for (auto item : cameraList) {
+
+			item->Update();
+
+		}
+
+	}
+
 }

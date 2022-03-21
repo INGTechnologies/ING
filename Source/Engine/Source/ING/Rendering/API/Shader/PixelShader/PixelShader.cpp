@@ -105,6 +105,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void IPixelShader::Apply(const std::string& name) {
+
+
+
+		}
+
 	}
 
 }
