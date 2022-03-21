@@ -74,7 +74,7 @@ namespace ING {
 		 */
 		void DrawableMaterial::Apply(const std::string& passName) {
 
-
+			GetShader()->Apply(passName);
 
 		}
 

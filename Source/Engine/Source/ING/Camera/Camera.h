@@ -56,6 +56,15 @@ namespace ING {
 
 
 
+	enum CAMERA_TARGET_MODE {
+
+		CAMERA_TARGET_SCREEN,
+		CAMERA_TARGET_TEXTURE
+
+	};
+
+
+
 	class ING_API Camera
 	{
 
@@ -105,12 +114,16 @@ namespace ING {
 		float					farPlane;
 
 		Screen*					screen;
+		unsigned int			oldScreenWidth;
+		unsigned int			oldScreenHeight;
 
 		Rendering::Scene*		renderingScene;
 
 		void*					renderingData;
 
 		Rendering::IPipeline*	renderingPipeline;
+
+		CAMERA_TARGET_MODE		targetMode;
 
 	public:
 		List<Camera*>::Node*	GetNode				()							{ return node; }
@@ -137,7 +150,7 @@ namespace ING {
 		void					SetFarPlane			(float farPlane)			{ this->farPlane = farPlane;	Update(); }
 
 		Screen*					GetScreen			()							{ return screen; }
-		void					SetScreen			(Screen* screen)			{ this->screen = screen;		Update(); }
+		void					SetScreen			(Screen* screen);
 
 		Rendering::Scene*		GetRenderingScene	()							{ return renderingScene; }
 		void					SetRenderingScene	(Rendering::Scene* renderingScene)	{ this->renderingScene = renderingScene;}
@@ -147,6 +160,12 @@ namespace ING {
 
 		Rendering::IPipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
 		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { this->renderingPipeline = renderingPipeline; }
+
+		CAMERA_TARGET_MODE		GetTargetMode		()							{ return targetMode; }
+		void					SetTargetMode		(CAMERA_TARGET_MODE mode);
+
+		unsigned int			GetClientWidth		();
+		unsigned int			GetClientHeight		();
 
 
 

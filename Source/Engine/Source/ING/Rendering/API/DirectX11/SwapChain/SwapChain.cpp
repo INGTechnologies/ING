@@ -179,6 +179,10 @@ namespace ING {
 
 
 
+				GetRenderTargetView()->As<DirectX11::RenderTargetView>()->SetD3D11RenderTargetView(d3d11RTV);
+
+
+
 				/* Set Viewport */
 				D3D11_VIEWPORT vp[1];
 				vp[0].Width = width;
@@ -189,6 +193,12 @@ namespace ING {
 				vp[0].TopLeftY = 0;
 
 				d3d11DeviceContext->RSSetViewports(1, vp);
+			}
+
+			void SwapChain::Present() {
+
+				dxgiSwapChain->Present(0, 0);
+
 			}
 
 		}

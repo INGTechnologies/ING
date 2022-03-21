@@ -50,6 +50,27 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h>
+
+
+
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
+ *	Include Window Event
+ */
+#include <ING/Window/Event/Event.h>
+
+
+
 
 
 namespace ING {
@@ -111,10 +132,18 @@ namespace ING {
 	void Screen::Release()
 	{
 
+		cameraList.Foreach([](Camera*& camera) {
+			
+			camera->SetScreen(0);
+			
+		});
+
 		if(swapChain != nullptr)
 			swapChain->Release();
 
 		delete this;
+
+		int a = 0;
 
 	}
 
@@ -137,6 +166,23 @@ namespace ING {
 	float	Screen::GetClientWidth	() {
 
 		return (window->GetDesc().clientWidth);
+
+	}
+
+
+
+	/**
+	 *	Methods
+	 */
+	void	Screen::AddCamera(Camera* camera) {
+
+		cameraList.Add(camera);
+
+	}
+
+	void	Screen::RemoveCamera(Camera* camera) {
+
+		cameraList.Remove(camera);
 
 	}
 	

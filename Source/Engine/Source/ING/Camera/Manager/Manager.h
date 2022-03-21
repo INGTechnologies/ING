@@ -50,10 +50,10 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		List<Camera*>  cameraList;
+		List<Camera*>			cameraList;
 
 	public:
-		List<Camera*>& GetCameraList () { return cameraList; }
+		List<Camera*>&			GetCameraList () { return cameraList; }
 
 
 
@@ -64,6 +64,8 @@ namespace ING {
 		List<Camera*>::Node*	AddCamera		(Camera* camera);
 
 		void					RemoveCamera	(List<Camera*>::Node* node);
+
+		void					FrameUpdate		();
 
 	};
 

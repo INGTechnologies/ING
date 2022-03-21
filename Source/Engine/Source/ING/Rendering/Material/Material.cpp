@@ -80,6 +80,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void IMaterial::Apply(const std::string& passName) {
+
+
+
+		}
+
 	}
 
 }

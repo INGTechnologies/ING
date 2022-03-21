@@ -30,17 +30,29 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Primitive Topology
+ */
+#include <ING\Rendering/API/PrimitiveTopology\PrimitiveTopology.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
 
 		class IRenderTargetView;
 
+		class IDepthStencilVIew;
+
 		class IInputLayout;
 
 		class IDevice;
 
 		class IBuffer;
+
+		class IVertexShader;
+		class IPixelShader;
 
 
 
@@ -81,10 +93,19 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void IASetInputLayout	(IInputLayout* inputLayout);
-			virtual void IASetVertexBuffers	(const std::vector<IBuffer*>& buffers);
-			virtual void IASetVertexBuffer	(IBuffer* buffer, unsigned int stride, unsigned int offset);
-			virtual void IASetIndexBuffer	(IBuffer* buffer, Format format, unsigned int offset);
+			virtual void IASetInputLayout		(IInputLayout* inputLayout);
+			virtual void IASetPrimitiveTopology	(PrimitiveTopology primitiveTopology);
+			virtual void IASetVertexBuffers		(const std::vector<IBuffer*>& buffers);
+			virtual void IASetVertexBuffer		(IBuffer* buffer, unsigned int stride, unsigned int offset);
+			virtual void IASetIndexBuffer		(IBuffer* buffer, Format format, unsigned int offset);
+
+			virtual void OMSetRenderTargets		(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv);
+			virtual void OMSetRenderTargets		(IRenderTargetView* rtv, IDepthStencilVIew* dsv);
+
+			virtual void VSSetShader			(IVertexShader* vertexShader);
+			virtual void PSSetShader			(IPixelShader* pixelShader);
+
+			virtual void DrawIndexed			(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation);
 
 		};
 

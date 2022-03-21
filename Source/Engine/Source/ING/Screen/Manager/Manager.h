@@ -45,15 +45,23 @@ namespace ING {
 
 
 		/**
-		 *	Window Management
+		 *	Properties
 		 */
 	private:
-		Screen* mainScreen;
+		Screen*			mainScreen;
+
+		List<Screen*>	screenList;
 
 	public:
-		Screen* GetMainScreen() { return mainScreen; }
+		Screen*			GetMainScreen() { return mainScreen; }
 
-		void InitScreen(Screen* screen);
+
+
+		/**
+		 *	Methods
+		 */
+	public:
+		void			InitScreen(Screen* screen);
 
 	};
 

@@ -6,6 +6,27 @@
 
 
 
+/**
+ *	Include Device
+ */
+#include <ING/Rendering/API/Device/Device.h>
+
+
+
+/**
+ *	Include DirectX11 Rendering Device
+ */
+#include <ING/Rendering/API/DirectX11/Device/Device.h>
+
+
+
+/**
+ *	Include Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -18,6 +39,8 @@ namespace ING {
 			VertexShader::VertexShader(IDevice* device, ID3DBlob* blob) : IVertexShader(device) {
 
 				this->blob = blob;
+
+				HRESULT hr = device->As<DirectX11::Device>()->GetD3D11Device()->CreateVertexShader(blob->GetBufferPointer(), blob->GetBufferSize(), 0, &d3d11VertexShader);
 
 			}
 
@@ -48,6 +71,19 @@ namespace ING {
 				}
 
 				return new VertexShader(device, sBlob);
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+			void VertexShader::Apply(const std::string& name) {
+
+				IDeviceContext* context = GetDevice()->GetContext();
+
+				context->VSSetShader(this);
+
 			}
 
 		}

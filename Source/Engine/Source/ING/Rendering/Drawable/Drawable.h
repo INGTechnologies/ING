@@ -92,7 +92,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Draw();
+			virtual void Draw(const std::string& passName);
 
 		};
 

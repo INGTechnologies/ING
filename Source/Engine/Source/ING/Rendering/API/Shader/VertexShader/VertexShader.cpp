@@ -105,6 +105,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void IVertexShader::Apply(const std::string& name) {
+
+
+
+		}
+
 	}
 
 }

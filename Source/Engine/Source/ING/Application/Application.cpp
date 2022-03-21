@@ -266,15 +266,6 @@ namespace ING {
 		/* Game Loop */
 		while (state == RUNNING_APPLICATION_STATE) {
 
-			/* Check Message */
-			if (!WindowManager::GetInstance()->CheckMessage()) {
-
-				FrameUpdate();
-
-			}
-
-
-
 			/* Check For Shutting Down */
 			unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
 
@@ -283,6 +274,15 @@ namespace ING {
 				Application::GetInstance()->Shutdown();
 
 				break;
+
+			}
+
+
+
+			/* Check Message */
+			if (!WindowManager::GetInstance()->CheckMessage()) {
+
+				FrameUpdate();
 
 			}
 
@@ -306,8 +306,6 @@ namespace ING {
 		else {
 
 			Debug::Log("Cant Release Application");
-
-			exit(1);
 
 		}
 
@@ -333,6 +331,12 @@ namespace ING {
 	void Application::FrameUpdate() {
 
 		Time::GetInstance()->StartFrame();
+
+
+
+		CameraManager::GetInstance()->FrameUpdate();
+
+
 
 		GetEvent("START_FRAME_UPDATE")->Execute();
 

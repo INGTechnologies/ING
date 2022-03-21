@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
 namespace ING {
 
 	/**
@@ -94,6 +101,8 @@ namespace ING {
 
 		Debug::Log("Start Releasing ScreenManager");
 
+		delete this;
+
 		Debug::Log("Finished Releasing ScreenManager");
 
 		return true;
@@ -102,9 +111,9 @@ namespace ING {
 
 
 	/**
-	 *	Screen Management
+	 *	Methods
 	 */
-	void ScreenManager::InitScreen(Screen* screen) {
+	void					ScreenManager::InitScreen	(Screen* screen) {
 
 		if (mainScreen != nullptr) return;
 

@@ -96,6 +96,12 @@ namespace ING {
 
 		}
 
+		void IDeviceContext::IASetPrimitiveTopology(PrimitiveTopology primitiveTopology) {
+
+
+
+		}
+
 		void IDeviceContext::IASetVertexBuffers(const std::vector<IBuffer*>& buffers) {
 
 
@@ -109,6 +115,36 @@ namespace ING {
 		}
 
 		void IDeviceContext::IASetIndexBuffer(IBuffer* buffer, Format format, unsigned int offset) {
+
+
+
+		}
+
+		void IDeviceContext::OMSetRenderTargets(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv) {
+
+
+
+		}
+
+		void IDeviceContext::OMSetRenderTargets(IRenderTargetView* rtv, IDepthStencilVIew* dsv) {
+
+
+
+		}
+
+		void IDeviceContext::VSSetShader(IVertexShader* vertexShader) {
+
+
+
+		}
+
+		void IDeviceContext::PSSetShader(IPixelShader* pixelShader) {
+
+
+
+		}
+
+		void IDeviceContext::DrawIndexed(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) {
 
 
 

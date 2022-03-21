@@ -29,6 +29,34 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering Pipeline
+ */
+#include <ING/Rendering/Pipeline/Pipeline.h>
+
+
+
+/**
+ *	Include Rendering SwapChain
+ */
+#include <ING/Rendering/API/SwapChain/SwapChain.h>
+
+
+
+/**
+ *	Include Rendering Device Context
+ */
+#include <ING/Rendering/API/Device/Context/Context.h>
+
+
+
+/**
+ *	Include Rendering Device
+ */
+#include <ING/Rendering/API/Device/Device.h>
+
+
+
 
 
 namespace ING {
@@ -45,7 +73,14 @@ namespace ING {
 
 		screen		= ScreenManager::GetInstance()->GetMainScreen();
 
+		oldScreenWidth = screen->GetClientWidth();
+		oldScreenHeight = screen->GetClientHeight();
+
+		screen->AddCamera(this);
+
 		node		= CameraManager::GetInstance()->AddCamera(this);
+
+		targetMode  = CAMERA_TARGET_SCREEN;
 
 	}
 
@@ -64,6 +99,8 @@ namespace ING {
 	void Camera::Release()
 	{
 
+		screen->RemoveCamera(this);
+
 		CameraManager::GetInstance()->RemoveCamera(node);
 
 		delete this;
@@ -73,9 +110,98 @@ namespace ING {
 
 
 	/**
+	 *	Properties
+	 */
+	void Camera::SetScreen(Screen* screen) {
+
+		if(this->screen != 0)
+			this->screen->RemoveCamera(this);
+
+		this->screen = screen;
+
+		if (screen != 0)
+			screen->AddCamera(this);
+
+		Update(); 
+	}
+
+	void Camera::SetTargetMode(CAMERA_TARGET_MODE mode) {
+
+		if (mode == targetMode) return;
+
+		this->targetMode = mode;
+
+		
+
+	}
+
+	unsigned int Camera::GetClientWidth() {
+
+		if (this->targetMode == CAMERA_TARGET_SCREEN) {
+
+			if (screen != nullptr)
+				return screen->GetClientWidth();
+
+		}
+
+		return 0;
+	}
+
+	unsigned int Camera::GetClientHeight() {
+
+		if (this->targetMode == CAMERA_TARGET_SCREEN) {
+
+			if (screen != nullptr)
+				return screen->GetClientHeight();
+
+		}
+		
+		return 0;
+	}
+
+
+
+	/**
 	 *	Methods
 	 */
 	void Camera::Update() {
+
+		/* Check if screen resized */
+		if (targetMode == CAMERA_TARGET_SCREEN) {
+
+			if (screen != nullptr) {
+
+				if (oldScreenWidth != screen->GetClientWidth() || oldScreenHeight != screen->GetClientHeight()) {
+
+					Rendering::IDeviceContext* context = screen->GetSwapChain()->GetDevice()->GetContext();
+
+					renderingPipeline->SetupCamera(context, this);
+
+				}
+
+				oldScreenWidth = screen->GetClientWidth();
+				oldScreenHeight = screen->GetClientHeight();
+
+			}
+			else {
+
+				if (renderingData == nullptr) {
+
+					delete renderingData;
+
+				}
+
+			}
+
+		}
+		else {
+
+
+
+		}
+
+
+
 
 		/* Compute View Matrix */
 		if (transformM != nullptr) {

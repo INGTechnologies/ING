@@ -86,7 +86,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void UIDrawable::Draw() {
+			void UIDrawable::Draw(const std::string& passName) {
 
 
 

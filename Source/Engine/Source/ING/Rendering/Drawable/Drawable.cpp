@@ -187,7 +187,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	IDrawable::Draw () {
+		void	IDrawable::Draw (const std::string& passName) {
 
 			
 

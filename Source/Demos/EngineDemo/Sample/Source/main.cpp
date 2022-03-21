@@ -402,7 +402,7 @@ bool DemoPass::CustomRender(
 
 
 
-	renderer->RenderDrawables(scene, "Opaque");
+	renderer->RenderDrawables(scene, "Opaque", "Demo Pass");
 
 
 
@@ -414,18 +414,6 @@ bool DemoPass::CustomRender(
 
 
 int main() {
-
-	/**
-	 *
-	 * 
-	 * This Demo Cant Draw Any thing ^^
-	 *  
-	 * 
-	 */
-
-
-
-
 
 	/* Create Application */
 	ING::Application::CreateInstance();
@@ -509,7 +497,7 @@ int main() {
 		shader->AddPass("Demo Pass");
 
 		shader->GetPass("Demo Pass")->AddChild("VertexShader", vshader);
-		shader->GetPass("Demo Pass")->AddChild("PixelShader", vshader);
+		shader->GetPass("Demo Pass")->AddChild("PixelShader", pshader);
 
 		shader->Apply("Demo Pass");
 
