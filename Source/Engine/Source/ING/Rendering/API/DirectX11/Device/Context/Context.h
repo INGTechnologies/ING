@@ -83,6 +83,9 @@ namespace ING {
 				virtual void VSSetShader			(IVertexShader* vertexShader) override;
 				virtual void PSSetShader			(IPixelShader* pixelShader) override;
 
+				virtual void PSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) override;
+				virtual void VSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) override;
+
 				virtual void DrawIndexed			(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) override;
 
 			};

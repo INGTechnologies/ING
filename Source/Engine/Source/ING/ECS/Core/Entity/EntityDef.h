@@ -10,7 +10,7 @@
 /**
  *	Include ECS Component System
  */
-#include <ING/ECS/Component/System/System.h>
+#include <ING/ECS/Core/Component/System/System.h>
 
 
 

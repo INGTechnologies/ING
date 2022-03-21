@@ -156,7 +156,7 @@ namespace ING {
 				context->IASetPrimitiveTopology(TRIANGLE_LIST);
 
 				context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0 );
-				context->IASetIndexBuffer(indexBuffer, FORMAT_R32_UINT, 0);
+				context->IASetIndexBuffer(indexBuffer, mesh->GetIndexFormat(), 0);
 
 
 				context->DrawIndexed(mesh->GetIndexCount(),0,0);

@@ -144,6 +144,18 @@ namespace ING {
 
 		}
 
+		void IDeviceContext::PSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
+
+
+
+		}
+
+		void IDeviceContext::VSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
+
+
+
+		}
+
 		void IDeviceContext::DrawIndexed(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) {
 
 

@@ -331,6 +331,12 @@ namespace ING {
 
 	}
 
+	void			Window::Focus() {
+
+		SetFocus(handle);
+
+	}
+
 	void			Window::SetTitle(const std::wstring& title) {
 
 		desc.title = title.c_str();

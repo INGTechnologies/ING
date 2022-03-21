@@ -64,6 +64,8 @@ namespace ING {
 		public:
 			std::string		GetName	() const { return name; }
 
+			IShader*		GetChild(const std::string& name) { return childShaderNameToChildShader[name]; }
+
 			void			SetInputLayout(IInputLayout* inputLayout) { this->inputLayout = inputLayout; }
 
 			IInputLayout*	GetInputLayout() { return inputLayout; }

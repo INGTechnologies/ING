@@ -105,6 +105,9 @@ namespace ING {
 			virtual void VSSetShader			(IVertexShader* vertexShader);
 			virtual void PSSetShader			(IPixelShader* pixelShader);
 
+			virtual void PSSetConstantBuffers   (const std::vector<IBuffer*>& cbuffers);
+			virtual void VSSetConstantBuffers   (const std::vector<IBuffer*>& cbuffers);
+
 			virtual void DrawIndexed			(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation);
 
 		};

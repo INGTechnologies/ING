@@ -53,17 +53,6 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-		private:
-			IDevice* device;
-
-		public:
-			IDevice* GetDevice() { return device; }
-
-
-
-			/**
 			 *	Methods
 			 */
 		public:

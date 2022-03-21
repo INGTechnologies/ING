@@ -27,31 +27,20 @@ namespace ING {
 
 	namespace Rendering {
 
-		class ING_API IBuffer : public IResource
+		class IDevice;
+
+		class IBuffer;
+
+
+
+		class ING_API IConstantBuffer
 		{
 
 			/**
-			 *	Constructors And Destructor
+			 *	Create Methods
 			 */
 		public:
-			IBuffer	(IDevice* device);
-			~IBuffer();
-
-
-
-			/**
-			 *	Create, Release Methods
-			 */
-		public:
-			virtual void Release() override;
-
-
-
-			/**
-			 *	Methods
-			 */
-		public:
-			virtual void UpdateData(void* pData);
+			static IBuffer* Create(IDevice* device, unsigned int size, void* pData);
 
 		};
 

@@ -10,21 +10,21 @@
 /**
  *	Include ECS Component
  */
-#include <ING/ECS/Component/Component.h>
+#include <ING/ECS/Core/Component/Component.h>
 
 
 
 /**
  *	Include ECS Component Ptr
  */
-#include <ING/ECS/Component/Ptr/Ptr.h>
+#include <ING/ECS/Core/Component/Ptr/Ptr.h>
 
 
 
 /**
  *	Include ECS Entity
  */
-#include <ING/ECS/Entity/Entity.h>
+#include <ING/ECS/Core/Entity/Entity.h>
 
 
 
@@ -128,7 +128,11 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::RemoveComponent	(Entity* entity)	{
 
-			ComponentId id = GetComponent(entity).GetId();
+			ComponentPtr<T, TComponentSystem> ptr = GetComponent(entity);
+
+			ComponentId id = ptr.GetId();
+
+			IDestroy(ptr);
 
 			array.Erase(id);
 
@@ -220,6 +224,18 @@ namespace ING {
 		void						ComponentSystem<T, TComponentSystem>::Update() {
 
 			
+
+		}
+
+		template<typename T, class TComponentSystem>
+		void						ComponentSystem<T, TComponentSystem>::IDestroy(IComponentPtr componentPtr) {
+
+			ComponentPtr<T, TComponentSystem> tPtr;
+
+			tPtr.SetId(componentPtr.GetId());
+			tPtr.SetIComponentSystem(componentPtr.GetIComponentSystem());
+
+			Destroy(tPtr);
 
 		}
 

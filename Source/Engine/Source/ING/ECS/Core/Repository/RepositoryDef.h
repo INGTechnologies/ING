@@ -10,7 +10,7 @@
 /**
  *	Include Entity
  */
-#include <ING/ECS/Entity/Entity.h>
+#include <ING/ECS/Core/Entity/Entity.h>
 
 
 

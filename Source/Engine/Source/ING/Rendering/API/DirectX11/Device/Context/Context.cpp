@@ -175,6 +175,42 @@ namespace ING {
 
 			}
 
+			void DeviceContext::PSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
+
+				ID3D11Buffer** d3d11Buffers = (ID3D11Buffer**)malloc(sizeof(ID3D11Buffer*) * cbuffers.size());
+
+				unsigned int count = cbuffers.size();
+
+				for (unsigned int i = 0; i < count; ++i) {
+
+					d3d11Buffers[i] = cbuffers[i]->As<DirectX11::Buffer>()->GetD3D11Buffer();
+
+				}
+
+				d3d11DeviceContext->PSSetConstantBuffers(0,count, d3d11Buffers);
+
+				free(d3d11Buffers);
+
+			}
+
+			void DeviceContext::VSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
+
+				ID3D11Buffer** d3d11Buffers = (ID3D11Buffer**)malloc(sizeof(ID3D11Buffer*) * cbuffers.size());
+
+				unsigned int count = cbuffers.size();
+
+				for (unsigned int i = 0; i < count; ++i) {
+
+					d3d11Buffers[i] = cbuffers[i]->As<DirectX11::Buffer>()->GetD3D11Buffer();
+
+				}
+
+				d3d11DeviceContext->VSSetConstantBuffers(0, count, d3d11Buffers);
+
+				free(d3d11Buffers);
+
+			}
+
 			void DeviceContext::DrawIndexed(unsigned int indexCount, unsigned int startIndexLocation, int baseVertexLocation) {
 
 				d3d11DeviceContext->DrawIndexed(indexCount, startIndexLocation, baseVertexLocation);
