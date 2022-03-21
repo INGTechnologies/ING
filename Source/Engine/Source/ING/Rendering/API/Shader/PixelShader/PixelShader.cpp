@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include API
+ */
+#include <ING/Rendering/API/API.h>
+
+
+
+/**
  *	Include DirectX11 Pixel Shader
  */
 #include <ING/Rendering/API/DirectX11/Shader/PixelShader/PixelShader.h>
@@ -102,6 +109,12 @@ namespace ING {
 			}
 
 			return nullptr;
+
+		}
+
+		IPixelShader* IPixelShader::CreateFromHLSL(const std::wstring& filePath) {
+
+			return CreateFromHLSL(IAPI::GetInstance()->GetDevice(), filePath);
 
 		}
 

@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include API
+ */
+#include <ING/Rendering/API/API.h>
+
+
+
+/**
  *	Include DirectX11 InputLayout
  */
 #include <ING/Rendering/API/DirectX11/InputLayout/InputLayout.h>
@@ -55,7 +62,7 @@ namespace ING {
 		/**
 		 *	Create Methods
 		 */
-		IInputLayout* IInputLayout::Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IVertexShader* vshader) {
+		IInputLayout* IInputLayout::Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IShader* vshader) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -66,7 +73,7 @@ namespace ING {
 
 			case DIRECTX11_API_FLAG:
 
-				return new DirectX11::InputLayout(device, desc, vshader);
+				return new DirectX11::InputLayout(device, desc, (IVertexShader*)vshader);
 
 				break;
 
@@ -87,6 +94,12 @@ namespace ING {
 			}
 
 			return nullptr;
+		}
+
+		IInputLayout* IInputLayout::Create(const std::vector<InputLayoutElementDesc>& desc, IShader* vshader) {
+
+			return Create(IAPI::GetInstance()->GetDevice(), desc, vshader);
+
 		}
 
 

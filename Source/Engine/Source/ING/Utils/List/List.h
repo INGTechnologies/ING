@@ -137,7 +137,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			List() {
+			List(): headNode(0), tailNode(0) {
 
 				size = 0;
 

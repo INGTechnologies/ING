@@ -102,6 +102,20 @@ namespace ING {
 
 
 			/**
+			 *	Release Methods
+			 */
+			void InputLayout::Release() {
+
+				if (d3d11InputLayout != nullptr)
+					d3d11InputLayout->Release();
+
+				IInputLayout::Release();
+
+			}
+
+
+
+			/**
 			 *	Methods
 			 */
 			void InputLayout::Apply() {

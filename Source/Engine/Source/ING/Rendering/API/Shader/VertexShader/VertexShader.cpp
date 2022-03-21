@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include API
+ */
+#include <ING/Rendering/API/API.h>
+
+
+
+/**
  *	Include DirectX11 Vertex Shader
  */
 #include <ING/Rendering/API/DirectX11/Shader/VertexShader/VertexShader.h>
@@ -102,6 +109,12 @@ namespace ING {
 			}
 
 			return nullptr;
+
+		}
+
+		IVertexShader* IVertexShader::CreateFromHLSL(const std::wstring& filePath) {
+
+			return CreateFromHLSL(IAPI::GetInstance()->GetDevice(), filePath);
 
 		}
 

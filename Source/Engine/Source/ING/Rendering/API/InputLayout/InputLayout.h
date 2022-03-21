@@ -64,6 +64,8 @@ namespace ING {
 
 		class IVertexShader;
 
+		class IShader;
+
 
 
 		class ING_API IInputLayout :
@@ -91,7 +93,8 @@ namespace ING {
 			 *	Create Methods
 			 */
 		public:
-			static IInputLayout* Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IVertexShader* vshader);
+			static IInputLayout* Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IShader* vshader);
+			static IInputLayout* Create(const std::vector<InputLayoutElementDesc>& desc, IShader* vshader);
 
 
 

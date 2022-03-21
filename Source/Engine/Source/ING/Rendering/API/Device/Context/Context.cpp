@@ -132,6 +132,12 @@ namespace ING {
 
 		}
 
+		void IDeviceContext::RSSetState(IRasterizerState* state) {
+
+
+
+		}
+
 		void IDeviceContext::VSSetShader(IVertexShader* vertexShader) {
 
 
@@ -139,6 +145,18 @@ namespace ING {
 		}
 
 		void IDeviceContext::PSSetShader(IPixelShader* pixelShader) {
+
+
+
+		}
+
+		void IDeviceContext::PSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
+
+
+
+		}
+
+		void IDeviceContext::VSSetConstantBuffers(const std::vector<IBuffer*>& cbuffers) {
 
 
 

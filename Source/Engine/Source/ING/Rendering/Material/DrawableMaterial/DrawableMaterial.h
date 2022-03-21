@@ -33,6 +33,8 @@ namespace ING {
 
 		class IShader;
 
+		class IState;
+
 
 
 		class ING_API DrawableMaterial : public IMaterial
@@ -51,7 +53,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Apply(const std::string& passName) override;
+			virtual void Apply	(const std::string& passName) override;
 
 		};
 

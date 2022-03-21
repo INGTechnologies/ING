@@ -49,17 +49,7 @@ namespace ING {
 			 */
 		public:
 			static IPixelShader* CreateFromHLSL(IDevice* device, const std::wstring& filePath);
-
-
-
-			/**
-			 *	Properties
-			 */
-		private:
-			IDevice* device;
-
-		public:
-			IDevice* GetDevice() { return device; }
+			static IPixelShader* CreateFromHLSL(const std::wstring& filePath);
 
 
 

@@ -36,6 +36,17 @@ namespace ING {
 
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		void IBuffer::UpdateData(void* pData) {
+
+
+
+		}
+
 	}
 
 }

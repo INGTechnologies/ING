@@ -10,14 +10,14 @@
 /**
  *	Include ECS Component System
  */
-#include <ING/ECS/Component/System/System.h>
+#include <ING/ECS/Core/Component/System/System.h>
 
 
 
 /**
  *	Include ECS Repository
  */
-#include <ING/ECS/Repository/Repository.h>
+#include <ING/ECS/Core/Repository/Repository.h>
 
 
 

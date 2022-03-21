@@ -7,9 +7,9 @@
 
 
 
- /**
-  *	Include Utils
-  */
+/**
+ *	Include Utils
+ */
 #include <ING\Utils/Utils.h>
 
 using namespace ING::Utils;
@@ -44,6 +44,14 @@ namespace ING {
 			 */
 		public:
 			virtual void Release() override;
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void UpdateData(void* pData);
 
 		};
 

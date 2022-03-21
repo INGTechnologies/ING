@@ -12,7 +12,7 @@ using namespace ING::Utils;
 /**
  *	Include Id
  */
-#include <ING/ECS/Component/Id/Id.h>
+#include <ING/ECS/Core/Component/Id/Id.h>
 
 
 
@@ -112,6 +112,8 @@ namespace ING {
 				return (TComponentSystem*)icomponentSystem;
 
 			}
+
+			T& GetComponent() { return *this; }
 
 
 

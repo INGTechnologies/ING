@@ -143,6 +143,8 @@ namespace ING {
 
 		void			Hide();
 
+		void			Focus();
+
 
 		/* Title */
 		void			SetTitle(const std::wstring& title);

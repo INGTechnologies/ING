@@ -20,6 +20,13 @@
 
 
 
+/**
+ *	Include Rendering State
+ */
+#include <ING/Rendering/State/State.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -61,9 +68,21 @@ namespace ING {
 
 		}
 
-		void IShaderPass::RemoveChild(const std::string& tag, IShader* shader) {
+		void IShaderPass::RemoveChild(const std::string& tag) {
 
 			childShaderNameToChildShader.erase(tag);
+
+		}
+
+		void IShaderPass::AddState(IState* state) {
+
+			stateName2StateMap[state->GetName()] = state;
+
+		}
+
+		void IShaderPass::RemoveState(const std::string& name) {
+
+			stateName2StateMap.erase(name);
 
 		}
 
@@ -72,6 +91,14 @@ namespace ING {
 			if (inputLayout != 0) {
 
 				inputLayout->Apply();
+
+			}
+
+			for (auto item : stateName2StateMap) {
+
+				IState* state = item.second;
+
+				state->Apply();
 
 			}
 

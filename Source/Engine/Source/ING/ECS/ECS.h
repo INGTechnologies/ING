@@ -1,24 +1,12 @@
 #pragma once
 
-/**
- * Include Headers
- */
-#include <ING/ECS/Repository/Repository.h>
-
-#include <ING/ECS/Component/Ptr/Ptr.h>
-#include <ING/ECS/Component/System/System.h>
-#include <ING/ECS/Component/Id/Id.h>
-
-#include <ING/ECS/Entity/Entity.h>
-
-
+#include "Core/Core.h"
 
 /**
- * Include Def Files
+ *	Include Default Component Systems
  */
-#include <ING/ECS/Repository/RepositoryDef.h>
+#include "TransformSystem/TransformSystem.h"
+#include "TransformSystem/TransformSystemDef.h"
 
-#include <ING/ECS/Component/Ptr/PtrDef.h>
-#include <ING/ECS/Component/System/SystemDef.h>
-
-#include <ING/ECS/Entity/EntityDef.h>
+#include "CameraSystem/CameraSystem.h"
+#include "CameraSystem/CameraSystemDef.h"

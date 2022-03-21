@@ -12,7 +12,7 @@ using namespace ING::Utils;
 /**
  *	Include Id
  */
-#include <ING/ECS/Component/Id/Id.h>
+#include <ING/ECS/Core/Component/Id/Id.h>
 
 
 
@@ -95,6 +95,12 @@ namespace ING {
 			}
 
 			virtual void Update() {
+
+
+
+			}
+
+			virtual void IDestroy(IComponentPtr componentPtr) {
 
 
 
@@ -187,6 +193,10 @@ namespace ING {
 			virtual void IStart	(IComponentPtr componentPtr)	override;
 
 			virtual void Update ()								override;
+
+			virtual void Destroy(ComponentPtr<T, TComponentSystem> componentPtr) { }
+
+			virtual void IDestroy(IComponentPtr componentPtr)	override;
 
 
 

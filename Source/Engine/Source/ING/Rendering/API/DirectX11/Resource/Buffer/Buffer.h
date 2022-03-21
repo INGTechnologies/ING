@@ -76,6 +76,14 @@ namespace ING {
 
 				}
 
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				virtual void UpdateData(void* pData) override;
+
 			};
 
 		}
