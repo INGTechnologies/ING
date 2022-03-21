@@ -256,93 +256,6 @@ using namespace ING;
 
 
 
-/* Sample Entity Component */
-static struct SampleC {
-
-	ECS::ComponentId id = 0;
-
-};
-
-
-/* Demo Entity Component System */
-static ECS_COMPONENT_SYSTEM(SampleCSystem, SampleC)
-
-public:
-	virtual void Init		() override;
-	virtual void Release	() override;
-
-
-
-	/**
-	 *	Event Methods
-	 */
-public:
-	virtual void Awake(ECS::ComponentPtr<SampleC, SampleCSystem> componentPtr) override;
-	virtual void Start(ECS::ComponentPtr<SampleC, SampleCSystem> componentPtr) override;
-	virtual void Update() override;
-
-};
-
-		
-
-void SampleCSystem::Init() {
-
-	
-
-}
-
-void SampleCSystem::Release() {
-
-	ComponentSystem<SampleC, SampleCSystem>::Release();
-
-}
-
-
-
-void SampleCSystem::Awake(ECS::ComponentPtr<SampleC, SampleCSystem> componentPtr) {
-
-	//Debug::Log(String("SampleC ") + String(componentPtr.GetId()) + String(" Awake"));
-
-}
-
-void SampleCSystem::Start(ECS::ComponentPtr<SampleC, SampleCSystem> componentPtr) {
-
-	//Debug::Log(String("SampleC ") + String(componentPtr.GetId()) + String(" Start"));
-
-}
-
-void SampleCSystem::Update() {
-
-	ECS::ComponentSystem<SampleC, SampleCSystem>::Update();
-
-
-
-	/**
-	 *	Show FPS In Window Title
-	 */
-	static float t = 0;
-	 
-	t += Time::GetDeltaTime();
-
-	if (t >= 1.0f) {
-
-		t = 0;
-
-		WindowManager::GetInstance()->GetMainWindow()->SetTitle(WString(L"FPS: ") + WString(Time::GetFPS()));
-
-	}
-
-	//for (SampleC& component : *this) {
-
-	//	component.id = component.id * component.id * component.id;
-
-	//}
-
-}
-
-
-
-
 #include <ING/AMath/AMath.h>
 
 #include <ING/Profiler/Session/Session.h>
@@ -361,6 +274,8 @@ void SampleCSystem::Update() {
 #include <ING/Rendering/System/System.h>
 
 #include <ING/Rendering/Renderer/Renderer.h>
+
+#include <ING/Rendering/API/State/RasterizerState/RasterizerState.h>
 
 
 
@@ -432,6 +347,9 @@ int main() {
 	/* On "RUN" */
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 
+		/* Focus On Main Window */
+		WindowManager::GetInstance()->GetMainWindow()->Focus();
+
 
 
 		/* 
@@ -489,28 +407,38 @@ int main() {
 
 
 		/* Create Shaders */
-		IVertexShader* vshader = IVertexShader::CreateFromHLSL(Rendering::IAPI::GetInstance()->GetDevice(), L"Assets/Shaders/DemoVS.hlsl");		
-		IPixelShader* pshader = IPixelShader::CreateFromHLSL(Rendering::IAPI::GetInstance()->GetDevice(), L"Assets/Shaders/DemoPS.hlsl");
-
 		IShader* shader = new Rendering::IShader("DemoShader");
 
 		shader->AddPass("Demo Pass");
+		shader->GetPass("Demo Pass")->AddState(IRasterizerState::Create("RSState", {
+		
+			FILL_WIREFRAME,
+			CULL_NONE
+			
+		}));
+		shader->GetPass("Demo Pass")->AddChild("VertexShader", 
+			IVertexShader::CreateFromHLSL(L"Assets/Shaders/DemoVS.hlsl")
+		);
+		shader->GetPass("Demo Pass")->AddChild("PixelShader",
+			IPixelShader::CreateFromHLSL(L"Assets/Shaders/DemoPS.hlsl")
+		);
+		shader->SetPropertyVector({
 
-		shader->GetPass("Demo Pass")->AddChild("VertexShader", vshader);
-		shader->GetPass("Demo Pass")->AddChild("PixelShader", pshader);
+			ShaderProperty("color", sizeof(Vector4)),
+			ShaderProperty("color2", sizeof(Vector4))
 
-		shader->Apply("Demo Pass");
+		});
+
 
 
 		/* Create Input Layout */
 		IInputLayout* inputLayout = IInputLayout::Create(
-			Rendering::IAPI::GetInstance()->GetDevice(),
 			{
 
 				{ "POSITION", 0, FORMAT_R32G32B32A32_FLOAT, 0, 0, INPUT_PER_VERTEX_DATA, 0 }
 
 			},
-			vshader
+			shader->GetPass("Demo Pass")->GetChild("VertexShader")
 		);
 		shader->GetPass("Demo Pass")->SetInputLayout(inputLayout);
 
@@ -518,6 +446,10 @@ int main() {
 
 		/* Create Material */
 		IMaterial* material = new Rendering::DrawableMaterial("DemoMat", shader);
+
+		material->SetProperty<Vector4>("color", Vector4(1,1,0,1));
+		material->SetProperty<Vector4>("color2", Vector4(0,1,0,1));
+
 
 
 		/* Create Mesh (Triangle) */
@@ -529,12 +461,11 @@ int main() {
 			},
 			{ 0, 1, 2 }
 		);
-
 		mesh->BuildBuffers();
 
 
 
-		/* Create Mesh Drawable (It's something like an mesh can be drawn) */
+		/* Create Mesh Drawable (It's something like a mesh can be drawn) */
 		StandardRP::MeshDrawable* meshDrawable = new Rendering::StandardRP::MeshDrawable();
 
 		meshDrawable->SetMesh(mesh);
@@ -549,25 +480,41 @@ int main() {
 
 
 
-
-
-
 		/* ECS Demo */
 		ECS::Repository* repository = new ECS::Repository();
-
 		repository->SetActive(true);
 
-		SampleCSystem* exampleCSystem = repository->CreateComponentSystem<SampleCSystem>();
-		for (unsigned long i = 0; i < 0; ++i) {
+		ECS::TransformSystem* transformSystem = repository->CreateComponentSystem<ECS::TransformSystem>();
+		ECS::CameraSystem* cameraSystem = repository->CreateComponentSystem<ECS::CameraSystem>();
 
-			ECS::Entity* entity = repository->CreateEntity();
 
-			exampleCSystem->AddComponent(entity)->id = i;
+		ECS::Entity* entity = repository->CreateEntity();
+		transformSystem->AddComponent(entity);
+
+		cameraSystem->AddComponent(entity);
+
+	});
+
+
+
+	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* e) {
+
+		/**
+		 *	Show FPS In Window Title
+		 */
+		static float t = 0;
+
+		t += Time::GetDeltaTime();
+
+		if (t >= 1.0f) {
+
+			t = 0;
+
+			WindowManager::GetInstance()->GetMainWindow()->SetTitle(WString(L"FPS: ") + WString(Time::GetFPS()));
 
 		}
 
 	});
-
 
 
 	/* Run Application */

@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include API
+ */
+#include <ING/Rendering/API/API.h>
+
+
+
+/**
  *	Include DirectX11 InputLayout
  */
 #include <ING/Rendering/API/DirectX11/InputLayout/InputLayout.h>
@@ -87,6 +94,12 @@ namespace ING {
 			}
 
 			return nullptr;
+		}
+
+		IInputLayout* IInputLayout::Create(const std::vector<InputLayoutElementDesc>& desc, IShader* vshader) {
+
+			return Create(IAPI::GetInstance()->GetDevice(), desc, vshader);
+
 		}
 
 

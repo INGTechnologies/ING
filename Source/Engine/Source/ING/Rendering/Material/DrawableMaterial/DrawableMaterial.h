@@ -50,25 +50,9 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-		private:
-			std::unordered_map<std::string, IState*>			stateName2StateMap;
-
-		public:
-			const std::unordered_map<std::string, IState* >&	GetStateName2StateMap	() { return stateName2StateMap; }
-
-
-
-			/**
 			 *	Methods
 			 */
 		public:
-			void	AddState	(const std::string& name, IState* state);
-			IState*	GetState	(const std::string& name);
-			void	RemoveState	(const std::string& name);
-			void	Destroy		(const std::string& name);
-
 			virtual void Apply	(const std::string& passName) override;
 
 		};

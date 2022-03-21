@@ -49,6 +49,7 @@ namespace ING {
 			 */
 		public:
 			static IPixelShader* CreateFromHLSL(IDevice* device, const std::wstring& filePath);
+			static IPixelShader* CreateFromHLSL(const std::wstring& filePath);
 
 
 

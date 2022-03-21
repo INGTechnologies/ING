@@ -108,32 +108,6 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	DrawableMaterial::AddState(const std::string& name, IState* state) {
-
-			stateName2StateMap[name] = state;
-
-		}
-
-		IState* DrawableMaterial::GetState(const std::string& name) {
-
-			return stateName2StateMap[name];
-			
-		}
-
-		void	DrawableMaterial::RemoveState(const std::string& name) {
-
-			stateName2StateMap.erase(name);
-
-		}
-
-		void	DrawableMaterial::Destroy(const std::string& name) {
-
-			delete GetState(name);
-
-			RemoveState(name);
-
-		}
-
 		void DrawableMaterial::Apply(const std::string& passName) {
 
 			IShader* shader = GetShader();
@@ -143,12 +117,6 @@ namespace ING {
 				shader->Apply(passName);
 
 				IDeviceContext* context = shader->GetDevice()->GetContext();
-
-				for (auto item : stateName2StateMap) {
-
-					//stateName2StateMap[item.first]->Apply();
-
-				}
 
 				if (shader->GetPropertyCount() > 0) {
 

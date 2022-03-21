@@ -132,6 +132,12 @@ namespace ING {
 
 		}
 
+		void IDeviceContext::RSSetState(IRasterizerState* state) {
+
+
+
+		}
+
 		void IDeviceContext::VSSetShader(IVertexShader* vertexShader) {
 
 

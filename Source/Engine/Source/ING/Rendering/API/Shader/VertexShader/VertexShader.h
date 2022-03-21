@@ -49,6 +49,7 @@ namespace ING {
 			 */
 		public:
 			static IVertexShader* CreateFromHLSL(IDevice* device, const std::wstring& filePath);
+			static IVertexShader* CreateFromHLSL(const std::wstring& filePath);
 
 
 

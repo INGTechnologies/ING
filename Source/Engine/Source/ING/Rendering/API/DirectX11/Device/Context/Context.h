@@ -80,6 +80,8 @@ namespace ING {
 				virtual void OMSetRenderTargets		(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv) override;
 				virtual void OMSetRenderTargets		(IRenderTargetView* rtv, IDepthStencilVIew* dsv) override;
 
+				virtual void RSSetState				(IRasterizerState* state) override;
+
 				virtual void VSSetShader			(IVertexShader* vertexShader) override;
 				virtual void PSSetShader			(IPixelShader* pixelShader) override;
 

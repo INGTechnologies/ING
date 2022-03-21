@@ -61,6 +61,12 @@ namespace ING {
 			 */
 			void Buffer::Release() {
 
+				if (d3d11Buffer != nullptr) {
+
+					d3d11Buffer->Release();
+
+				}
+
 				IBuffer::Release();
 
 			}

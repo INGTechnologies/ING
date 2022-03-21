@@ -69,6 +69,13 @@
 
 
 
+/**
+ *	Include DirectX11 Rasterizer State
+ */
+#include <ING/Rendering/API/DirectX11/State/RasterizerState/RasterizerState.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -160,6 +167,12 @@ namespace ING {
 
 				if(dsv == 0)
 					d3d11DeviceContext->OMSetRenderTargets(1, &d3d11RTV, 0);
+
+			}
+
+			void DeviceContext::RSSetState(IRasterizerState* state) {
+
+				d3d11DeviceContext->RSSetState(state->As<DirectX11::RasterizerState>()->GetD3D11RSState());
 
 			}
 

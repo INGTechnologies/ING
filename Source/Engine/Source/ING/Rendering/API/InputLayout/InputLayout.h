@@ -94,6 +94,7 @@ namespace ING {
 			 */
 		public:
 			static IInputLayout* Create(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IShader* vshader);
+			static IInputLayout* Create(const std::vector<InputLayoutElementDesc>& desc, IShader* vshader);
 
 
 

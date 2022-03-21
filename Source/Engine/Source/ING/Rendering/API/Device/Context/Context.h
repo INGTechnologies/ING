@@ -54,6 +54,8 @@ namespace ING {
 		class IVertexShader;
 		class IPixelShader;
 
+		class IRasterizerState;
+
 
 
 		class ING_API IDeviceContext :
@@ -101,6 +103,8 @@ namespace ING {
 
 			virtual void OMSetRenderTargets		(const std::vector<IRenderTargetView*>& rtvs, IDepthStencilVIew* dsv);
 			virtual void OMSetRenderTargets		(IRenderTargetView* rtv, IDepthStencilVIew* dsv);
+
+			virtual void RSSetState				(IRasterizerState* state);
 
 			virtual void VSSetShader			(IVertexShader* vertexShader);
 			virtual void PSSetShader			(IPixelShader* pixelShader);
