@@ -14,7 +14,6 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 - Step 5: Run.
 
 
-
 ## Documentation ##
 WARNING: ONLY SUPPORT VS2019 AND VS2020, ALL DOCUMENTATION FILES ARE EMPTY
 - Low Level
