@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Drawable
+ */
+#include <ING/Rendering/Drawable/Drawable.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -24,24 +31,25 @@ namespace ING {
 
 	namespace Rendering {
 
+		class IRenderer;
+
 		class IDevice;
 
 		class IDeviceContext;
 
-		class Scene;
-
-		class IDrawable;
+		class IPass;
 
 
 
-		class ING_API IRenderer
+		class ING_API UIDrawable : public IDrawable
 		{
+
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IRenderer	();
-			~IRenderer	();
+			UIDrawable();
+			~UIDrawable();
 
 
 
@@ -57,8 +65,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void RenderDrawables(Camera* camera, const std::string& categoryName, const std::string& passName);
-			virtual void RenderDrawable	(Camera* camera, IDrawable* drawable, const std::string& passName);
+			virtual void Draw(Camera* camera, const std::string& passName) override;
 
 		};
 

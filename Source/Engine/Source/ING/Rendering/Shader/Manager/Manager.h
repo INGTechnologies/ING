@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Rendering {
 
+		class IShader;
+
+
+
 		class ING_API ShaderManager :
 			public Singleton<ShaderManager>,
 			public Square

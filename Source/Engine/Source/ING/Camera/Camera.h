@@ -24,11 +24,11 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Math
+ *	Include XMath
  */
-#include <ING/Math/Math.h>
+#include <ING/XMath/XMath.h>
 
-using namespace ING::Math;
+using namespace ING::XMath;
 
 
 

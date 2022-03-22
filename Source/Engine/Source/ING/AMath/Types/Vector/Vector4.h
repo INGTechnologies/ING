@@ -30,13 +30,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Non-SIMD Vector4
- */
-#include <ING\Math\Types\Vector\Vector4.h>
-
-
-
 namespace ING {
 
 	namespace AMath {
@@ -55,11 +48,7 @@ namespace ING {
 
 			inline Vector4(__m128 m) : m128(m) {}
 
-			inline Vector4(const Math::Vector4& m) {
-			
-				memcpy(this, &m, 16);
-			
-			}
+			Vector4(const Math::Vector4& m);
 
 			inline ~Vector4() {}
 
@@ -136,7 +125,7 @@ namespace ING {
 
 
 
-		static inline Vector4 operator+(const Vector4& a, const Vector4& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline Vector4 operator+(const Vector4& a, const Vector4& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline Vector4 operator-(const Vector4& a, const Vector4& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 

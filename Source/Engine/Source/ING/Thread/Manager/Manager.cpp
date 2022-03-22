@@ -114,11 +114,15 @@ namespace ING {
 
 	void ThreadManager::UnregisterThread(Thread* thread) {
 
+		mutex.lock();
+
 		threadIdGenerator.RemoveUInt32Id(thread->GetID());
 
 		threadMap.erase(thread->GetID());
 
 		threadIdMap.erase(thread->GetSTDThread().get_id());
+
+		mutex.unlock();
 
 	}
 

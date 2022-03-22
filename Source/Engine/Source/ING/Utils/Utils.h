@@ -146,6 +146,13 @@
 
 
 
+/**
+ *	Include Vector
+ */
+#include <ING\Utils\Vector\Vector.h>
+
+
+
 namespace ING {
 
 	namespace Utils {

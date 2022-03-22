@@ -79,6 +79,27 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include AMath
+ */
+#include <ING/Math/Math.h>
+
+
+
+/**
+ *	Include AMath
+ */
+#include <ING/AMath/AMath.h>
+
+
+
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h>
+
+
+
 
 
 namespace ING {
@@ -127,6 +148,37 @@ namespace ING {
 
 			}
 
+		}
+
+		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices, bool updateBuffer) {
+
+			SetProperty<Math::Matrix4x4>("ING_WorldMatrix", transformMatrices.translationMatrix, false);
+
+			if (updateBuffer) {
+
+				UpdatePropertyBuffer();
+
+			}
+
+		}
+		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices) {
+			ApplyTransform(transformMatrices, true);
+		}
+
+		void DrawableMaterial::ApplyCamera(Camera* camera, bool updateBuffer) {
+
+			SetProperty<Matrix4x4>("ING_ViewMatrix", camera->GetViewMatrix(), false);
+			SetProperty<Matrix4x4>("ING_ProjectionMatrix", camera->GetProjectionMatrix().Transpose(), false);
+
+			if (updateBuffer) {
+
+				UpdatePropertyBuffer();
+
+			}
+
+		}
+		void DrawableMaterial::ApplyCamera(Camera* camera) {
+			ApplyCamera(camera, true);
 		}
 
 	}

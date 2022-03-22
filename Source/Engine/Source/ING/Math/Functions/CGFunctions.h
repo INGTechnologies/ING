@@ -11,7 +11,7 @@ namespace ING {
 
 	namespace Math {
 
-		static Matrix4x4	ProjectionMatrix(float fov, float aspectRatio, float nearPlane, float farPlane) {
+		static Matrix4x4	PerspectiveMatrix(float fov, float aspectRatio, float nearPlane, float farPlane) {
 
 			return Matrix4x4(
 			

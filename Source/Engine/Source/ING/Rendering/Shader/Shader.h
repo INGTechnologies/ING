@@ -47,6 +47,8 @@ namespace ING {
 
 			}
 
+			ShaderProperty() {}
+
 			std::string		name;
 			unsigned int	size;
 			unsigned int	offset;
@@ -96,7 +98,6 @@ namespace ING {
 			std::string					GetName		() const { return name; }
 
 			const std::unordered_map<std::string, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
-
 			IShaderPass*				GetPass		(const std::string& name);
 
 			IDevice*					GetDevice	() { return device; }

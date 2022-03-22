@@ -23,13 +23,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Non-SIMD CVector4
- */
-#include <ING\Math\Types\Vector\CVector4.h>
-
-
-
 namespace ING {
 
 	namespace AMath {
@@ -48,11 +41,7 @@ namespace ING {
 
 			inline CVector4(__m128 m) : m128(m) {}
 
-			inline CVector4(const Math::CVector4& m) {
-
-				memcpy(this, &m, 16);
-
-			}
+			CVector4(const Math::CVector4& m);
 
 			inline ~CVector4() {}
 
@@ -129,7 +118,7 @@ namespace ING {
 
 
 
-		static inline CVector4 operator+(const CVector4& a, const CVector4& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline CVector4 operator+(const CVector4& a, const CVector4& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline CVector4 operator-(const CVector4& a, const CVector4& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 

@@ -7,9 +7,27 @@
 
 
 
+/**
+ *	Include Math
+ */
+#include <ING/Math/Math.h>
+
+
+
 namespace ING {
 
 	namespace AMath {
+
+		/**
+		 *	Constructors And Destructor
+		 */
+		CVector4::CVector4(const Math::CVector4& m) {
+
+			memcpy(this, &m, 16);
+
+		}
+
+
 
 		/**
 		 *	Constants

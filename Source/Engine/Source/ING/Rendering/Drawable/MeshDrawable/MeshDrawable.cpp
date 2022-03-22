@@ -98,9 +98,23 @@
 
 
 /**
+ *	Include Rendering Drawable Material
+ */
+#include <ING/Rendering/Material/DrawableMaterial/DrawableMaterial.h>
+
+
+
+/**
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
+
+
+
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h>
 
 
 
@@ -109,59 +123,60 @@ namespace ING {
 
 	namespace Rendering {
 
-		namespace StandardRP {
-
-			/**
-			 *	Constructors And Destructor
-			 */
-			MeshDrawable::MeshDrawable() {
+		/**
+		 *	Constructors And Destructor
+		 */
+		MeshDrawable::MeshDrawable() {
 
 
 
-			}
+		}
 
-			MeshDrawable::~MeshDrawable() {
+		MeshDrawable::~MeshDrawable() {
 
 				
 
-			}
+		}
 
 
 
-			/**
-			 *	Release Methods
-			 */
-			void MeshDrawable::Release() {
+		/**
+		 *	Release Methods
+		 */
+		void MeshDrawable::Release() {
 
-				delete this;
+			delete this;
 
-			}
-
-
-
-			/**
-			 *	Methods
-			 */
-			void MeshDrawable::Draw(const std::string& passName) {
-
-				material->Apply(passName);
+		}
 
 
-				/* Bind Buffers */
-				IBuffer* vertexBuffer = mesh->GetVertexBuffer();
-				IBuffer* indexBuffer  = mesh->GetIndexBuffer();
 
-				IDeviceContext* context = vertexBuffer->GetDevice()->GetContext();
+		/**
+		 *	Methods
+		 */
+		void MeshDrawable::Draw(Camera* camera, const std::string& passName) {
 
-				context->IASetPrimitiveTopology(TRIANGLE_LIST);
+			material->Apply(passName);
 
-				context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0 );
-				context->IASetIndexBuffer(indexBuffer, mesh->GetIndexFormat(), 0);
+			material->As<DrawableMaterial>()->ApplyTransform(transformMatrices,false);
+			material->As<DrawableMaterial>()->ApplyCamera(camera,false);
+
+			material->UpdatePropertyBuffer();
 
 
-				context->DrawIndexed(mesh->GetIndexCount(),0,0);
+			/* Bind Buffers */
+			IBuffer* vertexBuffer = mesh->GetVertexBuffer();
+			IBuffer* indexBuffer  = mesh->GetIndexBuffer();
 
-			}
+			IDeviceContext* context = vertexBuffer->GetDevice()->GetContext();
+
+			context->IASetPrimitiveTopology(TRIANGLE_LIST);
+
+			context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0);
+			context->IASetIndexBuffer(indexBuffer, mesh->GetIndexFormat(), 0);
+
+
+			context->DrawIndexed(mesh->GetIndexCount(),0,0);
 
 		}
 

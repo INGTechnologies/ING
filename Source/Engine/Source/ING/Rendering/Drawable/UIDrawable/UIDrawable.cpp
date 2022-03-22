@@ -53,44 +53,40 @@ namespace ING {
 
 	namespace Rendering {
 
-		namespace StandardRP {
-
-			/**
-			 *	Constructors And Destructor
-			 */
-			UIDrawable::UIDrawable() {
+		/**
+		 *	Constructors And Destructor
+		 */
+		UIDrawable::UIDrawable() {
 
 
 
-			}
+		}
 
-			UIDrawable::~UIDrawable() {
-
-
-
-			}
+		UIDrawable::~UIDrawable() {
 
 
 
-			/**
-			 *	Release Methods
-			 */
-			void UIDrawable::Release() {
-
-				delete this;
-
-			}
+		}
 
 
 
-			/**
-			 *	Methods
-			 */
-			void UIDrawable::Draw(const std::string& passName) {
+		/**
+		 *	Release Methods
+		 */
+		void UIDrawable::Release() {
+
+			delete this;
+
+		}
 
 
 
-			}
+		/**
+		 *	Methods
+		 */
+		void UIDrawable::Draw(Camera* camera, const std::string& passName) {
+
+
 
 		}
 

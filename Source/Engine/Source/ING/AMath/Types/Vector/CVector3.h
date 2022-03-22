@@ -23,13 +23,6 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Non-SIMD CVector3
- */
-#include <ING\Math\Types\Vector\CVector3.h>
-
-
-
 namespace ING {
 
 	namespace AMath {
@@ -48,11 +41,7 @@ namespace ING {
 
 			inline CVector3(__m128 m) : m128(m) {}
 
-			inline CVector3(const Math::CVector3& m) {
-
-				memcpy(this, &m, 12);
-
-			}
+			CVector3(const Math::CVector3& m);
 
 			inline ~CVector3() {}
 
@@ -130,7 +119,7 @@ namespace ING {
 
 
 
-		static inline CVector3 operator+(const CVector3& a, const CVector3& b)			{ return _mm_add_ps(a.m128, a.m128); }
+		static inline CVector3 operator+(const CVector3& a, const CVector3& b)			{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline CVector3 operator-(const CVector3& a, const CVector3& b)			{ return _mm_sub_ps(a.m128, b.m128); }
 

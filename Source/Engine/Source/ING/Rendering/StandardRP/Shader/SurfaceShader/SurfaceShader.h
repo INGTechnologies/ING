@@ -17,9 +17,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Drawable
+ *	Include Shader
  */
-#include <ING/Rendering/Drawable/Drawable.h>
+#include <ING/Rendering/Shader/Shader.h>
 
 
 
@@ -31,27 +31,22 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
-
 		class IDevice;
-
-		class IDeviceContext;
-
-		class IPass;
 
 
 
 		namespace StandardRP {
 
-			class ING_API UIDrawable : public IDrawable
+			class ING_API SurfaceShader :
+				public IShader
 			{
-
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				UIDrawable();
-				~UIDrawable();
+				SurfaceShader	(IDevice* device, const std::string& name);
+				SurfaceShader	(const std::string& name);
+				~SurfaceShader	();
 
 
 
@@ -59,7 +54,7 @@ namespace ING {
 				 *	Release Methods
 				 */
 			public:
-				virtual void Release();
+				virtual void Release() override;
 
 
 
@@ -67,7 +62,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Draw(const std::string& passName) override;
+				virtual void SetPropertyVector(const std::vector<ShaderProperty>& propertyVector) override;
 
 			};
 

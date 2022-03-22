@@ -17,17 +17,17 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Math
+ *	Include XMath
  */
-#include <ING/Math/Math.h>
+#include <ING/XMath/XMath.h>
 
-using namespace ING::Math;
+using namespace ING::XMath;
 
 
 
 namespace ING {
 
-	struct ING_API Color : public Vector4 {
+	struct ING_API Color : public AVector4 {
 	
 		/**
 		 *	Constructors And Destructor

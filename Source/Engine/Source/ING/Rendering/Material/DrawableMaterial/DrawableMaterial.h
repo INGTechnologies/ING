@@ -23,7 +23,18 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Transform
+ */
+#include <ING/Transform/Transform.h>
+
+
+
 namespace ING {
+
+	class Camera;
+
+
 
 	namespace Rendering {
 
@@ -54,6 +65,12 @@ namespace ING {
 			 */
 		public:
 			virtual void Apply	(const std::string& passName) override;
+
+			virtual void ApplyTransform (const TransformM& transformMatrices);
+			virtual void ApplyTransform (const TransformM& transformMatrices, bool updateBuffer);
+
+			virtual void ApplyCamera	(Camera* camera);
+			virtual void ApplyCamera	(Camera* camera, bool updateBuffer);
 
 		};
 

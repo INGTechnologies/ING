@@ -57,8 +57,6 @@ using namespace ING::Utils;
 
 
 
-
-
 namespace ING {
 
 	/**
@@ -228,7 +226,7 @@ namespace ING {
 
 		}
 
-		projectionMatrix = Math::ProjectionMatrix(fov, aspectRatio, nearPlane, farPlane);
+		projectionMatrix = Math::PerspectiveMatrix(fov, aspectRatio, nearPlane, farPlane);
 
 	}
 

@@ -51,7 +51,7 @@ namespace ING {
 
 
 
-		class ING_API IMaterial
+		class ING_API IMaterial : public AsMethod
 		{
 
 			/**

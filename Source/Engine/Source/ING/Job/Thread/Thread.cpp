@@ -101,11 +101,17 @@ namespace ING {
 
 		ingThread = new Thread([](Thread* ingThread) {
 
+			ingThread->WaitReady();
+
+			ThreadManager::GetInstance()->RegisterThread(ingThread);
+
 			JobThread* jobThread = ingThread->params[0].As<JobThread*>();
 			
 			ingThread->params.~Ref();
 
 			jobThread->Loop();
+
+			ThreadManager::GetInstance()->UnregisterThread(ingThread);
 			
 		});
 

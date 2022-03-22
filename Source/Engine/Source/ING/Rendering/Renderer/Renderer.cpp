@@ -76,6 +76,13 @@
 
 
 
+/**
+ *	Include Camera
+ */
+#include <ING/Camera/Camera.h>
+
+
+
 
 
 namespace ING {
@@ -116,9 +123,9 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Scene* scene, const std::string& categoryName, const std::string& passName) {
+		void IRenderer::RenderDrawables(Camera* camera, const std::string& categoryName, const std::string& passName) {
 
-			const std::vector<Layer*>& layerVector = scene->GetLayerVector();
+			const std::vector<Layer*>& layerVector = camera->GetRenderingScene()->GetLayerVector();
 
 			unsigned int layerVectorSize = layerVector.size();
 
@@ -133,7 +140,7 @@ namespace ING {
 				for (auto drawable : category->GetDrawableList()) {
 
 					if(drawable->IsActive())
-						RenderDrawable(drawable, passName);
+						RenderDrawable(camera, drawable, passName);
 
 				}
 
@@ -141,9 +148,9 @@ namespace ING {
 
 		}
 
-		void IRenderer::RenderDrawable(IDrawable* drawable, const std::string& passName) {
+		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const std::string& passName) {
 
-			drawable->Draw(passName);
+			drawable->Draw(camera, passName);
 
 		}
 
