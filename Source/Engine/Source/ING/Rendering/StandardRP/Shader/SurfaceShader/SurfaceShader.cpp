@@ -47,13 +47,14 @@
 #include <ING/Rendering/StandardRP/Shader/CommonShaderProperties.h>
 
 
+#include <DirectXMath.h>
 
 /**
  *	Include Math
  */
-#include <ING/Math/Math.h>
+//#include <ING/Math/Math.h>
 
-using namespace ING::Math;
+//using namespace ING::Math;
 
 
 

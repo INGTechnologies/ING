@@ -24,13 +24,6 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Math
- */
-#include <ING/Math/Math.h>
-
-
-
-/**
  *	Include Color
  */
 #include <ING/Color/Color.h>
@@ -278,6 +271,7 @@ namespace ING {
 		 *	Math
 		 */
 		 /* Vector */
+		/*
 		static void Log(Math::Vector2 content) {
 
 			PRINT_LOG_FLAG();
@@ -378,9 +372,9 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
-		/* Float */
+		/* Float *//*
 		static void Log(Math::F4IJK content) {
 
 			PRINT_LOG_FLAG();
@@ -445,9 +439,9 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
-		/* Quaternion */
+		/* Quaternion 
 		static void Log(Math::Quaternion content) {
 
 			PRINT_LOG_FLAG();
@@ -488,11 +482,11 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
 		/**
 		 *	Color
-		 */
+		 *//*
 		static void Log(Color content) {
 
 			PRINT_LOG_FLAG();
@@ -533,7 +527,7 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		*/
 
 		#pragma endregion
 
@@ -709,7 +703,7 @@ namespace ING {
 		/**
 		 *	Math
 		 */
-		 /* Vector */
+		 /* Vector 
 		static void Error(Math::Vector2 content) {
 
 			PRINT_ERROR_FLAG();
@@ -810,9 +804,9 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
-		/* Float */
+		/* Float 
 		static void Error(Math::F4IJK content) {
 
 			PRINT_ERROR_FLAG();
@@ -879,7 +873,7 @@ namespace ING {
 
 		}
 
-		/* Quaternion */
+		/* Quaternion 
 		static void Error(Math::Quaternion content) {
 
 			PRINT_ERROR_FLAG();
@@ -921,10 +915,10 @@ namespace ING {
 			std::wcout << " )" << std::endl;
 
 		}
-
+*/
 		/**
 		 *	Color
-		 */
+		 *//*
 		static void Error(Color content) {
 
 			PRINT_ERROR_FLAG();
@@ -966,7 +960,7 @@ namespace ING {
 			std::wcout << " )" << std::endl;
 
 		}
-
+		*/
 		#pragma endregion
 
 		#pragma region Warning_Methods
@@ -1141,7 +1135,7 @@ namespace ING {
 		/**
 		 *	Math
 		 */
-		 /* Vector */
+		 /* Vector 
 		static void Warning(Math::Vector2 content) {
 
 			PRINT_WARNING_FLAG();
@@ -1242,9 +1236,9 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
-		/* Float */
+		/* Float
 		static void Warning(Math::F4IJK content) {
 
 			PRINT_WARNING_FLAG();
@@ -1310,8 +1304,8 @@ namespace ING {
 			std::wcout << " )" << std::endl;
 
 		}
-
-		/* Quaternion */
+		*/
+		/* Quaternion 
 		static void Warning(Math::Quaternion content) {
 
 			PRINT_WARNING_FLAG();
@@ -1352,11 +1346,12 @@ namespace ING {
 
 			std::wcout << " )" << std::endl;
 
-		}
+		}*/
 
 		/**
 		 *	Color
 		 */
+		/*
 		static void Warning(Color content) {
 
 			PRINT_WARNING_FLAG();
@@ -1398,6 +1393,7 @@ namespace ING {
 			std::wcout << " )" << std::endl;
 
 		}
+		*/
 
 		#pragma endregion
 

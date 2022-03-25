@@ -19,34 +19,35 @@ using namespace ING::Utils;
 /**
  *	Include XMath
  */
-#include <ING/XMath/XMath.h>
+// <ING/XMath/XMath.h>
 
-using namespace ING::XMath;
+//using namespace ING::XMath;
 
 
 
 namespace ING {
 
-	struct ING_API Color : public AVector4 {
+
+	//struct ING_API Color : public AVector4 {
 	
 		/**
 		 *	Constructors And Destructor
 		 */
-	public:
-		Color();
+	//public:
+	//	Color();
 
-		Color(float x, float y, float z, float w);
+	//	Color(float x, float y, float z, float w);
 
-		~Color();
+	//	~Color();
 
 
 
 		/**
 		 *	Methods
 		 */
-	public:
-		static Color RGBToHSL(Color rgb);
+	//public:
+	//	static Color RGBToHSL(Color rgb);
 
-	};
+	//};
 
 }

@@ -57,6 +57,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include XMath
+ */
+//#include <ING/XMath/XMathDef.h>
+
+
+
 namespace ING {
 
 	/**
@@ -204,14 +211,14 @@ namespace ING {
 		/* Compute View Matrix */
 		if (transformM != nullptr) {
 
-			Matrix4x4 nonScaleTransformMatrix = transformM->translationMatrix * transformM->rotationMatrix;
+			//AMatrix4x4 nonScaleTransformMatrix = transformM->translationMatrix * transformM->rotationMatrix;
 
-			viewMatrix = nonScaleTransformMatrix.Inverse();
+			// = nonScaleTransformMatrix.Inverse();
 
 		}
 		else {
 
-			viewMatrix = Matrix4x4::Identity();
+			//viewMatrix = AMatrix4x4::Identity();
 
 		}
 
@@ -226,7 +233,7 @@ namespace ING {
 
 		}
 
-		projectionMatrix = Math::PerspectiveMatrix(fov, aspectRatio, nearPlane, farPlane);
+		//projectionMatrix = AMath::PerspectiveMatrix(fov, aspectRatio, nearPlane, farPlane);
 
 	}
 

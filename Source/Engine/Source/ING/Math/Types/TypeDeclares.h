@@ -1,8 +1,23 @@
 
-#include "Matrix/MatrixDeclares.h"
+namespace ING {
 
-#include "Vector\VectorDeclares.h"
+	namespace Math {
+		struct RFloat2;
+		struct RFloat3;
+		struct RFloat4;
 
-#include "Float\FloatDeclares.h"
+		struct CFloat2;
+		struct CFloat3;
+		struct CFloat4;
 
-#include "Quaternion\QuaternionDeclares.h"
+		struct RVector2;
+		struct RVector3;
+		struct RVector4;
+
+		struct CVector2;
+		struct CVector3;
+		struct CVector4;
+
+	}
+
+}

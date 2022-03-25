@@ -21,7 +21,7 @@ namespace ING {
 
 	/**
 	 *	Constructors And Destructor
-	 */
+	 *//*
 	Color::Color() : Color(1,1,1,1) 
 	{
 
@@ -43,11 +43,12 @@ namespace ING {
 
 	}
 
-
+	/*
 
 	/**
 	 *	Methods
 	 */
+	/*
 	Color Color::RGBToHSL(Color rgb) {
 		Color hsl;
 
@@ -98,5 +99,5 @@ namespace ING {
 		return hsl;
 
 	}
-
+	*/
 }

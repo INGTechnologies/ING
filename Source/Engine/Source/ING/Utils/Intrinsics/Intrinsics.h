@@ -63,6 +63,8 @@ namespace ING {
 		static const __m256 m256_i1_i1_i1_i1_i1_i1_i1_i1	= _mm256_set_ps(-1, -1, -1, -1, -1, -1, -1, -1);
 		static const __m256 m256_0_0_0_0_0_0_0_0			= _mm256_set_ps(0, 0, 0, 0, 0, 0, 0, 0);
 
+		static const std::pair<__m256, __m256> m256_0_0_0_0_0_0_0_0_x2(m256_0_0_0_0_0_0_0_0, m256_0_0_0_0_0_0_0_0);
+
 
 
 		static const __m256i M128_DUPLICATE_PERMUTE = _mm256_set_epi32(3,2,1,0,3,2,1,0);

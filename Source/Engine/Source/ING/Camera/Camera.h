@@ -26,9 +26,9 @@ using namespace ING::Utils;
 /**
  *	Include XMath
  */
-#include <ING/XMath/XMath.h>
+//#include <ING/XMath/XMath.h>
 
-using namespace ING::XMath;
+//using namespace ING::XMath;
 
 
 
@@ -103,8 +103,8 @@ namespace ING {
 
 		bool					isActive;
 
-		Matrix4x4				viewMatrix;
-		Matrix4x4				projectionMatrix;
+		//AMatrix4x4				viewMatrix;
+		//AMatrix4x4				projectionMatrix;
 
 		TransformM*				transformM;
 
@@ -134,8 +134,8 @@ namespace ING {
 
 		void					SetActive			(bool isActive)				{ this->isActive = isActive; }
 
-		Matrix4x4				GetViewMatrix		()							{ return viewMatrix; }
-		Matrix4x4				GetProjectionMatrix ()							{ return projectionMatrix; }
+		//AMatrix4x4				GetViewMatrix		()							{ return viewMatrix; }
+		//AMatrix4x4				GetProjectionMatrix ()							{ return projectionMatrix; }
 
 		TransformM*				GetTransformM		()							{ return transformM; }
 
