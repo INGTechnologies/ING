@@ -11,7 +11,8 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 - Step 2: Go to "Source/Demos/EngineDemo" folder, create "GitIgnores" folder and then paste all items in "Sample" folder to "GitIgnores" folder.
 - Step 3: Open ING solution (Source/ING...sln).
 - Step 4: Set Demos/EngineDemo project as startup project.
-- Step 5: Run.
+- Step 5: Change configuration to Debug2.
+- Step 6: Run.
 
 
 ## Documentation ##
