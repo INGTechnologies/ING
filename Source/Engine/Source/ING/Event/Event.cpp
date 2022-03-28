@@ -20,7 +20,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Event::Event() {
+	Event::Event() : currentNode(0) {
 
 
 

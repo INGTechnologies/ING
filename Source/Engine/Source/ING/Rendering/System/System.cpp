@@ -69,7 +69,11 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		System::System() {
+		System::System() :
+			defaultPipeline(0),
+			pipeline(0),
+			targetPipeline(0)
+		{
 
 			Debug::Log("Start Creating Rendering::System");
 

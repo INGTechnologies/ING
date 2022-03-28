@@ -41,7 +41,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IShader::IShader(IDevice* device, const std::string& name) {
+		IShader::IShader(IDevice* device, const std::string& name) : device(0) {
 
 			this->name = name;
 

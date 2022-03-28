@@ -34,7 +34,11 @@ namespace ING {
 
 		}
 
-		IMesh::IMesh(IDevice* device) {
+		IMesh::IMesh(IDevice* device) :
+			device(0),
+			vertexBuffer(0),
+			indexBuffer(0)
+		{
 
 			this->device = device;
 

@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IResource::IResource(IDevice* device) {
+		IResource::IResource(IDevice* device) : device(0) {
 
 			this->device = device;
 

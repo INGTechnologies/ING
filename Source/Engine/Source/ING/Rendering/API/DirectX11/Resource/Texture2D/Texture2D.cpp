@@ -15,7 +15,11 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Texture2D::Texture2D(IDevice* device) : ITexture2D(device) {
+			Texture2D::Texture2D(IDevice* device) : 
+				ITexture2D(device), 
+				
+				d3d11Texture2D(0) 
+			{
 
 
 

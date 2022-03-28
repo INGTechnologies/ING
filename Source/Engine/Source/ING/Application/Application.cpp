@@ -136,7 +136,9 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Application::Application() {
+	Application::Application() :
+		configuration(0)
+	{
 
 		state = NONE_APPLICATION_STATE;
 

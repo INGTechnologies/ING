@@ -77,7 +77,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDrawable::IDrawable() {
+		IDrawable::IDrawable() : layer(0) {
 
 			categoryNameVector.resize(0);
 

@@ -27,7 +27,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IState::IState(IDevice* device, const std::string& name) {
+		IState::IState(IDevice* device, const std::string& name) :
+			device(0)
+		{
 
 			this->name = name;
 

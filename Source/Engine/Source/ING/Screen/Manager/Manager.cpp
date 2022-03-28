@@ -55,7 +55,8 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ScreenManager::ScreenManager()
+	ScreenManager::ScreenManager() :
+		mainScreen(0)
 	{
 
 		Debug::Log("Start Creating ScreenManager");

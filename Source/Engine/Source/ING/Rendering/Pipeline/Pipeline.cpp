@@ -56,7 +56,11 @@ namespace ING {
 		/**IIDeviceContext
 		 *	Constructors And Destructor
 		 */
-		IPipeline::IPipeline	(std::string name) {
+		IPipeline::IPipeline	(std::string name) :
+			defaultRenderer(0),
+			renderer(0),
+			targetRenderer(0)
+		{
 
 			this->name = name;
 

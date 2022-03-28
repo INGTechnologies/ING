@@ -72,7 +72,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 			SwapChain::SwapChain(IDevice* device, Window* window) :
-				ISwapChain(device, window)
+				ISwapChain(device, window),
+
+				dxgiSwapChain(0)
 			{
 
 				ID3D11Device* d3d11Device = ((DirectX11::Device*)device)->GetD3D11Device();

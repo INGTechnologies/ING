@@ -36,7 +36,12 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			VertexShader::VertexShader(IDevice* device, ID3DBlob* blob) : IVertexShader(device) {
+			VertexShader::VertexShader(IDevice* device, ID3DBlob* blob) : 
+				IVertexShader(device),
+
+				blob(0),
+				d3d11VertexShader(0) 
+			{
 
 				this->blob = blob;
 

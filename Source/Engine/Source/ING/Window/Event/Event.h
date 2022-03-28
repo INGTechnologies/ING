@@ -46,7 +46,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		WindowEvent() {
+		WindowEvent() : window(0) {
 
 
 

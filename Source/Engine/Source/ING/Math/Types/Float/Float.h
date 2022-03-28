@@ -376,20 +376,21 @@ namespace ING {
 				float _21, float _22, float _23, float _24,
 				float _31, float _32, float _33, float _34,
 				float _41, float _42, float _43, float _44
-			) {
-
-
-
-			}
+			) :
+				m256_1(
+					_mm256_set_ps(_24, _23, _22, _21, _14, _13, _12, _11)
+				), 
+				m256_2(
+					_mm256_set_ps(_44, _43, _42, _41, _34, _33, _32, _31)
+				)
+			{}
 
 			inline RFloat4x4(__m256 m1, __m256 m2) : m256_1(m1), m256_2(m2) {}
 			inline RFloat4x4(__m128 m1, __m128 m2, __m128 m3, __m128 m4) : m128_1(m1), m128_2(m2), m128_3(m3), m128_4(m4) {}
 
 			inline RFloat4x4() :
 				RFloat4x4((void*)&m256_0_0_0_0_0_0_0_0_x2)
-			{
-
-			}
+			{}
 
 			inline RFloat4x4(const RFloat4x4& m) {
 
@@ -444,14 +445,13 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			inline float&	operator[](unsigned char i) {
-				return *(((float*)this) + i);
+			inline RFloat4&	operator[](unsigned char i) {
+				return *(((RFloat4*)this) + i);
 			}
 
-			inline void		operator=(const RFloat4x4& a) {
+			inline void		operator=(const RFloat4x4& m) {
 
-				m256_1 = a.m256_1;
-				m256_2 = a.m256_2;
+				memcpy(this, &m, sizeof(RFloat4x4));
 
 			}
 

@@ -31,7 +31,9 @@ namespace ING {
 		/**
 		 *	Constructor And Destructor
 		 */
-		Repository::Repository() {
+		Repository::Repository() :
+			node(0)
+		{
 
 			isActive = true;
 

@@ -40,12 +40,12 @@ namespace ING {
 			 */
 			struct Node {
 			public:
-				Node() {
+				Node() :
+					pValue(0),
+					next(0),
+					prev(0)
+				{}
 
-					next = nullptr;
-					prev = nullptr;
-
-				}
 				~Node() {
 
 
@@ -75,7 +75,10 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			NoDuplicatesList() {
+			NoDuplicatesList() :
+				headNode(0),
+				tailNode(0)
+			{
 
 				size = 0;
 

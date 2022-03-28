@@ -13,7 +13,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IView::IView	(IDevice* device) {
+		IView::IView	(IDevice* device) :
+			resource(0),
+			device(0)
+		{
 
 			this->device = device;
 

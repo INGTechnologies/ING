@@ -16,7 +16,7 @@ namespace ING {
 		 */
 		void CameraSystem::Init() {
 
-
+			
 
 		}
 

@@ -43,7 +43,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IAPI::IAPI() {
+		IAPI::IAPI() : 
+			device(0) 
+		{
 
 			convertor = IConvertor::Create();
 

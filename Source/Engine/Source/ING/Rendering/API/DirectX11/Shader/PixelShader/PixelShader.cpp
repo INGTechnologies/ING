@@ -36,7 +36,12 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			PixelShader::PixelShader(IDevice* device, ID3DBlob* blob) : IPixelShader(device) {
+			PixelShader::PixelShader(IDevice* device, ID3DBlob* blob) : 
+				IPixelShader(device),
+
+				blob(0),
+				d3d11PixelShader(0)
+			{
 
 				this->blob = blob;
 

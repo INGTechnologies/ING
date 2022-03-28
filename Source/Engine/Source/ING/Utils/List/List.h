@@ -41,7 +41,11 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Node() {
+				Node() : 
+					pValue(0),
+					next(0),
+					prev(0) 
+				{
 
 					next = nullptr;
 					prev = nullptr;
@@ -137,7 +141,10 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			List(): headNode(0), tailNode(0) {
+			List(): 
+				headNode(0), 
+				tailNode(0) 
+			{
 
 				size = 0;
 

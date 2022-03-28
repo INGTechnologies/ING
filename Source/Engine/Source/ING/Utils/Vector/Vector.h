@@ -8,6 +8,9 @@ namespace ING {
 	namespace Utils {
 
         template <typename T>
+        using Vector = std::vector<T>;
+
+        template <typename T>
         std::vector<T> operator+(const std::vector<T>& A, const std::vector<T>& B)
         {
             std::vector<T> AB;

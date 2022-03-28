@@ -44,7 +44,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 			RasterizerState::RasterizerState(IDevice* device, const std::string& name, const RasterizerStateDesc& desc) :
-				IRasterizerState(device, name, desc)
+				IRasterizerState(device, name, desc),
+
+				d3d11RSState(0)
 			{
 
 				D3D11_RASTERIZER_DESC d3ddesc;

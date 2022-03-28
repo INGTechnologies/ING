@@ -43,7 +43,12 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Device::Device() {
+			Device::Device() :
+				d3d11Device(0),
+				dxgiDevice(0),
+				dxgiAdapter(0),
+				dxgiFactory(0)
+			{
 
 				/**
 				 *	Create D3DDevice

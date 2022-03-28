@@ -28,9 +28,9 @@ namespace ING {
 		class Auto {
 
 		public:
-			Auto() {
+			Auto() : pData(0) {
 
-				pData = nullptr;
+
 
 			}
 			template<typename T>

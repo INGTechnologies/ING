@@ -27,7 +27,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDeviceContext::IDeviceContext(IDevice* device) {
+		IDeviceContext::IDeviceContext(IDevice* device) :
+			device(0)
+		{
 
 			this->device = device;
 

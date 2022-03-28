@@ -29,23 +29,25 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationThread::ApplicationThread(UpdateFunction updateFunction) : Thread([](Thread* thread) {
+	ApplicationThread::ApplicationThread(UpdateFunction updateFunction) : 
+		Thread([](Thread* thread) {
 
-		thread->WaitReady();
+			thread->WaitReady();
 
-		ThreadManager::GetInstance()->RegisterThread(thread);
+			ThreadManager::GetInstance()->RegisterThread(thread);
 			
-		ApplicationThread* applicationThread = (ApplicationThread*)thread;
+			ApplicationThread* applicationThread = (ApplicationThread*)thread;
 
-		while (Application::GetInstance()->GetState() == RUNNING_APPLICATION_STATE) {
+			while (Application::GetInstance()->GetState() == RUNNING_APPLICATION_STATE) {
 
-			applicationThread->Update();
+				applicationThread->Update();
 
-		}
+			}
 
-		ThreadManager::GetInstance()->UnregisterThread(thread);
+			ThreadManager::GetInstance()->UnregisterThread(thread);
 			
-	})
+		}), 
+		node(0)
 	{
 
 		isFrameStart = false;

@@ -184,11 +184,9 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Ref() {
-
-					arrayPtr = nullptr;
-
-				}
+				Ref() : 
+					arrayPtr(0) 
+				{}
 
 				Ref(MultiTypeArray* arrayPtr) {
 

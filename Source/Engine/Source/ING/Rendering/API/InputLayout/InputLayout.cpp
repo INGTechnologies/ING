@@ -34,7 +34,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IInputLayout::IInputLayout(IDevice* device) {
+		IInputLayout::IInputLayout(IDevice* device) :
+			device(0)
+		{
 
 			this->device = device;
 

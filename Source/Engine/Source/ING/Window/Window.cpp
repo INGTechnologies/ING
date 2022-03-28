@@ -168,7 +168,7 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	Window::Window() :
-		isMain(false), handle(NULL)
+		isMain(false), handle(NULL), screen(0)
 	{
 
 		InitEvents();
@@ -176,7 +176,7 @@ namespace ING {
 	}
 
 	Window::Window(WindowDesc desc) :
-		isMain(false), handle(NULL)
+		isMain(false), handle(NULL), screen(0)
 	{
 
 		InitEvents();

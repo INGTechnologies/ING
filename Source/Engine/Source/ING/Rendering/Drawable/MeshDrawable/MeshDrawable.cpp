@@ -126,7 +126,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		MeshDrawable::MeshDrawable() {
+		MeshDrawable::MeshDrawable() :
+			mesh(0),
+			material(0)
+		{
 
 
 

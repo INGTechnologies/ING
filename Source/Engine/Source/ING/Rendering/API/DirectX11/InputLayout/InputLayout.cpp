@@ -57,7 +57,11 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			InputLayout::InputLayout(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IVertexShader* vshader) : IInputLayout(device) {
+			InputLayout::InputLayout(IDevice* device, const std::vector<InputLayoutElementDesc>& desc, IVertexShader* vshader) : 
+				IInputLayout(device),
+
+				d3d11InputLayout(0)
+			{
 
 				unsigned int elementCount = desc.size();
 

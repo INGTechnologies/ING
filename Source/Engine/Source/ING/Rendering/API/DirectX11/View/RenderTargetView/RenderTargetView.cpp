@@ -15,7 +15,11 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			RenderTargetView::RenderTargetView(IDevice* device) : IRenderTargetView(device) {
+			RenderTargetView::RenderTargetView(IDevice* device) : 
+				IRenderTargetView(device),
+			
+				d3d11RenderTargetView(0)
+			{
 
 
 

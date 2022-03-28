@@ -41,7 +41,9 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	JobThread::JobThread() {
+	JobThread::JobThread() :
+		ingThread(0)
+	{
 
 
 

@@ -79,7 +79,9 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	Screen::Screen(Window* window) :
-		isMain(false)
+		isMain(false),
+		swapChain(0),
+		window(0)
 	{
 
 		this->window = window;

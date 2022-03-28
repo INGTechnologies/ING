@@ -60,7 +60,10 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationThreadManager::ApplicationThreadManager() {
+	ApplicationThreadManager::ApplicationThreadManager() :
+		renderingThread(0),
+		physicsThread(0)
+	{
 
 		Debug::Log("Start Creating ApplicationThreadManager");
 

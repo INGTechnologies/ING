@@ -69,7 +69,11 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Camera::Camera()
+	Camera::Camera() :
+		transformM(0),
+		node(0),
+		renderingPipeline(0),
+		renderingScene(0)
 	{
 
 		isActive	= true;
@@ -226,11 +230,13 @@ namespace ING {
 
 		/* Compute Projection Matrix */
 		float aspectRatio = 1.0f;
-		
-		if (screen != nullptr) {
 
-			aspectRatio = screen->GetAspectRatio();
+		if (targetMode == CAMERA_TARGET_SCREEN) {
+			if (screen != nullptr) {
 
+				aspectRatio = screen->GetAspectRatio();
+
+			}
 		}
 
 		//projectionMatrix = AMath::PerspectiveMatrix(fov, aspectRatio, nearPlane, farPlane);

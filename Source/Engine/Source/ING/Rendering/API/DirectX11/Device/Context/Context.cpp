@@ -86,7 +86,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 			DeviceContext::DeviceContext(Rendering::IDevice* device):
-				Rendering::IDeviceContext(device)
+				Rendering::IDeviceContext(device),
+
+				d3d11DeviceContext(0)
 			{
 
 				((DirectX11::Device*)device)->GetD3D11Device()->GetImmediateContext(&d3d11DeviceContext);

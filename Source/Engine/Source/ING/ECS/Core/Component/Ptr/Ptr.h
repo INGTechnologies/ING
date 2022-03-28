@@ -47,6 +47,27 @@ namespace ING {
 		class IComponentPtr {
 
 			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			IComponentPtr() :
+				icomponentSystem(0),
+				id(0)
+			{
+
+
+
+			}
+
+			~IComponentPtr() {
+
+
+
+			}
+
+
+
+			/**
 			 *	Properties
 			 */
 		protected:
@@ -54,8 +75,8 @@ namespace ING {
 			IComponentSystem*	icomponentSystem;
 
 		public:
-			ComponentId			GetId				() { return id; }
-			IComponentSystem*	GetIComponentSystem	() { return icomponentSystem; }
+			ComponentId			GetId				() const { return id; }
+			IComponentSystem*	GetIComponentSystem	() const { return icomponentSystem; }
 
 			void				SetId(ComponentId id) {
 
@@ -82,13 +103,15 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ComponentPtr() {
+			ComponentPtr() :
+				IComponentPtr()
+			{
 
 
 
 			}
 
-			ComponentPtr(IComponentPtr iPtr) {
+			ComponentPtr(const IComponentPtr& iPtr) {
 
 				id					= iPtr.GetId();
 				icomponentSystem	= iPtr.GetIComponentSystem();
@@ -107,13 +130,15 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			TComponentSystem* GetComponentSystem() {
+			TComponentSystem* GetComponentSystem() const {
 
 				return (TComponentSystem*)icomponentSystem;
 
 			}
 
-			T& GetComponent() { return *this; }
+			T& GetComponent() const { return *this; }
+
+			bool IsNull() const { return (id == 0) && (icomponentSystem == 0); }
 
 
 
@@ -121,8 +146,8 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			T& operator * ();
-			T* operator -> ();
+			T& operator * () const;
+			T* operator -> () const;
 
 		};
 

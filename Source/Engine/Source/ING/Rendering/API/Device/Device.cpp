@@ -34,7 +34,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDevice::IDevice() {
+		IDevice::IDevice() :
+			context(0)
+		{
 
 
 

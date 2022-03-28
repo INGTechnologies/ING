@@ -64,7 +64,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		APIManager::APIManager() {
+		APIManager::APIManager() :
+			api(0)
+		{
 
 			Debug::Log("Start Creating Rendering::APIManager");
 
@@ -102,7 +104,7 @@ namespace ING {
 
 			if (!InitAPI()) {
 
-				Debug::Log("Cant Init Rendering API");
+				Debug::Log("Cant Init Rendering::API");
 				Debug::Log("Cant Init Rendering::APIManager");
 
 				return false;

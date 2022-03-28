@@ -36,7 +36,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Buffer::Buffer(IDevice* device) : IBuffer(device) {
+			Buffer::Buffer(IDevice* device) : IBuffer(device), d3d11Buffer(0) {
 
 
 

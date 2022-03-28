@@ -55,7 +55,9 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	WindowManager::WindowManager()
+	WindowManager::WindowManager() : 
+		mainWindow(0),
+		consoleWindow(0)
 	{
 
 		Debug::Log("Start Creating WindowManager");

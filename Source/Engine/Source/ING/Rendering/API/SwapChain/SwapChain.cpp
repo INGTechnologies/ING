@@ -76,7 +76,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ISwapChain::ISwapChain(IDevice* device, Window* window) {
+		ISwapChain::ISwapChain(IDevice* device, Window* window) :
+			node(0),
+			window(0),
+			renderTargetView(0),
+			device(0)
+		{
 
 			this->device = device;
 
