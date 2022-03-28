@@ -72,6 +72,7 @@ namespace ING {
 			 *	Event Methods
 			 */
 		public:
+			void PreUpdate();
 			void Update();
 
 		};

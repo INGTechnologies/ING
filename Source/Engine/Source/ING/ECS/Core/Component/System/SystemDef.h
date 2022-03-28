@@ -228,6 +228,13 @@ namespace ING {
 		}
 
 		template<typename T, class TComponentSystem>
+		void						ComponentSystem<T, TComponentSystem>::PreUpdate() {
+
+
+
+		}
+
+		template<typename T, class TComponentSystem>
 		void						ComponentSystem<T, TComponentSystem>::IDestroy(IComponentPtr componentPtr) {
 
 			ComponentPtr<T, TComponentSystem> tPtr;

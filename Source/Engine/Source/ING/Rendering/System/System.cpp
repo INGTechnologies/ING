@@ -62,6 +62,20 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -101,6 +115,12 @@ namespace ING {
 			targetPipeline = defaultPipeline;
 
 			isRendering = false;
+
+			Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* e) {
+
+				System::GetInstance()->PreUpdate();
+
+			});
 
 			Debug::Log("Rendering::System Initialized");
 
@@ -142,6 +162,12 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void System::PreUpdate() {
+
+
+
+		}
+
 		void System::FrameUpdate() {
 
 			/* Set Pipeline */

@@ -127,6 +127,18 @@ namespace ING {
 		/**
 		 *	Event Methods
 		 */
+		void				Repository::PreUpdate() {
+
+			for (auto& item : componentSystemTypeId2ComponentSystemMap) {
+
+				IComponentSystem* isystem = item.second;
+
+				isystem->PreUpdate();
+
+			}
+
+		}
+
 		void				Repository::Update() {
 
 			for (auto& item : componentSystemTypeId2ComponentSystemMap) {

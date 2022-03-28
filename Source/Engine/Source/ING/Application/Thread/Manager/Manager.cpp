@@ -106,17 +106,17 @@ namespace ING {
 		/**
 		 *	Add Event Listeners
 		 */
-		Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* event) {
+		//Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* event) {
 			
-			ApplicationThreadManager::GetInstance()->StartFrame();
+		//	ApplicationThreadManager::GetInstance()->StartFrame();
 			
-		});
+		//});
 
-		Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
+		//Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* event) {
 
-			ApplicationThreadManager::GetInstance()->EndFrame();
+		//	ApplicationThreadManager::GetInstance()->EndFrame();
 
-		});
+		//});
 
 		Debug::Log("ApplicationThreadManager Initialized");
 

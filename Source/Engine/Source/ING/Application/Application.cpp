@@ -183,11 +183,13 @@ namespace ING {
 		/* Event Managers */
 		AddSquare<EventManager>();
 
+		/* Application Event Managers */
 		AddSquare<ApplicationEventManager>();
 
 		/* Thread Managers */
 		AddSquare<ThreadManager>();
 
+		/* Application Thread Managers */
 		AddSquare<ApplicationThreadManager>();
 
 		/* Rendering Engine */
@@ -340,7 +342,12 @@ namespace ING {
 
 
 
+		ECS::RepositoryManager::GetInstance()->PreUpdate();
+
+
 		GetEvent("START_FRAME_UPDATE")->Execute();
+
+		ApplicationThreadManager::GetInstance()->StartFrame();
 
 		if (!configuration->Get<bool>("ING::ApplicationThreadManager::usePhysicsThread")) {
 
@@ -350,7 +357,6 @@ namespace ING {
 
 
 
-		/* Update Repositories */
 		ECS::RepositoryManager::GetInstance()->Update();
 
 
@@ -360,6 +366,8 @@ namespace ING {
 			Rendering::Engine::GetInstance()->FrameUpdate();
 
 		}
+
+		ApplicationThreadManager::GetInstance()->EndFrame();
 
 		GetEvent("END_FRAME_UPDATE")->Execute();
 

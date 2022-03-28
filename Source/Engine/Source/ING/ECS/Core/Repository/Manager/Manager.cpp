@@ -95,6 +95,18 @@ namespace ING {
 		/**
 		 *	Event Methods
 		 */
+		void						RepositoryManager::PreUpdate() {
+
+			repositoryList.Foreach([](Repository*& repository){
+
+				if (!repository->IsActive()) return;
+
+				repository->PreUpdate();
+
+			});
+
+		}
+
 		void						RepositoryManager::Update() {
 
 			repositoryList.Foreach([](Repository*& repository){

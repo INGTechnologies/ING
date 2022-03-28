@@ -100,6 +100,12 @@ namespace ING {
 
 			}
 
+			virtual void PreUpdate() {
+
+
+
+			}
+
 			virtual void IDestroy(IComponentPtr componentPtr) {
 
 
@@ -193,6 +199,8 @@ namespace ING {
 			virtual void IStart	(IComponentPtr componentPtr)	override;
 
 			virtual void Update ()								override;
+
+			virtual void PreUpdate()							override;
 
 			virtual void Destroy(ComponentPtr<T, TComponentSystem> componentPtr) { }
 
