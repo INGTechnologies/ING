@@ -24,6 +24,8 @@ namespace ING {
 
 	namespace Math {
 
+#ifdef __AVX__
+
 #pragma region CVector2 
 		struct ING_API CVector2 {
 
@@ -74,6 +76,8 @@ namespace ING {
 			static inline float	DotProduct(CVector2 a, CVector2 b) {
 				return a.x * b.x + a.y * b.y;
 			}
+
+			inline RVector2		Transpose() const;
 
 
 
@@ -179,6 +183,8 @@ namespace ING {
 
 			}
 
+			inline RVector3		Transpose() const;
+
 
 
 			/**
@@ -203,7 +209,7 @@ namespace ING {
 
 		};
 		
-		static inline CVector3 operator+(const CVector3& a, const CVector3& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline CVector3 operator+(const CVector3& a, const CVector3& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline CVector3 operator-(const CVector3& a, const CVector3& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 
@@ -230,7 +236,7 @@ namespace ING {
 
 
 
-		static inline void    operator+=(CVector3& a, const CVector3& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+		static inline void    operator+=(CVector3& a, const CVector3& b)		{ a.m128 = _mm_add_ps(a.m128, b.m128); }
 
 		static inline void    operator-=(CVector3& a, const CVector3& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
 
@@ -312,7 +318,7 @@ namespace ING {
 
 			}
 
-			RVector4		Transpose();
+			inline RVector4	Transpose() const;
 
 
 
@@ -338,7 +344,7 @@ namespace ING {
 
 		};
 		
-		static inline CVector4 operator+(const CVector4& a, const CVector4& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline CVector4 operator+(const CVector4& a, const CVector4& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline CVector4 operator-(const CVector4& a, const CVector4& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 
@@ -364,7 +370,7 @@ namespace ING {
 
 
 
-		static inline void    operator+=(CVector4& a, const CVector4& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+		static inline void    operator+=(CVector4& a, const CVector4& b)		{ a.m128 = _mm_add_ps(a.m128, b.m128); }
 
 		static inline void    operator-=(CVector4& a, const CVector4& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
 
@@ -431,6 +437,8 @@ namespace ING {
 			static inline float	DotProduct(RVector2 a, RVector2 b) {
 				return a.x * b.x + a.y * b.y;
 			}
+
+			inline CVector2		Transpose() const;
 
 
 
@@ -536,6 +544,8 @@ namespace ING {
 
 			}
 
+			inline CVector3	Transpose() const;
+
 
 
 			/**
@@ -560,7 +570,7 @@ namespace ING {
 
 		};
 		
-		static inline RVector3 operator+(const RVector3& a, const RVector3& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline RVector3 operator+(const RVector3& a, const RVector3& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline RVector3 operator-(const RVector3& a, const RVector3& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 
@@ -587,7 +597,7 @@ namespace ING {
 
 
 
-		static inline void    operator+=(RVector3& a, const RVector3& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+		static inline void    operator+=(RVector3& a, const RVector3& b)		{ a.m128 = _mm_add_ps(a.m128, b.m128); }
 
 		static inline void    operator-=(RVector3& a, const RVector3& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
 
@@ -669,6 +679,8 @@ namespace ING {
 
 			}
 
+			inline CVector4	Transpose() const;
+
 
 
 			/**
@@ -693,7 +705,7 @@ namespace ING {
 
 		};
 		
-		static inline RVector4 operator+(const RVector4& a, const RVector4& b)	{ return _mm_add_ps(a.m128, a.m128); }
+		static inline RVector4 operator+(const RVector4& a, const RVector4& b)	{ return _mm_add_ps(a.m128, b.m128); }
 
 		static inline RVector4 operator-(const RVector4& a, const RVector4& b)	{ return _mm_sub_ps(a.m128, b.m128); }
 
@@ -719,7 +731,7 @@ namespace ING {
 
 
 
-		static inline void    operator+=(RVector4& a, const RVector4& b)		{ a.m128 = _mm_add_ps(a.m128, a.m128); }
+		static inline void    operator+=(RVector4& a, const RVector4& b)		{ a.m128 = _mm_add_ps(a.m128, b.m128); }
 
 		static inline void    operator-=(RVector4& a, const RVector4& b)		{ a.m128 = _mm_sub_ps(a.m128, b.m128); }
 
@@ -737,17 +749,17 @@ namespace ING {
 
 
 #pragma region VectorConvertors
-		static inline CVector2& Vector(const CFloat2& f) {
+		static inline CVector2 Vector(const CFloat2& f) {
 
 			return *((CVector2*)&f);
 
 		}
-		static inline CVector3& Vector(const CFloat3& f) {
+		static inline CVector3 Vector(const CFloat3& f) {
 
 			return *((CVector3*)&f);
 
 		}
-		static inline CVector4& Vector(const CFloat4& f) {
+		static inline CVector4 Vector(const CFloat4& f) {
 
 			return *((CVector4*)&f);
 
@@ -755,22 +767,24 @@ namespace ING {
 
 
 
-		static inline RVector2& Vector(const RFloat2& f) {
+		static inline RVector2 Vector(const RFloat2& f) {
 
 			return *((RVector2*)&f);
 
 		}
-		static inline RVector3& Vector(const RFloat3& f) {
+		static inline RVector3 Vector(const RFloat3& f) {
 
 			return *((RVector3*)&f);
 
 		}
-		static inline RVector4& Vector(const RFloat4& f) {
+		static inline RVector4 Vector(const RFloat4& f) {
 
 			return *((RVector4*)&f);
 
 		}
 #pragma endregion
+
+#endif
 
 	}
 
