@@ -104,8 +104,8 @@ namespace ING {
 
 			if (!InitAPI()) {
 
-				Debug::Log("Cant Init Rendering::API");
-				Debug::Log("Cant Init Rendering::APIManager");
+				Debug::Error("Cant Init Rendering::API");
+				Debug::Error("Cant Init Rendering::APIManager");
 
 				return false;
 
@@ -120,7 +120,7 @@ namespace ING {
 			}
 			else {
 
-				Debug::Log("Cant Init Rendering::APIManager");
+				Debug::Error("Cant Init Rendering::APIManager");
 
 			}
 
@@ -181,7 +181,7 @@ namespace ING {
 			}
 			else {
 
-				Debug::Log("Cant Release Rendering::APIManager");
+				Debug::Error("Cant Release Rendering::APIManager");
 
 			}
 

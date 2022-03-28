@@ -198,7 +198,7 @@ namespace ING {
 				Debug::Log("Finished Releasing Rendering::Engine");
 			else {
 
-				Debug::Log("Cant Release Rendering::Engine");
+				Debug::Error("Cant Release Rendering::Engine");
 
 			}
 

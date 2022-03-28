@@ -110,6 +110,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -131,6 +132,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>

@@ -216,6 +216,10 @@ namespace ING {
 
 
 
+		APPLICATION_CONFIG_PROP(bool, "ING::Application::pauseAppWhenClose", true);
+
+
+
 		Debug::Log("Application Created");
 
 	}
@@ -309,7 +313,7 @@ namespace ING {
 			Debug::Log("Finished Releasing Application");
 		else {
 
-			Debug::Log("Cant Release Application");
+			Debug::Error("Cant Release Application");
 
 		}
 
@@ -322,9 +326,17 @@ namespace ING {
 
 		Debug::Log("Start Shuting Down Application");
 
+		bool pauseAppWhenClose = configuration->Get<bool>("ING::Application::pauseAppWhenClose");
+
 		Release();
 
 		Debug::Log("Finished Shutting Application");
+
+		if(pauseAppWhenClose) {
+			system("pause");
+		}
+
+		exit(0);
 	}
 
 

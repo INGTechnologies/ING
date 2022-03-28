@@ -73,11 +73,7 @@ namespace ING {
 
 			FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(filePath);
 
-			std::string basicStrContent;
-			
-			std::transform(fileResource->content.begin(), fileResource->content.end(), std::back_inserter(basicStrContent), [](wchar_t c) {
-				return (char)c;
-			});
+			std::string basicStrContent = String(fileResource->content);
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{

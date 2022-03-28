@@ -93,7 +93,7 @@ namespace ING {
 			Debug::Log("Finished Releasing Core");
 		else {
 
-			Debug::Log("Cant Release Core");
+			Debug::Error("Cant Release Core");
 
 		}
 

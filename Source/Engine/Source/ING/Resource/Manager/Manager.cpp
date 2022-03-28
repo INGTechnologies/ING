@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
 
 namespace ING {
 
@@ -89,11 +96,22 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
+	bool			ResourceManager::IsFileExist	(const std::wstring& path) {
+
+		return std::filesystem::exists(path);
+
+	}
+
 	std::wstring	ResourceManager::ReadFile(const std::wstring& path, CoderOption& coderOption) {
 
+		if (!IsFileExist(path)) {
 
+			Debug::Error(String("Cant Read File ") + String('"') + String(path) + String('"'));
 
-		std::wstring parsedPath = path;
+			Application::GetInstance()->Shutdown();
+
+			return L"";
+		}
 
 
 
@@ -111,11 +129,11 @@ namespace ING {
 
 
 		/* Get File Size */
-		fileStream.seekg(0, std::ios::end);
+		fileStream.seekg(0, std::wios::end);
 
 		fileSize = fileStream.tellg();
 
-		fileStream.seekg(0, std::ios::beg);
+		fileStream.seekg(0, std::wios::beg);
 
 
 
@@ -145,9 +163,14 @@ namespace ING {
 
 	void			ResourceManager::WriteFile(const std::wstring& path, const std::wstring& content, CoderOption& coderOption) {
 
+		if (!IsFileExist(path)) {
 
+			Debug::Error(String("Cant Write File ") + String('"') + String(path) + String('"'));
 
-		std::wstring parsedPath = path;
+			Application::GetInstance()->Shutdown();
+
+			return;
+		}
 
 
 
