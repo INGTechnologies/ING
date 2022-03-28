@@ -28,9 +28,16 @@
 
 
 /**
- *	Include Frame Update Event
+ *	Include Start Frame Update Event
  */
 #include <ING/Application/Event/FrameUpdate/Start.h>
+
+
+
+/**
+ *	Include Frame Update Event
+ */
+#include <ING/Application/Event/FrameUpdate/FrameUpdate.h>
 
 
 
@@ -85,8 +92,11 @@ namespace ING {
 		/* Shutdown Event */
 		Application::GetInstance()->AddEvent( new ApplicationShutdownEvent());
 
-		/* Frame Update Event */
+		/* Start Frame Update Event */
 		Application::GetInstance()->AddEvent( new ApplicationStartFrameUpdateEvent());
+
+		/* Frame Update Event */
+		Application::GetInstance()->AddEvent(new ApplicationFrameUpdateEvent());
 
 		/* End Frame Update Event */
 		Application::GetInstance()->AddEvent( new ApplicationEndFrameUpdateEvent());
