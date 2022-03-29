@@ -75,6 +75,7 @@ namespace ING {
 			 */
 		public:
 			virtual void RemoveComponent(Entity* entity);
+			virtual void AddComponent(Entity* entity) {}
 
 
 
@@ -164,9 +165,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			ComponentPtr<T, TComponentSystem>	AddComponent				(Entity* entity, T& component);
-
-			ComponentPtr<T, TComponentSystem>	AddComponent				(Entity* entity);
+			virtual void						AddComponent				(Entity* entity) override;
 
 			ComponentPtr<T, TComponentSystem>	GetComponent				(Entity* entity);
 
@@ -232,3 +231,20 @@ public:\
 \
 protected:\
 	TComponentSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<T, TComponentSystem>(repository) {}\
+
+#define ECS_FOREACH_COMPONENT(T, TComponentSystem, itemName,system, callback)\
+{\
+\
+for (unsigned int index = 0; index < (system)->GetArray().GetFilledCount(); ++index) {\
+\
+ECS::ComponentPtr<T, TComponentSystem> itemName;\
+\
+itemName.SetId((system)->GetArray().Index2Id(index));\
+\
+itemName.SetIComponentSystem(system);\
+\
+callback\
+\
+}\
+\
+}

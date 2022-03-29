@@ -99,6 +99,7 @@ namespace ING {
 			void				ReleaseComponentSystem();
 
 			Entity*				CreateEntity();
+			Entity*				CreateEntity(const std::vector<IComponentSystem*> systemVector);
 
 			void				ReleaseEntity(Entity* entity);
 

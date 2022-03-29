@@ -7,6 +7,13 @@
 
 
 
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -31,9 +38,22 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void CameraSystem::CopyDataForRendering(Camera& camera) {
+
+			TransformPtr transform = GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(camera.GetEntity());
+
+			camera.GetINGCamera()->SetTransform(transform->GetMatrices());
+
+		}
+
+
+
+		/**
+		 *	Event Methods
+		 */
 		void CameraSystem::Awake(CameraPtr componentPtr) {
 
-
+			componentPtr->ingCamera = new ING::Camera();
 
 		}
 
@@ -49,9 +69,19 @@ namespace ING {
 
 		}
 
+		void CameraSystem::PreUpdate() {
+
+			for (auto& camera : *this) {
+
+				CopyDataForRendering(camera);
+
+			}
+
+		}
+
 		void CameraSystem::Destroy(CameraPtr componentPtr) {
 
-
+			componentPtr->GetINGCamera()->Release();
 
 		}
 

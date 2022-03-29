@@ -19,9 +19,9 @@ using namespace ING::Utils;
 /**
  *	Include Math
  */
-//#include <ING/Math/Math.h>
+#include <ING/Math/Math.h>
 
-//using namespace ING::Math;
+using namespace ING::Math;
 
 
 
@@ -42,10 +42,9 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-	//public:
-		//Vector3		localPosition;
-		//Vector3		localScale;
-		//Quaternion	localRotation;
+	public:
+		RVector3	localPosition;
+		RVector3	localScale;
 
 	};
 

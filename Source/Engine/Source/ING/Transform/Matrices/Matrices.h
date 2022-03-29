@@ -17,11 +17,11 @@ using namespace ING::Utils;
 
 
 /**
- *	Include XMath
+ *	Include Math
  */
-//#include <ING/XMath/XMath.h>
+#include <ING/Math/Math.h>
 
-//using namespace ING::XMath;
+using namespace ING::Math;
 
 
 
@@ -42,10 +42,10 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-	//public:
-		//AMatrix4x4	translationMatrix;
-		//AMatrix4x4	scaleMatrix;
-		//AMatrix4x4	rotationMatrix;
+	public:
+		RMatrix4x4	translationMatrix;
+		RMatrix4x4	scaleMatrix;
+		RMatrix4x4	rotationMatrix;
 
 	};
 

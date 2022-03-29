@@ -80,16 +80,11 @@ using namespace ING::Utils;
 
 
 /**
- *	Include AMath
+ *	Include Math
  */
-//#include <ING/Math/Math.h>
+#include <ING/Math/Math.h>
 
-
-
-/**
- *	Include AMath
- */
-//#include <ING/AMath/AMath.h>
+using namespace ING::Math;
 
 
 
@@ -152,7 +147,7 @@ namespace ING {
 
 		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices, bool updateBuffer) {
 
-			//SetProperty<AMatrix4x4>("ING_WorldMatrix", transformMatrices.translationMatrix, false);
+			SetProperty<RMatrix4x4>("ING_WorldMatrix", transformMatrices.translationMatrix, false);
 
 			if (updateBuffer) {
 
@@ -167,8 +162,8 @@ namespace ING {
 
 		void DrawableMaterial::ApplyCamera(Camera* camera, bool updateBuffer) {
 
-			//SetProperty<AMatrix4x4>("ING_ViewMatrix", camera->GetViewMatrix(), false);
-			//SetProperty<AMatrix4x4>("ING_ProjectionMatrix", camera->GetProjectionMatrix().Transpose(), false);
+			SetProperty<RMatrix4x4>("ING_ViewMatrix", camera->GetViewMatrix(), false);
+			SetProperty<RMatrix4x4>("ING_ProjectionMatrix", camera->GetProjectionMatrix(), false);
 
 			if (updateBuffer) {
 

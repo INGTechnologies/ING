@@ -26,9 +26,10 @@ using namespace ING::Utils;
 /**
  *	Include Math
  */
-//#include <ING/Math/Math.h>
+#include <ING/Math/Math.h>
 
-#include <DirectXMath.h>
+using namespace ING::Math;
+
 
 
 namespace ING {
@@ -47,11 +48,11 @@ namespace ING {
 
 #define COMMON_SHADER_PROPERTIES \
 \
-			ShaderProperty("ING_WorldMatrix",			sizeof(DirectX::XMFLOAT4X4)),\
-			ShaderProperty("ING_ViewMatrix",			sizeof(DirectX::XMFLOAT4X4)),\
-			ShaderProperty("ING_ProjectionMatrix",		sizeof(DirectX::XMFLOAT4X4)),\
+			ShaderProperty("ING_WorldMatrix",			sizeof(RMatrix4x4)),\
+			ShaderProperty("ING_ViewMatrix",			sizeof(RMatrix4x4)),\
+			ShaderProperty("ING_ProjectionMatrix",		sizeof(RMatrix4x4)),\
 \
-			ShaderProperty("ING_WorldViewProjMatrix",	sizeof(DirectX::XMFLOAT4X4))\
+			ShaderProperty("ING_WorldViewProjMatrix",	sizeof(RMatrix4x4))\
 \
 
 		}

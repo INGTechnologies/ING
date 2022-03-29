@@ -9,9 +9,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Camera
+ *	Include MeshDrawable
  */
-#include <ING/Camera/Camera.h>
+#include <ING/Rendering/Drawable/MeshDrawable/MeshDrawable.h>
 
 
 
@@ -26,35 +26,44 @@ namespace ING {
 
 	namespace ECS {
 
-		class CameraSystem;
+		class MeshDrawableSystem;
 
 
 
 		/**
 		 *	Component
 		 */
-		static ING_API struct Camera {
+		static ING_API struct MeshDrawable :
+			public Component
+		{
+
+		public:
+			friend class MeshDrawableSystem;
+
+
+
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			MeshDrawable(Entity* entity) :
+				Component(entity)
+			{
+			
+				
+			
+			}
+
+
 
 			/**
 			 *	Properties
 			 */
 		private:
-			ING::Camera* ingCamera;
+			ING::Rendering::MeshDrawable* ingMeshDrawable;
 
 		public:
-			ING::Camera* GetINGCamera() { return ingCamera; }
-		
-
-
-			/**
-			 *	Operators
-			 */
-		public:
-			ING::Camera* operator->() {
-
-				return ingCamera;
-
-			}
+			ING::Rendering::MeshDrawable* GetINGMeshDrawable () { return ingMeshDrawable; }
 
 		};
 
@@ -63,18 +72,26 @@ namespace ING {
 		/**
 		 *	Component Pointer
 		 */
-		using CameraPtr = ComponentPtr<Camera, CameraSystem>;
+		using MeshDrawablePtr = ComponentPtr<ECS::MeshDrawable, MeshDrawableSystem>;
 
 
 
 		/**
 		 *	Component System
 		 */
-		static ING_API ECS_COMPONENT_SYSTEM(CameraSystem, Camera)
+		static ING_API ECS_COMPONENT_SYSTEM(MeshDrawableSystem, MeshDrawable)
 
 		public:
 			virtual void Init() override;
 			virtual void Release() override;
+
+							
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void CopyDataForRendering(MeshDrawable& drawable);
 
 
 
@@ -82,10 +99,11 @@ namespace ING {
 			 *	Event Methods
 			 */
 		public:
-			virtual void Awake(CameraPtr componentPtr) override;
-			virtual void Start(CameraPtr componentPtr) override;
+			virtual void Awake(MeshDrawablePtr componentPtr) override;
+			virtual void Start(MeshDrawablePtr componentPtr) override;
+			virtual void PreUpdate() override;
 			virtual void Update() override;
-			virtual void Destroy(CameraPtr componentPtr) override;
+			virtual void Destroy(MeshDrawablePtr componentPtr) override;
 
 		};
 

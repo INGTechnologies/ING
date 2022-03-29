@@ -32,14 +32,14 @@ namespace ING {
 		 *	Operators
 		 */
 		template<typename T, class TComponentSystem>
-		T&	ComponentPtr<T, TComponentSystem>::operator * () const {
+		T&	ComponentPtr<T, TComponentSystem>::operator * () {
 
 			return GetComponentSystem()->GetComponentFromPtr(*this);
 
 		}
 
 		template<typename T, class TComponentSystem>
-		T* ComponentPtr<T, TComponentSystem>::operator -> () const {
+		T* ComponentPtr<T, TComponentSystem>::operator -> () {
 
 			return GetComponentSystem()->GetComponentDataPtrFromPtr(*this);
 

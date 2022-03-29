@@ -176,15 +176,15 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void	Screen::AddCamera(Camera* camera) {
+	List<Camera*>::Node* Screen::AddCamera(Camera* camera) {
 
-		cameraList.Add(camera);
+		return cameraList.Add(camera);
 
 	}
 
 	void	Screen::RemoveCamera(Camera* camera) {
 
-		cameraList.Remove(camera);
+		cameraList.Remove(camera->GetNodeInScreenCameraList());
 
 	}
 	

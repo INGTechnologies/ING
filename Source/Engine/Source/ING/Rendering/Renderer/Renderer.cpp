@@ -125,6 +125,13 @@ namespace ING {
 		 */
 		void IRenderer::RenderDrawables(Camera* camera, const std::string& categoryName, const std::string& passName) {
 
+			if (camera->GetRenderingScene() == 0) {
+
+				Debug::Warning(String("Camera ") + String(camera) + String(" Do Not Have Any Rendering Scene"));
+
+				return;
+			}
+
 			const std::vector<Layer*>& layerVector = camera->GetRenderingScene()->GetLayerVector();
 
 			unsigned int layerVectorSize = layerVector.size();

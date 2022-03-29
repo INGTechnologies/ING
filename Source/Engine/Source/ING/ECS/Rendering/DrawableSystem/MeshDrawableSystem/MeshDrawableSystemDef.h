@@ -7,6 +7,20 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
+/**
+ *	Include Transform Component System
+ */
+#include <ING/ECS/TransformSystem/TransformSystem.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -31,15 +45,38 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void MeshDrawableSystem::CopyDataForRendering(MeshDrawable& drawable) {
+
+			TransformPtr transform = GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(drawable.GetEntity());
+
+			drawable.GetINGMeshDrawable()->SetTransform(transform->GetMatrices());
+
+		}
+
+
+
+		/**
+		 *	Event Methods
+		 */
 		void MeshDrawableSystem::Awake(MeshDrawablePtr componentPtr) {
 
-
+			componentPtr->ingMeshDrawable = new ING::Rendering::MeshDrawable();
 
 		}
 
 		void MeshDrawableSystem::Start(MeshDrawablePtr componentPtr) {
 
 
+
+		}
+
+		void MeshDrawableSystem::PreUpdate() {
+
+			for(auto& drawable : *this){
+
+				CopyDataForRendering(drawable);
+				
+			};
 
 		}
 
@@ -51,7 +88,7 @@ namespace ING {
 
 		void MeshDrawableSystem::Destroy(MeshDrawablePtr componentPtr) {
 
-
+			componentPtr->ingMeshDrawable->Release();
 
 		}
 

@@ -40,6 +40,8 @@ namespace ING {
 
 			this->repository = repository;
 
+			//array.callDestructor = true;
+
 		}
 
 
@@ -70,13 +72,13 @@ namespace ING {
 		 *	Methods
 		 */
 		template<typename T, class TComponentSystem>
-		ComponentPtr<T, TComponentSystem>	ComponentSystem<T, TComponentSystem>::AddComponent	(Entity* entity, T& component)	{
+		void	ComponentSystem<T, TComponentSystem>::AddComponent	(Entity* entity) {
 
 			ComponentPtr<T, TComponentSystem> result;
 
 			ComponentId id = idGenerator.GenUInt64();
 
-			array.Add(component, id);
+			array.Add(T(entity), id);
 
 			result.SetId(id);
 			result.SetIComponentSystem(this);
@@ -84,17 +86,6 @@ namespace ING {
 			entity->AddComponent<T, TComponentSystem>(result);
 
 			Awake(result);
-
-			return result;
-
-		}
-
-		template<typename T, class TComponentSystem>
-		ComponentPtr<T, TComponentSystem>	ComponentSystem<T, TComponentSystem>::AddComponent	(Entity* entity) {
-
-			T component;
-
-			return AddComponent(entity, component);
 
 		}
 

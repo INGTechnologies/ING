@@ -7,8 +7,8 @@
  */
 #include "TransformSystem/TransformSystem.h"
 #include "CameraSystem/CameraSystem.h"
-//#include "Rendering/Rendering.h"
+#include "Rendering/Rendering.h"
 
 #include "TransformSystem/TransformSystemDef.h"
 #include "CameraSystem/CameraSystemDef.h"
-//#include "Rendering/RenderingDef.h"
+#include "Rendering/RenderingDef.h"

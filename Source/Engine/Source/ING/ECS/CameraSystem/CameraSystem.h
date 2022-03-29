@@ -33,7 +33,24 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ING_API struct Camera {
+		static ING_API struct Camera : 
+			public Component
+		{
+
+		public:
+			friend class CameraSystem;
+
+
+
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			Camera(Entity* entity) :
+				Component(entity)
+			{}
+
+
 
 			/**
 			 *	Properties
@@ -43,18 +60,6 @@ namespace ING {
 
 		public:
 			ING::Camera* GetINGCamera() { return ingCamera; }
-		
-
-
-			/**
-			 *	Operators
-			 */
-		public:
-			ING::Camera* operator->() {
-
-				return ingCamera;
-
-			}
 
 		};
 
@@ -63,18 +68,26 @@ namespace ING {
 		/**
 		 *	Component Pointer
 		 */
-		using CameraPtr = ComponentPtr<Camera, CameraSystem>;
+		using CameraPtr = ComponentPtr<ECS::Camera, CameraSystem>;
 
 
 
 		/**
 		 *	Component System
 		 */
-		static ING_API ECS_COMPONENT_SYSTEM(CameraSystem, Camera)
+		static ING_API ECS_COMPONENT_SYSTEM(CameraSystem, ECS::Camera)
 
 		public:
 			virtual void Init() override;
 			virtual void Release() override;
+
+							
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void CopyDataForRendering(Camera& camera);
 
 
 
@@ -84,6 +97,7 @@ namespace ING {
 		public:
 			virtual void Awake(CameraPtr componentPtr) override;
 			virtual void Start(CameraPtr componentPtr) override;
+			virtual void PreUpdate() override;
 			virtual void Update() override;
 			virtual void Destroy(CameraPtr componentPtr) override;
 

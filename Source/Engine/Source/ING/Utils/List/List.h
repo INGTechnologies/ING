@@ -47,8 +47,7 @@ namespace ING {
 					prev(0) 
 				{
 
-					next = nullptr;
-					prev = nullptr;
+
 
 				}
 				~Node() {

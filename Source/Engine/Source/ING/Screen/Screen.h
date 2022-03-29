@@ -88,7 +88,7 @@ namespace ING {
 
 		Window*							window;
 
-		NoDuplicatesList<Camera*>		cameraList;
+		List<Camera*>					cameraList;
 
 	public:
 		bool							IsMain				() { return isMain; }
@@ -110,7 +110,7 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void							AddCamera			(Camera* camera);
+		List<Camera*>::Node*			AddCamera			(Camera* camera);
 		void							RemoveCamera		(Camera* camera);
 
 	};

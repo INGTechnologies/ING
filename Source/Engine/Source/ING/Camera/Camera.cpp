@@ -70,7 +70,6 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	Camera::Camera() :
-		transformM(0),
 		node(0),
 		renderingPipeline(0),
 		renderingScene(0)
@@ -78,14 +77,12 @@ namespace ING {
 
 		isActive	= true;
 
-		transformM	= nullptr;
-
 		screen		= ScreenManager::GetInstance()->GetMainScreen();
 
 		oldScreenWidth = screen->GetClientWidth();
 		oldScreenHeight = screen->GetClientHeight();
 
-		screen->AddCamera(this);
+		nodeInScreenCameraList = screen->AddCamera(this);
 
 		node		= CameraManager::GetInstance()->AddCamera(this);
 
@@ -108,7 +105,8 @@ namespace ING {
 	void Camera::Release()
 	{
 
-		screen->RemoveCamera(this);
+		if (GetTargetMode() == CAMERA_TARGET_SCREEN)
+			screen->RemoveCamera(this);
 
 		CameraManager::GetInstance()->RemoveCamera(node);
 
@@ -129,7 +127,7 @@ namespace ING {
 		this->screen = screen;
 
 		if (screen != 0)
-			screen->AddCamera(this);
+			nodeInScreenCameraList = screen->AddCamera(this);
 
 		Update(); 
 	}
@@ -213,18 +211,7 @@ namespace ING {
 
 
 		/* Compute View Matrix */
-		if (transformM != nullptr) {
 
-			//AMatrix4x4 nonScaleTransformMatrix = transformM->translationMatrix * transformM->rotationMatrix;
-
-			// = nonScaleTransformMatrix.Inverse();
-
-		}
-		else {
-
-			//viewMatrix = AMatrix4x4::Identity();
-
-		}
 
 
 

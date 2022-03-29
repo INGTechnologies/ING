@@ -20,24 +20,33 @@ namespace ING {
 
 	namespace ECS {
 
-		struct ING_API Component
+		class Entity;
+
+
+
+		struct Component
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Component() {
+			Component(Entity* entity) :
+				entity(entity)
+			{}
+
+			~Component() {}
 
 
 
-			}
+			/**
+			 *	Properties
+			 */
+		protected:
+			Entity* entity;
 
-			~Component() {
-
-
-
-			}
+		public:
+			Entity* GetEntity () { return entity; }
 
 		};
 

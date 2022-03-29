@@ -116,6 +116,19 @@ namespace ING {
 			return result;		
 		}
 
+		Entity*				Repository::CreateEntity(const std::vector<IComponentSystem*> systemVector) {
+
+			Entity* result = new Entity(this);
+
+			for (auto system : systemVector) {
+
+				system->AddComponent(result);
+
+			}
+
+			return result;
+		}
+
 		void				Repository::ReleaseEntity(Entity* entity) {
 
 			entity->Release();

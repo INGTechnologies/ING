@@ -33,9 +33,27 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ING_API struct Transform : public ING::TransformS {
+		static ING_API struct Transform : 
+			public Component,
+			public ING::TransformS,
+			public ING::TransformM
+		{
 
-			TransformM* transformM;
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			Transform(Entity* entity) :
+				Component(entity)
+			{}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			TransformM& GetMatrices() { return (TransformM&)(*this); }
 
 		};
 

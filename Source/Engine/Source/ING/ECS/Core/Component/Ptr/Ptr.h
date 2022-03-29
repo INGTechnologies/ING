@@ -146,8 +146,8 @@ namespace ING {
 			 *	Operators
 			 */
 		public:
-			T& operator * () const;
-			T* operator -> () const;
+			T& operator * ();
+			T* operator -> ();
 
 		};
 

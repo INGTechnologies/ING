@@ -24,11 +24,11 @@ using namespace ING::Utils;
 
 
 /**
- *	Include XMath
+ *	Include Math
  */
-//#include <ING/XMath/XMath.h>
+#include <ING/Math/Math.h>
 
-//using namespace ING::XMath;
+using namespace ING::Math;
 
 
 
@@ -36,6 +36,13 @@ using namespace ING::Utils;
  *	Include Camera Id
  */
 #include <ING/Camera/Id.h>
+
+
+
+/**
+ *	Include Transform
+ */
+#include <ING/Transform/Transform.h>
 
 
 
@@ -99,14 +106,16 @@ namespace ING {
 	private:
 		List<Camera*>::Node*	node;
 
+		List<Camera*>::Node*	nodeInScreenCameraList;
+
 		CameraId				id;
 
 		bool					isActive;
 
-		//AMatrix4x4				viewMatrix;
-		//AMatrix4x4				projectionMatrix;
+		RMatrix4x4				viewMatrix;
+		RMatrix4x4				projectionMatrix;
 
-		TransformM*				transformM;
+		TransformM				transformM;
 
 		float					fov;
 
@@ -128,18 +137,20 @@ namespace ING {
 	public:
 		List<Camera*>::Node*	GetNode				()							{ return node; }
 
+		List<Camera*>::Node*	GetNodeInScreenCameraList()						{ return nodeInScreenCameraList; }
+
 		CameraId				GetId				()							{ return id; }
 
 		bool					IsActive			()							{ return isActive; }
 
 		void					SetActive			(bool isActive)				{ this->isActive = isActive; }
 
-		//AMatrix4x4				GetViewMatrix		()							{ return viewMatrix; }
-		//AMatrix4x4				GetProjectionMatrix ()							{ return projectionMatrix; }
+		const RMatrix4x4&		GetViewMatrix		()							{ return viewMatrix; }
+		const RMatrix4x4&		GetProjectionMatrix ()							{ return projectionMatrix; }
 
-		TransformM*				GetTransformM		()							{ return transformM; }
+		const TransformM&		SetTransform		()							{ return transformM; }
 
-		void					SetTransformM		(TransformM* transformM)	{ this->transformM = transformM; }
+		void					SetTransform		(TransformM transformM)		{ this->transformM = transformM; }
 
 		float					GetFOV				()							{ return fov; }
 		void					SetFOV				(float fov)					{ this->fov = fov;				Update(); }

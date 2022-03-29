@@ -60,6 +60,8 @@ namespace ING {
 				filledCount = 0;
 				pData		= nullptr;
 
+				callDestructor = false;
+
 			}
 
 			~SmartArray() {
@@ -82,6 +84,8 @@ namespace ING {
 			std::vector < std::unordered_map<size_t, size_t>* >	index2IdMapVector;
 
 		public:
+			bool									callDestructor;
+
 			T*										GetPData		() { return pData; }
 
 			size_t									GetCount		() { return count; }
@@ -268,7 +272,7 @@ namespace ING {
 
 			size_t index = filledCount - 1;
 
-			pData[index] = data;
+			memcpy(pData + index, &data, sizeof(T));
 
 			bool isThereAnyId2IndexMapNotFull = false;
 
@@ -333,7 +337,7 @@ namespace ING {
 
 					size_t lastComponentId = Index2Id(filledCount - 1);
 
-					pData[index] = pData[filledCount - 1];
+					memcpy(pData + index, pData + filledCount - 1, sizeof(T));
 
 					//index2IdMap[index] = lastComponentId;
 
