@@ -50,6 +50,20 @@ namespace ING {
 
 		};
 
+
+
+		/**
+		 *	Define Macros
+		 */
+#define ECS_COMPONENT(T, TComponentSystem)\
+		struct T : public ING::ECS::Component {\
+		\
+		public:\
+			friend class TComponentSystem;\
+			\
+		public:\
+			T(ING::ECS::Entity* entity) : ING::ECS::Component(entity) {}
+
 	}
 
 }

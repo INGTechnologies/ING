@@ -82,6 +82,7 @@ namespace ING {
 			void							AddNode					(const std::string& categoryName, List<IDrawable*>::Node* node);
 			void							RemoveNode				(const std::string& categoryName);
 			bool							IsHaveNode				(const std::string& categoryName);
+			bool							IsHaveCategory			(const std::string& categoryName) { return IsHaveNode(categoryName); }
 
 			bool							IsActive				() { return isActive; }
 			void							SetActive				(bool isActive) { this->isActive = isActive; }

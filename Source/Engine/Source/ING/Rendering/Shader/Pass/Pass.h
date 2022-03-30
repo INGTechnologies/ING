@@ -59,7 +59,7 @@ namespace ING {
 		private:
 			std::string		name;
 
-			std::unordered_map<std::string, IShader*> childShaderNameToChildShader;
+			std::unordered_map<std::string, IShader*> shaderName2Shader;
 			std::unordered_map<std::string, IState*>  stateName2StateMap;
 
 			IInputLayout*	inputLayout;
@@ -67,7 +67,7 @@ namespace ING {
 		public:
 			std::string		GetName			() const { return name; }
 
-			IShader*		GetChild		(const std::string& name) { return childShaderNameToChildShader[name]; }
+			IShader*		GetShader		(const std::string& name) { return shaderName2Shader[name]; }
 
 			void			SetInputLayout	(IInputLayout* inputLayout) { this->inputLayout = inputLayout; }
 
@@ -81,13 +81,13 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void AddChild	(const std::string& tag, IShader* shader);
-			void RemoveChild(const std::string& tag);
+			void AddShader		(const std::string& tag, IShader* shader);
+			void RemoveShader	(const std::string& tag);
 
-			void AddState	(IState* state);
-			void RemoveState(const std::string& name);
+			void AddState		(IState* state);
+			void RemoveState	(const std::string& name);
 
-			void Apply();
+			void Apply			();
 
 		};
 

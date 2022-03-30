@@ -33,33 +33,54 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ING_API struct Camera : 
-			public Component
-		{
-
-		public:
-			friend class CameraSystem;
-
-
-
-			/**
-			 *	Constructors And Destructor
-			 */
-		public:
-			Camera(Entity* entity) :
-				Component(entity)
-			{}
-
-
+		static ECS_COMPONENT(Camera, CameraSystem)
 
 			/**
 			 *	Properties
 			 */
 		private:
-			ING::Camera* ingCamera;
+			ING::Camera*			ingCamera;
 
 		public:
-			ING::Camera* GetINGCamera() { return ingCamera; }
+			ING::Camera*			GetINGCamera		() { return ingCamera; }
+
+		public:
+			bool					IsActive			() { return ingCamera->IsActive(); }
+
+			void					SetActive			(bool isActive) { ingCamera->SetActive(isActive); }
+
+			const RMatrix4x4&		GetViewMatrix		() { return ingCamera->GetViewMatrix(); }
+			const RMatrix4x4&		GetProjectionMatrix	() { return ingCamera->GetProjectionMatrix(); }
+
+			const TransformM&		GetTransform		() { return ingCamera->GetTransform(); }
+
+			void					SetTransform		(TransformM transformM) { ingCamera->SetTransform(transformM); }
+
+			float					GetFOV				() { ingCamera->GetFOV(); }
+			void					SetFOV				(float fov) { ingCamera->SetFOV(fov); }
+
+			float					GetNearPlane		() { return ingCamera->GetNearPlane(); }
+			void					SetNearPlane		(float nearPlane) { ingCamera->SetNearPlane(nearPlane); }
+			float					GetFarPlane			() { return ingCamera->GetFarPlane(); }
+			void					SetFarPlane			(float farPlane) { ingCamera->SetFarPlane(farPlane); }
+
+			Screen*					GetScreen			() { return ingCamera->GetScreen(); }
+			void					SetScreen			(Screen* screen) { return ingCamera->SetScreen(screen); }
+
+			Rendering::Scene*		GetRenderingScene	() { return ingCamera->GetRenderingScene(); }
+			void					SetRenderingScene	(Rendering::Scene* renderingScene) { ingCamera->SetRenderingScene(renderingScene); }
+
+			void*					GetRenderingData	() { return ingCamera->GetRenderingScene(); }
+			void					SetRenderingData	(void* renderingData) { ingCamera->SetRenderingData(renderingData); }
+
+			Rendering::IPipeline*	GetRenderingPipeline() { return ingCamera->GetRenderingPipeline(); }
+			void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { ingCamera->SetRenderingPipeline(renderingPipeline); }
+
+			CAMERA_TARGET_MODE		GetTargetMode		() { return ingCamera->GetTargetMode(); }
+			void					SetTargetMode		(CAMERA_TARGET_MODE mode) { ingCamera->SetTargetMode(mode); }
+
+			unsigned int			GetClientWidth		() { return ingCamera->GetClientWidth(); }
+			unsigned int			GetClientHeight		() { return ingCamera->GetClientHeight(); }
 
 		};
 

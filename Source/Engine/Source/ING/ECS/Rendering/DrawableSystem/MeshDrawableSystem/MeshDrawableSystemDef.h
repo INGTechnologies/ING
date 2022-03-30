@@ -49,7 +49,7 @@ namespace ING {
 
 			TransformPtr transform = GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(drawable.GetEntity());
 
-			drawable.GetINGMeshDrawable()->SetTransform(transform->GetMatrices());
+			drawable.SetTransform(transform->GetMatrices());
 
 		}
 

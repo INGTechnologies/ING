@@ -148,7 +148,7 @@ namespace ING {
 		const RMatrix4x4&		GetViewMatrix		()							{ return viewMatrix; }
 		const RMatrix4x4&		GetProjectionMatrix ()							{ return projectionMatrix; }
 
-		const TransformM&		SetTransform		()							{ return transformM; }
+		const TransformM&		GetTransform		()							{ return transformM; }
 
 		void					SetTransform		(TransformM transformM)		{ this->transformM = transformM; }
 

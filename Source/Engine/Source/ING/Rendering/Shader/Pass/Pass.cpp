@@ -42,7 +42,7 @@ namespace ING {
 
 		IShaderPass::~IShaderPass() {
 
-			childShaderNameToChildShader.clear();
+			shaderName2Shader.clear();
 
 		}
 
@@ -62,15 +62,15 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IShaderPass::AddChild(const std::string& tag, IShader* shader) {
+		void IShaderPass::AddShader(const std::string& tag, IShader* shader) {
 
-			childShaderNameToChildShader[tag] = shader;
+			shaderName2Shader[tag] = shader;
 
 		}
 
-		void IShaderPass::RemoveChild(const std::string& tag) {
+		void IShaderPass::RemoveShader(const std::string& tag) {
 
-			childShaderNameToChildShader.erase(tag);
+			shaderName2Shader.erase(tag);
 
 		}
 
@@ -102,7 +102,7 @@ namespace ING {
 
 			}
 
-			for (auto item : childShaderNameToChildShader) {
+			for (auto item : shaderName2Shader) {
 
 				IShader* childShader = item.second;
 
