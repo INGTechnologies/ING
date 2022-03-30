@@ -72,6 +72,34 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include BindFlag
+ */
+#include <ING/Rendering/API/BindFlag/BindFlag.h>
+
+
+
+/**
+ *	Include CPUAccessFlag
+ */
+#include <ING/Rendering/API/CPUAccessFlag/CPUAccessFlag.h>
+
+
+
+/**
+ *	Include MiscFlag
+ */
+#include <ING/Rendering/API/MiscFlag/MiscFlag.h>
+
+
+
+/**
+ *	Include Usage
+ */
+#include <ING/Rendering/API/Usage/Usage.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -120,6 +148,18 @@ namespace ING {
 
 				/* PrimitiveTopology */
 				CONVERTOR_METHOD(primitiveTopologyMap,	PrimitiveTopology,		D3D11_PRIMITIVE_TOPOLOGY);
+
+				/* BindFlag */
+				CONVERTOR_METHOD(bindFlagMap,			BindFlag,				unsigned int);
+
+				/* CPUAccessFlag */
+				CONVERTOR_METHOD(cpuAccessFlagMap,		CPUAccessFlag,			D3D11_CPU_ACCESS_FLAG);
+
+				/* MiscFlag */
+				CONVERTOR_METHOD(miscFlagMap,			MiscFlag,				D3D11_RESOURCE_MISC_FLAG);
+
+				/* Usage */
+				CONVERTOR_METHOD(usageMap,				Usage,					D3D11_USAGE);
 
 			};
 

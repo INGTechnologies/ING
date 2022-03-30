@@ -42,6 +42,26 @@ namespace ING {
 
 			this->device = device;
 
+			vertexBufferDesc = {
+
+				0,
+				0,
+				USAGE_DEFAULT,
+				BIND_VERTEX_BUFFER,
+				(CPUAccessFlag)0
+
+			};
+
+			indexBufferDesc = {
+
+				0,
+				FORMAT_R32_UINT,
+				USAGE_DEFAULT,
+				BIND_VERTEX_BUFFER,
+				(CPUAccessFlag)0
+
+			};
+
 		}
 
 		IMesh::~IMesh() {

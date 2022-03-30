@@ -175,8 +175,8 @@ namespace ING {
 
 			context->IASetPrimitiveTopology(TRIANGLE_LIST);
 
-			context->IASetVertexBuffer(vertexBuffer, mesh->GetStride(), 0);
-			context->IASetIndexBuffer(indexBuffer, mesh->GetIndexFormat(), 0);
+			context->IASetVertexBuffer(vertexBuffer, mesh->GetVertexBufferDesc().stride, 0);
+			context->IASetIndexBuffer(indexBuffer, mesh->GetIndexBufferDesc().format, 0);
 
 
 			context->DrawIndexed(mesh->GetIndexCount(),0,0);

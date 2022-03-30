@@ -169,6 +169,42 @@ namespace ING {
 				primitiveTopologyMap[TRIANGLE_STRIP]		= D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP;
 				primitiveTopologyMap[TRIANGLE_STRIP_ADJ]	= D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ;
 
+
+
+				/* BindFlag */
+				for (unsigned int i = 0x1L; i <= 0x488L; ++i) {
+
+					bindFlagMap[(ING::Rendering::BindFlag)i] = i;
+
+				}
+
+
+
+				/* CPUAccessFlag */
+				for (unsigned int i = 0x1L; i <= 0x2L; ++i) {
+
+					cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)i] = (D3D11_CPU_ACCESS_FLAG)i;
+
+				}
+
+
+
+				/* MiscFlag */
+				for (unsigned int i = 0x1L; i <= 0x88888L; ++i) {
+
+					miscFlagMap[(ING::Rendering::MiscFlag)i] = (D3D11_RESOURCE_MISC_FLAG)i;
+
+				}
+
+
+
+				/* Usage */
+				for (unsigned int i = 0; i <= 3; ++i) {
+
+					usageMap[(ING::Rendering::Usage)i] = (D3D11_USAGE)i;
+
+				}
+
 			}
 
 			Convertor::~Convertor() {

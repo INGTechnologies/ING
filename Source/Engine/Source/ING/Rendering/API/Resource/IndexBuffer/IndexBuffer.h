@@ -23,6 +23,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include BindFlag
+ */
+#include <ING/Rendering/API/BindFlag/BindFlag.h>
+
+
+
+/**
+ *	Include Desc
+ */
+#include "Desc.h"
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -38,6 +52,8 @@ namespace ING {
 
 		public:
 			static IBuffer* Create(IDevice* device, unsigned int count, Format format, void* pData);
+
+			static IBuffer* Create(IDevice* device, const IndexBufferDesc& desc, void* pData);
 
 		};
 

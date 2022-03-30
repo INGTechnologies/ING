@@ -37,6 +37,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include BindFlag
+ */
+#include <ING/Rendering/API/BindFlag/BindFlag.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -85,9 +92,10 @@ namespace ING {
 			IBuffer* vertexBuffer;
 			IBuffer* indexBuffer;
 
-			unsigned int stride;
+			VertexBufferDesc vertexBufferDesc;
+			IndexBufferDesc indexBufferDesc;
 
-			Format   indexFormat;
+			unsigned int vertexStride;
 
 			IDevice* device;
 
@@ -95,14 +103,15 @@ namespace ING {
 			IBuffer* GetVertexBuffer() { return vertexBuffer; }
 			IBuffer* GetIndexBuffer	() { return indexBuffer; }
 
-			unsigned int GetStride	() { return stride; }
+			const VertexBufferDesc& GetVertexBufferDesc () { return vertexBufferDesc; }
+			const IndexBufferDesc& GetIndexBufferDesc() { return indexBufferDesc; }
+
+			unsigned int GetVertexStride	() { return vertexStride; }
 
 			IDevice* GetDevice		() { return device; }
 
 			virtual unsigned int GetVertexCount () { return 0; }
 			virtual unsigned int GetIndexCount  () { return 0; }
-
-			Format   GetIndexFormat () { return indexFormat; }
 
 
 
@@ -133,6 +142,12 @@ namespace ING {
 				const std::vector<unsigned int>& indexVector,
 				Format indexFormat
 			);
+			Mesh(
+				const std::vector<T>& vertexVector,
+				const std::vector<unsigned int>& indexVector,
+				const VertexBufferDesc& vertexBufferDesc,
+				const IndexBufferDesc& indexBufferDesc
+			);
 			~Mesh();
 
 
@@ -148,8 +163,8 @@ namespace ING {
 			std::vector<T>&				GetVertexVector () { return vertexVector; }
 			std::vector<unsigned int>&	GetIndexVector  () { return indexVector; }
 
-			virtual unsigned int GetVertexCount() override;
-			virtual unsigned int GetIndexCount() override;
+			virtual unsigned int		GetVertexCount() override;
+			virtual unsigned int		GetIndexCount() override;
 
 
 
@@ -177,7 +192,7 @@ namespace ING {
 		template<typename T>
 		Mesh<T>::Mesh() {
 
-			stride = sizeof(T);
+			vertexStride = sizeof(T);
 
 		}
 
@@ -191,17 +206,47 @@ namespace ING {
 
 		template<typename T>
 		Mesh<T>::Mesh(
+			const std::vector<T>&vertexVector,
+			const std::vector<unsigned int>&indexVector,
+			Format indexFormat
+		) : 
+			Mesh(vertexVector, indexVector, 
+				{
+
+					vertexVector.size(),
+					sizeof(T),
+					USAGE_DEFAULT,
+					BIND_VERTEX_BUFFER,
+					(CPUAccessFlag)0
+
+				},
+				{
+
+					indexVector.size(),
+					indexFormat,
+					USAGE_DEFAULT,
+					BIND_INDEX_BUFFER,
+					(CPUAccessFlag)0
+
+				}
+			)
+		{}
+
+		template<typename T>
+		Mesh<T>::Mesh(
 			const std::vector<T>& vertexVector,
 			const std::vector<unsigned int>& indexVector,
-			Format indexFormat
+			const VertexBufferDesc& vertexBufferDesc,
+			const IndexBufferDesc& indexBufferDesc
 		) {
 
 			this->vertexVector = vertexVector;
 			this->indexVector = indexVector;
 
-			this->indexFormat = indexFormat;
+			this->vertexBufferDesc = vertexBufferDesc;
+			this->indexBufferDesc = indexBufferDesc;
 
-			stride = sizeof(T);
+			vertexStride = sizeof(T);
 
 		}
 
@@ -239,8 +284,12 @@ namespace ING {
 		template<typename T>
 		void Mesh<T>::BuildBuffers() {
 
-			vertexBuffer	= IVertexBuffer::Create	(device, vertexVector.size(), stride, &vertexVector[0]);
-			indexBuffer		= IIndexBuffer::Create	(device, indexVector.size(), indexFormat, &indexVector[0]);
+			vertexBufferDesc.stride = vertexStride;
+			vertexBufferDesc.count = vertexVector.size();
+			indexBufferDesc.count = indexVector.size();
+
+			vertexBuffer	= IVertexBuffer::Create	(device, vertexBufferDesc, &vertexVector[0]);
+			indexBuffer		= IIndexBuffer::Create	(device, indexBufferDesc, &indexVector[0]);
 
 		}
 

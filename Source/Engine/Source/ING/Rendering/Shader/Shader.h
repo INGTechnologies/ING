@@ -47,6 +47,11 @@ namespace ING {
 
 			}
 
+			template<typename T>
+			ShaderProperty(const std::string& name) :
+				ShaderProperty(name, sizeof(T))
+			{}
+
 			ShaderProperty() {}
 
 			std::string		name;
