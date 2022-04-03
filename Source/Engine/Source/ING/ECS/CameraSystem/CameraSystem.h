@@ -120,6 +120,7 @@ namespace ING {
 			virtual void Start(CameraPtr componentPtr) override;
 			virtual void PreUpdate() override;
 			virtual void Update() override;
+			virtual void LateUpdate() override;
 			virtual void Destroy(CameraPtr componentPtr) override;
 
 		};

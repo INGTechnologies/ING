@@ -97,25 +97,37 @@ namespace ING {
 		 */
 		void						RepositoryManager::PreUpdate() {
 
-			repositoryList.Foreach([](Repository*& repository){
+			for (Repository* repository : repositoryList) {
 
-				if (!repository->IsActive()) return;
+				if (!repository->IsActive()) continue;
 
 				repository->PreUpdate();
 
-			});
+			}
 
 		}
 
 		void						RepositoryManager::Update() {
 
-			repositoryList.Foreach([](Repository*& repository){
+			for (Repository* repository : repositoryList) {
 
-				if (!repository->IsActive()) return;
+				if (!repository->IsActive()) continue;
 
 				repository->Update();
 
-			});
+			}
+
+		}
+
+		void						RepositoryManager::LateUpdate() {
+
+			for (Repository* repository : repositoryList) {
+
+				if (!repository->IsActive()) continue;
+
+				repository->LateUpdate();
+
+			}
 
 		}
 

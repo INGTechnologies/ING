@@ -112,6 +112,7 @@ namespace ING {
 			void Add(const T& data, size_t id);
 			void Erase(size_t id);
 			T&	 Get(size_t id);
+			T&	 GetByIndex(size_t index);
 			T*	 GetDataPtr(size_t id);
 
 		};
@@ -489,6 +490,13 @@ namespace ING {
 		T& SmartArray<T>::Get(size_t id) {
 
 			return pData[Id2Index(id)];
+
+		}
+
+		template<typename T>
+		T& SmartArray<T>::GetByIndex(size_t index) {
+
+			return pData[index];
 
 		}
 

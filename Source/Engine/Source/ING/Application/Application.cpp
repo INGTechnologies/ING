@@ -370,6 +370,7 @@ namespace ING {
 
 
 		ECS::RepositoryManager::GetInstance()->Update();
+		ECS::RepositoryManager::GetInstance()->LateUpdate();
 
 
 

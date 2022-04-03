@@ -30,14 +30,23 @@ namespace ING {
 
 
 
+		static const unsigned int GPU_MIN_TRANSFORM_COUNT = 100;
+
+
+
 		/**
 		 *	Component
 		 */
 		static ING_API struct Transform : 
 			public Component,
 			public ING::TransformS,
-			public ING::TransformM
+			private ING::TransformM
 		{
+
+		public:
+			friend class TransformSystem;
+
+
 
 			/**
 			 *	Constructors And Destructor
@@ -46,6 +55,34 @@ namespace ING {
 			Transform(Entity* entity) :
 				Component(entity)
 			{}
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			unsigned int level;
+			bool		 isHaveNextTransform;
+			bool		 isHavePrevTransform;
+			unsigned int nextTransformIndex;
+			unsigned int prevTransformIndex;
+				
+			bool		 isHaveNextSPT;		//
+			bool		 isHavePrevSPT;		// SPT is Same Parent Transform
+			unsigned int nextSPTIndex;		//
+			unsigned int prevSPTIndex;		//
+
+			unsigned int childCount;
+			bool		 isHaveHeadChild;
+			bool		 isHaveTailChild;
+			unsigned int headChildIndex;
+			unsigned int tailChildIndex;
+
+			unsigned int parentTransformIndex;
+
+		public:
+			unsigned int GetLevel () { return level; }
 
 
 
@@ -72,8 +109,43 @@ namespace ING {
 		static ING_API ECS_COMPONENT_SYSTEM(TransformSystem, Transform)
 
 		public:
-			virtual void Init() override;
-			virtual void Release() override;
+			virtual void Init()		override;
+			virtual void Release()	override;
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			std::vector<size_t> transformCountVector;
+			std::vector<TransformPtr> headTransformVector;
+			std::vector<size_t> headTransformIndexVector;
+			std::vector<TransformPtr> tailTransformVector;
+			std::vector<size_t> tailTransformIndexVector;
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void AppendChild		(TransformPtr parentPtr, TransformPtr childPtr);
+			void AppendChild		(Entity* parentEntity, Entity* childEntity);
+
+			void RemoveChild		(TransformPtr parentPtr, TransformPtr childPtr);
+			void RemoveChild		(Entity* parentEntity, Entity* childEntity);
+
+			void ComputeMatrices	(Transform& transform);
+
+			void IncreaseTransformCount	(unsigned int level, TransformPtr componentPtr);
+			void DecreaseTransformCount	(unsigned int level, TransformPtr componentPtr);
+
+			void GPUComputeMatricesForLevel (unsigned int level);
+			void CPUComputeMatricesForLevel (unsigned int level);
+
+			void GPUSwapParentIndex	(unsigned int index, unsigned int newIndex);
+			void CPUSwapParentIndex	(unsigned int index, unsigned int newIndex);
 
 
 
@@ -83,7 +155,9 @@ namespace ING {
 		public:
 			virtual void Awake(TransformPtr componentPtr) override;
 			virtual void Start(TransformPtr componentPtr) override;
+			virtual void PreUpdate() override;
 			virtual void Update() override;
+			virtual void LateUpdate() override;
 			virtual void Destroy(TransformPtr componentPtr) override;
 
 		};

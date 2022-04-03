@@ -74,6 +74,10 @@ namespace ING {
 			componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()] = componentSystem;
 			componentTypeId2ComponentSystemMap[componentSystem->GetComponentTypeId()] = componentSystem;
 
+			componentSystemVector.push_back(componentSystem);
+
+			componentSystem->index = componentSystemVector.size() - 1;
+
 			return componentSystem;
 
 		}
@@ -100,6 +104,8 @@ namespace ING {
 		void				Repository::ReleaseComponentSystem() {
 
 			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
+
+			componentSystemVector.erase(componentSystemVector.begin() + componentSystem->GetIndex());
 
 			componentTypeId2ComponentSystemMap.erase(componentSystem->GetComponentTypeId());
 
@@ -142,11 +148,9 @@ namespace ING {
 		 */
 		void				Repository::PreUpdate() {
 
-			for (auto& item : componentSystemTypeId2ComponentSystemMap) {
+			for (auto& item : componentSystemVector) {
 
-				IComponentSystem* isystem = item.second;
-
-				isystem->PreUpdate();
+				item->PreUpdate();
 
 			}
 
@@ -154,11 +158,19 @@ namespace ING {
 
 		void				Repository::Update() {
 
-			for (auto& item : componentSystemTypeId2ComponentSystemMap) {
+			for (auto& item : componentSystemVector) {
 
-				IComponentSystem* isystem = item.second;
+				item->Update();
 
-				isystem->Update();
+			}
+
+		}
+
+		void				Repository::LateUpdate() {
+
+			for (auto& item : componentSystemVector) {
+
+				item->LateUpdate();
 
 			}
 

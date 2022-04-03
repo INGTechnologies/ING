@@ -74,6 +74,7 @@ namespace ING {
 		public:
 			void PreUpdate();
 			void Update();
+			void LateUpdate();
 
 		};
 

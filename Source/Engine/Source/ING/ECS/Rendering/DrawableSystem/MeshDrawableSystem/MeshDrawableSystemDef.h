@@ -86,6 +86,16 @@ namespace ING {
 
 		}
 
+		void MeshDrawableSystem::LateUpdate() {
+
+			for (auto& drawable : *this) {
+
+
+
+			};
+
+		}
+
 		void MeshDrawableSystem::Destroy(MeshDrawablePtr componentPtr) {
 
 			componentPtr->ingMeshDrawable->Release();

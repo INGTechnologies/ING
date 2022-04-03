@@ -63,17 +63,27 @@ namespace ING {
 
 		}
 
+		void CameraSystem::PreUpdate() {
+
+			for (auto& camera : *this) {
+
+				CopyDataForRendering(camera);
+
+			}
+
+		}
+
 		void CameraSystem::Update() {
 
 
 
 		}
 
-		void CameraSystem::PreUpdate() {
+		void CameraSystem::LateUpdate() {
 
 			for (auto& camera : *this) {
 
-				CopyDataForRendering(camera);
+
 
 			}
 

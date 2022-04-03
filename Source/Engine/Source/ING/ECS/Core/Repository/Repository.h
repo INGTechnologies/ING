@@ -66,6 +66,8 @@ namespace ING {
 			std::map<std::string, IComponentSystem*> componentSystemTypeId2ComponentSystemMap;
 			std::map<std::string, IComponentSystem*> componentTypeId2ComponentSystemMap;
 
+			std::vector<IComponentSystem*>			 componentSystemVector;
+
 			bool isActive;
 
 			List<Repository*>::Node* node;
@@ -112,6 +114,8 @@ namespace ING {
 			virtual void PreUpdate();
 
 			virtual void Update();
+
+			virtual void LateUpdate();
 
 		};
 

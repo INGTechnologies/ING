@@ -59,6 +59,15 @@ namespace ING {
 
 			}
 
+			IComponentPtr(ComponentId id, IComponentSystem* system) :
+				icomponentSystem(system),
+				id(id)
+			{
+
+
+
+			}
+
 			~IComponentPtr() {
 
 

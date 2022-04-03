@@ -46,6 +46,8 @@ namespace ING {
 		RMatrix4x4	translationMatrix;
 		RMatrix4x4	scaleMatrix;
 		RMatrix4x4	rotationMatrix;
+		RMatrix4x4	localMatrix;
+		RMatrix4x4	worldMatrix;
 
 	};
 

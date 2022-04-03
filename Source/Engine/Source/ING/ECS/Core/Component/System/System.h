@@ -40,6 +40,11 @@ namespace ING {
 		 */
 		class IComponentSystem{
 
+		public:
+			friend class Repository;
+
+
+
 			/**
 			 *	Constructor
 			 */
@@ -71,6 +76,17 @@ namespace ING {
 
 
 			/**
+			 *	Properties
+			 */
+		private:
+			unsigned int index;
+
+		public:
+			unsigned int GetIndex() { return index; }
+
+
+
+			/**
 			 *	Methods
 			 */
 		public:
@@ -95,13 +111,19 @@ namespace ING {
 			
 			}
 
+			virtual void PreUpdate() {
+
+
+
+			}
+
 			virtual void Update() {
 
 
 
 			}
 
-			virtual void PreUpdate() {
+			virtual void LateUpdate() {
 
 
 
@@ -145,9 +167,10 @@ namespace ING {
 			/**
 			 *	Properties
 			 */
-		private:
+		protected:
 			SmartArray<T>			array;
 
+		public:
 			IdGenerator				idGenerator;
 
 			Repository*				repository;

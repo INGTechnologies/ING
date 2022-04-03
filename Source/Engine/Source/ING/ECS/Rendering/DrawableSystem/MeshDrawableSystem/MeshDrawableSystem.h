@@ -102,6 +102,7 @@ namespace ING {
 			virtual void Start(MeshDrawablePtr componentPtr) override;
 			virtual void PreUpdate() override;
 			virtual void Update() override;
+			virtual void LateUpdate() override;
 			virtual void Destroy(MeshDrawablePtr componentPtr) override;
 
 		};
