@@ -22,6 +22,8 @@ namespace ING {
 
 		class Entity;
 
+		class IComponentSystem;
+
 
 
 		struct Component
@@ -31,8 +33,14 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Component(Entity* entity) :
-				entity(entity)
+			Component(
+				Entity* entity,
+				IComponentSystem* system,
+				ComponentId id
+			) :
+				entity(entity),
+				system(system),
+				id(id)
 			{}
 
 			~Component() {}
@@ -44,9 +52,13 @@ namespace ING {
 			 */
 		protected:
 			Entity* entity;
+			IComponentSystem* system;
+			ComponentId id;
 
 		public:
 			Entity* GetEntity () { return entity; }
+			IComponentSystem* GetSystem () { return system; }
+			ComponentId GetId () { return id; }
 
 		};
 
@@ -62,7 +74,7 @@ namespace ING {
 			friend class TComponentSystem;\
 			\
 		public:\
-			T(ING::ECS::Entity* entity) : ING::ECS::Component(entity) {}
+			T(ING::ECS::Entity* entity, IComponentSystem* system, ComponentId id) : ING::ECS::Component(entity, system, id) {}
 
 	}
 

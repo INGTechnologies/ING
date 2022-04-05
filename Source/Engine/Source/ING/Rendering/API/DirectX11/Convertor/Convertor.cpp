@@ -181,11 +181,10 @@ namespace ING {
 
 
 				/* CPUAccessFlag */
-				for (unsigned int i = 0x1L; i <= 0x2L; ++i) {
-
-					cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)i] = (D3D11_CPU_ACCESS_FLAG)i;
-
-				}
+				cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)0] = (D3D11_CPU_ACCESS_FLAG)0;
+				cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)0x10000L] = (D3D11_CPU_ACCESS_FLAG)0x10000L;
+				cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)0x20000L] = (D3D11_CPU_ACCESS_FLAG)0x20000L;
+				cpuAccessFlagMap[(ING::Rendering::CPUAccessFlag)0x30000L] = (D3D11_CPU_ACCESS_FLAG)0x30000L;
 
 
 

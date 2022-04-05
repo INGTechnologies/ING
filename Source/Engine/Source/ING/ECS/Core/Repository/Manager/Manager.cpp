@@ -66,6 +66,17 @@ namespace ING {
 
 			Debug::Log("Start Releasing RepositoryManager");
 
+			for (auto item = repositoryList.begin(); item != repositoryList.end();) {
+				
+				List<Repository*>::Iterable nextItem = item.node->next;
+
+				Repository* repository = *((Repository**)(item.node->pValue));
+
+				repository->Release();
+
+				item = nextItem;
+			}
+
 			repositoryList.Clear();
 
 			Debug::Log("Finished Releasing RepositoryManager");

@@ -51,11 +51,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release() {
-
-
-
-			}
+			virtual void Release();
 
 
 
@@ -63,14 +59,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::map<std::string, IComponentSystem*> componentSystemTypeId2ComponentSystemMap;
-			std::map<std::string, IComponentSystem*> componentTypeId2ComponentSystemMap;
+			std::map<std::string, IComponentSystem*>	componentSystemTypeId2ComponentSystemMap;
+			std::map<std::string, IComponentSystem*>	componentTypeId2ComponentSystemMap;
 
-			std::vector<IComponentSystem*>			 componentSystemVector;
+			std::vector<IComponentSystem*>				componentSystemVector;
 
-			bool isActive;
+			bool										isActive;
 
-			List<Repository*>::Node* node;
+			List<Repository*>::Node*					node;
 
 		public:
 			std::map<std::string, IComponentSystem*>&	GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }

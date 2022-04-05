@@ -78,7 +78,7 @@ namespace ING {
 
 			ComponentId id = idGenerator.GenUInt64();
 
-			array.Add(T(entity), id);
+			array.Add(T(entity, this, id), id);
 
 			result.SetId(id);
 			result.SetIComponentSystem(this);

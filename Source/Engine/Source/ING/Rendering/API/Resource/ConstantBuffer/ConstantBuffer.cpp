@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Create Methods
 		 */
-		IBuffer* IConstantBuffer::Create(IDevice* device, unsigned int size, void* pData) {
+		IBuffer* IConstantBuffer::Create(IDevice* device, size_t size, void* pData) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{

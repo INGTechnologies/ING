@@ -43,11 +43,30 @@ namespace ING {
 
 		Repository::~Repository() {
 
+		}
+
+
+
+		/**
+		 *	Release Methods
+		 */
+		void Repository::Release() {
+
+			unsigned int componentSystemCount = componentSystemVector.size();
+
+			for (unsigned int i = 0; i < componentSystemCount; ++i) {
+
+				componentSystemVector[i]->Release();
+
+			}
+
 			componentSystemTypeId2ComponentSystemMap.clear();
 			componentTypeId2ComponentSystemMap.clear();
 
 			RepositoryManager::GetInstance()->RemoveRepository(node);
 
+			delete this;
+		
 		}
 
 
@@ -77,6 +96,8 @@ namespace ING {
 			componentSystemVector.push_back(componentSystem);
 
 			componentSystem->index = componentSystemVector.size() - 1;
+
+			componentSystem->Init();
 
 			return componentSystem;
 

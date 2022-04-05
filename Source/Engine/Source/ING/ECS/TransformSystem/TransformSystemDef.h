@@ -14,6 +14,20 @@
 
 
 
+/**
+ *	Include Rendering Buffer
+ */
+#include <ING/Rendering/API/Resource/Buffer/Buffer.h>
+
+
+
+/**
+ *	Include Rendering StructuredBuffer
+ */
+#include <ING/Rendering/API/Resource/StructuredBuffer/StructuredBuffer.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -23,11 +37,17 @@ namespace ING {
 		 */
 		void TransformSystem::Init() {
 
-
+			RecreateBuffers();
 
 		}
 
 		void TransformSystem::Release() {
+
+			for (auto indexArray : indexArrayVector) {
+
+				delete indexArray;
+
+			}
 
 			IComponentSystem::Release();
 
@@ -38,6 +58,41 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void TransformSystem::RecreateBuffers		() {
+
+			RecreateMainBuffer();
+
+		}
+
+		void TransformSystem::RecreateMainBuffer	() {
+
+			/* Release Main Buffer */
+			if (mainBuffer != nullptr) {
+
+				mainBuffer->Release();
+
+				mainBuffer = nullptr;
+
+			}
+
+			/* Create Main Buffer */
+			Rendering::StructuredBufferDesc mainBufferDesc;
+
+			mainBuffer = Rendering::IStructuredBuffer::Create(
+				{
+
+					1,
+					sizeof(ECS::Transform),
+					Rendering::USAGE_DEFAULT,
+					Rendering::BIND_SHADER_RESOURCE | Rendering::BIND_UNORDERED_ACCESS,
+					Rendering::CPU_ACCESS_READ | Rendering::CPU_ACCESS_WRITE
+
+				}, 
+				0
+			);
+
+		}
+
 		void TransformSystem::AppendChild(TransformPtr parentPtr, TransformPtr childPtr) {
 
 #if _DEBUG
@@ -73,6 +128,7 @@ namespace ING {
 			if (parentTransform.isHaveHeadChild) {
 
 				array.GetByIndex(parentTransform.tailChildIndex).isHaveNextSPT = true;
+				array.GetByIndex(parentTransform.tailChildIndex).isTailSPT = false;
 				array.GetByIndex(parentTransform.tailChildIndex).nextSPTIndex = childComponentIndex;
 
 				childTransform.isHavePrevSPT = true;
@@ -86,6 +142,7 @@ namespace ING {
 				parentTransform.headChildIndex = childComponentIndex;
 				parentTransform.tailChildIndex = childComponentIndex;
 
+				childTransform.isHeadSPT = true;
 				childTransform.isHavePrevSPT = false;
 
 			}
@@ -94,7 +151,11 @@ namespace ING {
 			parentTransform.isHaveHeadChild = true;
 			parentTransform.isHaveTailChild = true;
 
+			childTransform.isTailSPT = true;
+
 			parentTransform.childCount++;
+
+			childTransform.parentPtr = parentPtr;
 
 			IncreaseTransformCount(childTransform.level, childPtr);
 
@@ -148,6 +209,12 @@ namespace ING {
 
 				parentTransform.tailChildIndex = childTransform.prevSPTIndex;
 
+				if (childTransform.isHavePrevSPT) {
+
+					array.GetByIndex(childTransform.prevSPTIndex).isTailSPT = true;
+
+				}
+
 			}
 
 			if (childTransform.isHavePrevSPT) {
@@ -160,7 +227,16 @@ namespace ING {
 
 				parentTransform.headChildIndex = childTransform.nextSPTIndex;
 
+				if (childTransform.isHaveNextSPT) {
+
+					array.GetByIndex(childTransform.nextSPTIndex).isHeadSPT = true;
+
+				}
+
 			}
+
+			childTransform.isHeadSPT = false;
+			childTransform.isTailSPT = false;
 
 			childTransform.isHaveNextSPT = false;
 			childTransform.isHavePrevSPT = false;
@@ -202,6 +278,9 @@ namespace ING {
 
 				transformCountVector[level] = 0;
 
+				indexArrayVector.resize(level + 1);
+				indexArrayVector[level] = new SmartArray<unsigned int>();
+
 			}
 
 			transformCountVector[level]++;
@@ -231,6 +310,8 @@ namespace ING {
 			tailTransformVector[level] = componentPtr;
 			tailTransformIndexVector[level] = componentIndex;
 
+
+			indexArrayVector[level]->Add(componentIndex, componentPtr.GetId());
 		}
 
 		void TransformSystem::DecreaseTransformCount(unsigned int level, TransformPtr componentPtr) {
@@ -239,6 +320,10 @@ namespace ING {
 
 			transformCountVector[level]--;
 
+
+			indexArrayVector[level]->Erase(componentPtr.GetId());
+
+
 			if (transformCountVector[level] == 0) {
 
 				transformCountVector.resize(level);
@@ -246,6 +331,9 @@ namespace ING {
 				headTransformIndexVector.resize(level);
 				tailTransformVector.resize(level);
 				tailTransformIndexVector.resize(level);
+
+				indexArrayVector.resize(level);
+				delete (indexArrayVector[level]);
 
 			}
 			else {
@@ -341,17 +429,25 @@ namespace ING {
 			Transform& component = *componentPtr;
 
 			component.level = 0;
-
-			component.isHaveHeadChild = false;
-			component.isHaveTailChild = false;
-
 			component.isHaveNextTransform = false;
 			component.isHavePrevTransform = false;
+			component.nextTransformIndex = 0;
+			component.prevTransformIndex = 0;
 
+			component.isHeadSPT = false;
+			component.isTailSPT = false;
 			component.isHaveNextSPT = false;
 			component.isHavePrevSPT = false;
+			component.nextSPTIndex = 0;
+			component.prevSPTIndex = 0;
 
 			component.childCount = 0;
+			component.isHaveHeadChild = false;
+			component.isHaveTailChild = false;
+			component.headChildIndex = 0;
+			component.tailChildIndex = 0;
+
+			component.parentTransformIndex = 0;
 
 			IncreaseTransformCount(component.level, componentPtr);
 
@@ -369,7 +465,7 @@ namespace ING {
 
 			for (unsigned int level = 0; level < levelCount; ++level) {
 
-				if (array.GetFilledCount() >= GPU_MIN_TRANSFORM_COUNT) {
+				if (transformCountVector[level] >= GPU_MIN_TRANSFORM_COUNT) {
 
 					GPUComputeMatricesForLevel(level);
 
@@ -441,6 +537,14 @@ namespace ING {
 
 					}
 
+					if (lastTransform.isHaveHeadChild) {
+
+						Transform& headChildTransform = array.GetByIndex(lastTransform.headChildIndex);
+
+						headChildTransform.parentTransformIndex = lastTransformIndex;
+
+					}
+
 					if (headTransformIndexVector[lastTransform.level] == array.GetFilledCount() - 1) {
 
 						headTransformIndexVector[lastTransform.level] = componentIndex;
@@ -453,21 +557,7 @@ namespace ING {
 
 					}
 
-					if (lastTransform.isHaveHeadChild) {
-
-						if (array.GetFilledCount() >= GPU_MIN_TRANSFORM_COUNT)//transformCountVector[level] >= GPU_MIN_TRANSFORM_COUNT) 
-						{
-
-							GPUSwapParentIndex(lastTransformIndex, componentIndex);
-
-						}
-						else {
-
-							CPUSwapParentIndex(lastTransformIndex, componentIndex);
-
-						}
-
-					}
+					indexArrayVector[lastTransform.level]->Get(lastTransform.GetId()) = componentIndex;
 
 				}
 

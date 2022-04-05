@@ -24,6 +24,14 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	namespace Rendering {
+
+		class IBuffer;
+
+	}
+
+
+
 	namespace ECS {
 
 		class TransformSystem;
@@ -37,10 +45,12 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ING_API struct Transform : 
-			public Component,
-			public ING::TransformS,
-			private ING::TransformM
+		static ING_API struct Transform :
+
+			public Component,		//	(16bytes in 64bit system)
+			public ING::TransformS,	//	(32bytes in 64bit system)
+			private ING::TransformM	//	(320bytes in 64bit system)
+
 		{
 
 		public:
@@ -52,8 +62,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Transform(Entity* entity) :
-				Component(entity)
+			Transform(Entity* entity, IComponentSystem* system, ComponentId id) :
+				Component(entity, system, id)
 			{}
 
 
@@ -62,24 +72,30 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			unsigned int level;
+			/* both GPU, CPU can use */
+			unsigned int level;				
 			bool		 isHaveNextTransform;
-			bool		 isHavePrevTransform;
-			unsigned int nextTransformIndex;
-			unsigned int prevTransformIndex;
+			bool		 isHavePrevTransform;	
+			unsigned int nextTransformIndex;	
+			unsigned int prevTransformIndex;	
 				
-			bool		 isHaveNextSPT;		//
-			bool		 isHavePrevSPT;		// SPT is Same Parent Transform
-			unsigned int nextSPTIndex;		//
-			unsigned int prevSPTIndex;		//
+			bool		 isHeadSPT;			
+			bool		 isTailSPT;				
+			bool		 isHaveNextSPT;			
+			bool		 isHavePrevSPT;		
+			unsigned int nextSPTIndex;		
+			unsigned int prevSPTIndex;		
 
-			unsigned int childCount;
-			bool		 isHaveHeadChild;
-			bool		 isHaveTailChild;
-			unsigned int headChildIndex;
-			unsigned int tailChildIndex;
+			unsigned int childCount;	
+			bool		 isHaveHeadChild;	
+			bool		 isHaveTailChild;	
+			unsigned int headChildIndex;	
+			unsigned int tailChildIndex;	
 
 			unsigned int parentTransformIndex;
+
+			/* only CPU can use (8bytes in 64bit system) */
+			ComponentPtr<Transform, TransformSystem> parentPtr; 
 
 		public:
 			unsigned int GetLevel () { return level; }
@@ -118,11 +134,23 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::vector<size_t> transformCountVector;
-			std::vector<TransformPtr> headTransformVector;
-			std::vector<size_t> headTransformIndexVector;
-			std::vector<TransformPtr> tailTransformVector;
-			std::vector<size_t> tailTransformIndexVector;
+			std::vector<size_t>						transformCountVector;
+			std::vector<TransformPtr>				headTransformVector;
+			std::vector<size_t>						headTransformIndexVector;
+			std::vector<TransformPtr>				tailTransformVector;
+			std::vector<size_t>						tailTransformIndexVector;
+
+			Rendering::IBuffer*						mainBuffer;
+
+			std::vector<Rendering::IBuffer*>		indexBufferVector;
+			std::vector<SmartArray<unsigned int>*>	indexArrayVector;
+
+		public:
+			Rendering::IBuffer*			GetMainBuffer	()						{ return mainBuffer; }
+
+			Rendering::IBuffer*			GetIndexBuffer	(unsigned int index)	{ return indexBufferVector[index]; }
+
+			SmartArray<unsigned int>*	GetIndexArray	(unsigned int index)	{ return indexArrayVector[index]; }
 
 
 
@@ -130,6 +158,9 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
+			void RecreateBuffers	();
+			void RecreateMainBuffer	();
+
 			void AppendChild		(TransformPtr parentPtr, TransformPtr childPtr);
 			void AppendChild		(Entity* parentEntity, Entity* childEntity);
 

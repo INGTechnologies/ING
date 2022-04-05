@@ -40,7 +40,7 @@ namespace ING {
 			 *	Create Methods
 			 */
 		public:
-			static IBuffer* Create(IDevice* device, unsigned int size, void* pData);
+			static IBuffer* Create(IDevice* device, size_t size, void* pData);
 
 		};
 
