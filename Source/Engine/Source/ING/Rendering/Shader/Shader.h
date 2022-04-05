@@ -33,6 +33,8 @@ namespace ING {
 
 		class IDevice;
 
+		class IView;
+
 
 
 		struct ShaderProperty {
@@ -57,6 +59,24 @@ namespace ING {
 			std::string		name;
 			unsigned int	size;
 			unsigned int	offset;
+
+		};
+
+
+
+		struct ShaderView {
+
+			ShaderView(const std::string& name, const std::string& type) {
+
+				this->name = name;
+				this->type = type;
+				index = 0;
+
+			}
+
+			std::string		name;
+			std::string		type;
+			unsigned int	index;
 
 		};
 
@@ -94,6 +114,9 @@ namespace ING {
 			unsigned int				propertyTotalSize;
 			std::unordered_map<std::string, unsigned int> propName2PropIndexMap;
 
+			std::vector<ShaderView>		viewVector;
+			std::unordered_map<std::string, unsigned int> viewName2ViewIndexMap;
+
 			List<IMaterial*>			materialList;
 
 		protected:
@@ -112,6 +135,15 @@ namespace ING {
 			unsigned int				GetPropertyCount() { return propertyVector.size(); }
 			unsigned int				GetPropertyIndex(const std::string& name) { return propName2PropIndexMap[name]; }
 
+			const std::vector<ShaderView>& GetViewVector() { return viewVector; }
+			unsigned int				GetViewCount() { return viewVector.size(); }
+			unsigned int				GetViewIndex(const std::string& name) { return viewName2ViewIndexMap[name]; }
+			bool						IsHaveView(const std::string& name) {
+
+				return viewName2ViewIndexMap.find(name) != viewName2ViewIndexMap.end();
+
+			}
+
 
 
 			/**
@@ -127,6 +159,8 @@ namespace ING {
 			virtual void	Apply		(const std::string& name);
 
 			virtual void	SetPropertyVector(const std::vector<ShaderProperty>& propertyVector);
+
+			virtual void	SetViewVector(const std::vector<ShaderView>& viewVector);
 
 		};
 

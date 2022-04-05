@@ -62,6 +62,14 @@ namespace ING {
 
 			IDevice*	GetDevice() { return device; }
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual void Apply() {}
+
 		};
 
 	}

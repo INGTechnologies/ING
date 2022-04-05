@@ -164,6 +164,20 @@ namespace ING {
 
 		}
 
+		void			IShader::SetViewVector(const std::vector<ShaderView>& _viewVector) {
+
+			viewVector = _viewVector;
+
+			viewName2ViewIndexMap.clear();
+
+			for (auto mat : materialList) {
+
+				mat->UpdateViewVector();
+
+			}
+
+		}
+
 	}
 
 }

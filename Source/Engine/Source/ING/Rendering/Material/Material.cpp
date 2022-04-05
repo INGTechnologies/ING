@@ -146,6 +146,8 @@ namespace ING {
 			shader->AddMaterial(this);
 
 			CreatePropertyBuffer();
+
+			UpdateViewVector();
 		
 		}
 
@@ -170,6 +172,22 @@ namespace ING {
 			memcpy(this->cbufferVector[0], cbufferVector[0], sizeof(IBuffer*) * cbufferVector.size() + 1);
 
 			this->cbufferVector[cbufferVector.size() - 1] = propertyBuffer;
+
+		}
+
+		std::vector<MaterialView>	IMaterial::GetViewsByType(const std::string& type) {
+
+			unsigned int viewCount = viewType2ViewIndexVectorMap[type].size();
+
+			std::vector<MaterialView> result(viewCount);
+
+			for (unsigned int i = 0; i < viewCount; ++i) {
+
+				result[i] = viewVector[viewType2ViewIndexVectorMap[type][i]];
+
+			}
+
+			return result;
 
 		}
 
@@ -229,6 +247,85 @@ namespace ING {
 
 		}
 		void IMaterial::UpdatePropertyBuffer() { propertyBuffer->UpdateData(propertyPData); }
+
+		void IMaterial::UpdateViewVector() {
+
+			const std::vector<ShaderView>& shaderViewVector = shader->GetViewVector();
+
+			unsigned int viewCount = shaderViewVector.size();
+
+			std::vector<MaterialView> materialViewVector(viewCount);
+
+			viewType2ViewIndexVectorMap.clear();
+
+			for (unsigned int i = 0; i < viewCount; ++i) {
+
+				IView* view = 0;
+
+				if (viewName2ViewIndexMap.find(shaderViewVector[i].name) != viewName2ViewIndexMap.end()) {
+
+					view = viewVector[
+						viewName2ViewIndexMap[shaderViewVector[i].name]
+					].view;
+
+				}
+
+				materialViewVector[i] = MaterialView(
+
+					shaderViewVector[i].name,
+
+					shaderViewVector[i].type,
+
+					view,
+
+					i
+
+				);
+
+				if (viewType2ViewIndexVectorMap.find(shaderViewVector[i].type) == viewType2ViewIndexVectorMap.end()) {
+
+					viewType2ViewIndexVectorMap[shaderViewVector[i].type] = std::vector<unsigned int>(1);
+
+				}
+				else {
+
+					viewType2ViewIndexVectorMap[shaderViewVector[i].type].resize(viewType2ViewIndexVectorMap[shaderViewVector[i].type].size() + 1);
+
+				}
+
+				viewType2ViewIndexVectorMap[shaderViewVector[i].type][viewType2ViewIndexVectorMap[shaderViewVector[i].type].size() - 1] = i;
+
+				viewName2ViewIndexMap[shaderViewVector[i].name] = i;
+
+			}
+
+			viewVector = materialViewVector;
+
+			for (auto it = viewName2ViewIndexMap.cbegin(); it != viewName2ViewIndexMap.cend();)
+			{
+				if (!shader->IsHaveView(it->first))
+				{
+					viewName2ViewIndexMap.erase(it++);
+				}
+				else
+				{
+					++it;
+				}
+			}
+
+		}
+
+		IView*	IMaterial::GetView(const std::string& name) {
+
+			return viewVector[viewName2ViewIndexMap[name]].view;
+
+		}
+
+		void	IMaterial::SetView(const std::string& name, IView* view) {
+
+			viewVector[viewName2ViewIndexMap[name]].view = view;
+
+		}
 
 		void IMaterial::Update() {
 
