@@ -66,7 +66,7 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		struct ING_API Transform :
+		struct Transform :
 
 			public Component,		
 			public ING::TransformS,

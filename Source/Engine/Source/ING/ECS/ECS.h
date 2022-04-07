@@ -11,6 +11,8 @@
 
 
 
+#include "CameraSystem/CameraSystem.h"
+
 #include "TransformSystem/TransformSystem.h"
 
 #include "Rendering/Rendering.h"

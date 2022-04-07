@@ -16,9 +16,30 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS Core
+ *	Include Component
  */
-#include <ING/ECS/Core/Core.h>
+#include <ING/ECS/Component/Component.h>
+
+
+
+/**
+ *	Include Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include Repository
+ */
+#include <ING/ECS/Repository/Repository.h>
+
+
+
+/**
+ *	Include Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
 
 
 
@@ -33,7 +54,26 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ECS_COMPONENT(Camera, CameraSystem)
+		struct Camera :
+
+			public Component
+
+		{
+
+		public:
+			friend class CameraSystem;
+
+
+
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			Camera(Entity* entity, IComponentSystem* system, ComponentId id) :
+				Component(entity, system, id)
+			{}
+
+
 
 			/**
 			 *	Properties
@@ -96,7 +136,15 @@ namespace ING {
 		/**
 		 *	Component System
 		 */
-		static ING_API ECS_COMPONENT_SYSTEM(CameraSystem, ECS::Camera)
+		class ING_API CameraSystem : public ING::ECS::ComponentSystem<Camera, CameraSystem> {
+				
+		public:
+			friend class ING::ECS::Repository; 
+				
+		protected:
+			CameraSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<Camera, CameraSystem>(repository) {}
+
+
 
 		public:
 			virtual void Init() override;

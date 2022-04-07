@@ -54,7 +54,7 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		struct ING_API MeshDrawable :
+		struct MeshDrawable :
 
 			public Component
 

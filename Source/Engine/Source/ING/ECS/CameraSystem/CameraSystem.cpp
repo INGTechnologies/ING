@@ -1,4 +1,3 @@
-#pragma once
 
 /**
  *	Include Header
@@ -11,6 +10,13 @@
  *	Include Screen
  */
 #include <ING/Screen/Screen.h>
+
+
+
+/**
+ *	Include Transform System
+ */
+#include "../TransformSystem/TransformSystem.h"
 
 
 
