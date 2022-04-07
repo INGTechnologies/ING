@@ -9,11 +9,6 @@
 
 #include "Entity/Entity.h"
 
-
-
-#include "Repository/RepositoryDef.h"
-
-#include "Component/Ptr/PtrDef.h"
-#include "Component/System/SystemDef.h"
-
-#include "Entity/EntityDef.h"
+//#ifdef ING_EXPORTS
+#include "CoreDef.h"
+//#endif

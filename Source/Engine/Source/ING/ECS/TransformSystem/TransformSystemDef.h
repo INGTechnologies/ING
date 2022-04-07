@@ -37,6 +37,8 @@ namespace ING {
 		 */
 		void TransformSystem::Init() {
 
+			oldArraySize = 0;
+
 			RecreateBuffers();
 
 		}
@@ -45,9 +47,20 @@ namespace ING {
 
 			for (auto indexArray : indexArrayVector) {
 
+				indexArray->Clear();
+
 				delete indexArray;
 
 			}
+
+			for (auto indexBuffer : indexBufferVector) {
+
+				if(indexBuffer != 0)
+					indexBuffer->Release();
+
+			}
+
+			indexArrayVector.clear();
 
 			IComponentSystem::Release();
 
@@ -62,6 +75,8 @@ namespace ING {
 
 			RecreateMainBuffer();
 
+			RecreateIndexBuffers();
+
 		}
 
 		void TransformSystem::RecreateMainBuffer	() {
@@ -75,21 +90,78 @@ namespace ING {
 
 			}
 
-			/* Create Main Buffer */
-			Rendering::StructuredBufferDesc mainBufferDesc;
 
+
+			if (array.GetFilledCount() == 0) return;
+
+			
+
+			/* Create Main Buffer */
 			mainBuffer = Rendering::IStructuredBuffer::Create(
 				{
 
-					1,
+					array.GetCount(),
 					sizeof(ECS::Transform),
 					Rendering::USAGE_DEFAULT,
 					Rendering::BIND_SHADER_RESOURCE | Rendering::BIND_UNORDERED_ACCESS,
 					Rendering::CPU_ACCESS_READ | Rendering::CPU_ACCESS_WRITE
 
 				}, 
-				0
+				array.GetPData()
 			);
+
+			oldArraySize = array.GetCount();
+
+		}
+
+		void TransformSystem::RecreateIndexBuffers() {
+
+			for (unsigned int i = 0; i < indexBufferVector.size(); ++i) {
+
+				if (indexBufferVector[i] != nullptr) {
+
+					indexBufferVector[i]->Release();
+
+					indexBufferVector[i] = 0;
+
+				}
+
+			}
+
+			for (unsigned int i = 0; i < indexBufferVector.size(); ++i) {
+
+				RecreateIndexBuffer(i);
+
+			}
+
+		}
+
+		void TransformSystem::RecreateIndexBuffer(unsigned int level) {
+
+			if (indexBufferVector[level] != nullptr) {
+
+				indexBufferVector[level]->Release();
+
+				indexBufferVector[level] = 0;
+
+			}
+
+
+
+			indexBufferVector[level] = Rendering::IStructuredBuffer::Create(
+				{
+
+					indexArrayVector[level]->GetCount(),
+					sizeof(unsigned int),
+					Rendering::USAGE_DEFAULT,
+					Rendering::BIND_SHADER_RESOURCE | Rendering::BIND_UNORDERED_ACCESS,
+					Rendering::CPU_ACCESS_READ | Rendering::CPU_ACCESS_WRITE
+
+				},
+				indexArrayVector[level]->GetPData()
+			);
+
+			int a = 5;
 
 		}
 
@@ -281,6 +353,13 @@ namespace ING {
 				indexArrayVector.resize(level + 1);
 				indexArrayVector[level] = new SmartArray<unsigned int>();
 
+				oldIndexArraySizeVector.resize(level + 1);
+				oldIndexArraySizeVector[level] = 1;
+
+				indexBufferVector.resize(level + 1);
+				indexBufferVector[level] = 0;
+				//RecreateIndexBuffer(level);
+
 			}
 
 			transformCountVector[level]++;
@@ -312,6 +391,14 @@ namespace ING {
 
 
 			indexArrayVector[level]->Add(componentIndex, componentPtr.GetId());
+
+			if (indexArrayVector[level]->GetCount() != oldIndexArraySizeVector[level] || oldIndexArraySizeVector[level] == 1) {
+
+				RecreateIndexBuffer(level);
+
+			}
+
+			oldIndexArraySizeVector[level] = indexArrayVector[level]->GetCount();
 		}
 
 		void TransformSystem::DecreaseTransformCount(unsigned int level, TransformPtr componentPtr) {
@@ -319,7 +406,6 @@ namespace ING {
 			Transform& component = *componentPtr;
 
 			transformCountVector[level]--;
-
 
 			indexArrayVector[level]->Erase(componentPtr.GetId());
 
@@ -335,8 +421,30 @@ namespace ING {
 				indexArrayVector.resize(level);
 				delete (indexArrayVector[level]);
 
+				oldIndexArraySizeVector.resize(level);
+
+				if (indexBufferVector[level] != nullptr) {
+
+					indexBufferVector[level]->Release();
+					indexBufferVector[level] = 0;
+
+				}
+				indexBufferVector.resize(level);
+
 			}
 			else {
+
+				if (indexArrayVector[level]->GetCount() != oldIndexArraySizeVector[level]) {
+
+					RecreateIndexBuffer(level);
+
+				}
+
+				oldIndexArraySizeVector[level] = indexArrayVector[level]->GetCount();
+
+				
+
+
 
 				if (component.isHaveNextTransform) {
 
@@ -451,6 +559,12 @@ namespace ING {
 
 			IncreaseTransformCount(component.level, componentPtr);
 
+			if (array.GetCount() != oldArraySize) {
+
+				RecreateMainBuffer();
+
+			}
+
 		}
 
 		void TransformSystem::Start(TransformPtr componentPtr) {
@@ -460,6 +574,24 @@ namespace ING {
 		}
 
 		void TransformSystem::PreUpdate() {
+
+
+
+		}
+
+		void TransformSystem::Update() {
+
+
+
+		}
+
+		void TransformSystem::LateUpdate() {
+
+
+
+		}
+
+		void TransformSystem::PreRender() {
 
 			unsigned int levelCount = transformCountVector.size();
 
@@ -480,19 +612,15 @@ namespace ING {
 
 		}
 
-		void TransformSystem::Update() {
+		void TransformSystem::Render() {
 
 
 
 		}
 
-		void TransformSystem::LateUpdate() {
+		void TransformSystem::LateRender() {
 
-			//for (auto& transform : *this) {
 
-				//ComputeMatrices(transform);
-
-			//}
 
 		}
 
@@ -533,7 +661,34 @@ namespace ING {
 
 						Transform& prevTransform = array.GetByIndex(lastTransform.prevTransformIndex);
 
-						prevTransform.prevTransformIndex = componentIndex;
+						prevTransform.nextTransformIndex = componentIndex;
+
+					}
+
+					if (lastTransform.isHaveNextSPT) {
+
+						Transform& nextTransform = array.GetByIndex(lastTransform.nextSPTIndex);
+
+						nextTransform.prevSPTIndex = componentIndex;
+
+					}
+					if (lastTransform.isHavePrevSPT) {
+
+						Transform& prevTransform = array.GetByIndex(lastTransform.prevSPTIndex);
+
+						prevTransform.nextSPTIndex = componentIndex;
+
+					}
+
+					if (lastTransform.isTailSPT) {
+
+						lastTransform.parentPtr->tailChildIndex = componentIndex;
+
+					}
+
+					if (lastTransform.isHeadSPT) {
+
+						lastTransform.parentPtr->headChildIndex = componentIndex;
 
 					}
 
@@ -560,6 +715,16 @@ namespace ING {
 					indexArrayVector[lastTransform.level]->Get(lastTransform.GetId()) = componentIndex;
 
 				}
+
+			}
+
+		}
+
+		void TransformSystem::IAfterDestroy() {
+
+			if (array.GetCount() != oldArraySize) {
+
+				RecreateMainBuffer();
 
 			}
 

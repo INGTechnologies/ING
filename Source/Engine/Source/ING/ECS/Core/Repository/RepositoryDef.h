@@ -43,6 +43,8 @@ namespace ING {
 
 		Repository::~Repository() {
 
+
+
 		}
 
 
@@ -192,6 +194,36 @@ namespace ING {
 			for (auto& item : componentSystemVector) {
 
 				item->LateUpdate();
+
+			}
+
+		}
+
+		void				Repository::PreRender() {
+
+			for (auto& item : componentSystemVector) {
+
+				item->PreRender();
+
+			}
+
+		}
+
+		void				Repository::Render() {
+
+			for (auto& item : componentSystemVector) {
+
+				item->Render();
+
+			}
+
+		}
+
+		void				Repository::LateRender() {
+
+			for (auto& item : componentSystemVector) {
+
+				item->LateRender();
 
 			}
 

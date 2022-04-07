@@ -7,16 +7,16 @@
 
 
 /**
- *	Include ECS
+ *	Include Debug
  */
-#include <ING/ECS/ECS.h>
+#include <ING/_Debug/Debug.h>
 
 
 
 /**
- *	Include Debug
+ *	Include ECS
  */
-#include <ING/_Debug/Debug.h>
+#include <ING/ECS/ECS.h>
 
 
 
@@ -137,6 +137,42 @@ namespace ING {
 				if (!repository->IsActive()) continue;
 
 				repository->LateUpdate();
+
+			}
+
+		}
+
+		void						RepositoryManager::PreRender() {
+
+			for (Repository* repository : repositoryList) {
+
+				if (!repository->IsActive()) continue;
+
+				repository->PreRender();
+
+			}
+
+		}
+
+		void						RepositoryManager::Render() {
+
+			for (Repository* repository : repositoryList) {
+
+				if (!repository->IsActive()) continue;
+
+				repository->Render();
+
+			}
+
+		}
+
+		void						RepositoryManager::LateRender() {
+
+			for (Repository* repository : repositoryList) {
+
+				if (!repository->IsActive()) continue;
+
+				repository->LateRender();
 
 			}
 

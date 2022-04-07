@@ -129,7 +129,31 @@ namespace ING {
 
 			}
 
+			virtual void PreRender() {
+
+
+
+			}
+
+			virtual void Render() {
+
+
+
+			}
+
+			virtual void LateRender() {
+
+
+
+			}
+
 			virtual void IDestroy(IComponentPtr componentPtr) {
+
+
+
+			}
+
+			virtual void IAfterDestroy() {
 
 
 

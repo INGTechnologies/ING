@@ -9,6 +9,6 @@
 #include "CameraSystem/CameraSystem.h"
 #include "Rendering/Rendering.h"
 
-#include "TransformSystem/TransformSystemDef.h"
-#include "CameraSystem/CameraSystemDef.h"
-#include "Rendering/RenderingDef.h"
+//#ifdef ING_EXPORTS
+#include "ECSDef.h"
+//#endif

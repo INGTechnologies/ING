@@ -131,6 +131,8 @@ namespace ING {
 
 			entity->RemoveComponent<T>();
 
+			IAfterDestroy();
+
 		}
 
 		template<typename T, class TComponentSystem>

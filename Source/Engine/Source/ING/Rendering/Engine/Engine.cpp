@@ -114,6 +114,20 @@
 
 
 
+/**
+ *	Include ECS Repository Manager
+ */
+#include <ING/ECS/Core/Repository/Manager/Manager.h>
+
+
+
+/**
+ *	Include ECS
+ */
+//#include <ING/ECS/ECS.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -212,7 +226,13 @@ namespace ING {
 		 */
 		void Engine::FrameUpdate() {
 
+			//ECS::RepositoryManager::GetInstance()->PreRender();
+
+			//ECS::RepositoryManager::GetInstance()->Render();
+
 			Rendering::System::GetInstance()->FrameUpdate();
+
+			//ECS::RepositoryManager::GetInstance()->LateRender();
 
 		}
 

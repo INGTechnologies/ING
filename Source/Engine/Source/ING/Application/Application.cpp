@@ -131,6 +131,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ECS
+ */
+//#include <ING/ECS/ECS.h>
+
+
+
 namespace ING {
 
 	/**

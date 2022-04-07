@@ -1,6 +1,13 @@
 #pragma once
 
 /**
+ *	Include Entry Point
+ */
+#include <ING/EntryPoint/EntryPoint.h>
+
+
+
+/**
  *	Include Utils
  */
 #include <ING/Utils/Utils.h>
@@ -29,6 +36,17 @@ namespace ING {
 
 		class Entity;
 
+		class Repository;
+
+
+
+		/**
+		 *	Export To ING API
+		 */
+		ING_API void RepositoryConstructor(Repository* repository);
+		ING_API void RepositoryDestructor(Repository* repository);
+		ING_API void RepositoryRelease(Repository* repository);
+
 
 
 		/**
@@ -37,13 +55,29 @@ namespace ING {
 		class Repository
 		{
 
+		public:
+			friend class RepositoryManager;
+			friend void RepositoryConstructor(Repository* repository);
+			friend void RepositoryDestructor(Repository* repository);
+			friend void RepositoryRelease(Repository* repository);
+
+
+
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Repository();
+			Repository();// {
 
-			~Repository();
+			//	RepositoryConstructor(this);
+
+			//}
+
+			~Repository();// {
+
+			//	RepositoryDestructor(this);
+
+			//}
 
 
 
@@ -51,7 +85,11 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual void Release();// {
+
+			//	RepositoryRelease(this);
+
+			//}
 
 
 
@@ -108,10 +146,12 @@ namespace ING {
 			 */
 		public:
 			virtual void PreUpdate();
-
 			virtual void Update();
-
 			virtual void LateUpdate();
+
+			virtual void PreRender();
+			virtual void Render();
+			virtual void LateRender();
 
 		};
 

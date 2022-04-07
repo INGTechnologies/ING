@@ -108,6 +108,9 @@ namespace ING {
 		public:
 			TransformM& GetMatrices() { return (TransformM&)(*this); }
 
+			ComponentPtr<Transform, TransformSystem>	GetParentPtr() { return parentPtr; }
+			Transform&	GetParent() { return *parentPtr; }
+
 		};
 
 
@@ -135,6 +138,8 @@ namespace ING {
 			 */
 		private:
 			std::vector<size_t>						transformCountVector;
+			std::vector<size_t>						oldIndexArraySizeVector;
+
 			std::vector<TransformPtr>				headTransformVector;
 			std::vector<size_t>						headTransformIndexVector;
 			std::vector<TransformPtr>				tailTransformVector;
@@ -144,6 +149,8 @@ namespace ING {
 
 			std::vector<Rendering::IBuffer*>		indexBufferVector;
 			std::vector<SmartArray<unsigned int>*>	indexArrayVector;
+
+			bool									oldArraySize;
 
 		public:
 			Rendering::IBuffer*			GetMainBuffer	()						{ return mainBuffer; }
@@ -160,6 +167,8 @@ namespace ING {
 		public:
 			void RecreateBuffers	();
 			void RecreateMainBuffer	();
+			void RecreateIndexBuffers();
+			void RecreateIndexBuffer(unsigned int level);
 
 			void AppendChild		(TransformPtr parentPtr, TransformPtr childPtr);
 			void AppendChild		(Entity* parentEntity, Entity* childEntity);
@@ -186,10 +195,17 @@ namespace ING {
 		public:
 			virtual void Awake(TransformPtr componentPtr) override;
 			virtual void Start(TransformPtr componentPtr) override;
+
 			virtual void PreUpdate() override;
 			virtual void Update() override;
 			virtual void LateUpdate() override;
+
+			virtual void PreRender() override;
+			virtual void Render() override;
+			virtual void LateRender() override;
+
 			virtual void Destroy(TransformPtr componentPtr) override;
+			virtual void IAfterDestroy() override;
 
 		};
 

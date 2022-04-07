@@ -76,6 +76,10 @@ namespace ING {
 			void Update();
 			void LateUpdate();
 
+			void PreRender();
+			void Render();
+			void LateRender();
+
 		};
 
 	}
