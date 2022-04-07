@@ -1,4 +1,3 @@
-#pragma once
 
 /**
  *	Include Header
@@ -36,6 +35,8 @@ namespace ING {
 		 *	Init And Release Methods
 		 */
 		void TransformSystem::Init() {
+
+			mainBuffer = 0;
 
 			oldArraySize = 0;
 

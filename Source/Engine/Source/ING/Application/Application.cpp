@@ -120,7 +120,7 @@ using namespace ING::Utils;
 /**
  *	Include ECS Repository Manager
  */
-#include <ING/ECS/Core/Repository/Manager/Manager.h>
+#include <ING/ECS/Repository/Manager/Manager.h>
 
 
 

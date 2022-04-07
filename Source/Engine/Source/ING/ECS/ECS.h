@@ -1,14 +1,16 @@
 #pragma once
 
-#include "Core/Core.h"
+#include "Component/Component.h"
+#include "Component/Id/Id.h"
+#include "Component/Ptr/Ptr.h"
+#include "Component/System/System.h"
 
-/**
- *	Include Default Component Systems
- */
+#include "Entity/Entity.h"
+
+#include "Repository/Repository.h"
+
+
+
 #include "TransformSystem/TransformSystem.h"
-#include "CameraSystem/CameraSystem.h"
-#include "Rendering/Rendering.h"
 
-//#ifdef ING_EXPORTS
-#include "ECSDef.h"
-//#endif
+#include "Rendering/Rendering.h"

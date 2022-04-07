@@ -1,4 +1,3 @@
-#pragma once
 
 /**
  *	Include Header
@@ -10,13 +9,10 @@
 /**
  *	Include ECS Component System
  */
-#include <ING/ECS/Core/Component/System/System.h>
+#include <ING/ECS/Component/System/System.h>
 
 
 
-/**
- *	Define Class Members,...
- */
 namespace ING {
 
 	namespace ECS {
@@ -57,32 +53,6 @@ namespace ING {
 			}
 
 			delete this;
-		}
-
-
-
-		/**
-		 *	Methods
-		 */
-		template<typename T, class TComponentSystem>
-		void								Entity::AddComponent(ComponentPtr<T, TComponentSystem> componentPtr) {
-
-			componentMap[typeid(T).name()] = componentPtr;
-
-		}
-
-		template<typename T, class TComponentSystem>
-		ComponentPtr<T, TComponentSystem>	Entity::GetComponent() {
-
-			return ComponentPtr<T, TComponentSystem>(componentMap[typeid(T).name()]);
-
-		}
-
-		template<typename T>
-		void								Entity::RemoveComponent() {
-
-			componentMap.erase(typeid(T).name());
-
 		}
 
 	}

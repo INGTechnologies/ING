@@ -41,25 +41,13 @@ namespace ING {
 
 
 		/**
-		 *	Export To ING API
-		 */
-		ING_API void RepositoryConstructor(Repository* repository);
-		ING_API void RepositoryDestructor(Repository* repository);
-		ING_API void RepositoryRelease(Repository* repository);
-
-
-
-		/**
 		 *	Main Class
 		 */
-		class Repository
+		class ING_API Repository
 		{
 
 		public:
 			friend class RepositoryManager;
-			friend void RepositoryConstructor(Repository* repository);
-			friend void RepositoryDestructor(Repository* repository);
-			friend void RepositoryRelease(Repository* repository);
 
 
 
@@ -67,17 +55,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Repository();// {
+			Repository();
 
-			//	RepositoryConstructor(this);
-
-			//}
-
-			~Repository();// {
-
-			//	RepositoryDestructor(this);
-
-			//}
+			~Repository();
 
 
 
@@ -85,11 +65,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();// {
-
-			//	RepositoryRelease(this);
-
-			//}
+			virtual void Release();
 
 
 
@@ -154,6 +130,70 @@ namespace ING {
 			virtual void LateRender();
 
 		};
+
+	}
+
+}
+
+
+
+namespace ING {
+
+	namespace ECS {
+
+		/**
+		 *	Methods
+		 */
+		template<class TComponentSystem>
+		TComponentSystem* Repository::CreateComponentSystem() {
+
+			TComponentSystem* componentSystem = new TComponentSystem(this);
+
+			componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()] = componentSystem;
+			componentTypeId2ComponentSystemMap[componentSystem->GetComponentTypeId()] = componentSystem;
+
+			componentSystemVector.push_back(componentSystem);
+
+			componentSystem->index = componentSystemVector.size() - 1;
+
+			componentSystem->Init();
+
+			return componentSystem;
+
+		}
+
+		template<class TComponentSystem>
+		TComponentSystem* Repository::GetComponentSystem() {
+
+			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
+
+			return componentSystem;
+
+		}
+
+		template<class T>
+		IComponentSystem* Repository::GetComponentSystemFromComponentType() {
+
+			IComponentSystem* componentSystem = componentSystemTypeId2ComponentSystemMap[typeid(T).name()];
+
+			return componentSystem;
+
+		}
+
+		template<typename TComponentSystem>
+		void				Repository::ReleaseComponentSystem() {
+
+			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
+
+			componentSystemVector.erase(componentSystemVector.begin() + componentSystem->GetIndex());
+
+			componentTypeId2ComponentSystemMap.erase(componentSystem->GetComponentTypeId());
+
+			componentSystem->Release();
+
+			componentSystemTypeId2ComponentSystemMap.erase(typeid(TComponentSystem).name());
+
+		}
 
 	}
 

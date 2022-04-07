@@ -12,7 +12,7 @@ using namespace ING::Utils;
 /**
  *	Include Id
  */
-#include <ING/ECS/Core/Component/Id/Id.h>
+#include <ING/ECS/Component/Id/Id.h>
 
 
 
@@ -74,7 +74,8 @@ namespace ING {
 			friend class TComponentSystem;\
 			\
 		public:\
-			T(ING::ECS::Entity* entity, IComponentSystem* system, ComponentId id) : ING::ECS::Component(entity, system, id) {}
+			T(ING::ECS::Entity* entity, ING::ECS::IComponentSystem* system, ING::ECS::ComponentId id) : ING::ECS::Component(entity, system, id) {}
+
 
 	}
 

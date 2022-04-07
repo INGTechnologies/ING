@@ -21,8 +21,6 @@ namespace ING {
 
 	namespace Utils {
 
-		struct Entity;
-
 
 
 		/**

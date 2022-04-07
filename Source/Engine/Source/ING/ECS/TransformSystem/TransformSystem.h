@@ -16,9 +16,30 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS Core
+ *	Include Component
  */
-#include <ING/ECS/Core/Core.h>
+#include <ING/ECS/Component/Component.h>
+
+
+
+/**
+ *	Include Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include Repository
+ */
+#include <ING/ECS/Repository/Repository.h>
+
+
+
+/**
+ *	Include Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
 
 
 
@@ -45,11 +66,11 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ING_API struct Transform :
+		struct ING_API Transform :
 
-			public Component,		//	(16bytes in 64bit system)
-			public ING::TransformS,	//	(32bytes in 64bit system)
-			private ING::TransformM	//	(320bytes in 64bit system)
+			public Component,		
+			public ING::TransformS,
+			private ING::TransformM
 
 		{
 
@@ -94,7 +115,7 @@ namespace ING {
 
 			unsigned int parentTransformIndex;
 
-			/* only CPU can use (8bytes in 64bit system) */
+			/* only CPU can use */
 			ComponentPtr<Transform, TransformSystem> parentPtr; 
 
 		public:
@@ -125,7 +146,15 @@ namespace ING {
 		/**
 		 *	Component System
 		 */
-		static ING_API ECS_COMPONENT_SYSTEM(TransformSystem, Transform)
+		class ING_API TransformSystem : public ING::ECS::ComponentSystem<Transform, TransformSystem> {
+				
+		public:
+			friend class ING::ECS::Repository; 
+				
+		protected:
+			TransformSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<Transform, TransformSystem>(repository) {}
+
+
 
 		public:
 			virtual void Init()		override;

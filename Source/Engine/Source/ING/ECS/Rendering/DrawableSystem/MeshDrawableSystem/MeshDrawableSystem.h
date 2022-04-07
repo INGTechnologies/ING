@@ -16,9 +16,30 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS Core
+ *	Include Component
  */
-#include <ING/ECS/Core/Core.h>
+#include <ING/ECS/Component/Component.h>
+
+
+
+/**
+ *	Include Component System
+ */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include Repository
+ */
+#include <ING/ECS/Repository/Repository.h>
+
+
+
+/**
+ *	Include Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
 
 
 
@@ -33,7 +54,26 @@ namespace ING {
 		/**
 		 *	Component
 		 */
-		static ECS_COMPONENT(MeshDrawable, MeshDrawableSystem)
+		struct ING_API MeshDrawable :
+
+			public Component
+
+		{
+
+		public:
+			friend class MeshDrawableSystem;
+
+
+
+			/**
+			 *	Constructors And Destructor
+			 */
+		public:
+			MeshDrawable(Entity* entity, IComponentSystem* system, ComponentId id) :
+				Component(entity, system, id)
+			{}
+
+
 
 			/**
 			 *	Properties
@@ -78,7 +118,15 @@ namespace ING {
 		/**
 		 *	Component System
 		 */
-		static ING_API ECS_COMPONENT_SYSTEM(MeshDrawableSystem, MeshDrawable)
+		class ING_API MeshDrawableSystem : public ING::ECS::ComponentSystem<MeshDrawable, MeshDrawableSystem> {
+
+		public:
+			friend class ING::ECS::Repository;
+
+		protected:
+			MeshDrawableSystem(ING::ECS::Repository* repository) : ING::ECS::ComponentSystem<MeshDrawable, MeshDrawableSystem>(repository) {}
+
+
 
 		public:
 			virtual void Init() override;

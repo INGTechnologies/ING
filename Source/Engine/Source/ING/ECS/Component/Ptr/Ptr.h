@@ -12,7 +12,7 @@ using namespace ING::Utils;
 /**
  *	Include Id
  */
-#include <ING/ECS/Core/Component/Id/Id.h>
+#include <ING/ECS/Component/Id/Id.h>
 
 
 
@@ -44,7 +44,7 @@ namespace ING {
 		/**
 		 *	Interface Class
 		 */
-		class IComponentPtr {
+		class ING_API IComponentPtr {
 
 			/**
 			 *	Constructors And Destructor
@@ -159,6 +159,36 @@ namespace ING {
 			T* operator -> ();
 
 		};
+
+	}
+
+}
+
+
+
+/**
+ *	Define Class Members,...
+ */
+namespace ING {
+
+	namespace ECS {
+
+		/**
+		 *	Operators
+		 */
+		template<typename T, class TComponentSystem>
+		T&	ComponentPtr<T, TComponentSystem>::operator * () {
+
+			return GetComponentSystem()->GetComponentFromPtr(*this);
+
+		}
+
+		template<typename T, class TComponentSystem>
+		T* ComponentPtr<T, TComponentSystem>::operator -> () {
+
+			return GetComponentSystem()->GetComponentDataPtrFromPtr(*this);
+
+		}
 
 	}
 

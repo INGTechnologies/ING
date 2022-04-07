@@ -10,6 +10,20 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Id
+ */
+#include <ING/ECS/Component/Id/Id.h>
+
+
+
+/**
+ *	Include Id
+ */
+#include <ING/ECS/Component/Ptr/Ptr.h>
+
+
+
+/**
  *	Include Map
  */
 #include <map>
@@ -38,7 +52,7 @@ namespace ING {
 		/**
 		 *	Main Class
 		 */
-		struct Entity
+		struct ING_API Entity
 		{
 			/**
 			 *	Friend Class
@@ -90,13 +104,25 @@ namespace ING {
 			 */
 		public:
 			template<typename T, class TComponentSystem>
-			void								AddComponent(ComponentPtr<T, TComponentSystem> componentPtr);
+			void								AddComponent(ComponentPtr<T, TComponentSystem> componentPtr) {
+
+				componentMap[typeid(T).name()] = componentPtr;
+
+			}
 
 			template<typename T, class TComponentSystem>
-			ComponentPtr<T, TComponentSystem>	GetComponent();
+			ComponentPtr<T, TComponentSystem>	GetComponent() {
+
+				return ComponentPtr<T, TComponentSystem>(componentMap[typeid(T).name()]);
+
+			}
 
 			template<typename T>
-			void								RemoveComponent();
+			void								RemoveComponent() {
+
+				componentMap.erase(typeid(T).name());
+
+			}
 
 		};
 

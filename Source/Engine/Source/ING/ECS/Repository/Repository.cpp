@@ -1,16 +1,8 @@
-#pragma once
 
 /**
- *	Include Header
+ *	Include ECS
  */
 #include "Repository.h"
-
-
-
-/**
- *	Include Entity
- */
-#include <ING/ECS/Core/Entity/Entity.h>
 
 
 
@@ -22,8 +14,19 @@
 
 
 /**
- *	Define Class Members,...
+ *	Include Component System
  */
+#include <ING/ECS/Component/System/System.h>
+
+
+
+/**
+ *	Include Entity
+ */
+#include <ING/ECS/Entity/Entity.h>
+
+
+
 namespace ING {
 
 	namespace ECS {
@@ -87,57 +90,6 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		template<class TComponentSystem>
-		TComponentSystem*	Repository::CreateComponentSystem() {
-
-			TComponentSystem* componentSystem = new TComponentSystem(this);
-
-			componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()] = componentSystem;
-			componentTypeId2ComponentSystemMap[componentSystem->GetComponentTypeId()] = componentSystem;
-
-			componentSystemVector.push_back(componentSystem);
-
-			componentSystem->index = componentSystemVector.size() - 1;
-
-			componentSystem->Init();
-
-			return componentSystem;
-
-		}
-
-		template<class TComponentSystem>
-		TComponentSystem*	Repository::GetComponentSystem() {
-
-			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
-
-			return componentSystem;
-
-		}
-
-		template<class T>
-		IComponentSystem*	Repository::GetComponentSystemFromComponentType() {
-
-			IComponentSystem* componentSystem = componentSystemTypeId2ComponentSystemMap[typeid(T).name()];
-
-			return componentSystem;
-
-		}
-
-		template<typename TComponentSystem>
-		void				Repository::ReleaseComponentSystem() {
-
-			TComponentSystem* componentSystem = (TComponentSystem*)componentSystemTypeId2ComponentSystemMap[typeid(TComponentSystem).name()];
-
-			componentSystemVector.erase(componentSystemVector.begin() + componentSystem->GetIndex());
-
-			componentTypeId2ComponentSystemMap.erase(componentSystem->GetComponentTypeId());
-
-			componentSystem->Release();
-
-			componentSystemTypeId2ComponentSystemMap.erase(typeid(TComponentSystem).name());
-
-		}
-
 		Entity*				Repository::CreateEntity() {
 		
 			Entity* result = new Entity(this);
