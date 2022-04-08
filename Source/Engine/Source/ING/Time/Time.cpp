@@ -92,7 +92,7 @@ namespace ING {
 
 		frameEnd = std::chrono::steady_clock::now() - appStart;
 
-		deltaTime = (frameEnd - frameStart).count();
+		deltaTime = (float)((long double)(frameEnd - frameStart).count());
 
 	}
 

@@ -39,7 +39,7 @@ using namespace ING::Utils;
 /**
  *	Include Drawable Category
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 

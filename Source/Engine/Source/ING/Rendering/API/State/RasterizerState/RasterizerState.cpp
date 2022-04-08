@@ -113,7 +113,7 @@ namespace ING {
 
 		void IRasterizerState::Apply() {
 
-			GetDevice()->GetContext()->RSSetState(this);
+			GetDevice()->GetImmediateContext()->RSSetState(this);
 
 		}
 

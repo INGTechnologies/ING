@@ -49,9 +49,9 @@
 
 
 /**
- *	Include Rendering Drawable Category
+ *	Include Rendering Drawable Filter
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -79,7 +79,7 @@ namespace ING {
 		 */
 		IDrawable::IDrawable() : layer(0) {
 
-			categoryNameVector.resize(0);
+			filterNameVector.resize(0);
 
 			SetLayer(0);
 
@@ -115,19 +115,19 @@ namespace ING {
 
 			}
 
-			unsigned int categoryCount = categoryNameVector.size();
+			unsigned int filterCount = filterNameVector.size();
 
-			for (unsigned int i = 0; i < categoryCount; ++i) {
+			for (unsigned int i = 0; i < filterCount; ++i) {
 
-				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
+				IDrawableFilter* filter = layer->GetFilter(filterNameVector[i]);
 
-				category->RemoveDrawable(this);
+				filter->RemoveDrawable(this);
 
 			}
 
 			layer = LayerManager::GetInstance()->GetLayer(index);
 
-			SetCategoryNameVector(categoryNameVector);
+			SetFilterNameVector(filterNameVector);
 
 		}
 
@@ -136,49 +136,49 @@ namespace ING {
 			return layer;
 		}
 
-		void	IDrawable::SetCategoryNameVector(const std::vector<std::string>& categoryNameVector) {
+		void	IDrawable::SetFilterNameVector(const std::vector<std::string>& filterNameVector) {
 
-			unsigned int categoryCount = categoryNameVector.size();
+			unsigned int filterCount = filterNameVector.size();
 
-			this->categoryNameVector = categoryNameVector;
+			this->filterNameVector = filterNameVector;
 
-			for (unsigned int i = 0; i < categoryCount; ++i) {
+			for (unsigned int i = 0; i < filterCount; ++i) {
 
-				IDrawableCategory* category = layer->GetCategory(categoryNameVector[i]);
+				IDrawableFilter* filter = layer->GetFilter(filterNameVector[i]);
 
-				category->AddDrawable(this);
+				filter->AddDrawable(this);
 
 			}
 		
 		}
 
-		void	IDrawable::SetCategories(const std::vector<std::string>& categoryNameVector) {
+		void	IDrawable::SetCategories(const std::vector<std::string>& filterNameVector) {
 
-			SetCategoryNameVector(categoryNameVector);
-
-		}
-
-		List<IDrawable*>::Node* IDrawable::GetNode(const std::string& categoryName) {
-
-			return categoryName2NodeMap[categoryName];
+			SetFilterNameVector(filterNameVector);
 
 		}
 
-		void	IDrawable::AddNode(const std::string& categoryName, List<IDrawable*>::Node* node) {
+		List<IDrawable*>::Node* IDrawable::GetNode(const std::string& filterName) {
 
-			categoryName2NodeMap[categoryName] = node;
-
-		}
-
-		void	IDrawable::RemoveNode(const std::string& categoryName) {
-
-			categoryName2NodeMap.erase(categoryName);
+			return filterName2NodeMap[filterName];
 
 		}
 
-		bool	IDrawable::IsHaveNode(const std::string& categoryName) {
+		void	IDrawable::AddNode(const std::string& filterName, List<IDrawable*>::Node* node) {
 
-			return !(categoryName2NodeMap.find(categoryName) == categoryName2NodeMap.end());
+			filterName2NodeMap[filterName] = node;
+
+		}
+
+		void	IDrawable::RemoveNode(const std::string& filterName) {
+
+			filterName2NodeMap.erase(filterName);
+
+		}
+
+		bool	IDrawable::IsHaveNode(const std::string& filterName) {
+
+			return !(filterName2NodeMap.find(filterName) == filterName2NodeMap.end());
 
 		}
 

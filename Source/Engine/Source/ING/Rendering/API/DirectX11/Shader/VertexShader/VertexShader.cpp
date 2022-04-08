@@ -85,7 +85,7 @@ namespace ING {
 			 */
 			void VertexShader::Apply(const std::string& name) {
 
-				IDeviceContext* context = GetDevice()->GetContext();
+				IDeviceContext* context = GetDevice()->GetImmediateContext();
 
 				context->VSSetShader(this);
 

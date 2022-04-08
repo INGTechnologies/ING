@@ -61,7 +61,7 @@ using namespace ING::Utils;
 /**
  *	Include Drawable Category
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -202,7 +202,7 @@ namespace ING {
 
 				GetShader()->Apply(passName);
 
-				IDeviceContext* context = shader->GetDevice()->GetContext();
+				IDeviceContext* context = shader->GetDevice()->GetImmediateContext();
 
 				if (shader->GetPropertyCount() > 0) {
 

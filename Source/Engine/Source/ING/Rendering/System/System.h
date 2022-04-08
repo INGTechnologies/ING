@@ -26,6 +26,8 @@ namespace ING {
 
 		class IPipeline;
 
+		class IDevice;
+
 
 
 		class ING_API System :
@@ -64,6 +66,12 @@ namespace ING {
 
 			bool		isRendering;
 
+			IDevice*	defaultDevice;
+
+			IDevice*	device;
+
+			IDevice*	targetDevice;
+
 		public:
 			IPipeline*	GetDefaultPipeline	() { return defaultPipeline; }
 
@@ -74,6 +82,14 @@ namespace ING {
 			void		SetPipeline			(IPipeline* pipeline);
 
 			bool		IsRendering			() { return isRendering; }
+
+			IDevice*	GetDefaultDevice	() { return defaultDevice; }
+
+			IDevice*	GetDevice			() { return device; }
+
+			IDevice*	GetTargetDevice		() { return targetDevice; }
+
+			void		SetDevice			(IDevice* device);
 
 
 

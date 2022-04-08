@@ -124,7 +124,7 @@ namespace ING {
 			 */
 			void InputLayout::Apply() {
 
-				GetDevice()->GetContext()->As<DirectX11::DeviceContext>()->IASetInputLayout(this);
+				GetDevice()->GetImmediateContext()->As<DirectX11::DeviceContext>()->IASetInputLayout(this);
 
 			}
 

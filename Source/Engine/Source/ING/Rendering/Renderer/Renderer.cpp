@@ -49,9 +49,9 @@
 
 
 /**
- *	Include Rendering Drawable Category
+ *	Include Rendering Drawable Filter
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -123,7 +123,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Camera* camera, const std::string& categoryName, const std::string& passName) {
+		void IRenderer::RenderDrawables(Camera* camera, const std::string& filterName, const std::string& passName) {
 
 			if (camera->GetRenderingScene() == 0) {
 
@@ -142,9 +142,9 @@ namespace ING {
 
 				unsigned int layerIndex = layer->GetIndex();
 
-				IDrawableCategory* category = layer->GetCategory(categoryName);
+				IDrawableFilter* filter = layer->GetFilter(filterName);
 
-				for (auto drawable : category->GetDrawableList()) {
+				for (auto drawable : filter->GetDrawableList()) {
 
 					if(drawable->IsActive())
 						RenderDrawable(camera, drawable, passName);

@@ -96,10 +96,10 @@ namespace ING {
 			void							SetLayer				(unsigned int index) { return ingMeshDrawable->SetLayer(index); }
 			ING::Rendering::Layer*			GetLayer				() { return ingMeshDrawable->GetLayer(); }
 
-			const std::vector<std::string>& GetCategoryNameVector	() { return ingMeshDrawable->GetCategoryNameVector(); }
-			void							SetCategoryNameVector	(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetCategoryNameVector(categoryNameVector); }
+			const std::vector<std::string>& GetFilterNameVector	() { return ingMeshDrawable->GetFilterNameVector(); }
+			void							SetFilterNameVector	(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetFilterNameVector(categoryNameVector); }
 			void							SetCategories			(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetCategories(categoryNameVector); }
-			bool							IsHaveCategory			(const std::string& categoryName) { return ingMeshDrawable->IsHaveCategory(categoryName); }
+			bool							IsHaveFilter			(const std::string& categoryName) { return ingMeshDrawable->IsHaveFilter(categoryName); }
 
 			bool							IsActive				() { return ingMeshDrawable->IsActive(); }
 			void							SetActive				(bool isActive) { ingMeshDrawable->SetActive(isActive); }

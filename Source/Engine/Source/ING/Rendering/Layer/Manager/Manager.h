@@ -55,12 +55,12 @@ namespace ING {
 			 */
 		private:
 			std::vector<Layer*>								layerVector;
-			std::unordered_map<std::string, bool>			categoryNameMap;
+			std::unordered_map<std::string, bool>			filterNameMap;
 
 		public:
 			const std::vector<Layer*>&						GetLayerVector		() { return layerVector; }
-			const std::unordered_map<std::string, bool>&	GetCategoryNameMap	() { return categoryNameMap; }
-			void											SetCategoryNameMap	(const std::vector<std::string>& categoryNameVector);
+			const std::unordered_map<std::string, bool>&	GetFilterNameMap	() { return filterNameMap; }
+			void											SetFilterNameMap	(const std::vector<std::string>& filterNameVector);
 
 
 
@@ -71,7 +71,7 @@ namespace ING {
 			void	SetLayer			(Layer* layer, unsigned int index);
 			Layer*	GetLayer			(unsigned int index);
 			void	RemoveLayer			(unsigned int index);
-			void	RecreateCategories	(const std::vector<std::string>& categoryNameVector);
+			void	RecreateCategories	(const std::vector<std::string>& FilterNameVector);
 
 		};
 

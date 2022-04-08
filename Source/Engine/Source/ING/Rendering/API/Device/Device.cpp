@@ -35,7 +35,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		IDevice::IDevice() :
-			context(0)
+			immediateContext(0)
 		{
 
 
@@ -92,9 +92,9 @@ namespace ING {
 
 		void IDevice::Release() {
 
-			if (context != nullptr) {
+			if (immediateContext != nullptr) {
 
-				context->Release();
+				immediateContext->Release();
 
 			}
 

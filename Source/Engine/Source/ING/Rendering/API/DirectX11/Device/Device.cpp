@@ -144,7 +144,7 @@ namespace ING {
 				/**
 				 *	Create Context
 				 */
-				context = Rendering::IDeviceContext::Create(this);
+				immediateContext = Rendering::IDeviceContext::Create(this);
 
 			}
 

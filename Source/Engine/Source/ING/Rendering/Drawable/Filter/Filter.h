@@ -24,15 +24,15 @@ namespace ING {
 
 
 
-		class ING_API IDrawableCategory
+		class ING_API IDrawableFilter
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IDrawableCategory	(const std::string& name);
-			~IDrawableCategory	();
+			IDrawableFilter	(const std::string& name);
+			~IDrawableFilter	();
 
 
 

@@ -30,9 +30,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Drawable Category
+ *	Include Drawable Filter
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -74,13 +74,13 @@ namespace ING {
 		void Layer::Release()
 		{
 
-			for (auto& item : name2DrawableCategoryMap) {
+			for (auto& item : name2DrawableFilterMap) {
 
 				item.second->Release();
 
 			}
 
-			name2DrawableCategoryMap.clear();
+			name2DrawableFilterMap.clear();
 
 			delete this;
 
@@ -91,22 +91,22 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		IDrawableCategory*	Layer::GetCategory(const std::string& name) {
+		IDrawableFilter*	Layer::GetFilter(const std::string& name) {
 
-			return name2DrawableCategoryMap[name]; 
+			return name2DrawableFilterMap[name]; 
 		}
 
-		void				Layer::AddCategory(const std::string& name) {
+		void				Layer::AddFilter(const std::string& name) {
 
-			name2DrawableCategoryMap[name] = new IDrawableCategory(name);
+			name2DrawableFilterMap[name] = new IDrawableFilter(name);
 
 		}
 
-		void				Layer::RemoveCategory(const std::string& name) {
+		void				Layer::RemoveFilter(const std::string& name) {
 
-			GetCategory(name)->Release();
+			GetFilter(name)->Release();
 
-			name2DrawableCategoryMap.erase(name);
+			name2DrawableFilterMap.erase(name);
 
 		}
 

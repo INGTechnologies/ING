@@ -27,7 +27,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IDrawableCategory;
+		class IDrawableFilter;
 
 		class IDrawble;
 
@@ -69,18 +69,18 @@ namespace ING {
 
 			unsigned int		index;
 
-			std::unordered_map<std::string, IDrawableCategory*> name2DrawableCategoryMap;
+			std::unordered_map<std::string, IDrawableFilter*> name2DrawableFilterMap;
 
 		public:
 			std::string			GetName			() { return name; }
 
 			unsigned int		GetIndex		() { return index; }
 
-			const std::unordered_map<std::string, IDrawableCategory*>& GetName2DrawableCategoryMap () { return name2DrawableCategoryMap; }
+			const std::unordered_map<std::string, IDrawableFilter*>& GetName2DrawableFilterMap () { return name2DrawableFilterMap; }
 
-			IDrawableCategory*	GetCategory		(const std::string& name);
-			void			    AddCategory		(const std::string& name);
-			void			    RemoveCategory	(const std::string& name);
+			IDrawableFilter*	GetFilter		(const std::string& name);
+			void			    AddFilter		(const std::string& name);
+			void			    RemoveFilter	(const std::string& name);
 
 		};
 

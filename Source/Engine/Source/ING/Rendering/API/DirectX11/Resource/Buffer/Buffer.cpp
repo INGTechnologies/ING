@@ -78,7 +78,7 @@ namespace ING {
 			 */
 			void Buffer::UpdateData(void* pData) {
 
-				ID3D11DeviceContext* context = GetDevice()->GetContext()->As<DirectX11::DeviceContext>()->GetD3D11DeviceContext();
+				ID3D11DeviceContext* context = GetDevice()->GetImmediateContext()->As<DirectX11::DeviceContext>()->GetD3D11DeviceContext();
 
 				context->UpdateSubresource(d3d11Buffer, 0, 0, pData, 0, 0);
 

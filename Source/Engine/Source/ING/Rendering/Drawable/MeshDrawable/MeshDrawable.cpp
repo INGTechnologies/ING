@@ -65,7 +65,7 @@
 /**
  *	Include Rendering Drawable
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -171,7 +171,7 @@ namespace ING {
 			IBuffer* vertexBuffer = mesh->GetVertexBuffer();
 			IBuffer* indexBuffer  = mesh->GetIndexBuffer();
 
-			IDeviceContext* context = vertexBuffer->GetDevice()->GetContext();
+			IDeviceContext* context = vertexBuffer->GetDevice()->GetImmediateContext();
 
 			context->IASetPrimitiveTopology(TRIANGLE_LIST);
 

@@ -147,7 +147,7 @@ namespace ING {
 			void SwapChain::Resize(unsigned int width, unsigned int height) {
 
 				ID3D11Device* d3d11Device = ((DirectX11::Device*)GetDevice())->GetD3D11Device();
-				ID3D11DeviceContext* d3d11DeviceContext = ((DirectX11::DeviceContext*)(GetDevice()->GetContext()))->GetD3D11DeviceContext();
+				ID3D11DeviceContext* d3d11DeviceContext = ((DirectX11::DeviceContext*)(GetDevice()->GetImmediateContext()))->GetD3D11DeviceContext();
 
 
 

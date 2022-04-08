@@ -32,7 +32,7 @@ namespace ING {
 
 		class IPass;
 
-		class IDrawableCategory;
+		class IDrawableFilter;
 
 		class Layer;
 
@@ -64,9 +64,9 @@ namespace ING {
 		private:
 			Layer*							layer;
 
-			std::vector<std::string>		categoryNameVector;
+			std::vector<std::string>		filterNameVector;
 
-			std::unordered_map<std::string, List<IDrawable*>::Node*>	categoryName2NodeMap;
+			std::unordered_map<std::string, List<IDrawable*>::Node*>	filterName2NodeMap;
 
 			bool							isActive;
 
@@ -74,15 +74,15 @@ namespace ING {
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();
 
-			const std::vector<std::string>& GetCategoryNameVector	() { return categoryNameVector; }
-			void							SetCategoryNameVector	(const std::vector<std::string>& categoryNameVector);
-			void							SetCategories			(const std::vector<std::string>& categoryNameVector);
+			const std::vector<std::string>& GetFilterNameVector	() { return filterNameVector; }
+			void							SetFilterNameVector	(const std::vector<std::string>& filterNameVector);
+			void							SetCategories			(const std::vector<std::string>& filterNameVector);
 
-			List<IDrawable*>::Node*			GetNode					(const std::string& categoryName);
-			void							AddNode					(const std::string& categoryName, List<IDrawable*>::Node* node);
-			void							RemoveNode				(const std::string& categoryName);
-			bool							IsHaveNode				(const std::string& categoryName);
-			bool							IsHaveCategory			(const std::string& categoryName) { return IsHaveNode(categoryName); }
+			List<IDrawable*>::Node*			GetNode					(const std::string& filterName);
+			void							AddNode					(const std::string& filterName, List<IDrawable*>::Node* node);
+			void							RemoveNode				(const std::string& filterName);
+			bool							IsHaveNode				(const std::string& filterName);
+			bool							IsHaveFilter			(const std::string& filterName) { return IsHaveNode(filterName); }
 
 			bool							IsActive				() { return isActive; }
 			void							SetActive				(bool isActive) { this->isActive = isActive; }

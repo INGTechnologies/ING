@@ -104,7 +104,7 @@ namespace ING {
 
 			Debug::Log("Start Releasing Rendering::LayerManager");
 
-			categoryNameMap.clear();
+			filterNameMap.clear();
 
 			delete this;
 
@@ -118,23 +118,23 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void	LayerManager::SetCategoryNameMap(const std::vector<std::string>& categoryNameVector) {
+		void	LayerManager::SetFilterNameMap(const std::vector<std::string>& filterNameVector) {
 
-			std::unordered_map<std::string, bool> categoryNameMap2;
+			std::unordered_map<std::string, bool> filterNameMap2;
 
-			for (const std::string& categoryName : categoryNameVector) {
+			for (const std::string& filterName : filterNameVector) {
 
-				categoryNameMap2[categoryName] = true;
+				filterNameMap2[filterName] = true;
 
 				for (Layer* layer : layerVector) {
 
 					if (layer == 0) { continue; }
 
-					const std::unordered_map<std::string, IDrawableCategory*>& tl_name2CategoryMap = layer->GetName2DrawableCategoryMap();
+					const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
-					if (tl_name2CategoryMap.find(categoryName) == tl_name2CategoryMap.end()) {
+					if (tl_name2FilterMap.find(filterName) == tl_name2FilterMap.end()) {
 
-						layer->AddCategory(categoryName);
+						layer->AddFilter(filterName);
 
 					}
 
@@ -142,19 +142,19 @@ namespace ING {
 
 			}
 
-			for (auto& item : categoryNameMap) {
+			for (auto& item : filterNameMap) {
 
 				for (Layer* layer : layerVector) {
 
 					if (layer == 0) { continue; }
 
-					const std::unordered_map<std::string, IDrawableCategory*>& tl_name2CategoryMap = layer->GetName2DrawableCategoryMap();
+					const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
-					if (tl_name2CategoryMap.find(item.first) != tl_name2CategoryMap.end()
-						&& categoryNameMap2.find(item.first) == categoryNameMap2.end()
+					if (tl_name2FilterMap.find(item.first) != tl_name2FilterMap.end()
+						&& filterNameMap2.find(item.first) == filterNameMap2.end()
 					) {
 
-						layer->RemoveCategory(item.first);
+						layer->RemoveFilter(item.first);
 
 					}
 
@@ -162,11 +162,11 @@ namespace ING {
 
 			}
 
-			categoryNameMap.clear();
+			filterNameMap.clear();
 
-			for (const std::string& categoryName : categoryNameVector) {
+			for (const std::string& filterName : filterNameVector) {
 
-				categoryNameMap[categoryName] = true;
+				filterNameMap[filterName] = true;
 
 			}
 
@@ -184,14 +184,14 @@ namespace ING {
 
 
 
-			/* Update Layer Category */
-			for (auto& item : categoryNameMap) {
+			/* Update Layer Filter */
+			for (auto& item : filterNameMap) {
 
-				const std::unordered_map<std::string, IDrawableCategory*>& tl_name2CategoryMap = layer->GetName2DrawableCategoryMap();
+				const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
-				if (tl_name2CategoryMap.find(item.first) == tl_name2CategoryMap.end()) {
+				if (tl_name2FilterMap.find(item.first) == tl_name2FilterMap.end()) {
 
-					layer->AddCategory(item.first);
+					layer->AddFilter(item.first);
 
 				}
 
@@ -213,9 +213,9 @@ namespace ING {
 
 		}
 
-		void	LayerManager::RecreateCategories(const std::vector<std::string>& categoryNameVector) {
+		void	LayerManager::RecreateCategories(const std::vector<std::string>& filterNameVector) {
 
-			SetCategoryNameMap(categoryNameVector);
+			SetFilterNameMap(filterNameVector);
 
 		}
 

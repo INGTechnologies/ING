@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "Category.h"
+#include "Filter.h"
 
 
 
@@ -21,13 +21,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDrawableCategory::IDrawableCategory	(const std::string& name) {
+		IDrawableFilter::IDrawableFilter	(const std::string& name) {
 
 			this->name = name;
 
 		}
 
-		IDrawableCategory::~IDrawableCategory	() {
+		IDrawableFilter::~IDrawableFilter	() {
 
 
 
@@ -38,7 +38,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IDrawableCategory::Release() {
+		void IDrawableFilter::Release() {
 
 			for (auto& item : drawableList) {
 
@@ -57,13 +57,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IDrawableCategory::AddDrawable		(IDrawable* drawable) {
+		void IDrawableFilter::AddDrawable		(IDrawable* drawable) {
 
 			drawable->AddNode(name, drawableList.Add(drawable));
 
 		}
 
-		void IDrawableCategory::RemoveDrawable	(IDrawable* drawable) {
+		void IDrawableFilter::RemoveDrawable	(IDrawable* drawable) {
 
 			if (!drawable->IsHaveNode(name)) return;
 

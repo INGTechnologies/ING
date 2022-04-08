@@ -86,7 +86,11 @@ namespace ING {
 		System::System() :
 			defaultPipeline(0),
 			pipeline(0),
-			targetPipeline(0)
+			targetPipeline(0),
+
+			defaultDevice(0),
+			device(0),
+			targetDevice(0)
 		{
 
 			Debug::Log("Start Creating Rendering::System");
@@ -113,6 +117,10 @@ namespace ING {
 			defaultPipeline = new StandardRP::Pipeline("Standard Rendering Pipeline");
 
 			targetPipeline = defaultPipeline;
+
+			defaultDevice = Rendering::IAPI::GetInstance()->GetDevice();
+
+			targetDevice = defaultDevice;
 
 			isRendering = false;
 
@@ -157,6 +165,13 @@ namespace ING {
 
 		}
 
+		void System::SetDevice(IDevice* device) {
+
+			/* New Device Will Be Used In Next Frame */
+			targetDevice = device;
+
+		}
+
 
 
 		/**
@@ -170,12 +185,12 @@ namespace ING {
 
 		void System::FrameUpdate() {
 
-			/* Set Pipeline */
 			pipeline = targetPipeline;
+			device = targetDevice;
 
 			isRendering = true;
 
-			pipeline->Render(Rendering::IAPI::GetInstance()->GetDevice()->GetContext());
+			pipeline->Render(device->GetImmediateContext());
 
 			isRendering = false;
 

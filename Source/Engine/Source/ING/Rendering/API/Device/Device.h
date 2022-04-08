@@ -52,10 +52,10 @@ namespace ING {
 			 *	IDevice Context
 			 */
 		protected:
-			IDeviceContext* context;
+			IDeviceContext* immediateContext;
 
 		public:
-			IDeviceContext* GetContext() { return context; }
+			IDeviceContext* GetImmediateContext() { return immediateContext; }
 
 		};
 
