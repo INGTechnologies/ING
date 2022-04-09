@@ -71,6 +71,32 @@ namespace ING {
 
 
 
+		/**
+		 *	Methods
+		 */
+	public:
+		template<class T>
+		void AddComponent() {
+
+			if (componentTypeId2ComponentMap.find(typeid(T).name()) != componentTypeId2ComponentMap.end()) return;
+
+			T* component = new T();
+
+			componentTypeId2ComponentMap[typeid(T).name()] = component;
+
+			return component;
+
+		}
+
+		template<class T>
+		T* GetComponent() {
+
+			if (componentTypeId2ComponentMap.find(typeid(T).name()) == componentTypeId2ComponentMap.end()) return 0;
+
+			return componentTypeId2ComponentMap[typeid(T).name()];
+
+		}
+
 	};
 
 }

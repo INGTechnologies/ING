@@ -69,7 +69,7 @@ namespace ING {
 			Debug::Log("Start Initializing Rendering::LayerManager");
 
 			/* Create Categories */
-			RecreateCategories({
+			RecreateFilters({
 
 				"Opaque",
 
@@ -213,7 +213,7 @@ namespace ING {
 
 		}
 
-		void	LayerManager::RecreateCategories(const std::vector<std::string>& filterNameVector) {
+		void	LayerManager::RecreateFilters(const std::vector<std::string>& filterNameVector) {
 
 			SetFilterNameMap(filterNameVector);
 
