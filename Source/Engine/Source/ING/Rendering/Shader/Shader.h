@@ -82,6 +82,21 @@ namespace ING {
 
 
 
+		struct ShaderCBuffer {
+
+			ShaderCBuffer(const std::string& name) {
+
+				this->name = name;
+
+			}
+
+			std::string		name;
+			unsigned int	index;
+
+		};
+
+
+
 		class ING_API IShader {
 
 			/**
@@ -117,6 +132,9 @@ namespace ING {
 			std::vector<ShaderView>		viewVector;
 			std::unordered_map<std::string, unsigned int> viewName2ViewIndexMap;
 
+			std::vector<ShaderCBuffer>	cbufferVector;
+			std::unordered_map<std::string, unsigned int> cbufferName2CBufferIndexMap;
+
 			List<IMaterial*>			materialList;
 
 		protected:
@@ -144,6 +162,15 @@ namespace ING {
 
 			}
 
+			const std::vector<ShaderCBuffer>& GetCBufferVector() { return cbufferVector; }
+			unsigned int				GetCBufferCount() { return cbufferVector.size(); }
+			unsigned int				GetCBufferIndex(const std::string& name) { return cbufferName2CBufferIndexMap[name]; }
+			bool						IsHaveCBuffer(const std::string& name) {
+
+				return cbufferName2CBufferIndexMap.find(name) != cbufferName2CBufferIndexMap.end();
+
+			}
+
 
 
 			/**
@@ -161,6 +188,8 @@ namespace ING {
 			virtual void	SetPropertyVector(const std::vector<ShaderProperty>& propertyVector);
 
 			virtual void	SetViewVector(const std::vector<ShaderView>& viewVector);
+
+			virtual void	SetCBufferVector(const std::vector<ShaderCBuffer>& cbufferVector);
 
 		};
 

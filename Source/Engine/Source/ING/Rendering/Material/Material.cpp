@@ -79,6 +79,8 @@ using namespace ING::Utils;
 
 
 
+#include <vector>
+
 
 
 namespace ING {
@@ -92,7 +94,7 @@ namespace ING {
 			shader(0),
 			propertyBuffer(0),
 			propertyPData(0),
-			cbufferVector(1)
+			cbufferVector(GetMinimumCBufferCount())
 		{
 
 			this->name = name;
@@ -148,6 +150,8 @@ namespace ING {
 			CreatePropertyBuffer();
 
 			UpdateViewVector();
+
+			UpdateCBufferVector();
 		
 		}
 
@@ -312,6 +316,26 @@ namespace ING {
 					++it;
 				}
 			}
+
+		}
+
+		void	IMaterial::UpdateCBufferVector() {
+
+			unsigned int cbufferCount = GetMinimumCBufferCount() + shader->GetCBufferCount();
+
+			cbufferVector.resize(cbufferCount);
+
+		}
+
+		IBuffer* IMaterial::GetCBuffer(const std::string& name) {
+
+			return cbufferVector[shader->GetCBufferIndex(name)];
+
+		}
+
+		void	IMaterial::SetCBuffer(const std::string& name, IBuffer* cbuffer) {
+
+			cbufferVector[shader->GetCBufferIndex(name)] = cbuffer;
 
 		}
 

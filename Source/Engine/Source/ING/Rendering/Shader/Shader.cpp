@@ -168,11 +168,41 @@ namespace ING {
 
 			viewVector = _viewVector;
 
+			unsigned int viewCount = _viewVector.size();
+
 			viewName2ViewIndexMap.clear();
+
+			for (unsigned int i = 0; i < viewCount; ++i) {
+
+				viewName2ViewIndexMap[viewVector[i].name] = i;
+
+			}
 
 			for (auto mat : materialList) {
 
 				mat->UpdateViewVector();
+
+			}
+
+		}
+
+		void			IShader::SetCBufferVector(const std::vector<ShaderCBuffer>& _cbufferVector) {
+
+			cbufferVector = _cbufferVector;
+
+			unsigned int cbufferCount = _cbufferVector.size();
+
+			cbufferName2CBufferIndexMap.clear();
+
+			for (unsigned int i = 0; i < cbufferCount; ++i) {
+
+				cbufferName2CBufferIndexMap[_cbufferVector[i].name] = i;
+
+			}
+
+			for (auto mat : materialList) {
+
+				mat->UpdateCBufferVector();
 
 			}
 

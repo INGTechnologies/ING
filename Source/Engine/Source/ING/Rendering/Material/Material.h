@@ -140,6 +140,8 @@ namespace ING {
 
 			std::vector<MaterialView>	GetViewsByType(const std::string& type);
 
+			virtual unsigned int		GetMinimumCBufferCount() { return 1; }
+
 		private:
 			unsigned int	GetPropertyIndex(const std::string& name);
 			unsigned int	GetPropertyOffset(const std::string& name);
@@ -177,6 +179,11 @@ namespace ING {
 			virtual void UpdatePropertyBuffer	();
 
 			virtual void UpdateViewVector		();
+
+			virtual void UpdateCBufferVector	();
+
+			IBuffer*	 GetCBuffer(const std::string& name);
+			void		 SetCBuffer(const std::string& name, IBuffer* cbuffer);
 
 			IView*		 GetView				(const std::string& name);
 			void		 SetView				(const std::string& name, IView* view);
