@@ -85,6 +85,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include StandardRP Surface Shader
+ */
+#include <ING/Rendering/StandardRP/Shader/SurfaceShader/SurfaceShader.h> 
+
+
+
+/**
  *	Include Window
  */
 #include <ING/Window/Window.h> 
@@ -171,9 +178,9 @@ using namespace ING::Math;
 
 
 /**
- *	Include Rendering Drawable Category
+ *	Include Rendering Drawable Filter
  */
-#include <ING/Rendering/Drawable/Category/Category.h>
+#include <ING/Rendering/Drawable/Filter/Filter.h>
 
 
 
@@ -247,16 +254,7 @@ using namespace ING::Math;
 
 
 
-#include <xmmintrin.h>
-#include <immintrin.h>
-
-
-
 using namespace ING;
-
-
-
-#include <ING/AMath/AMath.h>
 
 #include <ING/Profiler/Session/Session.h>
 
@@ -266,7 +264,7 @@ using namespace ING;
 #include <ING/Rendering/StandardRP/Pipeline/Pipeline.h>
 #include <ING/Rendering/StandardRP/Pass/First/First.h>
 #include <ING/Rendering/StandardRP/Pass/Final/Final.h>
-#include <ING/Rendering/StandardRP/Drawable/MeshDrawable/MeshDrawable.h>
+#include <ING/Rendering/Drawable/MeshDrawable/MeshDrawable.h>
 
 #include <ING/Rendering/SubRP/Pipeline/Pipeline.h>
 #include <ING/Rendering/SubRP/Pass/Pass.h>
@@ -277,8 +275,14 @@ using namespace ING;
 
 #include <ING/Rendering/API/State/RasterizerState/RasterizerState.h>
 
+#include <ING/Rendering/API/BindFlag/BindFlag.h>
 
 
+#include <ING/Scene/Scene.h>
+
+
+
+#include <ING/Scripting/CSharp/Language/Language.h>
 
 
 
@@ -313,11 +317,9 @@ bool DemoPass::CustomRender(
 
 	IRenderer* renderer = Rendering::System::GetInstance()->GetPipeline()->GetRenderer();
 
-	Rendering::Scene* scene = camera->GetRenderingScene();
 
 
-
-	renderer->RenderDrawables(scene, "Opaque", "Demo Pass");
+	renderer->RenderDrawables(camera, "Opaque", "Demo Pass");
 
 
 
@@ -325,6 +327,13 @@ bool DemoPass::CustomRender(
 
 	return true;
 }
+
+
+
+
+static ECS::Repository* repository;
+static ECS::TransformSystem* transformSystem;
+
 
 
 
@@ -347,47 +356,80 @@ int main() {
 	/* On "RUN" */
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 
+
+
+
+
+		//Scripting::CSharp::Language* language = new Scripting::CSharp::Language();
+
+		//Debug::Log(language->GetName());
+
+
+
+
+
+
+
+
+
 		/* Focus On Main Window */
 		WindowManager::GetInstance()->GetMainWindow()->Focus();
 
 
 
-		/* 
-		*	Create Custom Rendering Pass 
-		* 
-		*	Only Add Pass To Pipeline In End Of Frame Or Rendering Thread
-		*/
-		Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* e) {		
-			
-			
-			Rendering::IPass* demoPass = new DemoPass("Demo Pass");
 
 
-			Rendering::System* renderingSystem = Rendering::System::GetInstance();
 
-			Rendering::StandardRP::Pipeline* mainPipeline = (Rendering::StandardRP::Pipeline*)renderingSystem->GetTargetPipeline();
+		/* Create ECS Repository */
+		repository = new ECS::Repository();
+		repository->SetActive(true);
 
 
-			Rendering::SubRP::Pipeline* subPipeline = mainPipeline->GetSubPipeline("After First Pipeline");
 
-			subPipeline->AddPass(demoPass);
 
-			
-			mainPipeline->SetMode(Rendering::StandardRP::MODE_FORWARD);
+		/* Create ECS Component Systems */
+		transformSystem = repository->CreateComponentSystem<ECS::TransformSystem>();
+		ECS::CameraSystem* cameraSystem = repository->CreateComponentSystem<ECS::CameraSystem>();
+		ECS::MeshDrawableSystem* meshDrawableSystem = repository->CreateComponentSystem<ECS::MeshDrawableSystem>();
 
-			
-			e->RemoveCurrentListener();
-			
+
+
+
+
+		/**
+		 *	Create Custom Rendering Pass 
+		 */
+		Rendering::IPass* demoPass = new DemoPass("Demo Pass");
+
+
+		Rendering::System* renderingSystem = Rendering::System::GetInstance();
+
+		Rendering::StandardRP::Pipeline* mainPipeline = (Rendering::StandardRP::Pipeline*)renderingSystem->GetTargetPipeline();
+
+
+		Rendering::SubRP::Pipeline* subPipeline = mainPipeline->GetSubPipeline("After First Pipeline");
+
+		subPipeline->AddPass(demoPass);
+
+
+		mainPipeline->SetMode(Rendering::StandardRP::MODE_FORWARD);
+
+
+
+		/* Create Camera Entity */
+		ECS::Entity* camEntity = repository->CreateEntity({
+
+			transformSystem,
+
+			cameraSystem
+
 		});
 
-
-
-		/* Create Camera */
-		Camera* camera = new Camera();
+		ECS::CameraPtr camera = cameraSystem->GetComponent(camEntity);
 
 		camera->SetActive(true);
 		camera->SetScreen(ScreenManager::GetInstance()->GetMainScreen());
-		camera->SetFOV(Math::Deg2Rad * 90.0f);
+		camera->SetFOV(3.14f / 180.0f * 60.0f);
 		camera->SetFarPlane(1000.0f);
 		camera->SetNearPlane(0.1f);
 
@@ -406,72 +448,79 @@ int main() {
 
 
 
-		/* Create Shaders */
-		IShader* shader = new Rendering::IShader("DemoShader");
+		/* Create Shader */
+		IShader* shader = new Rendering::StandardRP::SurfaceShader("DemoShader");
 
 		shader->AddPass("Demo Pass");
-		shader->GetPass("Demo Pass")->AddState(IRasterizerState::Create("RSState", {
+		shader->GetPass("Demo Pass")->AddState(
+			IRasterizerState::Create("RSState", {
 		
-			FILL_WIREFRAME,
-			CULL_NONE
+				FILL_WIREFRAME,
+				CULL_NONE
 			
-		}));
-		shader->GetPass("Demo Pass")->AddChild("VertexShader", 
+			})
+		);
+		shader->GetPass("Demo Pass")->AddShader("VertexShader",
 			IVertexShader::CreateFromHLSL(L"Assets/Shaders/DemoVS.hlsl")
 		);
-		shader->GetPass("Demo Pass")->AddChild("PixelShader",
+		shader->GetPass("Demo Pass")->AddShader("PixelShader",
 			IPixelShader::CreateFromHLSL(L"Assets/Shaders/DemoPS.hlsl")
 		);
-		shader->SetPropertyVector({
+		shader->GetPass("Demo Pass")->SetInputLayout(
+			IInputLayout::Create(
+				{
 
-			ShaderProperty("color", sizeof(Vector4)),
-			ShaderProperty("color2", sizeof(Vector4))
+					{ "POSITION", 0, FORMAT_R32G32B32_FLOAT, 0, 0, INPUT_PER_VERTEX_DATA, 0 }
 
-		});
-
-
-
-		/* Create Input Layout */
-		IInputLayout* inputLayout = IInputLayout::Create(
-			{
-
-				{ "POSITION", 0, FORMAT_R32G32B32A32_FLOAT, 0, 0, INPUT_PER_VERTEX_DATA, 0 }
-
-			},
-			shader->GetPass("Demo Pass")->GetChild("VertexShader")
+				},
+				shader->GetPass("Demo Pass")->GetShader("VertexShader")
+			)
 		);
-		shader->GetPass("Demo Pass")->SetInputLayout(inputLayout);
+		shader->SetPropertyVector({
+			ShaderProperty("color", sizeof(RFloat4)),
+			ShaderProperty("color2", sizeof(RFloat4))
+		});
+		shader->SetViewVector({
+			
 
+			
+		});
+		shader->SetCBufferVector({
+			
 
+			
+		});
 
 		/* Create Material */
 		IMaterial* material = new Rendering::DrawableMaterial("DemoMat", shader);
 
-		material->SetProperty<Vector4>("color", Vector4(1,1,0,1));
-		material->SetProperty<Vector4>("color2", Vector4(0,1,0,1));
+		material->SetProperty<RFloat4>("color", { 1,1,0,1 });
+		material->SetProperty<RFloat4>("color2", { 0,1,0,1 });
 
-
-
-		/* Create Mesh (Triangle) */
-		IMesh* mesh = new Mesh<Vector4>(
+		/* Create Mesh */
+		IMesh* mesh = new Mesh<RFloat3>(
 			{
-				{0,0,0,1.0f},
-				{0,1,0,1.0f},
-				{1,0,0,1.0f}
+				{0,0,0.0f},
+				{0,1,0.0f},
+				{1,0,0.0f}
 			},
 			{ 0, 1, 2 }
 		);
 		mesh->BuildBuffers();
 
+		ECS::Entity* entity = repository->CreateEntity({		
+			transformSystem,
+			meshDrawableSystem			
+		});
 
+		ECS::TransformPtr transform = transformSystem->GetComponent(entity);
+		transform->localPosition = RVector3(0,0,8.0f);
 
-		/* Create Mesh Drawable (It's something like a mesh can be drawn) */
-		StandardRP::MeshDrawable* meshDrawable = new Rendering::StandardRP::MeshDrawable();
-
+		ECS::MeshDrawablePtr meshDrawable = meshDrawableSystem->GetComponent(entity);
 		meshDrawable->SetMesh(mesh);
 		meshDrawable->SetMaterial(material);
 		meshDrawable->SetActive(true);
-		meshDrawable->SetCategories({
+		meshDrawable->SetFilters({
 
 			"Opaque"
 
@@ -480,24 +529,105 @@ int main() {
 
 
 
-		/* ECS Demo */
-		ECS::Repository* repository = new ECS::Repository();
-		repository->SetActive(true);
-
-		ECS::TransformSystem* transformSystem = repository->CreateComponentSystem<ECS::TransformSystem>();
-		ECS::CameraSystem* cameraSystem = repository->CreateComponentSystem<ECS::CameraSystem>();
 
 
-		ECS::Entity* entity = repository->CreateEntity();
-		transformSystem->AddComponent(entity);
 
-		cameraSystem->AddComponent(entity);
 
+		ECS::Entity* entity2 = repository->CreateEntity({
+		
+			transformSystem
+			
+		});
+
+
+
+		ECS::Entity* entity3 = repository->CreateEntity({
+
+			transformSystem
+
+		});
+
+		ECS::Entity* entity4 = repository->CreateEntity({
+
+			transformSystem
+
+		});
+
+		
+		transformSystem->AppendChild(entity4, entity2);
+		transformSystem->AppendChild(entity4, entity3);
+
+
+
+		for (ECS::Transform& transform : *transformSystem) {
+
+			int a = 5;
+
+		}
+
+
+
+		for (ECS::Transform& transform : *transformSystem) {
+
+			int a = 5;
+
+		}
+
+		transformSystem->RemoveChild(entity4, entity2);
+
+
+
+		for (ECS::Transform& transform : *transformSystem) {
+
+			int a = 5;
+
+		}
+
+		repository->ReleaseEntity(entity2);
+
+
+
+		for (ECS::Transform& transform : *transformSystem) {
+
+			int a = 5;
+
+		}
+
+
+
+		ING::Scene* scene = new ING::Scene(
+
+			{
+
+
+
+			},
+
+			{
+
+				new ECS::SceneComponent()
+
+			}
+
+		);
+
+
+		
 	});
 
 
 
 	ING::Application::GetInstance()->GetEvent("END_FRAME_UPDATE")->AddListener([](Event* e) {
+
+		ECS::Entity* entity = repository->CreateEntity({
+
+			transformSystem
+
+		});
+
+		repository->ReleaseEntity(entity);
+
+
 
 		/**
 		 *	Show FPS In Window Title
@@ -510,7 +640,11 @@ int main() {
 
 			t = 0;
 
-			WindowManager::GetInstance()->GetMainWindow()->SetTitle(WString(L"FPS: ") + WString(Time::GetFPS()));
+			WindowManager::GetInstance()->GetMainWindow()->SetTitle(
+				WString(L"FPS: ") + WString(Time::GetFPS()) + 
+				WString(L"     ") +
+				WString(L"Frametime: ") + WString(Time::GetDeltaTime() * 1000.0f) + WString(L"ms")
+			);
 
 		}
 
@@ -519,9 +653,6 @@ int main() {
 
 	/* Run Application */
 	ING::Application::GetInstance()->Run();
-
-
-	//system("pause");
 
 	return 0;
 }

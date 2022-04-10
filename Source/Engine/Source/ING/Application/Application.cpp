@@ -132,9 +132,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS
+ *	Include Scripting Manager
  */
-//#include <ING/ECS/ECS.h>
+#include <ING/Scripting/Manager/Manager.h>
 
 
 
@@ -213,6 +213,9 @@ namespace ING {
 
 		/* Resource Manager */
 		AddSquare<CameraManager>();
+
+		/* Scripting Manager */
+		AddSquare<Scripting::Manager>();
 
 		/* ECS Repository Manager */
 		AddSquare<ECS::RepositoryManager>();
