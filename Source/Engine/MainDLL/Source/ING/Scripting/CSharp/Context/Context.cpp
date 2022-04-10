@@ -36,11 +36,25 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Context::Context(ILanguage* language) :
-				IContext(language)
+			Context::Context(const std::string& name, ILanguage* language) :
+				IContext(name, language),
+
+				domain(0)
 			{
 
+				mono_set_dirs(".",".");
 
+				domain = mono_jit_init(name.c_str());
+
+				if (domain == 0) {
+
+					Debug::Error("Cant Create CSharp Scripting Context");
+
+					Release();
+
+					return;
+
+				}
 
 			}
 

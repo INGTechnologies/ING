@@ -23,6 +23,15 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mono
+ */
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+#include <mono/metadata/debug-helpers.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -55,7 +64,7 @@ namespace ING {
 			public:
 				virtual std::string GetName()		override;
 
-				virtual IContext*	CreateContext() override;
+				virtual IContext*	CreateContext(const std::string& name) override;
 
 			};
 

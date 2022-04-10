@@ -75,9 +75,9 @@ namespace ING {
 			 */
 			std::string Language::GetName() { return "CSharp"; }
 
-			IContext*	Language::CreateContext() {
+			IContext*	Language::CreateContext(const std::string& name) {
 
-				return new CSharp::Context(this);
+				return new CSharp::Context(name, this);
 
 			}
 

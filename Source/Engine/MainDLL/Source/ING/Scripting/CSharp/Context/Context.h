@@ -23,6 +23,15 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Mono
+ */
+#include <mono/jit/jit.h>
+#include <mono/metadata/assembly.h>
+#include <mono/metadata/debug-helpers.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -36,7 +45,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Context(ILanguage* language);
+				Context(const std::string& name, ILanguage* language);
 				~Context();
 
 
@@ -46,6 +55,17 @@ namespace ING {
 				 */
 			public:
 				virtual void Release() override;
+
+
+
+				/**
+				 *	Properties
+				 */
+			private:
+				MonoDomain* domain;
+
+			public:
+				MonoDomain* GetDomain() { return domain; }
 
 			};
 

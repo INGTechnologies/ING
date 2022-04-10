@@ -34,11 +34,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IContext::IContext(ILanguage* language) :
+		IContext::IContext(const std::string& name, ILanguage* language) :
+			name(name),
 			language(language)
 		{
 
-
+			 
 
 		}
 

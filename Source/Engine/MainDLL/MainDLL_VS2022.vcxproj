@@ -99,50 +99,50 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)ING\Dependencies\DirectXTex\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(LibraryPath)</LibraryPath>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\</IntDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>Engine</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -175,7 +175,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -184,7 +184,10 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
@@ -217,7 +220,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -226,7 +229,10 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -257,14 +263,17 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -297,7 +306,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -306,7 +315,10 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\EngineDemo\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
@@ -339,7 +351,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -348,7 +360,10 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -379,14 +394,17 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>DirectXTex.lib;d3d11.lib;d3dcompiler.lib;mono-2.0-sgen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)" "$(SolutionDir)..\Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y</Command>
+      <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
+XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

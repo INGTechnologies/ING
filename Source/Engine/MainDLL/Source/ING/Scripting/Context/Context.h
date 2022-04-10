@@ -31,7 +31,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IContext(ILanguage* language);
+			IContext(const std::string& name, ILanguage* language);
 			~IContext();
 
 
@@ -48,10 +48,12 @@ namespace ING {
 			 *	Properties 
 			 */
 		private:
-			ILanguage* language;
+			std::string			name;
+			ILanguage*			language;
 
 		public:
-			ILanguage* GetLanguage() { return language; }
+			const std::string&	GetName		() { return name; }
+			ILanguage*			GetLanguage	() { return language; }
 
 		};
 

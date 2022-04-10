@@ -50,7 +50,7 @@ namespace ING {
 		public:
 			virtual std::string GetName() { return "None"; }
 
-			virtual IContext*	CreateContext();
+			virtual IContext*	CreateContext(const std::string& name);
 
 		};
 
