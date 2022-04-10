@@ -50,12 +50,14 @@ namespace ING {
 		private:
 			std::string name;
 
-			List<IDrawable*> drawableList;
+			SmartArray<IDrawable*> drawableArray;
+
+			IdGenerator		idGenerator;
 
 		public:
 			std::string				GetName			() { return name; }
 
-			const List<IDrawable*>& GetDrawableList	() { return drawableList; }
+			const SmartArray<IDrawable*>& GetDrawableArray	() { return drawableArray; }
 
 
 

@@ -144,7 +144,7 @@ namespace ING {
 
 				IDrawableFilter* filter = layer->GetFilter(filterName);
 
-				for (auto drawable : filter->GetDrawableList()) {
+				for (auto drawable : filter->GetDrawableArray()) {
 
 					if(drawable->IsActive())
 						RenderDrawable(camera, drawable, passName);

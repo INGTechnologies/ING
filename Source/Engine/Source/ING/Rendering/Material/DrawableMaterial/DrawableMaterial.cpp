@@ -108,7 +108,7 @@ namespace ING {
 			IMaterial(name, shader)
 		{
 
-
+			cbufferVector.resize(1);
 
 		}
 
@@ -136,8 +136,8 @@ namespace ING {
 
 				if (shader->GetPropertyCount() > 0) {
 
-					context->PSSetConstantBuffers(GetCBufferVector());
-					context->VSSetConstantBuffers(GetCBufferVector());
+					context->PSSetConstantBuffers(cbufferVector);
+					context->VSSetConstantBuffers(cbufferVector);
 
 				}
 

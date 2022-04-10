@@ -75,7 +75,9 @@ namespace ING {
 
 				"Transparent",
 
-				"UI"
+				"UI",
+
+				"Unlit"
 
 			});
 

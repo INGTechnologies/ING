@@ -82,18 +82,18 @@ namespace ING {
 			/**
 			 *	Iterable Struct
 			 */
-			struct Iterable {
+			struct Iterator {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				Iterable(Node* node) {
+				Iterator(Node* node) {
 
 					this->node = node;
 
 				}
-				~Iterable() {
+				~Iterator() {
 
 
 
@@ -125,7 +125,7 @@ namespace ING {
 
 				}
 
-				bool	operator != (Iterable a) {
+				bool	operator != (Iterator a) {
 
 					return !(a.node == node);
 
@@ -192,8 +192,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Iterable begin	() const { return Iterable(headNode); }
-			Iterable end	() const { return Iterable(nullptr); }
+			Iterator begin	() const { return Iterator(headNode); }
+			Iterator end	() const { return Iterator(nullptr); }
 
 			Node* AddAt(T& obj, Node* node2) {
 

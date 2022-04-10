@@ -72,6 +72,7 @@ namespace ING {
 			Layer*	GetLayer			(unsigned int index);
 			void	RemoveLayer			(unsigned int index);
 			void	RecreateFilters		(const std::vector<std::string>& filterNameVector);
+			bool	IsHaveFilter		(const std::string& name) { return filterNameMap.find(name) != filterNameMap.end(); }
 
 		};
 

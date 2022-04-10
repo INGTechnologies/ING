@@ -38,8 +38,17 @@ namespace ING {
 
 
 
+		using DrawableId = size_t;
+
+
+
 		class ING_API IDrawable
 		{
+
+		public:
+			friend class IDrawableFilter;
+
+
 
 			/**
 			 *	Constructors And Destructor
@@ -62,27 +71,30 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
+			DrawableId						id;
+
 			Layer*							layer;
 
 			std::vector<std::string>		filterNameVector;
 
-			std::unordered_map<std::string, List<IDrawable*>::Node*>	filterName2NodeMap;
+			std::unordered_map<std::string, IDrawableFilter*>	filterName2FilterMap;
 
 			bool							isActive;
 
 		public:
+			DrawableId						GetId					() { return id; }
+
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();
 
-			const std::vector<std::string>& GetFilterNameVector	() { return filterNameVector; }
-			void							SetFilterNameVector	(const std::vector<std::string>& filterNameVector);
-			void							SetCategories			(const std::vector<std::string>& filterNameVector);
+			const std::vector<std::string>& GetFilterNameVector		() { return filterNameVector; }
+			void							SetFilterNameVector		(const std::vector<std::string>& filterNameVector);
+			void							SetFilters				(const std::vector<std::string>& filterNameVector);
 
-			List<IDrawable*>::Node*			GetNode					(const std::string& filterName);
-			void							AddNode					(const std::string& filterName, List<IDrawable*>::Node* node);
-			void							RemoveNode				(const std::string& filterName);
-			bool							IsHaveNode				(const std::string& filterName);
-			bool							IsHaveFilter			(const std::string& filterName) { return IsHaveNode(filterName); }
+			//List<IDrawable*>::Node*			GetNode					(const std::string& filterName);
+			//void							AddNode					(const std::string& filterName, List<IDrawable*>::Node* node);
+			//void							RemoveNode				(const std::string& filterName);
+			bool							IsHaveFilter			(const std::string& filterName) { return filterName2FilterMap.find(filterName) != filterName2FilterMap.end(); }
 
 			bool							IsActive				() { return isActive; }
 			void							SetActive				(bool isActive) { this->isActive = isActive; }

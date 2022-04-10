@@ -98,7 +98,7 @@ namespace ING {
 
 			const std::vector<std::string>& GetFilterNameVector	() { return ingMeshDrawable->GetFilterNameVector(); }
 			void							SetFilterNameVector	(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetFilterNameVector(categoryNameVector); }
-			void							SetCategories			(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetCategories(categoryNameVector); }
+			void							SetFilters				(const std::vector<std::string>& categoryNameVector) { ingMeshDrawable->SetFilters(categoryNameVector); }
 			bool							IsHaveFilter			(const std::string& categoryName) { return ingMeshDrawable->IsHaveFilter(categoryName); }
 
 			bool							IsActive				() { return ingMeshDrawable->IsActive(); }

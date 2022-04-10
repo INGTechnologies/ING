@@ -25,6 +25,8 @@ namespace ING {
 
 			this->name = name;
 
+			
+
 		}
 
 		IDrawableFilter::~IDrawableFilter	() {
@@ -40,13 +42,15 @@ namespace ING {
 		 */
 		void IDrawableFilter::Release() {
 
-			for (auto& item : drawableList) {
+			for (auto item : drawableArray) {
 
-				item->RemoveNode(name);
+				RemoveDrawable(item);
 
 			}
 
-			drawableList.Clear();
+			drawableArray.Clear();
+
+			idGenerator.ClearIds();
 
 			delete this;
 
@@ -59,17 +63,44 @@ namespace ING {
 		 */
 		void IDrawableFilter::AddDrawable		(IDrawable* drawable) {
 
-			drawable->AddNode(name, drawableList.Add(drawable));
+			if (drawable->IsHaveFilter(name)) return;
+
+			DrawableId id = idGenerator.GenUInt64();
+
+			drawable->id = id;
+
+			drawableArray.Add(drawable, id);
 
 		}
 
 		void IDrawableFilter::RemoveDrawable	(IDrawable* drawable) {
 
-			if (!drawable->IsHaveNode(name)) return;
+			if (!drawable->IsHaveFilter(name)) return;
 
-			drawableList.Remove(drawable->GetNode(name));
+			drawableArray.Erase(drawable->id);
 
-			drawable->RemoveNode(name);
+			drawable->filterName2FilterMap.erase(name);
+
+			drawable->filterNameVector;
+
+			unsigned int filterCount = drawable->filterNameVector.size();
+
+			for (unsigned int i = 0; i < filterCount; ++i) {
+
+				if (drawable->filterNameVector[i] == name) {
+
+					for (unsigned int j = i; j < filterCount - 1; ++i) {
+
+						drawable->filterNameVector[j] = drawable->filterNameVector[j + 1];
+
+					}
+
+					break;
+				}
+
+			}
+
+			idGenerator.RemoveUInt64Id(drawable->id);
 
 		}
 

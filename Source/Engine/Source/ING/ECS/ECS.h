@@ -1,5 +1,9 @@
 #pragma once
 
+#include "SceneComponent/SceneComponent.h"
+
+
+
 #include "Component/Component.h"
 #include "Component/Id/Id.h"
 #include "Component/Ptr/Ptr.h"

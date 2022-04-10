@@ -68,7 +68,7 @@ namespace ING {
 
 			for (auto item = repositoryList.begin(); item != repositoryList.end();) {
 				
-				List<Repository*>::Iterable nextItem = item.node->next;
+				List<Repository*>::Iterator nextItem = item.node->next;
 
 				Repository* repository = *((Repository**)(item.node->pValue));
 

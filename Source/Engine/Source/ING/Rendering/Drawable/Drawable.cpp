@@ -69,6 +69,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 
 namespace ING {
 
@@ -140,6 +147,32 @@ namespace ING {
 
 			unsigned int filterCount = filterNameVector.size();
 
+#ifdef _DEBUG
+			for (unsigned int i = 0; i < filterCount; ++i) {
+
+				if (!LayerManager::GetInstance()->IsHaveFilter(filterNameVector[i])) {
+
+					Debug::Error(String("Filter With Name ") + String('"') + filterNameVector[i] + String('"') + String(" Not Found"));
+
+					return;
+
+				}
+
+			}
+#endif
+
+			filterCount = this->filterNameVector.size();
+
+			for (unsigned int i = 0; i < filterCount; ++i) {
+
+				IDrawableFilter* filter = layer->GetFilter(this->filterNameVector[i]);
+
+				filter->RemoveDrawable(this);
+
+			}
+
+			filterCount = filterNameVector.size();
+
 			this->filterNameVector = filterNameVector;
 
 			for (unsigned int i = 0; i < filterCount; ++i) {
@@ -152,33 +185,9 @@ namespace ING {
 		
 		}
 
-		void	IDrawable::SetCategories(const std::vector<std::string>& filterNameVector) {
+		void	IDrawable::SetFilters(const std::vector<std::string>& filterNameVector) {
 
 			SetFilterNameVector(filterNameVector);
-
-		}
-
-		List<IDrawable*>::Node* IDrawable::GetNode(const std::string& filterName) {
-
-			return filterName2NodeMap[filterName];
-
-		}
-
-		void	IDrawable::AddNode(const std::string& filterName, List<IDrawable*>::Node* node) {
-
-			filterName2NodeMap[filterName] = node;
-
-		}
-
-		void	IDrawable::RemoveNode(const std::string& filterName) {
-
-			filterName2NodeMap.erase(filterName);
-
-		}
-
-		bool	IDrawable::IsHaveNode(const std::string& filterName) {
-
-			return !(filterName2NodeMap.find(filterName) == filterName2NodeMap.end());
 
 		}
 

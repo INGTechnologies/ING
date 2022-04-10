@@ -48,6 +48,67 @@ namespace ING {
 		template<typename T>
 		class SmartArray : public ISmartArray
 		{
+
+			/**
+			 *	Iterator
+			 */
+		public:
+			struct Iterator {
+
+				/**
+				 *	Constructors And Destructor
+				 */
+			public:
+				Iterator(size_t index, T* firstElementPData) {
+
+					this->index = index;
+					this->firstElementPData = firstElementPData;
+
+				}
+
+				~Iterator() {
+
+
+
+				}
+
+
+
+				/**
+				 *	Properties
+				 */
+			public:
+				size_t index;
+				T* firstElementPData;
+
+
+
+				/**
+				 *	Operaters
+				 */
+			public:
+				T&		operator *  () {
+
+					return *(firstElementPData);
+
+				}
+
+				void	operator ++ () {
+
+					++index;
+
+				}
+
+				bool	operator != (const Iterator& a) {
+
+					return !(a.index == index && a.firstElementPData == firstElementPData);
+
+				}
+
+			};
+
+
+
 			/**
 			 *	Constructors And Destructor
 			 */
@@ -105,7 +166,9 @@ namespace ING {
 			size_t Id2Index(size_t id);
 			size_t Index2Id(size_t index);
 
-		public:
+			Iterator begin() const { return Iterator(0, pData); }
+			Iterator end()	 const { return Iterator(filledCount, pData); }
+
 			void Clear();
 			void Add(const T& data, size_t id);
 			void Erase(size_t id);

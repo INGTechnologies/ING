@@ -116,6 +116,7 @@ namespace ING {
 
 			List<IMaterial*>::Node* node;
 
+		protected:
 			std::vector<IBuffer*> cbufferVector;
 
 		public:
