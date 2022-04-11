@@ -226,7 +226,7 @@ namespace ING {
 
 
 
-		APPLICATION_CONFIG_PROP(bool, "ING::Application::pauseAppWhenClose", true);
+		APPLICATION_CONFIG_PROP(bool, "ING::Application::pauseAppWhenClose", false);
 
 
 
