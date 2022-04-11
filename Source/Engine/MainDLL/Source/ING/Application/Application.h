@@ -34,6 +34,8 @@ namespace ING {
 
 	class Configuration;
 
+	class ConfigurationCompiler;
+
 
 
 	class ING_API Application: 
@@ -66,11 +68,18 @@ namespace ING {
 		 */
 	private:
 		Configuration* configuration;
+		ConfigurationCompiler* configurationCompiler;
 
 	public:
 		Configuration* GetConfiguration() {
 
 			return configuration;
+
+		}
+
+		ConfigurationCompiler* GetConfigurationCompiler() {
+
+			return configurationCompiler;
 
 		}
 

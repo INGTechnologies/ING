@@ -76,6 +76,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include ConfigurationCompiler
+ */
+#include <ING/Configuration/Compiler/Compiler.h>
+
+
+
+/**
  *	Include Window Manager
  */
 #include <ING/Window/Manager/Manager.h>
@@ -156,9 +163,11 @@ namespace ING {
 
 
 		/**
-		 *	Create Configuration
+		 *	Create Configuration And ConfigurationCompiler
 		 */
 		configuration = new Configuration();
+
+		configurationCompiler = new ConfigurationCompiler();
 
 
 
@@ -247,7 +256,13 @@ namespace ING {
 	 */
 	void Application::LoadConfiguration() {
 
+		configurationCompiler->Compile(
 
+			"config.ini"
+
+			,configuration
+
+		);
 
 	}
 
@@ -314,6 +329,8 @@ namespace ING {
 		Debug::Log("Start Releasing Application");
 
 		delete configuration;
+
+		delete configurationCompiler;
 
 		RELEASE_EVENT_STORAGE();
 

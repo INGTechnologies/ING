@@ -121,13 +121,6 @@
 
 
 
-/**
- *	Include ECS
- */
-//#include <ING/ECS/ECS.h>
-
-
-
 namespace ING {
 	
 	namespace Rendering {
