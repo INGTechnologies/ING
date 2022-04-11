@@ -169,7 +169,7 @@ namespace ING {
 
 		configurationCompiler = new ConfigurationCompiler();
 
-
+		 
 
 		/**
 		 *	Load Configuration
@@ -236,8 +236,6 @@ namespace ING {
 
 
 		APPLICATION_CONFIG_PROP(bool, "ING::Application::pauseAppWhenClose", false);
-
-
 
 		Debug::Log("Application Created");
 
