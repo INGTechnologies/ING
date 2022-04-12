@@ -47,7 +47,7 @@ namespace ING {
 
 
 		/**
-		 *	Exist, Add, Set, Get Methods
+		 *	Methods
 		 */
 	public:
 		bool Exist(const std::string& name) {
@@ -102,6 +102,8 @@ namespace ING {
 			*((T*)(ptrMap[name])) = data;
 
 		}
+
+		void LoadFromFile(const std::string& filePath);
 
 	};
 

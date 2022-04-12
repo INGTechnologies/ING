@@ -69,7 +69,7 @@ namespace ING {
 			Debug::Log("Core Initialized");
 		else {
 
-			Debug::Log("Cant Init Core");
+			Debug::Error("Cant Init Core");
 
 		}
 

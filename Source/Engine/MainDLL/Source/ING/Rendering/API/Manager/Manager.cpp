@@ -134,6 +134,10 @@ namespace ING {
 
 			case NONE_API_FLAG:
 
+				Debug::Error("No Rendering::API Choosed");
+
+				return false;
+
 				break;
 
 			case DIRECTX11_API_FLAG:

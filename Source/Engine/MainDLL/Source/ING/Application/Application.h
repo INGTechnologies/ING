@@ -68,18 +68,11 @@ namespace ING {
 		 */
 	private:
 		Configuration* configuration;
-		ConfigurationCompiler* configurationCompiler;
 
 	public:
 		Configuration* GetConfiguration() {
 
 			return configuration;
-
-		}
-
-		ConfigurationCompiler* GetConfigurationCompiler() {
-
-			return configurationCompiler;
 
 		}
 

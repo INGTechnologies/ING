@@ -73,13 +73,6 @@ using namespace ING::Utils;
  */
 #include <ING/Configuration/Configuration.h>
 
- 
-
-/**
- *	Include ConfigurationCompiler
- */
-#include <ING/Configuration/Compiler/Compiler.h>
-
 
 
 /**
@@ -167,8 +160,6 @@ namespace ING {
 		 */
 		configuration = new Configuration();
 
-		configurationCompiler = new ConfigurationCompiler();
-
 		 
 
 		/**
@@ -235,7 +226,7 @@ namespace ING {
 
 
 
-		APPLICATION_CONFIG_PROP(bool, "ING::Application::pauseAppWhenClose", false);
+		APPLICATION_CONFIG_PROP(unsigned int, "ING::Application::terminationBehavior", 0);
 
 		Debug::Log("Application Created");
 
@@ -252,15 +243,9 @@ namespace ING {
 	/**
 	 *	Configuration 
 	 */
-	void Application::LoadConfiguration() {
+	void Application::LoadConfiguration() { 
 
-		configurationCompiler->Compile(
-
-			"config.ini"
-
-			,configuration
-
-		);
+		configuration->LoadFromFile("config.ini");
 
 	}
 
@@ -275,7 +260,24 @@ namespace ING {
 
 		bool result = Board<Application>::Init();
 
-		Debug::Log("Application Initialized");
+		if (!result) {
+
+			Debug::Error("Cant Initialize Application");
+
+			unsigned int terminationBehavior = configuration->Get<unsigned int>("ING::Application::terminationBehavior");
+
+			if (terminationBehavior == 1) {
+				system("pause");
+			}
+			 
+			exit(1);
+
+		}
+		else {
+
+			Debug::Log("Application Initialized");
+
+		}
 
 		return result;
 	}
@@ -287,6 +289,16 @@ namespace ING {
 		Debug::Log("Start Running Application");
 
 		bool squaresRunResult = Board<Application>::Run();
+
+		if (!squaresRunResult) {
+
+			Debug::Error("Cant Run Application");
+
+			Application::GetInstance()->Shutdown();
+
+			exit(1);
+
+		}
 
 		Debug::Log(String("Start ") + String('"') + String("RUN") + String('"') + String(" Event"));
 
@@ -328,8 +340,6 @@ namespace ING {
 
 		delete configuration;
 
-		delete configurationCompiler;
-
 		RELEASE_EVENT_STORAGE();
 
 		bool result = Board<Application>::Release();
@@ -351,13 +361,13 @@ namespace ING {
 
 		Debug::Log("Start Shuting Down Application");
 
-		bool pauseAppWhenClose = configuration->Get<bool>("ING::Application::pauseAppWhenClose");
+		unsigned int terminationBehavior = configuration->Get<unsigned int>("ING::Application::terminationBehavior");
 
 		Release();
 
 		Debug::Log("Finished Shutting Application");
 
-		if(pauseAppWhenClose) {
+		if(terminationBehavior == 1) {
 			system("pause");
 		}
 

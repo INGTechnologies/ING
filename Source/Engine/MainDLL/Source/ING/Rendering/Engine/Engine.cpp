@@ -181,7 +181,7 @@ namespace ING {
 				Debug::Log("Rendering::Engine Initialized");
 			else {
 
-				Debug::Log("Cant Init Rendering::Engine");
+				Debug::Error("Cant Init Rendering::Engine");
 
 			}
 
