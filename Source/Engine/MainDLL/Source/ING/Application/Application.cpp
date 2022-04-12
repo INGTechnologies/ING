@@ -73,7 +73,7 @@ using namespace ING::Utils;
  */
 #include <ING/Configuration/Configuration.h>
 
-
+ 
 
 /**
  *	Include ConfigurationCompiler
