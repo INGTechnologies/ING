@@ -82,13 +82,13 @@ using namespace ING::Utils;
  */
 #include <ING/Rendering/Shader/Shader.h> 
 
-
+ 
 
 /**
  *	Include StandardRP Surface Shader
  */
 #include <ING/Rendering/StandardRP/Shader/SurfaceShader/SurfaceShader.h> 
-
+ 
 
 
 /**
@@ -283,6 +283,9 @@ using namespace ING;
 
 
 #include <ING/Scripting/CSharp/Language/Language.h>
+#include <ING/Scripting/CSharp/Context/Context.h>
+
+#include <ING/Rendering/API/APIFlag.h>
 
 
 
@@ -330,10 +333,8 @@ bool DemoPass::CustomRender(
 
 
 
-
 static ECS::Repository* repository;
 static ECS::TransformSystem* transformSystem;
-
 
 
 
@@ -342,14 +343,9 @@ int main() {
 	/* Create Application */
 	ING::Application::CreateInstance();
 
+
 	/* Init Application */
-	ING::Application::GetInstance()->Init();
-
-
-
-	/* Show Console Window */
-	Window* consoleWindow = WindowManager::GetInstance()->GetConsoleWindow();
-	consoleWindow->Show();
+	if (!ING::Application::GetInstance()->Init()) return 1;
 
 
 
@@ -360,15 +356,9 @@ int main() {
 
 
 
-		//Scripting::CSharp::Language* language = new Scripting::CSharp::Language();
+		Scripting::CSharp::Language* language = new Scripting::CSharp::Language();
 
-		//Debug::Log(language->GetName());
-
-
-
-
-
-
+		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->CreateContext("ING_Game.exe");
 
 
 
@@ -487,7 +477,7 @@ int main() {
 		});
 		shader->SetCBufferVector({
 			
-
+			 
 			
 		});
 
@@ -652,7 +642,7 @@ int main() {
 
 
 	/* Run Application */
-	ING::Application::GetInstance()->Run();
+	if (!ING::Application::GetInstance()->Run()) return 1;
 
 	return 0;
 }
