@@ -8,9 +8,9 @@ ING is free and under the [MIT license](https://github.com/INGTechnologies/ING/b
 
 ## Getting Started ##
 - Step 1: Clone [ING repository](https://github.com/INGTechnologies/ING).
-- Step 2: Go to "Source/Demos/EngineDemo" folder, create "GitIgnores" folder and then paste all items in "Sample" folder to "GitIgnores" folder.
-- Step 3: Open ING solution (Source/ING...sln).
-- Step 4: Set Demos/EngineDemo project as startup project.
+- Step 2: Go to "Source/Demos/Engine/MainDLL" folder, create "GitIgnores" folder and then paste all items in "Sample" folder to "GitIgnores" folder.
+- Step 3: Open ING solution (ING...sln).
+- Step 4: Set Demos/Engine/MainDLL project as startup project.
 - Step 5: Run.
 
 
