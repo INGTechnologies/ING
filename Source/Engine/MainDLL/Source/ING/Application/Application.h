@@ -92,6 +92,19 @@ namespace ING {
 
 
 		/**
+		 *	Paths
+		 */
+	private:
+		std::string contentDir;
+		std::string workingDir;
+
+	public:
+		const std::string& GetContentDir() { return contentDir; }
+		const std::string& GetWorkingDir() { return workingDir; }
+
+
+
+		/**
 		 *	FrameUpdate Method
 		 */
 	public:

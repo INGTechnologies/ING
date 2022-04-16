@@ -187,8 +187,8 @@
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|Win32'">
@@ -233,8 +233,8 @@ XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIg
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -275,8 +275,8 @@ XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIg
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -321,8 +321,8 @@ XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIg
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug2|x64'">
@@ -367,8 +367,8 @@ XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIg
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -409,8 +409,8 @@ XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIg
       <Command>XCOPY "$(MONO_X64)lib\mono\4.5" "$(OutDir)mono\4.5\" /s /i /y
 XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Runtime\" /s /i /y
-XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\" /s /i /y
-XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\mono\4.5\" /s /i /y</Command>
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Demos\Engine\MainDLL\Runtime\" /s /i /y
+XCOPY "$(MONO_X64)lib\mono\4.5" "$(SolutionDir)Source\Demos\Engine\MainDLL\GitIgnores\Engine\mono\4.5\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

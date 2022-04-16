@@ -138,6 +138,10 @@ using namespace ING::Utils;
 
 
 
+#include <filesystem>
+
+
+
 namespace ING {
 
 	/**
@@ -228,6 +232,9 @@ namespace ING {
 
 		APPLICATION_CONFIG_PROP(unsigned int, "ING::Application::terminationBehavior", 0);
 
+		APPLICATION_CONFIG_PROP(std::string, "ING::Application::contentDir", "./Content/");
+		APPLICATION_CONFIG_PROP(std::string, "ING::Application::workingDir", ".");
+
 		Debug::Log("Application Created");
 
 	}
@@ -254,11 +261,14 @@ namespace ING {
 	/**
 	 *	Init, Run, Release, Shutdown Methods
 	 */
-	bool Application::Init() {
+	bool Application::Init() { 
 
 		Debug::Log("Start Initializing Application");
 
-		bool result = Board<Application>::Init();
+		contentDir = configuration->Get<std::string>("ING::Application::contentDir");
+		workingDir = configuration->Get<std::string>("ING::Application::workingDir");
+
+		bool result = Board<Application>::Init(); 
 
 		if (!result) {
 

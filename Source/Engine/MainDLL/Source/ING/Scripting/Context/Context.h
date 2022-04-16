@@ -22,10 +22,19 @@ namespace ING {
 
 		class ILanguage;
 
+		class IMethodContainer;
+
+		class IOuternalMethod;
+
 
 
 		class ING_API IContext
 		{
+
+		public:
+			friend class ILanguage;
+
+
 
 			/**
 			 *	Constructors And Destructor
@@ -54,6 +63,14 @@ namespace ING {
 		public:
 			const std::string&	GetName		() { return name; }
 			ILanguage*			GetLanguage	() { return language; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name);
 
 		};
 

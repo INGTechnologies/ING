@@ -17,9 +17,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Context
+ *	Include OuternalMethod
  */
-#include <ING/Scripting/Context/Context.h>
+#include <ING/Scripting/Method/OuternalMethod/OuternalMethod.h>
 
 
 
@@ -36,34 +36,32 @@ namespace ING {
 
 	namespace Scripting {
 
-		class ILanguage;
+		class IContext;
 
 
 
 		namespace CSharp {
 
-			class Language;
+			class Context;
 
 			class Assembly;
 
-			class Class;
 
 
-
-			class ING_API Context : public IContext
+			class ING_API OuternalMethod : public IOuternalMethod
 			{
 
 			public:
-				friend class Language;
+				friend class Context;
 
 
 
 				/**
 				 *	Constructors And Destructor
 				 */
-			protected:
-				Context(const std::string& name, ILanguage* language);
-				~Context();
+			public:
+				OuternalMethod(IContext* context, IMethodContainer* container);
+				~OuternalMethod();
 
 
 
@@ -79,10 +77,14 @@ namespace ING {
 				 *	Properties
 				 */
 			private:
-				MonoDomain* domain;
+				Assembly*	assembly;
+
+				MonoMethod* monoMethod;
 
 			public:
-				MonoDomain* GetDomain() { return domain; }
+				Assembly*	GetAssembly		()	{ return assembly; }
+
+				MonoMethod* GetMonoMethod	()	{ return monoMethod; }
 
 
 
@@ -90,11 +92,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				Assembly*	LoadAssembly	(const std::string& path);
-
-				Class*		GetClass		(Assembly* assembly, const std::string& name, const std::string& _namespace);
-
-				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name) override;
+				virtual void* Execute(void* object, void** params) override;
 
 			};
 

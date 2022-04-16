@@ -61,6 +61,18 @@ namespace ING {
 			
 		}
 
+
+
+		/**
+		 *	Methods
+		 */
+		IOuternalMethod* IContext::GetOuternalMethod(IMethodContainer* container, const std::string& name) {
+
+
+
+			return 0;
+		}
+
 	}
 
 }
