@@ -284,6 +284,10 @@ using namespace ING;
 
 #include <ING/Scripting/CSharp/Language/Language.h>
 #include <ING/Scripting/CSharp/Context/Context.h>
+#include <ING/Scripting/CSharp/Assembly/Assembly.h>
+
+#include <ING/Scripting/CSharp/Method/OuternalMethod/OuternalMethod.h>
+#include <ING/Scripting/CSharp/Class/Class.h>
 
 #include <ING/Rendering/API/APIFlag.h>
 
@@ -360,6 +364,16 @@ int main() {
 
 		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->CreateContext("ING_Game.exe");
 
+		Scripting::CSharp::Assembly* assembly = context->LoadAssembly("../Content/CSharpAssembly/CSharpAssembly.dll");
+
+		Scripting::CSharp::Class* class1 = context->GetClass(assembly, "Class1", "CSharpAssembly");
+
+		Scripting::CSharp::OuternalMethod* outernalMethod1 = (Scripting::CSharp::OuternalMethod*)(
+			context->GetOuternalMethod(class1, ".Class1::Main()")
+		);
+
+		outernalMethod1->Execute(0,0);
+
 
 
 		/* Focus On Main Window */
@@ -367,13 +381,9 @@ int main() {
 
 
 
-
-
-
 		/* Create ECS Repository */
 		repository = new ECS::Repository();
 		repository->SetActive(true);
-
 
 
 
@@ -384,23 +394,18 @@ int main() {
 
 
 
-
-
 		/**
 		 *	Create Custom Rendering Pass 
 		 */
 		Rendering::IPass* demoPass = new DemoPass("Demo Pass");
 
-
 		Rendering::System* renderingSystem = Rendering::System::GetInstance();
 
 		Rendering::StandardRP::Pipeline* mainPipeline = (Rendering::StandardRP::Pipeline*)renderingSystem->GetTargetPipeline();
 
-
 		Rendering::SubRP::Pipeline* subPipeline = mainPipeline->GetSubPipeline("After First Pipeline");
 
 		subPipeline->AddPass(demoPass);
-
 
 		mainPipeline->SetMode(Rendering::StandardRP::MODE_FORWARD);
 
@@ -451,10 +456,10 @@ int main() {
 			})
 		);
 		shader->GetPass("Demo Pass")->AddShader("VertexShader",
-			IVertexShader::CreateFromHLSL(L"Assets/Shaders/DemoVS.hlsl")
+			IVertexShader::CreateFromHLSL(L"../Content/Assets/Shaders/DemoVS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->AddShader("PixelShader",
-			IPixelShader::CreateFromHLSL(L"Assets/Shaders/DemoPS.hlsl")
+			IPixelShader::CreateFromHLSL(L"../Content/Assets/Shaders/DemoPS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->SetInputLayout(
 			IInputLayout::Create(
@@ -471,14 +476,14 @@ int main() {
 			ShaderProperty("color2", sizeof(RFloat4))
 		});
 		shader->SetViewVector({
-			
 
-			
+
+
 		});
 		shader->SetCBufferVector({
-			
-			 
-			
+
+
+
 		});
 
 		/* Create Material */
