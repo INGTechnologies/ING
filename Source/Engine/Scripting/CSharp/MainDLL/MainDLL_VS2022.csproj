@@ -60,6 +60,7 @@ XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Debug2\VS2022\Engine\MainDLL\Scrip
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Debug2\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Release\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Release\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Release\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
