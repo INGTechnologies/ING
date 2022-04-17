@@ -49,6 +49,9 @@ namespace ING {
 
 		class MeshDrawableSystem;
 
+		class Transform;
+		class TransformSystem;
+
 
 
 		/**
@@ -81,6 +84,8 @@ namespace ING {
 		private:
 			ING::Rendering::MeshDrawable*	ingMeshDrawable;
 
+			IComponentPtr					transform;
+
 		public:
 			ING::Rendering::MeshDrawable*	GetINGMeshDrawable		() { return ingMeshDrawable; }
 
@@ -103,6 +108,8 @@ namespace ING {
 
 			bool							IsActive				() { return ingMeshDrawable->IsActive(); }
 			void							SetActive				(bool isActive) { ingMeshDrawable->SetActive(isActive); }
+
+			IComponentPtr					GetTransform() { return transform; }
 
 		};
 

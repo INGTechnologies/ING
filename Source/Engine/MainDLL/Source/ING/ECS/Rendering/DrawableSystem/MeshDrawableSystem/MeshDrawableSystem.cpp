@@ -46,9 +46,7 @@ namespace ING {
 		 */
 		void MeshDrawableSystem::CopyDataForRendering(MeshDrawable& drawable) {
 
-			TransformPtr transform = GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(drawable.GetEntity());
-
-			drawable.SetTransform(transform->GetMatrices());
+			drawable.SetTransform(drawable.transform.As<ECS::Transform, ECS::TransformSystem>()->GetMatrices());
 
 		}
 
@@ -60,6 +58,7 @@ namespace ING {
 		void MeshDrawableSystem::Awake(MeshDrawablePtr componentPtr) {
 
 			componentPtr->ingMeshDrawable = new ING::Rendering::MeshDrawable();
+			componentPtr->transform = (IComponentPtr)GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(componentPtr->entity);
 
 		}
 

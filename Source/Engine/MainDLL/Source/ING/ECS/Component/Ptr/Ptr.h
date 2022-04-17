@@ -39,6 +39,9 @@ namespace ING {
 		template<typename T, class TComponentSystem>
 		class ComponentSystem;
 
+		template<typename T, class TComponentSystem>
+		class ComponentPtr;
+
 
 
 		/**
@@ -95,6 +98,19 @@ namespace ING {
 			void				SetIComponentSystem(IComponentSystem* icomponentSystem) {
 
 				this->icomponentSystem = icomponentSystem;
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			template<typename T, class TComponentSystem>
+			ComponentPtr<T, TComponentSystem>& As() {
+
+				return *((ComponentPtr<T, TComponentSystem>*)this);
+
 			}
 
 		};

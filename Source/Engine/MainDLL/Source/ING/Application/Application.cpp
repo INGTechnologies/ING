@@ -138,6 +138,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Object Manager
+ */
+#include <ING/Object/Manager/Manager.h>
+
+
+
 #include <filesystem>
 
 
@@ -217,6 +224,9 @@ namespace ING {
 
 		/* Resource Manager */
 		AddSquare<CameraManager>();
+
+		/* Object Manager */
+		AddSquare<ObjectManager>();
 
 		/* Scripting Manager */
 		AddSquare<Scripting::Manager>();
