@@ -379,7 +379,7 @@ namespace ING {
 
 	void Application::Shutdown() {
 
-		state = CLOSED_APPLICATION_STATE;
+		state = CLOSED_APPLICATION_STATE; 
 
 		Debug::Log("Start Shuting Down Application");
 
