@@ -38,7 +38,7 @@ namespace ING {
 
 		std::wstring ING_API WString(size_t content);
 
-		std::wstring ING_API WString(const std::wstring& content);
+		std::wstring ING_API WString(const std::string& content);
 
 	}
 

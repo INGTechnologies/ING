@@ -232,7 +232,7 @@ namespace ING {
 
 		APPLICATION_CONFIG_PROP(unsigned int, "ING::Application::terminationBehavior", 0);
 
-		APPLICATION_CONFIG_PROP(std::string, "ING::Application::contentDir", "./Content/");
+		APPLICATION_CONFIG_PROP(std::string, "ING::Application::contentDir", "../Content/");
 		APPLICATION_CONFIG_PROP(std::string, "ING::Application::workingDir", ".");
 
 		Debug::Log("Application Created");
@@ -265,8 +265,10 @@ namespace ING {
 
 		Debug::Log("Start Initializing Application");
 
-		contentDir = configuration->Get<std::string>("ING::Application::contentDir");
-		workingDir = configuration->Get<std::string>("ING::Application::workingDir");
+		contentDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING::Application::contentDir")));
+		contentDir = String(contentDir_wstr);
+		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING::Application::workingDir")));
+		workingDir = String(workingDir_wstr);
 
 		bool result = Board<Application>::Init(); 
 

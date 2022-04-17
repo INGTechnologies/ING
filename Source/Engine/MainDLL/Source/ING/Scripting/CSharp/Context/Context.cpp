@@ -117,11 +117,13 @@ namespace ING {
 			 */
 			Assembly*			Context::LoadAssembly(const std::string& path) {
 
+				std::string parsedPath = Path::GetAbsolutePath(path);
+
 				Assembly* assembly = new Assembly(this);
 
-				assembly->filePath = path;
+				assembly->filePath = parsedPath;
 
-				assembly->monoAssembly = mono_domain_assembly_open(domain, path.c_str());
+				assembly->monoAssembly = mono_domain_assembly_open(domain, parsedPath.c_str());
 
 				if (assembly->monoAssembly == 0) {
 

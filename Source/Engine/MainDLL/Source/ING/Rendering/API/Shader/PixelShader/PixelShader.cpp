@@ -71,7 +71,7 @@ namespace ING {
 		 */
 		IPixelShader* IPixelShader::CreateFromHLSL(IDevice* device, const std::wstring& filePath) {
 
-			FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(filePath);
+			FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(Path::GetAbsolutePath(filePath));
 
 			std::string basicStrContent = String(fileResource->content);
 

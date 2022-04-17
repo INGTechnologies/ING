@@ -149,7 +149,7 @@ namespace ING {
 
 		std::wstring WString(const std::string& content) {
 
-			std::wstring s(content.length(), L' ');
+			std::wstring s(content.length(), ' ');
 
 			for (size_t i = 0; i < content.length(); ++i) {
 

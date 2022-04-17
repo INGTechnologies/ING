@@ -153,6 +153,13 @@
 
 
 
+/**
+ *	Include Path
+ */
+#include <ING\Utils\Path\Path.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
