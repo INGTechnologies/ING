@@ -247,7 +247,7 @@ namespace ING {
 
 			Class*				Context::GetClass(Assembly* assembly, const std::string& name, const std::string& _namespace) {
 
-				Class* result = new Class(this);
+				Class* result = new Class(assembly, this);
 
 				result->_namespace = _namespace;
 				result->name = name;

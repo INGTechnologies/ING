@@ -35,6 +35,8 @@ namespace ING {
 
 			class Context;
 
+			class Assembly;
+
 
 
 			class ING_API MethodContainer : public IMethodContainer
@@ -49,7 +51,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				MethodContainer(IContext* context);
+				MethodContainer(Assembly* assembly, IContext* context);
 				~MethodContainer();
 
 
@@ -59,6 +61,17 @@ namespace ING {
 				 */
 			public:
 				virtual void Release() override;
+
+
+
+				/**
+				 *	Properties
+				 */
+			private:
+				Assembly*			assembly;
+
+			public:
+				Assembly*			GetAssembly		()	{ return assembly; }
 
 			};
 

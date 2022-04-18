@@ -15,8 +15,10 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			MethodContainer::MethodContainer(IContext* context) :
-				IMethodContainer(context)
+			MethodContainer::MethodContainer(Assembly* assembly, IContext* context) :
+				IMethodContainer(context),
+
+				assembly(assembly)
 			{
 
 

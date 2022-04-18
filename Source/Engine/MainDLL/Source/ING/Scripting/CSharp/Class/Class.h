@@ -60,7 +60,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Class	(IContext* context);
+				Class	(Assembly* assembly, IContext* context);
 				~Class	();
 
 
@@ -82,15 +82,11 @@ namespace ING {
 				std::string			_namespace;
 				std::string			name;
 
-				Assembly*			assembly;
-
 			public:
 				MonoClass*			GetMonoClass	()	{ return monoClass; }
 
 				const std::string&	GetNamespace	()	{ return _namespace; }
 				const std::string&	GetName			()	{ return _namespace; }
-
-				Assembly*			GetAssembly		()	{ return assembly; }
 
 			};
 
