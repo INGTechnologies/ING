@@ -82,8 +82,9 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void RegisterObject(Object* object);
-		void RemoveObject(Object* object);
+		void	RegisterObject	(Object* object);
+		void	RemoveObject	(Object* object);
+		Object* GetObjectById	(ObjectId id);
 
 	};
 

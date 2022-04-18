@@ -68,6 +68,20 @@ namespace ING {
 					}
 
 				}
+				else if (rootName.first == "Engine") {
+
+					if (pathStr.size() > rootName.second) {
+
+						return cwd + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+
+					}
+					else {
+
+						return cwd;
+
+					}
+
+				}
 
 				return pathStr;
 
@@ -115,6 +129,20 @@ namespace ING {
 					else {
 
 						return Application::GetInstance()->GetContentDir_WSTR();
+
+					}
+
+				}
+				else if (rootName.first == L"Engine") {
+
+					if (pathStr.size() > rootName.second) {
+
+						return cwd_wstr + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+
+					}
+					else {
+
+						return cwd_wstr;
 
 					}
 

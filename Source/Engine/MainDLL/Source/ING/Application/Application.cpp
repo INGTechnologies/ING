@@ -262,7 +262,7 @@ namespace ING {
 	 */
 	void Application::LoadConfiguration() { 
 
-		configuration->LoadFromFile("config.ini");
+		configuration->LoadFromFile("./config.ini");
 
 	}
 

@@ -110,4 +110,21 @@ namespace ING {
 
 	}
 
+	Object* ObjectManager::GetObjectById(ObjectId id) {
+
+		if (id2ObjectMap.find(id) == id2ObjectMap.end()) {
+
+#ifdef _DEBUG
+
+			Debug::Error(String("Cant Find Object With Id ") + String(id));
+
+#endif
+
+			return 0;
+		}
+
+		return id2ObjectMap[id];
+
+	}
+
 }

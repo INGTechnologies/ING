@@ -21,7 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\MainDLL\Scripting\CSharp\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Scripting\CSharp\MainDLL\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,7 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\MainDLL\Scripting\CSharp\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2019\Engine\Scripting\CSharp\MainDLL\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -48,11 +48,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <PostBuildEvent>XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Debug\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y
+    <PostBuildEvent>XCOPY "$(ProjectDir)..\JSON\" "$(OutDir)" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Debug\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Debug\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Release\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y
+    <PostBuildEvent>XCOPY "$(ProjectDir)..\JSON\" "$(OutDir)" /s /i /y
+XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Release\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Release\VS2019\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
