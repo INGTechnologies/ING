@@ -68,6 +68,8 @@ namespace ING {
 
 		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", false);
 
+		APPLICATION_CONFIG_PROP(std::string, "ING::WindowManager::startupWindowTitle", "New Window");
+
 		Debug::Log("WindowManager Created");
 
 	}
@@ -94,6 +96,10 @@ namespace ING {
 		autoShutdown		= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::autoShutdown");
 
 		showConsoleWindow	= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::showConsoleWindow");
+
+		startupWindowTitle	= WString(Application::GetInstance()->GetConfiguration()->Get<std::string>("ING::WindowManager::startupWindowTitle"));
+
+		defaultDesc.title = startupWindowTitle.c_str();
 
 
 
