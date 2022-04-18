@@ -81,20 +81,34 @@ namespace ING {
 			private:
 				MonoDomain* domain;
 
+				std::unordered_map<std::string, Assembly*> name2AssemblyMap;
+
 			public:
-				MonoDomain* GetDomain() { return domain; }
+				MonoDomain* GetDomain		() { return domain; }
+
+				Assembly*	GetAssembly		(const std::string& name) { return name2AssemblyMap[name]; }
 
 
 
 				/**
 				 *	Methods
 				 */
+			private:
+				bool		CreateDomain	();
+				bool		UnloadDomain	();
+
 			public:
-				Assembly*	LoadAssembly	(const std::string& path);
+				Assembly*	LoadAssembly	(const std::string& path, const std::string& name);
+
+				bool		OpenAssembly	(const std::string& name);
+
+				void		RemoveAssembly	(const std::string& name);
 
 				Class*		GetClass		(Assembly* assembly, const std::string& name, const std::string& _namespace);
 
 				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name) override;
+
+				virtual void Reload() override;
 
 			};
 

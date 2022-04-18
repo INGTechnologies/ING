@@ -59,6 +59,17 @@ namespace ING {
 
 
 				/**
+				 *	Properties
+				 */
+			private:
+				MonoDomain* rootDomain;
+
+			public:
+				MonoDomain* GetRootDomain() { return rootDomain; }
+
+
+
+				/**
 				 *	Methods
 				 */
 			public:

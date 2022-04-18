@@ -99,12 +99,14 @@ namespace ING {
 		std::wstring contentDir_wstr;
 		std::string workingDir;
 		std::wstring workingDir_wstr;
+		std::string name;
 
 	public:
 		const std::string& GetContentDir() { return contentDir; }
 		const std::string& GetWorkingDir() { return workingDir; }
 		const std::wstring& GetContentDir_WSTR() { return contentDir_wstr; }
 		const std::wstring& GetWorkingDir_WSTR() { return workingDir_wstr; }
+		const std::string& GetName() { return name; }
 
 
 

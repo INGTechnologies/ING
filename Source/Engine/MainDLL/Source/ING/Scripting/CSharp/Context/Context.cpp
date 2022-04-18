@@ -70,17 +70,9 @@ namespace ING {
 				domain(0)
 			{
 
-				mono_set_dirs(".",".");
-
-				domain = mono_jit_init(name.c_str());
-
-				if (domain == 0) {
-
-					Debug::Error("Cant Create CSharp Scripting Context");
+				if (!CreateDomain()) {
 
 					Release();
-
-					return; 
 
 				}
 
@@ -100,11 +92,14 @@ namespace ING {
 			 */
 			void Context::Release() {
 
-				if (domain != 0) {
+				for (auto item = name2AssemblyMap.begin(); item != name2AssemblyMap.end();) {
 
-					mono_jit_cleanup(domain);
+					(item++)->second->Release();
+					//(item++);// ->second->Release();
 
 				}
+
+				UnloadDomain();
 
 				IContext::Release();
 
@@ -115,29 +110,84 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			Assembly*			Context::LoadAssembly(const std::string& path) {
+			bool				Context::CreateDomain() {
+
+				//domain = mono_jit_init(GetName().c_str());
+
+				domain = mono_domain_create();
+
+				if (domain == 0) {
+
+					Debug::Error("Cant Create CSharp Scripting Context");
+
+					return false;
+
+				}
+
+			}
+
+			bool				Context::UnloadDomain() {
+
+				if (domain == 0) return false;
+
+				mono_domain_free(domain, true);
+
+				//mono_jit_cleanup(domain);
+
+				domain = 0;
+
+				return true;
+
+			}
+
+			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name) {
 
 				std::string parsedPath = Path::GetAbsolutePath(path);
 
-				Assembly* assembly = new Assembly(this);
+				Assembly* assembly = new Assembly(this, name);
 
 				assembly->filePath = parsedPath;
 
-				assembly->monoAssembly = mono_domain_assembly_open(domain, parsedPath.c_str());
+				name2AssemblyMap[name] = assembly;
 
-				if (assembly->monoAssembly == 0) {
+				if (!OpenAssembly(name)) {
 
 					assembly->Release();
 
+					return 0;
+				}
+
+				return assembly;
+			}
+
+			bool				Context::OpenAssembly(const std::string& name) {
+
+				Assembly* assembly = name2AssemblyMap[name];
+
+				assembly->monoAssembly = mono_domain_assembly_open(domain, assembly->GetFilePath().c_str());
+
+				if (assembly->monoAssembly == 0) {
+
 					Debug::Error("Cant Create CSharp Assembly");
 
-					return 0;
+					return false;
 
 				}
 
 				assembly->monoImage = mono_assembly_get_image(assembly->monoAssembly);
 
-				return assembly;
+				return true;
+
+			}
+
+			void				Context::RemoveAssembly(const std::string& name) {
+
+				Assembly* assembly = name2AssemblyMap[name];
+
+				assembly->Release();
+
+				name2AssemblyMap.erase(name);
+
 			}
 
 			Class*				Context::GetClass(Assembly* assembly, const std::string& name, const std::string& _namespace) {
@@ -178,6 +228,20 @@ namespace ING {
 				mono_method_desc_free(desc);
 
 				return result;
+			}
+
+			void Context::Reload() {
+
+				if (!UnloadDomain()) return;
+
+				if (!CreateDomain()) return;
+
+				for (auto item : name2AssemblyMap) {
+
+					OpenAssembly(item.first);
+
+				}
+
 			}
 
 		}

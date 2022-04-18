@@ -45,8 +45,22 @@ namespace ING {
 
 
 			/**
+			 *	Properties
+			 */
+		protected:
+			IContext* mainContext;
+
+		public:
+			IContext* GetMainContext() { return mainContext; }
+
+
+
+			/**
 			 *	Methods
 			 */
+		protected:
+			void UpdateCreation();
+
 		public:
 			virtual std::string GetName() { return "None"; }
 

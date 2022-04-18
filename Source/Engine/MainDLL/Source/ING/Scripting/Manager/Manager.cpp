@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include CSharp Language
+ */
+#include <ING/Scripting/CSharp/Language/Language.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -62,7 +69,7 @@ namespace ING {
 
 			Debug::Log("Start Initializing Scripting::Manager");
 
-
+			new CSharp::Language();
 
 			Debug::Log("Scripting::Manager Initialized");
 
@@ -82,11 +89,34 @@ namespace ING {
 
 			Debug::Log("Start Releasing Scripting::Manager");
 
+			for (auto item = name2LanguageMap.begin(); item != name2LanguageMap.end();) {
+
+				(item++)->second->Release();
+
+			}
+
 			delete this;
 
 			Debug::Log("Finished Releasing Scripting::Manager");
 
 			return true;
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void Manager::AddLanguage		(ILanguage* language) {
+
+			name2LanguageMap[language->GetName()] = language;
+
+		}
+
+		void Manager::RemoveLanguage	(ILanguage* language) {
+
+			name2LanguageMap.erase(language->GetName());
+
 		}
 
 	}

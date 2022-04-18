@@ -1,5 +1,11 @@
 [
 
-    "Engine:/Scripting/CSharp/dlls.json"
+    {
+
+        "name" : "MainDLL",
+
+        "path" : "Engine:/Scripting/CSharp/MainDLL.dll"
+
+    }
 
 ]

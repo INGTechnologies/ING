@@ -27,6 +27,20 @@
 
 
 
+/**
+ *	Include Scripting Manager
+ */
+#include <ING/Scripting/Manager/Manager.h>
+
+
+
+/**
+ *	Include Scripting Context
+ */
+#include <ING/Scripting/Context/Context.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -55,6 +69,10 @@ namespace ING {
 		 */
 		void ILanguage::Release() {
 
+			mainContext->Release();
+
+			Manager::GetInstance()->RemoveLanguage(this);
+
 			delete this;
 			
 		}
@@ -64,7 +82,15 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IContext* ILanguage::CreateContext(const std::string& name) {
+		void		ILanguage::UpdateCreation() {
+
+			mainContext = CreateContext(GetName() + String("MainContext"));
+
+			Manager::GetInstance()->AddLanguage(this);
+
+		}
+
+		IContext*	ILanguage::CreateContext(const std::string& name) {
 
 			Debug::Error("Cant Create Scripting Context");
 

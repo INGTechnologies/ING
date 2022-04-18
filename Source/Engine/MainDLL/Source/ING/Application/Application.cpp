@@ -245,6 +245,8 @@ namespace ING {
 		APPLICATION_CONFIG_PROP(std::string, "ING::Application::contentDir", "../Content/");
 		APPLICATION_CONFIG_PROP(std::string, "ING::Application::workingDir", ".");
 
+		APPLICATION_CONFIG_PROP(std::string, "ING::Application::name", "ING App");
+
 		Debug::Log("Application Created");
 
 	}
@@ -279,6 +281,7 @@ namespace ING {
 		contentDir = String(contentDir_wstr);
 		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING::Application::workingDir")));
 		workingDir = String(workingDir_wstr);
+		name = configuration->Get<std::string>("ING::Application::name");
 
 		bool result = Board<Application>::Init(); 
 

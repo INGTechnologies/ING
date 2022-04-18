@@ -72,6 +72,8 @@ namespace ING {
 		public:
 			virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name);
 
+			virtual void Reload();
+
 		};
 
 	}

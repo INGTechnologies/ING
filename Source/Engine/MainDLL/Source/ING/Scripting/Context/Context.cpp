@@ -73,6 +73,12 @@ namespace ING {
 			return 0;
 		}
 
+		void IContext::Reload() {
+
+
+
+		}
+
 	}
 
 }

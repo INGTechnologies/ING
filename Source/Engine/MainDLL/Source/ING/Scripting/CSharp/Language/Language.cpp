@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Scripting Manager
+ */
+#include <ING/Scripting/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -43,10 +50,15 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Language::Language()
+			Language::Language() :
+				ILanguage()
 			{
 
+				mono_set_dirs(".", ".");
 
+				rootDomain = mono_jit_init((GetName() + String("RootDomain")).c_str());
+
+				UpdateCreation();				
 
 			}
 
@@ -64,7 +76,11 @@ namespace ING {
 			 */
 			void Language::Release() {
 
+				MonoDomain* rootDomain = this->rootDomain;
+
 				ILanguage::Release();
+
+				mono_jit_cleanup(rootDomain);
 
 			}
 

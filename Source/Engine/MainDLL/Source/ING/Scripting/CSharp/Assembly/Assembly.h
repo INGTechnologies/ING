@@ -51,7 +51,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Assembly(Context* context);
+				Assembly(Context* context, const std::string& name);
 				~Assembly();
 
 
@@ -76,6 +76,8 @@ namespace ING {
 
 				std::string			filePath;
 
+				std::string			name;
+
 			public:
 				Context*			GetContext		() { return context; }
 				IContext*			IGetContext		() { return (IContext*)context; }
@@ -85,6 +87,8 @@ namespace ING {
 				MonoImage*			GetMonoImage	() { return monoImage; }
 
 				const std::string&	GetFilePath		() { return filePath; }
+
+				const std::string&	GetName			() { return name; }
 
 			};
 

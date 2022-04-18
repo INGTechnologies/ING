@@ -43,14 +43,16 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Assembly::Assembly(Context* context) :
+			Assembly::Assembly(Context* context, const std::string& name) :
 				context(context),
 
 				monoAssembly(0),
-				monoImage(0)
+				monoImage(0),
+
+				name(name)
 			{
 
-				
+
 
 			}
 
@@ -67,18 +69,6 @@ namespace ING {
 			 *	Release Method
 			 */
 			void Assembly::Release() {
-
-				if (monoImage != 0) {
-
-					mono_image_close(monoImage);
-
-				}
-
-				if (monoAssembly != 0) {
-
-					mono_assembly_close(monoAssembly);
-
-				}
 
 				delete this;
 
