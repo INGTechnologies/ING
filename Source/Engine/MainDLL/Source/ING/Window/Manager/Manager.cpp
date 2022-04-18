@@ -68,6 +68,8 @@ namespace ING {
 
 		APPLICATION_CONFIG_PROP(bool, "ING::WindowManager::showConsoleWindow", false);
 
+		APPLICATION_CONFIG_PROP(std::string, "ING::WindowManager::consoleWindowTitle", "Console");
+
 		APPLICATION_CONFIG_PROP(std::string, "ING::WindowManager::startupWindowTitle", "New Window");
 
 		Debug::Log("WindowManager Created");
@@ -97,9 +99,11 @@ namespace ING {
 
 		showConsoleWindow	= Application::GetInstance()->GetConfiguration()->Get<bool>("ING::WindowManager::showConsoleWindow");
 
+		consoleWindowTitle  = WString(Application::GetInstance()->GetConfiguration()->Get<std::string>("ING::WindowManager::consoleWindowTitle"));
+
 		startupWindowTitle	= WString(Application::GetInstance()->GetConfiguration()->Get<std::string>("ING::WindowManager::startupWindowTitle"));
 
-		defaultDesc.title = startupWindowTitle.c_str();
+		defaultDesc.title = startupWindowTitle;
 
 
 
@@ -134,7 +138,9 @@ namespace ING {
 
 		}
 
-		consoleWindow->SetTitle(L"Console");
+		consoleWindow->desc.title = consoleWindowTitle;
+
+		consoleWindow->SetTitle(consoleWindowTitle);
 
 
 

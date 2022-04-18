@@ -30,7 +30,7 @@ namespace ING {
 		unsigned int	clientWidth		= 800;
 		unsigned int	clientHeight	= 600;
 
-		LPCWSTR			title			= L"New Window";
+		std::wstring	title			= L"New Window";
 
 		bool			show			= true;
 

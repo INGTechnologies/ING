@@ -223,7 +223,7 @@ namespace ING {
 			return;
 
 		/* Create Window Ex */
-		handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, className.c_str(), desc.title,
+		handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, className.c_str(), desc.title.c_str(),
 			WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, desc.clientWidth, desc.clientHeight,
 			NULL, NULL, NULL, this);
 
@@ -347,7 +347,7 @@ namespace ING {
 
 	std::wstring	Window::GetTitle() {
 
-		return WString(desc.title);
+		return desc.title;
 
 	}
 

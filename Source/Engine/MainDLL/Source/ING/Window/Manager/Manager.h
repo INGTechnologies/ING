@@ -85,6 +85,8 @@ namespace ING {
 
 		IdGenerator				idGenerator;
 
+		std::wstring			consoleWindowTitle;
+
 		std::wstring			startupWindowTitle;
 
 	public:
@@ -115,6 +117,8 @@ namespace ING {
 		ui16							NewClassId				();
 
 		void							RemoveClassId			(ui16 id);
+
+		const std::wstring&				GetConsoleWindowTitle	() { return consoleWindowTitle; }
 
 		const std::wstring&				GetStartupWindowTitle	() { return startupWindowTitle; }
 
