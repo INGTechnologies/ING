@@ -21,7 +21,7 @@ using namespace ING::Utils;
 #include <ING/Core/Core.h>
 
 
-
+ 
  /**
   *	Include Thread Managers
   */
