@@ -34,9 +34,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IContext::IContext(const std::string& name, ILanguage* language) :
+		IContext::IContext(const std::string& name, ILanguage* language, bool isMainContext) :
 			name(name),
-			language(language)
+			language(language),
+			isMainContext(isMainContext)
 		{
 
 			 
@@ -71,6 +72,18 @@ namespace ING {
 
 
 			return 0;
+		}
+
+		void IContext::Load() {
+
+
+
+		}
+
+		void IContext::Unload() {
+
+
+
 		}
 
 		void IContext::Reload() {

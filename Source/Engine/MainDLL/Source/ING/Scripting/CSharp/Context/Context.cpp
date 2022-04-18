@@ -62,6 +62,13 @@
 
 
 
+/**
+ *	Include CSharp Language
+ */
+#include <ING/Scripting/CSharp/Language/Language.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -71,17 +78,26 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Context::Context(const std::string& name, ILanguage* language) :
-				IContext(name, language),
+			Context::Context(const std::string& name, ILanguage* language, bool isMainContext) :
+				IContext(name, language, isMainContext),
 
 				domain(0)
 			{
 
-				if (!CreateDomain()) {
+				if (isMainContext) {
 
-					Release();
+					domain = ((CSharp::Language*)language)->GetRootDomain();
 
-					return;
+				}
+				else {
+
+					if (!CreateDomain()) {
+
+						Release();
+
+						return;
+
+					}
 
 				}
 
@@ -126,6 +142,8 @@ namespace ING {
 			 */
 			bool				Context::CreateDomain() {
 
+				if (IsMainContext()) return false;
+
 				//domain = mono_jit_init(GetName().c_str());
 
 				domain = mono_domain_create_appdomain((char*)GetName().c_str(), NULL);
@@ -141,6 +159,8 @@ namespace ING {
 			}
 
 			bool				Context::UnloadDomain() {
+
+				if (IsMainContext()) return false;
 
 				if (domain == 0) return false;
 
@@ -265,17 +285,53 @@ namespace ING {
 				return result;
 			}
 
-			void Context::Reload() {
+			void Context::Load() {
 
-				if (!UnloadDomain()) return;
+				if (domain != 0) return;
 
-				if (!CreateDomain()) return;
+				if (!CreateDomain()) {
+
+					Debug::Error("Cant Load Main CSharp Context");
+
+					return;
+				}
 
 				for (auto item : name2AssemblyMap) {
 
 					OpenAssembly(item.first);
 
 				}
+
+			}
+
+			void Context::Unload() {
+
+				if (IsMainContext()) {
+
+					Debug::Error("Cant Unload Main CSharp Context");
+
+					return;
+
+				}
+
+				if (domain == 0) return;
+
+				if (!UnloadDomain()) return;
+
+			}
+
+			void Context::Reload() {
+
+				if (IsMainContext()) {
+
+					Debug::Error("Cant Reload Main CSharp Context");
+
+					return;
+
+				}
+
+				Unload();
+				Load();
 
 			}
 

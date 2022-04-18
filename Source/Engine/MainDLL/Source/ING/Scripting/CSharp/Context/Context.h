@@ -64,7 +64,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Context(const std::string& name, ILanguage* language);
+				Context(const std::string& name, ILanguage* language, bool isMainContext);
 				~Context();
 
 
@@ -116,6 +116,8 @@ namespace ING {
 
 				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name) override;
 
+				virtual void Load() override;
+				virtual void Unload() override;
 				virtual void Reload() override;
 
 				void		AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);

@@ -75,7 +75,7 @@ namespace ING {
 			public:
 				virtual std::string GetName()		override;
 
-				virtual IContext*	CreateContext(const std::string& name) override;
+				virtual IContext*	CreateContext(const std::string& name, bool isMainContext) override;
 
 			};
 

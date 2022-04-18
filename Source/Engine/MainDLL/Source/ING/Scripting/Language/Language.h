@@ -64,7 +64,9 @@ namespace ING {
 		public:
 			virtual std::string GetName() { return "None"; }
 
-			virtual IContext*	CreateContext(const std::string& name);
+			virtual IContext*	CreateContext(const std::string& name, bool isMainContext);
+
+			IContext*			CreateContext(const std::string& name);
 
 		};
 

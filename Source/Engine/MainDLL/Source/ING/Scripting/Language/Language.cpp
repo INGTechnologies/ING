@@ -48,7 +48,8 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ILanguage::ILanguage()
+		ILanguage::ILanguage() :
+			mainContext(0)
 		{
 
 
@@ -84,17 +85,23 @@ namespace ING {
 		 */
 		void		ILanguage::UpdateCreation() {
 
-			mainContext = CreateContext(GetName() + String("MainContext"));
+			mainContext = CreateContext(GetName() + String("MainContext"), true);
 
 			Manager::GetInstance()->AddLanguage(this);
 
 		}
 
-		IContext*	ILanguage::CreateContext(const std::string& name) {
+		IContext*	ILanguage::CreateContext(const std::string& name, bool isMainContext) {
 
 			Debug::Error("Cant Create Scripting Context");
 
 			return 0;
+
+		}
+
+		IContext* ILanguage::CreateContext(const std::string& name) {
+
+			return CreateContext(name, false);
 
 		}
 

@@ -40,7 +40,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IContext(const std::string& name, ILanguage* language);
+			IContext(const std::string& name, ILanguage* language, bool isMainContext);
 			~IContext();
 
 
@@ -60,9 +60,13 @@ namespace ING {
 			std::string			name;
 			ILanguage*			language;
 
+			bool				isMainContext;
+
 		public:
 			const std::string&	GetName		() { return name; }
 			ILanguage*			GetLanguage	() { return language; }
+
+			bool				IsMainContext() { return isMainContext; }
 
 
 
@@ -72,6 +76,8 @@ namespace ING {
 		public:
 			virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name);
 
+			virtual void Load();
+			virtual void Unload();
 			virtual void Reload();
 
 		};
