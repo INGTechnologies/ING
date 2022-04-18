@@ -69,6 +69,13 @@
 
 
 
+/**
+ *	Include CSharp Engine Assembly Component
+ */
+#include <ING/Scripting/CSharp/Assembly/Component/EngineComponent/EngineComponent.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -100,6 +107,8 @@ namespace ING {
 					}
 
 				}
+
+				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
 
 			}
 

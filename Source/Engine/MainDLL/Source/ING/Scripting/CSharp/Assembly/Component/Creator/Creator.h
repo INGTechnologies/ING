@@ -90,7 +90,7 @@ namespace ING {
 				/**
 				 *	Constructors And Destructor
 				 */
-			protected:
+			public:
 				AssemblyComponentCreator(const std::string& name) :
 					IAssemblyComponentCreator(name)
 				{

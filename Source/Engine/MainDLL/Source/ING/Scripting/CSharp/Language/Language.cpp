@@ -93,7 +93,7 @@ namespace ING {
 
 			IContext*	Language::CreateContext(const std::string& name, bool isMainContext) {
 
-				if (mainContext != 0 && isMainContext == 0) {
+				if (mainContext != 0 && isMainContext == true) {
 
 					Debug::Warning(GetName() + String(" Main Context Created"));
 
