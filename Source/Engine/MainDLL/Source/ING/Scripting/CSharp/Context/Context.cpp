@@ -55,6 +55,13 @@
 
 
 
+/**
+ *	Include CSharp Assembly Component Creator
+ */
+#include <ING/Scripting/CSharp/Assembly/Component/Creator/Creator.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -73,6 +80,8 @@ namespace ING {
 				if (!CreateDomain()) {
 
 					Release();
+
+					return;
 
 				}
 
@@ -95,11 +104,16 @@ namespace ING {
 				for (auto item = name2AssemblyMap.begin(); item != name2AssemblyMap.end();) {
 
 					(item++)->second->Release();
-					//(item++);// ->second->Release();
 
 				}
 
 				UnloadDomain();
+
+				for (auto item : name2AssemblyComponentCreatorMap) {
+
+					item.second->Release();
+
+				}
 
 				IContext::Release();
 
@@ -130,6 +144,12 @@ namespace ING {
 
 				if (domain == 0) return false;
 
+				for (auto item : name2AssemblyMap) {
+
+					item.second->OnClose();
+
+				}
+
 				mono_domain_unload(domain);
 
 				domain = 0;
@@ -140,9 +160,14 @@ namespace ING {
 
 			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name) {
 
+				return LoadAssembly(path, name, {});
+			}
+
+			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector) {
+
 				std::string parsedPath = Path::GetAbsolutePath(path);
 
-				Assembly* assembly = new Assembly(this, name);
+				Assembly* assembly = new Assembly(this, name, componentNameVector);
 
 				assembly->filePath = parsedPath;
 
@@ -174,17 +199,29 @@ namespace ING {
 
 				assembly->monoImage = mono_assembly_get_image(assembly->monoAssembly);
 
+				for (auto item : name2AssemblyMap) {
+
+					item.second->OnOpen();
+
+				}
+
 				return true;
 
 			}
 
 			void				Context::RemoveAssembly(const std::string& name) {
 
-				Assembly* assembly = name2AssemblyMap[name];
+				RemoveAssembly(name2AssemblyMap[name]);
+
+			}
+
+			void				Context::RemoveAssembly(Assembly* assembly) {
+
+				std::string assemblyName = assembly->GetName();
 
 				assembly->Release();
 
-				name2AssemblyMap.erase(name);
+				name2AssemblyMap.erase(assemblyName);
 
 			}
 
@@ -239,6 +276,12 @@ namespace ING {
 					OpenAssembly(item.first);
 
 				}
+
+			}
+
+			void Context::AddAssemblyComponentCreator(IAssemblyComponentCreator* creator) {
+
+				name2AssemblyComponentCreatorMap[creator->GetName()] = creator;
 
 			}
 

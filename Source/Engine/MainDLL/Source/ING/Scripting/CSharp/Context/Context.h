@@ -48,6 +48,8 @@ namespace ING {
 
 			class Class;
 
+			class IAssemblyComponentCreator;
+
 
 
 			class ING_API Context : public IContext
@@ -83,10 +85,14 @@ namespace ING {
 
 				std::unordered_map<std::string, Assembly*> name2AssemblyMap;
 
+				std::unordered_map<std::string, IAssemblyComponentCreator*> name2AssemblyComponentCreatorMap;
+
 			public:
 				MonoDomain* GetDomain		() { return domain; }
 
 				Assembly*	GetAssembly		(const std::string& name) { return name2AssemblyMap[name]; }
+
+				IAssemblyComponentCreator*	GetAssemblyComponentCreator(const std::string& name) { return name2AssemblyComponentCreatorMap[name]; }
 
 
 
@@ -99,16 +105,20 @@ namespace ING {
 
 			public:
 				Assembly*	LoadAssembly	(const std::string& path, const std::string& name);
+				Assembly*	LoadAssembly	(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector);
 
 				bool		OpenAssembly	(const std::string& name);
 
 				void		RemoveAssembly	(const std::string& name);
+				void		RemoveAssembly	(Assembly* assembly);
 
 				Class*		GetClass		(Assembly* assembly, const std::string& name, const std::string& _namespace);
 
 				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name) override;
 
 				virtual void Reload() override;
+
+				void		AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 
 			};
 

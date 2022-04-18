@@ -35,6 +35,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Runtime", "Source\Demos\Eng
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpAssembly_VS2022", "Source\Demos\Engine\MainDLL\CSharpAssembly\CSharpAssembly_VS2022.csproj", "{13030969-0A5B-46BC-8CFB-70E30ABA3CAB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5419D221-8EA8-4780-960A-A5A1649EF8CB} = {5419D221-8EA8-4780-960A-A5A1649EF8CB}
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripting", "Scripting", "{F48E6D4D-DA87-4B61-8B55-5FAF0FE69626}"
 EndProject

@@ -37,6 +37,8 @@ namespace ING {
 
 			class Context;
 
+			class IAssemblyComponent;
+
 
 
 			class ING_API Assembly
@@ -51,7 +53,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Assembly(Context* context, const std::string& name);
+				Assembly(Context* context, const std::string& name, const std::vector<std::string>& componentNameVector);
 				~Assembly();
 
 
@@ -78,6 +80,12 @@ namespace ING {
 
 				std::string			name;
 
+				std::vector<IAssemblyComponent*> componentVector;
+
+				std::unordered_map<std::string, unsigned int> componentName2ComponentIndexMap;
+
+				bool				isOpening;
+
 			public:
 				Context*			GetContext		() { return context; }
 				IContext*			IGetContext		() { return (IContext*)context; }
@@ -89,6 +97,17 @@ namespace ING {
 				const std::string&	GetFilePath		() { return filePath; }
 
 				const std::string&	GetName			() { return name; }
+
+				bool				IsOpening		() { return isOpening; }
+
+
+
+				/**
+				 *	Methods
+				 */
+			public:
+				void OnOpen		();
+				void OnClose	();
 
 			};
 
