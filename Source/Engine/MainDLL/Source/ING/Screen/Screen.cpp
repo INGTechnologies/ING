@@ -93,7 +93,9 @@ namespace ING {
 	}
 
 	Screen::Screen(Window* window, ScreenDesc desc) :
-		isMain(false)
+		isMain(false),
+		swapChain(0),
+		window(0)
 	{
 
 		this->window = window;
