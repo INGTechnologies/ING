@@ -1,6 +1,1 @@
 
-namespace ING { 
-     
-        
-
-}

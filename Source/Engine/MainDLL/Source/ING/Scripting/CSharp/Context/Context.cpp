@@ -114,7 +114,7 @@ namespace ING {
 
 				//domain = mono_jit_init(GetName().c_str());
 
-				domain = mono_domain_create();
+				domain = mono_domain_create_appdomain((char*)GetName().c_str(), NULL);
 
 				if (domain == 0) {
 
@@ -130,9 +130,7 @@ namespace ING {
 
 				if (domain == 0) return false;
 
-				mono_domain_free(domain, true);
-
-				//mono_jit_cleanup(domain);
+				mono_domain_unload(domain);
 
 				domain = 0;
 
