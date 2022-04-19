@@ -48,6 +48,13 @@
 
 
 
+/**
+ *	Include CSharp Language
+ */
+#include <ING/Scripting/CSharp/Language/Language.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -72,7 +79,7 @@ namespace ING {
 
 				for (unsigned int i = 0; i < componentNameVector.size(); ++i) {
 
-					IAssemblyComponentCreator* componentCreator = context->GetAssemblyComponentCreator(componentNameVector[i]);
+					IAssemblyComponentCreator* componentCreator = ((Language*)context->GetLanguage())->GetAssemblyComponentCreator(componentNameVector[i]);
 
 					if (componentCreator == 0) {
 

@@ -109,8 +109,6 @@ namespace ING {
 
 				}
 
-				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
-
 				((Language*)language)->AddContext(this);
 
 			}
@@ -133,12 +131,6 @@ namespace ING {
 					assembly->Release();
 
 				UnloadDomain();
-
-				for (auto item : name2AssemblyComponentCreatorMap) {
-
-					item.second->Release();
-
-				}
 
 				((Language*)GetLanguage())->RemoveContext(this);
 
@@ -339,12 +331,6 @@ namespace ING {
 
 				Unload();
 				Load();
-
-			}
-
-			void Context::AddAssemblyComponentCreator(IAssemblyComponentCreator* creator) {
-
-				name2AssemblyComponentCreatorMap[creator->GetName()] = creator;
 
 			}
 

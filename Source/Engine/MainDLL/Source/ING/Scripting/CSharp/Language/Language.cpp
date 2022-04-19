@@ -56,6 +56,20 @@
 
 
 
+/**
+ *	Include CSharp Assembly Component Creator
+ */
+#include <ING/Scripting/CSharp/Assembly/Component/Creator/Creator.h>
+
+
+
+/**
+ *	Include CSharp Engine Assembly Component
+ */
+#include <ING/Scripting/CSharp/Assembly/Component/EngineComponent/EngineComponent.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -72,6 +86,20 @@ namespace ING {
 				mono_set_dirs(".", ".");
 
 				rootDomain = mono_jit_init((GetName() + String("RootDomain")).c_str());
+
+				APPLICATION_CONFIG_PROP(std::vector<IAssemblyComponentCreator*>, "ING::Scripting::CSharp::Language::assemblyComponentCreators", {
+
+
+
+				});
+
+				for (auto item : Application::GetInstance()->GetConfiguration()->Get<std::vector<IAssemblyComponentCreator*>>("ING::Scripting::CSharp::Language::assemblyComponentCreators")) {
+
+					name2AssemblyComponentCreatorMap[item->GetName()] = item;
+
+				}
+
+				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
 
 				UpdateCreation();		
 
@@ -103,6 +131,12 @@ namespace ING {
 						(item++)->second->Release();
 					else
 						item++;
+
+				}
+
+				for (auto item = name2AssemblyComponentCreatorMap.begin(); item != name2AssemblyComponentCreatorMap.end();) {
+
+					(item++)->second->Release();
 
 				}
 
@@ -318,6 +352,16 @@ namespace ING {
 						}
 
 					}
+
+				}
+
+			}
+
+			void Language::AddAssemblyComponentCreator(IAssemblyComponentCreator* creator) {
+
+				if (name2AssemblyComponentCreatorMap.find(creator->GetName()) == name2AssemblyComponentCreatorMap.end()) {
+
+					name2AssemblyComponentCreatorMap[creator->GetName()] = creator;
 
 				}
 

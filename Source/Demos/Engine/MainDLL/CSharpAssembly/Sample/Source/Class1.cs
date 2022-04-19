@@ -12,7 +12,7 @@ namespace CSharpAssembly
         public static void Main()
         {
 
-            Console.WriteLine("CSharp Scripting");
+            Console.WriteLine("CSharp Scripting Started");
 
         }
 

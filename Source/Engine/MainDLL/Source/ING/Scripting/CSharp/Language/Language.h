@@ -40,6 +40,8 @@ namespace ING {
 
 			class Context;
 
+			class IAssemblyComponentCreator;
+
 
 
 			class ING_API Language : public ILanguage
@@ -70,10 +72,14 @@ namespace ING {
 
 				std::unordered_map<std::string, Context*>	name2ContextMap;
 
+				std::unordered_map<std::string, IAssemblyComponentCreator*>	name2AssemblyComponentCreatorMap;
+
 			public:
 				MonoDomain* GetRootDomain	() { return rootDomain; }
 
 				Context*	GetContext		(const std::string& name) { return name2ContextMap[name]; }
+
+				IAssemblyComponentCreator* GetAssemblyComponentCreator(const std::string& name) { return name2AssemblyComponentCreatorMap[name]; }
 
 
 
@@ -89,6 +95,8 @@ namespace ING {
 				virtual IContext*	CreateContext(const std::string& name, bool isMainContext) override;
 
 				void OpenAssemblies(const std::string& iniFilePath, const std::string& tag);
+
+				void AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 
 			};
 

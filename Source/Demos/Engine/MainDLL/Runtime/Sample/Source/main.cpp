@@ -285,12 +285,18 @@ using namespace ING;
 #include <ING/Scripting/CSharp/Language/Language.h>
 #include <ING/Scripting/CSharp/Context/Context.h>
 #include <ING/Scripting/CSharp/Assembly/Assembly.h>
+#include <ING/Scripting/CSharp/Assembly/Component/Creator/Creator.h>
+#include <ING/Scripting/Manager/Manager.h>
+
+#include <ING/Scripting/CSharp/Assembly/Component/EngineComponent/EngineComponent.h>
 
 #include <ING/Scripting/CSharp/Method/OuternalMethod/OuternalMethod.h>
 #include <ING/Scripting/CSharp/Class/Class.h>
 
 #include <ING/Rendering/API/APIFlag.h>
 
+#include <ING/Object/Object.h>
+#include <ING/Object/Manager/Manager.h>
 
 
 
@@ -342,10 +348,21 @@ static ECS::TransformSystem* transformSystem;
 
 
 
+#include <filesystem>
+
+
+
 int main() {
 
-	/* Create Application */
+	/* Create Application */ 
 	ING::Application::CreateInstance();
+
+
+	APPLICATION_CONFIG_PROP(std::vector<ING::Scripting::CSharp::IAssemblyComponentCreator*>, "ING::Scripting::CSharp::Language::assemblyComponentCreators", {
+
+		new ING::Scripting::CSharp::AssemblyComponentCreator<ING::Scripting::CSharp::EngineAssemblyComponent>("Content")
+
+	});
 
 
 	/* Init Application */
@@ -357,18 +374,20 @@ int main() {
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 
 
+		
+		Scripting::CSharp::Language* language = (Scripting::CSharp::Language*)Scripting::Manager::GetInstance()->GetLanguage("CSharp");
 
+		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->GetContext("Content.CSharpAssembly");
 
+		Scripting::CSharp::Assembly* assembly = context->GetAssembly();
 
-		Scripting::CSharp::Language* language = new Scripting::CSharp::Language();
+		Scripting::CSharp::Class* class1;
 
-		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->CreateContext("ING_Game.exe");
+		Scripting::CSharp::OuternalMethod* outernalMethod1;
 
-		Scripting::CSharp::Assembly* assembly = context->LoadAssembly("../Content/CSharpAssembly/CSharpAssembly.dll");
+		class1 = context->GetClass(assembly, "Class1", "CSharpAssembly");
 
-		Scripting::CSharp::Class* class1 = context->GetClass(assembly, "Class1", "CSharpAssembly");
-
-		Scripting::CSharp::OuternalMethod* outernalMethod1 = (Scripting::CSharp::OuternalMethod*)(
+		outernalMethod1 = (Scripting::CSharp::OuternalMethod*)(
 			context->GetOuternalMethod(class1, ".Class1::Main()")
 		);
 
@@ -456,10 +475,10 @@ int main() {
 			})
 		);
 		shader->GetPass("Demo Pass")->AddShader("VertexShader",
-			IVertexShader::CreateFromHLSL(L"../Content/Assets/Shaders/DemoVS.hlsl")
+			IVertexShader::CreateFromHLSL(L"Content:/Assets/Shaders/DemoVS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->AddShader("PixelShader",
-			IPixelShader::CreateFromHLSL(L"../Content/Assets/Shaders/DemoPS.hlsl")
+			IPixelShader::CreateFromHLSL(L"Content:/Assets/Shaders/DemoPS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->SetInputLayout(
 			IInputLayout::Create(

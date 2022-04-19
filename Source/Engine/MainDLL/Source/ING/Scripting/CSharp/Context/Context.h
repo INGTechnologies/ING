@@ -85,14 +85,10 @@ namespace ING {
 
 				Assembly* assembly;
 
-				std::unordered_map<std::string, IAssemblyComponentCreator*> name2AssemblyComponentCreatorMap;
-
 			public:
 				MonoDomain* GetDomain() { return domain; }
 
 				Assembly* GetAssembly() { return assembly; }
-
-				IAssemblyComponentCreator*	GetAssemblyComponentCreator(const std::string& name) { return name2AssemblyComponentCreatorMap[name]; }
 
 
 
@@ -118,8 +114,6 @@ namespace ING {
 				virtual void Load() override;
 				virtual void Unload() override;
 				virtual void Reload() override;
-
-				void		AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 
 			};
 
