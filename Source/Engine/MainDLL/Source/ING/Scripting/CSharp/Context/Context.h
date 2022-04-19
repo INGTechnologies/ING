@@ -83,14 +83,14 @@ namespace ING {
 			private:
 				MonoDomain* domain;
 
-				std::unordered_map<std::string, Assembly*> name2AssemblyMap;
+				Assembly* assembly;
 
 				std::unordered_map<std::string, IAssemblyComponentCreator*> name2AssemblyComponentCreatorMap;
 
 			public:
-				MonoDomain* GetDomain		() { return domain; }
+				MonoDomain* GetDomain() { return domain; }
 
-				Assembly*	GetAssembly		(const std::string& name) { return name2AssemblyMap[name]; }
+				Assembly* GetAssembly() { return assembly; }
 
 				IAssemblyComponentCreator*	GetAssemblyComponentCreator(const std::string& name) { return name2AssemblyComponentCreatorMap[name]; }
 
@@ -107,10 +107,9 @@ namespace ING {
 				Assembly*	LoadAssembly	(const std::string& path, const std::string& name);
 				Assembly*	LoadAssembly	(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector);
 
-				bool		OpenAssembly	(const std::string& name);
+				bool		OpenAssembly	();
 
-				void		RemoveAssembly	(const std::string& name);
-				void		RemoveAssembly	(Assembly* assembly);
+				void		RemoveAssembly	();
 
 				Class*		GetClass		(Assembly* assembly, const std::string& name, const std::string& _namespace);
 

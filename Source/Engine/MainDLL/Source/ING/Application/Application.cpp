@@ -273,7 +273,7 @@ namespace ING {
 	/**
 	 *	Init, Run, Release, Shutdown Methods
 	 */
-	bool Application::Init() { 
+	bool Application::Init() {  
 
 		Debug::Log("Start Initializing Application");
 

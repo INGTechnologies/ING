@@ -38,6 +38,10 @@ namespace ING {
 
 		namespace CSharp {
 
+			class Context;
+
+
+
 			class ING_API Language : public ILanguage
 			{
 
@@ -64,8 +68,12 @@ namespace ING {
 			private:
 				MonoDomain* rootDomain;
 
+				std::unordered_map<std::string, Context*>	name2ContextMap;
+
 			public:
-				MonoDomain* GetRootDomain() { return rootDomain; }
+				MonoDomain* GetRootDomain	() { return rootDomain; }
+
+				Context*	GetContext		(const std::string& name) { return name2ContextMap[name]; }
 
 
 
@@ -73,9 +81,14 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
+				void AddContext		(Context* context);
+				void RemoveContext	(Context* context);
+
 				virtual std::string GetName()		override;
 
 				virtual IContext*	CreateContext(const std::string& name, bool isMainContext) override;
+
+				void OpenAssemblies(const std::string& iniFilePath, const std::string& tag);
 
 			};
 

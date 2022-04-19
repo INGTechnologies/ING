@@ -47,11 +47,11 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void Configuration::LoadFromFile(const std::string& filePath) {
+	bool Configuration::LoadFromFile(const std::string& filePath) {
 
 		std::string parsedFilePath = Path::GetAbsolutePath(filePath);
 
-		if (!std::filesystem::exists(parsedFilePath)) return;
+		if (!std::filesystem::exists(parsedFilePath)) return false;
 
 		mINI::INIFile configFile(parsedFilePath);
 
@@ -159,6 +159,8 @@ namespace ING {
 			}
 
 		}
+
+		return true;
 
 	}
 

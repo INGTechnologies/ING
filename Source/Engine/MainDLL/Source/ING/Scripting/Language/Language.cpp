@@ -85,7 +85,7 @@ namespace ING {
 		 */
 		void		ILanguage::UpdateCreation() {
 
-			mainContext = CreateContext(GetName() + String("MainContext"), true);
+			mainContext = CreateContext("Main", true);
 
 			Manager::GetInstance()->AddLanguage(this);
 

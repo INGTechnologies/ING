@@ -88,7 +88,8 @@ namespace ING {
 			Context::Context(const std::string& name, ILanguage* language, bool isMainContext) :
 				IContext(name, language, isMainContext),
 
-				domain(0)
+				domain(0),
+				assembly(0)
 			{
 
 				if (isMainContext) {
@@ -110,6 +111,8 @@ namespace ING {
 
 				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
 
+				((Language*)language)->AddContext(this);
+
 			}
 
 			Context::~Context()
@@ -126,11 +129,8 @@ namespace ING {
 			 */
 			void Context::Release() {
 
-				for (auto item = name2AssemblyMap.begin(); item != name2AssemblyMap.end();) {
-
-					(item++)->second->Release();
-
-				}
+				if(assembly != 0)
+					assembly->Release();
 
 				UnloadDomain();
 
@@ -139,6 +139,8 @@ namespace ING {
 					item.second->Release();
 
 				}
+
+				((Language*)GetLanguage())->RemoveContext(this);
 
 				IContext::Release();
 
@@ -152,8 +154,6 @@ namespace ING {
 			bool				Context::CreateDomain() {
 
 				if (IsMainContext()) return false;
-
-				//domain = mono_jit_init(GetName().c_str());
 
 				domain = mono_domain_create_appdomain((char*)GetName().c_str(), NULL);
 
@@ -173,11 +173,8 @@ namespace ING {
 
 				if (domain == 0) return false;
 
-				for (auto item : name2AssemblyMap) {
-
-					item.second->OnClose();
-
-				}
+				if(assembly != 0)
+					assembly->OnClose();
 
 				mono_domain_unload(domain);
 
@@ -194,15 +191,23 @@ namespace ING {
 
 			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector) {
 
+				if (assembly != 0) {
+
+					Debug::Warning("CSharp Assembly Loaded, Auto Reload Context Before Load New Assembly");
+
+					RemoveAssembly();
+
+					Reload();
+
+				}
+
 				std::string parsedPath = Path::GetAbsolutePath(path);
 
-				Assembly* assembly = new Assembly(this, name, componentNameVector);
+				assembly = new Assembly(this, name, componentNameVector);
 
 				assembly->filePath = parsedPath;
 
-				name2AssemblyMap[name] = assembly;
-
-				if (!OpenAssembly(name)) {
+				if (!OpenAssembly()) {
 
 					assembly->Release();
 
@@ -212,9 +217,14 @@ namespace ING {
 				return assembly;
 			}
 
-			bool				Context::OpenAssembly(const std::string& name) {
+			bool				Context::OpenAssembly() {
 
-				Assembly* assembly = name2AssemblyMap[name];
+				if (assembly == 0) {
+
+					Debug::Error("Cant Open Null Assembly");
+
+					return 0;
+				}
 
 				assembly->monoAssembly = mono_domain_assembly_open(domain, assembly->GetFilePath().c_str());
 
@@ -228,29 +238,21 @@ namespace ING {
 
 				assembly->monoImage = mono_assembly_get_image(assembly->monoAssembly);
 
-				for (auto item : name2AssemblyMap) {
-
-					item.second->OnOpen();
-
-				}
+				assembly->OnOpen();
 
 				return true;
 
 			}
 
-			void				Context::RemoveAssembly(const std::string& name) {
+			void				Context::RemoveAssembly() {
 
-				RemoveAssembly(name2AssemblyMap[name]);
+				if (assembly != 0) {
 
-			}
+					assembly->Release();
 
-			void				Context::RemoveAssembly(Assembly* assembly) {
+					assembly = 0;
 
-				std::string assemblyName = assembly->GetName();
-
-				assembly->Release();
-
-				name2AssemblyMap.erase(assemblyName);
+				}
 
 			}
 
@@ -305,11 +307,7 @@ namespace ING {
 					return;
 				}
 
-				for (auto item : name2AssemblyMap) {
-
-					OpenAssembly(item.first);
-
-				}
+				OpenAssembly();
 
 			}
 

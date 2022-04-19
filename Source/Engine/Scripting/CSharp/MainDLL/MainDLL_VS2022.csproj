@@ -48,12 +48,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-    <PostBuildEvent>XCOPY "$(ProjectDir)..\JSON\" "$(OutDir)" /s /i /y
+    <PostBuildEvent>XCOPY "$(ProjectDir)..\Data\" "$(OutDir)" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Debug\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Debug\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <PostBuildEvent>XCOPY "$(ProjectDir)..\JSON\" "$(OutDir)" /s /i /y
+    <PostBuildEvent>XCOPY "$(ProjectDir)..\Data\" "$(OutDir)" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\x64\Release\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y
 XCOPY "$(OutDir)" "$(SolutionDir)Binaries\Win32\Release\VS2022\Engine\MainDLL\Scripting\CSharp\" /s /i /y</PostBuildEvent>
   </PropertyGroup>

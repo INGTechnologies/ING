@@ -74,6 +74,16 @@ namespace ING {
 
 					IAssemblyComponentCreator* componentCreator = context->GetAssemblyComponentCreator(componentNameVector[i]);
 
+					if (componentCreator == 0) {
+
+						Debug::Error(String('"') + componentNameVector[i] + String('"') + String(" Assembly Component Creator Not Found"));
+
+						componentVector.resize(i);
+
+						break;
+
+					}
+
 					componentVector[i] = componentCreator->Create(this);
 
 					componentName2ComponentIndexMap[componentVector[i]->GetName()] = i;
