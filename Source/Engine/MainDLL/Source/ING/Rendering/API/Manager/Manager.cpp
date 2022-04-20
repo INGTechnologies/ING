@@ -71,11 +71,11 @@ namespace ING {
 			Debug::Log("Start Creating Rendering::APIManager");
 
 			/* Setup Configuration */
-			if (!Application::GetInstance()->GetConfiguration()->Exist("ING::Rendering::APIManager::apiFlag")) {
+			if (!Application::GetInstance()->GetConfiguration()->Exist("ING.Rendering.APIManager.apiFlag")) {
 
-				Application::GetInstance()->GetConfiguration()->Add<APIFlag>("ING::Rendering::APIManager::apiFlag");
+				Application::GetInstance()->GetConfiguration()->Add<APIFlag>("ING.Rendering.APIManager.apiFlag");
 
-				Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING::Rendering::APIManager::apiFlag", DIRECTX11_API_FLAG);
+				Application::GetInstance()->GetConfiguration()->Set<APIFlag>("ING.Rendering.APIManager.apiFlag", DIRECTX11_API_FLAG);
 
 			}
 
@@ -100,7 +100,7 @@ namespace ING {
 
 			Debug::Log("Start Initializing Rendering::APIManager");
 
-			apiFlag = Application::GetInstance()->GetConfiguration()->Get<APIFlag>("ING::Rendering::APIManager::apiFlag");
+			apiFlag = Application::GetInstance()->GetConfiguration()->Get<APIFlag>("ING.Rendering.APIManager.apiFlag");
 
 			if (!InitAPI()) {
 

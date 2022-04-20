@@ -67,9 +67,9 @@ namespace ING {
 
 		Debug::Log("Start Creating ApplicationThreadManager");
 
-		APPLICATION_CONFIG_PROP(bool, "ING::ApplicationThreadManager::usePhysicsThread", true);
+		APPLICATION_CONFIG_PROP(bool, "ING.ApplicationThreadManager.usePhysicsThread", true);
 
-		APPLICATION_CONFIG_PROP(bool, "ING::ApplicationThreadManager::useRenderingThread", true);
+		APPLICATION_CONFIG_PROP(bool, "ING.ApplicationThreadManager.useRenderingThread", true);
 
 		Debug::Log("ApplicationThreadManager Created");
 

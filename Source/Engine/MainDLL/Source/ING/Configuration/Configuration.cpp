@@ -63,7 +63,7 @@ namespace ING {
 
 			for (const auto& item2 : item.second) {
 
-				std::string propName = item.first + "::" + item2.first;
+				std::string propName = item.first + "." + item2.first;
 
 				/* If This Is Positive Number Prop */
 				if (item2.second[0] >= 48 && item2.second[0] <= 57) {

@@ -71,9 +71,9 @@ namespace ING {
 
 		int maxThreadCount = 3;
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::maxThreadCount", (unsigned int)maxThreadCount);
+		APPLICATION_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount", (unsigned int)maxThreadCount);
 
-		maxThreadCount = APPLICATION_GET_CONFIG_PROP(unsigned int, "ING::JobSystem::maxThreadCount");
+		maxThreadCount = APPLICATION_GET_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount");
 
 
 
@@ -101,7 +101,7 @@ namespace ING {
 			
 		}
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING::JobSystem::threadCount", (unsigned int)defaultThreadCount);
+		APPLICATION_CONFIG_PROP(unsigned int, "ING.JobSystem.threadCount", (unsigned int)defaultThreadCount);
 
 		Debug::Log("JobSystem Created");
 
@@ -164,7 +164,7 @@ namespace ING {
 
 	void JobSystem::CreateThreads() {
 
-		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING::JobSystem::threadCount");
+		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.JobSystem.threadCount");
 
 		threads.resize(threadCount);
 

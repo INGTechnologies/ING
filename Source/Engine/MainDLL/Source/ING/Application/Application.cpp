@@ -240,12 +240,12 @@ namespace ING {
 
 
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING::Application::terminationBehavior", 0);
+		APPLICATION_CONFIG_PROP(unsigned int, "ING.Application.terminationBehavior", 0);
 
-		APPLICATION_CONFIG_PROP(std::string, "ING::Application::gameDir", "../Game/");
-		APPLICATION_CONFIG_PROP(std::string, "ING::Application::workingDir", ".");
+		APPLICATION_CONFIG_PROP(std::string, "ING.Application.gameDir", "../Game/");
+		APPLICATION_CONFIG_PROP(std::string, "ING.Application.workingDir", ".");
 
-		APPLICATION_CONFIG_PROP(std::string, "ING::Application::name", "ING App");
+		APPLICATION_CONFIG_PROP(std::string, "ING.Application.name", "ING App");
 
 		Debug::Log("Application Created");
 
@@ -277,11 +277,11 @@ namespace ING {
 
 		Debug::Log("Start Initializing Application");
 
-		gameDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING::Application::gameDir")));
+		gameDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Application.gameDir")));
 		gameDir = String(gameDir_wstr);
-		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING::Application::workingDir")));
+		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Application.workingDir")));
 		workingDir = String(workingDir_wstr);
-		name = configuration->Get<std::string>("ING::Application::name");
+		name = configuration->Get<std::string>("ING.Application.name");
 
 		bool result = Board<Application>::Init(); 
 
@@ -289,7 +289,7 @@ namespace ING {
 
 			Debug::Error("Cant Initialize Application");
 
-			unsigned int terminationBehavior = configuration->Get<unsigned int>("ING::Application::terminationBehavior");
+			unsigned int terminationBehavior = configuration->Get<unsigned int>("ING.Application.terminationBehavior");
 
 			if (terminationBehavior == 1) {
 				system("pause");
@@ -386,7 +386,7 @@ namespace ING {
 
 		Debug::Log("Start Shuting Down Application");
 
-		unsigned int terminationBehavior = configuration->Get<unsigned int>("ING::Application::terminationBehavior");
+		unsigned int terminationBehavior = configuration->Get<unsigned int>("ING.Application.terminationBehavior");
 
 		Release();
 
@@ -421,7 +421,7 @@ namespace ING {
 
 		ApplicationThreadManager::GetInstance()->StartFrame();
 
-		if (!configuration->Get<bool>("ING::ApplicationThreadManager::usePhysicsThread")) {
+		if (!configuration->Get<bool>("ING.ApplicationThreadManager.usePhysicsThread")) {
 
 
 
@@ -434,7 +434,7 @@ namespace ING {
 
 
 
-		if (!configuration->Get<bool>("ING::ApplicationThreadManager::useRenderingThread")) {
+		if (!configuration->Get<bool>("ING.ApplicationThreadManager.useRenderingThread")) {
 
 			Rendering::Engine::GetInstance()->FrameUpdate();
 
