@@ -222,6 +222,8 @@ namespace ING {
 
 					size_t assemblyCount = compiledData.size();
 
+					if (assemblyCount == 0) return;
+
 					if (((Context*)mainContext)->assembly != 0) {
 
 						for (auto item = compiledData.begin(); item != compiledData.end(); ++item) {

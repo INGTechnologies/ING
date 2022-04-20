@@ -277,10 +277,17 @@ namespace ING {
 
 		Debug::Log("Start Initializing Application");
 
+		AddRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
+		AddRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
+
 		gameDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Application.gameDir")));
 		gameDir = String(gameDir_wstr);
 		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Application.workingDir")));
 		workingDir = String(workingDir_wstr);
+
+		AddRootPath(L"Game", gameDir_wstr);
+		AddRootPath(L"Engine", workingDir_wstr);
+
 		name = configuration->Get<std::string>("ING.Application.name");
 
 		bool result = Board<Application>::Init(); 
@@ -402,7 +409,7 @@ namespace ING {
 
 
 	/**
-	 *	FrameUpdate Method
+	 *	Methods
 	 */
 	void Application::FrameUpdate() {
 
@@ -445,6 +452,12 @@ namespace ING {
 		GetEvent("END_FRAME_UPDATE")->Execute();
 
 		Time::GetInstance()->EndFrame();
+
+	}
+
+	void Application::AddRootPath(const std::wstring& path, const std::wstring& value) {
+
+		rootPath2AbsolutePath[path] = value;
 
 	}
 

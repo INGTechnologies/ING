@@ -101,20 +101,27 @@ namespace ING {
 		std::wstring workingDir_wstr;
 		std::string name;
 
+		std::unordered_map<std::wstring, std::wstring> rootPath2AbsolutePath;
+
 	public:
-		const std::string& GetGameDir() { return gameDir; }
-		const std::string& GetWorkingDir() { return workingDir; }
-		const std::wstring& GetGameDir_WSTR() { return gameDir_wstr; }
-		const std::wstring& GetWorkingDir_WSTR() { return workingDir_wstr; }
-		const std::string& GetName() { return name; }
+		const std::string&	GetGameDir					() { return gameDir; }
+		const std::string&	GetWorkingDir				() { return workingDir; }
+		const std::wstring& GetGameDir_WSTR				() { return gameDir_wstr; }
+		const std::wstring& GetWorkingDir_WSTR			() { return workingDir_wstr; }
+		const std::string&	GetName						() { return name; }
+
+		const std::wstring& GetAbsolutePathFromRootPath	(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
+		bool				IsHaveRootPath				(const std::wstring& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
 
 
 
 		/**
-		 *	FrameUpdate Method
+		 *	Methods
 		 */
 	public:
 		void FrameUpdate();
+
+		void AddRootPath(const std::wstring& path, const std::wstring& value);
 
 	};
 

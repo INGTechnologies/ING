@@ -6,6 +6,10 @@
 
 
 
+#include <ING/Utils/Utils.h>
+
+
+
 /**
  *	Include Application
  */
@@ -26,60 +30,11 @@ namespace ING {
 
 				auto rootName = GetRootName(pathStr);
 
-				if (rootName.first == "CWD") {
+				const std::wstring rootName_wstr = WString(rootName.first);
 
-					if (pathStr.size() > rootName.second) {
+				if (Application::GetInstance()->IsHaveRootPath(rootName_wstr)) {
 
-						return cwd + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd;
-
-					}
-
-				}
-				else if (rootName.first == "CWD/../") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return cwd + "/../" + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd;
-
-					}
-
-				}
-				else if (rootName.first == "Game") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return Application::GetInstance()->GetGameDir() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return Application::GetInstance()->GetGameDir();
-
-					}
-
-				}
-				else if (rootName.first == "Engine") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return cwd + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd;
-
-					}
+					return String(Application::GetInstance()->GetAbsolutePathFromRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 
@@ -91,60 +46,9 @@ namespace ING {
 
 				auto rootName = GetRootName(pathStr);
 
-				if (rootName.first == L"CWD") {
+				if (Application::GetInstance()->IsHaveRootPath(rootName.first)) {
 
-					if (pathStr.size() > rootName.second) {
-
-						return cwd_wstr + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd_wstr;
-
-					}
-
-				}
-				else if (rootName.first == L"CWD/../") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return cwd_wstr + L"/../" + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd_wstr + L"/../";
-
-					}
-
-				}
-				else if (rootName.first == L"Game") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return Application::GetInstance()->GetGameDir_WSTR() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return Application::GetInstance()->GetGameDir_WSTR();
-
-					}
-
-				}
-				else if (rootName.first == L"Engine") {
-
-					if (pathStr.size() > rootName.second) {
-
-						return cwd_wstr + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-					}
-					else {
-
-						return cwd_wstr;
-
-					}
+					return Application::GetInstance()->GetAbsolutePathFromRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 
