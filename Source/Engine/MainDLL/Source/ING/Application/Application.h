@@ -95,16 +95,16 @@ namespace ING {
 		 *	Paths
 		 */
 	private:
-		std::string contentDir;
-		std::wstring contentDir_wstr;
+		std::string gameDir;
+		std::wstring gameDir_wstr;
 		std::string workingDir;
 		std::wstring workingDir_wstr;
 		std::string name;
 
 	public:
-		const std::string& GetContentDir() { return contentDir; }
+		const std::string& GetGameDir() { return gameDir; }
 		const std::string& GetWorkingDir() { return workingDir; }
-		const std::wstring& GetContentDir_WSTR() { return contentDir_wstr; }
+		const std::wstring& GetGameDir_WSTR() { return gameDir_wstr; }
 		const std::wstring& GetWorkingDir_WSTR() { return workingDir_wstr; }
 		const std::string& GetName() { return name; }
 

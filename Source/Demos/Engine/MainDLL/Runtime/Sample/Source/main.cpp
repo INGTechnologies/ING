@@ -358,11 +358,12 @@ int main() {
 	ING::Application::CreateInstance();
 
 
-	APPLICATION_CONFIG_PROP(std::vector<ING::Scripting::CSharp::IAssemblyComponentCreator*>, "ING::Scripting::CSharp::Language::assemblyComponentCreators", {
 
-		new ING::Scripting::CSharp::AssemblyComponentCreator<ING::Scripting::CSharp::EngineAssemblyComponent>("Content")
+	//((Scripting::CSharp::Language*)Scripting::Manager::GetInstance()->GetLanguage("CSharp"))->AddAssemblyComponentCreator(
 
-	});
+	//	new ING::Scripting::CSharp::AssemblyComponentCreator<ING::Scripting::CSharp::EngineAssemblyComponent>("Content")
+
+	//);
 
 
 	/* Init Application */
@@ -377,7 +378,7 @@ int main() {
 		
 		Scripting::CSharp::Language* language = (Scripting::CSharp::Language*)Scripting::Manager::GetInstance()->GetLanguage("CSharp");
 
-		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->GetContext("Content.CSharpAssembly");
+		Scripting::CSharp::Context* context = (Scripting::CSharp::Context*)language->GetContext("Game.CSharpAssembly");
 
 		Scripting::CSharp::Assembly* assembly = context->GetAssembly();
 
@@ -475,10 +476,10 @@ int main() {
 			})
 		);
 		shader->GetPass("Demo Pass")->AddShader("VertexShader",
-			IVertexShader::CreateFromHLSL(L"Content:/Assets/Shaders/DemoVS.hlsl")
+			IVertexShader::CreateFromHLSL(L"Game:/Assets/Shaders/DemoVS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->AddShader("PixelShader",
-			IPixelShader::CreateFromHLSL(L"Content:/Assets/Shaders/DemoPS.hlsl")
+			IPixelShader::CreateFromHLSL(L"Game:/Assets/Shaders/DemoPS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->SetInputLayout(
 			IInputLayout::Create(

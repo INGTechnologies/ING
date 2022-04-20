@@ -52,6 +52,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(OutDir)" "$(ProjectDir)..\GitIgnores\Content\CSharpAssembly\" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(OutDir)" "$(ProjectDir)..\GitIgnores\Game\CSharpAssembly\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
 </Project>

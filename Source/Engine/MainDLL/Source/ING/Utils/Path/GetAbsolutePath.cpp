@@ -54,16 +54,16 @@ namespace ING {
 					}
 
 				}
-				else if (rootName.first == "Content") {
+				else if (rootName.first == "Game") {
 
 					if (pathStr.size() > rootName.second) {
 
-						return Application::GetInstance()->GetContentDir() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+						return Application::GetInstance()->GetGameDir() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 					}
 					else {
 
-						return Application::GetInstance()->GetContentDir();
+						return Application::GetInstance()->GetGameDir();
 
 					}
 
@@ -119,16 +119,16 @@ namespace ING {
 					}
 
 				}
-				else if (rootName.first == L"Content") {
+				else if (rootName.first == L"Game") {
 
 					if (pathStr.size() > rootName.second) {
 
-						return Application::GetInstance()->GetContentDir_WSTR() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+						return Application::GetInstance()->GetGameDir_WSTR() + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 					}
 					else {
 
-						return Application::GetInstance()->GetContentDir_WSTR();
+						return Application::GetInstance()->GetGameDir_WSTR();
 
 					}
 
