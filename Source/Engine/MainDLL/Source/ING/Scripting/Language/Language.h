@@ -37,9 +37,11 @@ namespace ING {
 
 
 			/**
-			 *	Release Method
+			 *	Init, Release Method
 			 */
 		public:
+			virtual void Init();
+
 			virtual void Release();
 
 
@@ -58,9 +60,6 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-		protected:
-			void UpdateCreation();
-
 		public:
 			virtual std::string GetName() { return "None"; }
 

@@ -57,9 +57,10 @@ namespace ING {
 
 
 				/**
-				 *	Release Method
+				 *	Init, Release Method
 				 */
 			public:
+				virtual void Init	() override;
 				virtual void Release() override;
 
 

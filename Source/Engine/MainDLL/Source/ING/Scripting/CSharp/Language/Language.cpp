@@ -83,29 +83,7 @@ namespace ING {
 				ILanguage()
 			{
 
-				mono_set_dirs(".", ".");
-
-				rootDomain = mono_jit_init((GetName() + String("RootDomain")).c_str());
-
-				APPLICATION_CONFIG_PROP(std::vector<IAssemblyComponentCreator*>, "ING::Scripting::CSharp::Language::assemblyComponentCreators", {
-
-
-
-				});
-
-				for (auto item : Application::GetInstance()->GetConfiguration()->Get<std::vector<IAssemblyComponentCreator*>>("ING::Scripting::CSharp::Language::assemblyComponentCreators")) {
-
-					name2AssemblyComponentCreatorMap[item->GetName()] = item;
-
-				}
-
 				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
-
-				UpdateCreation();		
-
-				/* Open Engine, Context Assemblies */
-				OpenAssemblies("Engine:/Scripting/CSharp/assemblies.ini", "Engine");
-				OpenAssemblies("Content:/Scripting/CSharp/assemblies.ini", "Content");
 
 			}
 
@@ -119,8 +97,22 @@ namespace ING {
 
 
 			/**
-			 *	Release Method
+			 *	Init, Release Method
 			 */
+			void Language::Init() {
+
+				mono_set_dirs(".", ".");
+
+				rootDomain = mono_jit_init((GetName() + String("RootDomain")).c_str());
+
+				ILanguage::Init();
+
+				/* Open Engine, Context Assemblies */
+				OpenAssemblies("Engine:/Scripting/CSharp/assemblies.ini", "Engine");
+				OpenAssemblies("Content:/Scripting/CSharp/assemblies.ini", "Content");
+
+			}
+
 			void Language::Release() {
 
 				MonoDomain* rootDomain = this->rootDomain;

@@ -66,8 +66,16 @@ namespace ING {
 
 
 		/**
-		 *	Release Method
+		 *	Init, Release Method
 		 */
+		void ILanguage::Init() {
+
+			mainContext = CreateContext("Main", true);
+
+			Manager::GetInstance()->AddLanguage(this);
+
+		}
+
 		void ILanguage::Release() {
 
 			mainContext->Release();
@@ -83,14 +91,6 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void		ILanguage::UpdateCreation() {
-
-			mainContext = CreateContext("Main", true);
-
-			Manager::GetInstance()->AddLanguage(this);
-
-		}
-
 		IContext*	ILanguage::CreateContext(const std::string& name, bool isMainContext) {
 
 			Debug::Error("Cant Create Scripting Context");

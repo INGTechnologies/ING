@@ -46,7 +46,7 @@ namespace ING {
 
 			Debug::Log("Start Creating Scripting::Manager");
 
-
+			AddLanguage(new CSharp::Language());
 
 			Debug::Log("Scripting::Manager Created");
 
@@ -69,7 +69,11 @@ namespace ING {
 
 			Debug::Log("Start Initializing Scripting::Manager");
 
-			new CSharp::Language();
+			for (auto item : name2LanguageMap) {
+
+				item.second->Init();
+
+			}
 
 			Debug::Log("Scripting::Manager Initialized");
 
