@@ -476,10 +476,10 @@ int main() {
 			})
 		);
 		shader->GetPass("Demo Pass")->AddShader("VertexShader",
-			IVertexShader::CreateFromHLSL(L"Game:/Assets/Shaders/DemoVS.hlsl")
+			IVertexShader::CreateFromHLSL(L"Game:/Content/Shaders/DemoVS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->AddShader("PixelShader",
-			IPixelShader::CreateFromHLSL(L"Game:/Assets/Shaders/DemoPS.hlsl")
+			IPixelShader::CreateFromHLSL(L"Game:/Content/Shaders/DemoPS.hlsl")
 		);
 		shader->GetPass("Demo Pass")->SetInputLayout(
 			IInputLayout::Create(
