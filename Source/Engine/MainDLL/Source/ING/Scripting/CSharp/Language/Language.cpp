@@ -108,8 +108,8 @@ namespace ING {
 				ILanguage::Init();
 
 				/* Open Engine, Game Assemblies */
-				OpenAssemblies("Engine:/Scripting/CSharp/assemblies.ini", "Engine");
-				OpenAssemblies("Game:/Scripting/CSharp/assemblies.ini", "Game");
+				OpenAssemblies("Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
+				OpenAssemblies("Game:/Scripting/CSharp/Assemblies.ini", "Game");
 
 			}
 
