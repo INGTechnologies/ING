@@ -77,7 +77,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2019\</IntDir>
-    <TargetName>MainDLL</TargetName>
+    <TargetName>INGMainDLL</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -85,7 +85,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2019\</IntDir>
-    <TargetName>MainDLL</TargetName>
+    <TargetName>INGMainDLL</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -93,7 +93,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2019\</IntDir>
-    <TargetName>MainDLL</TargetName>
+    <TargetName>INGMainDLL</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -101,7 +101,7 @@
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2019\$(Platform)\Debug\;$(MONO_X64)lib\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2019\</IntDir>
-    <TargetName>MainDLL</TargetName>
+    <TargetName>INGMainDLL</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
