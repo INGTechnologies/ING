@@ -7,8 +7,8 @@
     <ProjectGuid>{13030969-0A5B-46BC-8CFB-70E30ABA3CAB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CSharpAssembly</RootNamespace>
-    <AssemblyName>CSharpAssembly</AssemblyName>
+    <RootNamespace>CSharpScripting</RootNamespace>
+    <AssemblyName>CSharpScripting</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -21,7 +21,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
-    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpAssembly\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpScripting\</OutputPath>
     <IntermediateOutputPath>.\GitIgnores\obj\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
@@ -32,7 +32,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
-    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpAssembly\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpScripting\</OutputPath>
     <IntermediateOutputPath>.\GitIgnores\obj\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
@@ -43,7 +43,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
-    <OutputPath>$(SolutionDir)Binaries\Win32\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpAssembly\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\Win32\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpScripting\</OutputPath>
     <IntermediateOutputPath>.\GitIgnores\obj\</IntermediateOutputPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
@@ -54,7 +54,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
-    <OutputPath>$(SolutionDir)Binaries\Win32\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpAssembly\</OutputPath>
+    <OutputPath>$(SolutionDir)Binaries\Win32\$(Configuration)\VS2022\Demos\Engine\MainDLL\CSharpScripting\</OutputPath>
     <IntermediateOutputPath>.\GitIgnores\obj\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -73,6 +73,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>XCOPY "$(OutDir)" "$(ProjectDir)..\GitIgnores\Game\CSharpAssembly\" /s /i /y</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(OutDir)" "$(ProjectDir)..\GitIgnores\Game\CSharpScripting\" /s /i /y</PostBuildEvent>
   </PropertyGroup>
 </Project>
