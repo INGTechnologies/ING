@@ -74,30 +74,38 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)Source\Engine\MainDLL\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\MainDLL\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)Source\Engine\MainDLL\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\MainDLL\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <IncludePath>$(SolutionDir)Source\Engine\MainDLL\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\MainDLL\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)Source\Engine\MainDLL\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\MainDLL\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Demos\Engine\MainDLL\$(ProjectName)\</OutDir>
     <IntDir>$(ProjectDir)GitIgnores\Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+    <CustomBuildBeforeTargets>
+    </CustomBuildBeforeTargets>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,7 +123,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>INGMainDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AssemblyDebug>true</AssemblyDebug>
@@ -124,6 +132,15 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(ProjectDir)../GitIgnores/Engine/" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -146,7 +163,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>INGMainDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
     </Link>
@@ -154,6 +171,15 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(ProjectDir)../GitIgnores/Engine/" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -171,7 +197,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>INGMainDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
       <AssemblyDebug>true</AssemblyDebug>
@@ -180,6 +206,15 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(ProjectDir)../GitIgnores/Engine/" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -202,7 +237,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>INGMainDLL.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
     </Link>
@@ -210,6 +245,15 @@
       <Command>
       </Command>
     </PreBuildEvent>
+    <CustomBuildStep>
+      <Command>
+      </Command>
+      <Outputs>
+      </Outputs>
+    </CustomBuildStep>
+    <PostBuildEvent>
+      <Command>XCOPY "$(OutDir)" "$(ProjectDir)../GitIgnores/Engine/" /s /i /y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GitIgnores\Source\**\*.cpp" />
