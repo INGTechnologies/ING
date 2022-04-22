@@ -374,7 +374,7 @@ int main() {
 	/* On "RUN" */
 	ING::Application::GetInstance()->GetEvent("RUN")->AddListener([](Event* event) {
 
-
+		  
 		
 		Scripting::CSharp::Language* language = (Scripting::CSharp::Language*)Scripting::Manager::GetInstance()->GetLanguage("CSharp");
 
@@ -387,7 +387,7 @@ int main() {
 		Scripting::CSharp::OuternalMethod* outernalMethod1;
 
 		class1 = context->GetClass(assembly, "Class1", "CSharpAssembly");
-
+		 
 		outernalMethod1 = (Scripting::CSharp::OuternalMethod*)(
 			context->GetOuternalMethod(class1, ".Class1::Main()")
 		);
