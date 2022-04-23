@@ -1,0 +1,1 @@
+1. The developer folder name must be the same as the developer's github username.
