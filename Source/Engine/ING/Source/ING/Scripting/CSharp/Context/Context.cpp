@@ -203,6 +203,8 @@ namespace ING {
 
 					assembly->Release();
 
+					assembly = 0;
+
 					return 0;
 				}
 

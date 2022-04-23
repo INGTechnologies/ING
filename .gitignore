@@ -355,3 +355,4 @@ MigrationBackup/
 **/*.users
 
 [Gg]itIgnores/
+ING.ForDeveloping_VS2022.sln

@@ -248,7 +248,7 @@ namespace ING {
 
 							if (context->IsMainContext()) {
 
-								Debug::Error(String("Cant Load Assembly ") + name);
+								Debug::Error(String("Assembly Name Is Repeated (") + name + String(")"));
 
 								continue;
 
@@ -323,7 +323,7 @@ namespace ING {
 
 							if (context->IsMainContext()) {
 
-								Debug::Error(String("Cant Load Assembly ") + name);
+								Debug::Error(String("Assembly Name Is Repeated (") + name + String(")"));
 
 								continue;
 
@@ -340,6 +340,8 @@ namespace ING {
 							) == 0) {
 
 								Debug::Error(String("Cant Load Assembly ") + name);
+
+								context->Release();
 
 							}
 
