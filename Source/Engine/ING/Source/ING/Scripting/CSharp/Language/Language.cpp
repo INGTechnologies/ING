@@ -204,6 +204,16 @@ namespace ING {
 
 				}
 
+				if (result.size() == 1) {
+
+					if (result[0] == "") {
+
+						result.resize(0);
+
+					}
+
+				}
+
 				return result;
 
 			}
