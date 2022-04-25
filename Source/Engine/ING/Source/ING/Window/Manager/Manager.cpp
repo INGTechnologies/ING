@@ -23,9 +23,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
@@ -62,15 +62,15 @@ namespace ING {
 
 		Debug::Log("Start Creating WindowManager");
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING.WindowManager.startupWindowCount", 1);
+		ING_ENGINE_CONFIG_PROP(unsigned int, "ING.WindowManager.startupWindowCount", 1);
 
-		APPLICATION_CONFIG_PROP(bool, "ING.WindowManager.autoShutdown", true);
+		ING_ENGINE_CONFIG_PROP(bool, "ING.WindowManager.autoShutdown", true);
 
-		APPLICATION_CONFIG_PROP(bool, "ING.WindowManager.showConsoleWindow", false);
+		ING_ENGINE_CONFIG_PROP(bool, "ING.WindowManager.showConsoleWindow", false);
 
-		APPLICATION_CONFIG_PROP(std::string, "ING.WindowManager.consoleWindowTitle", "Console");
+		ING_ENGINE_CONFIG_PROP(std::string, "ING.WindowManager.consoleWindowTitle", "Console");
 
-		APPLICATION_CONFIG_PROP(std::string, "ING.WindowManager.startupWindowTitle", "New Window");
+		ING_ENGINE_CONFIG_PROP(std::string, "ING.WindowManager.startupWindowTitle", "New Window");
 
 		Debug::Log("WindowManager Created");
 
@@ -93,15 +93,15 @@ namespace ING {
 
 		Debug::Log("Start Initializing WindowManager");
 
-		startupWindowCount	= Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.WindowManager.startupWindowCount");
+		startupWindowCount	= Engine::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.WindowManager.startupWindowCount");
 
-		autoShutdown		= Application::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.autoShutdown");
+		autoShutdown		= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.autoShutdown");
 
-		showConsoleWindow	= Application::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.showConsoleWindow");
+		showConsoleWindow	= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.showConsoleWindow");
 
-		consoleWindowTitle  = WString(Application::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
+		consoleWindowTitle  = WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
 
-		startupWindowTitle	= WString(Application::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.startupWindowTitle"));
+		startupWindowTitle	= WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.startupWindowTitle"));
 
 		defaultDesc.title = startupWindowTitle;
 

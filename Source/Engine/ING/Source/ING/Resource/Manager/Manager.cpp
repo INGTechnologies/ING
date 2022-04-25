@@ -35,9 +35,9 @@
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
@@ -108,7 +108,7 @@ namespace ING {
 
 			Debug::Error(String("Cant Read File ") + String('"') + String(path) + String('"'));
 
-			Application::GetInstance()->Shutdown();
+			Engine::GetInstance()->Shutdown();
 
 			return L"";
 		}
@@ -167,7 +167,7 @@ namespace ING {
 
 			Debug::Error(String("Cant Write File ") + String('"') + String(path) + String('"'));
 
-			Application::GetInstance()->Shutdown();
+			Engine::GetInstance()->Shutdown();
 
 			return;
 		}

@@ -7,14 +7,14 @@
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
 /**
- *	Include Application Configuration
+ *	Include Engine Configuration
  */
 #include <ING/Configuration/Configuration.h>
 
@@ -42,9 +42,9 @@
 
 
 /**
- *	Include ApplicationThreadManager
+ *	Include EngineThreadManager
  */
-#include <ING/Application/Thread/Manager/Manager.h>
+#include <ING/Engine/Thread/Manager/Manager.h>
 
 
 
@@ -71,9 +71,9 @@ namespace ING {
 
 		int maxThreadCount = 3;
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount", (unsigned int)maxThreadCount);
+		ING_ENGINE_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount", (unsigned int)maxThreadCount);
 
-		maxThreadCount = APPLICATION_GET_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount");
+		maxThreadCount = ING_ENGINE_GET_CONFIG_PROP(unsigned int, "ING.JobSystem.maxThreadCount");
 
 
 
@@ -83,7 +83,7 @@ namespace ING {
 
 			System::GetInstance()->GetNumberOfProcessors()
 
-			- ApplicationThreadManager::GetInstance()->GetThreadList().GetSize()
+			- EngineThreadManager::GetInstance()->GetThreadList().GetSize()
 
 			- 1
 			
@@ -101,7 +101,7 @@ namespace ING {
 			
 		}
 
-		APPLICATION_CONFIG_PROP(unsigned int, "ING.JobSystem.threadCount", (unsigned int)defaultThreadCount);
+		ING_ENGINE_CONFIG_PROP(unsigned int, "ING.JobSystem.threadCount", (unsigned int)defaultThreadCount);
 
 		Debug::Log("JobSystem Created");
 
@@ -164,7 +164,7 @@ namespace ING {
 
 	void JobSystem::CreateThreads() {
 
-		threadCount = Application::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.JobSystem.threadCount");
+		threadCount = Engine::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.JobSystem.threadCount");
 
 		threads.resize(threadCount);
 

@@ -14,9 +14,9 @@
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
@@ -43,7 +43,7 @@ namespace ING {
 
 		Debug::Log("Start Creating Profiler");
 
-		APPLICATION_CONFIG_PROP(bool, "ING.Profiler.logSessionInConsole", true);
+		ING_ENGINE_CONFIG_PROP(bool, "ING.Profiler.logSessionInConsole", true);
 
 		Debug::Log("Profiler Created");
 
@@ -64,7 +64,7 @@ namespace ING {
 
 		Debug::Log("Start Initializing Profiler");
 
-		logSessionInConsole = APPLICATION_GET_CONFIG_PROP(bool, "ING.Profiler.logSessionInConsole");
+		logSessionInConsole = ING_ENGINE_GET_CONFIG_PROP(bool, "ING.Profiler.logSessionInConsole");
 
 		Debug::Log("Profiler Initialized");
 

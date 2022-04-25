@@ -63,9 +63,9 @@
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
@@ -124,7 +124,7 @@ namespace ING {
 
 			isRendering = false;
 
-			Application::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* e) {
+			Engine::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* e) {
 
 				System::GetInstance()->PreUpdate();
 

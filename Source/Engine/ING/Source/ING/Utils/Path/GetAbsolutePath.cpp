@@ -11,9 +11,9 @@
 
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
@@ -32,9 +32,9 @@ namespace ING {
 
 				const std::wstring rootName_wstr = WString(rootName.first);
 
-				if (Application::GetInstance()->IsHaveRootPath(rootName_wstr)) {
+				if (Engine::GetInstance()->IsHaveRootPath(rootName_wstr)) {
 
-					return String(Application::GetInstance()->GetAbsolutePathFromRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return String(Engine::GetInstance()->GetAbsolutePathFromRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 
@@ -46,9 +46,9 @@ namespace ING {
 
 				auto rootName = GetRootName(pathStr);
 
-				if (Application::GetInstance()->IsHaveRootPath(rootName.first)) {
+				if (Engine::GetInstance()->IsHaveRootPath(rootName.first)) {
 
-					return Application::GetInstance()->GetAbsolutePathFromRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return Engine::GetInstance()->GetAbsolutePathFromRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 
