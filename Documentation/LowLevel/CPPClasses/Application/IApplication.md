@@ -18,7 +18,7 @@
 		*  `Getter`: **GetConfigPath**()
 	+  **configuration** (Configuration*)**:** application configuration
 		*  `Getter`: **GetConfiguration**()
-	+  **windowManager** (ApplicationWindowManager*)**:** application window manager
+	+  **windowManager** ([**ApplicationWindowManager**](Window/Manager/ApplicationWindowManager.md)*)**:** application window manager
 		*  `Getter`: **GetWindowManager**()
 -  `Methods`:
 	+  **Start**() (void) (virtual)**:** this method is called when the application start
