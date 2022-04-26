@@ -38,7 +38,7 @@ namespace ING {
 
 	}
 
-	class Window;
+	class IWindow;
 
 	class Camera;
 
@@ -59,8 +59,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		Screen(Window* window);
-		Screen(Window* window, ScreenDesc desc);
+		Screen(IWindow* window);
+		Screen(IWindow* window, ScreenDesc desc);
 		~Screen();
 
 
@@ -86,7 +86,7 @@ namespace ING {
 
 		Rendering::ISwapChain*			swapChain;
 
-		Window*							window;
+		IWindow*						window;
 
 		List<Camera*>					cameraList;
 
@@ -97,7 +97,7 @@ namespace ING {
 
 		Rendering::ISwapChain*			GetSwapChain		() { return swapChain; }
 
-		Window*							GetWindow			() { return window; }
+		IWindow*						GetWindow			() { return window; }
 
 		float							GetAspectRatio		();
 

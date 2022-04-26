@@ -37,7 +37,7 @@ int main() {
 
 	application->GetWindowManager()->AddWindow(
 	
-		new ING::Window({
+		ING::IWindow::Create({
 
 			800,
 

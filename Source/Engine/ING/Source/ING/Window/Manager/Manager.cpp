@@ -99,14 +99,14 @@ namespace ING {
 
 
 		/* Create Console Window */
-		consoleWindow = new Window();
+		consoleWindow = IWindow::Create();
 
 		consoleWindow->handle = ::GetConsoleWindow();
 
 		AddWindow(consoleWindow);
 
 		RECT rect;
-		if (GetWindowRect(consoleWindow->handle, &rect))
+		if (GetWindowRect((HWND)consoleWindow->handle, &rect))
 		{
 			ScreenDesc screenDesc;
 
@@ -169,23 +169,23 @@ namespace ING {
 	/**
 	 *	Window Management
 	 */
-	void			WindowManager::AddWindow	(Window* window)	{
+	void			WindowManager::AddWindow	(IWindow* window)	{
 
-		HWND handle = window->GetHandle();
+		void* handle = window->GetHandle();
 
 		windowMap[handle] = window;
 
 	}
 
-	void			WindowManager::RemoveWindow	(Window* window)	{
+	void			WindowManager::RemoveWindow	(IWindow* window)	{
 
-		HWND handle = window->GetHandle();
+		void* handle = window->GetHandle();
 
 		windowMap.erase(handle);
 
 	}
 
-	Window*			WindowManager::GetWindow	(HWND handle)		{
+	IWindow*		WindowManager::GetWindow	(void* handle)		{
 
 		if (windowMap.find(handle) == windowMap.end()) return nullptr;
 

@@ -38,7 +38,7 @@ namespace ING {
 		 *	Friend Classes
 		 */
 	public:
-		friend class Window;
+		friend class IWindow;
 
 
 
@@ -64,10 +64,10 @@ namespace ING {
 		 *	Window
 		 */
 	private:
-		Window* window;
+		IWindow* window;
 
 	public:
-		Window* GetWindow() { return window; }
+		IWindow* GetWindow() { return window; }
 
 	};
 

@@ -78,7 +78,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	Screen::Screen(Window* window) :
+	Screen::Screen(IWindow* window) :
 		isMain(false),
 		swapChain(0),
 		window(0)
@@ -92,7 +92,7 @@ namespace ING {
 
 	}
 
-	Screen::Screen(Window* window, ScreenDesc desc) :
+	Screen::Screen(IWindow* window, ScreenDesc desc) :
 		isMain(false),
 		swapChain(0),
 		window(0)

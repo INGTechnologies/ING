@@ -18,7 +18,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Window;
+	class IWindow;
 
 	namespace Rendering {
 
@@ -36,7 +36,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ISwapChain(IDevice* device, Window* window);
+			ISwapChain(IDevice* device, IWindow* window);
 			~ISwapChain();
 
 
@@ -45,7 +45,7 @@ namespace ING {
 			 *	Create, InitEvents Release Methods
 			 */
 		public:
-			static  ISwapChain*	Create(IDevice* device, Window* window);
+			static  ISwapChain*	Create(IDevice* device, IWindow* window);
 			virtual void		InitEvents();
 			virtual void		Release();
 
@@ -77,10 +77,10 @@ namespace ING {
 			 *	Window
 			 */
 		private:
-			Window* window;
+			IWindow* window;
 
 		public:
-			Window* GetWindow() { return window; }
+			IWindow* GetWindow() { return window; }
 
 
 

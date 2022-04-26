@@ -20,7 +20,7 @@ namespace ING {
 
 	class IApplication;
 
-	class Window;
+	class IWindow;
 
 
 
@@ -48,14 +48,14 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		IApplication*	application;
+		IApplication*		application;
 
-		std::unordered_map<std::string, Window*> name2WindowMap;
+		std::unordered_map<std::string, IWindow*> name2WindowMap;
 
 	public:
-		IApplication*	GetApplication	() {return application; }
+		IApplication*		GetApplication	() {return application; }
 
-		Window*			GetWindow		(const std::string& name) { return name2WindowMap[name]; }
+		IWindow*			GetWindow		(const std::string& name) { return name2WindowMap[name]; }
 
 
 
@@ -63,8 +63,8 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void AddWindow		(Window* window);
-		void RemoveWindow	(Window* window);
+		void AddWindow		(IWindow* window);
+		void RemoveWindow	(IWindow* window);
 
 		void Uppdate();
 

@@ -75,13 +75,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void ApplicationWindowManager::AddWindow		(Window* window) {
+	void ApplicationWindowManager::AddWindow		(IWindow* window) {
 
 		name2WindowMap[window->GetName()] = window;
 
 	}
 
-	void ApplicationWindowManager::RemoveWindow		(Window* window) {
+	void ApplicationWindowManager::RemoveWindow		(IWindow* window) {
 
 		name2WindowMap.erase(window->GetName());
 

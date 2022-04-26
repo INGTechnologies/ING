@@ -71,7 +71,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			SwapChain::SwapChain(IDevice* device, Window* window) :
+			SwapChain::SwapChain(IDevice* device, IWindow* window) :
 				ISwapChain(device, window),
 
 				dxgiSwapChain(0)
@@ -85,7 +85,7 @@ namespace ING {
 
 				UINT clientWidth = window->GetDesc().clientWidth;
 				UINT clientHeight = window->GetDesc().clientHeight;
-				HWND hwnd = window->GetHandle();
+				HWND hwnd = (HWND)window->GetHandle();
 
 
 

@@ -61,7 +61,7 @@ namespace ING {
 
 
 
-	class ING_API Window :
+	class ING_API IWindow :
 		public EventStorage
 	{
 
@@ -74,34 +74,25 @@ namespace ING {
 
 
 		/**
-		 *	WndProc
-		 */
-	public:
-		static LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
-
-
-
-		/**
 		 *	Constructors And Destructor
 		 */
-	private:
-		Window();
-
-	public:
-		Window(WindowDesc desc);
-		~Window();
+	protected:
+		IWindow		();
+		IWindow		(const WindowDesc& desc);
+		~IWindow	();
 
 
 
 		/**
-		 *	InitWithDesc, InitEvents, Release Methods
+		 *	Create, InitWithDesc, InitEvents, Release Methods
 		 */
-	private:
-		virtual void InitWithDesc(WindowDesc desc);
-
+	protected:
+		virtual void InitWithDesc(const WindowDesc& desc);
 				void InitEvents();
 		
 	public:
+		static IWindow* Create();
+		static IWindow* Create(const WindowDesc& desc);
 		virtual void Release();
 
 				void Shutdown();
@@ -111,9 +102,8 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-	private:
-		bool		isMain;
-		HWND		handle;
+	protected:
+		void*		handle;
 		WindowDesc	desc;
 
 		ui16		classId;
@@ -123,9 +113,7 @@ namespace ING {
 		bool		isResizing;
 
 	public:
-		bool		IsMain		() { return isMain; }
-
-		HWND		GetHandle	() { return handle; }
+		void*		GetHandle	() { return handle; }
 
 		WindowDesc	GetDesc		() { return desc; }
 
@@ -141,23 +129,27 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void			Show();
+		virtual void	Show();
 
-		void			Hide();
+		virtual void	Hide();
 
-		void			Focus();
+		virtual void	Focus();
 
 
 		/* Title */
-		void			SetTitle(const std::wstring& title);
+		virtual void	SetTitle(const std::wstring& title);
 
-		void			SetTitle(const wchar_t* title) {
+		virtual void	SetTitle(const wchar_t* title) {
 
 			SetTitle(WString(title));
 
 		}
 
 		std::wstring	GetTitle();
+
+
+	protected:
+		void			CreateScreen();
 
 
 

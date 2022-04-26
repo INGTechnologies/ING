@@ -39,7 +39,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Window;
+	class IWindow;
 
 	class ING_API WindowManager :
 		public Singleton<WindowManager>,
@@ -66,12 +66,12 @@ namespace ING {
 
 
 		/**
-		 *	Window Management
+		 *	IWindow Management
 		 */
 	private:
-		Window*							consoleWindow;
+		IWindow*						consoleWindow;
 
-		std::map<HWND, Window*>			windowMap;
+		std::map<void*, IWindow*>		windowMap;
 
 		bool							showConsoleWindow;
 
@@ -82,17 +82,17 @@ namespace ING {
 		std::wstring					consoleWindowTitle;
 
 	public:
-		Window*							GetConsoleWindow		() { return consoleWindow; }
+		IWindow*						GetConsoleWindow		() { return consoleWindow; }
 
-		std::map<HWND, Window*>&		GetWindowMap			() { return windowMap; }
+		std::map<void*, IWindow*>&		GetWindowMap			() { return windowMap; }
 
 		bool							IsShowConsoleWindow		() { return showConsoleWindow; }
 
-		void							AddWindow				(Window* window);
+		void							AddWindow				(IWindow* window);
 
-		void							RemoveWindow			(Window* window);
+		void							RemoveWindow			(IWindow* window);
 
-		Window*							GetWindow				(HWND handle);
+		IWindow*						GetWindow				(void* handle);
 
 		WindowDesc						GetDefaultDesc			() { return defaultDesc; }
 

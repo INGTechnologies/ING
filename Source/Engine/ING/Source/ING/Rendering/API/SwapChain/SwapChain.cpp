@@ -76,7 +76,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ISwapChain::ISwapChain(IDevice* device, Window* window) :
+		ISwapChain::ISwapChain(IDevice* device, IWindow* window) :
 			node(0),
 			window(0),
 			renderTargetView(0),
@@ -104,7 +104,7 @@ namespace ING {
 		/**
 		 *	Create, InitEvents, Release Methods
 		 */
-		ISwapChain* ISwapChain::Create(IDevice* device, Window* window) {
+		ISwapChain* ISwapChain::Create(IDevice* device, IWindow* window) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
