@@ -1,6 +1,5 @@
-# ING::Engine class #
+# ING::Engine class #  
 
-  
 
 ## Basic Info ##
 -  `Description`: Represent for game engine and manage all engine's systems, managers,...
