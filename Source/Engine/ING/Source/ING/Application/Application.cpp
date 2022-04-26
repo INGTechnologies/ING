@@ -51,7 +51,8 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	IApplication::IApplication(const std::string& configPath) :
-		name("INGApplication")
+		name("INGApplication"),
+		configPath(configPath)
 	{
 
 		configuration = new Configuration();

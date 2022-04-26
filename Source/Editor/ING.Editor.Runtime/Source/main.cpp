@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include GameApplication
+ */
+#include <ING/Editor/Game/Application/Application.h>
+
+
+
 int main(int argc, char** argv) {
 
 	ING::Engine::CreateInstance();
@@ -21,7 +28,7 @@ int main(int argc, char** argv) {
 
 	std::string projectPath = std::string(argv[1]);
 
-	ING::Editor::Application* editorApplication = new ING::Editor::Application("Game:/EditorConfig.ini", projectPath);
+	ING::Editor::Application* editorApplication = new ING::Editor::Application("Game:/Config.ini", projectPath);
 
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 

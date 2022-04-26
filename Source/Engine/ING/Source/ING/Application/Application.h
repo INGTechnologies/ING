@@ -58,12 +58,16 @@ namespace ING {
 	private:
 		std::string					name;
 
+		std::string					configPath;
+
 		Configuration*				configuration;
 
 		ApplicationWindowManager*	windowManager;
 
 	public:
 		const std::string&			GetName			() { return name; }
+
+		const std::string&			GetConfigPath	() { return configPath; }
 
 		Configuration*				GetConfiguration() {return configuration; }
 

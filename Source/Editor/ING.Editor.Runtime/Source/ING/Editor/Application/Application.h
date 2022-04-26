@@ -1,7 +1,5 @@
 #pragma once
 
-
-
 /**
  *	Include Application
  */
@@ -48,6 +46,14 @@ namespace ING {
 
 
 			/**
+			 *	Release Methods
+			 */
+		public:
+			virtual void Release() override;
+
+
+
+			/**
 			 *	Properties
 			 */
 		private:
@@ -69,6 +75,10 @@ namespace ING {
 			void	SetupRootPaths();
 
 			void	CreateMainWindow();
+
+			void	CreateGameApplication();
+
+			virtual void PlayGame();
 
 		};
 

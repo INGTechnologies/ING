@@ -41,6 +41,13 @@
 
 
 
+/**
+ *	Include GameApplication
+ */
+#include <ING/Editor/Game/Application/Application.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -51,18 +58,37 @@ namespace ING {
 		Application::Application(const std::string& configPath, const std::string& projectPath) :
 			IApplication(configPath),
 
-			projectPath(projectPath)
+			projectPath(projectPath),
+
+			gameApplication(0)
 		{
 
 			SetupRootPaths();
 
 			CreateMainWindow();
 
+			CreateGameApplication();
+
 		}
 
 		Application::~Application() {
 
 
+
+		}
+
+
+
+		/**
+		 *	Release Methods
+		 */
+		void	Application::Release() {
+
+			gameApplication->Release();
+
+			IApplication::Release();
+
+			ING::Engine::GetInstance()->Shutdown();
 
 		}
 
@@ -114,10 +140,20 @@ namespace ING {
 			GetWindowManager()->GetWindow("ING.Editor.MainWindow")->GetEvent("DESTROY")->AddListener([](Event* e) {
 				
 				Application::GetInstance()->Release();
-
-				ING::Engine::GetInstance()->Shutdown();
 				
 			});
+
+		}
+
+		void Application::CreateGameApplication() {
+
+			gameApplication = new GameApplication("Game:/Config.ini");
+
+		}
+
+		void Application::PlayGame() {
+
+
 
 		}
 
