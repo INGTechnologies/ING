@@ -37,7 +37,7 @@
 
 + [**ING::Engine**](CPPClasses/Engine/Engine.md) class manages all systems and managers ([**ING::Engine**](CPPClasses/Engine/Engine.md) is not application).
 
-+ ING::Application is a class whose instance is the application, managed by ING::ApplicationManager (1 Square of [**ING::Engine**](CPPClasses/Engine/Engine.md)). ING Engine allow multiple applications in 1 program. When we use editor, ING create 2 application (editor application and game application).
++ [**ING::IApplication**](CPPClasses/Application/IApplication.md) is a class whose instance is the application, managed by [**ING::ApplicationManager**](CPPClasses/Application/Manager/ApplicationManager.md) (1 Square of [**ING::Engine**](CPPClasses/Engine/Engine.md)). ING Engine allow multiple applications in 1 program. When we use editor, ING create 2 application (editor application and game application).
 
 + We built a dynamic linking library (ING.dll). It will imported by runtime (runtime is an ".exe file"). When we start game or editor, the runtime (ING.Editor.Runtime(editor's runtime) or ING.Runtime(release game which not support Play In Editor)) will create [**ING::Engine**](CPPClasses/Engine/Engine.md), init [**ING::Engine**](CPPClasses/Engine/Engine.md), create applications and run [**ING::Engine**](CPPClasses/Engine/Engine.md).
 
