@@ -31,7 +31,7 @@
 	+  **Shutdown**() (void)**:** for shutting down engine
 
 ## Squares ##
--  [`ING::ApplicationManager`](../Application/Manager/ApplicationManager.md):
+-  [**ING::ApplicationManager**](../Application/Manager/ApplicationManager.md)
  
 ## Macros ##
 +  **ING_CREATE_ENGINE**()**:** create engine
