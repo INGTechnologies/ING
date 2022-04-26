@@ -178,12 +178,7 @@ namespace ING {
 		 */
 		configuration = new Configuration();
 
-		 
-
-		/**
-		 *	Load Configuration
-		 */
-		LoadConfiguration();
+		configuration->LoadFromFile("./Config.ini");
 
 
 
@@ -264,17 +259,6 @@ namespace ING {
 	Engine::~Engine() {
 
 		
-
-	}
-
-
-
-	/**
-	 *	Configuration 
-	 */
-	void Engine::LoadConfiguration() { 
-
-		configuration->LoadFromFile("./Config.ini");
 
 	}
 

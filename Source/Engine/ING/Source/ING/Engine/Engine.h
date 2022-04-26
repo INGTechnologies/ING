@@ -76,8 +76,6 @@ namespace ING {
 
 		}
 
-		void LoadConfiguration();
-
 
 
 		/**
@@ -121,7 +119,7 @@ namespace ING {
 	public:
 		void FrameUpdate();
 
-		void AddRootPath(const std::wstring& path, const std::wstring& value);
+		void AddRootPath(const std::wstring& name, const std::wstring& value);
 
 	};
 
