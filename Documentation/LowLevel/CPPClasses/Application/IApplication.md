@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represent for application
+-  `Description`: Represent for application, managed by [**ApplicationManager**](Manager/ApplicationManager.md)
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

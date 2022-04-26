@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represent for application
+-  `Description`: Manage applications
 -  `Parent Class`: [**Singleton**]()<**ING**::**Engine**>, [**Square**]()
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

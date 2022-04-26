@@ -8,9 +8,9 @@
 
 ## Members ##
 -  `Constructor`:
-	+  **Engine()**
+	+  **Engine**()
 -  `Destructor`:
-	+  **~Engine()**
+	+  **~Engine**()
 -  `Properties`:
 	+  **configuration** (Configuration*)**:** store engine options,...
 		*  `Getter`: **GetConfiguration**()
@@ -23,11 +23,11 @@
 	+  **name** (std::string)**:** engine name
 	+  **rootPath2AbsolutePath** (std::unordered_map<std::wstring,  std::wstring>)**:** root path to absolute path map
 -  `Methods`:
-	+  **FrameUpdate**() (void)**:** engine will call this method every frame
-	+  **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
 	+  **Init**() (bool) (override [**Board**]()<**T**>::**Init**())
 	+  **Run**() (bool) (override [**Board**]()<**T**>::**Run**())
 	+  **Release**() (bool) (override [**Board**]()<**T**>::**Release**())
+	+  **FrameUpdate**() (void)**:** engine will call this method every frame
+	+  **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
 	+  **Shutdown**() (void)**:** for shutting down engine
  
 ## Macros ##
