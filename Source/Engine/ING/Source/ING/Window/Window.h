@@ -129,6 +129,8 @@ namespace ING {
 
 		WindowDesc	GetDesc		() { return desc; }
 
+		const std::string&	GetName		() { return desc.name; }
+
 		Screen*		GetScreen	() { return screen; }
 
 		bool		IsResizing	() { return isResizing; }

@@ -121,6 +121,13 @@
 
 
 
+/**
+ *	Include ApplicationManager
+ */
+#include <ING/Application/Manager/Manager.h>
+
+
+
 namespace ING {
 	
 	namespace Rendering {
@@ -219,13 +226,19 @@ namespace ING {
 		 */
 		void Engine::FrameUpdate() {
 
+			ApplicationManager::GetInstance()->PreRender();
+
 			ECS::RepositoryManager::GetInstance()->PreRender();
 
 			ECS::RepositoryManager::GetInstance()->Render();
 
+			ApplicationManager::GetInstance()->Render();
+
 			Rendering::System::GetInstance()->FrameUpdate();
 
 			ECS::RepositoryManager::GetInstance()->LateRender();
+
+			ApplicationManager::GetInstance()->LateRender();
 
 		}
 

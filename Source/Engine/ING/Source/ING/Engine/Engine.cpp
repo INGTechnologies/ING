@@ -149,6 +149,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationManager
+ */
+#include <ING/Application/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -233,6 +240,9 @@ namespace ING {
 
 		/* ECS Repository Manager */
 		AddSquare<ECS::RepositoryManager>();
+
+		/* Application Manager */
+		AddSquare<ApplicationManager>();
 
 
 
@@ -334,6 +344,8 @@ namespace ING {
 
 		Debug::Log(String("Start ") + String('"') + String("RUN") + String('"') + String(" Event"));
 
+		ApplicationManager::GetInstance()->Start();
+
 		GetEvent("RUN")->Execute();
 
 		Debug::Log("Start Gameloop");
@@ -342,15 +354,15 @@ namespace ING {
 		while (state == RUNNING_APPLICATION_STATE) {
 
 			/* Check For Shutting Down */
-			unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
+			//unsigned int windowCount = WindowManager::GetInstance()->GetWindowMap().size();
 
-			if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 1) {
+			//if (WindowManager::GetInstance()->IsAutoShutdown() && windowCount == 1) {
 
-				Engine::GetInstance()->Shutdown();
+			//	Engine::GetInstance()->Shutdown();
 
-				break;
+			//	break;
 
-			}
+			//}
 
 
 
@@ -417,6 +429,8 @@ namespace ING {
 
 
 
+		ApplicationManager::GetInstance()->PreUpdate();
+
 		CameraManager::GetInstance()->FrameUpdate();
 
 
@@ -434,10 +448,12 @@ namespace ING {
 
 		}
 
-
+		ApplicationManager::GetInstance()->Update();
 
 		ECS::RepositoryManager::GetInstance()->Update();
 		ECS::RepositoryManager::GetInstance()->LateUpdate();
+
+		ApplicationManager::GetInstance()->LateUpdate();
 
 
 

@@ -32,6 +32,8 @@ namespace ING {
 
 		std::wstring	title			= L"New Window";
 
+		std::string		name			= "NewWindow";
+
 		bool			show			= true;
 
 	};

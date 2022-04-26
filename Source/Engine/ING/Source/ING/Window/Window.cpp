@@ -255,6 +255,8 @@ namespace ING {
 
 		screen = new Screen(this,screenDesc);
 
+		this->desc = desc;
+
 	}
 
 	void Window::InitEvents() {

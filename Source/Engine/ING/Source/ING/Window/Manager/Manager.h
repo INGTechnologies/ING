@@ -69,36 +69,22 @@ namespace ING {
 		 *	Window Management
 		 */
 	private:
-		Window*					mainWindow;
+		Window*							consoleWindow;
 
-		Window*					consoleWindow;
+		std::map<HWND, Window*>			windowMap;
 
-		std::map<HWND, Window*> windowMap;
+		bool							showConsoleWindow;
 
-		unsigned int			startupWindowCount;
+		WindowDesc						defaultDesc;
 
-		bool					autoShutdown;
+		IdGenerator						idGenerator;
 
-		bool					showConsoleWindow;
-
-		WindowDesc				defaultDesc;
-
-		IdGenerator				idGenerator;
-
-		std::wstring			consoleWindowTitle;
-
-		std::wstring			startupWindowTitle;
+		std::wstring					consoleWindowTitle;
 
 	public:
-		Window*							GetMainWindow			() { return mainWindow; }
-
 		Window*							GetConsoleWindow		() { return consoleWindow; }
 
 		std::map<HWND, Window*>&		GetWindowMap			() { return windowMap; }
-
-		unsigned int					GetStartupWindowCount	() { return startupWindowCount; }
-
-		bool							IsAutoShutdown			() { return autoShutdown; }
 
 		bool							IsShowConsoleWindow		() { return showConsoleWindow; }
 
@@ -119,8 +105,6 @@ namespace ING {
 		void							RemoveClassId			(ui16 id);
 
 		const std::wstring&				GetConsoleWindowTitle	() { return consoleWindowTitle; }
-
-		const std::wstring&				GetStartupWindowTitle	() { return startupWindowTitle; }
 
 	};
 

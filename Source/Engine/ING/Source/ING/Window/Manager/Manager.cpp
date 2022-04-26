@@ -56,7 +56,6 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	WindowManager::WindowManager() : 
-		mainWindow(0),
 		consoleWindow(0)
 	{
 
@@ -93,17 +92,9 @@ namespace ING {
 
 		Debug::Log("Start Initializing WindowManager");
 
-		startupWindowCount	= Engine::GetInstance()->GetConfiguration()->Get<unsigned int>("ING.WindowManager.startupWindowCount");
-
-		autoShutdown		= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.autoShutdown");
-
 		showConsoleWindow	= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.showConsoleWindow");
 
 		consoleWindowTitle  = WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
-
-		startupWindowTitle	= WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.startupWindowTitle"));
-
-		defaultDesc.title = startupWindowTitle;
 
 
 
@@ -141,15 +132,6 @@ namespace ING {
 		consoleWindow->desc.title = consoleWindowTitle;
 
 		consoleWindow->SetTitle(consoleWindowTitle);
-
-
-
-		/* Create Startup Window */
-		for (unsigned int i = 0; i < startupWindowCount; ++i) {
-
-			new Window(defaultDesc);
-
-		}
 
 		Debug::Log("WindowManager Initialized");
 
@@ -190,14 +172,6 @@ namespace ING {
 	void			WindowManager::AddWindow	(Window* window)	{
 
 		HWND handle = window->GetHandle();
-
-		if (mainWindow == nullptr && window != consoleWindow) {
-
-			mainWindow = window;
-
-			window->isMain = true;
-
-		}
 
 		windowMap[handle] = window;
 
