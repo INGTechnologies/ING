@@ -1,18 +1,18 @@
 
 /**
- *	Include Application
+ *	Include Engine
  */
-#include <ING/Application/Application.h>
+#include <ING/Engine/Engine.h>
 
 
 
 int main() {
 
-	ING::Application::CreateInstance();
+	ING::Engine::CreateInstance();
 
-	ING::Application::GetInstance()->Init();
+	ING::Engine::GetInstance()->Init();
 
-	ING::Application::GetInstance()->Run();
+	ING::Engine::GetInstance()->Run();
 
 	return 0;
 }
