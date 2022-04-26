@@ -355,3 +355,5 @@ MigrationBackup/
 **/*.users
 
 [Gg]itIgnores/
+
+ING.GitIgnore_VS2022.sln
