@@ -300,7 +300,7 @@ namespace ING {
 
 		name = configuration->Get<std::string>("ING.Engine.name");
 
-		bool result = Board<Engine>::Init(); 
+		bool result = Board<Engine>::Init();
 
 		if (!result) {
 
