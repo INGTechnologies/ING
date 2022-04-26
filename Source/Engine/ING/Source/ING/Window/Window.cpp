@@ -166,12 +166,6 @@ namespace ING {
 
 	}
 
-	void IWindow::Shutdown() {
-
-		Release();
-
-	}
-
 
 
 	/**

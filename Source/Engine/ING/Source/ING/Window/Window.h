@@ -95,8 +95,6 @@ namespace ING {
 		static IWindow* Create(const WindowDesc& desc);
 		virtual void Release();
 
-				void Shutdown();
-
 
 
 		/**
