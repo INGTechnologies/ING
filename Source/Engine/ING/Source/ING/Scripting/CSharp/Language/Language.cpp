@@ -109,7 +109,7 @@ namespace ING {
 
 				/* Open Engine, Game Assemblies */
 				OpenAssemblies("Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
-				OpenAssemblies("Game:/Scripting/CSharp/Assemblies.ini", "Game");
+				//OpenAssemblies("Game:/Scripting/CSharp/Assemblies.ini", "Game");
 
 			}
 

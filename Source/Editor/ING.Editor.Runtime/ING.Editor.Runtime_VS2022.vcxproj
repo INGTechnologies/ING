@@ -24,7 +24,7 @@
     <ProjectGuid>{18BF2631-EAFC-44D3-94F0-4655AD9B1656}</ProjectGuid>
     <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>Runtime</ProjectName>
+    <ProjectName>ING.Editor.Runtime</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -74,28 +74,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(ProjectDir)Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(ProjectDir)Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(ProjectDir)Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(ProjectDir)Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
@@ -164,7 +164,10 @@
     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Engine\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\**\*.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\**\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

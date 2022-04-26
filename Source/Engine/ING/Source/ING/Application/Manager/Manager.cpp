@@ -94,6 +94,18 @@ namespace ING {
 
 		Debug::Log("Start Releasing ApplicationManager");
 
+		for (auto item = name2ApplicationMap.begin(); item != name2ApplicationMap.end();) {
+
+			auto nextItem = item;
+
+			++nextItem;
+
+			item->second->Release();
+
+			item = nextItem;
+
+		}
+
 		delete this;
 
 		Debug::Log("Finished Releasing ApplicationManager");
