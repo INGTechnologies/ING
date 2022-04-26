@@ -15,7 +15,7 @@
 	- **Run**() (bool)
 	- **Release**() (bool)
 
-+ [**ING::Engine**](CPPClasses/Engine/Engine.md) is 1 class which inherited **Board** class, include these squares:
++ [**ING::Engine**](CPP/Engine/Engine.md) is 1 class which inherited **Board** class, include these squares:
 
 	- System
 
@@ -29,17 +29,17 @@
 
 	- ...
 
-+ When [**ING::Engine**](CPPClasses/Engine/Engine.md)::**Init** is called, it will call Init method of each Square (the same as Run and Release methods)
++ When [**ING::Engine**](CPP/Engine/Engine.md)::**Init** is called, it will call Init method of each Square (the same as Run and Release methods)
 
   
 
 ## How it works ##
 
-+ [**ING::Engine**](CPPClasses/Engine/Engine.md) class manages all systems and managers ([**ING::Engine**](CPPClasses/Engine/Engine.md) is not application).
++ [**ING::Engine**](CPP/Engine/Engine.md) class manages all systems and managers ([**ING::Engine**](CPP/Engine/Engine.md) is not application).
 
-+ [**ING::IApplication**](CPPClasses/Application/IApplication.md) is a class whose instance is the application, managed by [**ING::ApplicationManager**](CPPClasses/Application/Manager/ApplicationManager.md) (1 Square of [**ING::Engine**](CPPClasses/Engine/Engine.md)). ING Engine allow multiple applications in 1 program. When we use editor, ING create 2 application (editor application and game application).
++ [**ING::IApplication**](CPP/Application/IApplication.md) is a class whose instance is the application, managed by [**ING::ApplicationManager**](CPP/Application/Manager/ApplicationManager.md) (1 Square of [**ING::Engine**](CPP/Engine/Engine.md)). ING Engine allow multiple applications in 1 program. When we use editor, ING create 2 application (editor application and game application).
 
-+ We built a dynamic linking library (ING.dll). It will imported by runtime (runtime is an ".exe file"). When we start game or editor, the runtime (ING.Editor.Runtime(editor's runtime) or ING.Runtime(release game which not support Play In Editor)) will create [**ING::Engine**](CPPClasses/Engine/Engine.md), init [**ING::Engine**](CPPClasses/Engine/Engine.md), create applications and run [**ING::Engine**](CPPClasses/Engine/Engine.md).
++ We built a dynamic linking library (ING.dll). It will imported by runtime (runtime is an ".exe file"). When we start game or editor, the runtime (ING.Editor.Runtime(editor's runtime) or ING.Runtime(release game which not support Play In Editor)) will create [**ING::Engine**](CPP/Engine/Engine.md), init [**ING::Engine**](CPP/Engine/Engine.md), create applications and run [**ING::Engine**](CPP/Engine/Engine.md).
 
 ## Projects ##
 

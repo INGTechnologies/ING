@@ -29,6 +29,9 @@
 	+  **FrameUpdate**() (void)**:** engine will call this method every frame
 	+  **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
 	+  **Shutdown**() (void)**:** for shutting down engine
+
+## Squares ##
+-  [**ING::ApplicationManager**](../Application/Manager/ApplicationManager.md)
  
 ## Macros ##
 +  **ING_CREATE_ENGINE**()**:** create engine
