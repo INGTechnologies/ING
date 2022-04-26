@@ -66,8 +66,6 @@ namespace ING {
 		void AddWindow		(IWindow* window);
 		void RemoveWindow	(IWindow* window);
 
-		void Uppdate();
-
 	};
 
 }
