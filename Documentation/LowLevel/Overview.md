@@ -1,58 +1,42 @@
+# ING::Engine class #  
 
-# ING Lowlevel Overview #
 
-  
+## Basic Info ##
+-  `Description`: Represent for game engine and manage all engine's systems, managers,...
+-  `Parent Class`: [**Board**]()<**ING**::**Engine**>
+-  `Project`: **Engine**/**ING**  (c++, dll)
 
-## Board and Square ("Low Level Modules") ##
+## Members ##
+-  `Constructor`:
+	+  **Engine**()
+-  `Destructor`:
+	+  **~Engine**()
+-  `Properties`:
+	+  **configuration** (Configuration*)**:** store engine options,...
+		*  `Getter`: **GetConfiguration**()
+	+  **state** (EngineState)**:** game engine state
+		*  `Getter`: **GetState**()
+	+  **gameDir** (std::string)**:** game directory
+	+  **gameDir_wstr** (std::wstring)**:** game directory but in std::wstring type
+	+  **workingDir** (std::string)**:** current working directory
+	+  **workingDir_wstr** (std::wstring):**:** current working directory but in std::wstring type
+	+  **name** (std::string)**:** engine name
+	+  **rootPath2AbsolutePath** (std::unordered_map<std::wstring,  std::wstring>)**:** root path to absolute path map
+-  `Methods`:
+	+  **Init**() (bool) (override [**Board**]()<**T**>::**Init**())
+	+  **Run**() (bool) (override [**Board**]()<**T**>::**Run**())
+	+  **Release**() (bool) (override [**Board**]()<**T**>::**Release**())
+	+  **FrameUpdate**() (void)**:** engine will call this method every frame
+	+  **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
+	+  **Shutdown**() (void)**:** for shutting down engine
 
-+ **Board** is 1 class, singleton and has it own squares, virtual methods:
-	- **Init**() (bool)
-	- **Run**() (bool)
-	- **Release**() (bool)
-
-+ **Square** is 1 class and have virtual methods:
-	- **Init**() (bool)
-	- **Run**() (bool)
-	- **Release**() (bool)
-
-+ [**ING::Engine**](CPP/Engine/Engine.md) is 1 class which inherited **Board** class, include these squares:
-
-	- System
-
-	- Time
-
-	- Profiler
-
-	- ResourceManager
-
-	- Rendering Engine
-
-	- ...
-
-+ When [**ING::Engine**](CPP/Engine/Engine.md)::**Init** is called, it will call Init method of each Square (the same as Run and Release methods)
-
-  
-
-## How it works ##
-
-+ [**ING::Engine**](CPP/Engine/Engine.md) class manages all systems and managers ([**ING::Engine**](CPP/Engine/Engine.md) is not application).
-
-+ [**ING::IApplication**](CPP/Application/IApplication.md) is a class whose instance is the application, managed by [**ING::ApplicationManager**](CPP/Application/Manager/ApplicationManager.md) (1 Square of [**ING::Engine**](CPP/Engine/Engine.md)). ING Engine allow multiple applications in 1 program. When we use editor, ING create 2 application (editor application and game application).
-
-+ We built a dynamic linking library (ING.dll). It will imported by runtime (runtime is an ".exe file"). When we start game or editor, the runtime (ING.Editor.Runtime(editor's runtime) or ING.Runtime(release game which not support Play In Editor)) will create [**ING::Engine**](CPP/Engine/Engine.md), init [**ING::Engine**](CPP/Engine/Engine.md), create applications and run [**ING::Engine**](CPP/Engine/Engine.md).
-
-## Projects ##
-
-+ Engine has 3 main projects:
-
-	- ING (create ING.dll)
-
-	- ING.Runtime (create standalone game runtime)
-
-	- ING.Scripting.CSharp (create c# engine library)
-
-+ Editor is an application created with ING Engine. It has 2 main projects:
-
-	- EngineBuilderCaller (call ING.Tools.EngineBuilder to build engine directory)
-
-	- ING.Editor.Runtime (create editor runtime, support play in editor,...)
+## Squares ##
+-  [**ING::ApplicationManager**](../Application/Manager/ApplicationManager.md)
+ 
+## Macros ##
++  **ING_CREATE_ENGINE**()**:** create engine
++  **ING_INIT_ENGINE**()**:** init engine
++  **ING_RUN_ENGINE**()**:** run engine
++  **ING_ENGINE_CONFIG_PROP**(T, name, value)**:** try add new configuration property
++  **ING_ENGINE_SET_CONFIG_PROP**(T, name, value)**:** set configuration property value by name
++  **ING_ENGINE_GET_CONFIG_PROP**(T, name, value)**:** get configuration property value by name
