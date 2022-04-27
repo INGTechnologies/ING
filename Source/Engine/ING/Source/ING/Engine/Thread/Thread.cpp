@@ -134,7 +134,7 @@ namespace ING {
 
 	}
 
-	void EngineThread::WaitUpdate() {
+	void EngineThread::EndUpdate() {
 
 		while (true) {
 

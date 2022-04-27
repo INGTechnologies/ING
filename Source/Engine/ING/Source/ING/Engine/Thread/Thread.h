@@ -88,7 +88,7 @@ namespace ING {
 
 		void Update();
 
-		void WaitUpdate();
+		void EndUpdate();
 
 	};
 
