@@ -16,7 +16,7 @@
 		*  `Getter`: **GetName**()
 	+  **configPath** (std::string)**:** application configuration file path
 		*  `Getter`: **GetConfigPath**()
-	+  **configuration** (Configuration*)**:** application configuration
+	+  **configuration** ([**Configuration**]()*)**:** application configuration
 		*  `Getter`: **GetConfiguration**()
 	+  **windowManager** ([**ApplicationWindowManager**](WindowManager/ApplicationWindowManager.md)*)**:** application window manager
 		*  `Getter`: **GetWindowManager**()
