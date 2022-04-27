@@ -139,6 +139,8 @@ namespace ING {
 
 			Debug::Log("Start Creating Rendering::Engine");
 
+			isRendering = false;
+
 			/**
 			 *	Add Squares
 			 */
@@ -189,6 +191,8 @@ namespace ING {
 
 			}
 
+			isRendering = false;
+
 			return result;
 		}
 
@@ -223,6 +227,8 @@ namespace ING {
 		 */
 		void Engine::FrameUpdate() {
 
+			isRendering = true;
+
 			ApplicationManager::GetInstance()->PreRender();
 
 			ECS::RepositoryManager::GetInstance()->PreRender();
@@ -236,6 +242,8 @@ namespace ING {
 			ECS::RepositoryManager::GetInstance()->LateRender();
 
 			ApplicationManager::GetInstance()->LateRender();
+
+			isRendering = false;
 
 		}
 

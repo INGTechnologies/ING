@@ -83,19 +83,19 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		System::System() :
+		System::System(IApplication* application) :
 			defaultPipeline(0),
 			pipeline(0),
 			targetPipeline(0),
 
 			defaultDevice(0),
 			device(0),
-			targetDevice(0)
+			targetDevice(0),
+
+			application(application)
 		{
 
-			Debug::Log("Start Creating Rendering::System");
 
-			Debug::Log("Rendering::System Created");
 
 		}
 
@@ -112,8 +112,6 @@ namespace ING {
 		 */
 		bool System::Init() {
 
-			Debug::Log("Start Initializing Rendering::System");
-
 			defaultPipeline = new StandardRP::Pipeline("Standard Rendering Pipeline");
 
 			targetPipeline = defaultPipeline;
@@ -122,35 +120,19 @@ namespace ING {
 
 			targetDevice = defaultDevice;
 
-			isRendering = false;
-
-			Engine::GetInstance()->GetEvent("START_FRAME_UPDATE")->AddListener([](Event* e) {
-
-				System::GetInstance()->PreUpdate();
-
-			});
-
-			Debug::Log("Rendering::System Initialized");
-
 			return true;
 		}
 
-		bool System::Run() {
+		void System::Start() {
 
-			Debug::Log("Start Running Rendering::System");
 
-			return true;
+
 		}
 
-		bool System::Release() {
-
-			Debug::Log("Start Releasing Rendering::System");
+		void System::Release() {
 
 			delete this;
 
-			Debug::Log("Finished Releasing Rendering::System");
-
-			return true;
 		}
 
 
@@ -177,22 +159,24 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void System::PreUpdate() {
+		void System::PreRender() {
 
 
 
 		}
 
-		void System::FrameUpdate() {
+		void System::Render() {
 
 			pipeline = targetPipeline;
 			device = targetDevice;
 
-			isRendering = true;
-
 			pipeline->Render(device->GetImmediateContext());
 
-			isRendering = false;
+		}
+
+		void System::LateRender() {
+
+
 
 		}
 

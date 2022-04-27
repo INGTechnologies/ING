@@ -76,6 +76,13 @@
 
 
 
+/**
+ *	Include Rendering Engine
+ */
+#include <ING/Rendering/Engine/Engine.h>
+
+
+
 
 namespace ING {
 

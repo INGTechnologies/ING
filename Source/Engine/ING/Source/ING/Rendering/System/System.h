@@ -18,6 +18,8 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class IApplication;
+
 	namespace Rendering {
 
 		class Renderer;
@@ -30,16 +32,14 @@ namespace ING {
 
 
 
-		class ING_API System :
-			public Singleton<System>,
-			public Square
+		class ING_API System
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			System();
+			System(IApplication* application);
 			~System();
 
 
@@ -48,9 +48,9 @@ namespace ING {
 			 *	Init, Run, Release Methods
 			 */
 		public:
-			virtual bool Init()		override;
-			virtual bool Run()		override;
-			virtual bool Release()	override;
+			virtual bool Init();
+			virtual void Start();
+			virtual void Release();
 
 
 
@@ -58,13 +58,13 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
+			IApplication* application;
+
 			IPipeline*	defaultPipeline;
 
 			IPipeline*	pipeline;
 
 			IPipeline*	targetPipeline;
-
-			bool		isRendering;
 
 			IDevice*	defaultDevice;
 
@@ -73,6 +73,8 @@ namespace ING {
 			IDevice*	targetDevice;
 
 		public:
+			IApplication* GetApplication	() { return application; }
+
 			IPipeline*	GetDefaultPipeline	() { return defaultPipeline; }
 
 			IPipeline*	GetPipeline			() { return pipeline; }
@@ -80,8 +82,6 @@ namespace ING {
 			IPipeline*	GetTargetPipeline	() { return targetPipeline; }
 
 			void		SetPipeline			(IPipeline* pipeline);
-
-			bool		IsRendering			() { return isRendering; }
 
 			IDevice*	GetDefaultDevice	() { return defaultDevice; }
 
@@ -97,27 +97,12 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void		PreUpdate();
-			void		FrameUpdate();
+			void		PreRender();
+			void		Render();
+			void		LateRender();
 
 		};
 
 	}
 
-}
-
-
-
-/**
- *	Define Macros
- */
-#define RENDERING_ASSERTION(A)  {\
-\
-	A;\
-	if (!Rendering::System::GetInstance()->IsRendering()){\
-	\
-		return false;\
-	\
-	}\
-\
 }

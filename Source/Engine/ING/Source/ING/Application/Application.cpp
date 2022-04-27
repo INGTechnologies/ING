@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering System
+ */
+#include <ING/Rendering/System/System.h>
+
+
+
 
 
 namespace ING {
@@ -54,7 +61,8 @@ namespace ING {
 		name("INGApplication"),
 		configPath(configPath),
 		configuration(0),
-		windowManager(0)
+		windowManager(0),
+		renderingSystem(0)
 	{
 
 
@@ -99,6 +107,18 @@ namespace ING {
 
 		windowManager = new ApplicationWindowManager(this);
 
+		renderingSystem = new Rendering::System(this);
+
+		if (!renderingSystem->Init()) {
+
+			Debug::Error(String("Cant Create ") + String('"') + name + String('"') + String(" Application Rendering System"));
+
+			Release();
+
+			return false;
+
+		}
+
 		ApplicationManager::GetInstance()->AddApplication(this);
 
 		Debug::Log(String("Finished Creating An Application ") + configPath);
@@ -115,6 +135,9 @@ namespace ING {
 		if (windowManager != 0)
 			delete windowManager;
 
+		if (renderingSystem != 0)
+			delete renderingSystem;
+
 		ApplicationManager::GetInstance()->RemoveApplication(this);
 
 		delete this;
@@ -127,7 +150,7 @@ namespace ING {
 	 */
 	void	IApplication::Start() {
 
-
+		renderingSystem->Start();
 
 	}
 
@@ -151,19 +174,19 @@ namespace ING {
 
 	void	IApplication::PreRender() {
 
-
+		renderingSystem->PreRender();
 
 	}
 
 	void	IApplication::Render() {
 
-
+		renderingSystem->Render();
 
 	}
 
 	void	IApplication::LateRender() {
 
-
+		renderingSystem->LateRender();
 
 	}
 	

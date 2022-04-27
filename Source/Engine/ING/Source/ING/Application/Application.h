@@ -22,6 +22,12 @@ namespace ING {
 
 	class ApplicationWindowManager;
 
+	namespace Rendering {
+
+		class System;
+
+	}
+
 
 
 	class ING_API IApplication
@@ -65,6 +71,8 @@ namespace ING {
 
 		ApplicationWindowManager*	windowManager;
 
+		Rendering::System*			renderingSystem;
+
 	public:
 		const std::string&			GetName			() { return name; }
 
@@ -73,6 +81,8 @@ namespace ING {
 		Configuration*				GetConfiguration() {return configuration; }
 
 		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
+
+		Rendering::System*			GetSystem		() { return renderingSystem; }
 
 
 
