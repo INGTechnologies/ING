@@ -160,9 +160,6 @@ namespace ING {
 			/* Layer Manager */
 			AddSquare<LayerManager>();
 
-			/* System */
-			AddSquare<System>();
-
 			Debug::Log("Rendering::Engine Created");
 
 		}
@@ -234,7 +231,7 @@ namespace ING {
 
 			ApplicationManager::GetInstance()->Render();
 
-			Rendering::System::GetInstance()->FrameUpdate();
+			//Rendering::System::GetInstance()->FrameUpdate();
 
 			ECS::RepositoryManager::GetInstance()->LateRender();
 

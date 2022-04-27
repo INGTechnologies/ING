@@ -45,9 +45,10 @@ namespace ING {
 
 
 		/**
-		 *	Release Methods
+		 *	Init, Release Methods
 		 */
 	public:
+		virtual bool Init	();
 		virtual void Release();
 
 

@@ -46,6 +46,11 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
+		bool	GameApplication::Init() {
+
+			return IApplication::Init();
+
+		}
 		void	GameApplication::Release() {
 
 			IApplication::Release();

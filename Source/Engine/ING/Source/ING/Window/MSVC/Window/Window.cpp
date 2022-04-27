@@ -32,6 +32,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Engine
+ */
+#include <ING/Engine/Engine.h>
+
+
+
+/**
  *	Include Events
  */
 /* Destroy */
@@ -294,6 +301,12 @@ namespace ING {
 			desc.title = title.c_str();
 
 			SetWindowTextW((HWND)handle, title.c_str());
+
+		}
+
+		void			Window::SetIconFromFile(const std::wstring& path) {
+
+
 
 		}
 

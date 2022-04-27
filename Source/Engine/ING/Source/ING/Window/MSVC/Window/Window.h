@@ -135,6 +135,10 @@ namespace ING {
 			/* Title */
 			virtual void	SetTitle(const std::wstring& title) override;
 
+
+			/* Icon */
+			virtual void	SetIconFromFile(const std::wstring& path) override;
+
 		};
 
 	}

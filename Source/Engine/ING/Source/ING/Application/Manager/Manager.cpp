@@ -76,6 +76,8 @@ namespace ING {
 
 		Debug::Log("Start Initializing ApplicationManager");
 
+
+
 		Debug::Log("ApplicationManager Initialized");
 
 		return true;
@@ -120,11 +122,15 @@ namespace ING {
 	 */
 	void	ApplicationManager::AddApplication(IApplication* app) {
 
+		if (name2ApplicationMap.find(app->GetName()) != name2ApplicationMap.end()) return;
+
 		name2ApplicationMap[app->GetName()] = app;
 
 	}
 
 	void	ApplicationManager::RemoveApplication(IApplication* app) {
+
+		if (name2ApplicationMap.find(app->GetName()) == name2ApplicationMap.end()) return;
 
 		name2ApplicationMap.erase(app->GetName());
 

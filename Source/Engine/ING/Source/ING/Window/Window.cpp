@@ -203,6 +203,12 @@ namespace ING {
 
 	}
 
+	void			IWindow::SetIconFromFile(const std::wstring& path) {
+
+
+
+	}
+
 	void			IWindow::CreateScreen() {
 
 		ScreenDesc screenDesc;

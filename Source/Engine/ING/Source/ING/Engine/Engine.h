@@ -64,42 +64,22 @@ namespace ING {
 
 
 		/**
-		 *	Configuration
+		 *	Properties
 		 */
 	private:
-		Configuration* configuration;
-
-	public:
-		Configuration* GetConfiguration() {
-
-			return configuration;
-
-		}
-
-
-
-		/**
-		 *	State
-		 */
-	private:
-		EngineState state;
-
-	public:
-		EngineState GetState() { return state; }
-
-
-
-		/**
-		 *	Paths
-		 */
-	private:
-		std::string gameDir;
-		std::wstring gameDir_wstr;
-		std::string workingDir;
-		std::wstring workingDir_wstr;
-		std::string name;
+		std::string			gameDir;
+		std::wstring		gameDir_wstr;
+		std::string			workingDir;
+		std::wstring		workingDir_wstr;
+		std::string			name;
 
 		std::unordered_map<std::wstring, std::wstring> rootPath2AbsolutePath;
+
+		void*				programHandle;
+
+		EngineState			state;
+
+		Configuration*		configuration;
 
 	public:
 		const std::string&	GetGameDir					() { return gameDir; }
@@ -110,6 +90,13 @@ namespace ING {
 
 		const std::wstring& GetAbsolutePathFromRootPath	(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
 		bool				IsHaveRootPath				(const std::wstring& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
+
+		void*				GetProgramHandle			() { return programHandle; }
+		void				SetProgramHandle			(void* programHandle) { this->programHandle = programHandle; }
+
+		EngineState			GetState					() { return state; }
+
+		Configuration*		GetConfiguration			() { return configuration; }
 
 
 

@@ -52,8 +52,40 @@ namespace ING {
 	 */
 	IApplication::IApplication(const std::string& configPath) :
 		name("INGApplication"),
-		configPath(configPath)
+		configPath(configPath),
+		configuration(0),
+		windowManager(0)
 	{
+
+
+
+	}
+
+	IApplication::~IApplication()
+	{
+
+
+
+	}
+
+
+
+	/**
+	 *	Init, Release Methods
+	 */
+	bool IApplication::Init()
+	{
+
+		Debug::Log(String("Start Creating An Application ") + configPath);
+
+		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
+
+			Debug::Error(configPath + String(" Not Found, Cant Create Application"));
+
+			Release();
+
+			return false; 
+		}
 
 		configuration = new Configuration();
 
@@ -69,26 +101,19 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->AddApplication(this);
 
-	}
+		Debug::Log(String("Finished Creating An Application ") + configPath);
 
-	IApplication::~IApplication()
-	{
-
-
+		return true;
 
 	}
-
-
-
-	/**
-	 *	Release Methods
-	 */
 	void IApplication::Release()
 	{
 
-		delete configuration;
+		if(configuration != 0)
+			delete configuration;
 
-		delete windowManager;
+		if (windowManager != 0)
+			delete windowManager;
 
 		ApplicationManager::GetInstance()->RemoveApplication(this);
 

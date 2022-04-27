@@ -63,11 +63,7 @@ namespace ING {
 			gameApplication(0)
 		{
 
-			SetupRootPaths();
 
-			CreateMainWindow();
-
-			CreateGameApplication();
 
 		}
 
@@ -80,11 +76,23 @@ namespace ING {
 
 
 		/**
-		 *	Release Methods
+		 *	Init, Release Methods
 		 */
+		bool	Application::Init() {
+
+			if(!IApplication::Init())return false;
+
+			SetupRootPaths();
+
+			CreateMainWindow();
+
+			CreateGameApplication(); 
+
+		}
 		void	Application::Release() {
 
-			gameApplication->Release();
+			if(gameApplication != 0)
+				gameApplication->Release();
 
 			IApplication::Release();
 

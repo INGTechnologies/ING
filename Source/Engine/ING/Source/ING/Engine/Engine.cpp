@@ -162,7 +162,8 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	Engine::Engine() :
-		configuration(0)
+		configuration(0),
+		programHandle(0)
 	{
 
 		state = NONE_APPLICATION_STATE;
