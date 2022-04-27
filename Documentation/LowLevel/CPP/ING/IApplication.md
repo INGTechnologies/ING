@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represent for application, managed by [**ApplicationManager**](Manager/ApplicationManager.md)
+-  `Description`: Represent for application, managed by [**ApplicationManager**](./ApplicationManager.md)
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
@@ -18,18 +18,18 @@
 		*  `Getter`: **GetConfigPath**()
 	+  **configuration** ([**Configuration**]()*)**:** application configuration
 		*  `Getter`: **GetConfiguration**()
-	+  **windowManager** ([**ApplicationWindowManager**](WindowManager/ApplicationWindowManager.md)*)**:** application window manager
+	+  **windowManager** ([**ApplicationWindowManager**](./ApplicationWindowManager.md)*)**:** application window manager
 		*  `Getter`: **GetWindowManager**()
-	+  **renderingSystem** ([**ApplicationRenderingSystem**](RenderingSystem/ApplicationRenderingSystem.md)*)**:** application rendering system
+	+  **renderingSystem** ([**ApplicationRenderingSystem**](./ApplicationRenderingSystem.md)*)**:** application rendering system
 		*  `Getter`: **GetRenderingSystem**()
 	+  **name2ComponentIndexMap** (std::unordered_map<std::string, unsigned int>)**:** name to component index map
-	+  **componentVector** (std::vector<[**IApplicationComponent**](Component/IApplicationComponent.md)*>)**:** name to component index map
+	+  **componentVector** (std::vector<[**IApplicationComponent**](./IApplicationComponent.md)*>)**:** name to component index map
 		*  `ItemGetter`:
-			+ **GetComponent**(const std::string& name) ([**IApplicationComponent**](Component/IApplicationComponent.md)*)**:** get component by name
-			+  **GetComponent**(unsigned int index) ([**IApplicationComponent**](Component/IApplicationComponent.md)*)**:** get component by index
+			+ **GetComponent**(const std::string& name) ([**IApplicationComponent**](./IApplicationComponent.md)*)**:** get component by name
+			+  **GetComponent**(unsigned int index) ([**IApplicationComponent**](./IApplicationComponent.md)*)**:** get component by index
 -  `Methods`:
-	+  **AddComponent**([**IApplicationComponent**](Component/IApplicationComponent.md)* component) (bool)**:** add component
-	+  **RemoveComponent**([**IApplicationComponent**](Component/IApplicationComponent.md)* component) (bool)**:** remove component
+	+  **AddComponent**([**IApplicationComponent**](./IApplicationComponent.md)* component) (bool)**:** add component
+	+  **RemoveComponent**([**IApplicationComponent**](./IApplicationComponent.md)* component) (bool)**:** remove component
 	+  **Init**() (bool) (virtual)**:** init application
 	+  **Release**() (void) (virtual)**:** release application
 	+  **Start**() (void) (virtual)**:** this method is called when the application start

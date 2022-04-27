@@ -9,13 +9,13 @@
 
 ## Members ##
 -  `Constructor`:
-	+  **IApplicationComponent**([**IApplication**](../IApplication.md)* application, const std::string& name)
+	+  **IApplicationComponent**([**IApplication**](./IApplication.md)* application, const std::string& name)
 -  `Destructor`:
 	+  **~IApplicationComponent**()
 -  `Properties`:
 	+  **name** (std::string)**:** component name
 		*  `Getter`: **GetName**()
-	+  **application** ([**IApplication**](../IApplication.md)*)**:** an application that has this component
+	+  **application** ([**IApplication**](./IApplication.md)*)**:** an application that has this component
 		*  `Getter`: **GetApplication**()
 -  `Methods`:
 	+  **Init**() (bool) (virtual)**:** init component

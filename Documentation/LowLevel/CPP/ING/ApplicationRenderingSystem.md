@@ -3,12 +3,12 @@
 
 ## Basic Info ##
 -  `Description`: Manage application rendering features
--  `Parent Class`: [**IApplicationComponent**](../Component/IApplicationComponent.md)
+-  `Parent Class`: [**IApplicationComponent**](./IApplicationComponent.md)
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
 ## Members ##
 -  `Constructor`:
-	+  **ApplicationRenderingSystem**([**IApplication**](../IApplication.md)* app)
+	+  **ApplicationRenderingSystem**([**IApplication**](./IApplication.md)* app)
 -  `Destructor`:
 	+  **~ApplicationRenderingSystem**()
 -  `Properties`:
@@ -27,12 +27,12 @@
 	+  **targetDevice** ([**Rendering**::**IDevice**]()*)**:** rendering device that will be used in next render frame
 		*  `Getter`: **GetTargetDevice**()
 -  `Methods`:
-	+  **Init**() (bool) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**Init**())
-	+  **Release**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**Release**())
-	+  **Start**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**Start**())
-	+  **PreUpdate**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**PreUpdate**())
-	+  **Update**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**Update**())
-	+  **LateUpdate**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**LateUpdate**())
-	+  **PreRender**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**PreRender**())
-	+  **Render**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**Render**())
-	+  **LateRender**() (void) (override [**IApplicationComponent**](../Component/IApplicationComponent.md)::**LateRender**())
+	+  **Init**() (bool) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Init**())
+	+  **Release**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Release**())
+	+  **Start**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Start**())
+	+  **PreUpdate**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**PreUpdate**())
+	+  **Update**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Update**())
+	+  **LateUpdate**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**LateUpdate**())
+	+  **PreRender**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**PreRender**())
+	+  **Render**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Render**())
+	+  **LateRender**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**LateRender**())
