@@ -8,7 +8,7 @@
 
 ## Members ##
 -  `Constructor`:
-	+  **ApplicationRenderingSystem**([**IApplication**](../../IApplication.md)* app)
+	+  **ApplicationRenderingSystem**([**IApplication**](../IApplication.md)* app)
 -  `Destructor`:
 	+  **~ApplicationRenderingSystem**()
 -  `Properties`:

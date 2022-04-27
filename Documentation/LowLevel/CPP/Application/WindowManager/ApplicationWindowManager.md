@@ -8,7 +8,7 @@
 
 ## Members ##
 -  `Constructor`:
-	+  **ApplicationWindowManager**([**IApplication**](../../IApplication.md)* app)
+	+  **ApplicationWindowManager**([**IApplication**](../IApplication.md)* app)
 -  `Destructor`:
 	+  **~ApplicationWindowManager**()
 -  `Properties`:
