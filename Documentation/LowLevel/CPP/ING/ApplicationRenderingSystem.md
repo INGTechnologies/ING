@@ -3,36 +3,36 @@
 
 ## Basic Info ##
 -  `Description`: Manages application rendering features
--  `Parent Class`: [**IApplicationComponent**](./IApplicationComponent.md)
+-  `Parent Class`: [**ING**::**IApplicationComponent**](./IApplicationComponent.md)
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
 ## Members ##
 -  `Constructor`:
-	+  **ApplicationRenderingSystem**([**IApplication**](./IApplication.md)* app)
+	+  **ApplicationRenderingSystem**([**ING**::**IApplication**](./IApplication.md)* app)
 -  `Destructor`:
 	+  **~ApplicationRenderingSystem**()
 -  `Properties`:
-	+  **defaultPipeline** ([**Rendering**::**IPipeline**]()*)**:** default rendering pipeline
+	+  [**ING**::**Rendering**::**IPipeline**]()* **defaultPipeline** **:** default rendering pipeline
 		*  `Getter`: **GetDefaultPipeline**()
-	+  **pipeline** ([**Rendering**::**IPipeline**]()*)**:** currently using rendering pipeline
+	+  [**ING**::**Rendering**::**IPipeline**]()* **pipeline** **:** currently using rendering pipeline
 		*  `Getter`: **GetPipeline**()
-		*  `Setter`: **SetPipeline**([**Rendering**::**IPipeline**]()* newPipeline)**:** this method will set targetPipeline to newPipeline and pipeline will be set to targetPipeline in next frame
-	+  **targetPipeline** ([**Rendering**::**IPipeline**]()*)**:** rendering pipeline that will be used in next render frame
+		*  `Setter`: **SetPipeline**([**ING**::**Rendering**::**IPipeline**]()* newPipeline)**:** this method will set targetPipeline to newPipeline and pipeline will be set to targetPipeline in next frame
+	+  [**ING**::**Rendering**::**IPipeline**]()* **targetPipeline** **:** rendering pipeline that will be used in next render frame
 		*  `Getter`: **GetTargetPipeline**()
-	+  **defaultDevice** ([**Rendering**::**IDevice**]()*)**:** default rendering device
+	+  [**ING**::**Rendering**::**IDevice**]()* **defaultDevice** **:** default rendering device
 		*  `Getter`: **GetDefaultDevice**()
-	+  **device** ([**Rendering**::**IDevice**]()*)**:** currently using rendering device
+	+  [**ING**::**Rendering**::**IDevice**]()* **device** **:** currently using rendering device
 		*  `Getter`: **GetDevice**()
-		*  `Setter`: **SetDevice**([**Rendering**::**IDevice**]()* newDevice)**:** this method will set targetDevice to newDevice and device will be set to targetDevice in next frame
-	+  **targetDevice** ([**Rendering**::**IDevice**]()*)**:** rendering device that will be used in next render frame
+		*  `Setter`: **SetDevice**([**ING**::**Rendering**::**IDevice**]()* newDevice)**:** this method will set targetDevice to newDevice and device will be set to targetDevice in next frame
+	+  [**ING**::**Rendering**::**IDevice**]()* **targetDevice** **:** rendering device that will be used in next render frame
 		*  `Getter`: **GetTargetDevice**()
 -  `Methods`:
-	+  **Init**() (bool) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Init**())
-	+  **Release**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Release**())
-	+  **Start**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Start**())
-	+  **PreUpdate**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**PreUpdate**())
-	+  **Update**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Update**())
-	+  **LateUpdate**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**LateUpdate**())
-	+  **PreRender**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**PreRender**())
-	+  **Render**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**Render**())
-	+  **LateRender**() (void) (override [**IApplicationComponent**](./IApplicationComponent.md)::**LateRender**())
+	+  bool **Init**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**Init**())
+	+  void **Release**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**Release**())
+	+  void **Start**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**Start**())
+	+  void **PreUpdate**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**PreUpdate**())
+	+  void **Update**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**Update**())
+	+  void **LateUpdate**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**LateUpdate**())
+	+  void **PreRender**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**PreRender**())
+	+  void **Render**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**Render**())
+	+  void **LateRender**() **:** override [**ING**::**IApplicationComponent**](./IApplicationComponent.md)::**LateRender**())

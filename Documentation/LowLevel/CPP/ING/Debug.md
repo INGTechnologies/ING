@@ -12,52 +12,52 @@
 -  `Destructor`:
 	+  **~Debug**()
 -  `Methods`:
-	+  **SetConsoleColor**(int color) (void) (static)**:** set console text color
-	+  **Log**(...) (void) (static)**:** log something to console window
-		* **Log**(void* content) (void) (static): log pointer
-		* **Log**(float content) (void) (static): log float variable
-		* **Log**(double content) (void) (static): log double variable
-		* **Log**(long content) (void) (static): log long variable
-		* **Log**(ui8 content) (void) (static): log ui8 variable
-		* **Log**(ui16 content) (void) (static): log ui16 variable
-		* **Log**(ui32 content) (void) (static): log ui32 variable
-		* **Log**(ui64 content) (void) (static): log ui64 variable
-		* **Log**(bool content) (void) (static): log bool variable
-		* **Log**(const char* content) (void) (static): log char array
-		* **Log**(const wchar_t* content) (void) (static): log wchar array
-		* **Log**(char content) (void) (static): log char variable
-		* **Log**(wchar_t content) (void) (static): log wchar_t variable
-		* **Log**(std::string content) (void) (static): log ascii string
-		* **Log**(std::wstring content) (void) (static): log wide string
-	+  **Warning**(...) (void) (static)**:** warning something to console window
-		* **Warning**(void* content) (void) (static): warning pointer
-		* **Warning**(float content) (void) (static): warning float variable
-		* **Warning**(double content) (void) (static): warning double variable
-		* **Warning**(long content) (void) (static): warning long variable
-		* **Warning**(ui8 content) (void) (static): warning ui8 variable
-		* **Warning**(ui16 content) (void) (static): warning ui16 variable
-		* **Warning**(ui32 content) (void) (static): warning ui32 variable
-		* **Warning**(ui64 content) (void) (static): warning ui64 variable
-		* **Warning**(bool content) (void) (static): warning bool variable
-		* **Warning**(const char* content) (void) (static): warning char array
-		* **Warning**(const wchar_t* content) (void) (static): warning wchar array
-		* **Warning**(char content) (void) (static): warning char variable
-		* **Warning**(wchar_t content) (void) (static): warning wchar_t variable
-		* **Warning**(std::string content) (void) (static): warning ascii string
-		* **Warning**(std::wstring content) (void) (static): warning wide string
-	+  **Error**(...) (void) (static)**:** error something to console window
-		* **Error**(void* content) (void) (static): error pointer
-		* **Error**(float content) (void) (static): error float variable
-		* **Error**(double content) (void) (static): error double variable
-		* **Error**(long content) (void) (static): error long variable
-		* **Error**(ui8 content) (void) (static): error ui8 variable
-		* **Error**(ui16 content) (void) (static): error ui16 variable
-		* **Error**(ui32 content) (void) (static): error ui32 variable
-		* **Error**(ui64 content) (void) (static): error ui64 variable
-		* **Error**(bool content) (void) (static): error bool variable
-		* **Error**(const char* content) (void) (static): error char array
-		* **Error**(const wchar_t* content) (void) (static): error wchar array
-		* **Error**(char content) (void) (static): error char variable
-		* **Error**(wchar_t content) (void) (static): error wchar_t variable
-		* **Error**(std::string content) (void) (static): error ascii string
-		* **Error**(std::wstring content) (void) (static): error wide string
+	+  static void **SetConsoleColor**(int color) **:** set console text color
+	+  static void **Log**(...) **:** log something to console window
+		* static void **Log**(void* content) **:** log pointer
+		* static void **Log**(float content) **:** log float variable
+		* static void **Log**(double content) **:** log double variable
+		* static void **Log**(long content) **:** log long variable
+		* static void **Log**(ui8 content) **:** log ui8 variable
+		* static void **Log**(ui16 content) **:** log ui16 variable
+		* static void **Log**(ui32 content) **:** log ui32 variable
+		* static void **Log**(ui64 content) **:** log ui64 variable
+		* static void **Log**(bool content) **:** log bool variable
+		* static void **Log**(const char* content) **:** log char array
+		* static void **Log**(const wchar_t* content) **:** log wchar array
+		* static void **Log**(char content) **:** log char variable
+		* static void **Log**(wchar_t content) **:** log wchar_t variable
+		* static void **Log**(std::string content) **:** log ascii string
+		* static void **Log**(std::wstring content) **:** log wide string
+	+  static void **Warning**(...) **:** warning something to console window
+		* static void **Warning**(void* content) **:** warning pointer
+		* static void **Warning**(float content) **:** warning float variable
+		* static void **Warning**(double content) **:** warning double variable
+		* static void **Warning**(long content) **:** warning long variable
+		* static void **Warning**(ui8 content) **:** warning ui8 variable
+		* static void **Warning**(ui16 content) **:** warning ui16 variable
+		* static void **Warning**(ui32 content) **:** warning ui32 variable
+		* static void **Warning**(ui64 content) **:** warning ui64 variable
+		* static void **Warning**(bool content) **:** warning bool variable
+		* static void **Warning**(const char* content) **:** warning char array
+		* static void **Warning**(const wchar_t* content) **:** warning wchar array
+		* static void **Warning**(char content) **:** warning char variable
+		* static void **Warning**(wchar_t content) **:** warning wchar_t variable
+		* static void **Warning**(std::string content) **:** warning ascii string
+		* static void **Warning**(std::wstring content) **:** warning wide string
+	+  static void **Error**(...) **:** error something to console window
+		* static void **Error**(void* content) **:** error pointer
+		* static void **Error**(float content) **:** error float variable
+		* static void **Error**(double content) **:** error double variable
+		* static void **Error**(long content) **:** error long variable
+		* static void **Error**(ui8 content) **:** error ui8 variable
+		* static void **Error**(ui16 content) **:** error ui16 variable
+		* static void **Error**(ui32 content) **:** error ui32 variable
+		* static void **Error**(ui64 content) **:** error ui64 variable
+		* static void **Error**(bool content) **:** error bool variable
+		* static void **Error**(const char* content) **:** error char array
+		* static void **Error**(const wchar_t* content) **:** error wchar array
+		* static void **Error**(char content) **:** error char variable
+		* static void **Error**(wchar_t content) **:** error wchar_t variable
+		* static void **Error**(std::string content) **:** error ascii string
+		* static void **Error**(std::wstring content) **:** error wide string

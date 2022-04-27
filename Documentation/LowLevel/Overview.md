@@ -3,19 +3,22 @@
 
   
 
-## Board and Square ("Low Level Modules") ##
+## **ING**::**Board**<**T**> and **ING**::**Square** ("Low Level Modules") ##
 
-+ [**Board**](./CPP/ING/Utils/Board.md) is a class, singleton and has its own squares, virtual methods:
-	- **Init**() (bool)
-	- **Run**() (bool)
-	- **Release**() (bool)
++ [**ING**::**Board**](./CPP/ING/Utils/Board.md)<**T**> is a class, singleton and has its own squares (a square is an object of type [**ING**::**Square**](./CPP/ING/Utils/Square.md)), virtual methods:
+	- virtual bool **Init**()
+	- virtual bool **Run**()
+	- virtual bool **Release**()
 
-+ [**Square**](./CPP/ING/Utils/Square.md) is a class and has virtual methods:
-	- **Init**() (bool)
-	- **Run**() (bool)
-	- **Release**() (bool)
++ [**ING**::**Square**](./CPP/ING/Utils/Square.md) is a class and has virtual methods:
+	- virtual bool **Init**()
+	- virtual bool **Run**()
+	- virtual bool **Release**()
 
-+ [**ING::Engine**](./CPP/ING/Engine.md) is a class that inherited [**Board**](./CPP/ING/Utils/Board.md) class, including these squares:
++ When [**ING::Board**](./CPP/ING/Engine.md)<**T**>::**Init** is called, it will call Init method of each square (the same as **Run** and **Release** methods)
+
+## **ING**::**Engine** ##
++ [**ING::Engine**](./CPP/ING/Engine.md) is a class that inherited [**ING**::**Board**](./CPP/ING/Utils/Board.md)<**ING**::**Engine**> class, including these squares:
 
 	- **System**
 
@@ -28,8 +31,6 @@
 	- **Rendering Engine**
 
 	- ...
-
-+ When [**ING::Engine**](./CPP/ING/Engine.md)::**Init** is called, it will call Init method of each square (the same as **Run** and **Release** methods)
 
   
 

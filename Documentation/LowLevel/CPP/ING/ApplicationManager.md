@@ -3,7 +3,7 @@
 
 ## Basic Info ##
 -  `Description`: Manages applications
--  `Parent Class`: [**Singleton**]()<**ING**::**Engine**>, [**Square**]()
+-  `Parent Class`: [**ING**::**Singleton**]()<**ING**::**Engine**>, [**ING**::**Square**]()
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
 ## Members ##
@@ -13,17 +13,17 @@
 	+  **~ApplicationManager**()
 -  `Properties`:
 	+  **name2ApplicationMap** (std::unordered_map<std::string, IApplication*>)**:** name to application map
-		*  `ItemGetter`: **GetApplication**(const std::string& name) ([**IApplication**](./IApplication.md)*): get application by name
+		*  `ItemGetter`: **GetApplication**(const std::string& name) ([**ING**::**IApplication**](./IApplication.md)*): get application by name
 -  `Methods`:
-	+  **Init**() (bool) (override [**Square**]()::**Init**())
-	+  **Run**() (bool) (override [**Square**]()::**Run**())
-	+  **Release**() (bool) (override [**Square**]()::**Release**())
-	+  **AddApplication**([**IApplication**](./IApplication.md)* app) (void)**:** add an application for managing
-	+  **RemoveApplication**([**IApplication**](./IApplication.md)* app) (void)**:** remove an application which is being managed
-	+  **Start**() (void) (virtual)**:** this method is called when the application start
-	+  **PreUpdate**() (void) (virtual)**:** this method is called when before **Update** method
-	+  **Update**() (void) (virtual)**:** this method is called every frame
-	+  **LateUpdate**() (void) (virtual)**:** this method is called when after **Update** method
-	+  **PreRender**() (void) (virtual)**:** this method is called when before **Render** method
-	+  **Render**() (void) (virtual)**:** this method is called when engine render
-	+  **LateRender**() (void) (virtual)**:** this method is called when after **Render** method
+	+  virtual bool **Init**() **:** override [**ING**::**Square**]()::**Init**()
+	+  virtual bool **Run**() **:** override [**ING**::**Square**]()::**Run**()
+	+  virtual bool **Release**() **:** override [**Square**]()::**Release**()
+	+  void **AddApplication**([**IApplication**](./IApplication.md)* app) **:** add an application for managing
+	+  void **RemoveApplication**([**IApplication**](./IApplication.md)* app) **:** remove an application which is being managed
+	+  virtual void **Start**() **:** this method is called when the engine start
+	+  virtual void **PreUpdate**() **:** this method is called when before **Update** method
+	+  virtual void **Update**() **:** this method is called every frame
+	+  virtual void **LateUpdate**() **:** this method is called when after **Update** method
+	+  virtual void **PreRender**() **:** this method is called when before **Render** method
+	+  virtual void **Render**() **:** this method is called when engine render
+	+  virtual void **LateRender**() **:** this method is called when after **Render** method

@@ -3,7 +3,7 @@
 
 ## Basic Info ##
 -  `Description`: Represents game engine and manages all engine's systems, managers,...
--  `Parent Class`: [**Board**](./Utils/Board.md)<[**ING**::**Engine**](./Engine.md)>
+-  `Parent Class`: [**ING**::**Board**](./Utils/Board.md)<[**ING**::**Engine**](./Engine.md)>
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
 ## Members ##
@@ -12,23 +12,23 @@
 -  `Destructor`:
 	+  **~Engine**()
 -  `Properties`:
-	+  **configuration** ([**Configuration**](./Configuration.md)*)**:** store engine options,...
+	+  [**ING**::**Configuration**](./Configuration.md)* **configuration**
 		*  `Getter`: **GetConfiguration**()
-	+  **state** ([**EngineState**](./EngineState.md))**:** game engine state
+	+  [**ING**::**EngineState**](./EngineState.md) **state**
 		*  `Getter`: **GetState**()
-	+  **gameDir** (std::string)**:** game directory
-	+  **gameDir_wstr** (std::wstring)**:** game directory but in std::wstring type
-	+  **workingDir** (std::string)**:** current working directory
-	+  **workingDir_wstr** (std::wstring):**:** current working directory but in std::wstring type
-	+  **name** (std::string)**:** engine name
-	+  **rootPath2AbsolutePath** (std::unordered_map<std::wstring,  std::wstring>)**:** root path to absolute path map
+	+  std::string **gameDir** **:** game directory
+	+  std::wstring **gameDir_wstr** **:** game directory but in std::wstring type
+	+  std::string **workingDir** **:** current working directory
+	+  std::wstring **workingDir_wstr** :**:** current working directory but in std::wstring type
+	+  std::string **name**
+	+  std::unordered_map<std::wstring,  std::wstring> **rootPath2AbsolutePath** **:** root path to absolute path map
 -  `Methods`:
-	+  **Init**() (bool) (override [**Board**](./Utils/Board.md)<**T**>::**Init**())
-	+  **Run**() (bool) (override [**Board**](./Utils/Board.md)<**T**>::**Run**())
-	+  **Release**() (bool) (override [**Board**](./Utils/Board.md)<**T**>::**Release**())
-	+  **FrameUpdate**() (void)**:** engine will call this method every frame
-	+  **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
-	+  **Shutdown**() (void)**:** for shutting down engine
+	+  virtual bool **Init**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Init**()
+	+  virtual bool **Run**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Run**()
+	+  virtual bool **Release**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Release**()
+	+  void **FrameUpdate**() **:** engine will call this method every frame
+	+  void **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
+	+  void **Shutdown**() **:** for shutting down engine
 
 ## Squares ##
 -  [**ING::System**](./System.md)

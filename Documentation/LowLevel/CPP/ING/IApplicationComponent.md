@@ -3,27 +3,27 @@
 
 
 ## Basic Info ##
--  `Description`: An **IApplicationComponent** is a component of an application.
+-  `Description`: An **ING**::**IApplicationComponent** is a component of an application.
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
 ## Members ##
 -  `Constructor`:
-	+  **IApplicationComponent**([**IApplication**](./IApplication.md)* application, const std::string& name)
+	+  **IApplicationComponent**([**ING**::**IApplication**](./IApplication.md)* application, const std::string& name)
 -  `Destructor`:
 	+  **~IApplicationComponent**()
 -  `Properties`:
-	+  **name** (std::string)**:** component name
+	+  std::string **name** **:** component name
 		*  `Getter`: **GetName**()
-	+  **application** ([**IApplication**](./IApplication.md)*)**:** an application that has this component
+	+  [**ING**::**IApplication**](./IApplication.md)* **application** **:** an application that has this component
 		*  `Getter`: **GetApplication**()
 -  `Methods`:
-	+  **Init**() (bool) (virtual)**:** init component
-	+  **Release**() (void) (virtual)**:** release component
-	+  **Start**() (void) (virtual)**:** this method is called when the component start
-	+  **PreUpdate**() (void) (virtual)**:** this method is called when before **Update** method
-	+  **Update**() (void) (virtual)**:** this method is called every frame
-	+  **LateUpdate**() (void) (virtual)**:** this method is called when after **Update** method
-	+  **PreRender**() (void) (virtual)**:** this method is called when before **Render** method
-	+  **Render**() (void) (virtual)**:** this method is called when engine render
-	+  **LateRender**() (void) (virtual)**:** this method is called when after **Render** method
+	+  virtual bool **Init**() **:** init component
+	+  virtual void **Release**() **:** release component
+	+  virtual void **Start**() **:** this method is called when the component start
+	+  virtual void **PreUpdate**() **:** this method is called when before **Update** method
+	+  virtual void **Update**() **:** this method is called every frame
+	+  virtual void **LateUpdate**() **:** this method is called when after **Update** method
+	+  virtual void **PreRender**() **:** this method is called when before **Render** method
+	+  virtual void **Render**() **:** this method is called when engine render
+	+  virtual void **LateRender**() **:** this method is called when after **Render** method

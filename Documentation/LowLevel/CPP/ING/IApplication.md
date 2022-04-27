@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represents application, managed by [**ApplicationManager**](./ApplicationManager.md)
+-  `Description`: Represents application, managed by [**ING**::**ApplicationManager**](./ApplicationManager.md)
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
@@ -12,30 +12,30 @@
 -  `Destructor`:
 	+  **~IApplication**()
 -  `Properties`:
-	+  **name** (std::string)**:** application name
+	+  std::string **name** **:** application name
 		*  `Getter`: **GetName**()
-	+  **configPath** (std::string)**:** application configuration file path
+	+  std::string **configPath** **:** application configuration file path
 		*  `Getter`: **GetConfigPath**()
-	+  **configuration** ([**Configuration**](./Configuration.md)*)**:** application configuration
+	+  [**ING**::**Configuration**](./Configuration.md)* **configuration** **:** application configuration
 		*  `Getter`: **GetConfiguration**()
-	+  **windowManager** ([**ApplicationWindowManager**](./ApplicationWindowManager.md)*)**:** application window manager
+	+  [**ING**::**ApplicationWindowManager**](./ApplicationWindowManager.md)* **windowManager** **:** application window manager
 		*  `Getter`: **GetWindowManager**()
-	+  **renderingSystem** ([**ApplicationRenderingSystem**](./ApplicationRenderingSystem.md)*)**:** application rendering system
+	+  [**ING**::**ApplicationRenderingSystem**](./ApplicationRenderingSystem.md)* **renderingSystem** **:** application rendering system
 		*  `Getter`: **GetRenderingSystem**()
-	+  **name2ComponentIndexMap** (std::unordered_map<std::string, unsigned int>)**:** name to component index map
-	+  **componentVector** (std::vector<[**IApplicationComponent**](./IApplicationComponent.md)*>)**:** name to component index map
+	+  std::unordered_map<std::string, unsigned int> **name2ComponentIndexMap** **:** name to component index map
+	+  std::vector<[**ING**::**IApplicationComponent**](./IApplicationComponent.md)*> **componentVector** **:** name to component index map
 		*  `ItemGetter`:
-			+ **GetComponent**(const std::string& name) ([**IApplicationComponent**](./IApplicationComponent.md)*)**:** get component by name
-			+  **GetComponent**(unsigned int index) ([**IApplicationComponent**](./IApplicationComponent.md)*)**:** get component by index
+			+ [**ING**::**IApplicationComponent**](./IApplicationComponent.md)* **GetComponent**(const std::string& name) **:** get component by name
+			+ [**ING**::**IApplicationComponent**](./IApplicationComponent.md)* **GetComponent**(unsigned int index) **:** get component by index
 -  `Methods`:
-	+  **AddComponent**([**IApplicationComponent**](./IApplicationComponent.md)* component) (bool)**:** add component
-	+  **RemoveComponent**([**IApplicationComponent**](./IApplicationComponent.md)* component) (bool)**:** remove component
-	+  **Init**() (bool) (virtual)**:** init application
-	+  **Release**() (void) (virtual)**:** release application
-	+  **Start**() (void) (virtual)**:** this method is called when the application start
-	+  **PreUpdate**() (void) (virtual)**:** this method is called when before **Update** method
-	+  **Update**() (void) (virtual)**:** this method is called every frame
-	+  **LateUpdate**() (void) (virtual)**:** this method is called when after **Update** method
-	+  **PreRender**() (void) (virtual)**:** this method is called when before **Render** method
-	+  **Render**() (void) (virtual)**:** this method is called when engine render
-	+  **LateRender**() (void) (virtual)**:** this method is called when after **Render** method
+	+  void **AddComponent**([**ING**::**IApplicationComponent**](./IApplicationComponent.md)* component) **:** add component
+	+  void **RemoveComponent**([**ING**::**IApplicationComponent**](./IApplicationComponent.md)* component) **:** remove component
+	+  virtual bool **Init**() **:** init application
+	+  virtual void **Release**() **:** release application
+	+  virtual void **Start**() **:** this method is called when the component start
+	+  virtual void **PreUpdate**() **:** this method is called when before **Update** method
+	+  virtual void **Update**() **:** this method is called every frame
+	+  virtual void **LateUpdate**() **:** this method is called when after **Update** method
+	+  virtual void **PreRender**() **:** this method is called when before **Render** method
+	+  virtual void **Render**() **:** this method is called when engine render
+	+  virtual void **LateRender**() **:** this method is called when after **Render** method
