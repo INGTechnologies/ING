@@ -84,15 +84,15 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		System::System(IApplication* application) :
+			IApplicationComponent(application, "Rendering::System"),
+
 			defaultPipeline(0),
 			pipeline(0),
 			targetPipeline(0),
 
 			defaultDevice(0),
 			device(0),
-			targetDevice(0),
-
-			application(application)
+			targetDevice(0)
 		{
 
 
@@ -108,7 +108,7 @@ namespace ING {
 
 
 		/**
-		 *	Init, Run, Release Methods
+		 *	Init, Release Methods
 		 */
 		bool System::Init() {
 
@@ -120,18 +120,12 @@ namespace ING {
 
 			targetDevice = defaultDevice;
 
-			return true;
-		}
-
-		void System::Start() {
-
-
-
+			return IApplicationComponent::Init();
 		}
 
 		void System::Release() {
 
-			delete this;
+			IApplicationComponent::Release();
 
 		}
 
@@ -159,13 +153,39 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void System::PreRender() {
+		void	System::Start() {
 
-
+			IApplicationComponent::Start();
 
 		}
 
-		void System::Render() {
+		void	System::PreUpdate() {
+
+			IApplicationComponent::PreUpdate();
+
+		}
+
+		void	System::Update() {
+
+			IApplicationComponent::Update();
+
+		}
+
+		void	System::LateUpdate() {
+
+			IApplicationComponent::LateUpdate();
+
+		}
+
+		void	System::PreRender() {
+
+			IApplicationComponent::PreRender();
+
+		}
+
+		void	System::Render() {
+
+			IApplicationComponent::Render();
 
 			pipeline = targetPipeline;
 			device = targetDevice;
@@ -174,9 +194,9 @@ namespace ING {
 
 		}
 
-		void System::LateRender() {
+		void	System::LateRender() {
 
-
+			IApplicationComponent::LateRender();
 
 		}
 

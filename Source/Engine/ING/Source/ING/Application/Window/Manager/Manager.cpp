@@ -44,10 +44,10 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	ApplicationWindowManager::ApplicationWindowManager(IApplication* application) :
-		application(application)
+		IApplicationComponent(application, "WindowManager")
 	{
 
-		Configuration* configuration = application->GetConfiguration();
+
 
 	}
 
@@ -63,10 +63,17 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
+	bool ApplicationWindowManager::Init()
+	{
+
+		return IApplicationComponent::Init();
+
+	}
+
 	void ApplicationWindowManager::Release()
 	{
 
-		delete this;
+		IApplicationComponent::Release();
 
 	}
 
@@ -75,15 +82,57 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void ApplicationWindowManager::AddWindow		(IWindow* window) {
+	void	ApplicationWindowManager::AddWindow		(IWindow* window) {
 
 		name2WindowMap[window->GetName()] = window;
 
 	}
 
-	void ApplicationWindowManager::RemoveWindow		(IWindow* window) {
+	void	ApplicationWindowManager::RemoveWindow		(IWindow* window) {
 
 		name2WindowMap.erase(window->GetName());
+
+	}
+
+	void	ApplicationWindowManager::Start() {
+
+		IApplicationComponent::Start();
+
+	}
+
+	void	ApplicationWindowManager::PreUpdate() {
+
+		IApplicationComponent::PreUpdate();
+
+	}
+
+	void	ApplicationWindowManager::Update() {
+
+		IApplicationComponent::Update();
+
+	}
+
+	void	ApplicationWindowManager::LateUpdate() {
+
+		IApplicationComponent::LateUpdate();
+
+	}
+
+	void	ApplicationWindowManager::PreRender() {
+
+		IApplicationComponent::PreRender();
+
+	}
+
+	void	ApplicationWindowManager::Render() {
+
+		IApplicationComponent::Render();
+
+	}
+
+	void	ApplicationWindowManager::LateRender() {
+
+		IApplicationComponent::LateRender();
 
 	}
 	

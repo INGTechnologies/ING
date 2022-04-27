@@ -50,6 +50,11 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
 
 
 namespace ING {
@@ -65,7 +70,11 @@ namespace ING {
 		renderingSystem(0)
 	{
 
+		windowManager = new ApplicationWindowManager(this);
+		AddComponent(windowManager);
 
+		renderingSystem = new  Rendering::System(this);
+		AddComponent(renderingSystem);
 
 	}
 
@@ -105,17 +114,17 @@ namespace ING {
 
 		}
 
-		windowManager = new ApplicationWindowManager(this);
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
-		renderingSystem = new Rendering::System(this);
+			if (!componentVector[i]->Init()) {
 
-		if (!renderingSystem->Init()) {
+				Debug::Error(String("Cant Init ") + String('"') + componentVector[i]->GetName() + String('"') + String(" Application Component"));
 
-			Debug::Error(String("Cant Create ") + String('"') + name + String('"') + String(" Application Rendering System"));
+				Release();
 
-			Release();
+				return false;
 
-			return false;
+			}
 
 		}
 
@@ -129,14 +138,17 @@ namespace ING {
 	void IApplication::Release()
 	{
 
-		if(configuration != 0)
+		for (unsigned int i = 0; i < componentVector.size();) {
+
+			componentVector[i]->Release();
+
+		}
+
+		if (configuration != 0)
 			delete configuration;
 
-		if (windowManager != 0)
-			delete windowManager;
-
-		if (renderingSystem != 0)
-			delete renderingSystem;
+		name2ComponentIndexMap.clear();
+		componentVector.clear();
 
 		ApplicationManager::GetInstance()->RemoveApplication(this);
 
@@ -148,45 +160,103 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
+	void	IApplication::AddComponent(IApplicationComponent* component) {
+
+		name2ComponentIndexMap[component->GetName()] = componentVector.size();
+
+		componentVector.resize(componentVector.size() + 1);
+
+		componentVector[componentVector.size() - 1] = component;
+
+	}
+
+	void	IApplication::RemoveComponent(IApplicationComponent* component) {
+
+		unsigned int index = name2ComponentIndexMap[component->GetName()];
+
+		componentVector.erase(componentVector.begin() + index);
+
+		name2ComponentIndexMap.erase(component->GetName());
+
+		for (auto& item : name2ComponentIndexMap) {
+
+			if (item.second > index) {
+
+				item.second--;
+
+			}
+
+		}
+
+	}
+
 	void	IApplication::Start() {
 
-		renderingSystem->Start();
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
+
+			componentVector[i]->Start();
+
+		}
 
 	}
 
 	void	IApplication::PreUpdate() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->PreUpdate();
+
+		}
 
 	}
 
 	void	IApplication::Update() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->Update();
+
+		}
 
 	}
 
 	void	IApplication::LateUpdate() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->LateUpdate();
+
+		}
 
 	}
 
 	void	IApplication::PreRender() {
 
-		renderingSystem->PreRender();
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
+
+			componentVector[i]->PreRender();
+
+		}
 
 	}
 
 	void	IApplication::Render() {
 
-		renderingSystem->Render();
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
+
+			componentVector[i]->Render();
+
+		}
 
 	}
 
 	void	IApplication::LateRender() {
 
-		renderingSystem->LateRender();
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
+
+			componentVector[i]->LateRender();
+
+		}
 
 	}
 	

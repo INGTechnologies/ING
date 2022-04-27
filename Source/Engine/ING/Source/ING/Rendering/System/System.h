@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	class IApplication;
@@ -32,7 +39,7 @@ namespace ING {
 
 
 
-		class ING_API System
+		class ING_API System : public IApplicationComponent
 		{
 
 			/**
@@ -45,11 +52,10 @@ namespace ING {
 
 
 			/**
-			 *	Init, Run, Release Methods
+			 *	Init, Release Methods
 			 */
 		public:
 			virtual bool Init();
-			virtual void Start();
 			virtual void Release();
 
 
@@ -58,8 +64,6 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			IApplication* application;
-
 			IPipeline*	defaultPipeline;
 
 			IPipeline*	pipeline;
@@ -73,8 +77,6 @@ namespace ING {
 			IDevice*	targetDevice;
 
 		public:
-			IApplication* GetApplication	() { return application; }
-
 			IPipeline*	GetDefaultPipeline	() { return defaultPipeline; }
 
 			IPipeline*	GetPipeline			() { return pipeline; }
@@ -97,9 +99,15 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void		PreRender();
-			void		Render();
-			void		LateRender();
+			virtual void	Start() override;
+
+			virtual void	PreUpdate() override;
+			virtual void	Update() override;
+			virtual void	LateUpdate() override;
+
+			virtual void	PreRender() override;
+			virtual void	Render() override;
+			virtual void	LateRender() override;
 
 		};
 

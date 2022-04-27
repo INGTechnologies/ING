@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	class IApplication;
@@ -24,7 +31,7 @@ namespace ING {
 
 
 
-	class ING_API ApplicationWindowManager
+	class ING_API ApplicationWindowManager : public IApplicationComponent
 	{
 
 		/**
@@ -37,10 +44,11 @@ namespace ING {
 
 
 		/**
-		 *	Release Methods
+		 *	Init, Release Methods
 		 */
 	public:
-		virtual void Release();
+		virtual bool Init() override;
+		virtual void Release() override;
 
 
 
@@ -48,13 +56,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		IApplication*		application;
-
 		std::unordered_map<std::string, IWindow*> name2WindowMap;
 
 	public:
-		IApplication*		GetApplication	() {return application; }
-
 		IWindow*			GetWindow		(const std::string& name) { return name2WindowMap[name]; }
 
 
@@ -65,6 +69,16 @@ namespace ING {
 	public:
 		void AddWindow		(IWindow* window);
 		void RemoveWindow	(IWindow* window);
+
+		virtual void	Start() override;
+
+		virtual void	PreUpdate() override;
+		virtual void	Update() override;
+		virtual void	LateUpdate() override;
+
+		virtual void	PreRender() override;
+		virtual void	Render() override;
+		virtual void	LateRender() override;
 
 	};
 
