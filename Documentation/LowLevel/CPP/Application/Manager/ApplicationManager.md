@@ -12,14 +12,8 @@
 -  `Destructor`:
 	+  **~ApplicationManager**()
 -  `Properties`:
-	+  **name** (std::string)**:** application name
-		*  `Getter`: **GetName**()
-	+  **configPath** (std::string)**:** application configuration file path
-		*  `Getter`: **GetConfigPath**()
-	+  **configuration** (Configuration*)**:** application configuration
-		*  `Getter`: **GetConfiguration**()
-	+  **windowManager** (ApplicationWindowManager*)**:** application window manager
-		*  `Getter`: **GetWindowManager**()
+	+  **name2ApplicationMap** (std::unordered_map<std::string, IApplication*>)**:** name to application map
+		*  `ItemGetter`: **GetApplication**(const std::string& name) ([**IApplication**](../IApplication.md)*): get application by name
 -  `Methods`:
 	+  **Init**() (bool) (override [**Square**]()::**Init**())
 	+  **Run**() (bool) (override [**Square**]()::**Run**())
