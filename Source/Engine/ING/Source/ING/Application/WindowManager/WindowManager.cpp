@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "Manager.h"
+#include "WindowManager.h"
 
 
 

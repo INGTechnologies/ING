@@ -70,13 +70,6 @@
 
 
 /**
- *	Include Rendering System
- */
-#include <ING/Rendering/System/System.h>
-
-
-
-/**
  *	Include Rendering Engine
  */
 #include <ING/Rendering/Engine/Engine.h>

@@ -3,13 +3,6 @@
 
 
 /**
- *	Include System
- */
-#include <ING\Rendering/System/System.h>
-
-
-
-/**
  *	Include Shader Manager
  */
 #include <ING\Rendering/Shader/Manager/Manager.h>

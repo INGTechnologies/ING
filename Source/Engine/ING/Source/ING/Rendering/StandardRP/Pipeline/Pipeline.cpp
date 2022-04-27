@@ -63,13 +63,6 @@
 
 
 /**
- *	Include Rendering System
- */
-#include <ING/Rendering/System/System.h>
-
-
-
-/**
  *	Include Rendering Data
  */
 #include <ING/Rendering/StandardRP/Data/Data.h>

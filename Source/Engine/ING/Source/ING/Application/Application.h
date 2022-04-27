@@ -22,13 +22,9 @@ namespace ING {
 
 	class ApplicationWindowManager;
 
+	class ApplicationRenderingSystem;
+
 	class IApplicationComponent;
-
-	namespace Rendering {
-
-		class System;
-
-	}
 
 
 
@@ -73,7 +69,7 @@ namespace ING {
 
 		ApplicationWindowManager*	windowManager;
 
-		Rendering::System*			renderingSystem;
+		ApplicationRenderingSystem*	renderingSystem;
 
 		std::unordered_map<std::string, unsigned int> name2ComponentIndexMap;
 		std::vector<IApplicationComponent*> componentVector;
@@ -87,7 +83,7 @@ namespace ING {
 
 		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
 
-		Rendering::System*			GetSystem		() { return renderingSystem; }
+		ApplicationRenderingSystem*	GetSystem		() { return renderingSystem; }
 
 		IApplicationComponent*		GetComponent	(const std::string& name) { return componentVector[name2ComponentIndexMap[name]]; }
 

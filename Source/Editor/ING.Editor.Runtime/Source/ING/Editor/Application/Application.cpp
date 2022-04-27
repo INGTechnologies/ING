@@ -23,7 +23,7 @@
 /**
  *	Include ApplicationWindowManager
  */
-#include <ING/Application/Window/Manager/Manager.h>
+#include <ING/Application/WindowManager/WindowManager.h>
 
 
 
