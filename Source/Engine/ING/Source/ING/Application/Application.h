@@ -83,7 +83,7 @@ namespace ING {
 
 		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
 
-		ApplicationRenderingSystem*	GetSystem		() { return renderingSystem; }
+		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
 
 		IApplicationComponent*		GetComponent	(const std::string& name) { return componentVector[name2ComponentIndexMap[name]]; }
 
