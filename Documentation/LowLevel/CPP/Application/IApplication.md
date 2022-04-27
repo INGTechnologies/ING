@@ -23,13 +23,13 @@
 	+  **renderingSystem** ([**ApplicationRenderingSystem**](RenderingSystem/ApplicationRenderingSystem.md)*)**:** application rendering system
 		*  `Getter`: **GetRenderingSystem**()
 	+  **name2ComponentIndexMap** (std::unordered_map<std::string, unsigned int>)**:** name to component index map
-	+  **componentVector** (std::vector<[**IApplicationComponent**](Component/IApplicationComponent)*>)**:** name to component index map
+	+  **componentVector** (std::vector<[**IApplicationComponent**](Component/IApplicationComponent.md)*>)**:** name to component index map
 		*  `ItemGetter`:
-			+ **GetComponent**(const std::string& name) ([**IApplicationComponent**](Component/IApplicationComponent)*)**:** get component by name
-			+  **GetComponent**(unsigned int index) ([**IApplicationComponent**](Component/IApplicationComponent)*)**:** get component by index
+			+ **GetComponent**(const std::string& name) ([**IApplicationComponent**](Component/IApplicationComponent.md)*)**:** get component by name
+			+  **GetComponent**(unsigned int index) ([**IApplicationComponent**](Component/IApplicationComponent.md)*)**:** get component by index
 -  `Methods`:
-	+  **AddComponent**([**IApplicationComponent**](Component/IApplicationComponent)* component) (bool)**:** add component
-	+  **RemoveComponent**([**IApplicationComponent**](Component/IApplicationComponent)* component) (bool)**:** remove component
+	+  **AddComponent**([**IApplicationComponent**](Component/IApplicationComponent.md)* component) (bool)**:** add component
+	+  **RemoveComponent**([**IApplicationComponent**](Component/IApplicationComponent.md)* component) (bool)**:** remove component
 	+  **Init**() (bool) (virtual)**:** init application
 	+  **Release**() (void) (virtual)**:** release application
 	+  **Start**() (void) (virtual)**:** this method is called when the application start
