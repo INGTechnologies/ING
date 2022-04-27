@@ -30,7 +30,7 @@
 /**
  *	Include Start Frame Update Event
  */
-#include <ING/Engine/Event/FrameUpdate/Start.h>
+#include <ING/Engine/Event/FrameUpdate/StartFrameUpdate.h>
 
 
 
@@ -44,7 +44,7 @@
 /**
  *	Include End Frame Update Event
  */
-#include <ING/Engine/Event/FrameUpdate/End.h>
+#include <ING/Engine/Event/FrameUpdate/EndFrameUpdate.h>
 
 
 
