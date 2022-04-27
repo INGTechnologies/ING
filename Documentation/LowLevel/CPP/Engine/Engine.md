@@ -14,7 +14,7 @@
 -  `Properties`:
 	+  **configuration** ([**Configuration**](../Configuration/Configuration.md)*)**:** store engine options,...
 		*  `Getter`: **GetConfiguration**()
-	+  **state** ([**EngineState**](State/State.md))**:** game engine state
+	+  **state** ([**EngineState**](State/EngineState.md))**:** game engine state
 		*  `Getter`: **GetState**()
 	+  **gameDir** (std::string)**:** game directory
 	+  **gameDir_wstr** (std::wstring)**:** game directory but in std::wstring type
