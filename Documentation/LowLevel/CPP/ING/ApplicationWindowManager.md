@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Manage application windows
+-  `Description`: Manages application windows
 -  `Parent Class`: [**IApplicationComponent**](./IApplicationComponent.md)
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

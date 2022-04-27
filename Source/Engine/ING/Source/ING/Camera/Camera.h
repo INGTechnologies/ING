@@ -54,6 +54,8 @@ namespace ING {
 
 		class IPipeline;
 
+		class ICameraData;
+
 	}
 
 	struct TransformS;
@@ -63,7 +65,7 @@ namespace ING {
 
 
 
-	enum CAMERA_TARGET_MODE {
+	enum CameraTargetMode {
 
 		CAMERA_TARGET_SCREEN,
 		CAMERA_TARGET_TEXTURE
@@ -128,11 +130,11 @@ namespace ING {
 
 		Rendering::Scene*		renderingScene;
 
-		void*					renderingData;
+		Rendering::ICameraData*	renderingData;
 
 		Rendering::IPipeline*	renderingPipeline;
 
-		CAMERA_TARGET_MODE		targetMode;
+		CameraTargetMode		targetMode;
 
 	public:
 		List<Camera*>::Node*	GetNode				()							{ return node; }
@@ -166,14 +168,14 @@ namespace ING {
 		Rendering::Scene*		GetRenderingScene	()							{ return renderingScene; }
 		void					SetRenderingScene	(Rendering::Scene* renderingScene)	{ this->renderingScene = renderingScene;}
 
-		void*					GetRenderingData	()							{ return renderingData; }
-		void					SetRenderingData	(void* renderingData)		{ this->renderingData = renderingData; }
+		Rendering::ICameraData*	GetRenderingData	()							{ return renderingData; }
+		void					SetRenderingData	(Rendering::ICameraData* renderingData)		{ this->renderingData = renderingData; }
 
 		Rendering::IPipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
 		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { this->renderingPipeline = renderingPipeline; }
 
-		CAMERA_TARGET_MODE		GetTargetMode		()							{ return targetMode; }
-		void					SetTargetMode		(CAMERA_TARGET_MODE mode);
+		CameraTargetMode		GetTargetMode		()							{ return targetMode; }
+		void					SetTargetMode		(CameraTargetMode mode);
 
 		unsigned int			GetClientWidth		();
 		unsigned int			GetClientHeight		();

@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "Data.h"
+#include "CameraData.h"
 
 
 
@@ -79,7 +79,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Data::Data(Camera* camera) {
+			CameraData::CameraData(Camera* camera) : ICameraData(camera) {
 
 				if (camera->GetTargetMode() == CAMERA_TARGET_SCREEN && camera->GetScreen() != 0) {
 
@@ -89,10 +89,22 @@ namespace ING {
 
 			}
 
-			Data::~Data() {
+			CameraData::~CameraData() {
 
 				
 
+			}
+
+
+
+			/**
+			 *	Release Method
+			 */
+			void CameraData::Release() {
+
+
+
+				ICameraData::Release();
 			}
 
 		}

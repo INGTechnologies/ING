@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Manage application rendering features
+-  `Description`: Manages application rendering features
 -  `Parent Class`: [**IApplicationComponent**](./IApplicationComponent.md)
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

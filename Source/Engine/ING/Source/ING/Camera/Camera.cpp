@@ -58,6 +58,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Rendering CameraData
+ */
+#include <ING/Rendering/CameraData/CameraData.h>
+
+
+
+/**
  *	Include XMath
  */
 //#include <ING/XMath/XMathDef.h>
@@ -72,7 +79,8 @@ namespace ING {
 	Camera::Camera() :
 		node(0),
 		renderingPipeline(0),
-		renderingScene(0)
+		renderingScene(0),
+		renderingData(0)
 	{
 
 		isActive	= true;
@@ -108,6 +116,8 @@ namespace ING {
 		if (GetTargetMode() == CAMERA_TARGET_SCREEN)
 			screen->RemoveCamera(this);
 
+		renderingData->Release();
+
 		CameraManager::GetInstance()->RemoveCamera(node);
 
 		delete this;
@@ -132,7 +142,7 @@ namespace ING {
 		Update(); 
 	}
 
-	void Camera::SetTargetMode(CAMERA_TARGET_MODE mode) {
+	void Camera::SetTargetMode(CameraTargetMode mode) {
 
 		if (mode == targetMode) return;
 

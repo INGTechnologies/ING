@@ -3,7 +3,7 @@
 
 
 ## Basic Info ##
--  `Description`: An IApplicationComponent is a component of an application.
+-  `Description`: An **IApplicationComponent** is a component of an application.
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: a class which has some debugging method
+-  `Description`: a class that has some debugging method
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 

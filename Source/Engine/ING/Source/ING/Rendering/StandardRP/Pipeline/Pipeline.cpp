@@ -65,7 +65,7 @@
 /**
  *	Include Rendering Data
  */
-#include <ING/Rendering/StandardRP/Data/Data.h>
+#include <ING/Rendering/StandardRP/CameraData/CameraData.h>
 
 
 
@@ -196,7 +196,7 @@ namespace ING {
 			 */
 			void Pipeline::SetupCamera(IDeviceContext* context, Camera* camera) {
 
-				Data* renderingData = new Data(camera);
+				CameraData* renderingData = new CameraData(camera);
 
 				camera->SetRenderingData(renderingData);
 
@@ -204,7 +204,7 @@ namespace ING {
 
 			void Pipeline::ClearRenderingData(Camera* camera) {
 
-				Data* renderingData = (Data*)camera->GetRenderingData();
+				CameraData* renderingData = (CameraData*)camera->GetRenderingData();
 
 			}
 
@@ -214,7 +214,7 @@ namespace ING {
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
-					Data* renderingData = (Data*)camera->GetRenderingData();
+					CameraData* renderingData = (CameraData*)camera->GetRenderingData();
 
 					context->OMSetRenderTargets(renderingData->GetMainRTV(),0);
 

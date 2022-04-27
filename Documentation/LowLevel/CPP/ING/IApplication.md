@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represent for application, managed by [**ApplicationManager**](./ApplicationManager.md)
+-  `Description`: Represents application, managed by [**ApplicationManager**](./ApplicationManager.md)
 -  `Parent Class`: None
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
@@ -16,7 +16,7 @@
 		*  `Getter`: **GetName**()
 	+  **configPath** (std::string)**:** application configuration file path
 		*  `Getter`: **GetConfigPath**()
-	+  **configuration** ([**Configuration**]()*)**:** application configuration
+	+  **configuration** ([**Configuration**](./Configuration.md)*)**:** application configuration
 		*  `Getter`: **GetConfiguration**()
 	+  **windowManager** ([**ApplicationWindowManager**](./ApplicationWindowManager.md)*)**:** application window manager
 		*  `Getter`: **GetWindowManager**()

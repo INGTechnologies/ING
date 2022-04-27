@@ -110,14 +110,14 @@ namespace ING {
 			Rendering::Scene*		GetRenderingScene	() { return ingCamera->GetRenderingScene(); }
 			void					SetRenderingScene	(Rendering::Scene* renderingScene) { ingCamera->SetRenderingScene(renderingScene); }
 
-			void*					GetRenderingData	() { return ingCamera->GetRenderingScene(); }
-			void					SetRenderingData	(void* renderingData) { ingCamera->SetRenderingData(renderingData); }
+			Rendering::ICameraData*	GetRenderingData	() { return ingCamera->GetRenderingData(); }
+			void					SetRenderingData	(Rendering::ICameraData* renderingData) { ingCamera->SetRenderingData(renderingData); }
 
 			Rendering::IPipeline*	GetRenderingPipeline() { return ingCamera->GetRenderingPipeline(); }
 			void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { ingCamera->SetRenderingPipeline(renderingPipeline); }
 
-			CAMERA_TARGET_MODE		GetTargetMode		() { return ingCamera->GetTargetMode(); }
-			void					SetTargetMode		(CAMERA_TARGET_MODE mode) { ingCamera->SetTargetMode(mode); }
+			CameraTargetMode		GetTargetMode		() { return ingCamera->GetTargetMode(); }
+			void					SetTargetMode		(CameraTargetMode mode) { ingCamera->SetTargetMode(mode); }
 
 			unsigned int			GetClientWidth		() { return ingCamera->GetClientWidth(); }
 			unsigned int			GetClientHeight		() { return ingCamera->GetClientHeight(); }

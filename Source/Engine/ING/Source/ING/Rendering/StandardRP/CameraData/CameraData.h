@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering CameraData
+ */
+#include <ING/Rendering/CameraData/CameraData.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -30,14 +37,22 @@ namespace ING {
 
 		namespace StandardRP {
 
-			struct ING_API Data {
+			struct ING_API CameraData : public ICameraData {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				Data(Camera* camera);
-				~Data();
+				CameraData(Camera* camera);
+				~CameraData();
+
+
+
+				/**
+				 *	Release Method
+				 */
+			public:
+				virtual void Release() override;
 
 
 

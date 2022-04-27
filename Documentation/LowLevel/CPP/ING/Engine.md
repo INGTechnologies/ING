@@ -2,7 +2,7 @@
 
 
 ## Basic Info ##
--  `Description`: Represent for game engine and manage all engine's systems, managers,...
+-  `Description`: Represents game engine and manages all engine's systems, managers,...
 -  `Parent Class`: [**Board**](./Utils/Board.md)<[**ING**::**Engine**](./Engine.md)>
 -  `Project`: **Engine**/**ING**  (c++, dll)
 
