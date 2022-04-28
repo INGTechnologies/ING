@@ -55,8 +55,6 @@ int main(int argc, char** argv)
 
 	ING::Engine::CreateInstance();
 
-	ING::Engine::GetInstance()->SetProgramHandle(0);
-
 	ING::Editor::Application* editorApplication = new ING::Editor::Application("Game:/Config.ini", projectPath);
 
 	if (!ING::Engine::GetInstance()->Init()) return 1;

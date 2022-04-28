@@ -107,15 +107,15 @@ namespace ING {
 		 */
 		void	Application::SetupRootPaths() {
 
-			Engine::GetInstance()->AddRootPath(
+			Engine::GetInstance()->SetRootPath(
 
 				L"Editor",
 
-				Engine::GetInstance()->GetAbsolutePathFromRootPath(L"Game")
+				Engine::GetInstance()->GetRootPath(L"Game")
 
 			);
 
-			Engine::GetInstance()->AddRootPath(
+			Engine::GetInstance()->SetRootPath(
 
 				L"Game",
 

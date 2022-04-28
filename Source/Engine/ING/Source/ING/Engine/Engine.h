@@ -75,8 +75,6 @@ namespace ING {
 
 		std::unordered_map<std::wstring, std::wstring> rootPath2AbsolutePath;
 
-		void*				programHandle;
-
 		EngineState			state;
 
 		Configuration*		configuration;
@@ -88,11 +86,13 @@ namespace ING {
 		const std::wstring& GetWorkingDir_WSTR			() { return workingDir_wstr; }
 		const std::string&	GetName						() { return name; }
 
-		const std::wstring& GetAbsolutePathFromRootPath	(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
+		const std::wstring& GetRootPath					(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
 		bool				IsHaveRootPath				(const std::wstring& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
+		void				SetRootPath					(const std::wstring& name, const std::wstring& value) {
 
-		void*				GetProgramHandle			() { return programHandle; }
-		void				SetProgramHandle			(void* programHandle) { this->programHandle = programHandle; }
+			rootPath2AbsolutePath[name] = value;
+
+		}
 
 		EngineState			GetState					() { return state; }
 
@@ -105,8 +105,6 @@ namespace ING {
 		 */
 	public:
 		void FrameUpdate();
-
-		void AddRootPath(const std::wstring& name, const std::wstring& value);
 
 	};
 
@@ -140,7 +138,7 @@ namespace ING {
 	ING::Engine::GetInstance()->GetConfiguration()->Set<T>(name, value);\
 \
 
-#define ING_ENGINE_GET_CONFIG_PROP(T, name, value) \
+#define ING_ENGINE_GET_CONFIG_PROP(T, name) \
 \
 	ING::Engine::GetInstance()->GetConfiguration()->Get<T>(name);\
 \

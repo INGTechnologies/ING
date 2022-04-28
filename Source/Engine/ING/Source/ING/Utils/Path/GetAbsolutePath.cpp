@@ -34,7 +34,7 @@ namespace ING {
 
 				if (Engine::GetInstance()->IsHaveRootPath(rootName_wstr)) {
 
-					return String(Engine::GetInstance()->GetAbsolutePathFromRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return String(Engine::GetInstance()->GetRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 
@@ -48,7 +48,7 @@ namespace ING {
 
 				if (Engine::GetInstance()->IsHaveRootPath(rootName.first)) {
 
-					return Engine::GetInstance()->GetAbsolutePathFromRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return Engine::GetInstance()->GetRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 

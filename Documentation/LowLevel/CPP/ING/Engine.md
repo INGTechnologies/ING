@@ -1,57 +1,120 @@
-# ING::Engine class #  
 
-
-## Basic Info ##
--  `Description`: Represents game engine and manages all engine's systems, managers,...
--  `Parent Class`: [**ING**::**Board**](./Utils/Board.md)<[**ING**::**Engine**](./Engine.md)>
--  `Project`: **Engine**/**ING**  (c++, dll)
-
-## Members ##
--  `Constructor`:
-	+  **Engine**()
--  `Destructor`:
-	+  **~Engine**()
--  `Properties`:
-	+  [**ING**::**Configuration**](./Configuration.md)* **configuration**
-		*  `Getter`: **GetConfiguration**()
-	+  [**ING**::**EngineState**](./EngineState.md) **state**
-		*  `Getter`: **GetState**()
-	+  std::string **gameDir** **:** game directory
-	+  std::wstring **gameDir_wstr** **:** game directory but in std::wstring type
-	+  std::string **workingDir** **:** current working directory
-	+  std::wstring **workingDir_wstr** :**:** current working directory but in std::wstring type
-	+  std::string **name**
-	+  std::unordered_map<std::wstring,  std::wstring> **rootPath2AbsolutePath** **:** root path to absolute path map
--  `Methods`:
-	+  virtual bool **Init**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Init**()
-	+  virtual bool **Run**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Run**()
-	+  virtual bool **Release**() **:** override [**ING**::**Board**](./Utils/Board.md)<**[**ING**::**Engine**](./Engine.md)**>::**Release**()
-	+  void **FrameUpdate**() **:** engine will call this method every frame
-	+  void **AddRootPath**(const std::wstring& name, const std::wstring& value)**:** add new root path with name and value
-	+  void **Shutdown**() **:** for shutting down engine
-
-## Squares ##
--  [**ING::System**](./System.md)
--  [**ING::Core**](./Core.md)
--  [**ING::Time**](./Time.md)
--  [**ING::Profiler**](./Profiler.md)
--  [**ING::ResourceManager**](./ResourceManager.md)
--  [**ING::EventManager**](./EventManager.md)
--  [**ING::ThreadManager**](./ThreadManager.md)
--  [**ING::EngineThreadManager**](./EngineThreadManager.md)
--  [**ING::Rendering::Engine**](./Rendering/Engine.md)
--  [**ING::ScreenManager**](./ScreenManager.md)
--  [**ING::WindowManager**](./WindowManager.md)
--  [**ING::JobSystem**](./JobSystem.md)
--  [**ING::CameraManager**](./CameraManager.md)
--  [**ING::ObjectManager**](./ObjectManager.md)
--  [**ING::Scripting::Manager**](./Scripting/Manager.md)
--  [**ING::ApplicationManager**](./ApplicationManager.md)
- 
-## Macros ##
-+  **ING_CREATE_ENGINE**()**:** create engine
-+  **ING_INIT_ENGINE**()**:** init engine
-+  **ING_RUN_ENGINE**()**:** run engine
-+  **ING_ENGINE_CONFIG_PROP**(T, name, value)**:** try add new configuration property
-+  **ING_ENGINE_SET_CONFIG_PROP**(T, name, value)**:** set configuration property value by name
-+  **ING_ENGINE_GET_CONFIG_PROP**(T, name, value)**:** get configuration property value by name
+# [**ING::Engine**](./..//ING\Engine.md) #
+                
+## **Basic Info** ##
+- `Description` **:** Represents the main engine, manages all engine's systems, managers,...
+- `Parent` **:** ING::Utils::Board < [**ING::Engine**](./..//ING\Engine.md) > 
+- `Project` **:** **ING**
+                    
+## **Members** ##
+                    
+- `Property` **:**
+    
+                
+    + std::string **name** 
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + const std::string& **GetName**() 
+                                    
+                                
+    + std::string **gameDir**  **:** game directory path
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + const std::string& **GetGameDir**() 
+                                    
+                                
+    + std::wstring **gameDir_wstr**  **:** game directory path in wide string
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + const std::string& **GetGameDir_WSTR**() 
+                                    
+                                
+    + std::string **workingDir**  **:** current working directory path
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + const std::string& **GetWorkingDir**() 
+                                    
+                                
+    + std::wstring **workingDir_wstr**  **:** current working directory path in wide string
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + const std::string& **GetWorkingDir_WSTR**() 
+                                    
+                                
+    + std::unordered_map<std::wstring, std::wstring> **rootPath2AbsolutePath**  **:** root path to absolute path map
+        
+                    
+        + `Item Getters` :
+                                    
+                                
+            + const std::wstring& **GetRootPath**(const std::wstring& rootPath)  **:** get the value of root path
+                                    
+                                
+            + bool **IsHaveRootPath**(const std::wstring& rootPath)  **:** check if engine has 'rootPath' root path
+                                    
+                                
+        + `Item Setter` :
+                                            
+                                
+            + void **SetRootPath**(const std::wstring& name, const std::wstring& value)  **:** set the value of root path by name and value
+                                    
+                                
+    + ING::EngineState **state** 
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + ING::EngineState **GetState**() 
+                                    
+                                
+    + ING::Configuration* **configuration** 
+        
+                    
+        + `Getter` :
+                                            
+                                
+            + ING::Configuration* **GetConfiguration**() 
+                                    
+                                
+- `Method` **:**
+    
+                
+    + void **FrameUpdate**()  **:** this method is called every frame
+                        
+                            
+## **Macros** ##
+                    
++ **ING_CREATE_ENGINE**  **:** to create the engine
+                        
+                    
++ **ING_INIT_ENGINE**  **:** to init the engine
+                        
+                    
++ **ING_RUN_ENGINE**  **:** to run the engine
+                        
+                    
++ **ING_ENGINE_CONFIG_PROP**(T, name, value)  **:** try add new engine configuration property
+                        
+                    
++ **ING_ENGINE_SET_CONFIG_PROP**(T, name, value)  **:** set engine configuration property
+                        
+                    
++ **ING_ENGINE_GET_CONFIG_PROP**(T, name)  **:** get engine configuration property
+                        
+         
