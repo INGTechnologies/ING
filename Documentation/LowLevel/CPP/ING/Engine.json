@@ -10,7 +10,7 @@
 
             "description" : "Represents the main engine, manages all engine's systems, managers,...",
 
-            "parent" : "ING::Utils::Board < ING::Engine > ",
+            "parent" : "ING::Utils::Board < ING::Engine > ING::ApplicationManager",
     
             "project" : "ING",
 
@@ -247,6 +247,12 @@
                     "description" : "get engine configuration property"
 
                 }
+
+            ],
+
+            "squares" : [
+                
+                "ING::ApplicationManager"
 
             ]
     

@@ -191,7 +191,7 @@ module.exports = new (class {
 
             for(let i = 0; i < result.length;){
 
-                if((!(i < result.length - cpp_obj_name.length)) && result.substring(i, cpp_obj_name.length + i) == cpp_obj_name){
+                if((i < result.length - cpp_obj_name.length) && result.substring(i, cpp_obj_name.length + i) == cpp_obj_name){
 
                     let startSplitI = i;
                     let endSplitI = cpp_obj_name.length + i - 1;
@@ -619,6 +619,45 @@ module.exports = new (class {
                     result += (
 `
 + ${macro.code} ${description_text}
+                        
+                    `);
+
+                }
+
+            }
+
+            let is_have_square = false;
+
+            if(_cpp_obj.squares != null){
+
+                if(_cpp_obj.squares.length > 0){
+
+                    is_have_square = true;
+
+                }
+
+            }
+
+            if(is_have_square){
+
+                if(_cpp_obj.squares.length > 1) {
+                    result += (
+`        
+## **Squares** ##
+                    `);
+                }
+                else{
+                    result += (
+`        
+## **Square** ##
+                    `);
+                }
+
+                for(let square of _cpp_obj.squares){
+
+                    result += (
+`
++ ${square}
                         
                     `);
 

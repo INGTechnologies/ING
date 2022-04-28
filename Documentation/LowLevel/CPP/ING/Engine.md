@@ -1,9 +1,9 @@
 
-# ING::Engine #
+# [**ING::Engine**](./..//ING\Engine.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** Represents the main engine, manages all engine's systems, managers,...
-- `Parent` **:** ING::Utils::Board < ING::Engine > 
+- `Parent` **:** ING::Utils::Board < [**ING::Engine**](./..//ING\Engine.md) > [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)
 - `Project` **:** **ING**
                     
 ## **Members** ##
@@ -116,5 +116,10 @@
                         
                     
 + **ING_ENGINE_GET_CONFIG_PROP**(T, name)  **:** get engine configuration property
+                        
+                            
+## **Square** ##
+                    
++ [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)
                         
                     
