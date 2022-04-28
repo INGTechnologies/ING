@@ -825,7 +825,24 @@ module.exports = new (class {
 
         cpp_obj_md_file_path += '.md';
 
-        return cpp_obj_md_file_path;
+        let result = '';
+
+        for(let i of cpp_obj_md_file_path){
+
+            if(i == '\\'){
+
+                result += '/'
+
+            }
+            else{
+
+                result += i;
+
+            }
+
+        }
+
+        return result;
     }
 
     md_get_abs_file_path(path_array){
