@@ -3,13 +3,6 @@
 
 
 /**
- *	Include System
- */
-#include <ING\Rendering/System/System.h>
-
-
-
-/**
  *	Include Shader Manager
  */
 #include <ING\Rendering/Shader/Manager/Manager.h>
@@ -139,6 +132,8 @@ namespace ING {
 
 			Debug::Log("Start Creating Rendering::Engine");
 
+			isRendering = false;
+
 			/**
 			 *	Add Squares
 			 */
@@ -159,9 +154,6 @@ namespace ING {
 
 			/* Layer Manager */
 			AddSquare<LayerManager>();
-
-			/* System */
-			AddSquare<System>();
 
 			Debug::Log("Rendering::Engine Created");
 
@@ -191,6 +183,8 @@ namespace ING {
 				Debug::Error("Cant Init Rendering::Engine");
 
 			}
+
+			isRendering = false;
 
 			return result;
 		}
@@ -226,6 +220,8 @@ namespace ING {
 		 */
 		void Engine::FrameUpdate() {
 
+			isRendering = true;
+
 			ApplicationManager::GetInstance()->PreRender();
 
 			ECS::RepositoryManager::GetInstance()->PreRender();
@@ -234,11 +230,13 @@ namespace ING {
 
 			ApplicationManager::GetInstance()->Render();
 
-			Rendering::System::GetInstance()->FrameUpdate();
+			//Rendering::System::GetInstance()->FrameUpdate();
 
 			ECS::RepositoryManager::GetInstance()->LateRender();
 
 			ApplicationManager::GetInstance()->LateRender();
+
+			isRendering = false;
 
 		}
 

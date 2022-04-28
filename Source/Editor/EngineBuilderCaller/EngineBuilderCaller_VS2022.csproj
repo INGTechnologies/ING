@@ -54,6 +54,7 @@
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <PostBuildEvent>XCOPY "$(SolutionDir)Source\Editor\Engine\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\" /s /i /y
+    XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\" /s /i /y
     </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>

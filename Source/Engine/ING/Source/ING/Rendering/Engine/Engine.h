@@ -49,6 +49,17 @@ namespace ING {
 
 
 			/**
+			 *	Properties
+			 */
+		private:
+			bool		isRendering;
+
+		public:
+			bool		IsRendering() { return isRendering; }
+
+
+
+			/**
 			 *	Methods
 			 */
 		public:
@@ -58,4 +69,20 @@ namespace ING {
 
 	}
 
+}
+
+
+
+/**
+ *	Define Macros
+ */
+#define RENDERING_ASSERTION(A)  {\
+\
+	A;\
+	if (!Rendering::Engine::GetInstance()->IsRendering()){\
+	\
+		return false;\
+	\
+	}\
+\
 }

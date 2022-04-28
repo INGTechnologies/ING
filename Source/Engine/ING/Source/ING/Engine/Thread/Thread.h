@@ -57,26 +57,26 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		UpdateFunction updateFunction;
-		bool isFrameStart;
-		bool isFrameEnd;
-		std::mutex mutex;
+		UpdateFunction	updateFunction;
+		bool			isFrameStart;
+		bool			isFrameEnd;
+		std::mutex		mutex;
 		List<EngineThread*>::Node* node;
 
 	public:
-		UpdateFunction		GetUpdateFunction	() { return updateFunction; }
+		UpdateFunction	GetUpdateFunction	() { return updateFunction; }
 
-		bool				IsFrameStart		() { 
+		bool			IsFrameStart		() { 
 			
 			return isFrameStart; 
 		}
 
-		bool				IsFrameEnd			() { 
+		bool			IsFrameEnd			() { 
 			
 			return isFrameEnd; 
 		}
 
-		std::mutex&	GetMutex			() { return mutex; }
+		std::mutex&		GetMutex			() { return mutex; }
 
 
 
@@ -88,7 +88,7 @@ namespace ING {
 
 		void Update();
 
-		void WaitUpdate();
+		void EndUpdate();
 
 	};
 

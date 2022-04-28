@@ -1,0 +1,305 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::ApplicationRenderingSystem",
+
+            "description" : "Represents a system of rendering features,...",
+
+            "parent" : "ING::IApplicationComponent",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**ApplicationRenderingSystem**(ING::IApplication* application)"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~ApplicationRenderingSystem**()"
+
+            },
+
+            "properties" : [
+
+                {
+                    
+                    "name" : "defaultDevice",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that the rendering system use it by default",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetDefaultDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetDefaultDevice**(ING::Rendering::IDevice* newDefaultDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "device",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that is currently used by the rendering system",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetDevice**(ING::Rendering::IDevice* newDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "targetDevice",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that will be used in the next frame",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetTargetDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetTargetDevice**(ING::Rendering::IDevice* newTargetDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "defaultPipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that the rendering system use it by default",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetDefaultPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetDefaultPipeline**(ING::Rendering::IPipeline* newDefaultPipeline)"
+                
+                        }
+                
+                    ]
+                
+                },
+                
+                {
+                    
+                    "name" : "pipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that is currently used by the rendering system",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetPipeline**(ING::Rendering::IPipeline* newPipeline)"
+                
+                        }
+                
+                    ]
+                
+                },
+                
+                {
+                    
+                    "name" : "targetPipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that will be used in the next frame",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetTargetPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetTargetPipeline**(ING::Rendering::IPipeline* newTargetPipeline)"
+                
+                        }
+                
+                    ]
+                
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Init**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual void **Release**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Release**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Start**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Start**()"
+
+                },
+                
+                {
+
+                    "code" : "void **PreUpdate**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**PreUpdate**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Update**()"
+
+                },
+                
+                {
+
+                    "code" : "void **LateUpdate**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**LateUpdate**()"
+
+                },
+                
+                {
+
+                    "code" : "void **PreRender**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**PreRender**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Render**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Render**()"
+
+                },
+                
+                {
+
+                    "code" : "void **LateRender**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**LateRender**()"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}

@@ -1,0 +1,119 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::CameraManager",
+
+            "description" : "Manages cameras",
+
+            "parent" : "ING::Utils::Singleton<ING::CameraManager>, ING::Utils::Square",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**CameraManager**()"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~CameraManager**()"
+
+            },
+
+            "properties" : [
+
+                {
+                    
+                    "name" : "cameraList",
+
+                    "type" : "List<ING::Camera*>",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "List<ING::Camera*>& **GetCameraList**()"
+
+                        }
+
+                    ]
+
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "overrided from ING::Utils::Square::**Init**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual bool **Run**()",
+
+                    "description" : "overrided from ING::Utils::Square::**Run**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual bool **Release**()",
+
+                    "description" : "overrided from ING::Utils::Square::**Release**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Frame Update**()",
+
+                    "description" : "called every frame"
+
+                },
+                
+                {
+
+                    "code" : "void **AddCamera**(ING::Camera* camera)",
+
+                    "description" : "add a camera for managing"
+
+                },
+                
+                {
+
+                    "code" : "void **RemoveCamera**(ING::Camera* camera)",
+
+                    "description" : "remove a camera that is currently managed"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}

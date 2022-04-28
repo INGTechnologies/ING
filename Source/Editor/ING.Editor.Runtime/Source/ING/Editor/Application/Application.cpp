@@ -23,7 +23,7 @@
 /**
  *	Include ApplicationWindowManager
  */
-#include <ING/Application/Window/Manager/Manager.h>
+#include <ING/Application/WindowManager/WindowManager.h>
 
 
 
@@ -63,11 +63,7 @@ namespace ING {
 			gameApplication(0)
 		{
 
-			SetupRootPaths();
 
-			CreateMainWindow();
-
-			CreateGameApplication();
 
 		}
 
@@ -80,11 +76,23 @@ namespace ING {
 
 
 		/**
-		 *	Release Methods
+		 *	Init, Release Methods
 		 */
+		bool	Application::Init() {
+
+			if(!IApplication::Init())return false;
+
+			SetupRootPaths();
+
+			CreateMainWindow();
+
+			CreateGameApplication(); 
+
+		}
 		void	Application::Release() {
 
-			gameApplication->Release();
+			if(gameApplication != 0)
+				gameApplication->Release();
 
 			IApplication::Release();
 
@@ -99,15 +107,15 @@ namespace ING {
 		 */
 		void	Application::SetupRootPaths() {
 
-			Engine::GetInstance()->AddRootPath(
+			Engine::GetInstance()->SetRootPath(
 
 				L"Editor",
 
-				Engine::GetInstance()->GetAbsolutePathFromRootPath(L"Game")
+				Engine::GetInstance()->GetRootPath(L"Game")
 
 			);
 
-			Engine::GetInstance()->AddRootPath(
+			Engine::GetInstance()->SetRootPath(
 
 				L"Game",
 

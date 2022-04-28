@@ -1,0 +1,467 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::Camera",
+
+            "description" : "a device through which the player views the world",
+
+            "parent" : "None",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**Camera**()"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~Camera**()"
+
+            },
+
+            "properties" : [
+
+                {
+
+                    "name" : "node",
+
+                    "type" : "ING::List<ING::Camera*>::Node*",
+
+                    "description" : "the node in the camera list of ING::CameraManager",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::List<ING::Camera*>::Node* **GetNode**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "nodeInScreenCameraList",
+
+                    "type" : "ING::List<ING::Camera*>::Node*",
+
+                    "description" : "the node in the camera list of screen",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::List<ING::Camera*>::Node* **GetNodeInScreenCameraList**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "id",
+
+                    "type" : "ING::CameraId*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::CameraId **GetId**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "isActive",
+
+                    "type" : "bool",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "bool **IsActive**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetActive**(bool isActive)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "viewMatrix",
+
+                    "type" : "ING::Math::RMatrix4x4",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "const ING::Math::RMatrix4x4& **GetViewMatrix**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "projectionMatrix",
+
+                    "type" : "ING::Math::RMatrix4x4",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "const ING::Math::RMatrix4x4& **GetProjectionMatrix**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "transformM",
+
+                    "type" : "ING::TransformM",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "const ING::TransformM& **GetTransformM**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetTransformM**(const ING::TransformM& newTransformM)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "farPlane",
+
+                    "type" : "float",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "float **GetFarPlane**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetFarPlane**(float newFarPlane)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "nearPlane",
+
+                    "type" : "float",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "float **GetNearPlane**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetNearPlane**(float newNearPlane)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "farPlane",
+
+                    "type" : "float",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "float **GetFarPlane**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetFarPlane**(float newFarPlane)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "screen",
+
+                    "type" : "ING::Screen*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Screen* **GetScreen**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetScreen**(ING::Screen* newScreen)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "oldScreenWidth",
+
+                    "type" : "unsigned int"
+ 
+                },
+
+                {
+
+                    "name" : "oldScreenHeight",
+
+                    "type" : "unsigned int"
+
+                },
+
+                {
+
+                    "name" : "renderingScene",
+
+                    "type" : "ING::Rendering::Scene*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::Scene* **GetRenderingScene**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetRenderingScene**(ING::Rendering::Scene* newScene)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "renderingData",
+
+                    "type" : "ING::Rendering::ICameraData*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::ICameraData* **GetRenderingData**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetRenderingData**(ING::Rendering::ICameraData* newData)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "renderingPipeline",
+
+                    "type" : "ING::Rendering::IPipeline*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IPipeline* **GetRenderingPipeline**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetRenderingPipeline**(ING::Rendering::IPipeline* newPipeline)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+
+                    "name" : "targetMode",
+
+                    "type" : "ING::CameraTargetMode",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "CameraTargetMode **GetTargetMode**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetTargetMode**(CameraTargetMode newTargetMode)"
+
+                        }
+
+                    ]
+
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "called every frame"
+
+                },
+                
+                {
+
+                    "code" : "unsigned int **GetClientWidth**()",
+
+                    "description" : "get screen's window client width"
+
+                },
+                
+                {
+
+                    "code" : "unsigned int **GetClientHeight**()",
+
+                    "description" : "get screen's window client height"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}

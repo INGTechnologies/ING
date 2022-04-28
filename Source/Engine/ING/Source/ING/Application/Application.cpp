@@ -32,7 +32,7 @@ using namespace ING::Utils;
 /**
  *	Include ApplicationWindowManager
  */
-#include <ING/Application/Window/Manager/Manager.h>
+#include <ING/Application/WindowManager/WindowManager.h>
 
 
 
@@ -43,6 +43,18 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering System
+ */
+#include <ING/Application/RenderingSystem/RenderingSystem.h>
+
+
+
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
 
 
 namespace ING {
@@ -52,22 +64,17 @@ namespace ING {
 	 */
 	IApplication::IApplication(const std::string& configPath) :
 		name("INGApplication"),
-		configPath(configPath)
+		configPath(configPath),
+		configuration(0),
+		windowManager(0),
+		renderingSystem(0)
 	{
 
-		configuration = new Configuration();
-
-		configuration->LoadFromFile(configPath);
-
-		if (!configuration->Exist("ING.Application.name")) {
-
-			name = configuration->Get<std::string>("ING.Application.name");
-
-		}
-
 		windowManager = new ApplicationWindowManager(this);
+		AddComponent(windowManager);
 
-		ApplicationManager::GetInstance()->AddApplication(this);
+		renderingSystem = new ApplicationRenderingSystem(this);
+		AddComponent(renderingSystem);
 
 	}
 
@@ -81,14 +88,67 @@ namespace ING {
 
 
 	/**
-	 *	Release Methods
+	 *	Init, Release Methods
 	 */
+	bool IApplication::Init()
+	{
+
+		Debug::Log(String("Start Creating An Application ") + configPath);
+
+		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
+
+			Debug::Error(configPath + String(" Not Found, Cant Create Application"));
+
+			Release();
+
+			return false; 
+		}
+
+		configuration = new Configuration();
+
+		configuration->LoadFromFile(configPath);
+
+		if (!configuration->Exist("ING.Application.name")) {
+
+			name = configuration->Get<std::string>("ING.Application.name");
+
+		}
+
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
+
+			if (!componentVector[i]->Init()) {
+
+				Debug::Error(String("Cant Init ") + String('"') + componentVector[i]->GetName() + String('"') + String(" Application Component"));
+
+				Release();
+
+				return false;
+
+			}
+
+		}
+
+		ApplicationManager::GetInstance()->AddApplication(this);
+
+		Debug::Log(String("Finished Creating An Application ") + configPath);
+
+		return true;
+
+	}
 	void IApplication::Release()
 	{
 
-		delete configuration;
+		for (unsigned int i = 0; i < componentVector.size();) {
 
-		delete windowManager;
+			componentVector[i]->Release();
+
+		}
+
+		if (configuration != 0)
+			delete configuration;
+
+		name2ComponentIndexMap.clear();
+		componentVector.clear();
 
 		ApplicationManager::GetInstance()->RemoveApplication(this);
 
@@ -100,45 +160,103 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
+	void	IApplication::AddComponent(IApplicationComponent* component) {
+
+		name2ComponentIndexMap[component->GetName()] = componentVector.size();
+
+		componentVector.resize(componentVector.size() + 1);
+
+		componentVector[componentVector.size() - 1] = component;
+
+	}
+
+	void	IApplication::RemoveComponent(IApplicationComponent* component) {
+
+		unsigned int index = name2ComponentIndexMap[component->GetName()];
+
+		componentVector.erase(componentVector.begin() + index);
+
+		name2ComponentIndexMap.erase(component->GetName());
+
+		for (auto& item : name2ComponentIndexMap) {
+
+			if (item.second > index) {
+
+				item.second--;
+
+			}
+
+		}
+
+	}
+
 	void	IApplication::Start() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->Start();
+
+		}
 
 	}
 
 	void	IApplication::PreUpdate() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->PreUpdate();
+
+		}
 
 	}
 
 	void	IApplication::Update() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->Update();
+
+		}
 
 	}
 
 	void	IApplication::LateUpdate() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->LateUpdate();
+
+		}
 
 	}
 
 	void	IApplication::PreRender() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->PreRender();
+
+		}
 
 	}
 
 	void	IApplication::Render() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->Render();
+
+		}
 
 	}
 
 	void	IApplication::LateRender() {
 
+		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
+			componentVector[i]->LateRender();
+
+		}
 
 	}
 	

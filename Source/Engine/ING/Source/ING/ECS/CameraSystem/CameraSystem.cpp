@@ -48,7 +48,7 @@ namespace ING {
 
 			TransformPtr transform = GetRepository()->GetComponentSystem<TransformSystem>()->GetComponent(camera.GetEntity());
 
-			camera.SetTransform(transform->GetMatrices());
+			camera.SetTransformM(transform->GetMatrices());
 
 		}
 

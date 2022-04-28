@@ -143,6 +143,10 @@ namespace ING {
 
 		}
 
+
+		/* Icon */
+		virtual void	SetIconFromFile(const std::wstring& path);
+
 		std::wstring	GetTitle();
 
 

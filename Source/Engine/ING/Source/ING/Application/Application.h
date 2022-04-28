@@ -22,6 +22,10 @@ namespace ING {
 
 	class ApplicationWindowManager;
 
+	class ApplicationRenderingSystem;
+
+	class IApplicationComponent;
+
 
 
 	class ING_API IApplication
@@ -45,9 +49,10 @@ namespace ING {
 
 
 		/**
-		 *	Release Methods
+		 *	Init, Release Methods
 		 */
 	public:
+		virtual bool Init	();
 		virtual void Release();
 
 
@@ -64,6 +69,11 @@ namespace ING {
 
 		ApplicationWindowManager*	windowManager;
 
+		ApplicationRenderingSystem*	renderingSystem;
+
+		std::unordered_map<std::string, unsigned int> name2ComponentIndexMap;
+		std::vector<IApplicationComponent*> componentVector;
+
 	public:
 		const std::string&			GetName			() { return name; }
 
@@ -73,12 +83,21 @@ namespace ING {
 
 		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
 
+		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
+
+		IApplicationComponent*		GetComponent	(const std::string& name) { return componentVector[name2ComponentIndexMap[name]]; }
+
+		IApplicationComponent*		GetComponent	(unsigned int index) { return componentVector[index]; }
+
 
 
 		/**
 		 *	Methods
 		 */
 	public:
+		void			AddComponent	(IApplicationComponent* component);
+		void			RemoveComponent	(IApplicationComponent* component);
+
 		virtual void	Start();
 
 		virtual void	PreUpdate();

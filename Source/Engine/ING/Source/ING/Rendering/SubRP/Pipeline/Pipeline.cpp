@@ -70,9 +70,9 @@
 
 
 /**
- *	Include Rendering System
+ *	Include Rendering Engine
  */
-#include <ING/Rendering/System/System.h>
+#include <ING/Rendering/Engine/Engine.h>
 
 
 

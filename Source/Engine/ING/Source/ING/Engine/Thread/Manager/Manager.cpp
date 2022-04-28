@@ -177,7 +177,7 @@ namespace ING {
 
 		applicationThreadList.Foreach([](EngineThread*& thread) {
 		
-			thread->WaitUpdate();
+			thread->EndUpdate();
 			
 		});
 

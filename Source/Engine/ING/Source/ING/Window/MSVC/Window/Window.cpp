@@ -32,19 +32,26 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Engine
+ */
+#include <ING/Engine/Engine.h>
+
+
+
+/**
  *	Include Events
  */
 /* Destroy */
 #include <ING/Window/Event/Destroy/Destroy.h>
 
 /* Key Events */
-#include <ING/Window/Event/Key/Down/Down.h>
-#include <ING/Window/Event/Key/Up/Up.h>
+#include <ING/Window/Event/Key/KeyDown.h>
+#include <ING/Window/Event/Key/KeyUp.h>
 
 /* Mouse Events */
-#include <ING/Window/Event/Mouse/Button/Down/Down.h>
-#include <ING/Window/Event/Mouse/Button/Up/Up.h>
-#include <ING/Window/Event/Mouse/Move/Move.h>
+#include <ING/Window/Event/Mouse/Button/MouseButtonDown.h>
+#include <ING/Window/Event/Mouse/Button/MouseButtonUp.h>
+#include <ING/Window/Event/Mouse/Move/MouseMove.h>
 
 /* Resize Events */
 #include <ING/Window/Event/Resize/Resize.h>
@@ -294,6 +301,12 @@ namespace ING {
 			desc.title = title.c_str();
 
 			SetWindowTextW((HWND)handle, title.c_str());
+
+		}
+
+		void			Window::SetIconFromFile(const std::wstring& path) {
+
+
 
 		}
 

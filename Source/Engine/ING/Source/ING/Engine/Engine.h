@@ -64,42 +64,20 @@ namespace ING {
 
 
 		/**
-		 *	Configuration
+		 *	Properties
 		 */
 	private:
-		Configuration* configuration;
-
-	public:
-		Configuration* GetConfiguration() {
-
-			return configuration;
-
-		}
-
-
-
-		/**
-		 *	State
-		 */
-	private:
-		EngineState state;
-
-	public:
-		EngineState GetState() { return state; }
-
-
-
-		/**
-		 *	Paths
-		 */
-	private:
-		std::string gameDir;
-		std::wstring gameDir_wstr;
-		std::string workingDir;
-		std::wstring workingDir_wstr;
-		std::string name;
+		std::string			gameDir;
+		std::wstring		gameDir_wstr;
+		std::string			workingDir;
+		std::wstring		workingDir_wstr;
+		std::string			name;
 
 		std::unordered_map<std::wstring, std::wstring> rootPath2AbsolutePath;
+
+		EngineState			state;
+
+		Configuration*		configuration;
 
 	public:
 		const std::string&	GetGameDir					() { return gameDir; }
@@ -108,8 +86,17 @@ namespace ING {
 		const std::wstring& GetWorkingDir_WSTR			() { return workingDir_wstr; }
 		const std::string&	GetName						() { return name; }
 
-		const std::wstring& GetAbsolutePathFromRootPath	(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
+		const std::wstring& GetRootPath					(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
 		bool				IsHaveRootPath				(const std::wstring& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
+		void				SetRootPath					(const std::wstring& name, const std::wstring& value) {
+
+			rootPath2AbsolutePath[name] = value;
+
+		}
+
+		EngineState			GetState					() { return state; }
+
+		Configuration*		GetConfiguration			() { return configuration; }
 
 
 
@@ -118,8 +105,6 @@ namespace ING {
 		 */
 	public:
 		void FrameUpdate();
-
-		void AddRootPath(const std::wstring& name, const std::wstring& value);
 
 	};
 
@@ -153,7 +138,7 @@ namespace ING {
 	ING::Engine::GetInstance()->GetConfiguration()->Set<T>(name, value);\
 \
 
-#define ING_ENGINE_GET_CONFIG_PROP(T, name, value) \
+#define ING_ENGINE_GET_CONFIG_PROP(T, name) \
 \
 	ING::Engine::GetInstance()->GetConfiguration()->Get<T>(name);\
 \

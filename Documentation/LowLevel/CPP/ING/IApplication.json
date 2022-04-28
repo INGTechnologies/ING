@@ -1,0 +1,257 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::IApplication",
+
+            "description" : "represents an application",
+
+            "parent" : "None",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "friends" : [
+
+                "class ING::ApplicationManager"
+
+            ],
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**IApplication**()"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~IApplication**()"
+
+            },
+
+            "properties" : [
+
+                {
+                    
+                    "name" : "name",
+
+                    "type" : "std::string",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "std::string **GetName**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "configPath",
+
+                    "type" : "std::string",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "std::string **GetConfigPath**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "configuration",
+
+                    "type" : "ING::Configuration*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Configuration* **GetConfiguration**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "windowManager",
+
+                    "type" : "ING::ApplicationWindowManager*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::ApplicationWindowManager* **GetWindowManager**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "renderingSystem",
+
+                    "type" : "ING::ApplicationRenderingSystem*",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::ApplicationRenderingSystem* **GetRenderingSystem**()"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "name2ComponentIndexMap",
+
+                    "type" : "std::unordered_map<std::string, unsigned int>"
+
+                },
+
+                {
+                    
+                    "name" : "componentVector",
+
+                    "type" : "std::vector<IApplicationComponent*>",
+
+                    "item_getters" : [
+
+                        {
+
+                            "code" : "ING::IApplicationComponent* **GetComponent**(const std::string& name)",
+
+                            "description" : "get component by name"
+
+                        },
+
+                        {
+
+                            "code" : "ING::IApplicationComponent* **GetComponent**(unsigned int index)",
+
+                            "description" : "get component by index"
+
+                        }
+
+                    ]
+
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "init application"
+
+                },
+                
+                {
+
+                    "code" : "virtual void **Release**()",
+
+                    "description" : "release application"
+
+                },
+                
+                {
+
+                    "code" : "void **Start**()",
+
+                    "description" : "called when the engine start running, it will call **Start** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreUpdate**()",
+
+                    "description" : "called before **Update**, it will call **PreUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "called every frame, it will call **Update** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateUpdate**()",
+
+                    "description" : "called after **Update**, it will call **LateUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreRender**()",
+
+                    "description" : "called before **Render**, it will call **PreRender** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Render**()",
+
+                    "description" : "called when the engine rendering, it will call **Render** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateRender**()",
+
+                    "description" : "called after **Render**, it will call **LateRender** method of each application"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}
