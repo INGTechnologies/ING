@@ -71,6 +71,21 @@
             + [**ING::ApplicationRenderingSystem**](./..//ING\ApplicationRenderingSystem.md)* **GetRenderingSystem**() 
                                     
                                 
+    + std::unordered_map < std::string, unsigned int >  **name2ComponentIndexMap** 
+        
+                    
+    + std::vector < IApplicationComponent* >  **componentVector** 
+        
+                    
+        + `Item Getters` :
+                                    
+                                
+            + ING::IApplicationComponent* **GetComponent**(const std::string& name)  **:** get component by name
+                                    
+                                
+            + ING::IApplicationComponent* **GetComponent**(unsigned int index)  **:** get component by index
+                                    
+                                
 - `Method` **:**
     
                 

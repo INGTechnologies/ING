@@ -128,6 +128,42 @@
 
                     ]
 
+                },
+
+                {
+                    
+                    "name" : "name2ComponentIndexMap",
+
+                    "type" : "std::unordered_map<std::string, unsigned int>"
+
+                },
+
+                {
+                    
+                    "name" : "componentVector",
+
+                    "type" : "std::vector<IApplicationComponent*>",
+
+                    "item_getters" : [
+
+                        {
+
+                            "code" : "ING::IApplicationComponent* **GetComponent**(const std::string& name)",
+
+                            "description" : "get component by name"
+
+                        },
+
+                        {
+
+                            "code" : "ING::IApplicationComponent* **GetComponent**(unsigned int index)",
+
+                            "description" : "get component by index"
+
+                        }
+
+                    ]
+
                 }
 
             ],
