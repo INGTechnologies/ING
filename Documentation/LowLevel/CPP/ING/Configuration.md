@@ -1,5 +1,5 @@
 
-# [**ING::Configuration**](./..//ING\Configuration.md) #
+# [**ING::Configuration**](./..//ING/Configuration.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** as it name

@@ -1,5 +1,5 @@
 
-# [**ING::ApplicationRenderingSystem**](./..//ING\ApplicationRenderingSystem.md) #
+# [**ING::ApplicationRenderingSystem**](./..//ING/ApplicationRenderingSystem.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** Represents a system of rendering features,...
@@ -10,7 +10,7 @@
                             
 - `Constructor` **:**
                     
-    + **ApplicationRenderingSystem**([**ING::IApplication**](./..//ING\IApplication.md)* application) 
+    + **ApplicationRenderingSystem**([**ING::IApplication**](./..//ING/IApplication.md)* application) 
                         
                             
 - `Destructor` **:**

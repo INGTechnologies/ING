@@ -1,9 +1,9 @@
 
-# [**ING::ApplicationManager**](./..//ING\ApplicationManager.md) #
+# [**ING::ApplicationManager**](./..//ING/ApplicationManager.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** Manages applications
-- `Parent` **:** ING::Utils::Singleton < [**ING::ApplicationManager**](./..//ING\ApplicationManager.md) > , ING::Utils::Square
+- `Parent` **:** ING::Utils::Singleton < [**ING::ApplicationManager**](./..//ING/ApplicationManager.md) > , ING::Utils::Square
 - `Project` **:** **ING**
                     
 ## **Members** ##
@@ -21,7 +21,7 @@
 - `Property` **:**
     
                 
-    + std::unordered_map < std::string,[**ING::IApplication**](./..//ING\IApplication.md)* >  **name2ApplicationMap**  **:** name to application map
+    + std::unordered_map < std::string,[**ING::IApplication**](./..//ING/IApplication.md)* >  **name2ApplicationMap**  **:** name to application map
         
                     
         + `Item Getter` :
@@ -63,9 +63,9 @@
     + void **LateRender**()  **:** called after **Render**, it will call **LateRender** method of each application
                         
                     
-    + void **AddApplication**([**ING::IApplication**](./..//ING\IApplication.md)* application)  **:** add an application for managing
+    + void **AddApplication**([**ING::IApplication**](./..//ING/IApplication.md)* application)  **:** add an application for managing
                         
                     
-    + void **RemoveApplication**([**ING::IApplication**](./..//ING\IApplication.md)* application)  **:** remove an application that is currently managed
+    + void **RemoveApplication**([**ING::IApplication**](./..//ING/IApplication.md)* application)  **:** remove an application that is currently managed
                         
                     

@@ -1,9 +1,9 @@
 
-# [**ING::CameraManager**](./..//ING\CameraManager.md) #
+# [**ING::CameraManager**](./..//ING/CameraManager.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** Manages cameras
-- `Parent` **:** ING::Utils::Singleton < [**ING::CameraManager**](./..//ING\CameraManager.md) > , ING::Utils::Square
+- `Parent` **:** ING::Utils::Singleton < [**ING::CameraManager**](./..//ING/CameraManager.md) > , ING::Utils::Square
 - `Project` **:** **ING**
                     
 ## **Members** ##
@@ -21,13 +21,13 @@
 - `Property` **:**
     
                 
-    + List < [**ING::Camera**](./..//ING\Camera.md)* >  **cameraList** 
+    + List < [**ING::Camera**](./..//ING/Camera.md)* >  **cameraList** 
         
                     
         + `Getter` :
                                             
                                 
-            + List<[**ING::Camera**](./..//ING\Camera.md)*>& **GetCameraList**() 
+            + List<[**ING::Camera**](./..//ING/Camera.md)*>& **GetCameraList**() 
                                     
                                 
 - `Method` **:**
@@ -45,9 +45,9 @@
     + void **Frame Update**()  **:** called every frame
                         
                     
-    + void **AddCamera**([**ING::Camera**](./..//ING\Camera.md)* camera)  **:** add a camera for managing
+    + void **AddCamera**([**ING::Camera**](./..//ING/Camera.md)* camera)  **:** add a camera for managing
                         
                     
-    + void **RemoveCamera**([**ING::Camera**](./..//ING\Camera.md)* camera)  **:** remove a camera that is currently managed
+    + void **RemoveCamera**([**ING::Camera**](./..//ING/Camera.md)* camera)  **:** remove a camera that is currently managed
                         
                     
