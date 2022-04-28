@@ -189,9 +189,9 @@ module.exports = new (class {
 
             let replacedName = `[**${cpp_obj_name}**](${cpp_obj_file_path})`;
 
-            for(let i = 0; i < result.length - cpp_obj_name.length;){
+            for(let i = 0; i < result.length;){
 
-                if(result.substring(i, cpp_obj_name.length + i) == cpp_obj_name){
+                if((!(i < result.length - cpp_obj_name.length)) && result.substring(i, cpp_obj_name.length + i) == cpp_obj_name){
 
                     let startSplitI = i;
                     let endSplitI = cpp_obj_name.length + i - 1;

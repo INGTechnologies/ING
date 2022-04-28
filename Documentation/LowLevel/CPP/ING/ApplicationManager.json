@@ -1,0 +1,41 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::ApplicationManager",
+
+            "description" : "Manages applications",
+
+            "parent" : "ING::Utils::Singleton < ING::ApplicationManager >, Square",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "properties" : [
+
+                
+
+            ],
+
+            "methods" : [
+                
+                
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}
