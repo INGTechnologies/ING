@@ -1,5 +1,5 @@
 
-# [**ING::Camera**](./..//ING\Camera.md) #
+# [**ING::Camera**](./..//ING/Camera.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** a device through which the player views the world
@@ -21,22 +21,22 @@
 - `Property` **:**
     
                 
-    + ING::List < [**ING::Camera**](./..//ING\Camera.md)* > ::Node* **node**  **:** the node in the camera list of [**ING::CameraManager**](./..//ING\CameraManager.md)
+    + ING::List < [**ING::Camera**](./..//ING/Camera.md)* > ::Node* **node**  **:** the node in the camera list of [**ING::CameraManager**](./..//ING/CameraManager.md)
         
                     
         + `Getter` :
                                             
                                 
-            + ING::List<[**ING::Camera**](./..//ING\Camera.md)*>::Node* **GetNode**() 
+            + ING::List<[**ING::Camera**](./..//ING/Camera.md)*>::Node* **GetNode**() 
                                     
                                 
-    + ING::List < [**ING::Camera**](./..//ING\Camera.md)* > ::Node* **nodeInScreenCameraList**  **:** the node in the camera list of screen
+    + ING::List < [**ING::Camera**](./..//ING/Camera.md)* > ::Node* **nodeInScreenCameraList**  **:** the node in the camera list of screen
         
                     
         + `Getter` :
                                             
                                 
-            + ING::List<[**ING::Camera**](./..//ING\Camera.md)*>::Node* **GetNodeInScreenCameraList**() 
+            + ING::List<[**ING::Camera**](./..//ING/Camera.md)*>::Node* **GetNodeInScreenCameraList**() 
                                     
                                 
     + ING::CameraId* **id** 

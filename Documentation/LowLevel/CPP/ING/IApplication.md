@@ -1,5 +1,5 @@
 
-# [**ING::IApplication**](./..//ING\IApplication.md) #
+# [**ING::IApplication**](./..//ING/IApplication.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** represents an application
@@ -10,7 +10,7 @@
                             
 - `Friend` **:**
                     
-    + class [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)
+    + class [**ING::ApplicationManager**](./..//ING/ApplicationManager.md)
                         
                             
 - `Constructor` **:**
@@ -44,31 +44,31 @@
             + std::string **GetConfigPath**() 
                                     
                                 
-    + [**ING::Configuration**](./..//ING\Configuration.md)* **configuration** 
+    + [**ING::Configuration**](./..//ING/Configuration.md)* **configuration** 
         
                     
         + `Getter` :
                                             
                                 
-            + [**ING::Configuration**](./..//ING\Configuration.md)* **GetConfiguration**() 
+            + [**ING::Configuration**](./..//ING/Configuration.md)* **GetConfiguration**() 
                                     
                                 
-    + [**ING::ApplicationWindowManager**](./..//ING\ApplicationWindowManager.md)* **windowManager** 
+    + [**ING::ApplicationWindowManager**](./..//ING/ApplicationWindowManager.md)* **windowManager** 
         
                     
         + `Getter` :
                                             
                                 
-            + [**ING::ApplicationWindowManager**](./..//ING\ApplicationWindowManager.md)* **GetWindowManager**() 
+            + [**ING::ApplicationWindowManager**](./..//ING/ApplicationWindowManager.md)* **GetWindowManager**() 
                                     
                                 
-    + [**ING::ApplicationRenderingSystem**](./..//ING\ApplicationRenderingSystem.md)* **renderingSystem** 
+    + [**ING::ApplicationRenderingSystem**](./..//ING/ApplicationRenderingSystem.md)* **renderingSystem** 
         
                     
         + `Getter` :
                                             
                                 
-            + [**ING::ApplicationRenderingSystem**](./..//ING\ApplicationRenderingSystem.md)* **GetRenderingSystem**() 
+            + [**ING::ApplicationRenderingSystem**](./..//ING/ApplicationRenderingSystem.md)* **GetRenderingSystem**() 
                                     
                                 
     + std::unordered_map < std::string, unsigned int >  **name2ComponentIndexMap** 

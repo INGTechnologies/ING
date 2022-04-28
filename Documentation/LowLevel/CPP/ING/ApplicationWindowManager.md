@@ -1,5 +1,5 @@
 
-# [**ING::ApplicationWindowManager**](./..//ING\ApplicationWindowManager.md) #
+# [**ING::ApplicationWindowManager**](./..//ING/ApplicationWindowManager.md) #
                 
 ## **Basic Info** ##
 - `Description` **:** Manages all windows of an application
@@ -10,7 +10,7 @@
                             
 - `Constructor` **:**
                     
-    + **ApplicationWindowManager**([**ING::IApplication**](./..//ING\IApplication.md)* application) 
+    + **ApplicationWindowManager**([**ING::IApplication**](./..//ING/IApplication.md)* application) 
                         
                             
 - `Destructor` **:**
