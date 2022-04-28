@@ -21,7 +21,7 @@
 - `Property` **:**
     
                 
-    + ING::List < [**ING::Camera**](./..//ING\Camera.md)* > ::Node* **node**  **:** the node in the camera list of ING::CameraManager
+    + ING::List < [**ING::Camera**](./..//ING\Camera.md)* > ::Node* **node**  **:** the node in the camera list of [**ING::CameraManager**](./..//ING\CameraManager.md)
         
                     
         + `Getter` :

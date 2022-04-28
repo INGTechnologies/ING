@@ -326,11 +326,19 @@ module.exports = new (class {
             let is_have_method = false;
             let is_have_constructor = false;
             let is_have_destructor = false;
+            let is_have_friend = false;
     
             if(_cpp_obj.constructors != null)
                 if(_cpp_obj.constructors.length != 0){
     
                     is_have_constructor = true;
+    
+                }
+    
+            if(_cpp_obj.friends != null)
+                if(_cpp_obj.friends.length != 0){
+    
+                    is_have_friend = true;
     
                 }
     
@@ -393,6 +401,33 @@ module.exports = new (class {
                     `);
                 }
     
+            }
+
+            if(is_have_friend){
+
+                if(_cpp_obj.friends.length > 1) {
+                    result += (
+`        
+- `+'`'+`Friends`+'`'+` **:**
+                    `);
+                }
+                else{
+                    result += (
+`        
+- `+'`'+`Friend`+'`'+` **:**
+                    `);
+                }
+
+                for(let friend of _cpp_obj.friends){
+
+                    result += (
+`
+    + ${this.get_parsed_type_name(friend)}
+                        
+                    `);
+
+                }
+
             }
 
             if(is_have_constructor){

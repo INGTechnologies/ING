@@ -10,7 +10,7 @@
                             
 - `Constructor` **:**
                     
-    + **ApplicationRenderingSystem**(ING::IApplication* application) 
+    + **ApplicationRenderingSystem**([**ING::IApplication**](./..//ING\IApplication.md)* application) 
                         
                             
 - `Destructor` **:**

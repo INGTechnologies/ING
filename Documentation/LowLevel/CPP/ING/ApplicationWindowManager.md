@@ -10,7 +10,7 @@
                             
 - `Constructor` **:**
                     
-    + **ApplicationWindowManager**(ING::IApplication* application) 
+    + **ApplicationWindowManager**([**ING::IApplication**](./..//ING\IApplication.md)* application) 
                         
                             
 - `Destructor` **:**

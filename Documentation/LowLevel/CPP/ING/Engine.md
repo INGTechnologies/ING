@@ -93,13 +93,13 @@
             + ING::EngineState **GetState**() 
                                     
                                 
-    + ING::Configuration* **configuration** 
+    + [**ING::Configuration**](./..//ING\Configuration.md)* **configuration** 
         
                     
         + `Getter` :
                                             
                                 
-            + ING::Configuration* **GetConfiguration**() 
+            + [**ING::Configuration**](./..//ING\Configuration.md)* **GetConfiguration**() 
                                     
                                 
 - `Method` **:**

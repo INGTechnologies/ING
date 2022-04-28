@@ -21,7 +21,7 @@
 - `Property` **:**
     
                 
-    + std::unordered_map < std::string,ING::IApplication* >  **name2ApplicationMap**  **:** name to application map
+    + std::unordered_map < std::string,[**ING::IApplication**](./..//ING\IApplication.md)* >  **name2ApplicationMap**  **:** name to application map
         
                     
         + `Item Getter` :
@@ -63,9 +63,9 @@
     + void **LateRender**()  **:** called after **Render**, it will call **LateRender** method of each application
                         
                     
-    + void **AddApplication**(ING::IApplication* application)  **:** add an application for managing
+    + void **AddApplication**([**ING::IApplication**](./..//ING\IApplication.md)* application)  **:** add an application for managing
                         
                     
-    + void **RemoveApplication**(ING::IApplication* application)  **:** remove an application that is currently managed
+    + void **RemoveApplication**([**ING::IApplication**](./..//ING\IApplication.md)* application)  **:** remove an application that is currently managed
                         
                     
