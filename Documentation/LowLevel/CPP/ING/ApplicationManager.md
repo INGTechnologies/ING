@@ -3,7 +3,7 @@
                 
 ## **Basic Info** ##
 - `Description` **:** Manages applications
-- `Parent` **:** ING::Utils::Singleton < [**ING::ApplicationManager**](./..//ING\ApplicationManager.md) > , Square
+- `Parent` **:** ING::Utils::Singleton < [**ING::ApplicationManager**](./..//ING\ApplicationManager.md) > , ING::Utils::Square
 - `Project` **:** **ING**
                     
 ## **Members** ##
@@ -21,7 +21,7 @@
 - `Property` **:**
     
                 
-    + std::unordered_map < std::string,IApplication* >  **name2ApplicationMap**  **:** name to application map
+    + std::unordered_map < std::string,ING::IApplication* >  **name2ApplicationMap**  **:** name to application map
         
                     
         + `Item Getter` :
@@ -33,13 +33,13 @@
 - `Method` **:**
     
                 
-    + virtual bool **Init**()  **:** overrided from ING::Square::**Init**()
+    + virtual bool **Init**()  **:** overrided from ING::Utils::Square::**Init**()
                         
                     
-    + virtual bool **Run**()  **:** overrided from ING::Square::**Run**()
+    + virtual bool **Run**()  **:** overrided from ING::Utils::Square::**Run**()
                         
                     
-    + virtual bool **Release**()  **:** overrided from ING::Square::**Release**()
+    + virtual bool **Release**()  **:** overrided from ING::Utils::Square::**Release**()
                         
                     
     + void **Start**()  **:** called when the engine start running, it will call **Start** method of each application

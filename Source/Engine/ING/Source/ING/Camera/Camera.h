@@ -150,9 +150,9 @@ namespace ING {
 		const RMatrix4x4&		GetViewMatrix		()							{ return viewMatrix; }
 		const RMatrix4x4&		GetProjectionMatrix ()							{ return projectionMatrix; }
 
-		const TransformM&		GetTransform		()							{ return transformM; }
+		const TransformM&		GetTransformM		()							{ return transformM; }
 
-		void					SetTransform		(TransformM transformM)		{ this->transformM = transformM; }
+		void					SetTransformM		(const ING::TransformM& newTransformM)		{ this->transformM = newTransformM; }
 
 		float					GetFOV				()							{ return fov; }
 		void					SetFOV				(float fov)					{ this->fov = fov;				Update(); }

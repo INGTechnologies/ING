@@ -105,7 +105,7 @@
 - `Method` **:**
     
                 
-    + void **FrameUpdate**()  **:** this method is called every frame
+    + void **FrameUpdate**()  **:** called every frame
                         
                             
 ## **Macros** ##

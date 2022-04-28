@@ -92,9 +92,9 @@ namespace ING {
 			const RMatrix4x4&		GetViewMatrix		() { return ingCamera->GetViewMatrix(); }
 			const RMatrix4x4&		GetProjectionMatrix	() { return ingCamera->GetProjectionMatrix(); }
 
-			const TransformM&		GetTransform		() { return ingCamera->GetTransform(); }
+			const TransformM&		GetTransformM		() { return ingCamera->GetTransformM(); }
 
-			void					SetTransform		(TransformM transformM) { ingCamera->SetTransform(transformM); }
+			void					SetTransformM		(const ING::TransformM& newTransformM) { ingCamera->SetTransformM(newTransformM); }
 
 			float					GetFOV				() { ingCamera->GetFOV(); }
 			void					SetFOV				(float fov) { ingCamera->SetFOV(fov); }

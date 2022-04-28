@@ -10,7 +10,7 @@
 
             "description" : "Manages applications",
 
-            "parent" : "ING::Utils::Singleton<ING::ApplicationManager>, Square",
+            "parent" : "ING::Utils::Singleton<ING::ApplicationManager>, ING::Utils::Square",
     
             "project" : "ING",
 
@@ -38,7 +38,7 @@
                     
                     "name" : "name2ApplicationMap",
 
-                    "type" : "std::unordered_map<std::string,IApplication*>",
+                    "type" : "std::unordered_map<std::string,ING::IApplication*>",
 
                     "description" : "name to application map",
 
@@ -64,7 +64,7 @@
 
                     "code" : "virtual bool **Init**()",
 
-                    "description" : "overrided from ING::Square::**Init**()"
+                    "description" : "overrided from ING::Utils::Square::**Init**()"
 
                 },
                 
@@ -72,7 +72,7 @@
 
                     "code" : "virtual bool **Run**()",
 
-                    "description" : "overrided from ING::Square::**Run**()"
+                    "description" : "overrided from ING::Utils::Square::**Run**()"
 
                 },
                 
@@ -80,7 +80,7 @@
 
                     "code" : "virtual bool **Release**()",
 
-                    "description" : "overrided from ING::Square::**Release**()"
+                    "description" : "overrided from ING::Utils::Square::**Release**()"
 
                 },
                 

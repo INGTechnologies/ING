@@ -222,23 +222,15 @@
 
                     "code" : "virtual bool **Init**()",
 
-                    "description" : "overrided from ING::Square::**Init**()"
+                    "description" : "overrided from ING::IApplicationComponent::**Init**()"
 
                 },
                 
                 {
 
-                    "code" : "virtual bool **Run**()",
+                    "code" : "virtual void **Release**()",
 
-                    "description" : "overrided from ING::Square::**Run**()"
-
-                },
-                
-                {
-
-                    "code" : "virtual bool **Release**()",
-
-                    "description" : "overrided from ING::Square::**Release**()"
+                    "description" : "overrided from ING::IApplicationComponent::**Release**()"
 
                 },
                 
@@ -246,7 +238,7 @@
 
                     "code" : "void **Start**()",
 
-                    "description" : "called when the engine start running, it will call **Start** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**Start**()"
 
                 },
                 
@@ -254,7 +246,7 @@
 
                     "code" : "void **PreUpdate**()",
 
-                    "description" : "called before **Update**, it will call **PreUpdate** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**PreUpdate**()"
 
                 },
                 
@@ -262,7 +254,7 @@
 
                     "code" : "void **Update**()",
 
-                    "description" : "called every frame, it will call **Update** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**Update**()"
 
                 },
                 
@@ -270,7 +262,7 @@
 
                     "code" : "void **LateUpdate**()",
 
-                    "description" : "called after **Update**, it will call **LateUpdate** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**LateUpdate**()"
 
                 },
                 
@@ -278,7 +270,7 @@
 
                     "code" : "void **PreRender**()",
 
-                    "description" : "called before **Render**, it will call **PreRender** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**PreRender**()"
 
                 },
                 
@@ -286,7 +278,7 @@
 
                     "code" : "void **Render**()",
 
-                    "description" : "called when the engine rendering, it will call **Render** method of each application"
+                    "description" : "overrided from ING::IApplicationComponent::**Render**()"
 
                 },
                 
@@ -294,23 +286,7 @@
 
                     "code" : "void **LateRender**()",
 
-                    "description" : "called after **Render**, it will call **LateRender** method of each application"
-
-                },
-                
-                {
-
-                    "code" : "void **AddApplication**(ING::IApplication* application)",
-
-                    "description" : "add an application for managing"
-
-                },
-                
-                {
-
-                    "code" : "void **RemoveApplication**(ING::IApplication* application)",
-
-                    "description" : "remove an application that is currently being managed"
+                    "description" : "overrided from ING::IApplicationComponent::**LateRender**()"
 
                 }
 

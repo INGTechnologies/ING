@@ -1,0 +1,163 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::ApplicationWindowManager",
+
+            "description" : "Manages all windows of an application",
+
+            "parent" : "ING::IApplicationComponent",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**ApplicationWindowManager**(ING::IApplication* application)"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~ApplicationWindowManager**()"
+
+            },
+
+            "properties" : [
+
+                {
+
+                    "name" : "name2WindowMap",
+
+                    "type" : "std::unordered_map<std::string,ING::IWindow*>",
+
+                    "description" : "name to window map",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::IWindow* **GetWindow**(const std::string& name)",
+
+                            "description" : "get window by name"
+
+                        }
+
+                    ]
+
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Init**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual void **Release**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Release**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Start**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Start**()"
+
+                },
+                
+                {
+
+                    "code" : "void **PreUpdate**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**PreUpdate**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Update**()"
+
+                },
+                
+                {
+
+                    "code" : "void **LateUpdate**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**LateUpdate**()"
+
+                },
+                
+                {
+
+                    "code" : "void **PreRender**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**PreRender**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Render**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**Render**()"
+
+                },
+                
+                {
+
+                    "code" : "void **LateRender**()",
+
+                    "description" : "overrided from ING::IApplicationComponent::**LateRender**()"
+
+                },
+                
+                {
+
+                    "code" : "void **AddWindow**(ING::IWindow* window)",
+
+                    "description" : "add new window for managing"
+
+                },
+                
+                {
+
+                    "code" : "void **RemoveWindow**(ING::IWindow* window)",
+
+                    "description" : "remove a window that is currently managed"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}

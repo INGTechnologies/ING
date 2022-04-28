@@ -114,39 +114,30 @@
 - `Method` **:**
     
                 
-    + virtual bool **Init**()  **:** overrided from ING::Square::**Init**()
+    + virtual bool **Init**()  **:** overrided from ING::IApplicationComponent::**Init**()
                         
                     
-    + virtual bool **Run**()  **:** overrided from ING::Square::**Run**()
+    + virtual void **Release**()  **:** overrided from ING::IApplicationComponent::**Release**()
                         
                     
-    + virtual bool **Release**()  **:** overrided from ING::Square::**Release**()
+    + void **Start**()  **:** overrided from ING::IApplicationComponent::**Start**()
                         
                     
-    + void **Start**()  **:** called when the engine start running, it will call **Start** method of each application
+    + void **PreUpdate**()  **:** overrided from ING::IApplicationComponent::**PreUpdate**()
                         
                     
-    + void **PreUpdate**()  **:** called before **Update**, it will call **PreUpdate** method of each application
+    + void **Update**()  **:** overrided from ING::IApplicationComponent::**Update**()
                         
                     
-    + void **Update**()  **:** called every frame, it will call **Update** method of each application
+    + void **LateUpdate**()  **:** overrided from ING::IApplicationComponent::**LateUpdate**()
                         
                     
-    + void **LateUpdate**()  **:** called after **Update**, it will call **LateUpdate** method of each application
+    + void **PreRender**()  **:** overrided from ING::IApplicationComponent::**PreRender**()
                         
                     
-    + void **PreRender**()  **:** called before **Render**, it will call **PreRender** method of each application
+    + void **Render**()  **:** overrided from ING::IApplicationComponent::**Render**()
                         
                     
-    + void **Render**()  **:** called when the engine rendering, it will call **Render** method of each application
-                        
-                    
-    + void **LateRender**()  **:** called after **Render**, it will call **LateRender** method of each application
-                        
-                    
-    + void **AddApplication**(ING::IApplication* application)  **:** add an application for managing
-                        
-                    
-    + void **RemoveApplication**(ING::IApplication* application)  **:** remove an application that is currently being managed
+    + void **LateRender**()  **:** overrided from ING::IApplicationComponent::**LateRender**()
                         
                     

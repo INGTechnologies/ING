@@ -214,7 +214,7 @@
 
                     "code" : "void **FrameUpdate**()",
 
-                    "description" : "this method is called every frame"
+                    "description" : "called every frame"
 
                 }
 
