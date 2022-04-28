@@ -190,7 +190,7 @@
 
                     "code" : "void **Start**()",
 
-                    "description" : "called when the engine start running, it will call **Start** method of each application"
+                    "description" : "called when the engine start running, it will call **Start** method of each component"
 
                 },
                 
@@ -198,7 +198,7 @@
 
                     "code" : "void **PreUpdate**()",
 
-                    "description" : "called before **Update**, it will call **PreUpdate** method of each application"
+                    "description" : "called before **Update**, it will call **PreUpdate** method of each component"
 
                 },
                 
@@ -206,7 +206,7 @@
 
                     "code" : "void **Update**()",
 
-                    "description" : "called every frame, it will call **Update** method of each application"
+                    "description" : "called every frame, it will call **Update** method of each component"
 
                 },
                 
@@ -214,7 +214,7 @@
 
                     "code" : "void **LateUpdate**()",
 
-                    "description" : "called after **Update**, it will call **LateUpdate** method of each application"
+                    "description" : "called after **Update**, it will call **LateUpdate** method of each component"
 
                 },
                 
@@ -222,7 +222,7 @@
 
                     "code" : "void **PreRender**()",
 
-                    "description" : "called before **Render**, it will call **PreRender** method of each application"
+                    "description" : "called before **Render**, it will call **PreRender** method of each component"
 
                 },
                 
@@ -230,7 +230,7 @@
 
                     "code" : "void **Render**()",
 
-                    "description" : "called when the engine rendering, it will call **Render** method of each application"
+                    "description" : "called when the engine rendering, it will call **Render** method of each component"
 
                 },
                 
@@ -238,7 +238,7 @@
 
                     "code" : "void **LateRender**()",
 
-                    "description" : "called after **Render**, it will call **LateRender** method of each application"
+                    "description" : "called after **Render**, it will call **LateRender** method of each component"
 
                 }
 
