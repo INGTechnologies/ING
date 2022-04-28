@@ -27,7 +27,7 @@
         + `Item Getter` :
                                             
                                 
-            + IApplication * [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)::**GetApplication**(const std::string & name)  **:** get application by name
+            + IApplication* **GetApplication**(const std::string & name)  **:** get application by name
                                     
                                 
 - `Method` **:**
@@ -66,6 +66,6 @@
     + void **AddApplication**(ING::IApplication* application)  **:** add an application for managing
                         
                     
-    + void **RemoveApplication**(ING::IApplication* application)  **:** remove an application that is currently being managed
+    + void **RemoveApplication**(ING::IApplication* application)  **:** remove an application that is currently managed
                         
                     

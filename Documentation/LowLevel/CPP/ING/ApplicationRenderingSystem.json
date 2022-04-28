@@ -1,0 +1,329 @@
+{
+
+    "projects" : [],
+
+    "cpp_objects"  : [
+
+        {
+
+            "name" : "ING::ApplicationRenderingSystem",
+
+            "description" : "Represents a system of rendering features,...",
+
+            "parent" : "ING::IApplicationComponent",
+    
+            "project" : "ING",
+
+            "type" : "class",
+
+            "constructors" : [
+
+                {
+
+                    "code" : "**ApplicationRenderingSystem**(ING::IApplication* application)"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~ApplicationRenderingSystem**()"
+
+            },
+
+            "properties" : [
+
+                {
+                    
+                    "name" : "defaultDevice",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that the rendering system use it by default",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetDefaultDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetDefaultDevice**(ING::Rendering::IDevice* newDefaultDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "device",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that is currently used by the rendering system",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetDevice**(ING::Rendering::IDevice* newDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "targetDevice",
+
+                    "type" : "ING::Rendering::IDevice*",
+
+                    "description" : "the device that will be used in the next frame",
+
+                    "getters" : [
+
+                        {
+
+                            "code" : "ING::Rendering::IDevice* **GetTargetDevice**()"
+
+                        }
+
+                    ],
+
+                    "setters" : [
+
+                        {
+
+                            "code" : "void **SetTargetDevice**(ING::Rendering::IDevice* newTargetDevice)"
+
+                        }
+
+                    ]
+
+                },
+
+                {
+                    
+                    "name" : "defaultPipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that the rendering system use it by default",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetDefaultPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetDefaultPipeline**(ING::Rendering::IPipeline* newDefaultPipeline)"
+                
+                        }
+                
+                    ]
+                
+                },
+                
+                {
+                    
+                    "name" : "pipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that is currently used by the rendering system",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetPipeline**(ING::Rendering::IPipeline* newPipeline)"
+                
+                        }
+                
+                    ]
+                
+                },
+                
+                {
+                    
+                    "name" : "targetPipeline",
+                
+                    "type" : "ING::Rendering::IPipeline*",
+                
+                    "description" : "the pipeline that will be used in the next frame",
+                
+                    "getters" : [
+                
+                        {
+                
+                            "code" : "ING::Rendering::IPipeline* **GetTargetPipeline**()"
+                
+                        }
+                
+                    ],
+                
+                    "setters" : [
+                
+                        {
+                
+                            "code" : "void **SetTargetPipeline**(ING::Rendering::IPipeline* newTargetPipeline)"
+                
+                        }
+                
+                    ]
+                
+                }
+
+            ],
+
+            "methods" : [
+                
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "overrided from ING::Square::**Init**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual bool **Run**()",
+
+                    "description" : "overrided from ING::Square::**Run**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual bool **Release**()",
+
+                    "description" : "overrided from ING::Square::**Release**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Start**()",
+
+                    "description" : "called when the engine start running, it will call **Start** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreUpdate**()",
+
+                    "description" : "called before **Update**, it will call **PreUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "called every frame, it will call **Update** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateUpdate**()",
+
+                    "description" : "called after **Update**, it will call **LateUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreRender**()",
+
+                    "description" : "called before **Render**, it will call **PreRender** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Render**()",
+
+                    "description" : "called when the engine rendering, it will call **Render** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateRender**()",
+
+                    "description" : "called after **Render**, it will call **LateRender** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **AddApplication**(ING::IApplication* application)",
+
+                    "description" : "add an application for managing"
+
+                },
+                
+                {
+
+                    "code" : "void **RemoveApplication**(ING::IApplication* application)",
+
+                    "description" : "remove an application that is currently being managed"
+
+                }
+
+            ],
+
+            "macros" : [
+
+
+
+            ]
+    
+        }
+
+    ]
+
+}

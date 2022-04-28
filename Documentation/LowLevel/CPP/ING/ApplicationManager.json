@@ -46,7 +46,7 @@
 
                         {
 
-                            "code" : "IApplication * ING::ApplicationManager::**GetApplication**(const std::string & name)",
+                            "code" : "IApplication* **GetApplication**(const std::string & name)",
                             
                             "description" : "get application by name"
 
@@ -152,7 +152,7 @@
 
                     "code" : "void **RemoveApplication**(ING::IApplication* application)",
 
-                    "description" : "remove an application that is currently being managed"
+                    "description" : "remove an application that is currently managed"
 
                 }
 
