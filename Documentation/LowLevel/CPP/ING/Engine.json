@@ -16,6 +16,28 @@
 
             "type" : "class",
 
+            "constructors" : [
+
+                {
+
+                    "code" : "**Engine**()",
+
+                    "description" : ""
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "~**Engine**()",
+
+                "description" : ""
+
+            }
+
+            ,
+
             "properties" : [
 
                 {

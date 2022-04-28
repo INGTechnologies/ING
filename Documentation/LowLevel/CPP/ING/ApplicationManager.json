@@ -10,21 +10,151 @@
 
             "description" : "Manages applications",
 
-            "parent" : "ING::Utils::Singleton < ING::ApplicationManager >, Square",
+            "parent" : "ING::Utils::Singleton<ING::ApplicationManager>, Square",
     
             "project" : "ING",
 
             "type" : "class",
 
+            "constructors" : [
+
+                {
+
+                    "code" : "**ApplicationManager**()"
+
+                }
+
+            ],
+
+            "destructor" : {
+
+                "code" : "**~ApplicationManager**()"
+
+            },
+
             "properties" : [
 
-                
+                {
+                    
+                    "name" : "name2ApplicationMap",
+
+                    "type" : "std::unordered_map<std::string,IApplication*>",
+
+                    "description" : "name to application map",
+
+                    "item_getters" : [
+
+                        {
+
+                            "code" : "IApplication * ING::ApplicationManager::**GetApplication**(const std::string & name)",
+                            
+                            "description" : "get application by name"
+
+                        }
+
+                    ]
+
+                }
 
             ],
 
             "methods" : [
                 
+                {
+
+                    "code" : "virtual bool **Init**()",
+
+                    "description" : "overrided from ING::Square::**Init**()"
+
+                },
                 
+                {
+
+                    "code" : "virtual bool **Run**()",
+
+                    "description" : "overrided from ING::Square::**Run**()"
+
+                },
+                
+                {
+
+                    "code" : "virtual bool **Release**()",
+
+                    "description" : "overrided from ING::Square::**Release**()"
+
+                },
+                
+                {
+
+                    "code" : "void **Start**()",
+
+                    "description" : "called when the engine start running, it will call **Start** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreUpdate**()",
+
+                    "description" : "called before **Update**, it will call **PreUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Update**()",
+
+                    "description" : "called every frame, it will call **Update** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateUpdate**()",
+
+                    "description" : "called after **Update**, it will call **LateUpdate** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **PreRender**()",
+
+                    "description" : "called before **Render**, it will call **PreRender** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **Render**()",
+
+                    "description" : "called when the engine rendering, it will call **Render** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **LateRender**()",
+
+                    "description" : "called after **Render**, it will call **LateRender** method of each application"
+
+                },
+                
+                {
+
+                    "code" : "void **AddApplication**(ING::IApplication* application)",
+
+                    "description" : "add an application for managing"
+
+                },
+                
+                {
+
+                    "code" : "void **RemoveApplication**(ING::IApplication* application)",
+
+                    "description" : "remove an application that is currently being managed"
+
+                }
 
             ],
 

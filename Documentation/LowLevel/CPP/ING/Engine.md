@@ -3,11 +3,21 @@
                 
 ## **Basic Info** ##
 - `Description` **:** Represents the main engine, manages all engine's systems, managers,...
-- `Parent` **:** ING::Utils::Board < [**ING::Engine**](./..//ING\Engine.md) > [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)
+- `Parent` **:** ING::Utils::Board  <  [**ING::Engine**](./..//ING\Engine.md)  >  [**ING::ApplicationManager**](./..//ING\ApplicationManager.md)
 - `Project` **:** **ING**
                     
 ## **Members** ##
+                            
+- `Constructor` **:**
                     
+    + **Engine**() 
+                        
+                            
+- `Destructor` **:**
+                
+    + ~**Engine**() 
+                    
+                
 - `Property` **:**
     
                 
@@ -56,7 +66,7 @@
             + const std::string& **GetWorkingDir_WSTR**() 
                                     
                                 
-    + std::unordered_map<std::wstring, std::wstring> **rootPath2AbsolutePath**  **:** root path to absolute path map
+    + std::unordered_map < std::wstring, std::wstring >  **rootPath2AbsolutePath**  **:** root path to absolute path map
         
                     
         + `Item Getters` :

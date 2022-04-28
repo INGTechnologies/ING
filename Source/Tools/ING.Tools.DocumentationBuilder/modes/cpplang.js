@@ -164,6 +164,34 @@ module.exports = new (class {
 
     }
 
+    get_parsed_type_name(tpye_name){
+
+        let result = '';
+
+        for(let i of tpye_name){
+
+            if(i == '<'){
+
+                result += ' < ';
+
+            }
+            else if(i == '>'){
+
+                result += ' > ';
+
+            }
+            else {
+
+                result += i;
+
+            }
+
+        }
+
+        return result;
+
+    }
+
     md_add_links(file_content, curr_file_path){
 
         let result = file_content;
@@ -198,7 +226,7 @@ module.exports = new (class {
 
                     let regex = /^[a-zA-Z0-9]+$/;
 
-                    if(!(result[endSplitI + 1].match(regex) || result[endSplitI + 1] == "_" || (result[endSplitI + 1] == ":" && result[endSplitI + 2] == ":"))){
+                    if(!(result[endSplitI + 1].match(regex) || result[endSplitI + 1] == "_")){
 
                         replaced_result += replacedName;
 
@@ -290,12 +318,24 @@ module.exports = new (class {
                 
 ## **Basic Info** ##
 - `+'`'+`Description`+'`'+` **:** ${_cpp_obj.description}
-- `+'`'+`Parent`+'`'+` **:** ${_cpp_obj.parent}
+- `+'`'+`Parent`+'`'+` **:** ${this.get_parsed_type_name(_cpp_obj.parent)}
 - `+'`'+`Project`+'`'+` **:** **${_cpp_obj.project}**
             `);
                 
             let is_have_property = false;
             let is_have_method = false;
+            let is_have_constructor = false;
+            let is_have_destructor = false;
+    
+            if(_cpp_obj.constructors != null)
+                if(_cpp_obj.constructors.length != 0){
+    
+                    is_have_constructor = true;
+    
+                }
+    
+            if(_cpp_obj.destructor != null)
+                is_have_destructor = true;
     
             if(_cpp_obj.properties != null)
                 if(_cpp_obj.properties.length != 0){
@@ -314,6 +354,19 @@ module.exports = new (class {
             if(is_have_method || is_have_property){
 
                 let member_count = 0;
+
+                if(is_have_constructor){
+
+                    member_count += _cpp_obj.constructors.length;
+
+                }
+
+                if(is_have_destructor){
+
+                    member_count += 1;
+
+                }
+
 
                 if(is_have_method){
 
@@ -341,6 +394,64 @@ module.exports = new (class {
                 }
     
             }
+
+            if(is_have_constructor){
+
+                if(_cpp_obj.constructors.length > 1) {
+                    result += (
+`        
+- `+'`'+`Constructors`+'`'+` **:**
+                    `);
+                }
+                else{
+                    result += (
+`        
+- `+'`'+`Constructor`+'`'+` **:**
+                    `);
+                }
+
+                for(let constructor of _cpp_obj.constructors){
+
+                    let description_text = ``;
+
+                    if(constructor.description != '' && constructor.description != null){
+
+                        description_text = ` **:** ${constructor.description}`;
+
+                    }
+
+                    result += (
+`
+    + ${this.get_parsed_type_name(constructor.code)} ${description_text}
+                        
+                    `);
+
+                }
+
+            }
+
+            if(is_have_destructor){
+
+                result += (
+`        
+- `+'`'+`Destructor`+'`'+` **:**
+                `);
+
+                let description_text = ``;
+
+                if(_cpp_obj.destructor.description != '' && _cpp_obj.destructor.description != null){
+
+                    description_text = ` **:** ${_cpp_obj.destructor.description}`;
+
+                }
+
+                result += (
+`
+    + ${this.get_parsed_type_name(_cpp_obj.destructor.code)} ${description_text}
+                    
+                `);
+
+            }
     
             if(is_have_property){
     
@@ -362,7 +473,7 @@ module.exports = new (class {
 
                     result += (
 `
-    + ${property.type} **${property.name}** ${description_text}
+    + ${this.get_parsed_type_name(property.type)} **${property.name}** ${description_text}
         
                     `);
 
@@ -493,7 +604,7 @@ module.exports = new (class {
 
                                 result += (
 `
-            + ${item_getter.code} ${description_text}
+            + ${this.get_parsed_type_name(item_getter.code)} ${description_text}
                                     
                                 `);
 
@@ -540,7 +651,7 @@ module.exports = new (class {
 
                                 result += (
 `
-            + ${item_setter.code} ${description_text}
+            + ${this.get_parsed_type_name(item_setter.code)} ${description_text}
                                     
                                 `);
 
@@ -574,7 +685,7 @@ module.exports = new (class {
 
                     result += (
 `
-    + ${method.code} ${description_text}
+    + ${this.get_parsed_type_name(method.code)} ${description_text}
                         
                     `);
 
@@ -618,7 +729,7 @@ module.exports = new (class {
 
                     result += (
 `
-+ ${macro.code} ${description_text}
++ ${this.get_parsed_type_name(macro.code)} ${description_text}
                         
                     `);
 
@@ -657,7 +768,7 @@ module.exports = new (class {
 
                     result += (
 `
-+ ${square}
++ ${this.get_parsed_type_name(square)}
                         
                     `);
 
