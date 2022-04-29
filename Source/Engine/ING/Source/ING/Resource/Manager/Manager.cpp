@@ -106,7 +106,7 @@ namespace ING {
 
 		if (!IsFileExist(path)) {
 
-			Debug::Error(String("Cant Read File ") + String('"') + String(path) + String('"'));
+			Debug::Error(ToString("Cant Read File ") + ToString('"') + ToString(path) + ToString('"'));
 
 			Engine::GetInstance()->Shutdown();
 
@@ -165,7 +165,7 @@ namespace ING {
 
 		if (!IsFileExist(path)) {
 
-			Debug::Error(String("Cant Write File ") + String('"') + String(path) + String('"'));
+			Debug::Error(String("Cant Write File ") + ToString('"') + ToString(path) + ToString('"'));
 
 			Engine::GetInstance()->Shutdown();
 

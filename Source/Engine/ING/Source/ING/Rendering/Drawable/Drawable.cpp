@@ -152,7 +152,7 @@ namespace ING {
 
 				if (!LayerManager::GetInstance()->IsHaveFilter(filterNameVector[i])) {
 
-					Debug::Error(String("Filter With Name ") + String('"') + filterNameVector[i] + String('"') + String(" Not Found"));
+					Debug::Error(ToString("Filter With Name ") + ToString('"') + filterNameVector[i] + ToString('"') + ToString(" Not Found"));
 
 					return;
 

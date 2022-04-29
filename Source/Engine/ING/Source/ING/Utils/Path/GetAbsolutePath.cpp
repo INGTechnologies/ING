@@ -30,11 +30,11 @@ namespace ING {
 
 				auto rootName = GetRootName(pathStr);
 
-				const std::wstring rootName_wstr = WString(rootName.first);
+				const std::wstring rootName_wstr = ToWString(rootName.first);
 
 				if (Engine::GetInstance()->IsHaveRootPath(rootName_wstr)) {
 
-					return String(Engine::GetInstance()->GetRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return ToString(Engine::GetInstance()->GetRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
 
 				}
 

@@ -214,7 +214,7 @@ namespace ING {
 
 			classId = WindowManager::GetInstance()->NewClassId();
 
-			std::wstring className = WString(L"INGWindowClass_") + WString(classId);
+			std::wstring className = ToWString(L"ING.WindowClass_") + ToWString(classId);
 
 			/* Create Class */
 			WNDCLASSEX wc;

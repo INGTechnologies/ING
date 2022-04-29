@@ -83,7 +83,7 @@ namespace ING {
 
 					if (componentCreator == 0) {
 
-						Debug::Error(String('"') + componentNameVector[i] + String('"') + String(" Assembly Component Creator Not Found"));
+						Debug::Error(ToString('"') + componentNameVector[i] + ToString('"') + ToString(" Assembly Component Creator Not Found"));
 
 						componentVector.resize(i);
 

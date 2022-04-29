@@ -17,7 +17,7 @@ namespace ING {
 
 	namespace Utils {
 
-		std::wstring WString(const wchar_t* content) {
+		std::wstring ToWString(const wchar_t* content) {
 
 			std::wstring result = content;
 
@@ -25,7 +25,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(char content) {
+		std::wstring ToWString(char content) {
 
 			std::wstring result;
 
@@ -35,7 +35,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(int content) {
+		std::wstring ToWString(int content) {
 
 			std::wstringstream ss;
 
@@ -49,7 +49,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(unsigned int content) {
+		std::wstring ToWString(unsigned int content) {
 
 			std::wstringstream ss;
 
@@ -63,7 +63,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(long content) {
+		std::wstring ToWString(long content) {
 
 			std::wstringstream ss;
 
@@ -77,7 +77,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(unsigned long content) {
+		std::wstring ToWString(unsigned long content) {
 
 			std::wstringstream ss;
 
@@ -91,7 +91,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(float content) {
+		std::wstring ToWString(float content) {
 
 			std::wstringstream ss;
 
@@ -105,7 +105,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(double content) {
+		std::wstring ToWString(double content) {
 
 			std::wstringstream ss;
 
@@ -119,7 +119,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(void* content) {
+		std::wstring ToWString(void* content) {
 
 			std::wstringstream ss;
 
@@ -133,7 +133,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(size_t content) {
+		std::wstring ToWString(size_t content) {
 
 			std::wstringstream ss;
 
@@ -147,7 +147,7 @@ namespace ING {
 
 		}
 
-		std::wstring WString(const std::string& content) {
+		std::wstring ToWString(const std::string& content) {
 
 			std::wstring s(content.length(), ' ');
 

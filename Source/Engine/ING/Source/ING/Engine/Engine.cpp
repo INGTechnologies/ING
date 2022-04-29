@@ -274,10 +274,10 @@ namespace ING {
 		SetRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
 		SetRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
 
-		gameDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Engine.gameDir")));
-		gameDir = String(gameDir_wstr);
-		workingDir_wstr = Path::GetAbsolutePath(WString(configuration->Get<std::string>("ING.Engine.workingDir")));
-		workingDir = String(workingDir_wstr);
+		gameDir_wstr = Path::GetAbsolutePath(ToWString(configuration->Get<std::string>("ING.Engine.gameDir")));
+		gameDir = ToString(gameDir_wstr);
+		workingDir_wstr = Path::GetAbsolutePath(ToWString(configuration->Get<std::string>("ING.Engine.workingDir")));
+		workingDir = ToString(workingDir_wstr);
 
 		SetRootPath(L"Game", gameDir_wstr);
 		SetRootPath(L"Engine", workingDir_wstr);
@@ -326,7 +326,7 @@ namespace ING {
 
 		}
 
-		Debug::Log(String("Start ") + String('"') + String("RUN") + String('"') + String(" Event"));
+		Debug::Log(ToString("Start ") + ToString('"') + ToString("RUN") + ToString('"') + ToString(" Event"));
 
 		ApplicationManager::GetInstance()->Start();
 

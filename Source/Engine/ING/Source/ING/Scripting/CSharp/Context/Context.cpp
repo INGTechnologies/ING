@@ -263,7 +263,7 @@ namespace ING {
 
 					result->Release();
 
-					Debug::Error(String("Cant Get ") + String('"') + _namespace + String('::') + name + String('"') + String(" CSharp Class"));
+					Debug::Error(ToString("Cant Get ") + ToString('"') + _namespace + ToString('::') + name + ToString('"') + ToString(" CSharp Class"));
 
 					return 0;
 

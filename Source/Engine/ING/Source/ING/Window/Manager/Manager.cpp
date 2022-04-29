@@ -94,7 +94,7 @@ namespace ING {
 
 		showConsoleWindow	= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.showConsoleWindow");
 
-		consoleWindowTitle  = WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
+		consoleWindowTitle  = ToWString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
 
 
 

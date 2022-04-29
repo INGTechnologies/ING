@@ -93,11 +93,11 @@ namespace ING {
 	bool IApplication::Init()
 	{
 
-		Debug::Log(String("Start Creating An Application ") + configPath);
+		Debug::Log(ToString("Start Creating An Application ") + configPath);
 
 		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
 
-			Debug::Error(configPath + String(" Not Found, Cant Create Application"));
+			Debug::Error(configPath + ToString(" Not Found, Cant Create Application"));
 
 			Release();
 
@@ -118,7 +118,7 @@ namespace ING {
 
 			if (!componentVector[i]->Init()) {
 
-				Debug::Error(String("Cant Init ") + String('"') + componentVector[i]->GetName() + String('"') + String(" Application Component"));
+				Debug::Error(ToString("Cant Init ") + ToString('"') + componentVector[i]->GetName() + ToString('"') + ToString(" Application Component"));
 
 				Release();
 
@@ -130,7 +130,7 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->AddApplication(this);
 
-		Debug::Log(String("Finished Creating An Application ") + configPath);
+		Debug::Log(ToString("Finished Creating An Application ") + configPath);
 
 		return true;
 

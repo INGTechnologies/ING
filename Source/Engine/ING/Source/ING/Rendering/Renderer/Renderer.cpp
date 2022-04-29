@@ -127,7 +127,7 @@ namespace ING {
 
 			if (camera->GetRenderingScene() == 0) {
 
-				Debug::Warning(String("Camera ") + String(camera) + String(" Do Not Have Any Rendering Scene"));
+				Debug::Warning(ToString("Camera ") + ToString(camera) + ToString(" Do Not Have Any Rendering Scene"));
 
 				return;
 			}

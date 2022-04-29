@@ -119,7 +119,7 @@ namespace ING {
 
 				L"Game",
 
-				WString(projectPath)
+				ToWString(projectPath)
 
 			);
 
