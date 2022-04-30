@@ -126,20 +126,15 @@ namespace ING {
 				/**
 				 *	Create Default Passes
 				 */
-				targetFirstPass	= new FirstPass	("Standard Main Pass");
-				firstPass		= targetFirstPass;
-				 
-				targetFinalPass = new FinalPass	("Standard Final Pass");
-				finalPass		= targetFinalPass;
+				firstPass = new FirstPass	("StandardRP.FirstPass");				 
+				finalPass = new FinalPass	("StandardRP.FinalPass");
 
 
 
 				/**
 				 *	Create Renderer
 				 */
-				targetRenderer = new StandardRP::Renderer();
-
-				renderer = targetRenderer;
+				renderer = new StandardRP::Renderer();
 
 			}
 
@@ -159,26 +154,6 @@ namespace ING {
 				IPipeline::Release();
 
 			}
-
-
-
-			/**
-			 *	Properties
-			 */
-			void Pipeline::SetFirstPass	(IPass* firstPass) {
-
-				/* New First Pass Will Be Used In Next Frame */
-				targetFirstPass = firstPass;
-
-			}
-
-			void Pipeline::SetFinalPass	(IPass* finalPass) {
-
-				/* New Main Pass Will Be Used In Next Frame */
-				targetFinalPass = finalPass;
-
-			}
-
 
 
 
@@ -212,17 +187,13 @@ namespace ING {
 					context->OMSetRenderTargets(renderingData->GetMainRTV(),0);
 
 
-					/* Render First Pass */
-					firstPass = targetFirstPass;
 
 					RENDERING_ASSERTION(firstPass->Render(context, camera));
 
 
 
-					/* Render Final Pass */
-					finalPass = targetFinalPass;
-
 					RENDERING_ASSERTION(finalPass->Render(context, camera));
+
 
 
 					if (camera->GetTargetMode() == CAMERA_TARGET_SCREEN) {

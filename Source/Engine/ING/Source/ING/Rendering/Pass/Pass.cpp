@@ -62,6 +62,65 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void IPass::AddChild(IPass* pass) {
+
+			AddChild(pass, childVector.size());
+
+		}
+
+		void IPass::AddChild(IPass* pass, unsigned int index) {
+
+			if (childVector.size() == index) {
+
+				childVector.push_back(pass);
+
+			}
+			else {
+
+				childVector.insert(childVector.begin() + index, pass);
+
+				unsigned int passCount = childVector.size();
+
+				for (unsigned int i = index + 1; i < passCount; ++i) {
+
+					name2ChildIndex[childVector[i]->GetName()]++;
+
+				}
+
+			}
+
+			name2ChildIndex[pass->GetName()] = index;
+
+		}
+
+		void IPass::RemoveChild(unsigned int index) {
+
+			childVector.erase(childVector.begin() + index);
+
+			unsigned int passCount = childVector.size();
+
+			for (unsigned int i = index; i < passCount; ++i) {
+
+				name2ChildIndex[childVector[i]->GetName()]--;
+
+			}
+
+			name2ChildIndex.erase(GetChild(index)->GetName());
+
+		}
+
+		void IPass::RemoveChild(const String& name) {
+
+			RemoveChild(name2ChildIndex[name]);
+
+		}
+
+		void IPass::RemoveChild(IPass* pass) {
+
+			RemoveChild(pass->GetName());
+
+		}
+
 		bool IPass::Render(IDeviceContext* context, Camera* camera) {
 
 

@@ -67,11 +67,7 @@ namespace ING {
 		protected:
 			String		name;
 
-			IRenderer*	defaultRenderer;
-
 			IRenderer*	renderer;
-
-			IRenderer*	targetRenderer;
 
 			bool		isRendering;
 
@@ -82,13 +78,9 @@ namespace ING {
 		public:
 			String		GetName				() { return name; }
 
-			IRenderer*	GetDefaultRenderer	() { return defaultRenderer; }
-
 			IRenderer*	GetRenderer			() { return renderer; }
 
-			IRenderer*	GetTargetRenderer	() { return targetRenderer; }
-
-			void		SetRenderer			(IRenderer* renderer);
+			void		SetRenderer			(IRenderer* renderer) { this->renderer = renderer; }
 
 			bool		IsRendering			() { return isRendering; }
 
@@ -105,6 +97,9 @@ namespace ING {
 			 */
 		public:
 			void		 AddPass			(IPass* pass);
+			void		 AddPass			(IPass* pass, unsigned int index);
+			void		 RemovePass			(unsigned int index);
+			void		 RemovePass			(const String& name);
 			void		 RemovePass			(IPass* pass);
 
 			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);

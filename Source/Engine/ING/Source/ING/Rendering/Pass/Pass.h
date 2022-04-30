@@ -26,15 +26,6 @@ namespace ING {
 
 		class IDeviceContext;
 
-		enum PassAddOption {
-
-			PASS_ADD_BEFORE,
-			PASS_ADD_AFTER,
-			PASS_ADD_TAIL,
-			PASS_ADD_HEAD
-
-		};
-
 
 
 		/**
@@ -66,8 +57,18 @@ namespace ING {
 		private:
 			String			name;
 
+			std::unordered_map<String, unsigned int> name2ChildIndex;
+
+			std::vector<IPass*> childVector;
+
 		public:
 			String			GetName() { return name; }
+
+			unsigned int	GetChildIndex(const String& name) { return name2ChildIndex[name]; }
+
+			IPass*			GetChild(const String& name) { return childVector[GetChildIndex(name)]; }
+
+			IPass*			GetChild(unsigned int index) { return childVector[index]; }
 
 
 
@@ -75,7 +76,13 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual bool	Render(IDeviceContext* context, Camera* camera);
+			void			AddChild	(IPass* child);
+			void			AddChild	(IPass* child, unsigned int index);
+			void			RemoveChild	(unsigned int index);
+			void			RemoveChild	(const String& name);
+			void			RemoveChild	(IPass* child);
+
+			virtual bool	Render		(IDeviceContext* context, Camera* camera);
 
 		};
 

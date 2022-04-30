@@ -75,21 +75,16 @@ namespace ING {
 				 */
 			private:
 				IPass*				firstPass;
-				IPass*				targetFirstPass;
-
 				IPass*				finalPass;
-				IPass*				targetFinalPass;
 
 				Mode				mode;
 
 			public:
 				IPass*				GetFirstPass					() { return firstPass; }
-				IPass*				GetTargetFirstPass				() { return targetFirstPass; }
-				void				SetFirstPass					(IPass* firstPass);
+				void				SetFirstPass					(IPass* firstPass) { this->firstPass = firstPass; }
 
 				IPass*				GetFinalPass					() { return finalPass; }
-				IPass*				GetTargetFinalPass				() { return targetFinalPass; }
-				void				SetFinalPass					(IPass* finalPass);
+				void				SetFinalPass					(IPass* finalPass) { this->finalPass = finalPass; }
 
 				Mode				GetMode							() { return mode; }
 				void				SetMode							(Mode mode) { this->mode = mode; }

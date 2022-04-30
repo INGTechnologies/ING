@@ -57,9 +57,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		IPipeline::IPipeline	(String name) :
-			defaultRenderer(0),
-			renderer(0),
-			targetRenderer(0)
+			renderer(0)
 		{
 
 			this->name = name;
@@ -88,28 +86,64 @@ namespace ING {
 
 
 		/**
-		 *	Properties
-		 */
-		void IPipeline::SetRenderer(IRenderer* renderer) {
-
-			/* New Renderer Will Be Used In Next Frame */
-			targetRenderer = renderer;
-		}
-
-
-
-		/**
 		 *	Methods
 		 */
 		void IPipeline::AddPass(IPass* pass) {
 
+			AddPass(pass, passVector.size());
 
+		}
+
+		void IPipeline::AddPass(IPass* pass, unsigned int index) {
+
+			if (passVector.size() == index) {
+
+				passVector.push_back(pass);
+
+			}
+			else {
+
+				passVector.insert(passVector.begin() + index, pass);
+
+				unsigned int passCount = passVector.size();
+
+				for (unsigned int i = index + 1; i < passCount; ++i) {
+
+					name2PassIndex[passVector[i]->GetName()]++;
+
+				}
+
+			}
+
+			name2PassIndex[pass->GetName()] = index;
+
+		}
+
+		void IPipeline::RemovePass(unsigned int index) {
+
+			passVector.erase(passVector.begin() + index);
+
+			unsigned int passCount = passVector.size();
+
+			for (unsigned int i = index; i < passCount; ++i) {
+
+				name2PassIndex[passVector[i]->GetName()]--;
+
+			}
+
+			name2PassIndex.erase(GetPass(index)->GetName());
+			
+		}
+
+		void IPipeline::RemovePass(const String& name) {
+
+			RemovePass(name2PassIndex[name]);
 
 		}
 
 		void IPipeline::RemovePass(IPass* pass) {
 
-
+			RemovePass(pass->GetName());
 
 		}
 
@@ -135,9 +169,6 @@ namespace ING {
 		}
 
 		void IPipeline::BeginRender(IDeviceContext* context) {
-
-			/* Set Renderer */
-			renderer = targetRenderer;
 
 			isRendering = true;
 
