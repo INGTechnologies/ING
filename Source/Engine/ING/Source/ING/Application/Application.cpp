@@ -62,7 +62,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IApplication::IApplication(const String& configPath) :
+	IApplication::IApplication(const WString& configPath) :
 		name("INGApplication"),
 		configPath(configPath),
 		configuration(0),
@@ -93,11 +93,11 @@ namespace ING {
 	bool IApplication::Init()
 	{
 
-		Debug::Log(ToString("Start Creating An Application ") + configPath);
+		Debug::Log(ToWString("Start Creating An Application ") + configPath);
 
 		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
 
-			Debug::Error(configPath + ToString(" Not Found, Cant Create Application"));
+			Debug::Error(configPath + ToWString(" Not Found, Cant Create Application"));
 
 			Release();
 
@@ -130,7 +130,7 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->AddApplication(this);
 
-		Debug::Log(ToString("Finished Creating An Application ") + configPath);
+		Debug::Log(ToWString("Finished Creating An Application ") + configPath);
 
 		return true;
 

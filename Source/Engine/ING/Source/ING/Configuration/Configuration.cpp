@@ -47,13 +47,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	bool Configuration::LoadFromFile(const String& filePath) {
+	bool Configuration::LoadFromFile(const WString& filePath) {
 
-		String parsedFilePath = Path::GetAbsolutePath(filePath);
+		WString parsedFilePath = Path::GetAbsolutePath(filePath);
 
 		if (!std::filesystem::exists(parsedFilePath)) return false;
 
-		mINI::INIFile configFile(parsedFilePath);
+		mINI::INIFile configFile(ToString(parsedFilePath));
 
 		mINI::INIStructure compiledData;
 

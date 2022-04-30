@@ -55,7 +55,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Application::Application(const String& configPath, const String& projectPath) :
+		Application::Application(const WString& configPath, const WString& projectPath) :
 			IApplication(configPath),
 
 			projectPath(projectPath),
@@ -119,7 +119,7 @@ namespace ING {
 
 				L"Game",
 
-				ToWString(projectPath)
+				projectPath
 
 			);
 
@@ -155,7 +155,7 @@ namespace ING {
 
 		void Application::CreateGameApplication() {
 
-			gameApplication = new GameApplication("Game:/Config.ini");
+			gameApplication = new GameApplication(L"Game:/Config.ini");
 
 		}
 

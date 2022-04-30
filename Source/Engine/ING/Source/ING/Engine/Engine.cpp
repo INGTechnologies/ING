@@ -178,7 +178,7 @@ namespace ING {
 		 */
 		configuration = new Configuration();
 
-		configuration->LoadFromFile("./Config.ini");
+		configuration->LoadFromFile(L"./Config.ini");
 
 
 
@@ -274,13 +274,11 @@ namespace ING {
 		SetRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
 		SetRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
 
-		gameDir_wstr = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.gameDir")));
-		gameDir = ToString(gameDir_wstr);
-		workingDir_wstr = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.workingDir")));
-		workingDir = ToString(workingDir_wstr);
+		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.gameDir")));
+		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.workingDir")));
 
-		SetRootPath(L"Game", gameDir_wstr);
-		SetRootPath(L"Engine", workingDir_wstr);
+		SetRootPath(L"Game", gameDir);
+		SetRootPath(L"Engine", workingDir);
 
 		name = configuration->Get<String>("ING.Engine.name");
 

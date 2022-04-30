@@ -103,7 +103,7 @@ namespace ING {
 
 		}
 
-		bool LoadFromFile(const String& filePath);
+		bool LoadFromFile(const WString& filePath);
 
 	};
 

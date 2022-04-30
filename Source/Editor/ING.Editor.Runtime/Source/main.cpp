@@ -23,11 +23,11 @@
 int main(int argc, char** argv)
 {
 
-	String projectPath(argv[1]);
+	WString projectPath = ToWString(argv[1]);
 
 	ING::Engine::CreateInstance();
 
-	ING::Editor::Application* editorApplication = new ING::Editor::Application("Game:/Config.ini", projectPath);
+	ING::Editor::Application* editorApplication = new ING::Editor::Application(L"Game:/Config.ini", projectPath);
 
 	if (!ING::Engine::GetInstance()->Init()) return 1;
 

@@ -56,10 +56,10 @@ namespace ING {
 		 *	Init, Run, Release, Shutdown Methods
 		 */
 	public:
-		virtual bool			Init()		override;
-		virtual bool			Run()		override;
-		virtual bool			Release()	override;
-				void			Shutdown();
+		virtual bool	Init()		override;
+		virtual bool	Run()		override;
+		virtual bool	Release()	override;
+				void	Shutdown();
 
 
 
@@ -67,36 +67,32 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		String			gameDir;
-		WString		gameDir_wstr;
-		String			workingDir;
-		WString		workingDir_wstr;
+		WString			gameDir;
+		WString			workingDir;
 		String			name;
 
 		std::unordered_map<WString, WString> rootPath2AbsolutePath;
 
-		EngineState			state;
+		EngineState		state;
 
-		Configuration*		configuration;
+		Configuration*	configuration;
 
 	public:
-		const String&	GetGameDir					() { return gameDir; }
-		const String&	GetWorkingDir				() { return workingDir; }
-		const WString& GetGameDir_WSTR				() { return gameDir_wstr; }
-		const WString& GetWorkingDir_WSTR			() { return workingDir_wstr; }
+		const WString&	GetGameDir					() { return gameDir; }
+		const WString&	GetWorkingDir				() { return workingDir; }
 		const String&	GetName						() { return name; }
 
-		const WString& GetRootPath					(const WString& rootPath) { return rootPath2AbsolutePath[rootPath]; }
-		bool				IsHaveRootPath				(const WString& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
-		void				SetRootPath					(const WString& name, const WString& value) {
+		const WString&	GetRootPath					(const WString& rootPath) { return rootPath2AbsolutePath[rootPath]; }
+		bool			IsHaveRootPath				(const WString& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
+		void			SetRootPath					(const WString& name, const WString& value) {
 
 			rootPath2AbsolutePath[name] = value;
 
 		}
 
-		EngineState			GetState					() { return state; }
+		EngineState		GetState					() { return state; }
 
-		Configuration*		GetConfiguration			() { return configuration; }
+		Configuration*	GetConfiguration			() { return configuration; }
 
 
 
@@ -104,7 +100,7 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void FrameUpdate();
+		void			FrameUpdate();
 
 	};
 

@@ -100,8 +100,8 @@ namespace ING {
 				bool		UnloadDomain	();
 
 			public:
-				Assembly*	LoadAssembly	(const String& path, const String& name);
-				Assembly*	LoadAssembly	(const String& path, const String& name, const std::vector<String>& componentNameVector);
+				Assembly*	LoadAssembly	(const WString& path, const String& name);
+				Assembly*	LoadAssembly	(const WString& path, const String& name, const std::vector<String>& componentNameVector);
 
 				bool		OpenAssembly	();
 

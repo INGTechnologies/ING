@@ -95,7 +95,7 @@ namespace ING {
 
 				virtual IContext*	CreateContext(const String& name, bool isMainContext) override;
 
-				void OpenAssemblies(const String& iniFilePath, const String& tag);
+				void OpenAssemblies(const WString& iniFilePath, const String& tag);
 
 				void AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 

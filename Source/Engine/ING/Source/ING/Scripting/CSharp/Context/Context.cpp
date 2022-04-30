@@ -176,12 +176,12 @@ namespace ING {
 
 			}
 
-			Assembly*			Context::LoadAssembly(const String& path, const String& name) {
+			Assembly*			Context::LoadAssembly(const WString& path, const String& name) {
 
 				return LoadAssembly(path, name, {});
 			}
 
-			Assembly*			Context::LoadAssembly(const String& path, const String& name, const std::vector<String>& componentNameVector) {
+			Assembly*			Context::LoadAssembly(const WString& path, const String& name, const std::vector<String>& componentNameVector) {
 
 				if (assembly != 0) {
 
@@ -193,7 +193,7 @@ namespace ING {
 
 				}
 
-				String parsedPath = Path::GetAbsolutePath(path);
+				WString parsedPath = Path::GetAbsolutePath(path);
 
 				assembly = new Assembly(this, name, componentNameVector);
 
@@ -220,7 +220,7 @@ namespace ING {
 					return 0;
 				}
 
-				assembly->monoAssembly = mono_domain_assembly_open(domain, assembly->GetFilePath().c_str());
+				assembly->monoAssembly = mono_domain_assembly_open(domain, ToString(assembly->GetFilePath()).c_str());
 
 				if (assembly->monoAssembly == 0) {
 

@@ -23,8 +23,6 @@ namespace ING {
 
 		namespace Path {
 
-			ING_API String GetAbsolutePath(const String& pathStr);
-
 			ING_API WString GetAbsolutePath(const WString& pathStr);
 
 		}

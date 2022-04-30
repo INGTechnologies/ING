@@ -76,9 +76,9 @@ namespace ING {
 
 				MonoImage*			monoImage;
 
-				String			filePath;
+				WString				filePath;
 
-				String			name;
+				String				name;
 
 				std::vector<IAssemblyComponent*> componentVector;
 
@@ -94,9 +94,9 @@ namespace ING {
 
 				MonoImage*			GetMonoImage	() { return monoImage; }
 
-				const String&	GetFilePath		() { return filePath; }
+				const WString&		GetFilePath		() { return filePath; }
 
-				const String&	GetName			() { return name; }
+				const String&		GetName			() { return name; }
 
 				bool				IsOpening		() { return isOpening; }
 

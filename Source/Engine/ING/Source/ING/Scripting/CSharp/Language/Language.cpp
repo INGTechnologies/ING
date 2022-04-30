@@ -108,8 +108,7 @@ namespace ING {
 				ILanguage::Init();
 
 				/* Open Engine, Game Assemblies */
-				OpenAssemblies("Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
-				//OpenAssemblies("Game:/Scripting/CSharp/Assemblies.ini", "Game");
+				OpenAssemblies(L"Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
 
 			}
 
@@ -218,13 +217,13 @@ namespace ING {
 
 			}
 
-			void		Language::OpenAssemblies(const String& iniFilePath, const String& tag) {
+			void		Language::OpenAssemblies(const WString& iniFilePath, const String& tag) {
 
-				String engineAssembliesPath = Path::GetAbsolutePath(iniFilePath);
+				WString engineAssembliesPath = Path::GetAbsolutePath(iniFilePath);
 
 				if (std::filesystem::exists(engineAssembliesPath)) {
 
-					mINI::INIFile configFile(engineAssembliesPath);
+					mINI::INIFile configFile(ToString(engineAssembliesPath));
 
 					mINI::INIStructure compiledData;
 
@@ -242,7 +241,7 @@ namespace ING {
 
 							if (!item->second.has("path")) return;
 
-							String path = item->second.get("path");
+							WString path = ToWString(item->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 
@@ -289,7 +288,7 @@ namespace ING {
 
 							if (!compiledData.begin()->second.has("path")) return;
 
-							String path = compiledData.begin()->second.get("path");
+							WString path = ToWString(compiledData.begin()->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 
@@ -317,7 +316,7 @@ namespace ING {
 
 							if (!item->second.has("path")) return;
 
-							String path = item->second.get("path");
+							WString path = ToWString(item->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 

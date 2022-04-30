@@ -43,7 +43,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		IApplication	(const String& configPath);
+		IApplication	(const WString& configPath);
 		~IApplication	();
 
 
@@ -61,9 +61,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		String					name;
+		String						name;
 
-		String					configPath;
+		WString						configPath;
 
 		Configuration*				configuration;
 
@@ -75,9 +75,9 @@ namespace ING {
 		std::vector<IApplicationComponent*> componentVector;
 
 	public:
-		const String&			GetName			() { return name; }
+		const String&				GetName			() { return name; }
 
-		const String&			GetConfigPath	() { return configPath; }
+		const WString&				GetConfigPath	() { return configPath; }
 
 		Configuration*				GetConfiguration() {return configuration; }
 
@@ -95,18 +95,18 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void			AddComponent	(IApplicationComponent* component);
-		void			RemoveComponent	(IApplicationComponent* component);
+		void						AddComponent	(IApplicationComponent* component);
+		void						RemoveComponent	(IApplicationComponent* component);
 
-		virtual void	Start();
+		virtual void				Start();
 
-		virtual void	PreUpdate();
-		virtual void	Update();
-		virtual void	LateUpdate();
+		virtual void				PreUpdate();
+		virtual void				Update();
+		virtual void				LateUpdate();
 
-		virtual void	PreRender();
-		virtual void	Render();
-		virtual void	LateRender();
+		virtual void				PreRender();
+		virtual void				Render();
+		virtual void				LateRender();
 
 	};
 
