@@ -252,6 +252,15 @@ namespace ING {
 
 		ING_ENGINE_CONFIG_PROP(String, "ING.Engine.name", "ING App");
 
+		SetRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
+		SetRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
+
+		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.gameDir")));
+		workingDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.workingDir")));
+
+		SetRootPath(L"Game", gameDir);
+		SetRootPath(L"Engine", workingDir);
+
 		Debug::Log("Engine Created");
 
 	}
@@ -270,15 +279,6 @@ namespace ING {
 	bool Engine::Init() {  
 
 		Debug::Log("Start Initializing Engine");
-
-		SetRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
-		SetRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
-
-		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.gameDir")));
-		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.workingDir")));
-
-		SetRootPath(L"Game", gameDir);
-		SetRootPath(L"Engine", workingDir);
 
 		name = configuration->Get<String>("ING.Engine.name");
 

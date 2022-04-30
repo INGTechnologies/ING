@@ -65,14 +65,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			String			name;
+			String				name;
 
 			unsigned int		index;
 
 			std::unordered_map<String, IDrawableFilter*> name2DrawableFilterMap;
 
 		public:
-			String			GetName			() { return name; }
+			String				GetName			() { return name; }
 
 			unsigned int		GetIndex		() { return index; }
 

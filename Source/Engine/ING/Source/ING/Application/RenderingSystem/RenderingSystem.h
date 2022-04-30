@@ -64,34 +64,19 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		Rendering::IPipeline* defaultPipeline;
+		Rendering::IPipeline*	pipeline;
 
-		Rendering::IPipeline* pipeline;
-
-		Rendering::IPipeline* targetPipeline;
-
-		Rendering::IDevice* defaultDevice;
-
-		Rendering::IDevice* device;
-
-		Rendering::IDevice* targetDevice;
+		Rendering::IDevice*		device;
 
 	public:
-		Rendering::IPipeline* GetDefaultPipeline() { return defaultPipeline; }
 
-		Rendering::IPipeline* GetPipeline() { return pipeline; }
+		Rendering::IPipeline*	GetPipeline	() { return pipeline; }
 
-		Rendering::IPipeline* GetTargetPipeline() { return targetPipeline; }
+		void					SetPipeline	(Rendering::IPipeline* pipeline);
 
-		void		SetPipeline(Rendering::IPipeline* pipeline);
+		Rendering::IDevice*		GetDevice	() { return device; }
 
-		Rendering::IDevice* GetDefaultDevice() { return defaultDevice; }
-
-		Rendering::IDevice* GetDevice() { return device; }
-
-		Rendering::IDevice* GetTargetDevice() { return targetDevice; }
-
-		void		SetDevice(Rendering::IDevice* device);
+		void					SetDevice	(Rendering::IDevice* device);
 
 
 
@@ -99,15 +84,15 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		virtual void	Start() override;
+		virtual void			Start		() override;
 
-		virtual void	PreUpdate() override;
-		virtual void	Update() override;
-		virtual void	LateUpdate() override;
+		virtual void			PreUpdate	() override;
+		virtual void			Update		() override;
+		virtual void			LateUpdate	() override;
 
-		virtual void	PreRender() override;
-		virtual void	Render() override;
-		virtual void	LateRender() override;
+		virtual void			PreRender	() override;
+		virtual void			Render		() override;
+		virtual void			LateRender	() override;
 
 	};
 

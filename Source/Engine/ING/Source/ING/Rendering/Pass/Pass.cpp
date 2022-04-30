@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -34,9 +41,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IPass::IPass	(const String& name) {
+		IPass::IPass	(const String& name) : 
+			parent(0),
+			name(name)
+		{
 
-			this->name = name;
+
 
 		}
 
@@ -53,7 +63,44 @@ namespace ING {
 		 */
 		void IPass::Release	() {
 
+			for (unsigned int i = 0; i < childVector.size();) {
+
+				RemoveChild(i);
+
+				childVector[i]->Release();
+
+			}
+
 			delete this;
+
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		void IPass::SetParent(IPass* newParent) {
+
+			for (auto child : childVector) {
+
+				child->SetParent(newParent);
+
+			}
+
+			parent = newParent;
+
+		}
+
+		void IPass::SetPipeline(IPipeline* pipeline) {
+
+			for (auto child : childVector) {
+
+				child->SetPipeline(pipeline);
+
+			}
+
+			this->pipeline = pipeline;
 
 		}
 

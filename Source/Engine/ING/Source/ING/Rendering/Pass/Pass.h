@@ -26,6 +26,8 @@ namespace ING {
 
 		class IDeviceContext;
 
+		class IPipeline;
+
 
 
 		/**
@@ -33,6 +35,14 @@ namespace ING {
 		 */
 		class ING_API IPass
 		{
+
+			/**
+			 *	Friend Class
+			 */
+		public:
+			friend class IPipeline;
+
+
 
 			/**
 			 *	Constructors And Destructor
@@ -61,14 +71,27 @@ namespace ING {
 
 			std::vector<IPass*> childVector;
 
+			IPass*			parent;
+
+			IPipeline*		pipeline;
+
 		public:
-			String			GetName() { return name; }
+			String			GetName		() { return name; }
 
 			unsigned int	GetChildIndex(const String& name) { return name2ChildIndex[name]; }
 
-			IPass*			GetChild(const String& name) { return childVector[GetChildIndex(name)]; }
+			IPass*			GetChild	(const String& name) { return childVector[GetChildIndex(name)]; }
 
-			IPass*			GetChild(unsigned int index) { return childVector[index]; }
+			IPass*			GetChild	(unsigned int index) { return childVector[index]; }
+
+			IPass*			GetParent	() { return parent; }
+
+			IPipeline*		GetPipeline	() { return pipeline; }
+
+		private:
+			void			SetParent	(IPass* newParent);
+
+			void			SetPipeline	(IPipeline* pipeline);
 
 
 
