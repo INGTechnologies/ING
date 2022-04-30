@@ -128,6 +128,23 @@ namespace ING {
 
 
 	/**
+	 *	Properties
+	 */
+	void	ApplicationRenderingSystem::ChangePipeline(Rendering::IPipeline* pipeline) {
+
+		if (this->pipeline != 0) {
+
+			this->pipeline->Release();
+
+		}
+
+		this->pipeline = pipeline;
+
+	}
+
+
+
+	/**
 	 *	Methods
 	 */
 	void	ApplicationRenderingSystem::Start() {

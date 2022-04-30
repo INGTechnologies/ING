@@ -188,11 +188,11 @@ namespace ING {
 
 
 
-					RENDERING_ASSERTION(firstPass->Render(context, camera));
+					for (auto pass : passVector) {
 
+						RENDERING_ASSERTION(firstPass->Render(context, camera));
 
-
-					RENDERING_ASSERTION(finalPass->Render(context, camera));
+					}
 
 
 

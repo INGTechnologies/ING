@@ -170,7 +170,11 @@ namespace ING {
 
 		bool IPass::Render(IDeviceContext* context, Camera* camera) {
 
+			for (auto child : childVector) {
 
+				child->Render(context, camera);
+
+			}
 
 			return true;
 		}
