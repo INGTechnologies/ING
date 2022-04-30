@@ -65,7 +65,7 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			String	name;
+			String		name;
 
 			IRenderer*	defaultRenderer;
 
@@ -75,8 +75,12 @@ namespace ING {
 
 			bool		isRendering;
 
+			std::unordered_map<String, unsigned int> name2PassIndex;
+
+			std::vector<IPass*> passVector;
+
 		public:
-			String	GetName				() { return name; }
+			String		GetName				() { return name; }
 
 			IRenderer*	GetDefaultRenderer	() { return defaultRenderer; }
 
@@ -88,14 +92,24 @@ namespace ING {
 
 			bool		IsRendering			() { return isRendering; }
 
+			unsigned int GetPassIndex		(const String& name) { return name2PassIndex[name]; }
+
+			IPass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
+
+			IPass*		GetPass				(unsigned int index) { return passVector[index]; }
+
 
 
 			/**
 			 *	Methods
 			 */
 		public:
+			void		 AddPass			(IPass* pass);
+			void		 RemovePass			(IPass* pass);
+
 			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);
-			virtual void ClearRenderingData (Camera* camera);
+			virtual void ClearCameraData	(Camera* camera);
+
 			virtual bool Render				(IDeviceContext* context);
 
 			void		 BeginRender		(IDeviceContext* context);

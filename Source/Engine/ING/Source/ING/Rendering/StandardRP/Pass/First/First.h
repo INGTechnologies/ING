@@ -24,28 +24,14 @@ namespace ING {
 
 		namespace StandardRP {
 
-			struct FirstPassInput {
-
-
-
-			};
-
-			struct FirstPassOutput {
-
-
-
-			};
-
-
-
-			class ING_API FirstPass : public Pass<FirstPassInput, FirstPassOutput>
+			class ING_API FirstPass : public IPass
 			{
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				FirstPass	(String name);
+				FirstPass	(const String& name);
 				~FirstPass	();
 
 
@@ -62,7 +48,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual bool CustomRender(IDeviceContext* context, Camera* camera, const FirstPassInput& input, FirstPassOutput& output) override;
+				virtual bool Render(IDeviceContext* context, Camera* camera) override;
 
 			};
 

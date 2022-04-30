@@ -24,28 +24,14 @@ namespace ING {
 
 		namespace StandardRP {
 
-			struct FinalPassInput {
-
-
-
-			};
-
-			struct FinalPassOutput {
-
-
-
-			};
-
-
-
-			class ING_API FinalPass : public Pass<FinalPassInput, FinalPassOutput>
+			class ING_API FinalPass : public IPass
 			{
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				FinalPass	(String name);
+				FinalPass	(const String& name);
 				~FinalPass	();
 
 
@@ -62,7 +48,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual bool CustomRender(IDeviceContext* context, Camera* camera, const FinalPassInput& input, FinalPassOutput& output) override;
+				virtual bool Render(IDeviceContext* context, Camera* camera) override;
 
 			};
 

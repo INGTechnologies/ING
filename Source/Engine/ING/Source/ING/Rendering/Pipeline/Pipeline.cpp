@@ -101,13 +101,25 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void IPipeline::AddPass(IPass* pass) {
+
+
+
+		}
+
+		void IPipeline::RemovePass(IPass* pass) {
+
+
+
+		}
+
 		void IPipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
 
 
 
 		}
 
-		void IPipeline::ClearRenderingData(Camera* camera) {
+		void IPipeline::ClearCameraData(Camera* camera) {
 
 
 
