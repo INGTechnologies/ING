@@ -45,7 +45,7 @@ namespace ING {
 
 		struct MaterialProperty {
 
-			std::string  name;
+			String  name;
 			void*		 pData;
 			unsigned int size;
 
@@ -59,8 +59,8 @@ namespace ING {
 
 			MaterialView (
 
-				const std::string& name, 
-				const std::string& type,
+				const String& name, 
+				const String& type,
 				IView* view,
 				unsigned int index
 			
@@ -71,8 +71,8 @@ namespace ING {
 				index(index)
 			{}
 
-			std::string name;
-			std::string type;
+			String name;
+			String type;
 			IView* view;
 			unsigned int index;
 
@@ -87,7 +87,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IMaterial		(const std::string& name, IShader* shader);
+			IMaterial		(const String& name, IShader* shader);
 			~IMaterial		();
 
 
@@ -103,7 +103,7 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string		name;
+			String		name;
 
 			IShader*		shader;
 
@@ -111,8 +111,8 @@ namespace ING {
 			IBuffer*		propertyBuffer;
 
 			std::vector<MaterialView>						viewVector;
-			std::unordered_map<std::string, unsigned int>	viewName2ViewIndexMap;
-			std::unordered_map<std::string, std::vector<unsigned int>>	viewType2ViewIndexVectorMap;
+			std::unordered_map<String, unsigned int>	viewName2ViewIndexMap;
+			std::unordered_map<String, std::vector<unsigned int>>	viewType2ViewIndexVectorMap;
 
 			List<IMaterial*>::Node* node;
 
@@ -120,7 +120,7 @@ namespace ING {
 			std::vector<IBuffer*> cbufferVector;
 
 		public:
-			std::string		GetName			() { return name; }
+			String		GetName			() { return name; }
 
 			IShader*		GetShader		() { return shader; }
 
@@ -136,15 +136,15 @@ namespace ING {
 
 			const std::vector<MaterialView>& GetViewVector() { return viewVector; }
 			unsigned int				GetViewCount() { return viewVector.size(); }
-			unsigned int				GetViewIndex(const std::string& name) { return viewName2ViewIndexMap[name]; }
+			unsigned int				GetViewIndex(const String& name) { return viewName2ViewIndexMap[name]; }
 
-			std::vector<MaterialView>	GetViewsByType(const std::string& type);
+			std::vector<MaterialView>	GetViewsByType(const String& type);
 
 			virtual unsigned int		GetMinimumCBufferCount() { return 1; }
 
 		private:
-			unsigned int	GetPropertyIndex(const std::string& name);
-			unsigned int	GetPropertyOffset(const std::string& name);
+			unsigned int	GetPropertyIndex(const String& name);
+			unsigned int	GetPropertyOffset(const String& name);
 
 
 
@@ -152,12 +152,12 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Apply					(const std::string& passName);
+			virtual void Apply					(const String& passName);
 
 			virtual void CreatePropertyBuffer	();
 			virtual void ReleasePropertyBuffer	();
 			template<typename T>
-			void		 SetProperty			(const std::string& name, const T& value, bool updateBuffer) {
+			void		 SetProperty			(const String& name, const T& value, bool updateBuffer) {
 
 				if (shader == 0) return;
 
@@ -175,18 +175,18 @@ namespace ING {
 
 			}
 			template<typename T>
-			void		 SetProperty			(const std::string& name, const T& value) { SetProperty<T>(name, value, true); }
+			void		 SetProperty			(const String& name, const T& value) { SetProperty<T>(name, value, true); }
 			virtual void UpdatePropertyBuffer	();
 
 			virtual void UpdateViewVector		();
 
 			virtual void UpdateCBufferVector	();
 
-			IBuffer*	 GetCBuffer(const std::string& name);
-			void		 SetCBuffer(const std::string& name, IBuffer* cbuffer);
+			IBuffer*	 GetCBuffer(const String& name);
+			void		 SetCBuffer(const String& name, IBuffer* cbuffer);
 
-			IView*		 GetView				(const std::string& name);
-			void		 SetView				(const std::string& name, IView* view);
+			IView*		 GetView				(const String& name);
+			void		 SetView				(const String& name, IView* view);
 
 			virtual void Update					();
 

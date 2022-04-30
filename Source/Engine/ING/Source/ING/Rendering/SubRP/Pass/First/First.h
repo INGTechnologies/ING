@@ -38,7 +38,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				FirstPass	(std::string name);
+				FirstPass	(String name);
 				~FirstPass	();
 
 

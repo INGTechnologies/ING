@@ -34,7 +34,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IPass::IPass	(const std::string& name) {
+		IPass::IPass	(const String& name) {
 
 			this->name = name;
 

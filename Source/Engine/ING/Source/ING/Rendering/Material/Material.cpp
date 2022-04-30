@@ -90,7 +90,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IMaterial::IMaterial(const std::string& name, IShader* shader) : 
+		IMaterial::IMaterial(const String& name, IShader* shader) : 
 			shader(0),
 			propertyBuffer(0),
 			propertyPData(0),
@@ -155,7 +155,7 @@ namespace ING {
 		
 		}
 
-		unsigned int	IMaterial::GetPropertyIndex(const std::string& name) {
+		unsigned int	IMaterial::GetPropertyIndex(const String& name) {
 
 			if (shader == 0) return 0;
 
@@ -163,7 +163,7 @@ namespace ING {
 
 		}
 
-		unsigned int	IMaterial::GetPropertyOffset(const std::string& name) {
+		unsigned int	IMaterial::GetPropertyOffset(const String& name) {
 
 			if (shader == 0) return 0;
 
@@ -179,7 +179,7 @@ namespace ING {
 
 		}
 
-		std::vector<MaterialView>	IMaterial::GetViewsByType(const std::string& type) {
+		std::vector<MaterialView>	IMaterial::GetViewsByType(const String& type) {
 
 			unsigned int viewCount = viewType2ViewIndexVectorMap[type].size();
 
@@ -200,7 +200,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IMaterial::Apply(const std::string& passName) {
+		void IMaterial::Apply(const String& passName) {
 
 			if (shader != 0) {
 
@@ -327,25 +327,25 @@ namespace ING {
 
 		}
 
-		IBuffer* IMaterial::GetCBuffer(const std::string& name) {
+		IBuffer* IMaterial::GetCBuffer(const String& name) {
 
 			return cbufferVector[shader->GetCBufferIndex(name)];
 
 		}
 
-		void	IMaterial::SetCBuffer(const std::string& name, IBuffer* cbuffer) {
+		void	IMaterial::SetCBuffer(const String& name, IBuffer* cbuffer) {
 
 			cbufferVector[shader->GetCBufferIndex(name)] = cbuffer;
 
 		}
 
-		IView*	IMaterial::GetView(const std::string& name) {
+		IView*	IMaterial::GetView(const String& name) {
 
 			return viewVector[viewName2ViewIndexMap[name]].view;
 
 		}
 
-		void	IMaterial::SetView(const std::string& name, IView* view) {
+		void	IMaterial::SetView(const String& name, IView* view) {
 
 			viewVector[viewName2ViewIndexMap[name]].view = view;
 

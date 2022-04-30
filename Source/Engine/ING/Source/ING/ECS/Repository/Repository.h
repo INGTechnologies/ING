@@ -73,8 +73,8 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::map<std::string, IComponentSystem*>	componentSystemTypeId2ComponentSystemMap;
-			std::map<std::string, IComponentSystem*>	componentTypeId2ComponentSystemMap;
+			std::map<String, IComponentSystem*>	componentSystemTypeId2ComponentSystemMap;
+			std::map<String, IComponentSystem*>	componentTypeId2ComponentSystemMap;
 
 			std::vector<IComponentSystem*>				componentSystemVector;
 
@@ -83,8 +83,8 @@ namespace ING {
 			List<Repository*>::Node*					node;
 
 		public:
-			std::map<std::string, IComponentSystem*>&	GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
-			std::map<std::string, IComponentSystem*>&	GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
+			std::map<String, IComponentSystem*>&	GetComponentSystemTypeId2ComponentSystemMap() { return componentSystemTypeId2ComponentSystemMap; }
+			std::map<String, IComponentSystem*>&	GetComponentTypeId2ComponentSystemMap() { return componentTypeId2ComponentSystemMap; }
 
 			bool										IsActive() { return isActive; }
 

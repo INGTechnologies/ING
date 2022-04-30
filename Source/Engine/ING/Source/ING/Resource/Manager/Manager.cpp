@@ -96,13 +96,13 @@ namespace ING {
 	/**
 	 *	Resource Management
 	 */
-	bool			ResourceManager::IsFileExist	(const std::wstring& path) {
+	bool			ResourceManager::IsFileExist	(const WString& path) {
 
 		return std::filesystem::exists(path);
 
 	}
 
-	std::wstring	ResourceManager::ReadFile(const std::wstring& path, CoderOption& coderOption) {
+	WString	ResourceManager::ReadFile(const WString& path, CoderOption& coderOption) {
 
 		if (!IsFileExist(path)) {
 
@@ -115,7 +115,7 @@ namespace ING {
 
 
 
-		std::wstring result;
+		WString result;
 
 		std::wfstream fileStream;
 
@@ -161,7 +161,7 @@ namespace ING {
 
 	}
 
-	void			ResourceManager::WriteFile(const std::wstring& path, const std::wstring& content, CoderOption& coderOption) {
+	void			ResourceManager::WriteFile(const WString& path, const WString& content, CoderOption& coderOption) {
 
 		if (!IsFileExist(path)) {
 
@@ -174,7 +174,7 @@ namespace ING {
 
 
 
-		std::wstring parsedContent;
+		WString parsedContent;
 
 
 

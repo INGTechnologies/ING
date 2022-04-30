@@ -86,7 +86,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Pipeline::Pipeline(std::string name) : IPipeline(name) {
+			Pipeline::Pipeline(String name) : IPipeline(name) {
 
 
 
@@ -146,7 +146,7 @@ namespace ING {
 				return true;
 			}
 
-			unsigned int Pipeline::GetPassIndex(const std::string& name) {
+			unsigned int Pipeline::GetPassIndex(const String& name) {
 
 				return passName2PassIndex[name];
 
@@ -158,7 +158,7 @@ namespace ING {
 
 			}
 
-			IPass* Pipeline::GetPass(const std::string& name) {
+			IPass* Pipeline::GetPass(const String& name) {
 
 				return GetPass(GetPassIndex(name));
 
@@ -196,7 +196,7 @@ namespace ING {
 
 			void Pipeline::RemovePass(unsigned int index) {
 
-				std::string passName = passVector[index]->GetName();
+				String passName = passVector[index]->GetName();
 
 				passVector.erase(passVector.begin() + index);
 

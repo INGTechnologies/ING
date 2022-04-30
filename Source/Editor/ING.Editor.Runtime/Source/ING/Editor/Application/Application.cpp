@@ -55,7 +55,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Application::Application(const std::string& configPath, const std::string& projectPath) :
+		Application::Application(const String& configPath, const String& projectPath) :
 			IApplication(configPath),
 
 			projectPath(projectPath),

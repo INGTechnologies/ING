@@ -40,7 +40,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			GameApplication	(const std::string& configPath);
+			GameApplication	(const String& configPath);
 			~GameApplication();
 
 

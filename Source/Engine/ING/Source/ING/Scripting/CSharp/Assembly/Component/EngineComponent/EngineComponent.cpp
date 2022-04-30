@@ -50,7 +50,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			EngineAssemblyComponent::EngineAssemblyComponent(Assembly* assembly, const std::string& name) :
+			EngineAssemblyComponent::EngineAssemblyComponent(Assembly* assembly, const String& name) :
 				IAssemblyComponent(assembly, name)
 			{
 

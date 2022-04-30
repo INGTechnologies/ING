@@ -55,14 +55,14 @@ namespace ING {
 			IMethodContainer*	container;
 
 		protected:
-			std::string			name;
+			String			name;
 
 		public:
 			IContext*			GetContext		() { return context; }
 
 			IMethodContainer*	GetContainer	() { return container; }
 
-			const std::string&	GetName			() { return name; }
+			const String&	GetName			() { return name; }
 
 		};
 

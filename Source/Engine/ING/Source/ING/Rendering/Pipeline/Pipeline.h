@@ -48,7 +48,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPipeline	(std::string name);
+			IPipeline	(String name);
 			~IPipeline	();
 
 
@@ -65,7 +65,7 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			std::string	name;
+			String	name;
 
 			IRenderer*	defaultRenderer;
 
@@ -76,7 +76,7 @@ namespace ING {
 			bool		isRendering;
 
 		public:
-			std::string	GetName				() { return name; }
+			String	GetName				() { return name; }
 
 			IRenderer*	GetDefaultRenderer	() { return defaultRenderer; }
 

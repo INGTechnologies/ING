@@ -99,13 +99,6 @@
 
 
 /**
-  *	Include WString
-  */
-#include <ING/Utils/WString/WString.h>
-
-
-
-/**
  *	Include AsMethod
  */
 #include <ING/Utils/AsMethod/AsMethod.h>

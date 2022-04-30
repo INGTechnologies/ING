@@ -15,7 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FinalPass::FinalPass(std::string name) : Pass<FinalPassInput, FinalPassOutput>(name) {
+			FinalPass::FinalPass(String name) : Pass<FinalPassInput, FinalPassOutput>(name) {
 
 
 

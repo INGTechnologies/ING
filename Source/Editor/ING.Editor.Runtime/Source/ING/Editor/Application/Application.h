@@ -40,7 +40,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Application(const std::string& configPath, const std::string& gamePath);
+			Application(const String& configPath, const String& gamePath);
 			~Application();
 
 
@@ -60,12 +60,12 @@ namespace ING {
 		private:
 			GameApplication*	gameApplication;
 
-			std::string			projectPath;
+			String				projectPath;
 
 		public:
 			GameApplication*	GetGameApplication() { return gameApplication; }
 
-			const std::string&	GetProjectPath() { return projectPath; }
+			const String&		GetProjectPath() { return projectPath; }
 
 
 

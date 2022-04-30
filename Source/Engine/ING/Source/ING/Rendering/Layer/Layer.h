@@ -48,7 +48,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Layer	(std::string name);
+			Layer	(String name);
 			~Layer	();
 
 
@@ -65,22 +65,22 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string			name;
+			String			name;
 
 			unsigned int		index;
 
-			std::unordered_map<std::string, IDrawableFilter*> name2DrawableFilterMap;
+			std::unordered_map<String, IDrawableFilter*> name2DrawableFilterMap;
 
 		public:
-			std::string			GetName			() { return name; }
+			String			GetName			() { return name; }
 
 			unsigned int		GetIndex		() { return index; }
 
-			const std::unordered_map<std::string, IDrawableFilter*>& GetName2DrawableFilterMap () { return name2DrawableFilterMap; }
+			const std::unordered_map<String, IDrawableFilter*>& GetName2DrawableFilterMap () { return name2DrawableFilterMap; }
 
-			IDrawableFilter*	GetFilter		(const std::string& name);
-			void			    AddFilter		(const std::string& name);
-			void			    RemoveFilter	(const std::string& name);
+			IDrawableFilter*	GetFilter		(const String& name);
+			void			    AddFilter		(const String& name);
+			void			    RemoveFilter	(const String& name);
 
 		};
 

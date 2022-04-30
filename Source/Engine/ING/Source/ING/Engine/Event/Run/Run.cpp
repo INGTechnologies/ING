@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string EngineRunEvent::GetName() { return "RUN"; };
+	String EngineRunEvent::GetName() { return "RUN"; };
 
 }

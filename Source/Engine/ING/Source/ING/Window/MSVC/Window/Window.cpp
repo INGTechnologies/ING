@@ -214,7 +214,7 @@ namespace ING {
 
 			classId = WindowManager::GetInstance()->NewClassId();
 
-			std::wstring className = ToWString(L"ING.WindowClass_") + ToWString(classId);
+			WString className = ToWString(L"ING.WindowClass_") + ToWString(classId);
 
 			/* Create Class */
 			WNDCLASSEX wc;
@@ -296,7 +296,7 @@ namespace ING {
 
 		}
 
-		void			Window::SetTitle(const std::wstring& title) {
+		void			Window::SetTitle(const WString& title) {
 
 			desc.title = title.c_str();
 
@@ -304,7 +304,7 @@ namespace ING {
 
 		}
 
-		void			Window::SetIconFromFile(const std::wstring& path) {
+		void			Window::SetIconFromFile(const WString& path) {
 
 
 

@@ -21,6 +21,13 @@
 
 
 
+/**
+ *	Include String
+ */
+#include <ING/Utils/String/String.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
@@ -29,7 +36,7 @@ namespace ING {
 
 			size_t		size;
 
-			std::string name;
+			String name;
 
 		};
 
@@ -50,10 +57,10 @@ namespace ING {
 			 *	Properties
 			 */		
 		private:
-			std::unordered_map<std::string, VirtualStructProperty>	name2propertyMap;
+			std::unordered_map<String, VirtualStructProperty>	name2propertyMap;
 
 		public:
-			std::unordered_map<std::string, VirtualStructProperty>&	GetName2propertyMap	() { return name2propertyMap; }
+			std::unordered_map<String, VirtualStructProperty>&	GetName2propertyMap	() { return name2propertyMap; }
 			
 
 
@@ -62,7 +69,7 @@ namespace ING {
 			 */
 		public:
 			template<typename T>
-			void	AddProperty		(const std::string& name) {
+			void	AddProperty		(const String& name) {
 
 				VirtualStructProperty prop;
 
@@ -74,7 +81,7 @@ namespace ING {
 
 			}
 
-			void	RemoveProperty	(const std::string& name) {
+			void	RemoveProperty	(const String& name) {
 
 				name2propertyMap.erase(name);
 

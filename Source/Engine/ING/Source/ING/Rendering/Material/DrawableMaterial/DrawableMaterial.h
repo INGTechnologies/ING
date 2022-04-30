@@ -55,7 +55,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			DrawableMaterial	(const std::string& name, IShader* shader);
+			DrawableMaterial	(const String& name, IShader* shader);
 			~DrawableMaterial	();
 
 
@@ -64,7 +64,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Apply	(const std::string& passName) override;
+			virtual void Apply	(const String& passName) override;
 
 			virtual void ApplyTransform (const TransformM& transformMatrices);
 			virtual void ApplyTransform (const TransformM& transformMatrices, bool updateBuffer);

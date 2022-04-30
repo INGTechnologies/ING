@@ -46,7 +46,7 @@ namespace ING {
 
 		struct InputLayoutElementDesc {
 
-			std::string					semanticName;
+			String					semanticName;
 			unsigned int				semanticIndex;
 			Format						format;
 			unsigned int				inputSlot;

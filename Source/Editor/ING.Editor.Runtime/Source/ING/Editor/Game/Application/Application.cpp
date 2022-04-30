@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		GameApplication::GameApplication(const std::string& configPath) :
+		GameApplication::GameApplication(const String& configPath) :
 			IApplication(configPath)
 		{
 

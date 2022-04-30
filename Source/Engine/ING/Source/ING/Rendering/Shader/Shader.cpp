@@ -41,7 +41,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IShader::IShader(IDevice* device, const std::string& name) : device(0) {
+		IShader::IShader(IDevice* device, const String& name) : device(0) {
 
 			this->name = name;
 
@@ -49,7 +49,7 @@ namespace ING {
 
 		}
 
-		IShader::IShader(const std::string& name) : IShader(IAPI::GetInstance()->GetDevice(), name)
+		IShader::IShader(const String& name) : IShader(IAPI::GetInstance()->GetDevice(), name)
 		{}
 
 		IShader::~IShader() {
@@ -82,7 +82,7 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		IShaderPass* IShader::GetPass(const std::string& name) {
+		IShaderPass* IShader::GetPass(const String& name) {
 
 			return passName2PassMap[name];
 
@@ -93,7 +93,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IShaderPass*	IShader::AddPass		(const std::string& name) {
+		IShaderPass*	IShader::AddPass		(const String& name) {
 
 			IShaderPass* pass = new IShaderPass(name);
 
@@ -103,7 +103,7 @@ namespace ING {
 
 		}
 
-		void			IShader::RemovePass	(const std::string& name) {
+		void			IShader::RemovePass	(const String& name) {
 
 			delete (passName2PassMap[name]);
 
@@ -125,7 +125,7 @@ namespace ING {
 
 		}
 
-		void			IShader::Apply(const std::string& name) {
+		void			IShader::Apply(const String& name) {
 
 			if (passName2PassMap.find(name) == passName2PassMap.end()) return;
 

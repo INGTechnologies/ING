@@ -38,7 +38,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPass(const std::string& name);
+			IPass(const String& name);
 			~IPass();
 
 
@@ -55,10 +55,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string			name;
+			String			name;
 
 		public:
-			std::string			GetName() { return name; }
+			String			GetName() { return name; }
 
 
 
@@ -83,7 +83,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Pass	(const std::string& name);
+			Pass	(const String& name);
 			~Pass	();
 
 
@@ -123,7 +123,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		template<typename TInput, typename TOutput>
-		Pass<TInput,TOutput>::Pass	(const std::string& name) : IPass(name) {
+		Pass<TInput,TOutput>::Pass	(const String& name) : IPass(name) {
 
 
 

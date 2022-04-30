@@ -71,10 +71,10 @@ namespace ING {
 		 *	Resource Management
 		 */
 	public:
-		bool			IsFileExist		(const std::wstring& path);
+		bool			IsFileExist		(const WString& path);
 
-		std::wstring	ReadFile		(const std::wstring& path, CoderOption& coderOption);
-		std::wstring	ReadFile		(const std::wstring& path) {
+		WString	ReadFile		(const WString& path, CoderOption& coderOption);
+		WString	ReadFile		(const WString& path) {
 
 			CoderOption coderOption;
 
@@ -82,8 +82,8 @@ namespace ING {
 
 		}
 
-		void			WriteFile		(const std::wstring& path, const std::wstring& content, CoderOption& coderOption);
-		void			WriteFile		(const std::wstring& path, const std::wstring& content) {
+		void			WriteFile		(const WString& path, const WString& content, CoderOption& coderOption);
+		void			WriteFile		(const WString& path, const WString& content) {
 
 			CoderOption coderOption;
 
@@ -92,7 +92,7 @@ namespace ING {
 		}
 
 		template<class T>
-		T*				LoadResource	(const std::wstring& path) {
+		T*				LoadResource	(const WString& path) {
 
 			CoderOption coderOption;
 
@@ -101,7 +101,7 @@ namespace ING {
 		}
 
 		template<class T>
-		T*				LoadResource	(const std::wstring& path, CoderOption& coderOption) {
+		T*				LoadResource	(const WString& path, CoderOption& coderOption) {
 
 			if (typeid(T) == typeid(IResource)) {
 

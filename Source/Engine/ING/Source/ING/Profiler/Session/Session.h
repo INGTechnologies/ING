@@ -31,7 +31,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		ProfilerSession		(std::string name, std::string category);
+		ProfilerSession		(String name, String category);
 		~ProfilerSession	();
 
 
@@ -40,9 +40,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string							name;
+		String							name;
 
-		std::string							category;
+		String							category;
 
 		std::chrono::duration<float>		startTime;
 
@@ -53,9 +53,9 @@ namespace ING {
 		List<ProfilerSession*>::Node*		node;
 
 	public:
-		const std::string&					GetName			() { return name; }
+		const String&					GetName			() { return name; }
 
-		const std::string&					GetCategory		() { return category; }
+		const String&					GetCategory		() { return category; }
 
 		const std::chrono::duration<float>& GetStartTime	() { return startTime; }
 

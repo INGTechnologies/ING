@@ -123,7 +123,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Camera* camera, const std::string& filterName, const std::string& passName) {
+		void IRenderer::RenderDrawables(Camera* camera, const String& filterName, const String& passName) {
 
 			if (camera->GetRenderingScene() == 0) {
 
@@ -155,7 +155,7 @@ namespace ING {
 
 		}
 
-		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const std::string& passName) {
+		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const String& passName) {
 
 			drawable->Draw(camera, passName);
 

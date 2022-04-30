@@ -31,7 +31,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		ISceneComponent(const std::string& typeId);
+		ISceneComponent(const String& typeId);
 		~ISceneComponent();
 
 
@@ -48,10 +48,10 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string typeId;
+		String typeId;
 
 	public:
-		const std::string& GetTypeId() { return typeId; }
+		const String& GetTypeId() { return typeId; }
 
 	};
 

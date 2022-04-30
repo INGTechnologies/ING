@@ -47,9 +47,9 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	bool Configuration::LoadFromFile(const std::string& filePath) {
+	bool Configuration::LoadFromFile(const String& filePath) {
 
-		std::string parsedFilePath = Path::GetAbsolutePath(filePath);
+		String parsedFilePath = Path::GetAbsolutePath(filePath);
 
 		if (!std::filesystem::exists(parsedFilePath)) return false;
 
@@ -63,7 +63,7 @@ namespace ING {
 
 			for (const auto& item2 : item.second) {
 
-				std::string propName = item.first + "." + item2.first;
+				String propName = item.first + "." + item2.first;
 
 				/* If This Is Positive Number Prop */
 				if (item2.second[0] >= 48 && item2.second[0] <= 57) {
@@ -151,8 +151,8 @@ namespace ING {
 				/* If This Is String Prop */
 				else if (item2.second[0] == '"') {
 
-					this->Add<std::string>(propName);
-					this->Set<std::string>(propName, item2.second.substr(1,item2.second.size() - 2));
+					this->Add<String>(propName);
+					this->Set<String>(propName, item2.second.substr(1,item2.second.size() - 2));
 
 				}
 

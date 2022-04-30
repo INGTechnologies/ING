@@ -24,7 +24,7 @@ namespace ING {
 
 		Coder* coder = nullptr;
 
-		std::wstring key = L"";
+		WString key = L"";
 
 	};
 

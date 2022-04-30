@@ -57,7 +57,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Scene::Scene(std::string name)
+		Scene::Scene(String name)
 		{
 
 			this->name = name;

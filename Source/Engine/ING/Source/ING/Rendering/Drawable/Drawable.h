@@ -75,9 +75,9 @@ namespace ING {
 
 			Layer*							layer;
 
-			std::vector<std::string>		filterNameVector;
+			std::vector<String>		filterNameVector;
 
-			std::unordered_map<std::string, IDrawableFilter*>	filterName2FilterMap;
+			std::unordered_map<String, IDrawableFilter*>	filterName2FilterMap;
 
 			bool							isActive;
 
@@ -87,14 +87,14 @@ namespace ING {
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();
 
-			const std::vector<std::string>& GetFilterNameVector		() { return filterNameVector; }
-			void							SetFilterNameVector		(const std::vector<std::string>& filterNameVector);
-			void							SetFilters				(const std::vector<std::string>& filterNameVector);
+			const std::vector<String>& GetFilterNameVector		() { return filterNameVector; }
+			void							SetFilterNameVector		(const std::vector<String>& filterNameVector);
+			void							SetFilters				(const std::vector<String>& filterNameVector);
 
-			//List<IDrawable*>::Node*			GetNode					(const std::string& filterName);
-			//void							AddNode					(const std::string& filterName, List<IDrawable*>::Node* node);
-			//void							RemoveNode				(const std::string& filterName);
-			bool							IsHaveFilter			(const std::string& filterName) { return filterName2FilterMap.find(filterName) != filterName2FilterMap.end(); }
+			//List<IDrawable*>::Node*			GetNode					(const String& filterName);
+			//void							AddNode					(const String& filterName, List<IDrawable*>::Node* node);
+			//void							RemoveNode				(const String& filterName);
+			bool							IsHaveFilter			(const String& filterName) { return filterName2FilterMap.find(filterName) != filterName2FilterMap.end(); }
 
 			bool							IsActive				() { return isActive; }
 			void							SetActive				(bool isActive) { this->isActive = isActive; }
@@ -105,7 +105,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Draw(Camera* camera, const std::string& passName);
+			virtual void Draw(Camera* camera, const String& passName);
 
 		};
 

@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string WindowMouseBtnDownEvent::GetName() { return "MOUSE_BTN_DOWN"; };
+	String WindowMouseBtnDownEvent::GetName() { return "MOUSE_BTN_DOWN"; };
 
 }

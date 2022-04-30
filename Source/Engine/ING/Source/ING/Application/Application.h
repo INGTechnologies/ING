@@ -43,7 +43,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		IApplication	(const std::string& configPath);
+		IApplication	(const String& configPath);
 		~IApplication	();
 
 
@@ -61,9 +61,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string					name;
+		String					name;
 
-		std::string					configPath;
+		String					configPath;
 
 		Configuration*				configuration;
 
@@ -71,13 +71,13 @@ namespace ING {
 
 		ApplicationRenderingSystem*	renderingSystem;
 
-		std::unordered_map<std::string, unsigned int> name2ComponentIndexMap;
+		std::unordered_map<String, unsigned int> name2ComponentIndexMap;
 		std::vector<IApplicationComponent*> componentVector;
 
 	public:
-		const std::string&			GetName			() { return name; }
+		const String&			GetName			() { return name; }
 
-		const std::string&			GetConfigPath	() { return configPath; }
+		const String&			GetConfigPath	() { return configPath; }
 
 		Configuration*				GetConfiguration() {return configuration; }
 
@@ -85,7 +85,7 @@ namespace ING {
 
 		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
 
-		IApplicationComponent*		GetComponent	(const std::string& name) { return componentVector[name2ComponentIndexMap[name]]; }
+		IApplicationComponent*		GetComponent	(const String& name) { return componentVector[name2ComponentIndexMap[name]]; }
 
 		IApplicationComponent*		GetComponent	(unsigned int index) { return componentVector[index]; }
 

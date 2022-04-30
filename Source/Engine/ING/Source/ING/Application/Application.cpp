@@ -62,7 +62,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IApplication::IApplication(const std::string& configPath) :
+	IApplication::IApplication(const String& configPath) :
 		name("INGApplication"),
 		configPath(configPath),
 		configuration(0),
@@ -110,7 +110,7 @@ namespace ING {
 
 		if (!configuration->Exist("ING.Application.name")) {
 
-			name = configuration->Get<std::string>("ING.Application.name");
+			name = configuration->Get<String>("ING.Application.name");
 
 		}
 

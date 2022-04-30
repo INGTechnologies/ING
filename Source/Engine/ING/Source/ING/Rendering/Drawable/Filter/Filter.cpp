@@ -21,7 +21,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDrawableFilter::IDrawableFilter	(const std::string& name) {
+		IDrawableFilter::IDrawableFilter	(const String& name) {
 
 			this->name = name;
 

@@ -93,13 +93,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	ProfilerSession*				Profiler::BeginSession	(const std::string& name, const std::string& category)	{
+	ProfilerSession*				Profiler::BeginSession	(const String& name, const String& category)	{
 
 		ProfilerSession* session = new ProfilerSession(name, category);
 
 		Profiler* profiler = Profiler::GetInstance();
 
-		profiler->sessionMap[std::pair<std::string, std::string>(name, category)] = session;
+		profiler->sessionMap[std::pair<String, String>(name, category)] = session;
 
 		if (Profiler::GetInstance()->logSessionInConsole) {
 
@@ -156,9 +156,9 @@ namespace ING {
 	}
 	ProfilerSession*				Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(ToString(name), ToString(category)); }
 
-	void							Profiler::EndSession	(const std::string& name, const std::string& category)	{
+	void							Profiler::EndSession	(const String& name, const String& category)	{
 
-		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<std::string, std::string>(name, category)];
+		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<String, String>(name, category)];
 
 		session->End();
 
@@ -228,7 +228,7 @@ namespace ING {
 
 		}
 
-		Profiler::GetInstance()->sessionMap.erase(std::pair<std::string, std::string>(name, category));
+		Profiler::GetInstance()->sessionMap.erase(std::pair<String, String>(name, category));
 
 		delete session;
 

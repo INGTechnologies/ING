@@ -56,10 +56,10 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::unordered_map<std::string, IWindow*> name2WindowMap;
+		std::unordered_map<String, IWindow*> name2WindowMap;
 
 	public:
-		IWindow*			GetWindow		(const std::string& name) { return name2WindowMap[name]; }
+		IWindow*			GetWindow		(const String& name) { return name2WindowMap[name]; }
 
 
 

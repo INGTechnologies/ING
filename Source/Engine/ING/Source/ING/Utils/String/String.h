@@ -20,25 +20,53 @@ namespace ING {
 
 		using String = std::string;
 
-		std::string ING_API ToString(const char* content);
+		using WString = std::wstring;
 
-		std::string ING_API ToString(char content);
 
-		std::string ING_API ToString(int content);
 
-		std::string ING_API ToString(unsigned int content);
+		String ING_API ToString(const char* content);
 
-		std::string ING_API ToString(long content);
+		String ING_API ToString(char content);
 
-		std::string ING_API ToString(unsigned long content);
+		String ING_API ToString(int content);
 
-		std::string ING_API ToString(float content);
+		String ING_API ToString(unsigned int content);
 
-		std::string ING_API ToString(void* content);
+		String ING_API ToString(long content);
 
-		std::string ING_API ToString(size_t content);
+		String ING_API ToString(unsigned long content);
 
-		std::string ING_API ToString(const std::wstring& content);
+		String ING_API ToString(float content);
+
+		String ING_API ToString(void* content);
+
+		String ING_API ToString(size_t content);
+
+		String ING_API ToString(const WString& content);
+
+
+
+		WString ING_API ToWString(const wchar_t* content);
+
+		WString ING_API ToWString(char content);
+
+		WString ING_API ToWString(int content);
+
+		WString ING_API ToWString(unsigned int content);
+
+		WString ING_API ToWString(long content);
+
+		WString ING_API ToWString(unsigned long content);
+
+		WString ING_API ToWString(float content);
+
+		WString ING_API ToWString(double content);
+
+		WString ING_API ToWString(void* content);
+
+		WString ING_API ToWString(size_t content);
+
+		WString ING_API ToWString(const String& content);
 
 	}
 

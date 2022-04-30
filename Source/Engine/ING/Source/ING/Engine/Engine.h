@@ -67,28 +67,28 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string			gameDir;
-		std::wstring		gameDir_wstr;
-		std::string			workingDir;
-		std::wstring		workingDir_wstr;
-		std::string			name;
+		String			gameDir;
+		WString		gameDir_wstr;
+		String			workingDir;
+		WString		workingDir_wstr;
+		String			name;
 
-		std::unordered_map<std::wstring, std::wstring> rootPath2AbsolutePath;
+		std::unordered_map<WString, WString> rootPath2AbsolutePath;
 
 		EngineState			state;
 
 		Configuration*		configuration;
 
 	public:
-		const std::string&	GetGameDir					() { return gameDir; }
-		const std::string&	GetWorkingDir				() { return workingDir; }
-		const std::wstring& GetGameDir_WSTR				() { return gameDir_wstr; }
-		const std::wstring& GetWorkingDir_WSTR			() { return workingDir_wstr; }
-		const std::string&	GetName						() { return name; }
+		const String&	GetGameDir					() { return gameDir; }
+		const String&	GetWorkingDir				() { return workingDir; }
+		const WString& GetGameDir_WSTR				() { return gameDir_wstr; }
+		const WString& GetWorkingDir_WSTR			() { return workingDir_wstr; }
+		const String&	GetName						() { return name; }
 
-		const std::wstring& GetRootPath					(const std::wstring& rootPath) { return rootPath2AbsolutePath[rootPath]; }
-		bool				IsHaveRootPath				(const std::wstring& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
-		void				SetRootPath					(const std::wstring& name, const std::wstring& value) {
+		const WString& GetRootPath					(const WString& rootPath) { return rootPath2AbsolutePath[rootPath]; }
+		bool				IsHaveRootPath				(const WString& rootPath) { return rootPath2AbsolutePath.find(rootPath) != rootPath2AbsolutePath.end(); }
+		void				SetRootPath					(const WString& name, const WString& value) {
 
 			rootPath2AbsolutePath[name] = value;
 

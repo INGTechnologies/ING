@@ -64,7 +64,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Assembly::Assembly(Context* context, const std::string& name, const std::vector<std::string>& componentNameVector) :
+			Assembly::Assembly(Context* context, const String& name, const std::vector<String>& componentNameVector) :
 				context(context),
 
 				monoAssembly(0),

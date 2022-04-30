@@ -41,7 +41,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IShaderPass		(const std::string& name);
+			IShaderPass		(const String& name);
 			~IShaderPass	();
 
 
@@ -57,23 +57,23 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string		name;
+			String		name;
 
-			std::unordered_map<std::string, IShader*> shaderName2Shader;
-			std::unordered_map<std::string, IState*>  stateName2StateMap;
+			std::unordered_map<String, IShader*> shaderName2Shader;
+			std::unordered_map<String, IState*>  stateName2StateMap;
 
 			IInputLayout*	inputLayout;
 
 		public:
-			std::string		GetName			() const { return name; }
+			String		GetName			() const { return name; }
 
-			IShader*		GetShader		(const std::string& name) { return shaderName2Shader[name]; }
+			IShader*		GetShader		(const String& name) { return shaderName2Shader[name]; }
 
 			void			SetInputLayout	(IInputLayout* inputLayout) { this->inputLayout = inputLayout; }
 
 			IInputLayout*	GetInputLayout	() { return inputLayout; }
 
-			IState*			GetState		(const std::string& name) { return stateName2StateMap[name]; }
+			IState*			GetState		(const String& name) { return stateName2StateMap[name]; }
 
 
 
@@ -81,11 +81,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void AddShader		(const std::string& tag, IShader* shader);
-			void RemoveShader	(const std::string& tag);
+			void AddShader		(const String& tag, IShader* shader);
+			void RemoveShader	(const String& tag);
 
 			void AddState		(IState* state);
-			void RemoveState	(const std::string& name);
+			void RemoveState	(const String& name);
 
 			void Apply			();
 

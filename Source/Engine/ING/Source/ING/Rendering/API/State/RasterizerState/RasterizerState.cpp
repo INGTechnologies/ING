@@ -48,7 +48,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IRasterizerState::IRasterizerState(IDevice* device, const std::string& name, const RasterizerStateDesc& desc) :
+		IRasterizerState::IRasterizerState(IDevice* device, const String& name, const RasterizerStateDesc& desc) :
 			IState(device, name)
 		{
 
@@ -56,7 +56,7 @@ namespace ING {
 
 		}
 
-		IRasterizerState::IRasterizerState(const std::string& name, const RasterizerStateDesc& desc) : IRasterizerState(IAPI::GetInstance()->GetDevice(), name, desc)
+		IRasterizerState::IRasterizerState(const String& name, const RasterizerStateDesc& desc) : IRasterizerState(IAPI::GetInstance()->GetDevice(), name, desc)
 		{}
 
 		IRasterizerState::~IRasterizerState() {
@@ -70,7 +70,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IRasterizerState* IRasterizerState::Create(IDevice* device, const std::string& name, const RasterizerStateDesc& desc) {
+		IRasterizerState* IRasterizerState::Create(IDevice* device, const String& name, const RasterizerStateDesc& desc) {
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -105,7 +105,7 @@ namespace ING {
 
 		}
 	
-		IRasterizerState* IRasterizerState::Create(const std::string& name, const RasterizerStateDesc& desc) {
+		IRasterizerState* IRasterizerState::Create(const String& name, const RasterizerStateDesc& desc) {
 
 			return Create(IAPI::GetInstance()->GetDevice(), name, desc);
 

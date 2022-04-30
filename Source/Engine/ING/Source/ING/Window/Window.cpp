@@ -191,19 +191,19 @@ namespace ING {
 
 	}
 
-	void			IWindow::SetTitle(const std::wstring& title) {
+	void			IWindow::SetTitle(const WString& title) {
 
 
 
 	}
 
-	std::wstring	IWindow::GetTitle() {
+	WString	IWindow::GetTitle() {
 
 		return desc.title;
 
 	}
 
-	void			IWindow::SetIconFromFile(const std::wstring& path) {
+	void			IWindow::SetIconFromFile(const WString& path) {
 
 
 

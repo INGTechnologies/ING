@@ -79,14 +79,14 @@ namespace ING {
 			private:
 				MonoClass*			monoClass;
 
-				std::string			_namespace;
-				std::string			name;
+				String			_namespace;
+				String			name;
 
 			public:
 				MonoClass*			GetMonoClass	()	{ return monoClass; }
 
-				const std::string&	GetNamespace	()	{ return _namespace; }
-				const std::string&	GetName			()	{ return _namespace; }
+				const String&	GetNamespace	()	{ return _namespace; }
+				const String&	GetName			()	{ return _namespace; }
 
 			};
 

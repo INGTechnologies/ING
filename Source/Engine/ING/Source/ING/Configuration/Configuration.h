@@ -42,7 +42,7 @@ namespace ING {
 		 *	ptr map
 		 */
 	private:
-		std::map<std::string, void*> ptrMap;
+		std::map<String, void*> ptrMap;
 
 
 
@@ -50,13 +50,13 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		bool Exist(const std::string& name) {
+		bool Exist(const String& name) {
 
 			return (ptrMap.find(name) != ptrMap.end());
 
 		}
 
-		void Add(const std::string& name, unsigned int size) {
+		void Add(const String& name, unsigned int size) {
 
 			if (ptrMap.find(name) != ptrMap.end()) return;
 
@@ -67,7 +67,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		void Add(const std::string& name) {
+		void Add(const String& name) {
 
 			if (ptrMap.find(name) != ptrMap.end()) return;
 
@@ -78,7 +78,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		T Get(const std::string& name) {
+		T Get(const String& name) {
 
 			if (ptrMap.find(name) == ptrMap.end()) return T();
 
@@ -95,7 +95,7 @@ namespace ING {
 		}
 
 		template<typename T>
-		void Set(const std::string& name, T data) {
+		void Set(const String& name, T data) {
 
 			if (ptrMap.find(name) == ptrMap.end()) return;
 
@@ -103,7 +103,7 @@ namespace ING {
 
 		}
 
-		bool LoadFromFile(const std::string& filePath);
+		bool LoadFromFile(const String& filePath);
 
 	};
 

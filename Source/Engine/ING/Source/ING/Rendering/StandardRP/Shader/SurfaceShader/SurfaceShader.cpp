@@ -69,14 +69,14 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			SurfaceShader::SurfaceShader(IDevice* device, const std::string& name) : IShader(device, name)
+			SurfaceShader::SurfaceShader(IDevice* device, const String& name) : IShader(device, name)
 			{
 
 				
 
 			}
 
-			SurfaceShader::SurfaceShader(const std::string& name) : SurfaceShader(IAPI::GetInstance()->GetDevice(), name)
+			SurfaceShader::SurfaceShader(const String& name) : SurfaceShader(IAPI::GetInstance()->GetDevice(), name)
 			{
 
 

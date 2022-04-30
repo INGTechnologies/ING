@@ -58,7 +58,7 @@ namespace ING {
 				 *	Create Methods
 				 */
 			public:
-				static PixelShader* CreateFromHLSL(IDevice* device, const std::string& content);
+				static PixelShader* CreateFromHLSL(IDevice* device, const String& content);
 
 
 
@@ -79,7 +79,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Apply(const std::string& name) override;
+				virtual void Apply(const String& name) override;
 
 			};
 

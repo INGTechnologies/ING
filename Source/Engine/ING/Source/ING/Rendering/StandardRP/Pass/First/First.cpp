@@ -15,7 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FirstPass::FirstPass(std::string name) : Pass<FirstPassInput, FirstPassOutput>(name) {
+			FirstPass::FirstPass(String name) : Pass<FirstPassInput, FirstPassOutput>(name) {
 
 
 

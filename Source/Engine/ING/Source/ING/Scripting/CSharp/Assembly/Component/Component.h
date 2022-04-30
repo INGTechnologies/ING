@@ -53,7 +53,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				IAssemblyComponent	(Assembly* assembly, const std::string& name);
+				IAssemblyComponent	(Assembly* assembly, const String& name);
 				~IAssemblyComponent	();
 
 
@@ -72,12 +72,12 @@ namespace ING {
 			private:
 				Assembly*			assembly;
 
-				std::string			name;
+				String			name;
 
 			public:
 				Assembly*			GetAssembly		() { return assembly; }
 
-				const std::string&	GetName			() { return name; }
+				const String&	GetName			() { return name; }
 
 
 

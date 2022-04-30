@@ -64,7 +64,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Pipeline(std::string name);
+				Pipeline(String name);
 				~Pipeline();
 
 
@@ -89,7 +89,7 @@ namespace ING {
 
 				std::vector<SubRP::Pipeline*>					subPipelineVector;
 
-				std::unordered_map<std::string, unsigned int>	subPipelineName2supPipeLineIndex;
+				std::unordered_map<String, unsigned int>	subPipelineName2supPipeLineIndex;
 
 				Mode				mode;
 
@@ -103,8 +103,8 @@ namespace ING {
 				void				SetFinalPass					(IPass* finalPass);
 
 				SubRP::Pipeline*	GetSubPipeline					(unsigned int index)		{ return subPipelineVector[index]; }
-				unsigned int		GetSubPipelineIndex				(const std::string& name)	{ return subPipelineName2supPipeLineIndex[name]; }
-				SubRP::Pipeline*	GetSubPipeline					(const std::string& name)	{ return subPipelineVector[GetSubPipelineIndex(name)]; }
+				unsigned int		GetSubPipelineIndex				(const String& name)	{ return subPipelineName2supPipeLineIndex[name]; }
+				SubRP::Pipeline*	GetSubPipeline					(const String& name)	{ return subPipelineVector[GetSubPipelineIndex(name)]; }
 				unsigned int		GetSubPipelineIndex				(const char* name)			{ return GetSubPipelineIndex(String(name)); }
 				SubRP::Pipeline*	GetSubPipeline					(const char* name)			{ return GetSubPipeline(String(name)); }
 

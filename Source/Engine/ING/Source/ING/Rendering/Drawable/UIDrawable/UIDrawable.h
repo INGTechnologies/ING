@@ -65,7 +65,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Draw(Camera* camera, const std::string& passName) override;
+			virtual void Draw(Camera* camera, const String& passName) override;
 
 		};
 

@@ -435,7 +435,6 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
     <ClCompile Include="Source\ING\Utils\String\String.cpp" />
     <ClCompile Include="Source\ING\Utils\VirtualObject\VirtualObject.cpp" />
     <ClCompile Include="Source\ING\Utils\VirtualStruct\VirtualStruct.cpp" />
-    <ClCompile Include="Source\ING\Utils\WString\WString.cpp" />
     <ClCompile Include="Source\ING\Window\Event\Destroy\Destroy.cpp" />
     <ClCompile Include="Source\ING\Window\Event\Event.cpp" />
     <ClCompile Include="Source\ING\Window\Event\Key\KeyDown.cpp" />
@@ -661,7 +660,6 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
     <ClInclude Include="Source\ING\Utils\Vector\Vector.h" />
     <ClInclude Include="Source\ING\Utils\VirtualObject\VirtualObject.h" />
     <ClInclude Include="Source\ING\Utils\VirtualStruct\VirtualStruct.h" />
-    <ClInclude Include="Source\ING\Utils\WString\WString.h" />
     <ClInclude Include="Source\ING\Window\Desc\Desc.h" />
     <ClInclude Include="Source\ING\Window\Event\Destroy\Destroy.h" />
     <ClInclude Include="Source\ING\Window\Event\Event.h" />

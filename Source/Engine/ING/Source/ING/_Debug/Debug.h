@@ -251,7 +251,7 @@ namespace ING {
 
 		}
 
-		static void Log(std::string content) {
+		static void Log(String content) {
 
 			PRINT_LOG_FLAG();
 
@@ -259,7 +259,7 @@ namespace ING {
 
 		}
 
-		static void Log(std::wstring content) {
+		static void Log(WString content) {
 
 			PRINT_LOG_FLAG();
 
@@ -684,7 +684,7 @@ namespace ING {
 
 		}
 
-		static void Error(std::string content) {
+		static void Error(String content) {
 
 			PRINT_ERROR_FLAG();
 
@@ -692,7 +692,7 @@ namespace ING {
 
 		}
 
-		static void Error(std::wstring content) {
+		static void Error(WString content) {
 
 			PRINT_ERROR_FLAG();
 
@@ -1116,7 +1116,7 @@ namespace ING {
 
 		}
 
-		static void Warning(std::string content) {
+		static void Warning(String content) {
 
 			PRINT_WARNING_FLAG();
 
@@ -1124,7 +1124,7 @@ namespace ING {
 
 		}
 
-		static void Warning(std::wstring content) {
+		static void Warning(WString content) {
 
 			PRINT_WARNING_FLAG();
 

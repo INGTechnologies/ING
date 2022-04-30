@@ -53,7 +53,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Assembly(Context* context, const std::string& name, const std::vector<std::string>& componentNameVector);
+				Assembly(Context* context, const String& name, const std::vector<String>& componentNameVector);
 				~Assembly();
 
 
@@ -76,13 +76,13 @@ namespace ING {
 
 				MonoImage*			monoImage;
 
-				std::string			filePath;
+				String			filePath;
 
-				std::string			name;
+				String			name;
 
 				std::vector<IAssemblyComponent*> componentVector;
 
-				std::unordered_map<std::string, unsigned int> componentName2ComponentIndexMap;
+				std::unordered_map<String, unsigned int> componentName2ComponentIndexMap;
 
 				bool				isOpening;
 
@@ -94,9 +94,9 @@ namespace ING {
 
 				MonoImage*			GetMonoImage	() { return monoImage; }
 
-				const std::string&	GetFilePath		() { return filePath; }
+				const String&	GetFilePath		() { return filePath; }
 
-				const std::string&	GetName			() { return name; }
+				const String&	GetName			() { return name; }
 
 				bool				IsOpening		() { return isOpening; }
 

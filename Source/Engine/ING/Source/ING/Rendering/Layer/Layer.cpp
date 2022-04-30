@@ -52,7 +52,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Layer::Layer(std::string name)
+		Layer::Layer(String name)
 		{
 
 			this->name = name;
@@ -91,18 +91,18 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		IDrawableFilter*	Layer::GetFilter(const std::string& name) {
+		IDrawableFilter*	Layer::GetFilter(const String& name) {
 
 			return name2DrawableFilterMap[name]; 
 		}
 
-		void				Layer::AddFilter(const std::string& name) {
+		void				Layer::AddFilter(const String& name) {
 
 			name2DrawableFilterMap[name] = new IDrawableFilter(name);
 
 		}
 
-		void				Layer::RemoveFilter(const std::string& name) {
+		void				Layer::RemoveFilter(const String& name) {
 
 			GetFilter(name)->Release();
 

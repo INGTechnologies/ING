@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string EngineFrameUpdateEvent::GetName() { return "FRAME_UPDATE"; };
+	String EngineFrameUpdateEvent::GetName() { return "FRAME_UPDATE"; };
 
 }
