@@ -172,7 +172,7 @@ namespace ING {
 		void					SetRenderingData	(Rendering::ICameraData* renderingData)		{ this->renderingData = renderingData; }
 
 		Rendering::IPipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
-		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) { this->renderingPipeline = renderingPipeline; }
+		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline);
 
 		CameraTargetMode		GetTargetMode		()							{ return targetMode; }
 		void					SetTargetMode		(CameraTargetMode mode);

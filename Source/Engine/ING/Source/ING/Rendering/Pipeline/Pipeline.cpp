@@ -179,7 +179,7 @@ namespace ING {
 
 		void IPipeline::ClearCameraData(Camera* camera) {
 
-
+			camera->SetRenderingData(0);
 
 		}
 

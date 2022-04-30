@@ -156,6 +156,18 @@ namespace ING {
 
 	}
 
+	void Camera::SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) {
+
+		if (this->renderingPipeline != 0) {
+
+			this->renderingPipeline->ClearCameraData(this);
+
+		}
+
+		this->renderingPipeline = renderingPipeline;
+
+	}
+
 	unsigned int Camera::GetClientWidth() {
 
 		if (this->targetMode == CAMERA_TARGET_SCREEN) {

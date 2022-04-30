@@ -166,6 +166,8 @@ namespace ING {
 
 				camera->SetRenderingData(renderingData);
 
+				IPipeline::SetupCamera(context, camera);
+
 			}
 
 			void Pipeline::ClearCameraData(Camera* camera) {
@@ -173,6 +175,8 @@ namespace ING {
 				CameraData* renderingData = (CameraData*)camera->GetRenderingData();
 
 				renderingData->Release();
+
+				IPipeline::ClearCameraData(camera);
 
 			}
 
