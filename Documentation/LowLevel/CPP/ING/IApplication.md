@@ -26,22 +26,22 @@
 - `Property` **:**
     
                 
-    + std::string **name** 
+    + ING::Utils::String **name** 
         
                     
         + `Getter` :
                                             
                                 
-            + std::string **GetName**() 
+            + ING::Utils::String **GetName**() 
                                     
                                 
-    + std::string **configPath** 
+    + ING::Utils::String **configPath** 
         
                     
         + `Getter` :
                                             
                                 
-            + std::string **GetConfigPath**() 
+            + ING::Utils::String **GetConfigPath**() 
                                     
                                 
     + [**ING::Configuration**](./..//ING/Configuration.md)* **configuration** 
@@ -71,7 +71,7 @@
             + [**ING::ApplicationRenderingSystem**](./..//ING/ApplicationRenderingSystem.md)* **GetRenderingSystem**() 
                                     
                                 
-    + std::unordered_map < std::string, unsigned int >  **name2ComponentIndexMap** 
+    + std::unordered_map < ING::Utils::String, unsigned int >  **name2ComponentIndexMap** 
         
                     
     + std::vector < IApplicationComponent* >  **componentVector** 
@@ -80,7 +80,7 @@
         + `Item Getters` :
                                     
                                 
-            + ING::IApplicationComponent* **GetComponent**(const std::string& name)  **:** get component by name
+            + ING::IApplicationComponent* **GetComponent**(const ING::Utils::String& name)  **:** get component by name
                                     
                                 
             + ING::IApplicationComponent* **GetComponent**(unsigned int index)  **:** get component by index

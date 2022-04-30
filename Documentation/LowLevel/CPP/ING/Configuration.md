@@ -21,30 +21,30 @@
 - `Property` **:**
     
                 
-    + std::map < std::string, void* >  **ptrMap** 
+    + std::map < ING::Utils::String, void* >  **ptrMap** 
         
                     
         + `Getter` :
                                             
                                 
-            + T **Get**<T>(const std::string& name) 
+            + T **Get**<T>(const ING::Utils::String& name) 
                                     
                                 
         + `Setter` :
                                             
                                 
-            + void **Set**<T>(const std::string& name, T data) 
+            + void **Set**<T>(const ING::Utils::String& name, T data) 
                                     
                                 
 - `Method` **:**
     
                 
-    + bool **Exist**(const std::string& name) 
+    + bool **Exist**(const ING::Utils::String& name) 
                         
                     
-    + void **Add**(const std::string& name, unsigned int size)  **:** add new configuration property by name and size
+    + void **Add**(const ING::Utils::String& name, unsigned int size)  **:** add new configuration property by name and size
                         
                     
-    + void **Add** < T > (const std::string& name)  **:** add new configuration property by name and property type
+    + void **Add** < T > (const ING::Utils::String& name)  **:** add new configuration property by name and property type
                         
                     

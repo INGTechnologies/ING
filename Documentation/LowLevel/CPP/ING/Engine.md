@@ -21,67 +21,67 @@
 - `Property` **:**
     
                 
-    + std::string **name** 
+    + ING::Utils::String **name** 
         
                     
         + `Getter` :
                                             
                                 
-            + const std::string& **GetName**() 
+            + const ING::Utils::String& **GetName**() 
                                     
                                 
-    + std::string **gameDir**  **:** game directory path
+    + ING::Utils::String **gameDir**  **:** game directory path
         
                     
         + `Getter` :
                                             
                                 
-            + const std::string& **GetGameDir**() 
+            + const ING::Utils::String& **GetGameDir**() 
                                     
                                 
-    + std::wstring **gameDir_wstr**  **:** game directory path in wide string
+    + ING::Utils::WString **gameDir_wstr**  **:** game directory path in wide string
         
                     
         + `Getter` :
                                             
                                 
-            + const std::string& **GetGameDir_WSTR**() 
+            + const ING::Utils::String& **GetGameDir_WSTR**() 
                                     
                                 
-    + std::string **workingDir**  **:** current working directory path
+    + ING::Utils::String **workingDir**  **:** current working directory path
         
                     
         + `Getter` :
                                             
                                 
-            + const std::string& **GetWorkingDir**() 
+            + const ING::Utils::String& **GetWorkingDir**() 
                                     
                                 
-    + std::wstring **workingDir_wstr**  **:** current working directory path in wide string
+    + ING::Utils::WString **workingDir_wstr**  **:** current working directory path in wide string
         
                     
         + `Getter` :
                                             
                                 
-            + const std::string& **GetWorkingDir_WSTR**() 
+            + const ING::Utils::String& **GetWorkingDir_WSTR**() 
                                     
                                 
-    + std::unordered_map < std::wstring, std::wstring >  **rootPath2AbsolutePath**  **:** root path to absolute path map
+    + std::unordered_map < ING::Utils::WString, ING::Utils::WString >  **rootPath2AbsolutePath**  **:** root path to absolute path map
         
                     
         + `Item Getters` :
                                     
                                 
-            + const std::wstring& **GetRootPath**(const std::wstring& rootPath)  **:** get the value of root path
+            + const ING::Utils::WString& **GetRootPath**(const ING::Utils::WString& rootPath)  **:** get the value of root path
                                     
                                 
-            + bool **IsHaveRootPath**(const std::wstring& rootPath)  **:** check if engine has 'rootPath' root path
+            + bool **IsHaveRootPath**(const ING::Utils::WString& rootPath)  **:** check if engine has 'rootPath' root path
                                     
                                 
         + `Item Setter` :
                                             
                                 
-            + void **SetRootPath**(const std::wstring& name, const std::wstring& value)  **:** set the value of root path by name and value
+            + void **SetRootPath**(const ING::Utils::WString& name, const ING::Utils::WString& value)  **:** set the value of root path by name and value
                                     
                                 
     + ING::EngineState **state** 

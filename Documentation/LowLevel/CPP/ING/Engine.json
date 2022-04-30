@@ -44,13 +44,13 @@
 
                     "name" : "name",
 
-                    "type" : "std::string",
+                    "type" : "ING::Utils::String",
 
                     "getters" : [
 
                         {
 
-                            "code" : "const std::string& **GetName**()"
+                            "code" : "const ING::Utils::String& **GetName**()"
                         }
 
                     ]
@@ -61,13 +61,13 @@
 
                     "name" : "gameDir",
 
-                    "type" : "std::string",
+                    "type" : "ING::Utils::String",
 
                     "getters" : [
 
                         {
 
-                            "code" : "const std::string& **GetGameDir**()"
+                            "code" : "const ING::Utils::String& **GetGameDir**()"
                         }
 
                     ],
@@ -80,13 +80,13 @@
 
                     "name" : "gameDir_wstr",
 
-                    "type" : "std::wstring",
+                    "type" : "ING::Utils::WString",
 
                     "getters" : [
 
                         {
 
-                            "code" : "const std::string& **GetGameDir_WSTR**()"
+                            "code" : "const ING::Utils::String& **GetGameDir_WSTR**()"
                         }
 
                     ],
@@ -99,13 +99,13 @@
 
                     "name" : "workingDir",
 
-                    "type" : "std::string",
+                    "type" : "ING::Utils::String",
 
                     "getters" : [
 
                         {
 
-                            "code" : "const std::string& **GetWorkingDir**()"
+                            "code" : "const ING::Utils::String& **GetWorkingDir**()"
                         }
 
                     ],
@@ -118,13 +118,13 @@
 
                     "name" : "workingDir_wstr",
 
-                    "type" : "std::wstring",
+                    "type" : "ING::Utils::WString",
 
                     "getters" : [
 
                         {
 
-                            "code" : "const std::string& **GetWorkingDir_WSTR**()"
+                            "code" : "const ING::Utils::String& **GetWorkingDir_WSTR**()"
                         }
 
                     ],
@@ -137,20 +137,20 @@
 
                     "name" : "rootPath2AbsolutePath",
 
-                    "type" : "std::unordered_map<std::wstring, std::wstring>",
+                    "type" : "std::unordered_map<ING::Utils::WString, ING::Utils::WString>",
 
                     "item_getters" : [
 
                         {
 
-                            "code" : "const std::wstring& **GetRootPath**(const std::wstring& rootPath)",
+                            "code" : "const ING::Utils::WString& **GetRootPath**(const ING::Utils::WString& rootPath)",
 
                             "description" : "get the value of root path"
                         },
 
                         {
 
-                            "code" : "bool **IsHaveRootPath**(const std::wstring& rootPath)",
+                            "code" : "bool **IsHaveRootPath**(const ING::Utils::WString& rootPath)",
 
                             "description" : "check if engine has 'rootPath' root path"
                         }
@@ -161,7 +161,7 @@
 
                         {
 
-                            "code" : "void **SetRootPath**(const std::wstring& name, const std::wstring& value)",
+                            "code" : "void **SetRootPath**(const ING::Utils::WString& name, const ING::Utils::WString& value)",
 
                             "description" : "set the value of root path by name and value"
                         }

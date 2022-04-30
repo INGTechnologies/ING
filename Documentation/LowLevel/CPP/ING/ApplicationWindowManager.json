@@ -38,7 +38,7 @@
 
                     "name" : "name2WindowMap",
 
-                    "type" : "std::unordered_map<std::string,ING::IWindow*>",
+                    "type" : "std::unordered_map<ING::Utils::String,ING::IWindow*>",
 
                     "description" : "name to window map",
 
@@ -46,7 +46,7 @@
 
                         {
 
-                            "code" : "ING::IWindow* **GetWindow**(const std::string& name)",
+                            "code" : "ING::IWindow* **GetWindow**(const ING::Utils::String& name)",
 
                             "description" : "get window by name"
 

@@ -44,13 +44,13 @@
                     
                     "name" : "name",
 
-                    "type" : "std::string",
+                    "type" : "ING::Utils::String",
 
                     "getters" : [
 
                         {
 
-                            "code" : "std::string **GetName**()"
+                            "code" : "ING::Utils::String **GetName**()"
 
                         }
 
@@ -62,13 +62,13 @@
                     
                     "name" : "configPath",
 
-                    "type" : "std::string",
+                    "type" : "ING::Utils::String",
 
                     "getters" : [
 
                         {
 
-                            "code" : "std::string **GetConfigPath**()"
+                            "code" : "ING::Utils::String **GetConfigPath**()"
 
                         }
 
@@ -134,7 +134,7 @@
                     
                     "name" : "name2ComponentIndexMap",
 
-                    "type" : "std::unordered_map<std::string, unsigned int>"
+                    "type" : "std::unordered_map<ING::Utils::String, unsigned int>"
 
                 },
 
@@ -148,7 +148,7 @@
 
                         {
 
-                            "code" : "ING::IApplicationComponent* **GetComponent**(const std::string& name)",
+                            "code" : "ING::IApplicationComponent* **GetComponent**(const ING::Utils::String& name)",
 
                             "description" : "get component by name"
 
