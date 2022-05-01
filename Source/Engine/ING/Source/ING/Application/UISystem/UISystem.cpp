@@ -76,7 +76,7 @@ namespace ING {
 	 */
 	bool ApplicationUISystem::Init() {
 
-		rootElement = new UI::Element();
+		rootElement = new UI::IElement();
 
 		return IApplicationComponent::Init();
 	}
@@ -98,7 +98,7 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationUISystem::ChangeRootElement(UI::Element* rootElement) {
+	void	ApplicationUISystem::ChangeRootElement(UI::IElement* rootElement) {
 
 		if (this->rootElement != 0) {
 
@@ -119,11 +119,15 @@ namespace ING {
 
 		IApplicationComponent::Start();
 
+		rootElement->Start();
+
 	}
 
 	void	ApplicationUISystem::PreUpdate() {
 
 		IApplicationComponent::PreUpdate();
+
+		rootElement->PreUpdate();
 
 	}
 
@@ -131,11 +135,15 @@ namespace ING {
 
 		IApplicationComponent::Update();
 
+		rootElement->Update();
+
 	}
 
 	void	ApplicationUISystem::LateUpdate() {
 
 		IApplicationComponent::LateUpdate();
+
+		rootElement->LateUpdate();
 
 	}
 
@@ -143,17 +151,23 @@ namespace ING {
 
 		IApplicationComponent::PreRender();
 
+		rootElement->PreRender();
+
 	}
 
 	void	ApplicationUISystem::Render() {
 
 		IApplicationComponent::Render();
 
+		rootElement->Render();
+
 	}
 
 	void	ApplicationUISystem::LateRender() {
 
 		IApplicationComponent::LateRender();
+
+		rootElement->LateRender();
 
 	}
 

@@ -7,15 +7,6 @@
 
 
 /**
- *	Include Utils
- */
-#include <ING/Utils/Utils.h>
-
-using namespace ING::Utils;
-
-
-
-/**
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
@@ -29,6 +20,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Style
+ */
+#include <ING/UI/Style/Style.h>
+
+
+
 namespace ING { 
 
 	namespace UI {
@@ -36,15 +34,20 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Element::Element():
-			node(0)
+		IElement::IElement():
+			node(0),
+
+			size(Math::RVector2()),
+			padding(Math::RVector4()),
+			margin(Math::RVector4())
 		{
 
 			node = new Node(this);
+			style = new Style();
 
 		}
 
-		Element::~Element()
+		IElement::~IElement()
 		{
 
 
@@ -56,11 +59,84 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void Element::Release() {
+		void IElement::Release() {
 
 			node->Release();
 
+			if(style != 0)
+				style->Release();
+
 			delete this;
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		void IElement::SetStyle(Style* style) {
+
+			this->style = style;
+
+		}
+
+		void IElement::ReleaseStyle() {
+
+			this->style->Release();
+
+			this->style = 0;
+
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void	IElement::Start() {
+
+
+
+		}
+
+		void	IElement::PreUpdate() {
+
+
+
+		}
+
+		void	IElement::Update() {
+
+
+
+		}
+
+		void	IElement::LateUpdate() {
+
+			if (style != 0) {
+
+				style->Apply(this);
+
+			}
+
+		}
+
+		void	IElement::PreRender() {
+
+
+
+		}
+
+		void	IElement::Render() {
+
+
+
+		}
+
+		void	IElement::LateRender() {
+
+
+
 		}
 
 	}

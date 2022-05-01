@@ -27,7 +27,7 @@ namespace ING {
 
 	namespace UI {
 
-		class Element;
+		class IElement;
 
 
 
@@ -38,7 +38,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Node(Element* element);
+			Node(IElement* element);
 			~Node();
 
 
@@ -55,16 +55,18 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			Element*	element;
+			IElement*	element;
 
 			List<Node*> childList;
 
 			List<Node*>::Node* nodeInParentChildList;
 
-			Node*		parentNode;
+			Node*		parent;
 
 		public:
-			Element*	GetElement() { return element; }
+			IElement*	GetElement	() { return element; }
+
+			Node*		GetParent	() { return parent; }
 
 
 

@@ -31,7 +31,7 @@ namespace ING {
 
 		class Node;
 
-		class Element;
+		class IElement;
 
 	}
 
@@ -60,13 +60,13 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		UI::Element*	rootElement;
+		UI::IElement*	rootElement;
 
 	public:
 
-		UI::Element*	GetRootElement		() { return rootElement; }
+		UI::IElement*	GetRootElement		() { return rootElement; }
 
-		void			ChangeRootElement	(UI::Element* rootElement);
+		void			ChangeRootElement	(UI::IElement* rootElement);
 
 
 

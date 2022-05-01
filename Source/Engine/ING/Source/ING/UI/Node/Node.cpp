@@ -36,10 +36,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Node::Node(Element* element):
+		Node::Node(IElement* element):
 			element(element),
 			nodeInParentChildList(0),
-			parentNode(0)
+			parent(0)
 		{
 
 
@@ -60,9 +60,16 @@ namespace ING {
 		 */
 		void Node::Release() {
 
+			if(parent != 0)
+				parent->RemoveChild(this);
+
 			for (auto item = childList.begin(); item != childList.end();) {
 
+				auto nextItem = item.node->next;
+
 				item.node->As<Node*>()->GetElement()->Release();
+
+				item = nextItem;
 
 			}
 
@@ -78,17 +85,17 @@ namespace ING {
 
 			child->nodeInParentChildList = childList.Add(child);
 
-			child->parentNode = this;
+			child->parent = this;
 
 		}
 
 		void Node::RemoveChild(Node* child) {
 
-			childList.Remove(nodeInParentChildList);
+			childList.Remove(child->nodeInParentChildList);
 
 			child->nodeInParentChildList = 0;
 
-			child->parentNode = 0;
+			child->parent = 0;
 
 		}
 
