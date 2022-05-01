@@ -68,22 +68,6 @@ int main(int argc, char** argv)
 
 	if (!editorApplication->Init()) return 1;
 
-	ING::UI::IElement* rootElement = editorApplication->GetUISystem()->GetRootElement();
-
-	ING::UI::IElement* demoElement = new ING::UI::IElement();
-
-	rootElement->GetNode()->AddChild(
-
-		demoElement->GetNode()
-	
-	);
-
-	demoElement->GetStyle()->SetSize(
-		
-		UI_DVECTOR2( UI_PARENT_HEIGHT * 5, 2 )
-	
-	);
-
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 
 	return 0;
