@@ -55,10 +55,46 @@
 
 
 
+/**
+ *	Include Style
+ */
+#include <ING/UI/Style/Style.h>
+
+
+
+/**
+ *	Include Element
+ */
+#include <ING/UI/Element/Element.h>
+
+
+
+/**
+ *	Include Node
+ */
+#include <ING/UI/Node/Node.h>
+
+
+
+/**
+ *	Include UISystem
+ */
+#include <ING/Application/UISystem/UISystem.h>
+
+
+
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 static ING::IApplication* application = 0;
 
 using namespace ING::Rendering;
 using namespace ING;
+using namespace ING::UI;
 
 
 
@@ -92,16 +128,23 @@ int main() {
 
 	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](ING::Event* e) {
 		
-		IPipeline* pipeline = application->GetRenderingSystem()->GetPipeline();
+		IElement* rootElement = application->GetUISystem()->GetRootElement();
 
-		IPass* pass1 = new IPass("DemoPass1");
+		IElement* demoElement = new IElement();
 
-		IPass* pass2 = new IPass("DemoPass2");
+		rootElement->GetNode()->AddChild(demoElement->GetNode());
 
-		pass1->AddChild(pass2);
+		float size = 5.0f;
+		
+		demoElement->GetStyle()->SetSize(
+		
+			UI_DVECTOR2(
+				UI_GET(0), UI_GET(1),
+				size, size
+			)
+		
+		);
 
-		pipeline->AddPass(pass1);
-			
 	});
 
 	ING::Engine::GetInstance()->Run();

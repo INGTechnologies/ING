@@ -65,8 +65,8 @@ namespace ING {
 	public:
 
 		UI::IElement*	GetRootElement		() { return rootElement; }
-
-		void			ChangeRootElement	(UI::IElement* rootElement);
+		void			ReleaseRootElement	();
+		void			SetRootElement		(UI::IElement* rootElement);
 
 
 

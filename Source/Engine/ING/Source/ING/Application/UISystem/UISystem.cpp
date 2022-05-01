@@ -98,13 +98,17 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationUISystem::ChangeRootElement(UI::IElement* rootElement) {
+	void	ApplicationUISystem::ReleaseRootElement() {
 
 		if (this->rootElement != 0) {
 
 			this->rootElement->Release();
 
 		}
+
+	}
+
+	void	ApplicationUISystem::SetRootElement(UI::IElement* rootElement) {
 
 		this->rootElement = rootElement;
 
