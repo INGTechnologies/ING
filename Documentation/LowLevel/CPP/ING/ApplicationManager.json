@@ -38,7 +38,7 @@
                     
                     "name" : "name2ApplicationMap",
 
-                    "type" : "std::unordered_map<std::string,ING::IApplication*>",
+                    "type" : "std::unordered_map<ING::Utils::String,ING::IApplication*>",
 
                     "description" : "name to application map",
 
@@ -46,7 +46,7 @@
 
                         {
 
-                            "code" : "IApplication* **GetApplication**(const std::string & name)",
+                            "code" : "IApplication* **GetApplication**(const ING::Utils::String & name)",
                             
                             "description" : "get application by name"
 

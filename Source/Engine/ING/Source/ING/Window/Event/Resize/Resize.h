@@ -41,7 +41,7 @@ namespace ING {
 		 *	Name
 		 */
 	public:
-		virtual std::string GetName() override;
+		virtual String GetName() override;
 
 
 

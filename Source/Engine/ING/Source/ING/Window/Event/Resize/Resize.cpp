@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string WindowResizeEvent::GetName() { return "RESIZE"; };
+	String WindowResizeEvent::GetName() { return "RESIZE"; };
 
 }

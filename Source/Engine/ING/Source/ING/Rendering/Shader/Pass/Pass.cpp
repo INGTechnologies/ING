@@ -34,7 +34,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IShaderPass::IShaderPass(const std::string& name) {
+		IShaderPass::IShaderPass(const String& name) {
 
 			this->name = name;
 
@@ -62,13 +62,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IShaderPass::AddShader(const std::string& tag, IShader* shader) {
+		void IShaderPass::AddShader(const String& tag, IShader* shader) {
 
 			shaderName2Shader[tag] = shader;
 
 		}
 
-		void IShaderPass::RemoveShader(const std::string& tag) {
+		void IShaderPass::RemoveShader(const String& tag) {
 
 			shaderName2Shader.erase(tag);
 
@@ -80,7 +80,7 @@ namespace ING {
 
 		}
 
-		void IShaderPass::RemoveState(const std::string& name) {
+		void IShaderPass::RemoveState(const String& name) {
 
 			stateName2StateMap.erase(name);
 

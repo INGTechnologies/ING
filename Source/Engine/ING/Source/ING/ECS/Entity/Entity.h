@@ -84,12 +84,12 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::map<std::string, IComponentPtr>	componentMap;
+			std::map<String, IComponentPtr>	componentMap;
 
 			Repository* repository;
 
 		public:
-			std::map<std::string, IComponentPtr>&	GetComponentMap() {
+			std::map<String, IComponentPtr>&	GetComponentMap() {
 
 				return componentMap;
 

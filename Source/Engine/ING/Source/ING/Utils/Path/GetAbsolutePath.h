@@ -10,15 +10,20 @@
 
 
 
+/**
+ *	Include String
+ */
+#include <ING/Utils/String/String.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
 
 		namespace Path {
 
-			ING_API std::string GetAbsolutePath(const std::string& pathStr);
-
-			ING_API std::wstring GetAbsolutePath(const std::wstring& pathStr);
+			ING_API WString GetAbsolutePath(const WString& pathStr);
 
 		}
 

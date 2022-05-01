@@ -20,7 +20,7 @@
 
 
 
-std::string str = "";
+String str = "";
 
 
 

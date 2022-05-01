@@ -41,7 +41,7 @@ namespace ING {
 		 *	Name
 		 */
 	public:
-		virtual std::string GetName() { return "DEFAULT_EVENT"; };
+		virtual String GetName() { return "DEFAULT_EVENT"; };
 
 
 

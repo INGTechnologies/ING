@@ -60,7 +60,7 @@ namespace ING {
 			/**
 			 *	Create Methods
 			 */
-			VertexShader* VertexShader::CreateFromHLSL(IDevice* device, const std::string& content) {
+			VertexShader* VertexShader::CreateFromHLSL(IDevice* device, const String& content) {
 
 				ID3DBlob* sBlob;
 				ID3DBlob* errBlob;
@@ -83,7 +83,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void VertexShader::Apply(const std::string& name) {
+			void VertexShader::Apply(const String& name) {
 
 				IDeviceContext* context = GetDevice()->GetImmediateContext();
 

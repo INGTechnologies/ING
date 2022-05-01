@@ -26,7 +26,7 @@ Files are read on demand in one go, after which the data is kept in memory and i
 
 Section and key order is preserved on read and write operations. Iterating through data will take the same order as the original file or the order in which keys were added to the structure.
 
-This library operates with the `std::string` type to hold values and relies on your host environment for encoding. It should play nicely with UTF-8 but your mileage may vary.
+This library operates with the `String` type to hold values and relies on your host environment for encoding. It should play nicely with UTF-8 but your mileage may vary.
 
 ## Installation
 
@@ -62,7 +62,7 @@ mINI::INIStructure ini;
 file.read(ini);
 
 // read a value
-std::string& amountOfApples = ini["fruits"]["apples"];
+String& amountOfApples = ini["fruits"]["apples"];
 
 // update a value
 ini["fruits"]["oranges"] = "50";
@@ -171,11 +171,11 @@ There are two ways to read data from the INI structure. You can either use the `
 ```C++
 // read value - if key or section don't exist, they will be created
 // returns reference to real value
-std::string& value = ini["section"]["key"];
+String& value = ini["section"]["key"];
 
 // read value safely - if key or section don't exist they will NOT be created
 // returns a copy
-std::string value = ini.get("section").get("key");
+String value = ini.get("section").get("key");
 ```
 
 The difference between `[]` and `get()` operations is that `[]` returns a reference to **real** data that you may modify and creates a new item automatically if it does not yet exist, whereas `get()` returns a **copy** of the data and does not create new items in the structure. Use `has()` before doing any operations with `[]` if you wish to avoid altering the structure.
@@ -291,9 +291,9 @@ for (auto const& it : ini)
 }
 ```
 
-`it.first` is always `std::string` type.
+`it.first` is always `String` type.
 
-`it.second` is an object which is either a `mINI::INIMap` type on the first level or `std::string` type on the second level.
+`it.second` is an object which is either a `mINI::INIMap` type on the first level or `String` type on the second level.
 
 The API only exposes a `const_iterator`, so you can't use iterators to manipulate data directly. You can however access the structure as normal while iterating:
 

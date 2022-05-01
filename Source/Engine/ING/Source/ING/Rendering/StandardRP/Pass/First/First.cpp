@@ -15,7 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FirstPass::FirstPass(std::string name) : Pass<FirstPassInput, FirstPassOutput>(name) {
+			FirstPass::FirstPass(const String& name) : IPass(name) {
 
 
 
@@ -34,7 +34,7 @@ namespace ING {
 			 */
 			void FirstPass::Release() {
 
-				Pass<FirstPassInput, FirstPassOutput>::Release();
+				IPass::Release();
 
 			}
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FirstPass::CustomRender(IDeviceContext* context, Camera* camera, const FirstPassInput& input, FirstPassOutput& output) {
+			bool FirstPass::Render(IDeviceContext* context, Camera* camera) {
 
 
 

@@ -104,7 +104,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DrawableMaterial::DrawableMaterial(const std::string& name, IShader* shader) :
+		DrawableMaterial::DrawableMaterial(const String& name, IShader* shader) :
 			IMaterial(name, shader)
 		{
 
@@ -124,7 +124,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void DrawableMaterial::Apply(const std::string& passName) {
+		void DrawableMaterial::Apply(const String& passName) {
 
 			IShader* shader = GetShader();
 

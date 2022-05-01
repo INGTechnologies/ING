@@ -26,7 +26,7 @@ namespace ING {
 	}
 
 	Scene::Scene(
-		const std::vector<std::string>& resourcePaths,
+		const std::vector<String>& resourcePaths,
 		const std::vector<ISceneComponent*>& componentVector
 	) :
 		Scene()

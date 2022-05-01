@@ -63,7 +63,7 @@ namespace ING {
 	/**
 	 *	Load Method
 	 */
-	IResource* FileLoader::Load(const std::wstring& path, CoderOption& coderOption) {
+	IResource* FileLoader::Load(const WString& path, CoderOption& coderOption) {
 
 		FileResource* result = new FileResource();
 
@@ -143,7 +143,7 @@ namespace ING {
 
 	}
 
-	FileResource::FileResource(const std::wstring& path) {
+	FileResource::FileResource(const WString& path) {
 
 		this->path = path;
 

@@ -39,7 +39,7 @@ namespace ING {
 
 		struct ShaderProperty {
 
-			ShaderProperty(const std::string& name, unsigned int size) {
+			ShaderProperty(const String& name, unsigned int size) {
 
 				this->name = name;
 
@@ -50,13 +50,13 @@ namespace ING {
 			}
 
 			template<typename T>
-			ShaderProperty(const std::string& name) :
+			ShaderProperty(const String& name) :
 				ShaderProperty(name, sizeof(T))
 			{}
 
 			ShaderProperty() {}
 
-			std::string		name;
+			String		name;
 			unsigned int	size;
 			unsigned int	offset;
 
@@ -66,7 +66,7 @@ namespace ING {
 
 		struct ShaderView {
 
-			ShaderView(const std::string& name, const std::string& type) {
+			ShaderView(const String& name, const String& type) {
 
 				this->name = name;
 				this->type = type;
@@ -74,8 +74,8 @@ namespace ING {
 
 			}
 
-			std::string		name;
-			std::string		type;
+			String		name;
+			String		type;
 			unsigned int	index;
 
 		};
@@ -84,13 +84,13 @@ namespace ING {
 
 		struct ShaderCBuffer {
 
-			ShaderCBuffer(const std::string& name) {
+			ShaderCBuffer(const String& name) {
 
 				this->name = name;
 
 			}
 
-			std::string		name;
+			String		name;
 			unsigned int	index;
 
 		};
@@ -103,8 +103,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IShader		(IDevice* device, const std::string& name);
-			IShader		(const std::string& name);
+			IShader		(IDevice* device, const String& name);
+			IShader		(const String& name);
 			~IShader	();
 
 
@@ -121,19 +121,19 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string					name;
+			String					name;
 
-			std::unordered_map<std::string, IShaderPass*>	passName2PassMap;
+			std::unordered_map<String, IShaderPass*>	passName2PassMap;
 
 			std::vector<ShaderProperty> propertyVector;
 			unsigned int				propertyTotalSize;
-			std::unordered_map<std::string, unsigned int> propName2PropIndexMap;
+			std::unordered_map<String, unsigned int> propName2PropIndexMap;
 
 			std::vector<ShaderView>		viewVector;
-			std::unordered_map<std::string, unsigned int> viewName2ViewIndexMap;
+			std::unordered_map<String, unsigned int> viewName2ViewIndexMap;
 
 			std::vector<ShaderCBuffer>	cbufferVector;
-			std::unordered_map<std::string, unsigned int> cbufferName2CBufferIndexMap;
+			std::unordered_map<String, unsigned int> cbufferName2CBufferIndexMap;
 
 			List<IMaterial*>			materialList;
 
@@ -141,22 +141,22 @@ namespace ING {
 			IDevice* device;
 
 		public:
-			std::string					GetName		() const { return name; }
+			String					GetName		() const { return name; }
 
-			const std::unordered_map<std::string, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
-			IShaderPass*				GetPass		(const std::string& name);
+			const std::unordered_map<String, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
+			IShaderPass*				GetPass		(const String& name);
 
 			IDevice*					GetDevice	() { return device; }
 
 			const std::vector<ShaderProperty>& GetPropertyVector() { return propertyVector; }
 			unsigned int				GetPropertyTotalSize() { return propertyTotalSize; }
 			unsigned int				GetPropertyCount() { return propertyVector.size(); }
-			unsigned int				GetPropertyIndex(const std::string& name) { return propName2PropIndexMap[name]; }
+			unsigned int				GetPropertyIndex(const String& name) { return propName2PropIndexMap[name]; }
 
 			const std::vector<ShaderView>& GetViewVector() { return viewVector; }
 			unsigned int				GetViewCount() { return viewVector.size(); }
-			unsigned int				GetViewIndex(const std::string& name) { return viewName2ViewIndexMap[name]; }
-			bool						IsHaveView(const std::string& name) {
+			unsigned int				GetViewIndex(const String& name) { return viewName2ViewIndexMap[name]; }
+			bool						IsHaveView(const String& name) {
 
 				return viewName2ViewIndexMap.find(name) != viewName2ViewIndexMap.end();
 
@@ -164,8 +164,8 @@ namespace ING {
 
 			const std::vector<ShaderCBuffer>& GetCBufferVector() { return cbufferVector; }
 			unsigned int				GetCBufferCount() { return cbufferVector.size(); }
-			unsigned int				GetCBufferIndex(const std::string& name) { return cbufferName2CBufferIndexMap[name]; }
-			bool						IsHaveCBuffer(const std::string& name) {
+			unsigned int				GetCBufferIndex(const String& name) { return cbufferName2CBufferIndexMap[name]; }
+			bool						IsHaveCBuffer(const String& name) {
 
 				return cbufferName2CBufferIndexMap.find(name) != cbufferName2CBufferIndexMap.end();
 
@@ -177,13 +177,13 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			IShaderPass*	AddPass		(const std::string& name);
-			void			RemovePass	(const std::string& name);
+			IShaderPass*	AddPass		(const String& name);
+			void			RemovePass	(const String& name);
 
 			List<IMaterial*>::Node*	AddMaterial	(IMaterial* material);
 			void			RemoveMaterial(IMaterial* material);
 
-			virtual void	Apply		(const std::string& name);
+			virtual void	Apply		(const String& name);
 
 			virtual void	SetPropertyVector(const std::vector<ShaderProperty>& propertyVector);
 

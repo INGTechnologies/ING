@@ -82,15 +82,11 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	ApplicationRenderingSystem::ApplicationRenderingSystem(IApplication* application) :
-		IApplicationComponent(application, "Rendering::System"),
+		IApplicationComponent(application, "RenderingSystem"),
 
-		defaultPipeline(0),
 		pipeline(0),
-		targetPipeline(0),
 
-		defaultDevice(0),
-		device(0),
-		targetDevice(0)
+		device(0)
 	{
 
 
@@ -110,18 +106,20 @@ namespace ING {
 	 */
 	bool ApplicationRenderingSystem::Init() {
 
-		defaultPipeline = new Rendering::StandardRP::Pipeline("Standard Rendering Pipeline");
+		pipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
 
-		targetPipeline = defaultPipeline;
-
-		defaultDevice = Rendering::IAPI::GetInstance()->GetDevice();
-
-		targetDevice = defaultDevice;
+		device = Rendering::IAPI::GetInstance()->GetDevice();
 
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationRenderingSystem::Release() {
+
+		if (pipeline != 0) {
+
+			pipeline->Release();
+
+		}
 
 		IApplicationComponent::Release();
 
@@ -130,19 +128,17 @@ namespace ING {
 
 
 	/**
-		*	Properties
-		*/
-	void ApplicationRenderingSystem::SetPipeline(Rendering::IPipeline* pipeline) {
+	 *	Properties
+	 */
+	void	ApplicationRenderingSystem::ChangePipeline(Rendering::IPipeline* pipeline) {
 
-		/* New Pipeline Will Be Used In Next Frame */
-		targetPipeline = pipeline;
+		if (this->pipeline != 0) {
 
-	}
+			this->pipeline->Release();
 
-	void ApplicationRenderingSystem::SetDevice(Rendering::IDevice* device) {
+		}
 
-		/* New Device Will Be Used In Next Frame */
-		targetDevice = device;
+		this->pipeline = pipeline;
 
 	}
 
@@ -184,9 +180,6 @@ namespace ING {
 	void	ApplicationRenderingSystem::Render() {
 
 		IApplicationComponent::Render();
-
-		pipeline = targetPipeline;
-		device = targetDevice;
 
 		pipeline->Render(device->GetImmediateContext());
 

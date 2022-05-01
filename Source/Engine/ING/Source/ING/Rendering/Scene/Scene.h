@@ -57,7 +57,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Scene	(std::string name);
+			Scene	(String name);
 			~Scene	();
 
 
@@ -74,7 +74,7 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string					name;
+			String					name;
 
 			Mask64						layerMask;
 
@@ -82,7 +82,7 @@ namespace ING {
 
 
 		public:
-			std::string					GetName () { return name; }
+			String					GetName () { return name; }
 
 			Mask64						GetLayerMask () { return layerMask; }
 

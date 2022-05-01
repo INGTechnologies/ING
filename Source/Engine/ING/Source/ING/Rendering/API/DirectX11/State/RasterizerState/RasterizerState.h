@@ -39,8 +39,8 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				RasterizerState(IDevice* device, const std::string& name, const RasterizerStateDesc& desc);
-				RasterizerState(const std::string& name, const RasterizerStateDesc& desc);
+				RasterizerState(IDevice* device, const String& name, const RasterizerStateDesc& desc);
+				RasterizerState(const String& name, const RasterizerStateDesc& desc);
 				~RasterizerState();
 
 

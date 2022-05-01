@@ -48,7 +48,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPipeline	(std::string name);
+			IPipeline	(String name);
 			~IPipeline	();
 
 
@@ -65,28 +65,30 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			std::string	name;
-
-			IRenderer*	defaultRenderer;
+			String		name;
 
 			IRenderer*	renderer;
 
-			IRenderer*	targetRenderer;
-
 			bool		isRendering;
 
-		public:
-			std::string	GetName				() { return name; }
+			std::unordered_map<String, unsigned int> name2PassIndex;
 
-			IRenderer*	GetDefaultRenderer	() { return defaultRenderer; }
+			std::vector<IPass*> passVector;
+
+		public:
+			String		GetName				() { return name; }
 
 			IRenderer*	GetRenderer			() { return renderer; }
 
-			IRenderer*	GetTargetRenderer	() { return targetRenderer; }
-
-			void		SetRenderer			(IRenderer* renderer);
+			void		SetRenderer			(IRenderer* renderer) { this->renderer = renderer; }
 
 			bool		IsRendering			() { return isRendering; }
+
+			unsigned int GetPassIndex		(const String& name) { return name2PassIndex[name]; }
+
+			IPass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
+
+			IPass*		GetPass				(unsigned int index) { return passVector[index]; }
 
 
 
@@ -94,8 +96,15 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
+			void		 AddPass			(IPass* pass);
+			void		 AddPass			(IPass* pass, unsigned int index);
+			void		 RemovePass			(unsigned int index);
+			void		 RemovePass			(const String& name);
+			void		 RemovePass			(IPass* pass);
+
 			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);
-			virtual void ClearRenderingData (Camera* camera);
+			virtual void ClearCameraData	(Camera* camera);
+
 			virtual bool Render				(IDeviceContext* context);
 
 			void		 BeginRender		(IDeviceContext* context);

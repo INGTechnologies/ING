@@ -143,7 +143,7 @@ namespace ING {
 			return layer;
 		}
 
-		void	IDrawable::SetFilterNameVector(const std::vector<std::string>& filterNameVector) {
+		void	IDrawable::SetFilterNameVector(const std::vector<String>& filterNameVector) {
 
 			unsigned int filterCount = filterNameVector.size();
 
@@ -152,7 +152,7 @@ namespace ING {
 
 				if (!LayerManager::GetInstance()->IsHaveFilter(filterNameVector[i])) {
 
-					Debug::Error(String("Filter With Name ") + String('"') + filterNameVector[i] + String('"') + String(" Not Found"));
+					Debug::Error(ToString("Filter With Name ") + ToString('"') + filterNameVector[i] + ToString('"') + ToString(" Not Found"));
 
 					return;
 
@@ -185,7 +185,7 @@ namespace ING {
 		
 		}
 
-		void	IDrawable::SetFilters(const std::vector<std::string>& filterNameVector) {
+		void	IDrawable::SetFilters(const std::vector<String>& filterNameVector) {
 
 			SetFilterNameVector(filterNameVector);
 
@@ -196,7 +196,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	IDrawable::Draw (Camera* camera, const std::string& passName) {
+		void	IDrawable::Draw (Camera* camera, const String& passName) {
 
 			
 

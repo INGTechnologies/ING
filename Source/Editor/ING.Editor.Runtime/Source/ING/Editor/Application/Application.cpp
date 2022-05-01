@@ -55,7 +55,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Application::Application(const std::string& configPath, const std::string& projectPath) :
+		Application::Application(const WString& configPath, const WString& projectPath) :
 			IApplication(configPath),
 
 			projectPath(projectPath),
@@ -63,7 +63,13 @@ namespace ING {
 			gameApplication(0)
 		{
 
+			Debug::Log("Start Creating Editor Application");
 
+			SetupRootPaths();
+
+			CreateGameApplication();
+
+			Debug::Log("Editor Application Created");
 
 		}
 
@@ -80,16 +86,20 @@ namespace ING {
 		 */
 		bool	Application::Init() {
 
-			if(!IApplication::Init())return false;
+			Debug::Log("Start Initializing Editor Application");
 
-			SetupRootPaths();
+			if(!IApplication::Init())return false;
 
 			CreateMainWindow();
 
-			CreateGameApplication(); 
+			if (!InitGameApplication())return false;
+
+			Debug::Log("Finished Initializing Editor Application");
 
 		}
 		void	Application::Release() {
+
+			Debug::Log("Start Releasing Editor Application");
 
 			if(gameApplication != 0)
 				gameApplication->Release();
@@ -97,6 +107,8 @@ namespace ING {
 			IApplication::Release();
 
 			ING::Engine::GetInstance()->Shutdown();
+
+			Debug::Log("Finished Releasing Editor Application");
 
 		}
 
@@ -106,6 +118,20 @@ namespace ING {
 		 *	Methods
 		 */
 		void	Application::SetupRootPaths() {
+
+			if (!std::filesystem::exists(projectPath)) {
+
+				Debug::Log("Editor Application Config Not Found");
+
+				Release();
+
+				exit(1);
+
+				return;
+
+			}
+
+			Debug::Log("Setup Engine Rootpaths");
 
 			Engine::GetInstance()->SetRootPath(
 
@@ -119,13 +145,15 @@ namespace ING {
 
 				L"Game",
 
-				WString(projectPath)
+				projectPath
 
 			);
 
 		}
 
 		void	Application::CreateMainWindow() {
+
+			Debug::Log("Editor MainWindow Created");
 
 			GetWindowManager()->AddWindow(
 			
@@ -155,8 +183,13 @@ namespace ING {
 
 		void Application::CreateGameApplication() {
 
-			gameApplication = new GameApplication("Game:/Config.ini");
+			gameApplication = new GameApplication(L"Game:/Config.ini");
 
+		}
+
+		bool Application::InitGameApplication() {
+
+			return gameApplication->Init();
 		}
 
 		void Application::PlayGame() {

@@ -23,26 +23,7 @@ namespace ING {
 
 		namespace Path {
 
-			std::string cwd = std::filesystem::current_path().u8string();
-			std::wstring cwd_wstr = std::filesystem::current_path().wstring();
-
-			std::string GetAbsolutePath(const std::string& pathStr) {
-
-				auto rootName = GetRootName(pathStr);
-
-				const std::wstring rootName_wstr = WString(rootName.first);
-
-				if (Engine::GetInstance()->IsHaveRootPath(rootName_wstr)) {
-
-					return String(Engine::GetInstance()->GetRootPath(rootName_wstr)) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
-
-				}
-
-				return pathStr;
-
-			}
-
-			std::wstring GetAbsolutePath(const std::wstring& pathStr) {
+			WString GetAbsolutePath(const WString& pathStr) {
 
 				auto rootName = GetRootName(pathStr);
 

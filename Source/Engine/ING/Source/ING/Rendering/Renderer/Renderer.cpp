@@ -123,11 +123,11 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Camera* camera, const std::string& filterName, const std::string& passName) {
+		void IRenderer::RenderDrawables(Camera* camera, const String& filterName, const String& passName) {
 
 			if (camera->GetRenderingScene() == 0) {
 
-				Debug::Warning(String("Camera ") + String(camera) + String(" Do Not Have Any Rendering Scene"));
+				Debug::Warning(ToString("Camera ") + ToString(camera) + ToString(" Do Not Have Any Rendering Scene"));
 
 				return;
 			}
@@ -155,7 +155,7 @@ namespace ING {
 
 		}
 
-		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const std::string& passName) {
+		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const String& passName) {
 
 			drawable->Draw(camera, passName);
 

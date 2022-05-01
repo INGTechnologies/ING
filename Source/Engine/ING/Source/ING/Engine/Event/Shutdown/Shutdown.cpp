@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string EngineShutdownEvent::GetName() { return "SHUTDOWN"; };
+	String EngineShutdownEvent::GetName() { return "SHUTDOWN"; };
 
 }

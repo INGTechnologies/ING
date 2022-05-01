@@ -64,7 +64,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Assembly::Assembly(Context* context, const std::string& name, const std::vector<std::string>& componentNameVector) :
+			Assembly::Assembly(Context* context, const String& name, const std::vector<String>& componentNameVector) :
 				context(context),
 
 				monoAssembly(0),
@@ -83,7 +83,7 @@ namespace ING {
 
 					if (componentCreator == 0) {
 
-						Debug::Error(String('"') + componentNameVector[i] + String('"') + String(" Assembly Component Creator Not Found"));
+						Debug::Error(ToString('"') + componentNameVector[i] + ToString('"') + ToString(" Assembly Component Creator Not Found"));
 
 						componentVector.resize(i);
 

@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string WindowDestroyEvent::GetName() { return "DESTROY"; };
+	String WindowDestroyEvent::GetName() { return "DESTROY"; };
 
 }

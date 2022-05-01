@@ -108,8 +108,7 @@ namespace ING {
 				ILanguage::Init();
 
 				/* Open Engine, Game Assemblies */
-				OpenAssemblies("Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
-				//OpenAssemblies("Game:/Scripting/CSharp/Assemblies.ini", "Game");
+				OpenAssemblies(L"Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
 
 			}
 
@@ -155,9 +154,9 @@ namespace ING {
 
 			}
 
-			std::string Language::GetName() { return "CSharp"; }
+			String Language::GetName() { return "CSharp"; }
 
-			IContext*	Language::CreateContext(const std::string& name, bool isMainContext) {
+			IContext*	Language::CreateContext(const String& name, bool isMainContext) {
 
 				if (mainContext != 0 && isMainContext == true) {
 
@@ -171,9 +170,9 @@ namespace ING {
 
 			}
 
-			std::vector<std::string> GetAssemblyComponentNames(const std::string& str) {
+			std::vector<String> GetAssemblyComponentNames(const String& str) {
 
-				std::string str2 = str;
+				String str2 = str;
 
 				size_t characterCount = str2.size();
 
@@ -191,10 +190,10 @@ namespace ING {
 
 				}
 
-				std::vector<std::string> result(componentCount);
+				std::vector<String> result(componentCount);
 
 				std::stringstream ss(str2);
-				std::string word;
+				String word;
 				unsigned int index = 0;
 				while (ss >> word) {
 
@@ -218,13 +217,13 @@ namespace ING {
 
 			}
 
-			void		Language::OpenAssemblies(const std::string& iniFilePath, const std::string& tag) {
+			void		Language::OpenAssemblies(const WString& iniFilePath, const String& tag) {
 
-				std::string engineAssembliesPath = Path::GetAbsolutePath(iniFilePath);
+				WString engineAssembliesPath = Path::GetAbsolutePath(iniFilePath);
 
 				if (std::filesystem::exists(engineAssembliesPath)) {
 
-					mINI::INIFile configFile(engineAssembliesPath);
+					mINI::INIFile configFile(ToString(engineAssembliesPath));
 
 					mINI::INIStructure compiledData;
 
@@ -238,21 +237,21 @@ namespace ING {
 
 						for (auto item = compiledData.begin(); item != compiledData.end(); ++item) {
 
-							std::string name = tag + String(".") + item->first;
+							String name = tag + String(".") + item->first;
 
 							if (!item->second.has("path")) return;
 
-							std::string path = item->second.get("path");
+							WString path = ToWString(item->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 
-							std::string componentsStr = item->second.get("components");
+							String componentsStr = item->second.get("components");
 
 							componentsStr = componentsStr.substr(1, componentsStr.size() - 2);
 
-							std::vector<std::string> componentNames = GetAssemblyComponentNames(componentsStr);
+							std::vector<String> componentNames = GetAssemblyComponentNames(componentsStr);
 
-							std::string contextName = name;
+							String contextName = name;
 
 							Context* context = (Context*)CreateContext(contextName, false);
 
@@ -285,19 +284,19 @@ namespace ING {
 
 						if (assemblyCount >= 1) {
 
-							std::string name = tag + String(".") + compiledData.begin()->first;
+							String name = tag + String(".") + compiledData.begin()->first;
 
 							if (!compiledData.begin()->second.has("path")) return;
 
-							std::string path = compiledData.begin()->second.get("path");
+							WString path = ToWString(compiledData.begin()->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 
-							std::string componentsStr = compiledData.begin()->second.get("components");
+							String componentsStr = compiledData.begin()->second.get("components");
 
 							componentsStr = componentsStr.substr(1, componentsStr.size() - 2);
 
-							std::vector<std::string> componentNames = GetAssemblyComponentNames(componentsStr);
+							std::vector<String> componentNames = GetAssemblyComponentNames(componentsStr);
 
 							if (((CSharp::Context*)mainContext)->LoadAssembly(
 
@@ -313,21 +312,21 @@ namespace ING {
 
 						for (auto item = compiledData.begin() + 1; item != compiledData.end(); ++item) {
 
-							std::string name = tag + String(".") + item->first;
+							String name = tag + String(".") + item->first;
 
 							if (!item->second.has("path")) return;
 
-							std::string path = item->second.get("path");
+							WString path = ToWString(item->second.get("path"));
 
 							path = path.substr(1, path.size() - 2);
 
-							std::string componentsStr = item->second.get("components");
+							String componentsStr = item->second.get("components");
 
 							componentsStr = componentsStr.substr(1, componentsStr.size() - 2);
 
-							std::vector<std::string> componentNames = GetAssemblyComponentNames(componentsStr);
+							std::vector<String> componentNames = GetAssemblyComponentNames(componentsStr);
 
-							std::string contextName = name;
+							String contextName = name;
 
 							Context* context = (Context*)CreateContext(contextName, false);
 

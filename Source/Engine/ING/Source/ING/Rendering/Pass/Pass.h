@@ -26,6 +26,8 @@ namespace ING {
 
 		class IDeviceContext;
 
+		class IPipeline;
+
 
 
 		/**
@@ -35,11 +37,19 @@ namespace ING {
 		{
 
 			/**
+			 *	Friend Class
+			 */
+		public:
+			friend class IPipeline;
+
+
+
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPass(const std::string& name);
-			~IPass();
+			IPass	(const String& name);
+			~IPass	();
 
 
 
@@ -47,7 +57,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual void	Release();
 
 
 
@@ -55,10 +65,33 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string			name;
+			String			name;
+
+			std::unordered_map<String, unsigned int> name2ChildIndex;
+
+			std::vector<IPass*> childVector;
+
+			IPass*			parent;
+
+			IPipeline*		pipeline;
 
 		public:
-			std::string			GetName() { return name; }
+			String			GetName		() { return name; }
+
+			unsigned int	GetChildIndex(const String& name) { return name2ChildIndex[name]; }
+
+			IPass*			GetChild	(const String& name) { return childVector[GetChildIndex(name)]; }
+
+			IPass*			GetChild	(unsigned int index) { return childVector[index]; }
+
+			IPass*			GetParent	() { return parent; }
+
+			IPipeline*		GetPipeline	() { return pipeline; }
+
+		private:
+			void			SetParent	(IPass* newParent);
+
+			void			SetPipeline	(IPipeline* pipeline);
 
 
 
@@ -66,107 +99,15 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual bool Render(IDeviceContext* context, Camera* camera, void* input, void* output);
+			void			AddChild	(IPass* child);
+			void			AddChild	(IPass* child, unsigned int index);
+			void			RemoveChild	(unsigned int index);
+			void			RemoveChild	(const String& name);
+			void			RemoveChild	(IPass* child);
+
+			virtual bool	Render		(IDeviceContext* context, Camera* camera);
 
 		};
-
-
-
-		/**
-		 *	Main Class
-		 */
-		template<typename TInput, typename TOutput>
-		class Pass : public IPass
-		{
-
-			/**
-			 *	Constructors And Destructor
-			 */
-		public:
-			Pass	(const std::string& name);
-			~Pass	();
-
-
-
-			/**
-			 *	Release Methods
-			 */
-		public:
-			virtual void Release() override;
-
-
-
-			/**
-			 *	Methods
-			 */
-		public:
-			virtual bool Render			(IDeviceContext* context, Camera* camera, void* input, void* output) override;
-
-			virtual bool CustomRender	(IDeviceContext* context, Camera* camera, const TInput& input, TOutput& output);
-
-		};
-
-	}
-
-}
-
-
-
-/**
- *	Define Main Class Members
- */
-namespace ING {
-
-	namespace Rendering {
-
-		/**
-		 *	Constructors And Destructor
-		 */
-		template<typename TInput, typename TOutput>
-		Pass<TInput,TOutput>::Pass	(const std::string& name) : IPass(name) {
-
-
-
-		}
-
-		template<typename TInput, typename TOutput>
-		Pass<TInput, TOutput>::~Pass	() {
-
-
-
-		}
-
-
-
-		/**
-		 *	Constructors And Destructor
-		 */
-		template<typename TInput, typename TOutput>
-		void	Pass<TInput, TOutput>::Release() {
-
-			IPass::Release();
-
-		}
-
-
-
-		/**
-		 *	Methods
-		 */
-		template<typename TInput, typename TOutput>
-		bool	Pass<TInput, TOutput>::Render(IDeviceContext* context, Camera* camera, void* input, void* output) {
-
-			return CustomRender(context, camera, *((TInput*)input), *((TOutput*)output));
-
-		}
-
-		template<typename TInput, typename TOutput>
-		bool	Pass<TInput, TOutput>::CustomRender(IDeviceContext* context, Camera* camera, const TInput& input, TOutput& output) {
-
-
-
-			return true;
-		}
 
 	}
 

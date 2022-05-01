@@ -85,7 +85,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Context::Context(const std::string& name, ILanguage* language, bool isMainContext) :
+			Context::Context(const String& name, ILanguage* language, bool isMainContext) :
 				IContext(name, language, isMainContext),
 
 				domain(0),
@@ -176,12 +176,12 @@ namespace ING {
 
 			}
 
-			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name) {
+			Assembly*			Context::LoadAssembly(const WString& path, const String& name) {
 
 				return LoadAssembly(path, name, {});
 			}
 
-			Assembly*			Context::LoadAssembly(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector) {
+			Assembly*			Context::LoadAssembly(const WString& path, const String& name, const std::vector<String>& componentNameVector) {
 
 				if (assembly != 0) {
 
@@ -193,7 +193,7 @@ namespace ING {
 
 				}
 
-				std::string parsedPath = Path::GetAbsolutePath(path);
+				WString parsedPath = Path::GetAbsolutePath(path);
 
 				assembly = new Assembly(this, name, componentNameVector);
 
@@ -220,7 +220,7 @@ namespace ING {
 					return 0;
 				}
 
-				assembly->monoAssembly = mono_domain_assembly_open(domain, assembly->GetFilePath().c_str());
+				assembly->monoAssembly = mono_domain_assembly_open(domain, ToString(assembly->GetFilePath()).c_str());
 
 				if (assembly->monoAssembly == 0) {
 
@@ -250,7 +250,7 @@ namespace ING {
 
 			}
 
-			Class*				Context::GetClass(Assembly* assembly, const std::string& name, const std::string& _namespace) {
+			Class*				Context::GetClass(Assembly* assembly, const String& name, const String& _namespace) {
 
 				Class* result = new Class(assembly, this);
 
@@ -263,7 +263,7 @@ namespace ING {
 
 					result->Release();
 
-					Debug::Error(String("Cant Get ") + String('"') + _namespace + String('::') + name + String('"') + String(" CSharp Class"));
+					Debug::Error(ToString("Cant Get ") + ToString('"') + _namespace + ToString('::') + name + ToString('"') + ToString(" CSharp Class"));
 
 					return 0;
 
@@ -273,7 +273,7 @@ namespace ING {
 
 			}
 
-			IOuternalMethod*	Context::GetOuternalMethod(IMethodContainer* container, const std::string& name) {
+			IOuternalMethod*	Context::GetOuternalMethod(IMethodContainer* container, const String& name) {
 
 				OuternalMethod* result = new OuternalMethod(this, container);
 

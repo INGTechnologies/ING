@@ -56,10 +56,8 @@ namespace ING {
 		/**IIDeviceContext
 		 *	Constructors And Destructor
 		 */
-		IPipeline::IPipeline	(std::string name) :
-			defaultRenderer(0),
-			renderer(0),
-			targetRenderer(0)
+		IPipeline::IPipeline	(String name) :
+			renderer(0)
 		{
 
 			this->name = name;
@@ -81,6 +79,26 @@ namespace ING {
 		 */
 		void IPipeline::Release() {
 
+			for (unsigned int i = 0; i < passVector.size();) {
+
+				RemovePass(i);
+
+				passVector[i]->Release();
+
+			}
+
+			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+
+				if (camera->GetRenderingPipeline() == this) {
+
+					ClearCameraData(camera);
+
+					camera->SetRenderingPipeline(0);
+
+				}
+
+			}
+
 			delete this;
 
 		}
@@ -88,28 +106,80 @@ namespace ING {
 
 
 		/**
-		 *	Properties
-		 */
-		void IPipeline::SetRenderer(IRenderer* renderer) {
-
-			/* New Renderer Will Be Used In Next Frame */
-			targetRenderer = renderer;
-		}
-
-
-
-		/**
 		 *	Methods
 		 */
+		void IPipeline::AddPass(IPass* pass) {
+
+			AddPass(pass, passVector.size());
+
+		}
+
+		void IPipeline::AddPass(IPass* pass, unsigned int index) {
+
+			if (passVector.size() == index) {
+
+				passVector.push_back(pass);
+
+			}
+			else {
+
+				passVector.insert(passVector.begin() + index, pass);
+
+				unsigned int passCount = passVector.size();
+
+				for (unsigned int i = index + 1; i < passCount; ++i) {
+
+					name2PassIndex[passVector[i]->GetName()]++;
+
+				}
+
+			}
+
+			name2PassIndex[pass->GetName()] = index;
+
+			pass->SetPipeline(this);
+
+		}
+
+		void IPipeline::RemovePass(unsigned int index) {
+
+			GetPass(index)->SetPipeline(0);
+
+			passVector.erase(passVector.begin() + index);
+
+			unsigned int passCount = passVector.size();
+
+			for (unsigned int i = index; i < passCount; ++i) {
+
+				name2PassIndex[passVector[i]->GetName()]--;
+
+			}
+
+			name2PassIndex.erase(GetPass(index)->GetName());
+			
+		}
+
+		void IPipeline::RemovePass(const String& name) {
+
+			RemovePass(name2PassIndex[name]);
+
+		}
+
+		void IPipeline::RemovePass(IPass* pass) {
+
+			RemovePass(pass->GetName());
+
+		}
+
 		void IPipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
 
 
 
 		}
 
-		void IPipeline::ClearRenderingData(Camera* camera) {
+		void IPipeline::ClearCameraData(Camera* camera) {
 
-
+			camera->SetRenderingData(0);
 
 		}
 
@@ -123,9 +193,6 @@ namespace ING {
 		}
 
 		void IPipeline::BeginRender(IDeviceContext* context) {
-
-			/* Set Renderer */
-			renderer = targetRenderer;
 
 			isRendering = true;
 

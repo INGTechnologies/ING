@@ -46,12 +46,12 @@ namespace ING {
 	protected:
 		List<Event*> eventList;
 
-		std::map<std::string, Event*> eventMap;
+		std::map<String, Event*> eventMap;
 
 	public:
 		const List<Event*>&			GetEventList() { return eventList; }
 
-		Event*						GetEvent(const std::string& name);
+		Event*						GetEvent(const String& name);
 
 		virtual List<Event*>::Node*	AddEvent(Event* event);
 

@@ -69,11 +69,11 @@ namespace ING {
 		/**
 		 *	Create Methods
 		 */
-		IPixelShader* IPixelShader::CreateFromHLSL(IDevice* device, const std::wstring& filePath) {
+		IPixelShader* IPixelShader::CreateFromHLSL(IDevice* device, const WString& filePath) {
 
 			FileResource* fileResource = ResourceManager::GetInstance()->LoadResource<FileResource>(Path::GetAbsolutePath(filePath));
 
-			std::string basicStrContent = String(fileResource->content);
+			String basicStrContent = ToString(fileResource->content);
 
 			switch (APIManager::GetInstance()->GetAPIFlag())
 			{
@@ -108,7 +108,7 @@ namespace ING {
 
 		}
 
-		IPixelShader* IPixelShader::CreateFromHLSL(const std::wstring& filePath) {
+		IPixelShader* IPixelShader::CreateFromHLSL(const WString& filePath) {
 
 			return CreateFromHLSL(IAPI::GetInstance()->GetDevice(), filePath);
 
@@ -119,7 +119,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPixelShader::Apply(const std::string& name) {
+		void IPixelShader::Apply(const String& name) {
 
 
 

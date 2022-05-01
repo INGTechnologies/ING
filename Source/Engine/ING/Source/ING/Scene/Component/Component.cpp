@@ -11,7 +11,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ISceneComponent::ISceneComponent(const std::string& typeId) :
+	ISceneComponent::ISceneComponent(const String& typeId) :
 		typeId(typeId)
 	{
 

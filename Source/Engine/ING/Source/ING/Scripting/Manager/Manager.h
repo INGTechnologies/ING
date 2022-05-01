@@ -52,10 +52,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::unordered_map<std::string, ILanguage*> name2LanguageMap;
+			std::unordered_map<String, ILanguage*> name2LanguageMap;
 
 		public:
-			ILanguage* GetLanguage(const std::string& name) { return name2LanguageMap[name]; }
+			ILanguage* GetLanguage(const String& name) { return name2LanguageMap[name]; }
 
 
 

@@ -113,10 +113,14 @@ namespace ING {
 	void Camera::Release()
 	{
 
+		if (renderingPipeline != 0) {
+
+			renderingPipeline->ClearCameraData(this);
+
+		}
+
 		if (GetTargetMode() == CAMERA_TARGET_SCREEN)
 			screen->RemoveCamera(this);
-
-		renderingData->Release();
 
 		CameraManager::GetInstance()->RemoveCamera(node);
 
@@ -149,6 +153,18 @@ namespace ING {
 		this->targetMode = mode;
 
 		
+
+	}
+
+	void Camera::SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) {
+
+		if (this->renderingPipeline != 0) {
+
+			this->renderingPipeline->ClearCameraData(this);
+
+		}
+
+		this->renderingPipeline = renderingPipeline;
 
 	}
 

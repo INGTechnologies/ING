@@ -41,11 +41,11 @@ namespace ING {
 		 *	Encode, Decode, Check Methods
 		 */
 	public:
-		virtual std::wstring	Encode	(const std::wstring& content, const std::wstring& key);
+		virtual WString	Encode	(const WString& content, const WString& key);
 
-		virtual std::wstring	Decode	(const std::wstring& content, const std::wstring& key);
+		virtual WString	Decode	(const WString& content, const WString& key);
 
-		virtual bool			Check	(const std::wstring& content, const std::wstring& key);
+		virtual bool			Check	(const WString& content, const WString& key);
 
 	};
 

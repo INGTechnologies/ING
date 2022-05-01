@@ -115,7 +115,7 @@ namespace ING {
 
 		WindowDesc	GetDesc		() { return desc; }
 
-		const std::string&	GetName		() { return desc.name; }
+		const String&	GetName		() { return desc.name; }
 
 		Screen*		GetScreen	() { return screen; }
 
@@ -135,7 +135,7 @@ namespace ING {
 
 
 		/* Title */
-		virtual void	SetTitle(const std::wstring& title);
+		virtual void	SetTitle(const WString& title);
 
 		virtual void	SetTitle(const wchar_t* title) {
 
@@ -145,9 +145,9 @@ namespace ING {
 
 
 		/* Icon */
-		virtual void	SetIconFromFile(const std::wstring& path);
+		virtual void	SetIconFromFile(const WString& path);
 
-		std::wstring	GetTitle();
+		WString	GetTitle();
 
 
 	protected:

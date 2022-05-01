@@ -67,9 +67,9 @@ namespace ING {
 
 		ING_ENGINE_CONFIG_PROP(bool, "ING.WindowManager.showConsoleWindow", false);
 
-		ING_ENGINE_CONFIG_PROP(std::string, "ING.WindowManager.consoleWindowTitle", "Console");
+		ING_ENGINE_CONFIG_PROP(String, "ING.WindowManager.consoleWindowTitle", "Console");
 
-		ING_ENGINE_CONFIG_PROP(std::string, "ING.WindowManager.startupWindowTitle", "New Window");
+		ING_ENGINE_CONFIG_PROP(String, "ING.WindowManager.startupWindowTitle", "New Window");
 
 		Debug::Log("WindowManager Created");
 
@@ -94,7 +94,7 @@ namespace ING {
 
 		showConsoleWindow	= Engine::GetInstance()->GetConfiguration()->Get<bool>("ING.WindowManager.showConsoleWindow");
 
-		consoleWindowTitle  = WString(Engine::GetInstance()->GetConfiguration()->Get<std::string>("ING.WindowManager.consoleWindowTitle"));
+		consoleWindowTitle  = ToWString(Engine::GetInstance()->GetConfiguration()->Get<String>("ING.WindowManager.consoleWindowTitle"));
 
 
 

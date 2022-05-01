@@ -57,7 +57,7 @@ namespace ING {
 		 *	Loade Method
 		 */
 	public:
-		virtual IResource* Load(const std::wstring& path, CoderOption& coderOption);
+		virtual IResource* Load(const WString& path, CoderOption& coderOption);
 
 	};
 

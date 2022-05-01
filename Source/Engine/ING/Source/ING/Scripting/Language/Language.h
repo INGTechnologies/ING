@@ -61,11 +61,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual std::string GetName() { return "None"; }
+			virtual String GetName() { return "None"; }
 
-			virtual IContext*	CreateContext(const std::string& name, bool isMainContext);
+			virtual IContext*	CreateContext(const String& name, bool isMainContext);
 
-			IContext*			CreateContext(const std::string& name);
+			IContext*			CreateContext(const String& name);
 
 		};
 

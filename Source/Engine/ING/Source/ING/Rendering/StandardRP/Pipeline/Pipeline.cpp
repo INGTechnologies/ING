@@ -121,34 +121,20 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Pipeline::Pipeline(std::string name) : IPipeline(name) {
+			Pipeline::Pipeline(String name) : IPipeline(name) {
 
 				/**
 				 *	Create Default Passes
 				 */
-				targetFirstPass	= new FirstPass	("Standard Main Pass");
-				firstPass		= targetFirstPass;
-				 
-				targetFinalPass = new FinalPass	("Standard Final Pass");
-				finalPass		= targetFinalPass;
-
-
-
-				/**
-				 *	Create SubRPs
-				 */
-				AddSubPipeline(new SubRP::Pipeline("After First Pipeline"), 0);
-
-				AddSubPipeline(new SubRP::Pipeline("Befrore Final Pipeline"), 0);
+				firstPass = new FirstPass	("StandardRP.FirstPass");				 
+				finalPass = new FinalPass	("StandardRP.FinalPass");
 
 
 
 				/**
 				 *	Create Renderer
 				 */
-				targetRenderer = new StandardRP::Renderer();
-
-				renderer = targetRenderer;
+				renderer = new StandardRP::Renderer();
 
 			}
 
@@ -172,26 +158,6 @@ namespace ING {
 
 
 			/**
-			 *	Properties
-			 */
-			void Pipeline::SetFirstPass	(IPass* firstPass) {
-
-				/* New First Pass Will Be Used In Next Frame */
-				targetFirstPass = firstPass;
-
-			}
-
-			void Pipeline::SetFinalPass	(IPass* finalPass) {
-
-				/* New Main Pass Will Be Used In Next Frame */
-				targetFinalPass = finalPass;
-
-			}
-
-
-
-
-			/**
 			 *	Methods
 			 */
 			void Pipeline::SetupCamera(IDeviceContext* context, Camera* camera) {
@@ -200,11 +166,17 @@ namespace ING {
 
 				camera->SetRenderingData(renderingData);
 
+				IPipeline::SetupCamera(context, camera);
+
 			}
 
-			void Pipeline::ClearRenderingData(Camera* camera) {
+			void Pipeline::ClearCameraData(Camera* camera) {
 
 				CameraData* renderingData = (CameraData*)camera->GetRenderingData();
+
+				renderingData->Release();
+
+				IPipeline::ClearCameraData(camera);
 
 			}
 
@@ -219,32 +191,13 @@ namespace ING {
 					context->OMSetRenderTargets(renderingData->GetMainRTV(),0);
 
 
-					/* Render First Pass */
-					firstPass = targetFirstPass;
 
-					FirstPassInput	firstPassInput;
-					FirstPassOutput	firstPassOutput;
+					for (auto pass : passVector) {
 
-					RENDERING_ASSERTION(firstPass->Render(context, camera, &firstPassInput, &firstPassOutput));
+						RENDERING_ASSERTION(firstPass->Render(context, camera));
 
+					}
 
-
-					/* Render Sub Pipelines */
-					SubRP::PassInput	subPipelinesInput;
-
-					SubRP::PassOutput	subPipelinesOutput;
-
-					RENDERING_ASSERTION(RenderSubPipelines(context, camera, subPipelinesInput, subPipelinesOutput));
-
-
-
-					/* Render Final Pass */
-					finalPass = targetFinalPass;
-
-					FinalPassInput	finalPassInput;
-					FinalPassOutput	finalPassOutput;
-
-					RENDERING_ASSERTION(finalPass->Render(context, camera, &finalPassInput, &finalPassOutput));
 
 
 					if (camera->GetTargetMode() == CAMERA_TARGET_SCREEN) {
@@ -258,61 +211,6 @@ namespace ING {
 				IPipeline::EndRender(context);
 
 				return true;
-
-			}
-
-			bool Pipeline::RenderSubPipelines(IDeviceContext* context, Camera* camera, const Rendering::SubRP::PassInput& input, Rendering::SubRP::PassOutput& output) {
-
-				unsigned int subPipelineVectorSize = subPipelineVector.size();
-
-				SubRP::PassInput renderRS = input;
-
-				for (unsigned int i = 0; i < subPipelineVectorSize; ++i) {
-
-					SubRP::Pipeline* pipeline = subPipelineVector[i];
-
-					SubRP::PassOutput passOutput;
-
-					RENDERING_ASSERTION(pipeline->SubRender(context, camera, renderRS, passOutput));
-
-					renderRS += passOutput;
-
-				}
-
-				output += renderRS;
-
-				return true;
-			}
-
-			void Pipeline::AddSubPipeline	(SubRP::Pipeline* subPipeline) {
-
-				unsigned int index = subPipelineVector.size();
-
-				subPipelineVector.resize(index + 1);
-
-				subPipelineVector[index] = subPipeline;
-
-				subPipelineName2supPipeLineIndex[subPipeline->GetName()] = index;
-
-			}
-
-			void Pipeline::AddSubPipeline	(SubRP::Pipeline* subPipeline, unsigned int index) {
-
-				unsigned int subPipelineVectorSize = subPipelineVector.size();
-
-				subPipelineVector.resize(subPipelineVectorSize + 1);
-
-				for (unsigned int i = index + 1; i < subPipelineVector.size(); ++i) {
-
-					subPipelineVector[i] = subPipelineVector[i - 1];
-
-					subPipelineName2supPipeLineIndex[subPipelineVector[i]->GetName()] = i;
-
-				}
-
-				subPipelineVector[index] = subPipeline;
-
-				subPipelineName2supPipeLineIndex[subPipeline->GetName()] = index;
 
 			}
 

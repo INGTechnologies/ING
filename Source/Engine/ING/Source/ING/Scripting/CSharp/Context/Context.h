@@ -64,7 +64,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Context(const std::string& name, ILanguage* language, bool isMainContext);
+				Context(const String& name, ILanguage* language, bool isMainContext);
 				~Context();
 
 
@@ -100,16 +100,16 @@ namespace ING {
 				bool		UnloadDomain	();
 
 			public:
-				Assembly*	LoadAssembly	(const std::string& path, const std::string& name);
-				Assembly*	LoadAssembly	(const std::string& path, const std::string& name, const std::vector<std::string>& componentNameVector);
+				Assembly*	LoadAssembly	(const WString& path, const String& name);
+				Assembly*	LoadAssembly	(const WString& path, const String& name, const std::vector<String>& componentNameVector);
 
 				bool		OpenAssembly	();
 
 				void		RemoveAssembly	();
 
-				Class*		GetClass		(Assembly* assembly, const std::string& name, const std::string& _namespace);
+				Class*		GetClass		(Assembly* assembly, const String& name, const String& _namespace);
 
-				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const std::string& name) override;
+				virtual IOuternalMethod* GetOuternalMethod(IMethodContainer* container, const String& name) override;
 
 				virtual void Load() override;
 				virtual void Unload() override;

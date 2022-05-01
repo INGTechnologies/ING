@@ -27,11 +27,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		GameApplication::GameApplication(const std::string& configPath) :
+		GameApplication::GameApplication(const WString& configPath) :
 			IApplication(configPath)
 		{
 
+			Debug::Log("Start Creating Game Application");
 
+
+
+			Debug::Log("Game Application Created");
 
 		}
 
@@ -48,12 +52,27 @@ namespace ING {
 		 */
 		bool	GameApplication::Init() {
 
-			return IApplication::Init();
+			Debug::Log("Start Initializing Game Application");
+
+			if (!IApplication::Init()) {
+
+				Debug::Log("Cant Initialize Game Application");
+
+				return false;
+			}
+
+			Debug::Log("Finished Initializing Game Application");
+
+			return true;
 
 		}
 		void	GameApplication::Release() {
 
+			Debug::Log("Start Releasing Game Application");
+
 			IApplication::Release();
+
+			Debug::Log("Finished Releasing Game Application");
 
 		}
 

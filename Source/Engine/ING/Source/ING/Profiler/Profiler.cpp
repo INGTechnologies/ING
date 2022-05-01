@@ -93,13 +93,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	ProfilerSession*				Profiler::BeginSession	(const std::string& name, const std::string& category)	{
+	ProfilerSession*				Profiler::BeginSession	(const String& name, const String& category)	{
 
 		ProfilerSession* session = new ProfilerSession(name, category);
 
 		Profiler* profiler = Profiler::GetInstance();
 
-		profiler->sessionMap[std::pair<std::string, std::string>(name, category)] = session;
+		profiler->sessionMap[std::pair<String, String>(name, category)] = session;
 
 		if (Profiler::GetInstance()->logSessionInConsole) {
 
@@ -109,7 +109,7 @@ namespace ING {
 
 			Debug::SetConsoleColor(0x20);
 
-			std::cout << String(" SESSION ");
+			std::cout << ToString(" SESSION ");
 
 			Debug::SetConsoleColor(0x07);
 
@@ -119,46 +119,46 @@ namespace ING {
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("(");
+			std::cout << ToString("(");
 
 			Debug::SetConsoleColor(0x08);
 
-			std::cout << String(" Name: ");
+			std::cout << ToString(" Name: ");
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("'") + name + String("'");
+			std::cout << ToString("'") + name + ToString("'");
 
 
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String(",");
+			std::cout << ToString(",");
 
 			Debug::SetConsoleColor(0x08);
 
-			std::cout << String(" Category: ");
+			std::cout << ToString(" Category: ");
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("'") + category + String("'");
+			std::cout << ToString("'") + category + ToString("'");
 
 
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String(" )") << std::endl;
+			std::cout << ToString(" )") << std::endl;
 
 		}
 
 		return session;
 
 	}
-	ProfilerSession*				Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(String(name), String(category)); }
+	ProfilerSession*				Profiler::BeginSession	(const char* name, const char* category)	{ return BeginSession	(ToString(name), ToString(category)); }
 
-	void							Profiler::EndSession	(const std::string& name, const std::string& category)	{
+	void							Profiler::EndSession	(const String& name, const String& category)	{
 
-		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<std::string, std::string>(name, category)];
+		ProfilerSession* session = Profiler::GetInstance()->sessionMap[std::pair<String, String>(name, category)];
 
 		session->End();
 
@@ -172,7 +172,7 @@ namespace ING {
 
 			Debug::SetConsoleColor(0x20);
 
-			std::cout << String(" SESSION ");
+			std::cout << ToString(" SESSION ");
 
 			Debug::SetConsoleColor(0x07);
 
@@ -182,58 +182,58 @@ namespace ING {
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("(");
+			std::cout << ToString("(");
 
 			Debug::SetConsoleColor(0x08);
 
-			std::cout << String(" Name: ");
+			std::cout << ToString(" Name: ");
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("'") + name + String("'");
+			std::cout << ToString("'") + name + ToString("'");
 
 
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String(",");
+			std::cout << ToString(",");
 
 			Debug::SetConsoleColor(0x08);
 
-			std::cout << String(" Category: ");
+			std::cout << ToString(" Category: ");
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String("'") + category + String("'");
+			std::cout << ToString("'") + category + ToString("'");
 
 
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String(",");
+			std::cout << ToString(",");
 
 			Debug::SetConsoleColor(0x08);
 
-			std::cout << String(" Complete Time: ");
+			std::cout << ToString(" Complete Time: ");
 
 			Debug::SetConsoleColor(0x0A);
 
-			std::cout << String(completeTime * 1000) + String("ms");
+			std::cout << ToString(completeTime * 1000) + ToString("ms");
 
 
 
 			Debug::SetConsoleColor(0x07);
 
-			std::cout << String(" )") << std::endl;
+			std::cout << ToString(" )") << std::endl;
 
 		}
 
-		Profiler::GetInstance()->sessionMap.erase(std::pair<std::string, std::string>(name, category));
+		Profiler::GetInstance()->sessionMap.erase(std::pair<String, String>(name, category));
 
 		delete session;
 
 	}
-	void							Profiler::EndSession	(const char* name, const char* category)	{ return EndSession		(String(name), String(category)); }
+	void							Profiler::EndSession	(const char* name, const char* category)	{ return EndSession		(ToString(name), ToString(category)); }
 
 	List<ProfilerSession*>::Node*	Profiler::AddSession	(ProfilerSession* session) {
 

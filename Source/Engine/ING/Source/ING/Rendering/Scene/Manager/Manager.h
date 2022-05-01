@@ -52,10 +52,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::unordered_map<std::string, Scene*>		sceneMap;
+			std::unordered_map<String, Scene*>		sceneMap;
 
 		public:
-			std::unordered_map<std::string, Scene*>&	GetSceneMap () { return sceneMap; }
+			std::unordered_map<String, Scene*>&	GetSceneMap () { return sceneMap; }
 
 
 

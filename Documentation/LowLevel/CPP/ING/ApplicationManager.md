@@ -21,13 +21,13 @@
 - `Property` **:**
     
                 
-    + std::unordered_map < std::string,[**ING::IApplication**](./..//ING/IApplication.md)* >  **name2ApplicationMap**  **:** name to application map
+    + std::unordered_map < ING::Utils::String,[**ING::IApplication**](./..//ING/IApplication.md)* >  **name2ApplicationMap**  **:** name to application map
         
                     
         + `Item Getter` :
                                             
                                 
-            + IApplication* **GetApplication**(const std::string & name)  **:** get application by name
+            + IApplication* **GetApplication**(const ING::Utils::String & name)  **:** get application by name
                                     
                                 
 - `Method` **:**

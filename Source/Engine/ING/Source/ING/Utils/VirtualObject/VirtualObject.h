@@ -21,6 +21,13 @@
 
 
 
+/**
+ *	Include String
+ */
+#include <ING/Utils/String/String.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
@@ -52,12 +59,12 @@ namespace ING {
 		private:
 			VirtualStruct											vstruct;
 
-			std::unordered_map<std::string, VirtualObjectProperty>	name2propertyMap;
+			std::unordered_map<String, VirtualObjectProperty>	name2propertyMap;
 
 		public:
 			const VirtualStruct&									GetVStruct			() { return vstruct; }
 
-			std::unordered_map<std::string, VirtualObjectProperty>& GetName2propertyMap	() { return name2propertyMap; }
+			std::unordered_map<String, VirtualObjectProperty>& GetName2propertyMap	() { return name2propertyMap; }
 
 
 
@@ -66,7 +73,7 @@ namespace ING {
 			 */
 		public:
 			template<typename T>
-			void	AddProperty		(const std::string& name) {
+			void	AddProperty		(const String& name) {
 
 				VirtualObjectProperty prop;
 
@@ -91,14 +98,14 @@ namespace ING {
 			}
 
 			template<typename T>
-			void	SetProperty		(const std::string& name, const T& data) {
+			void	SetProperty		(const String& name, const T& data) {
 
 				*((T*)(name2propertyMap[name].pData)) = data;
 
 			}
 
 			template<typename T>
-			void	TrySetProperty(const std::string& name, const T& data) {
+			void	TrySetProperty(const String& name, const T& data) {
 
 				if (name2propertyMap.find(name) == name2propertyMap.end()) return;
 
@@ -107,13 +114,13 @@ namespace ING {
 			}
 
 			template<typename T>
-			T		GetProperty		(const std::string& name) const {
+			T		GetProperty		(const String& name) const {
 
 				return *((T*)(name2propertyMap.find(name)->second.pData));
 
 			}
 
-			void	RemoveProperty	(const std::string& name) {
+			void	RemoveProperty	(const String& name) {
 
 				if (name2propertyMap[name].pData != nullptr) {
 

@@ -52,10 +52,10 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::unordered_map<std::string, IApplication*> name2ApplicationMap;
+		std::unordered_map<String, IApplication*> name2ApplicationMap;
 
 	public:
-		IApplication*	GetApplication(const std::string& name) { return name2ApplicationMap[name]; }
+		IApplication*	GetApplication(const String& name) { return name2ApplicationMap[name]; }
 
 
 

@@ -72,8 +72,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IRasterizerState	(IDevice* device, const std::string& name, const RasterizerStateDesc& desc);
-			IRasterizerState	(const std::string& name, const RasterizerStateDesc& desc);
+			IRasterizerState	(IDevice* device, const String& name, const RasterizerStateDesc& desc);
+			IRasterizerState	(const String& name, const RasterizerStateDesc& desc);
 			~IRasterizerState	();
 
 
@@ -93,8 +93,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			static IRasterizerState* Create(IDevice* device, const std::string& name, const RasterizerStateDesc& desc);
-			static IRasterizerState* Create(const std::string& name, const RasterizerStateDesc& desc);
+			static IRasterizerState* Create(IDevice* device, const String& name, const RasterizerStateDesc& desc);
+			static IRasterizerState* Create(const String& name, const RasterizerStateDesc& desc);
 
 			virtual void Apply() override;
 

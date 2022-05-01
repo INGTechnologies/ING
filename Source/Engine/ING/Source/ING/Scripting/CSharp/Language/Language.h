@@ -71,16 +71,16 @@ namespace ING {
 			private:
 				MonoDomain* rootDomain;
 
-				std::unordered_map<std::string, Context*>	name2ContextMap;
+				std::unordered_map<String, Context*>	name2ContextMap;
 
-				std::unordered_map<std::string, IAssemblyComponentCreator*>	name2AssemblyComponentCreatorMap;
+				std::unordered_map<String, IAssemblyComponentCreator*>	name2AssemblyComponentCreatorMap;
 
 			public:
 				MonoDomain* GetRootDomain	() { return rootDomain; }
 
-				Context*	GetContext		(const std::string& name) { return name2ContextMap[name]; }
+				Context*	GetContext		(const String& name) { return name2ContextMap[name]; }
 
-				IAssemblyComponentCreator* GetAssemblyComponentCreator(const std::string& name) { return name2AssemblyComponentCreatorMap[name]; }
+				IAssemblyComponentCreator* GetAssemblyComponentCreator(const String& name) { return name2AssemblyComponentCreatorMap[name]; }
 
 
 
@@ -91,11 +91,11 @@ namespace ING {
 				void AddContext		(Context* context);
 				void RemoveContext	(Context* context);
 
-				virtual std::string GetName()		override;
+				virtual String GetName()		override;
 
-				virtual IContext*	CreateContext(const std::string& name, bool isMainContext) override;
+				virtual IContext*	CreateContext(const String& name, bool isMainContext) override;
 
-				void OpenAssemblies(const std::string& iniFilePath, const std::string& tag);
+				void OpenAssemblies(const WString& iniFilePath, const String& tag);
 
 				void AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 

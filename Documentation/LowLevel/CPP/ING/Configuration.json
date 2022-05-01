@@ -38,13 +38,13 @@
                     
                     "name" : "ptrMap",
 
-                    "type" : "std::map<std::string, void*>",
+                    "type" : "std::map<ING::Utils::String, void*>",
 
                     "getters" : [
 
                         {
 
-                            "code" : "T **Get**<T>(const std::string& name)"
+                            "code" : "T **Get**<T>(const ING::Utils::String& name)"
 
                         }
 
@@ -54,7 +54,7 @@
 
                         {
 
-                            "code" : "void **Set**<T>(const std::string& name, T data)"
+                            "code" : "void **Set**<T>(const ING::Utils::String& name, T data)"
 
                         }
 
@@ -68,13 +68,13 @@
                 
                 {
 
-                    "code" : "bool **Exist**(const std::string& name)"
+                    "code" : "bool **Exist**(const ING::Utils::String& name)"
 
                 },
                 
                 {
 
-                    "code" : "void **Add**(const std::string& name, unsigned int size)",
+                    "code" : "void **Add**(const ING::Utils::String& name, unsigned int size)",
 
                     "description" : "add new configuration property by name and size"
 
@@ -82,7 +82,7 @@
                 
                 {
 
-                    "code" : "void **Add**<T>(const std::string& name)",
+                    "code" : "void **Add**<T>(const ING::Utils::String& name)",
 
                     "description" : "add new configuration property by name and property type"
 

@@ -43,7 +43,7 @@ namespace ING {
 	public:
 		Scene();
 		Scene(
-			const std::vector<std::string>& resourcePaths,
+			const std::vector<String>& resourcePaths,
 			const std::vector<ISceneComponent*>& componentVector
 		);
 		~Scene();
@@ -62,12 +62,12 @@ namespace ING {
 		 *	Properties
 		 */
 	public:
-		std::unordered_map<std::string, IResource*> resourcePath2ResourceMap;
-		std::unordered_map<std::string, ISceneComponent*> componentTypeId2ComponentMap;
+		std::unordered_map<String, IResource*> resourcePath2ResourceMap;
+		std::unordered_map<String, ISceneComponent*> componentTypeId2ComponentMap;
 
 	public:
-		const std::unordered_map<std::string, IResource*>& GetResourcePath2ResourceMap() { return resourcePath2ResourceMap; }
-		const std::unordered_map<std::string, ISceneComponent*>& GetComponentTypeId2ComponentMap() { return componentTypeId2ComponentMap; }
+		const std::unordered_map<String, IResource*>& GetResourcePath2ResourceMap() { return resourcePath2ResourceMap; }
+		const std::unordered_map<String, ISceneComponent*>& GetComponentTypeId2ComponentMap() { return componentTypeId2ComponentMap; }
 
 
 

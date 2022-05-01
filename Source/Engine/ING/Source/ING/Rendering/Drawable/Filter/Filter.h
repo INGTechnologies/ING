@@ -31,7 +31,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IDrawableFilter	(const std::string& name);
+			IDrawableFilter	(const String& name);
 			~IDrawableFilter	();
 
 
@@ -48,14 +48,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::string name;
+			String name;
 
 			SmartArray<IDrawable*> drawableArray;
 
 			IdGenerator		idGenerator;
 
 		public:
-			std::string				GetName			() { return name; }
+			String				GetName			() { return name; }
 
 			const SmartArray<IDrawable*>& GetDrawableArray	() { return drawableArray; }
 

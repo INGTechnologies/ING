@@ -51,6 +51,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include UI System
+ */
+#include <ING/Application/UISystem/UISystem.h>
+
+
+
+/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>
@@ -62,7 +69,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IApplication::IApplication(const std::string& configPath) :
+	IApplication::IApplication(const WString& configPath) :
 		name("INGApplication"),
 		configPath(configPath),
 		configuration(0),
@@ -75,6 +82,9 @@ namespace ING {
 
 		renderingSystem = new ApplicationRenderingSystem(this);
 		AddComponent(renderingSystem);
+
+		uiSystem = new ApplicationUISystem(this);
+		AddComponent(uiSystem);
 
 	}
 
@@ -93,11 +103,11 @@ namespace ING {
 	bool IApplication::Init()
 	{
 
-		Debug::Log(String("Start Creating An Application ") + configPath);
+		Debug::Log(ToWString("Start Initializing Application ") + configPath);
 
 		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
 
-			Debug::Error(configPath + String(" Not Found, Cant Create Application"));
+			Debug::Error(configPath + ToWString(" Not Found, Cant Create Application"));
 
 			Release();
 
@@ -110,7 +120,7 @@ namespace ING {
 
 		if (!configuration->Exist("ING.Application.name")) {
 
-			name = configuration->Get<std::string>("ING.Application.name");
+			name = configuration->Get<String>("ING.Application.name");
 
 		}
 
@@ -118,7 +128,7 @@ namespace ING {
 
 			if (!componentVector[i]->Init()) {
 
-				Debug::Error(String("Cant Init ") + String('"') + componentVector[i]->GetName() + String('"') + String(" Application Component"));
+				Debug::Error(ToString("Cant Init ") + ToString('"') + componentVector[i]->GetName() + ToString('"') + ToString(" Application Component"));
 
 				Release();
 
@@ -130,7 +140,7 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->AddApplication(this);
 
-		Debug::Log(String("Finished Creating An Application ") + configPath);
+		Debug::Log(ToWString("Finished Initializing Application ") + configPath);
 
 		return true;
 

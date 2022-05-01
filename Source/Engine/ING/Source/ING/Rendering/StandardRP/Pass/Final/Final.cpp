@@ -15,7 +15,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FinalPass::FinalPass(std::string name) : Pass<FinalPassInput, FinalPassOutput>(name) {
+			FinalPass::FinalPass(const String& name) : IPass(name) {
 
 
 
@@ -34,7 +34,7 @@ namespace ING {
 			 */
 			void FinalPass::Release() {
 
-				Pass<FinalPassInput, FinalPassOutput>::Release();
+				IPass::Release();
 
 			}
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FinalPass::CustomRender(IDeviceContext* context, Camera* camera, const FinalPassInput& input, FinalPassOutput& output) {
+			bool FinalPass::Render(IDeviceContext* context, Camera* camera) {
 
 
 

@@ -208,7 +208,7 @@ namespace ING {
 		protected:
 			SmartArray<T>			array;
 
-			std::string				typeId;
+			String				typeId;
 
 		public:
 			IdGenerator				idGenerator;
@@ -218,7 +218,7 @@ namespace ING {
 		public:
 			SmartArray<T>&			GetArray			() { return array;			}
 
-			std::string				GetComponentTypeId	() { return typeId; }
+			String				GetComponentTypeId	() { return typeId; }
 
 			IdGenerator&			GetIdGenerator		() { return idGenerator;	}
 
@@ -408,7 +408,7 @@ namespace ING {
 		}
 
 		//template<typename T, class TComponentSystem>
-		//std::string					ComponentSystem<T, TComponentSystem>::GetComponentTypeId() {
+		//String					ComponentSystem<T, TComponentSystem>::GetComponentTypeId() {
 
 		//	return typeid(T).name();
 

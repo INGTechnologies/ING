@@ -60,7 +60,7 @@ namespace ING {
 			/**
 			 *	Create Methods
 			 */
-			PixelShader* PixelShader::CreateFromHLSL(IDevice* device, const std::string& content) {
+			PixelShader* PixelShader::CreateFromHLSL(IDevice* device, const String& content) {
 
 				ID3DBlob* sBlob;
 				ID3DBlob* errBlob;
@@ -83,7 +83,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void PixelShader::Apply(const std::string& name) {
+			void PixelShader::Apply(const String& name) {
 
 				IDeviceContext* context = GetDevice()->GetImmediateContext();
 

@@ -41,7 +41,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IApplicationComponent::IApplicationComponent(IApplication* application, const std::string& name) :
+	IApplicationComponent::IApplicationComponent(IApplication* application, const String& name) :
 		name(name),
 		application(application)
 	{

@@ -28,6 +28,6 @@ namespace ING {
 	/**
 	 *	Name
 	 */
-	std::string WindowKeyUpEvent::GetName() { return "KEY_UP"; };
+	String WindowKeyUpEvent::GetName() { return "KEY_UP"; };
 
 }

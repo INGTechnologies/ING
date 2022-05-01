@@ -52,7 +52,7 @@ namespace ING {
 
 			Clear();
 
-			std::unordered_map<std::string, VirtualStructProperty>	vstructName2propertyMap = vstruct.GetName2propertyMap();
+			std::unordered_map<String, VirtualStructProperty>	vstructName2propertyMap = vstruct.GetName2propertyMap();
 
 			for (auto& item : vstructName2propertyMap) {
 

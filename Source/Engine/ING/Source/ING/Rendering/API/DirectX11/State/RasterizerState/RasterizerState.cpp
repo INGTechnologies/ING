@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			RasterizerState::RasterizerState(IDevice* device, const std::string& name, const RasterizerStateDesc& desc) :
+			RasterizerState::RasterizerState(IDevice* device, const String& name, const RasterizerStateDesc& desc) :
 				IRasterizerState(device, name, desc),
 
 				d3d11RSState(0)
@@ -68,7 +68,7 @@ namespace ING {
 
 			}
 
-			RasterizerState::RasterizerState(const std::string& name, const RasterizerStateDesc& desc) : RasterizerState(IAPI::GetInstance()->GetDevice(), name, desc)
+			RasterizerState::RasterizerState(const String& name, const RasterizerStateDesc& desc) : RasterizerState(IAPI::GetInstance()->GetDevice(), name, desc)
 			{}
 
 			RasterizerState::~RasterizerState() {

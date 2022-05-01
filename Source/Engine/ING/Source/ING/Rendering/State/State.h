@@ -41,8 +41,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IState		(IDevice* device, const std::string& name);
-			IState		(const std::string& name);
+			IState		(IDevice* device, const String& name);
+			IState		(const String& name);
 			~IState();
 
 
@@ -59,11 +59,11 @@ namespace ING {
 			 *	Properties
 			 */
 		public:
-			std::string	name;
+			String	name;
 			IDevice* device;
 
 		public:
-			const std::string& GetName		() { return name; }
+			const String& GetName		() { return name; }
 			IDevice*		   GetDevice	() { return device; }
 
 			

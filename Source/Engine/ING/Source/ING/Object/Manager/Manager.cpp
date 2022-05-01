@@ -116,7 +116,7 @@ namespace ING {
 
 #ifdef _DEBUG
 
-			Debug::Error(String("Cant Find Object With Id ") + String(id));
+			Debug::Error(ToString("Cant Find Object With Id ") + ToString(id));
 
 #endif
 

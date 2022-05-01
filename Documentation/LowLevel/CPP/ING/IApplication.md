@@ -26,22 +26,22 @@
 - `Property` **:**
     
                 
-    + std::string **name** 
+    + ING::Utils::String **name** 
         
                     
         + `Getter` :
                                             
                                 
-            + std::string **GetName**() 
+            + ING::Utils::String **GetName**() 
                                     
                                 
-    + std::string **configPath** 
+    + ING::Utils::String **configPath** 
         
                     
         + `Getter` :
                                             
                                 
-            + std::string **GetConfigPath**() 
+            + ING::Utils::String **GetConfigPath**() 
                                     
                                 
     + [**ING::Configuration**](./..//ING/Configuration.md)* **configuration** 
@@ -71,7 +71,7 @@
             + [**ING::ApplicationRenderingSystem**](./..//ING/ApplicationRenderingSystem.md)* **GetRenderingSystem**() 
                                     
                                 
-    + std::unordered_map < std::string, unsigned int >  **name2ComponentIndexMap** 
+    + std::unordered_map < ING::Utils::String, unsigned int >  **name2ComponentIndexMap** 
         
                     
     + std::vector < IApplicationComponent* >  **componentVector** 
@@ -80,7 +80,7 @@
         + `Item Getters` :
                                     
                                 
-            + ING::IApplicationComponent* **GetComponent**(const std::string& name)  **:** get component by name
+            + ING::IApplicationComponent* **GetComponent**(const ING::Utils::String& name)  **:** get component by name
                                     
                                 
             + ING::IApplicationComponent* **GetComponent**(unsigned int index)  **:** get component by index
@@ -95,24 +95,24 @@
     + virtual void **Release**()  **:** release application
                         
                     
-    + void **Start**()  **:** called when the engine start running, it will call **Start** method of each application
+    + void **Start**()  **:** called when the engine start running, it will call **Start** method of each component
                         
                     
-    + void **PreUpdate**()  **:** called before **Update**, it will call **PreUpdate** method of each application
+    + void **PreUpdate**()  **:** called before **Update**, it will call **PreUpdate** method of each component
                         
                     
-    + void **Update**()  **:** called every frame, it will call **Update** method of each application
+    + void **Update**()  **:** called every frame, it will call **Update** method of each component
                         
                     
-    + void **LateUpdate**()  **:** called after **Update**, it will call **LateUpdate** method of each application
+    + void **LateUpdate**()  **:** called after **Update**, it will call **LateUpdate** method of each component
                         
                     
-    + void **PreRender**()  **:** called before **Render**, it will call **PreRender** method of each application
+    + void **PreRender**()  **:** called before **Render**, it will call **PreRender** method of each component
                         
                     
-    + void **Render**()  **:** called when the engine rendering, it will call **Render** method of each application
+    + void **Render**()  **:** called when the engine rendering, it will call **Render** method of each component
                         
                     
-    + void **LateRender**()  **:** called after **Render**, it will call **LateRender** method of each application
+    + void **LateRender**()  **:** called after **Render**, it will call **LateRender** method of each component
                         
                     

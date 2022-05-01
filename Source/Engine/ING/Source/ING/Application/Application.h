@@ -24,6 +24,8 @@ namespace ING {
 
 	class ApplicationRenderingSystem;
 
+	class ApplicationUISystem;
+
 	class IApplicationComponent;
 
 
@@ -43,7 +45,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		IApplication	(const std::string& configPath);
+		IApplication	(const WString& configPath);
 		~IApplication	();
 
 
@@ -61,9 +63,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string					name;
+		String						name;
 
-		std::string					configPath;
+		WString						configPath;
 
 		Configuration*				configuration;
 
@@ -71,13 +73,15 @@ namespace ING {
 
 		ApplicationRenderingSystem*	renderingSystem;
 
-		std::unordered_map<std::string, unsigned int> name2ComponentIndexMap;
+		ApplicationUISystem*		uiSystem;
+
+		std::unordered_map<String, unsigned int> name2ComponentIndexMap;
 		std::vector<IApplicationComponent*> componentVector;
 
 	public:
-		const std::string&			GetName			() { return name; }
+		const String&				GetName			() { return name; }
 
-		const std::string&			GetConfigPath	() { return configPath; }
+		const WString&				GetConfigPath	() { return configPath; }
 
 		Configuration*				GetConfiguration() {return configuration; }
 
@@ -85,7 +89,9 @@ namespace ING {
 
 		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
 
-		IApplicationComponent*		GetComponent	(const std::string& name) { return componentVector[name2ComponentIndexMap[name]]; }
+		ApplicationUISystem*		GetUISystem() { return uiSystem; }
+
+		IApplicationComponent*		GetComponent	(const String& name) { return componentVector[name2ComponentIndexMap[name]]; }
 
 		IApplicationComponent*		GetComponent	(unsigned int index) { return componentVector[index]; }
 
@@ -95,18 +101,18 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void			AddComponent	(IApplicationComponent* component);
-		void			RemoveComponent	(IApplicationComponent* component);
+		void						AddComponent	(IApplicationComponent* component);
+		void						RemoveComponent	(IApplicationComponent* component);
 
-		virtual void	Start();
+		virtual void				Start();
 
-		virtual void	PreUpdate();
-		virtual void	Update();
-		virtual void	LateUpdate();
+		virtual void				PreUpdate();
+		virtual void				Update();
+		virtual void				LateUpdate();
 
-		virtual void	PreRender();
-		virtual void	Render();
-		virtual void	LateRender();
+		virtual void				PreRender();
+		virtual void				Render();
+		virtual void				LateRender();
 
 	};
 

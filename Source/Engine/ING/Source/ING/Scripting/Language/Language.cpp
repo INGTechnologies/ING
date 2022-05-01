@@ -91,7 +91,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IContext*	ILanguage::CreateContext(const std::string& name, bool isMainContext) {
+		IContext*	ILanguage::CreateContext(const String& name, bool isMainContext) {
 
 			Debug::Error("Cant Create Scripting Context");
 
@@ -99,7 +99,7 @@ namespace ING {
 
 		}
 
-		IContext* ILanguage::CreateContext(const std::string& name) {
+		IContext* ILanguage::CreateContext(const String& name) {
 
 			return CreateContext(name, false);
 

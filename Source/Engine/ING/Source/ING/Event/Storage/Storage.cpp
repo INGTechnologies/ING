@@ -37,7 +37,7 @@ namespace ING {
 	/**
 	 *	Event Management
 	 */
-	Event*					EventStorage::GetEvent(const std::string& name) {
+	Event*					EventStorage::GetEvent(const String& name) {
 
 		return eventMap[name];
 

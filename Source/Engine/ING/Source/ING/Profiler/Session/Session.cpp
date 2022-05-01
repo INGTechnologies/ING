@@ -22,7 +22,7 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ProfilerSession::ProfilerSession	(std::string name, std::string category) {
+	ProfilerSession::ProfilerSession	(String name, String category) {
 
 		this->name		= name;
 

@@ -37,6 +37,13 @@
 
 
 
+/**
+ *	Include String
+ */
+#include <ING/Utils/String/String.h>
+
+
+
 namespace ING {
 
 	namespace Utils {
@@ -125,7 +132,7 @@ namespace ING {
 			 *	Squares
 			 */
 		private:
-			std::map<std::string, Square*>	squareMap;
+			std::map<String, Square*>	squareMap;
 			std::vector<Square*>			squareVector;
 
 		public:

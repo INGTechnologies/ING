@@ -17,17 +17,17 @@ namespace ING {
 
 	namespace Utils {
 		
-		std::string String(const char* content) {
+		String ToString(const char* content) {
 
-			std::string result = content;
+			String result = content;
 
 			return result;
 
 		}
 
-		std::string String(char content) {
+		String ToString(char content) {
 
-			std::string result;
+			String result;
 
 			result += content;
 
@@ -35,7 +35,7 @@ namespace ING {
 
 		}
 
-		std::string String(int content) {
+		String ToString(int content) {
 
 			std::stringstream ss;
 
@@ -45,7 +45,7 @@ namespace ING {
 
 		}
 
-		std::string String(unsigned int content) {
+		String ToString(unsigned int content) {
 
 			std::stringstream ss;
 
@@ -55,7 +55,7 @@ namespace ING {
 
 		}
 
-		std::string String(long content) {
+		String ToString(long content) {
 
 			std::stringstream ss;
 
@@ -65,7 +65,7 @@ namespace ING {
 
 		}
 
-		std::string String(unsigned long content) {
+		String ToString(unsigned long content) {
 
 			std::stringstream ss;
 
@@ -75,7 +75,7 @@ namespace ING {
 
 		}
 
-		std::string String(float content) {
+		String ToString(float content) {
 
 			std::stringstream ss;
 
@@ -85,7 +85,7 @@ namespace ING {
 
 		}
 
-		std::string String(void* content) {
+		String ToString(void* content) {
 
 			std::stringstream ss;
 
@@ -95,7 +95,7 @@ namespace ING {
 
 		}
 
-		std::string String(size_t content) {
+		String ToString(size_t content) {
 
 			std::stringstream ss;
 
@@ -105,13 +105,160 @@ namespace ING {
 
 		}
 
-		std::string String(const std::wstring& content) {
+		String ToString(const WString& content) {
 
-			std::string s(content.length(), ' ');
+			String s(content.length(), ' ');
 
 			for (size_t i = 0; i < content.length(); ++i) {
 
 				s[i] = (char)content[i];
+
+			}
+
+			return s;
+
+		}
+
+
+
+
+		WString ToWString(const wchar_t* content) {
+
+			WString result = content;
+
+			return result;
+
+		}
+
+		WString ToWString(char content) {
+
+			WString result;
+
+			result += content;
+
+			return result;
+
+		}
+
+		WString ToWString(int content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(unsigned int content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(long content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(unsigned long content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(float content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(double content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(void* content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(size_t content) {
+
+			std::wstringstream ss;
+
+			ss << content;
+
+			WString wstr;
+
+			ss >> wstr;
+
+			return wstr;
+
+		}
+
+		WString ToWString(const String& content) {
+
+			WString s(content.length(), ' ');
+
+			for (size_t i = 0; i < content.length(); ++i) {
+
+				s[i] = (wchar_t)content[i];
 
 			}
 

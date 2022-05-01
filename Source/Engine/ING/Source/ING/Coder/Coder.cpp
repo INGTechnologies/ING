@@ -48,19 +48,9 @@ namespace ING {
 	/**
 	 *	Encode, Decode, Check Methods
 	 */
-	std::wstring	Coder::Encode(const std::wstring& content, const std::wstring& key) {
+	WString	Coder::Encode(const WString& content, const WString& key) {
 
-		std::wstring result = content;
-
-
-
-		return result;
-
-	}
-
-	std::wstring	Coder::Decode(const std::wstring& content, const std::wstring& key) {
-
-		std::wstring result = content;
+		WString result = content;
 
 
 
@@ -68,7 +58,17 @@ namespace ING {
 
 	}
 
-	bool			Coder::Check(const std::wstring& content, const std::wstring& key) {
+	WString	Coder::Decode(const WString& content, const WString& key) {
+
+		WString result = content;
+
+
+
+		return result;
+
+	}
+
+	bool			Coder::Check(const WString& content, const WString& key) {
 
 		bool result = false;
 

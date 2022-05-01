@@ -60,7 +60,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				EngineAssemblyComponent		(Assembly* assembly, const std::string& name);
+				EngineAssemblyComponent		(Assembly* assembly, const String& name);
 				~EngineAssemblyComponent	();
 
 

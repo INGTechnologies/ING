@@ -21,13 +21,13 @@
 - `Property` **:**
     
                 
-    + std::unordered_map < std::string,ING::IWindow* >  **name2WindowMap**  **:** name to window map
+    + std::unordered_map < ING::Utils::String,ING::IWindow* >  **name2WindowMap**  **:** name to window map
         
                     
         + `Getter` :
                                             
                                 
-            + ING::IWindow* **GetWindow**(const std::string& name)  **:** get window by name
+            + ING::IWindow* **GetWindow**(const ING::Utils::String& name)  **:** get window by name
                                     
                                 
 - `Method` **:**

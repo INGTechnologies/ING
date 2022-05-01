@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IState::IState(IDevice* device, const std::string& name) :
+		IState::IState(IDevice* device, const String& name) :
 			device(0)
 		{
 
@@ -37,7 +37,7 @@ namespace ING {
 
 		}
 
-		IState::IState(const std::string& name) : IState(IAPI::GetInstance()->GetDevice(), name)
+		IState::IState(const String& name) : IState(IAPI::GetInstance()->GetDevice(), name)
 		{}
 
 		IState::~IState() {

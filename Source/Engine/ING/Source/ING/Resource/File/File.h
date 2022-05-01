@@ -65,7 +65,7 @@ namespace ING {
 		 *	Load Method
 		 */
 	public:
-		virtual IResource* Load(const std::wstring& path, CoderOption& coderOption) override;
+		virtual IResource* Load(const WString& path, CoderOption& coderOption) override;
 
 	};
 
@@ -126,7 +126,7 @@ namespace ING {
 		 */
 	public:
 		FileResource();
-		FileResource(const std::wstring& path);
+		FileResource(const WString& path);
 		~FileResource();
 
 
@@ -143,12 +143,12 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::wstring path;
+		WString path;
 
 	public:
-		std::wstring content;
+		WString content;
 
-		const std::wstring& GetPath		() { return path; }
+		const WString& GetPath		() { return path; }
 
 	};
 

@@ -29,7 +29,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		IApplicationComponent	(IApplication* application, const std::string& name);
+		IApplicationComponent	(IApplication* application, const String& name);
 		~IApplicationComponent	();
 
 
@@ -47,12 +47,12 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::string			name;
+		String			name;
 
 		IApplication*		application;
 
 	public:
-		const std::string&	GetName			() { return name; }
+		const String&	GetName			() { return name; }
 
 		IApplication*		GetApplication	() { return application; }
 

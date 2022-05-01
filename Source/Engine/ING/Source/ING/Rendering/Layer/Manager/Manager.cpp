@@ -120,11 +120,11 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void	LayerManager::SetFilterNameMap(const std::vector<std::string>& filterNameVector) {
+		void	LayerManager::SetFilterNameMap(const std::vector<String>& filterNameVector) {
 
-			std::unordered_map<std::string, bool> filterNameMap2;
+			std::unordered_map<String, bool> filterNameMap2;
 
-			for (const std::string& filterName : filterNameVector) {
+			for (const String& filterName : filterNameVector) {
 
 				filterNameMap2[filterName] = true;
 
@@ -132,7 +132,7 @@ namespace ING {
 
 					if (layer == 0) { continue; }
 
-					const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
+					const std::unordered_map<String, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
 					if (tl_name2FilterMap.find(filterName) == tl_name2FilterMap.end()) {
 
@@ -150,7 +150,7 @@ namespace ING {
 
 					if (layer == 0) { continue; }
 
-					const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
+					const std::unordered_map<String, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
 					if (tl_name2FilterMap.find(item.first) != tl_name2FilterMap.end()
 						&& filterNameMap2.find(item.first) == filterNameMap2.end()
@@ -166,7 +166,7 @@ namespace ING {
 
 			filterNameMap.clear();
 
-			for (const std::string& filterName : filterNameVector) {
+			for (const String& filterName : filterNameVector) {
 
 				filterNameMap[filterName] = true;
 
@@ -189,7 +189,7 @@ namespace ING {
 			/* Update Layer Filter */
 			for (auto& item : filterNameMap) {
 
-				const std::unordered_map<std::string, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
+				const std::unordered_map<String, IDrawableFilter*>& tl_name2FilterMap = layer->GetName2DrawableFilterMap();
 
 				if (tl_name2FilterMap.find(item.first) == tl_name2FilterMap.end()) {
 
@@ -215,7 +215,7 @@ namespace ING {
 
 		}
 
-		void	LayerManager::RecreateFilters(const std::vector<std::string>& filterNameVector) {
+		void	LayerManager::RecreateFilters(const std::vector<String>& filterNameVector) {
 
 			SetFilterNameMap(filterNameVector);
 
