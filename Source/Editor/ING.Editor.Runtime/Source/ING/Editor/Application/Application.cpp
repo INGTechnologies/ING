@@ -63,7 +63,7 @@ namespace ING {
 			gameApplication(0)
 		{
 
-
+			CreateGameApplication();
 
 		}
 
@@ -85,8 +85,6 @@ namespace ING {
 			SetupRootPaths();
 
 			CreateMainWindow();
-
-			CreateGameApplication();
 
 			if (!InitGameApplication())return false;
 
