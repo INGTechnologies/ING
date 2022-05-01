@@ -7,16 +7,16 @@
 
 
 
-/**
- *	Include Unordered Map
- */
+ /**
+  *	Include Unordered Map
+  */
 #include <unordered_map>
 
 
 
-/**
- *	Include MultiTypeArray
- */
+  /**
+   *	Include MultiTypeArray
+   */
 #include <ING\Utils\MultiTypeArray\MultiTypeArray.h>
 
 
@@ -41,10 +41,10 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Node() : 
+				Node() :
 					pValue(0),
 					next(0),
-					prev(0) 
+					prev(0)
 				{
 
 
@@ -62,20 +62,9 @@ namespace ING {
 				 *	Properties
 				 */
 			public:
-				void* pValue;
+				T* pValue;
 				Node* next;
 				Node* prev;
-
-
-
-				/**
-				 *	Methods
-				 */
-			public:
-				template<typename T>
-				T& As() {
-					return *((T*)pValue);
-				}
 
 			};
 
@@ -113,7 +102,7 @@ namespace ING {
 				 *	Operators
 				 */
 			public:
-				T&		operator *  () {
+				T& operator *  () {
 
 					return *((T*)(node->pValue));
 
@@ -140,9 +129,9 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			List(): 
-				headNode(0), 
-				tailNode(0) 
+			List() :
+				headNode(0),
+				tailNode(0)
 			{
 
 				size = 0;
@@ -192,8 +181,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Iterator begin	() const { return Iterator(headNode); }
-			Iterator end	() const { return Iterator(nullptr); }
+			Iterator begin() const { return Iterator(headNode); }
+			Iterator end() const { return Iterator(nullptr); }
 
 			Node* AddAt(T& obj, Node* node2) {
 
@@ -306,7 +295,7 @@ namespace ING {
 					Node* nextNode = node->next;
 
 					if (node->pValue != nullptr) {
-						
+
 						delete ((T*)(node->pValue));
 
 					}
@@ -485,7 +474,7 @@ namespace ING {
 
 				Node* AddAt(T& obj, Node* node2) {
 
-					return listPtr->AddAt(obj,node2);
+					return listPtr->AddAt(obj, node2);
 
 				}
 				Node* AddAfter(T& obj, Node* node2) {
@@ -541,7 +530,7 @@ namespace ING {
 
 
 			};
-			
+
 
 		};
 

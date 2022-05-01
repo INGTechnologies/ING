@@ -55,17 +55,9 @@ namespace ING {
 
 
 			public:
-				void* pValue;
+				T* pValue;
 				Node* next;
 				Node* prev;
-
-
-
-			public:
-				template<typename T>
-				T& As() {
-					return *((T*)pValue);
-				}
 
 			};
 
