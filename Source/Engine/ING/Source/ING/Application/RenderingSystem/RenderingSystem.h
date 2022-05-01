@@ -72,7 +72,8 @@ namespace ING {
 
 		Rendering::IPipeline*	GetPipeline	() { return pipeline; }
 
-		void					ChangePipeline (Rendering::IPipeline* pipeline);
+		void					SetPipeline (Rendering::IPipeline* pipeline);
+		void					ReleasePipeline();
 
 		Rendering::IDevice*		GetDevice	() { return device; }
 
