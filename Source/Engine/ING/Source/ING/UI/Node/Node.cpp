@@ -67,7 +67,7 @@ namespace ING {
 
 				auto nextItem = item.node->next;
 
-				item.node->As<Node*>()->GetElement()->Release();
+				(*(item.node->pValue))->GetElement()->Release();
 
 				item = nextItem;
 
