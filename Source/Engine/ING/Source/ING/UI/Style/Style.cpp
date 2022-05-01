@@ -37,10 +37,10 @@ namespace ING {
 		Style::Style()
 		{
 
-			SetPosition(UI_DVECTOR2(0,0));
-			SetSize(UI_DVECTOR2(0,0));
-			SetPadding(UI_DVECTOR4(0,0,0,0));
-			SetMargin(UI_DVECTOR4(0,0,0,0));
+			SetPosition	(UI_DVECTOR2(0,0));
+			SetSize		(UI_DVECTOR2(0,0));
+			SetPadding	(UI_DVECTOR4(0,0,0,0));
+			SetMargin	(UI_DVECTOR4(0,0,0,0));
 
 		}
 
@@ -66,27 +66,27 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void Style::SetPosition	(DVector2Function positionFunction) {
+		void Style::SetPosition	(const DVector2& position) {
 
-			this->positionFunction = positionFunction;
-
-		}
-
-		void Style::SetSize		(DVector2Function sizeFunction) {
-
-			this->sizeFunction = sizeFunction;
+			this->position = position;
 
 		}
 
-		void Style::SetPadding	(DVector4Function paddingFunction) {
+		void Style::SetSize		(const DVector2& size) {
 
-			this->paddingFunction = paddingFunction;
+			this->size = size;
 
 		}
 
-		void Style::SetMargin	(DVector4Function marginFunction) {
+		void Style::SetPadding	(const DVector4& padding) {
 
-			this->marginFunction = marginFunction;
+			this->padding = padding;
+
+		}
+
+		void Style::SetMargin	(const DVector4& margin) {
+
+			this->margin = margin;
 
 		}
 
@@ -104,10 +104,10 @@ namespace ING {
 
 		void Style::Apply(IElement* element) {
 
-			element->position = positionFunction(this, element);
-			element->size = sizeFunction(this, element);
-			element->padding = paddingFunction(this, element);
-			element->margin = marginFunction(this, element);
+			element->position = position(this, element);
+			element->size = size(this, element);
+			element->padding = padding(this, element);
+			element->margin = margin(this, element);
 
 		}
 
