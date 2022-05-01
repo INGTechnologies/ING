@@ -99,6 +99,76 @@ namespace ING {
 
 		}
 
+		void Node::Start() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->Start();
+
+			}
+
+		}
+
+		void Node::PreUpdate() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->PreUpdate();
+
+			}
+
+		}
+
+		void Node::Update() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->Update();
+
+			}
+
+		}
+
+		void Node::LateUpdate() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->LateUpdate();
+
+			}
+
+		}
+
+		void Node::PreRender() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->PreRender();
+
+			}
+
+		}
+
+		void Node::Render() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->Render();
+
+			}
+
+		}
+
+		void Node::LateRender() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->LateRender();
+
+			}
+
+		}
+
 	}
 
 }

@@ -74,8 +74,18 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void		AddChild	(Node* child);
-			void		RemoveChild	(Node* child);
+			void			AddChild	(Node* child);
+			void			RemoveChild	(Node* child);
+
+			virtual void	Start();
+
+			virtual void	PreUpdate();
+			virtual void	Update();
+			virtual void	LateUpdate();
+
+			virtual void	PreRender();
+			virtual void	Render();
+			virtual void	LateRender();
 
 		};
 

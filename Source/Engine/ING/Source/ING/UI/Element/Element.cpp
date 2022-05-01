@@ -95,19 +95,19 @@ namespace ING {
 		 */
 		void	IElement::Start() {
 
-
+			node->Start();
 
 		}
 
 		void	IElement::PreUpdate() {
 
-
+			node->PreUpdate();
 
 		}
 
 		void	IElement::Update() {
 
-
+			node->Update();
 
 		}
 
@@ -119,23 +119,25 @@ namespace ING {
 
 			}
 
+			node->LateUpdate();
+
 		}
 
 		void	IElement::PreRender() {
 
-
+			node->PreRender();
 
 		}
 
 		void	IElement::Render() {
 
-
+			node->Render();
 
 		}
 
 		void	IElement::LateRender() {
 
-
+			node->LateRender();
 
 		}
 
