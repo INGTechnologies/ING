@@ -79,6 +79,8 @@ namespace ING {
 
 			void				CreateGameApplication();
 
+			bool				InitGameApplication();
+
 			virtual void		PlayGame();
 
 		};

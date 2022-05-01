@@ -156,6 +156,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include UI Engine
+ */
+#include <ING/UI/Engine/Engine.h>
+
+
+
 namespace ING {
 
 	/**
@@ -232,6 +239,8 @@ namespace ING {
 
 		/* Scripting Manager */
 		AddSquare<Scripting::Manager>();
+
+		AddSquare<UI::Engine>();
 
 		/* ECS Repository Manager */
 		AddSquare<ECS::RepositoryManager>();

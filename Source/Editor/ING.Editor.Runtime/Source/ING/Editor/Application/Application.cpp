@@ -86,7 +86,9 @@ namespace ING {
 
 			CreateMainWindow();
 
-			CreateGameApplication(); 
+			CreateGameApplication();
+
+			if (!InitGameApplication())return false;
 
 		}
 		void	Application::Release() {
@@ -106,6 +108,16 @@ namespace ING {
 		 *	Methods
 		 */
 		void	Application::SetupRootPaths() {
+
+			if (!std::filesystem::exists(projectPath)) {
+
+				Release();
+
+				exit(1);
+
+				return;
+
+			}
 
 			Engine::GetInstance()->SetRootPath(
 
@@ -157,6 +169,11 @@ namespace ING {
 
 			gameApplication = new GameApplication(L"Game:/Config.ini");
 
+		}
+
+		bool Application::InitGameApplication() {
+
+			return gameApplication->Init();
 		}
 
 		void Application::PlayGame() {

@@ -23,7 +23,7 @@
 int main(int argc, char** argv)
 {
 
-	WString projectPath = ToWString(argv[1]);
+	WString projectPath = ToWString((const char*)argv[1]);
 
 	ING::Engine::CreateInstance();
 

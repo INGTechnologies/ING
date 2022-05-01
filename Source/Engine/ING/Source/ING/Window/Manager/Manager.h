@@ -79,7 +79,7 @@ namespace ING {
 
 		IdGenerator						idGenerator;
 
-		WString					consoleWindowTitle;
+		WString							consoleWindowTitle;
 
 	public:
 		IWindow*						GetConsoleWindow		() { return consoleWindow; }
@@ -104,7 +104,7 @@ namespace ING {
 
 		void							RemoveClassId			(ui16 id);
 
-		const WString&				GetConsoleWindowTitle	() { return consoleWindowTitle; }
+		const WString&					GetConsoleWindowTitle	() { return consoleWindowTitle; }
 
 	};
 

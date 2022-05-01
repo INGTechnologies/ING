@@ -51,6 +51,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include UI System
+ */
+#include <ING/Application/UISystem/UISystem.h>
+
+
+
+/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>
@@ -76,6 +83,9 @@ namespace ING {
 		renderingSystem = new ApplicationRenderingSystem(this);
 		AddComponent(renderingSystem);
 
+		uiSystem = new ApplicationUISystem(this);
+		AddComponent(uiSystem);
+
 	}
 
 	IApplication::~IApplication()
@@ -93,7 +103,7 @@ namespace ING {
 	bool IApplication::Init()
 	{
 
-		Debug::Log(ToWString("Start Creating An Application ") + configPath);
+		Debug::Log(ToWString("Start Initializing Application ") + configPath);
 
 		if (!std::filesystem::exists(Path::GetAbsolutePath(configPath))) {
 
@@ -130,7 +140,7 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->AddApplication(this);
 
-		Debug::Log(ToWString("Finished Creating An Application ") + configPath);
+		Debug::Log(ToWString("Finished Initializing Application ") + configPath);
 
 		return true;
 
