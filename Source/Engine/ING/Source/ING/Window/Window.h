@@ -51,6 +51,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window Style
+ */
+#include <ING/Window/Style/Style.h>
+
+
+
 namespace ING {
 
 	class Screen;

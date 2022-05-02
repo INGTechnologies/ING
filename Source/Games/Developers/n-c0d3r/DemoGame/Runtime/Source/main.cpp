@@ -150,6 +150,8 @@ int main() {
 		
 		);
 
+		mainWindow->SetStyle(ING_WS_POPUP);
+
 	});
 
 	ING::Engine::GetInstance()->Run();
