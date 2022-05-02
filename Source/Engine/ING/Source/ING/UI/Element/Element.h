@@ -73,6 +73,7 @@ namespace ING {
 
 			Math::RVector2			position;//(x, y)
 			Math::RVector2			size;	//(width, height)
+			Math::RVector2			center;	//(width, height)
 			Math::RVector4			padding; //(top, right, bottom, left)
 			Math::RVector4			margin;	//(top, right, bottom, left)
 
@@ -84,6 +85,7 @@ namespace ING {
 
 			const Math::RVector2&	GetPosition	() { return position; }
 			const Math::RVector2&	GetSize		() { return size; }
+			const Math::RVector2&	GetCenter	() { return center; }
 			const Math::RVector4&	GetPadding	() { return padding; }
 			const Math::RVector4&	GetMargin	() { return margin; }
 

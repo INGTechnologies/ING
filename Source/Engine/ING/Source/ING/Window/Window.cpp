@@ -209,6 +209,30 @@ namespace ING {
 
 	}
 
+	unsigned int	IWindow::GetStyle() {
+
+		return 0;
+
+	}
+
+	void			IWindow::SetStyle(unsigned int styleFlag) {
+
+
+
+	}
+
+	unsigned int	IWindow::GetExStyle() {
+
+		return 0;
+
+	}
+
+	void			IWindow::SetExStyle(unsigned int styleFlag) {
+
+
+
+	}
+
 	void			IWindow::CreateScreen() {
 
 		ScreenDesc screenDesc;

@@ -51,6 +51,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Window Style
+ */
+#include <ING/Window/Style/Style.h>
+
+
+
 namespace ING {
 
 	class Screen;
@@ -113,7 +120,7 @@ namespace ING {
 	public:
 		void*		GetHandle	() { return handle; }
 
-		WindowDesc	GetDesc		() { return desc; }
+		const WindowDesc& GetDesc	() { return desc; }
 
 		const String&	GetName		() { return desc.name; }
 
@@ -143,11 +150,19 @@ namespace ING {
 
 		}
 
+		WString	GetTitle();
+
 
 		/* Icon */
 		virtual void	SetIconFromFile(const WString& path);
 
-		WString	GetTitle();
+
+		/* Style */
+		virtual unsigned int GetStyle();
+		virtual void	SetStyle(unsigned int styleFlag);
+		virtual unsigned int GetExStyle();
+		virtual void	SetExStyle(unsigned int styleFlag);
+
 
 
 	protected:
