@@ -30,9 +30,9 @@ namespace ING {
 		unsigned int	clientWidth		= 800;
 		unsigned int	clientHeight	= 600;
 
-		WString	title			= L"New Window";
+		WString			title			= L"New Window";
 
-		String		name			= "NewWindow";
+		String			name			= "NewWindow";
 
 		bool			show			= true;
 

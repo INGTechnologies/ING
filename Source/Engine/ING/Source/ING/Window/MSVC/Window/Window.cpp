@@ -332,6 +332,23 @@ namespace ING {
 
 		}
 
+		unsigned int	Window::GetExStyle() {
+
+			return GetWindowLong((HWND)handle, GWL_EXSTYLE);
+
+		}
+
+		void			Window::SetExStyle(unsigned int styleFlag) {
+
+			SetWindowLong((HWND)handle, GWL_EXSTYLE, styleFlag);
+
+			if (desc.show)
+				Show();
+			else
+				Hide();
+
+		}
+
 	}
 
 }

@@ -143,6 +143,8 @@ namespace ING {
 			/* Style */
 			virtual unsigned int GetStyle() override;
 			virtual void	SetStyle(unsigned int styleFlag) override;
+			virtual unsigned int GetExStyle() override;
+			virtual void	SetExStyle(unsigned int styleFlag) override;
 
 		};
 
