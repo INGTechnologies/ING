@@ -215,6 +215,7 @@ namespace ING {
 		private:
 			DVector2				position;
 			DVector2				size;
+			DVector2				center;
 			DVector4				padding;
 			DVector4				margin;
 
@@ -226,6 +227,7 @@ namespace ING {
 		public:
 			void					SetPosition	(const DVector2& position);
 			void					SetSize		(const DVector2& size);
+			void					SetCenter	(const DVector2& center);
 			void					SetPadding	(const DVector4& padding);
 			void					SetMargin	(const DVector4& margin);
 

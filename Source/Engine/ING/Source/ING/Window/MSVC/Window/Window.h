@@ -139,6 +139,11 @@ namespace ING {
 			/* Icon */
 			virtual void	SetIconFromFile(const WString& path) override;
 
+
+			/* Style */
+			virtual unsigned int GetStyle() override;
+			virtual void	SetStyle(unsigned int styleFlag) override;
+
 		};
 
 	}

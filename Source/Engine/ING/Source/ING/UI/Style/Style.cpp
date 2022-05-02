@@ -78,6 +78,12 @@ namespace ING {
 
 		}
 
+		void Style::SetCenter	(const DVector2& center) {
+
+			this->center = center;
+
+		}
+
 		void Style::SetPadding	(const DVector4& padding) {
 
 			this->padding = padding;
@@ -106,6 +112,7 @@ namespace ING {
 
 			element->position = position(this, element);
 			element->size = size(this, element);
+			element->center = center(this, element);
 			element->padding = padding(this, element);
 			element->margin = margin(this, element);
 

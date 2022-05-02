@@ -113,7 +113,7 @@ namespace ING {
 	public:
 		void*		GetHandle	() { return handle; }
 
-		WindowDesc	GetDesc		() { return desc; }
+		const WindowDesc& GetDesc	() { return desc; }
 
 		const String&	GetName		() { return desc.name; }
 
@@ -143,11 +143,17 @@ namespace ING {
 
 		}
 
+		WString	GetTitle();
+
 
 		/* Icon */
 		virtual void	SetIconFromFile(const WString& path);
 
-		WString	GetTitle();
+
+		/* Style */
+		virtual unsigned int GetStyle();
+		virtual void	SetStyle(unsigned int styleFlag);
+
 
 
 	protected:

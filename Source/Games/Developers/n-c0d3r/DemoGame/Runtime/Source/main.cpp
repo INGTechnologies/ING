@@ -90,11 +90,14 @@
 
 
 
-static ING::IApplication* application = 0;
-
 using namespace ING::Rendering;
 using namespace ING;
 using namespace ING::UI;
+
+
+
+static IApplication* application = 0;
+static IWindow* mainWindow = 0;
 
 
 
@@ -108,9 +111,7 @@ int main() {
 
 	if(!application->Init())return 1;
 
-	application->GetWindowManager()->AddWindow(
-	
-		ING::IWindow::Create({
+	mainWindow = ING::IWindow::Create({
 
 			800,
 
@@ -122,7 +123,11 @@ int main() {
 
 			true
 
-		})
+	});
+
+	application->GetWindowManager()->AddWindow(
+	
+		mainWindow
 	
 	);
 

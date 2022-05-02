@@ -70,7 +70,8 @@ namespace ING {
 
 			Window* window = (Window*)ING::WindowManager::GetInstance()->GetWindow(hwnd);
 
-
+			if(window == 0) 
+				return ::DefWindowProc(hwnd, msg, wparam, lparam);
 
 			switch (msg)
 			{
@@ -236,7 +237,7 @@ namespace ING {
 				return;
 
 			/* Create Window Ex */
-			handle = ::CreateWindowEx(WS_EX_OVERLAPPEDWINDOW, className.c_str(), desc.title.c_str(),
+			handle = ::CreateWindowEx(WS_EX_WINDOWEDGE, className.c_str(), desc.title.c_str(),
 				WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT, desc.clientWidth, desc.clientHeight,
 				NULL, NULL, NULL, this);
 
@@ -282,11 +283,15 @@ namespace ING {
 
 			::ShowWindow((HWND)handle, SW_SHOW);
 
+			desc.show = true;
+
 		}
 
 		void			Window::Hide() {
 
 			::ShowWindow((HWND)handle, SW_HIDE);
+
+			desc.show = false;
 
 		}
 
@@ -306,7 +311,24 @@ namespace ING {
 
 		void			Window::SetIconFromFile(const WString& path) {
 
+			 
 
+		}
+
+		unsigned int	Window::GetStyle() {
+
+			return GetWindowLong((HWND)handle, GWL_STYLE);
+
+		}
+
+		void			Window::SetStyle(unsigned int styleFlag) {
+
+			SetWindowLong((HWND)handle, GWL_STYLE, styleFlag);
+
+			if (desc.show)
+				Show();
+			else
+				Hide();
 
 		}
 
