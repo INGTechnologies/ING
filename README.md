@@ -15,7 +15,7 @@ ING is free and open source, under the [MIT license](https://github.com/INGTechn
   + `Step 5` **:** Open **"ING.GitIgnores_VS** {visual studio version} **.sln"**.
   + `Step 6` **:** Create **"Source/Games/Developers/** {your github username} **"** (visual studio solution folder).
   + `Step 7` **:** Add all projects in **"Source/Games/Developers/** {your github username} **/Sample"** to solution folder which is created is step 6.
-  + `Step 8` **:** Set runtime project that is added is step 7 as startup project.
+  + `Step 8` **:** Set runtime project that is added in step 7 as startup project.
   + `Step 9` **:** Run and enjoy.
 - **Other** **:**
   + `Step 1` **:** Clone [**ING repository**](https://github.com/INGTechnologies/ING).
@@ -25,7 +25,7 @@ ING is free and open source, under the [MIT license](https://github.com/INGTechn
   + `Step 5` **:** Open **"ING.GitIgnores_VS** {visual studio version} **.sln"**.
   + `Step 6` **:** Create **"Source/Games/Developers/** {your github username} **"** (visual studio solution folder).
   + `Step 7` **:** Add all projects in **"Source/Games/Developers/GitIgnores/** {your github username} **/Sample"** to solution folder which is created is step 6.
-  + `Step 8` **:** Set runtime project that is added is step 7 as startup project.
+  + `Step 8` **:** Set runtime project that is added in step 7 as startup project.
   + `Step 9` **:** Run and enjoy.
 
 
