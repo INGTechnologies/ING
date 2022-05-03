@@ -163,6 +163,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection Engine
+ */
+#include <ING/Reflection/Engine/Engine.h>
+
+
+
 namespace ING {
 
 	/**
@@ -197,6 +204,9 @@ namespace ING {
 
 		/* Core */
 		AddSquare<Core>();
+
+		/* Reflection Engine */
+		AddSquare<Reflection::Engine>();
 
 		/* Time */
 		AddSquare<Time>();

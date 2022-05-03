@@ -58,6 +58,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Reflection System
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
+/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>
@@ -74,8 +81,12 @@ namespace ING {
 		configPath(configPath),
 		configuration(0),
 		windowManager(0),
-		renderingSystem(0)
+		renderingSystem(0),
+		reflectionSystem(0)
 	{
+
+		reflectionSystem = new ApplicationReflectionSystem(this);
+		AddComponent(reflectionSystem);
 
 		windowManager = new ApplicationWindowManager(this);
 		AddComponent(windowManager);

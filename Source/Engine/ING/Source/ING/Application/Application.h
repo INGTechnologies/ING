@@ -20,6 +20,8 @@ namespace ING {
 
 	class Configuration;
 
+	class ApplicationReflectionSystem;
+
 	class ApplicationWindowManager;
 
 	class ApplicationRenderingSystem;
@@ -69,6 +71,8 @@ namespace ING {
 
 		Configuration*				configuration;
 
+		ApplicationReflectionSystem*reflectionSystem;
+
 		ApplicationWindowManager*	windowManager;
 
 		ApplicationRenderingSystem*	renderingSystem;
@@ -84,6 +88,8 @@ namespace ING {
 		const WString&				GetConfigPath	() { return configPath; }
 
 		Configuration*				GetConfiguration() {return configuration; }
+
+		ApplicationReflectionSystem*GetReflectionSystem() { return reflectionSystem; }
 
 		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
 
