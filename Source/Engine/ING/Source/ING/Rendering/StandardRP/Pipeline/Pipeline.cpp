@@ -121,7 +121,9 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Pipeline::Pipeline(String name) : IPipeline(name) {
+			Pipeline::Pipeline(const String& name, ApplicationRenderingSystem* system) : 
+				IPipeline(name, system) 
+			{
 
 				/**
 				 *	Create Default Passes

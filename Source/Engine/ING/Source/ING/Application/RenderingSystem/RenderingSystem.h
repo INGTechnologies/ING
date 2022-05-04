@@ -64,20 +64,20 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		Rendering::IPipeline*	pipeline;
+		Rendering::IPipeline*	mainPipeline;
 
-		Rendering::IDevice*		device;
+		Rendering::IDevice*		mainDevice;
 
 	public:
 
-		Rendering::IPipeline*	GetPipeline	() { return pipeline; }
+		Rendering::IPipeline*	GetMainPipeline	() { return mainPipeline; }
 
-		void					SetPipeline (Rendering::IPipeline* pipeline);
-		void					ReleasePipeline();
+		void					SetMainPipeline (Rendering::IPipeline* pipeline);
+		void					ReleaseMainPipeline();
 
-		Rendering::IDevice*		GetDevice	() { return device; }
+		Rendering::IDevice*		GetMainDevice	() { return mainDevice; }
 
-		void					SetDevice	(Rendering::IDevice* device) { this->device = device; }
+		void					SetMainDevice	(Rendering::IDevice* device) { this->mainDevice = device; }
 
 
 

@@ -84,9 +84,9 @@ namespace ING {
 	ApplicationRenderingSystem::ApplicationRenderingSystem(IApplication* application) :
 		IApplicationComponent(application, "RenderingSystem"),
 
-		pipeline(0),
+		mainPipeline(0),
 
-		device(0)
+		mainDevice(0)
 	{
 
 
@@ -106,18 +106,18 @@ namespace ING {
 	 */
 	bool ApplicationRenderingSystem::Init() {
 
-		pipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
+		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline", this);
 
-		device = Rendering::IAPI::GetInstance()->GetDevice();
+		mainDevice = Rendering::IAPI::GetInstance()->GetDevice();
 
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationRenderingSystem::Release() {
 
-		if (pipeline != 0) {
+		if (mainPipeline != 0) {
 
-			pipeline->Release();
+			mainPipeline->Release();
 
 		}
 
@@ -130,19 +130,19 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationRenderingSystem::SetPipeline(Rendering::IPipeline* pipeline) {
+	void	ApplicationRenderingSystem::SetMainPipeline(Rendering::IPipeline* pipeline) {
 
-		this->pipeline = pipeline;
+		this->mainPipeline = pipeline;
 
 	}
 		
-	void	ApplicationRenderingSystem::ReleasePipeline() {
+	void	ApplicationRenderingSystem::ReleaseMainPipeline() {
 
-		if (pipeline != 0) {
+		if (mainPipeline != 0) {
 
-			pipeline->Release();
+			mainPipeline->Release();
 
-			this->pipeline = 0;
+			mainPipeline = 0;
 
 		}
 
@@ -187,7 +187,7 @@ namespace ING {
 
 		IApplicationComponent::Render();
 
-		pipeline->Render(device->GetImmediateContext());
+		//pipeline->Render(device->GetImmediateContext());
 
 	}
 
