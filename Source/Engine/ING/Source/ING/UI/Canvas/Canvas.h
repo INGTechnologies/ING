@@ -39,6 +39,8 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class ApplicationUISystem;
+
 	namespace UI {
 
 		class Node;
@@ -53,7 +55,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ICanvas	();
+			ICanvas	(ApplicationUISystem* system);
 			~ICanvas();
 
 
@@ -67,18 +69,29 @@ namespace ING {
 
 
 			/**
+			 *	Properties
+			 */
+		private:
+			ApplicationUISystem* system;
+
+		public:
+			ApplicationUISystem* GetSystem() { return system; }
+
+
+
+			/**
 			 *	Methods
 			 */
 		public:
-			virtual void			Start() override;
+			virtual void Start() override;
 
-			virtual void			PreUpdate() override;
-			virtual void			Update() override;
-			virtual void			LateUpdate() override;
+			virtual void PreUpdate() override;
+			virtual void Update() override;
+			virtual void LateUpdate() override;
 
-			virtual void			PreRender() override;
-			virtual void			Render() override;
-			virtual void			LateRender() override;
+			virtual void PreRender() override;
+			virtual void Render() override;
+			virtual void LateRender() override;
 
 		};
 

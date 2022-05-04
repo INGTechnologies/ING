@@ -32,7 +32,7 @@ using namespace ING::Utils;
 /**
  *	Include ApplicationWindowManager
  */
-#include <ING/Application/WindowManager/WindowManager.h>
+#include <ING/Application/WindowSystem/WindowSystem.h>
 
 
 
@@ -80,7 +80,7 @@ namespace ING {
 		name("INGApplication"),
 		configPath(configPath),
 		configuration(0),
-		windowManager(0),
+		windowSystem(0),
 		renderingSystem(0),
 		reflectionSystem(0)
 	{
@@ -88,8 +88,8 @@ namespace ING {
 		reflectionSystem = new ApplicationReflectionSystem(this);
 		AddComponent(reflectionSystem);
 
-		windowManager = new ApplicationWindowManager(this);
-		AddComponent(windowManager);
+		windowSystem = new ApplicationWindowSystem(this);
+		AddComponent(windowSystem);
 
 		renderingSystem = new ApplicationRenderingSystem(this);
 		AddComponent(renderingSystem);

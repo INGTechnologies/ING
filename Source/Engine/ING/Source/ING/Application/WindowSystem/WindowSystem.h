@@ -31,15 +31,15 @@ namespace ING {
 
 
 
-	class ING_API ApplicationWindowManager : public IApplicationComponent
+	class ING_API ApplicationWindowSystem : public IApplicationComponent
 	{
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ApplicationWindowManager	(IApplication* application);
-		~ApplicationWindowManager	();
+		ApplicationWindowSystem	(IApplication* application);
+		~ApplicationWindowSystem();
 
 
 
@@ -67,18 +67,18 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void AddWindow		(IWindow* window);
-		void RemoveWindow	(IWindow* window);
+		void			AddWindow		(IWindow* window);
+		void			RemoveWindow	(IWindow* window);
 
-		virtual void	Start() override;
+		virtual void	Start			() override;
 
-		virtual void	PreUpdate() override;
-		virtual void	Update() override;
-		virtual void	LateUpdate() override;
+		virtual void	PreUpdate		() override;
+		virtual void	Update			() override;
+		virtual void	LateUpdate		() override;
 
-		virtual void	PreRender() override;
-		virtual void	Render() override;
-		virtual void	LateRender() override;
+		virtual void	PreRender		() override;
+		virtual void	Render			() override;
+		virtual void	LateRender		() override;
 
 	};
 

@@ -80,7 +80,7 @@ namespace ING {
 			ApplicationRenderingSystem* system;
 
 		public:
-			const String& GetName				() { return name; }
+			const String& GetName			() { return name; }
 
 			IRenderer*	GetRenderer			() { return renderer; }
 
@@ -94,7 +94,7 @@ namespace ING {
 
 			IPass*		GetPass				(unsigned int index) { return passVector[index]; }
 
-			ApplicationRenderingSystem* GetSystem() { return system; }
+			ApplicationRenderingSystem*		GetSystem() { return system; }
 
 
 

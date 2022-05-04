@@ -274,11 +274,9 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\UI\Canvas\Canvas.cpp" />
     <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\UI\Canvas\Canvas.h" />
     <ClInclude Include="Source\**\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

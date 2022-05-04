@@ -99,7 +99,7 @@ namespace ING {
 
 
 		/* Create Console Window */
-		consoleWindow = IWindow::Create();
+		consoleWindow = IWindow::Create(0);
 
 		consoleWindow->handle = ::GetConsoleWindow();
 

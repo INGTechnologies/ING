@@ -21,9 +21,9 @@
 
 
 /**
- *	Include ApplicationWindowManager
+ *	Include ApplicationWindowSystem
  */
-#include <ING/Application/WindowManager/WindowManager.h>
+#include <ING/Application/WindowSystem/WindowSystem.h>
 
 
 
@@ -155,7 +155,7 @@ namespace ING {
 
 			Debug::Log("Editor MainWindow Created");
 
-			GetWindowManager()->AddWindow(
+			GetWindowSystem()->AddWindow(
 			
 				IWindow::Create({
 
@@ -169,11 +169,12 @@ namespace ING {
 
 					true
 
-				})
+				},
+				GetWindowSystem())
 			
 			);
 
-			GetWindowManager()->GetWindow("ING.Editor.MainWindow")->GetEvent("DESTROY")->AddListener([](Event* e) {
+			GetWindowSystem()->GetWindow("ING.Editor.MainWindow")->GetEvent("DESTROY")->AddListener([](Event* e) {
 				
 				Application::GetInstance()->Release();
 				
