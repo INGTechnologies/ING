@@ -27,27 +27,31 @@ namespace ING {
 
 	class IApplication;
 
-	namespace Rendering {
+	namespace Reflection {
 
-		class Renderer;
+		class Namespace;
 
-		class IRenderer;
+		class Type;
 
-		class IPipeline;
+		class Class;
 
-		class IDevice;
+		class Struct;
+
+		class Object;
+
+		class Context;
 
 	}
 
-	class ING_API ApplicationRenderingSystem : public IApplicationComponent
+	class ING_API ApplicationReflectionSystem : public IApplicationComponent
 	{
 
 		/**
 		 *	Constructors And Destructor
 		 */
 	public:
-		ApplicationRenderingSystem(IApplication* application);
-		~ApplicationRenderingSystem();
+		ApplicationReflectionSystem		(IApplication* application);
+		~ApplicationReflectionSystem	();
 
 
 
@@ -64,20 +68,12 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		Rendering::IPipeline*	mainPipeline;
-
-		Rendering::IDevice*		mainDevice;
+		Reflection::Context*	context;
 
 	public:
-
-		Rendering::IPipeline*	GetMainPipeline	() { return mainPipeline; }
-
-		void					SetMainPipeline (Rendering::IPipeline* pipeline);
-		void					ReleaseMainPipeline();
-
-		Rendering::IDevice*		GetMainDevice	() { return mainDevice; }
-
-		void					SetMainDevice	(Rendering::IDevice* device) { this->mainDevice = device; }
+		Reflection::Context*	GetContext	() { return context; }
+		void					SetContext	(Reflection::Context*);
+		void					ReleaseContext ();
 
 
 

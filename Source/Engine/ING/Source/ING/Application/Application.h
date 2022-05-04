@@ -20,7 +20,9 @@ namespace ING {
 
 	class Configuration;
 
-	class ApplicationWindowManager;
+	class ApplicationReflectionSystem;
+
+	class ApplicationWindowSystem;
 
 	class ApplicationRenderingSystem;
 
@@ -69,7 +71,9 @@ namespace ING {
 
 		Configuration*				configuration;
 
-		ApplicationWindowManager*	windowManager;
+		ApplicationReflectionSystem*reflectionSystem;
+
+		ApplicationWindowSystem*	windowSystem;
 
 		ApplicationRenderingSystem*	renderingSystem;
 
@@ -85,11 +89,13 @@ namespace ING {
 
 		Configuration*				GetConfiguration() {return configuration; }
 
-		ApplicationWindowManager*	GetWindowManager() { return windowManager; }
+		ApplicationReflectionSystem*GetReflectionSystem() { return reflectionSystem; }
+
+		ApplicationWindowSystem*	GetWindowSystem	() { return windowSystem; }
 
 		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
 
-		ApplicationUISystem*		GetUISystem() { return uiSystem; }
+		ApplicationUISystem*		GetUISystem		() { return uiSystem; }
 
 		IApplicationComponent*		GetComponent	(const String& name) { return componentVector[name2ComponentIndexMap[name]]; }
 

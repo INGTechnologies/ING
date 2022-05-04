@@ -66,6 +66,8 @@ namespace ING {
 
 	class WindowEvent;
 
+	class ApplicationWindowSystem;
+
 
 
 	class ING_API IWindow :
@@ -84,8 +86,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	protected:
-		IWindow		();
-		IWindow		(const WindowDesc& desc);
+		IWindow		(ApplicationWindowSystem* system);
+		IWindow		(const WindowDesc& desc, ApplicationWindowSystem* system);
 		~IWindow	();
 
 
@@ -98,8 +100,8 @@ namespace ING {
 				void InitEvents();
 		
 	public:
-		static IWindow* Create();
-		static IWindow* Create(const WindowDesc& desc);
+		static IWindow* Create(ApplicationWindowSystem* system);
+		static IWindow* Create(const WindowDesc& desc, ApplicationWindowSystem* system);
 		virtual void Release();
 
 
@@ -117,6 +119,8 @@ namespace ING {
 
 		bool		isResizing;
 
+		ApplicationWindowSystem* system;
+
 	public:
 		void*		GetHandle	() { return handle; }
 
@@ -127,6 +131,8 @@ namespace ING {
 		Screen*		GetScreen	() { return screen; }
 
 		bool		IsResizing	() { return isResizing; }
+
+		ApplicationWindowSystem* GetSystem() { return system; }
 
 
 

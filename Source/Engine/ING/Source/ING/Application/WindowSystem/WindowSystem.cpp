@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "WindowManager.h"
+#include "WindowSystem.h"
 
 
 
@@ -43,15 +43,15 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationWindowManager::ApplicationWindowManager(IApplication* application) :
-		IApplicationComponent(application, "WindowManager")
+	ApplicationWindowSystem::ApplicationWindowSystem(IApplication* application) :
+		IApplicationComponent(application, "WindowSystem")
 	{
 
 
 
 	}
 
-	ApplicationWindowManager::~ApplicationWindowManager()
+	ApplicationWindowSystem::~ApplicationWindowSystem()
 	{
 
 
@@ -63,14 +63,14 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
-	bool ApplicationWindowManager::Init()
+	bool ApplicationWindowSystem::Init()
 	{
 
 		return IApplicationComponent::Init();
 
 	}
 
-	void ApplicationWindowManager::Release()
+	void ApplicationWindowSystem::Release()
 	{
 
 		IApplicationComponent::Release();
@@ -82,55 +82,55 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void	ApplicationWindowManager::AddWindow		(IWindow* window) {
+	void	ApplicationWindowSystem::AddWindow		(IWindow* window) {
 
 		name2WindowMap[window->GetName()] = window;
 
 	}
 
-	void	ApplicationWindowManager::RemoveWindow		(IWindow* window) {
+	void	ApplicationWindowSystem::RemoveWindow		(IWindow* window) {
 
 		name2WindowMap.erase(window->GetName());
 
 	}
 
-	void	ApplicationWindowManager::Start() {
+	void	ApplicationWindowSystem::Start() {
 
 		IApplicationComponent::Start();
 
 	}
 
-	void	ApplicationWindowManager::PreUpdate() {
+	void	ApplicationWindowSystem::PreUpdate() {
 
 		IApplicationComponent::PreUpdate();
 
 	}
 
-	void	ApplicationWindowManager::Update() {
+	void	ApplicationWindowSystem::Update() {
 
 		IApplicationComponent::Update();
 
 	}
 
-	void	ApplicationWindowManager::LateUpdate() {
+	void	ApplicationWindowSystem::LateUpdate() {
 
 		IApplicationComponent::LateUpdate();
 
 	}
 
-	void	ApplicationWindowManager::PreRender() {
+	void	ApplicationWindowSystem::PreRender() {
 
 		IApplicationComponent::PreRender();
 
 	}
 
-	void	ApplicationWindowManager::Render() {
+	void	ApplicationWindowSystem::Render() {
 
 		IApplicationComponent::Render();
 
 	}
 
-	void	ApplicationWindowManager::LateRender() {
+	void	ApplicationWindowSystem::LateRender() {
 
 		IApplicationComponent::LateRender();
 

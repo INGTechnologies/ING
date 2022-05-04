@@ -48,6 +48,13 @@
 
 
 
+/**
+ *	Include UI Canvas
+ */
+#include <ING/UI/Canvas/Canvas.h>
+
+
+
 namespace ING {
 
 	/**
@@ -56,7 +63,7 @@ namespace ING {
 	ApplicationUISystem::ApplicationUISystem(IApplication* application) :
 		IApplicationComponent(application, "UISystem"),
 
-		rootElement(0)
+		mainCanvas(0)
 	{
 
 
@@ -76,16 +83,16 @@ namespace ING {
 	 */
 	bool ApplicationUISystem::Init() {
 
-		rootElement = new UI::IElement();
+		mainCanvas = new UI::ICanvas(this);
 
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationUISystem::Release() {
 
-		if (rootElement != 0) {
+		if (mainCanvas != 0) {
 
-			rootElement->Release();
+			mainCanvas->Release();
 
 		}
 
@@ -98,19 +105,19 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationUISystem::ReleaseRootElement() {
+	void	ApplicationUISystem::ReleaseMainCanvas() {
 
-		if (this->rootElement != 0) {
+		if (this->mainCanvas != 0) {
 
-			this->rootElement->Release();
+			this->mainCanvas->Release();
 
 		}
 
 	}
 
-	void	ApplicationUISystem::SetRootElement(UI::IElement* rootElement) {
+	void	ApplicationUISystem::SetMainCanvas(UI::ICanvas* mainCanvas) {
 
-		this->rootElement = rootElement;
+		this->mainCanvas = mainCanvas;
 
 	}
 
@@ -123,7 +130,7 @@ namespace ING {
 
 		IApplicationComponent::Start();
 
-		rootElement->Start();
+		mainCanvas->Start();
 
 	}
 
@@ -131,7 +138,7 @@ namespace ING {
 
 		IApplicationComponent::PreUpdate();
 
-		rootElement->PreUpdate();
+		mainCanvas->PreUpdate();
 
 	}
 
@@ -139,7 +146,7 @@ namespace ING {
 
 		IApplicationComponent::Update();
 
-		rootElement->Update();
+		mainCanvas->Update();
 
 	}
 
@@ -147,7 +154,7 @@ namespace ING {
 
 		IApplicationComponent::LateUpdate();
 
-		rootElement->LateUpdate();
+		mainCanvas->LateUpdate();
 
 	}
 
@@ -155,7 +162,7 @@ namespace ING {
 
 		IApplicationComponent::PreRender();
 
-		rootElement->PreRender();
+		mainCanvas->PreRender();
 
 	}
 
@@ -163,7 +170,7 @@ namespace ING {
 
 		IApplicationComponent::Render();
 
-		rootElement->Render();
+		mainCanvas->Render();
 
 	}
 
@@ -171,7 +178,7 @@ namespace ING {
 
 		IApplicationComponent::LateRender();
 
-		rootElement->LateRender();
+		mainCanvas->LateRender();
 
 	}
 

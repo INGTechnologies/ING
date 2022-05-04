@@ -27,6 +27,8 @@ namespace ING {
 
 	class Camera;
 
+	class ApplicationRenderingSystem;
+
 
 
 	namespace Rendering {
@@ -48,7 +50,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IPipeline	(String name);
+			IPipeline	(const String& name, ApplicationRenderingSystem* system);
 			~IPipeline	();
 
 
@@ -75,8 +77,10 @@ namespace ING {
 
 			std::vector<IPass*> passVector;
 
+			ApplicationRenderingSystem* system;
+
 		public:
-			String		GetName				() { return name; }
+			const String& GetName			() { return name; }
 
 			IRenderer*	GetRenderer			() { return renderer; }
 
@@ -89,6 +93,8 @@ namespace ING {
 			IPass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
 
 			IPass*		GetPass				(unsigned int index) { return passVector[index]; }
+
+			ApplicationRenderingSystem*		GetSystem() { return system; }
 
 
 

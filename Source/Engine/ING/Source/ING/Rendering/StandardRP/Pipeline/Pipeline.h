@@ -57,7 +57,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Pipeline(String name);
+				Pipeline(const String& name, ApplicationRenderingSystem* system);
 				~Pipeline();
 
 

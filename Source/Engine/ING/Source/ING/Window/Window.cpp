@@ -61,16 +61,16 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IWindow::IWindow() :
-		handle(NULL), screen(0)
+	IWindow::IWindow(ApplicationWindowSystem* system) :
+		handle(NULL), screen(0), system(system)
 	{
 
 		InitEvents();
 
 	}
 
-	IWindow::IWindow(const WindowDesc& desc) :
-		handle(NULL), screen(0)
+	IWindow::IWindow(const WindowDesc& desc, ApplicationWindowSystem* system) :
+		handle(NULL), screen(0), system(system)
 	{
 
 		InitEvents();
@@ -133,20 +133,20 @@ namespace ING {
 
 	}
 
-	IWindow* IWindow::Create() {
+	IWindow* IWindow::Create(ApplicationWindowSystem* system) {
 
 #ifdef USE_MSVC
-		return new ING::MSVC::Window();
+		return new ING::MSVC::Window(system);
 #endif
 
 		return 0;
 
 	}
 
-	IWindow* IWindow::Create(const WindowDesc& desc) {
+	IWindow* IWindow::Create(const WindowDesc& desc, ApplicationWindowSystem* system) {
 
 #ifdef USE_MSVC
-		return new ING::MSVC::Window(desc);
+		return new ING::MSVC::Window(desc, system);
 #endif
 
 		return 0;

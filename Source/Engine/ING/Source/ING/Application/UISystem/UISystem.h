@@ -33,6 +33,8 @@ namespace ING {
 
 		class IElement;
 
+		class ICanvas;
+
 	}
 
 	class ING_API ApplicationUISystem : public IApplicationComponent
@@ -60,13 +62,13 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		UI::IElement*	rootElement;
+		UI::ICanvas*	mainCanvas;
 
 	public:
 
-		UI::IElement*	GetRootElement		() { return rootElement; }
-		void			ReleaseRootElement	();
-		void			SetRootElement		(UI::IElement* rootElement);
+		UI::ICanvas*	GetMainCanvas		() { return mainCanvas; }
+		void			ReleaseMainCanvas	();
+		void			SetMainCanvas		(UI::ICanvas* mainCanvas);
 
 
 
