@@ -121,8 +121,8 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Pipeline::Pipeline(const String& name, ApplicationRenderingSystem* system) : 
-				IPipeline(name, system) 
+			Pipeline::Pipeline(const String& name) : 
+				IPipeline(name) 
 			{
 
 				/**

@@ -109,11 +109,11 @@ namespace ING {
 	/**
 	 *	Define Macros
 	 */
-	#define ING_CREATE_ENGINE		IMPLEMENT_SINGLETON( ING::Engine );
-	#define ING_INIT_ENGINE			if ( !ING::Engine::GetInstance()->Init() )	{ return 1; }
-	#define ING_RUN_ENGINE			if ( !ING::Engine::GetInstance()->Run()  )	{ return 1; }
+#define ING_CREATE_ENGINE		IMPLEMENT_SINGLETON( ING::Engine );
+#define ING_INIT_ENGINE			if ( !ING::Engine::GetInstance()->Init() )	{ return 1; }
+#define ING_RUN_ENGINE			if ( !ING::Engine::GetInstance()->Run()  )	{ return 1; }
 
-	#define ING_ENGINE_CONFIG_PROP(T, name, value) \
+#define ING_ENGINE_CONFIG_PROP(T, name, value) \
 \
 	if (!ING::Engine::GetInstance()->GetConfiguration()->Exist(name)) {\
 \

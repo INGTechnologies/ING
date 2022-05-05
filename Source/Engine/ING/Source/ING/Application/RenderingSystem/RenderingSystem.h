@@ -64,14 +64,18 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
+		std::unordered_map<String, Rendering::IPipeline*> name2PipelineMap;
+
 		Rendering::IPipeline*	mainPipeline;
 
 		Rendering::IDevice*		mainDevice;
 
 	public:
+		void					AddPipeline		(Rendering::IPipeline* pipeline);
+		bool					IsHasPipeline	(const String& name);
+		void					RemovePipeline	(Rendering::IPipeline* pipeline);
 
 		Rendering::IPipeline*	GetMainPipeline	() { return mainPipeline; }
-
 		void					SetMainPipeline (Rendering::IPipeline* pipeline);
 		void					ReleaseMainPipeline();
 
