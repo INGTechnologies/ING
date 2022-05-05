@@ -55,6 +55,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
+		Application::Application() :
+			IApplication(L""),
+			Singleton()
+		{
+			 
+
+
+		}
+
 		Application::Application(const WString& configPath, const WString& projectPath) :
 			IApplication(configPath),
 

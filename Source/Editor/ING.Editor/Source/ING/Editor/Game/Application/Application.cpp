@@ -27,6 +27,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
+		GameApplication::GameApplication() :
+			IApplication(L""),
+			Singleton()
+		{
+
+
+
+		}
+
 		GameApplication::GameApplication(const WString& configPath) :
 			IApplication(configPath)
 		{

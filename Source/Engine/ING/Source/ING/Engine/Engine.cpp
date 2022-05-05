@@ -176,6 +176,8 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	Engine::Engine() :
+		Board<Engine>(),
+
 		configuration(0)
 	{
 
