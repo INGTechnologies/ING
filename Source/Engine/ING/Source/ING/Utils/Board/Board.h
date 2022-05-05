@@ -56,7 +56,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Board() {
+			Board() : Singleton<T>() {
 
 			}
 			~Board() {

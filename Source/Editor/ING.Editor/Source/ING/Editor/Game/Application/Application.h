@@ -1,6 +1,13 @@
 #pragma once
 
 /**
+ *	Include Entry Point
+ */
+#include <ING/EntryPoint/EntryPoint.h>
+
+
+
+/**
  *	Include Application
  */
 #include <ING/Application/Application.h>
@@ -31,14 +38,25 @@ namespace ING {
 
 
 
-		class GameApplication :
+		class ING_API GameApplication :
 			public IApplication,
-			Singleton<GameApplication>
+			public Singleton<GameApplication>
 		{
+
+			/**
+			 *	Friend Class
+			 */
+		public:
+			friend class Singleton<GameApplication>;
+
+
 
 			/**
 			 *	Constructors And Destructor
 			 */
+		private:
+			GameApplication();
+
 		public:
 			GameApplication	(const WString& configPath);
 			~GameApplication();
