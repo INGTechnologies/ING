@@ -181,16 +181,16 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Window::Window(ApplicationWindowSystem* system) :
-			IWindow(system)
+		Window::Window() :
+			IWindow()
 		{
 
 			isHandleDestroyed = false;
 
 		}
 
-		Window::Window(const WindowDesc& desc, ApplicationWindowSystem* system) :
-			IWindow(desc, system)
+		Window::Window(const WindowDesc& desc) :
+			IWindow(desc)
 		{
 
 			isHandleDestroyed = false;

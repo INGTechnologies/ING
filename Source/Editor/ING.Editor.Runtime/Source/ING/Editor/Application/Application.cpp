@@ -178,8 +178,7 @@ namespace ING {
 
 					true
 
-				},
-				GetWindowSystem())
+				})
 			
 			);
 
