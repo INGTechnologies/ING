@@ -39,8 +39,6 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class ApplicationUISystem;
-
 	namespace UI {
 
 		class Node;

@@ -96,8 +96,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		protected:
-			Window(ApplicationWindowSystem* system);
-			Window(const WindowDesc& desc, ApplicationWindowSystem* system);
+			Window();
+			Window(const WindowDesc& desc);
 			~Window();
 
 

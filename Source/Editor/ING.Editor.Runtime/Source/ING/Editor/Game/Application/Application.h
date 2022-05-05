@@ -38,7 +38,7 @@ namespace ING {
 
 
 
-		class ING_API GameApplication :
+		class GameApplication :
 			public IApplication,
 			public Singleton<GameApplication>
 		{

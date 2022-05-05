@@ -146,7 +146,7 @@ namespace ING {
 
 				L"Editor",
 
-				Engine::GetInstance()->GetRootPath(L"Game")
+				Path::GetAbsolutePath(L"Game:/")
 
 			);
 
@@ -178,8 +178,7 @@ namespace ING {
 
 					true
 
-				},
-				GetWindowSystem())
+				})
 			
 			);
 

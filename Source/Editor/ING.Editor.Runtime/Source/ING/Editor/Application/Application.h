@@ -38,7 +38,7 @@ namespace ING {
 
 
 
-		class ING_API Application :
+		class Application :
 			public IApplication,
 			public Singleton<Application>
 		{

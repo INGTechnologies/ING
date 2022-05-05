@@ -106,7 +106,7 @@ namespace ING {
 	 */
 	bool ApplicationRenderingSystem::Init() {
 
-		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
+		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline", this);
 
 		mainDevice = Rendering::IAPI::GetInstance()->GetDevice();
 
@@ -130,48 +130,15 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationRenderingSystem::AddPipeline		(Rendering::IPipeline* pipeline) {
-
-		if (IsHasPipeline(pipeline->GetName())) return;
-
-		name2PipelineMap[pipeline->GetName()] = pipeline;
-
-	}
-
-	bool	ApplicationRenderingSystem::IsHasPipeline	(const String& name) {
-
-		return name2PipelineMap.find(name) != name2PipelineMap.end();
-	}
-
-	void	ApplicationRenderingSystem::RemovePipeline	(Rendering::IPipeline* pipeline) {
-
-		if (!IsHasPipeline(pipeline->GetName())) return;
-
-		name2PipelineMap.erase(pipeline->GetName());
-
-	}
-
 	void	ApplicationRenderingSystem::SetMainPipeline(Rendering::IPipeline* pipeline) {
 
-		if (mainPipeline != 0) {
-
-			RemovePipeline(mainPipeline);
-
-		}
-
 		this->mainPipeline = pipeline;
-
-		AddPipeline(mainPipeline);
-
-		
 
 	}
 		
 	void	ApplicationRenderingSystem::ReleaseMainPipeline() {
 
 		if (mainPipeline != 0) {
-
-			RemovePipeline(mainPipeline);
 
 			mainPipeline->Release();
 
