@@ -53,7 +53,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-    <PostBuildEvent>call "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Tools\ING.Tools.EngineBuilder\ING.Tools.EngineBuilder.exe" "..\..\..\..\..\Engine\\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\\"</PostBuildEvent>
+    <PostBuildEvent>XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "..\..\..\..\..\Engine\" /s /i /y </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />

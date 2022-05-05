@@ -14,9 +14,9 @@
 
 
 /**
- *	Include ApplicationWindowManager
+ *	Include ApplicationWindowSystem
  */
-#include <ING/Application/WindowManager/WindowManager.h>
+#include <ING/Application/WindowSystem/WindowSystem.h>
 
 
 
@@ -56,16 +56,23 @@
 
 
 /**
- *	Include Style
+ *	Include UI Style
  */
 #include <ING/UI/Style/Style.h>
 
 
 
 /**
- *	Include Element
+ *	Include UI Element
  */
 #include <ING/UI/Element/Element.h>
+
+
+
+/**
+ *	Include UI Canvas
+ */
+#include <ING/UI/Canvas/Canvas.h>
 
 
 
@@ -125,7 +132,7 @@ int main() {
 
 	});
 
-	application->GetWindowManager()->AddWindow(
+	application->GetWindowSystem()->AddWindow(
 	
 		mainWindow
 	
@@ -133,11 +140,11 @@ int main() {
 
 	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](ING::Event* e) {
 		
-		IElement* rootElement = application->GetUISystem()->GetRootElement();
+		ICanvas* canvas = application->GetUISystem()->GetMainCanvas();
 
 		IElement* demoElement = new IElement();
 
-		rootElement->GetNode()->AddChild(demoElement->GetNode());
+		canvas->GetNode()->AddChild(demoElement->GetNode());
 
 		float size = 5.0f;
 		
