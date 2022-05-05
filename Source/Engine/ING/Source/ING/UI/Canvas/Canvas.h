@@ -55,7 +55,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			ICanvas	();
+			ICanvas	(ApplicationUISystem* system);
 			~ICanvas();
 
 
@@ -65,6 +65,17 @@ namespace ING {
 			 */
 		public:
 			virtual void Release() override;
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			ApplicationUISystem* system;
+
+		public:
+			ApplicationUISystem* GetSystem() { return system; }
 
 
 
