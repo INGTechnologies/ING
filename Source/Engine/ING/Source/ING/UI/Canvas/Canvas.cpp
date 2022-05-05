@@ -34,10 +34,8 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ICanvas::ICanvas(ApplicationUISystem* system):
-			IElement(),
-
-			system(system)
+		ICanvas::ICanvas():
+			IElement()
 		{
 
 

@@ -83,7 +83,7 @@ namespace ING {
 	 */
 	bool ApplicationUISystem::Init() {
 
-		mainCanvas = new UI::ICanvas(this);
+		mainCanvas = new UI::ICanvas();
 
 		return IApplicationComponent::Init();
 	}
