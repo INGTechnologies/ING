@@ -129,7 +129,7 @@ namespace ING {
 
 		configuration->LoadFromFile(configPath);
 
-		if (!configuration->Exist("ING.Application.name")) {
+		if (configuration->Exist("ING.Application.name")) {
 
 			name = configuration->Get<String>("ING.Application.name");
 

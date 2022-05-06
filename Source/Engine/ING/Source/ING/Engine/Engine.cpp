@@ -170,6 +170,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include PluginManager
+ */
+#include <ING/Plugin/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -201,6 +208,9 @@ namespace ING {
 		/**
 		 *	Add Squares
 		 */
+		/* Plugin Manager */
+		AddSquare<PluginManager>();
+
 		/* System */
 		AddSquare<System>();
 

@@ -161,7 +161,7 @@ namespace ING {
 					return nullptr;
 				}
 
-				return squareMap[typeid(T).name()];
+				return (T*)squareMap[typeid(T).name()];
 			}
 
 

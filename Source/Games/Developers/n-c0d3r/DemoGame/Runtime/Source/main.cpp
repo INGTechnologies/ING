@@ -97,6 +97,13 @@
 
 
 
+/**
+ *	Include Plugin
+ */
+#include <ING/Plugin/Plugin.h>
+
+
+
 using namespace ING::Rendering;
 using namespace ING;
 using namespace ING::UI;
@@ -111,6 +118,8 @@ static IWindow* mainWindow = 0;
 int main() {
 
 	ING::Engine::CreateInstance();
+
+	
 
 	application = new ING::IApplication(L"Game:\\ApplicationConfig.ini");
 
@@ -158,6 +167,12 @@ int main() {
 		);
 
 		mainWindow->SetStyle(ING_WS_POPUP);
+
+		IPlugin* demoPlugin = IPlugin::Create("Demo", L"Engine:\\Plugins\\Demo\\Demo.dll");
+
+		demoPlugin->Load();
+
+		demoPlugin->LateCreate();
 
 	});
 
