@@ -1,9 +1,9 @@
 #pragma once
 
 /**
- *	Include Entry Point
+ *	Include Editor Entry Point
  */
-#include <ING/EntryPoint/EntryPoint.h>
+#include <ING/Editor/EntryPoint/EntryPoint.h>
 
 
 
@@ -38,7 +38,7 @@ namespace ING {
 
 
 
-		class GameApplication :
+		class ING_EDITOR_API GameApplication :
 			public IApplication,
 			public Singleton<GameApplication>
 		{

@@ -1,5 +1,5 @@
 
-#include "MainClass.h"
+#include "PluginEvents.h"
 
 #include <iostream>
 
@@ -11,11 +11,7 @@
 
 #include <ING/Plugin/Manager/Manager.h>
 
-#include <ING/Window/Manager/Manager.h>
-
-#include <ING/Application/Application.h>
-#include <ING/Application/Manager/Manager.h>
-
+#ifdef ING_EDITOR_EXPORTS
 bool PluginLoad(ING::Engine* engine, ING::IPlugin* plugin) {
 
 	DEFAULT_PLUGIN_LOAD(engine, plugin);
@@ -52,3 +48,4 @@ void PluginPreRun() {
 
 
 }
+#endif

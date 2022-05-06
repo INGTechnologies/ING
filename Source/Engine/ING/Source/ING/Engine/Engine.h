@@ -41,13 +41,24 @@ namespace ING {
 	class ING_API Engine: 
 		public Board<Engine>,
 		public EventStorage
-	{	
+	{
+
+		/**
+		 *	Friend Class
+		 */
+	public:
+		friend class Singleton<Engine>;
+
+
 
 		/**
 		 *	Constructors And Destructor
 		 */
-	public:
+	protected:
 		Engine();
+		Engine(const std::vector<WString>& argv);
+
+	public:
 		~Engine();
 
 
@@ -77,6 +88,8 @@ namespace ING {
 
 		Configuration*	configuration;
 
+		std::vector<WString> argv;
+
 	public:
 		const WString&	GetGameDir					() { return gameDir; }
 		const WString&	GetWorkingDir				() { return workingDir; }
@@ -94,12 +107,16 @@ namespace ING {
 
 		Configuration*	GetConfiguration			() { return configuration; }
 
+		const std::vector<WString>& GetArgv() { return argv; }
+
 
 
 		/**
 		 *	Methods
 		 */
 	public:
+		static Engine*	CreateInstance();
+		static Engine*	CreateInstance(const std::vector<WString>& argv);
 		void			FrameUpdate();
 
 	};

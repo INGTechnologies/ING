@@ -63,3 +63,15 @@ void SetupSingletonInstance(void* instance, const ING::Utils::String& name) {
 	}
 
 }
+
+ING::Utils::String GetEngineClassName() {
+
+	return ING::Utils::ToString(typeid(ING::Engine).name());
+
+}
+
+ING::Utils::String GetPluginManagerClassName() {
+
+	return ING::Utils::ToString(typeid(ING::PluginManager).name());
+
+}

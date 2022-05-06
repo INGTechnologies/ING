@@ -17,6 +17,9 @@
 extern ING_API void LoadSingletonInstance	(void** wherePtrAre, const ING::Utils::String& name);
 extern ING_API void SetupSingletonInstance	(void* instance, const ING::Utils::String& name);
 
+extern ING_API ING::Utils::String GetEngineClassName		();
+extern ING_API ING::Utils::String GetPluginManagerClassName	();
+
 
 
 namespace ING {
@@ -69,19 +72,19 @@ namespace ING {
 
 
 
-#ifdef IS_PLUGIN
 			/**
 			 *	LoadInstance Method
 			 */
 		public:
 			static void LoadInstance(T* instance) {
 
-				if (typeid(T) == typeid(ING::Engine)) {
+#ifdef IS_PLUGIN
+				if (ToString(typeid(T).name()) == GetEngineClassName()) {
 
 					mInstance = instance;
 
 				}
-				else if (typeid(T) == typeid(ING::PluginManager)) {
+				else if (ToString(typeid(T).name()) == GetPluginManagerClassName()) {
 
 					mInstance = instance;
 
@@ -91,9 +94,9 @@ namespace ING {
 					LoadSingletonInstance((void**)(& mInstance), typeid(T).name());
 
 				}
+#endif
 
 			}
-#endif
 
 		};
 

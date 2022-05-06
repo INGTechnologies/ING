@@ -3,6 +3,8 @@
 #include <EntryPoint/EntryPoint.h>
 #include <ING/Utils/Utils.h>
 
+
+
 namespace ING {
 
 	class Engine;
@@ -15,12 +17,12 @@ namespace ING {
 /**
  *	Plugin Events
  */
-extern "C" DEMO_API bool PluginLoad		(ING::Engine* engine, ING::IPlugin * plugin);
-extern "C" DEMO_API bool PluginUnload	();
+PLUGIN_EVENT bool PluginLoad		(ING::Engine* engine, ING::IPlugin * plugin);
+PLUGIN_EVENT bool PluginUnload		();
 
-extern "C" DEMO_API void PluginLateCreate();
+PLUGIN_EVENT void PluginLateCreate	();
 
-extern "C" DEMO_API void PluginPreInit();
-extern "C" DEMO_API void PluginLateInit();
+PLUGIN_EVENT void PluginPreInit		();
+PLUGIN_EVENT void PluginLateInit	();
 
-extern "C" DEMO_API void PluginPreRun();
+PLUGIN_EVENT void PluginPreRun		();
