@@ -1,4 +1,6 @@
 
+#ifdef USE_MSVC
+
 /**
  *	Include Header
  */
@@ -89,6 +91,8 @@ namespace ING {
 
 		bool Plugin::Unload() {
 
+			if (!unloadFunction) return true;
+
 			if (moduleHandle == 0) return false;
 
 			if (!unloadFunction()) return false;
@@ -97,6 +101,8 @@ namespace ING {
 		}
 
 		void Plugin::LateCreate() {
+
+			if (!lateCreateFunction) return;
 		
 			lateCreateFunction();
 
@@ -105,11 +111,15 @@ namespace ING {
 
 		void Plugin::PreInit() {
 
+			if (!preInitFunction) return;
+
 			preInitFunction();
 
 			IPlugin::PreInit();
 		}
 		void Plugin::LateInit() {
+
+			if (!lateInitFunction) return;
 
 			lateInitFunction();
 
@@ -117,6 +127,8 @@ namespace ING {
 		}
 
 		void Plugin::PreRun() {
+
+			if (!preRunFunction) return;
 
 			preRunFunction();
 
@@ -126,3 +138,5 @@ namespace ING {
 	}
 
 }
+
+#endif

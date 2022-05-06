@@ -1,5 +1,7 @@
 #pragma once
 
+#ifdef USE_MSVC
+
 /**
  *	Include Entry Point
  */
@@ -99,3 +101,5 @@ namespace ING {
 	}
 
 }
+
+#endif
