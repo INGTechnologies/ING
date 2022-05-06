@@ -6,6 +6,8 @@
 
 #include <ING/_Debug/Debug.h>
 
+#include <ING/Plugin/Plugin.h>
+
 #include <ING/Plugin/Manager/Manager.h>
 
 #include <ING/Window/Manager/Manager.h>
@@ -15,9 +17,7 @@
 
 bool PluginLoad(ING::Engine* engine, ING::IPlugin* plugin) {
 
-	ING::Engine::LoadInstance(engine);
-
-	ING::PluginManager::LoadInstance(ING::Engine::GetInstance()->GetSquare<ING::PluginManager>());
+	DEFAULT_PLUGIN_LOAD(engine, plugin);
 
 	return true;
 }

@@ -69,3 +69,14 @@ namespace ING {
 	};
 
 }
+
+
+
+/**
+ *	Define Macros
+ */
+#ifdef IS_PLUGIN
+#define DEFAULT_PLUGIN_LOAD(engine, plugin)\
+		ING::Engine::LoadInstance(engine);\
+		ING::PluginManager::LoadInstance(ING::Engine::GetInstance()->GetSquare<ING::PluginManager>());
+#endif
