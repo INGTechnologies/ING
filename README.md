@@ -1,4 +1,4 @@
-<img src="https://i.ibb.co/n7w9PPC/Artboard-1.png" alt="Artboard-1" border="0">
+<img src="https://i.ibb.co/pv9PS9k/Artboard-1.png" alt="Artboard-1" border="0">
 
 
 **ING** is a high performance game engine for Windows. It's free, open-source and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
