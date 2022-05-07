@@ -1,7 +1,27 @@
-<img src="https://i.ibb.co/h1mpHHr/Artboard-1.png">
+<img src="https://i.ibb.co/DVtg7j5/Artboard-1.png" alt="Artboard-1" border="0">
 
 
-ING is a high performance game engine for Windows. It's free, fast, open-source and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
+**ING** is a high performance game engine for Windows. It's free, open-source and under the [MIT license](https://github.com/INGTechnologies/ING/blob/main/LICENSE).
+
+
+## Features ##
+- **Low Level**
+  + Job System
+  + ECS
+  + UI
+    + Hierarchy
+    + Dynamic Vector, Float,... and Element Style
+  + Rendering
+    + DirectX11 API
+    + Multi-Pass Shader
+    + Pass, Pipeline
+  + Math (support SIMD)
+  + Event
+  + Window
+  + Utilities Library
+  + Support Multi-Application
+  + C++ Plugin loading at runtime
+  + C# Scripting
 
 
 ## Getting Started ##
@@ -44,7 +64,6 @@ WARNING: ONLY SUPPORT VS2020 AND WINDOWS X64 PLATFORM
 
 
 ## Links ##
-+ [ING Hub](https://github.com/INGTechnologies/INGHub)
 + [Youtube](https://www.youtube.com/channel/UCa4_lMxQZJ1B0prRB4w93wA)
 
 
