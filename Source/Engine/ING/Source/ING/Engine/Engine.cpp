@@ -170,6 +170,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include PluginManager
+ */
+#include <ING/Plugin/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -201,6 +208,9 @@ namespace ING {
 		/**
 		 *	Add Squares
 		 */
+		 /* Plugin Manager */
+		AddSquare<PluginManager>();
+
 		/* System */
 		AddSquare<System>();
 
@@ -283,6 +293,14 @@ namespace ING {
 		SetRootPath(L"Engine", workingDir);
 
 		Debug::Log("Engine Created");
+
+	}
+
+	Engine::Engine(const std::vector<WString>& argv) : 
+		Engine()
+	{
+
+		this->argv = argv;
 
 	}
 
@@ -413,6 +431,20 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
+	Engine* Engine::CreateInstance() {
+
+		return CreateInstance({});
+
+	}
+
+	Engine* Engine::CreateInstance(const std::vector<WString>& argv) {
+
+		Engine* engine = new Engine(argv);
+
+		return engine;
+
+	}
+
 	void Engine::FrameUpdate() {
 
 		Time::GetInstance()->StartFrame();

@@ -14,9 +14,9 @@
 
 
 /**
- *	Include ApplicationWindowManager
+ *	Include ApplicationWindowSystem
  */
-#include <ING/Application/WindowManager/WindowManager.h>
+#include <ING/Application/WindowSystem/WindowSystem.h>
 
 
 
@@ -56,16 +56,23 @@
 
 
 /**
- *	Include Style
+ *	Include UI Style
  */
 #include <ING/UI/Style/Style.h>
 
 
 
 /**
- *	Include Element
+ *	Include UI Element
  */
 #include <ING/UI/Element/Element.h>
+
+
+
+/**
+ *	Include UI Canvas
+ */
+#include <ING/UI/Canvas/Canvas.h>
 
 
 
@@ -90,6 +97,13 @@
 
 
 
+/**
+ *	Include Plugin
+ */
+#include <ING/Plugin/Plugin.h>
+
+
+
 using namespace ING::Rendering;
 using namespace ING;
 using namespace ING::UI;
@@ -101,60 +115,24 @@ static IWindow* mainWindow = 0;
 
 
 
-int main() {
+#ifdef USE_MSVC
+int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
+{
 
-	ING::Engine::CreateInstance();
+	std::vector<WString> argv(argc);
 
-	application = new ING::IApplication(L"Game:\\ApplicationConfig.ini");
+	for (unsigned int i = 0; i < argc; ++i) {
 
-	ING::Engine::GetInstance()->Init();
+		argv[i] = ToWString(argv_cstr[i]);
 
-	if(!application->Init())return 1;
+	}
 
-	mainWindow = ING::IWindow::Create({
+	ING::Engine::CreateInstance(argv);
 
-			800,
+	if (!ING::Engine::GetInstance()->Init()) return 1;
 
-			600,
-
-			L"MainApplication",
-
-			"MainWindow",
-
-			true
-
-	});
-
-	application->GetWindowManager()->AddWindow(
-	
-		mainWindow
-	
-	);
-
-	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](ING::Event* e) {
-		
-		IElement* rootElement = application->GetUISystem()->GetRootElement();
-
-		IElement* demoElement = new IElement();
-
-		rootElement->GetNode()->AddChild(demoElement->GetNode());
-
-		float size = 5.0f;
-		
-		demoElement->GetStyle()->SetSize(
-		
-			UI_DVECTOR2(
-				UI_GET(0), UI_GET(1),
-				size, size
-			)
-		
-		);
-
-		mainWindow->SetStyle(ING_WS_POPUP);
-
-	});
-
-	ING::Engine::GetInstance()->Run();
+	if (!ING::Engine::GetInstance()->Run()) return 1;
 
 	return 0;
 }
+#endif

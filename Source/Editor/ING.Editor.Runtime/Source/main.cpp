@@ -7,20 +7,6 @@
 
 
 /**
- *	Include Editor Application
- */
-#include "ING/Editor/Application/Application.h"
-
-
-
-/**
- *	Include GameApplication
- */
-#include <ING/Editor/Game/Application/Application.h>
-
-
-
-/**
  *	Include Style
  */
 #include <ING/UI/Style/Style.h>
@@ -55,20 +41,41 @@
 
 
 
-int main(int argc, char** argv)
+/**
+ *	Include Plugin
+ */
+#include <ING/Plugin/Plugin.h>
+
+
+
+#ifdef USE_MSVC
+int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
 
-	WString projectPath = ToWString((const char*)argv[1]);
+	std::vector<WString> argv(argc);
 
-	ING::Engine::CreateInstance();
+	for (unsigned int i = 0; i < argc; ++i) {
 
-	ING::Editor::Application* editorApplication = new ING::Editor::Application(L"Game:/Config.ini", projectPath);
+		argv[i] = ToWString(argv_cstr[i]);
+
+	}
+
+	WString projectPath = argv[1];
+
+	ING::Engine::CreateInstance(argv);
+
+	ING::IPlugin* plugin = ING::IPlugin::Create("INGEditor", L"Game:/Plugins/ING.Editor/ING.Editor.dll");
+
+	plugin->Load();
+
+	//ING::Editor::Application* editorApplication = new ING::Editor::Application(L"Game:/Config.ini", projectPath);
 
 	if (!ING::Engine::GetInstance()->Init()) return 1;
 
-	if (!editorApplication->Init()) return 1;
+	//if (!editorApplication->Init()) return 1;
 
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 
 	return 0;
 }
+#endif
