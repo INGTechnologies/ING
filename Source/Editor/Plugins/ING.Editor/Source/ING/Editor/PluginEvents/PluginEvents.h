@@ -17,14 +17,14 @@ namespace ING {
 /**
  *	Plugin Events
  */
-#ifdef ING_EDITOR_EXPORTS
-ING_EDITOR_EVENT bool PluginLoad		(ING::Engine* engine, ING::IPlugin * plugin);
-ING_EDITOR_EVENT bool PluginUnload		();
+ING_EDITOR_EVENT bool INGEditor_PluginLoad		(ING::Engine* engine, ING::IPlugin * plugin);
+ING_EDITOR_EVENT bool INGEditor_PluginUnload	();
 
-ING_EDITOR_EVENT void PluginLateCreate	();
+ING_EDITOR_EVENT void INGEditor_PluginLateCreate();
 
-ING_EDITOR_EVENT void PluginPreInit		();
-ING_EDITOR_EVENT void PluginLateInit	();
+ING_EDITOR_EVENT void INGEditor_PluginPreInit	();
+ING_EDITOR_EVENT void INGEditor_PluginLateInit	();
 
-ING_EDITOR_EVENT void PluginPreRun		();
-#endif
+ING_EDITOR_EVENT void INGEditor_PluginPreRun	();
+
+ING_EDITOR_EVENT void INGEditor_PluginPreRelease();

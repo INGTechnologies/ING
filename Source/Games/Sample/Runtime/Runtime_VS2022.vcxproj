@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6c6dc6f9-d2e2-4334-82af-8213316bfaab}</ProjectGuid>
+    <ProjectGuid>{6C6DC6F9-D2E2-4334-82AF-8213316BFAAB}</ProjectGuid>
     <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>Runtime</ProjectName>
@@ -74,28 +74,28 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
@@ -107,6 +107,8 @@
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,6 +126,8 @@
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,6 +145,8 @@
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -158,6 +164,8 @@
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

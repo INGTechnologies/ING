@@ -208,7 +208,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <PropertyGroup>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\</OutDir>
     <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>

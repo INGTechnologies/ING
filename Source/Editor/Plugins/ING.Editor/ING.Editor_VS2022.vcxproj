@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\Engine\Plugins\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\ING.Editor\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
@@ -81,7 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\Engine\Plugins\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\ING.Editor\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
@@ -89,7 +89,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\Engine\Plugins\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\ING.Editor\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
@@ -97,7 +97,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(ProjectDir)..\..\Engine\Plugins\$(ProjectName)\</OutDir>
+    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\ING.Editor\</OutDir>
     <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>

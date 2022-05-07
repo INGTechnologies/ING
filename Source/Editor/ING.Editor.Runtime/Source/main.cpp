@@ -41,6 +41,13 @@
 
 
 
+/**
+ *	Include Plugin
+ */
+#include <ING/Plugin/Plugin.h>
+
+
+
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
@@ -56,6 +63,10 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 	WString projectPath = argv[1];
 
 	ING::Engine::CreateInstance(argv);
+
+	ING::IPlugin* plugin = ING::IPlugin::Create("INGEditor", L"Game:/Plugins/ING.Editor/ING.Editor.dll");
+
+	plugin->Load();
 
 	//ING::Editor::Application* editorApplication = new ING::Editor::Application(L"Game:/Config.ini", projectPath);
 

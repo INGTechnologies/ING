@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Engine
+ */
+#include <ING/Engine/Engine.h>
+
+
+
 namespace ING {
 
 	/**
@@ -23,7 +30,7 @@ namespace ING {
 		path(path)
 	{
 
-
+		isLoaded = false;
 
 	}
 
@@ -39,6 +46,8 @@ namespace ING {
 	 *	Release Method
 	 */
 	void IPlugin::Release() {
+
+		PreRelease();
 
 		delete this;
 	}
@@ -59,23 +68,58 @@ namespace ING {
 
 	bool IPlugin::Load() {
 
+		if (!loadFunction) return false;
 
+		isLoaded = true; 
+		
+		if (!loadFunction(ING::Engine::GetInstance(), this)) return false;
 
 		return true;
 	}
 
 	bool IPlugin::Unload() {
 
+		if (!unloadFunction) return true;
 
+		if (!unloadFunction()) return false;
+
+		isLoaded = false;
 
 		return true;
 	}
 
-	void IPlugin::LateCreate() {}
+	void IPlugin::LateCreate() {
 
-	void IPlugin::PreInit	() {}
-	void IPlugin::LateInit	() {}
+		if (!lateCreateFunction) return;
 
-	void IPlugin::PreRun	() {}
+		lateCreateFunction();
+	}
+
+	void IPlugin::PreInit() {
+
+		if (!preInitFunction) return;
+
+		preInitFunction();
+	}
+	void IPlugin::LateInit() {
+
+		if (!lateInitFunction) return;
+
+		lateInitFunction();
+	}
+
+	void IPlugin::PreRun() {
+
+		if (!preRunFunction) return;
+
+		preRunFunction();
+	}
+
+	void IPlugin::PreRelease() {
+
+		if (!preReleaseFunction) return;
+
+		preReleaseFunction();
+	}
 
 }

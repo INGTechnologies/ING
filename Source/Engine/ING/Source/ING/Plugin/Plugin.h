@@ -18,6 +18,22 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class IPlugin;
+	class Engine;
+
+
+
+	typedef bool (*PluginLoadFunction)		(ING::Engine* engine, ING::IPlugin* plugin);
+	typedef bool (*PluginUnloadFunction)	();
+
+	typedef void (*PluginLateCreateFunction)();
+	typedef void (*PluginPreInitFunction)	();
+	typedef void (*PluginLateInitFunction)	();
+	typedef void (*PluginPreRunFunction)	();
+	typedef void (*PluginPreReleaseFunction)();
+
+
+
 	class ING_API IPlugin {
 
 		/**
@@ -43,10 +59,22 @@ namespace ING {
 	private:
 		String  name;
 		WString path;
+		bool	isLoaded;
 
 	public:
-		const String& GetName() { return name; }
-		const WString& GetPath() { return path; }
+		const String&	GetName() { return name; }
+		const WString&	GetPath() { return path; }
+		bool			IsLoaded() { return isLoaded; }
+
+	protected:
+		PluginLoadFunction			loadFunction;
+		PluginUnloadFunction		unloadFunction;
+
+		PluginLateCreateFunction	lateCreateFunction;
+		PluginPreInitFunction		preInitFunction;
+		PluginLateInitFunction		lateInitFunction;
+		PluginPreRunFunction		preRunFunction;
+		PluginPreReleaseFunction	preReleaseFunction;
 
 
 
@@ -65,6 +93,8 @@ namespace ING {
 		virtual void LateInit();
 
 		virtual void PreRun();
+
+		virtual void PreRelease();
 
 	};
 

@@ -64,6 +64,8 @@ namespace ING {
 
 			if (moduleHandle != 0) return false;
 
+			Debug::Log(Path::GetAbsolutePath(GetPath()));
+
 			moduleHandle = LoadLibrary(Path::GetAbsolutePath(GetPath()).c_str());
 
 			if (moduleHandle == 0) {
@@ -76,26 +78,21 @@ namespace ING {
 
 			}
 
-			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, "PluginLoad");
-			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, "PluginUnload");
+			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLoad")).c_str());
+			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginUnload")).c_str());
 
-			lateCreateFunction = (PluginLateCreateFunction)GetProcAddress(moduleHandle, "PluginLateCreate");
-			preInitFunction = (PluginPreInitFunction)GetProcAddress(moduleHandle, "PluginPreInit");
-			lateInitFunction = (PluginLateInitFunction)GetProcAddress(moduleHandle, "PluginLateInit");
-			preRunFunction = (PluginPreRunFunction)GetProcAddress(moduleHandle, "PluginPreRun");
-
-			if (!loadFunction(ING::Engine::GetInstance(), this)) return false;
+			lateCreateFunction = (PluginLateCreateFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLateCreate")).c_str());
+			preInitFunction = (PluginPreInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreInit")).c_str());
+			lateInitFunction = (PluginLateInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLateInit")).c_str());
+			preRunFunction = (PluginPreRunFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreRun")).c_str());
+			preReleaseFunction = (PluginPreReleaseFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreRelease")).c_str());
 
 			return IPlugin::Load();
 		}
 
 		bool Plugin::Unload() {
 
-			if (!unloadFunction) return true;
-
 			if (moduleHandle == 0) return false;
-
-			if (!unloadFunction()) return false;
 
 			return IPlugin::Unload();
 		}
@@ -103,8 +100,6 @@ namespace ING {
 		void Plugin::LateCreate() {
 
 			if (!lateCreateFunction) return;
-		
-			lateCreateFunction();
 
 			IPlugin::LateCreate();
 		}
@@ -113,15 +108,11 @@ namespace ING {
 
 			if (!preInitFunction) return;
 
-			preInitFunction();
-
 			IPlugin::PreInit();
 		}
 		void Plugin::LateInit() {
 
 			if (!lateInitFunction) return;
-
-			lateInitFunction();
 
 			IPlugin::LateInit();
 		}
@@ -130,9 +121,14 @@ namespace ING {
 
 			if (!preRunFunction) return;
 
-			preRunFunction();
-
 			IPlugin::PreRun();
+		}
+
+		void Plugin::PreRelease() {
+
+			if (!preReleaseFunction) return;
+
+			IPlugin::PreRelease();
 		}
 
 	}

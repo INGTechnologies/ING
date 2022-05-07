@@ -11,41 +11,47 @@
 
 #include <ING/Plugin/Manager/Manager.h>
 
-#ifdef ING_EDITOR_EXPORTS
-bool PluginLoad(ING::Engine* engine, ING::IPlugin* plugin) {
+bool INGEditor_PluginLoad(ING::Engine* engine, ING::IPlugin* plugin) {
+
+	int a = 5;
 
 	DEFAULT_PLUGIN_LOAD(engine, plugin);
 
+	return false;
+}
+
+bool INGEditor_PluginUnload() {
+
+
+
 	return true;
 }
 
-bool PluginUnload() {
-
-
-
-	return true;
-}
-
-void PluginLateCreate() {
+void INGEditor_PluginLateCreate() {
 
 
 
 }
 
-void PluginPreInit() {
+void INGEditor_PluginPreInit() {
 
 
 
 }
-void PluginLateInit() {
+void INGEditor_PluginLateInit() {
 
 
 
 }
 
-void PluginPreRun() {
+void INGEditor_PluginPreRun() {
 
 
 
 }
-#endif
+
+void INGEditor_PluginPreRelease() {
+
+
+
+}

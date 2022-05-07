@@ -37,16 +37,6 @@ namespace ING {
 
 	namespace MSVC {
 
-		typedef bool (*PluginLoadFunction)		(ING::Engine* engine, ING::IPlugin* plugin);
-		typedef bool (*PluginUnloadFunction)	();
-
-		typedef void (*PluginLateCreateFunction)();
-		typedef void (*PluginPreInitFunction)	();
-		typedef void (*PluginLateInitFunction)	();
-		typedef void (*PluginPreRunFunction)	();
-
-
-
 		class ING_API Plugin : public IPlugin {
 
 			/**
@@ -72,14 +62,6 @@ namespace ING {
 		private:
 			HMODULE						moduleHandle;
 
-			PluginLoadFunction			loadFunction;
-			PluginUnloadFunction		unloadFunction;
-
-			PluginLateCreateFunction	lateCreateFunction;
-			PluginPreInitFunction		preInitFunction;
-			PluginLateInitFunction		lateInitFunction;
-			PluginPreRunFunction		preRunFunction;
-
 
 
 			/**
@@ -95,6 +77,8 @@ namespace ING {
 			virtual void LateInit	()	override;
 
 			virtual void PreRun		()	override;
+
+			virtual void PreRelease	()	override;
 
 		};
 

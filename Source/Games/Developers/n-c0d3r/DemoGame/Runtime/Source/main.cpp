@@ -115,68 +115,24 @@ static IWindow* mainWindow = 0;
 
 
 
-int main() {
+#ifdef USE_MSVC
+int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
+{
 
-	ING::Engine::CreateInstance();
+	std::vector<WString> argv(argc);
 
-	
+	for (unsigned int i = 0; i < argc; ++i) {
 
-	application = new ING::IApplication(L"Game:\\ApplicationConfig.ini");
+		argv[i] = ToWString(argv_cstr[i]);
 
-	ING::Engine::GetInstance()->Init();
+	}
 
-	if(!application->Init())return 1;
+	ING::Engine::CreateInstance(argv);
 
-	mainWindow = ING::IWindow::Create({
+	if (!ING::Engine::GetInstance()->Init()) return 1;
 
-			800,
-
-			600,
-
-			L"MainApplication",
-
-			"MainWindow",
-
-			true
-
-	});
-
-	application->GetWindowSystem()->AddWindow(
-	
-		mainWindow
-	
-	);
-
-	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](ING::Event* e) {
-		
-		ICanvas* canvas = application->GetUISystem()->GetMainCanvas();
-
-		IElement* demoElement = new IElement();
-
-		canvas->GetNode()->AddChild(demoElement->GetNode());
-
-		float size = 5.0f;
-		
-		demoElement->GetStyle()->SetSize(
-		
-			UI_DVECTOR2(
-				UI_GET(0), UI_GET(1),
-				size, size
-			)
-		
-		);
-
-		mainWindow->SetStyle(ING_WS_POPUP);
-
-		IPlugin* demoPlugin = IPlugin::Create("Demo", L"Engine:\\Plugins\\Demo\\Demo.dll");
-
-		demoPlugin->Load();
-
-		demoPlugin->LateCreate();
-
-	});
-
-	ING::Engine::GetInstance()->Run();
+	if (!ING::Engine::GetInstance()->Run()) return 1;
 
 	return 0;
 }
+#endif
