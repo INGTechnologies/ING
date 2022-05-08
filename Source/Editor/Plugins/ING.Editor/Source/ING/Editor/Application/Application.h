@@ -34,10 +34,6 @@ namespace ING {
 
 	namespace Editor {
 
-		class GameApplication;
-
-
-
 		class PLUGIN_API(ING_EDITOR) Application :
 			public IApplication,
 			public Singleton<Application>
@@ -76,12 +72,12 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			GameApplication*	gameApplication;
+			IApplication*		gameApplication;
 
 			WString				projectPath;
 
 		public:
-			GameApplication*	GetGameApplication() { return gameApplication; }
+			IApplication*		GetGameApplication() { return gameApplication; }
 
 			const WString&		GetProjectPath() { return projectPath; }
 

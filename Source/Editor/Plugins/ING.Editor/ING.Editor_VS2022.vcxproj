@@ -270,10 +270,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\**\*.cpp" />
+    <ClCompile Include="Source\ING\Editor\Application\Application.cpp" />
+    <ClCompile Include="Source\ING\Editor\EntryPoint\EntryPoint.cpp" />
+    <ClCompile Include="Source\ING\Editor\Plugin\Plugin.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\**\*.h" />
+    <ClInclude Include="Source\ING\Editor\Application\Application.h" />
+    <ClInclude Include="Source\ING\Editor\EntryPoint\EntryPoint.h" />
+    <ClInclude Include="Source\ING\Editor\Plugin\Plugin.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

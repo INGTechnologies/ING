@@ -90,6 +90,8 @@ namespace ING {
 
 		std::vector<WString> argv;
 
+		String			mode;
+
 	public:
 		const WString&	GetGameDir					() { return gameDir; }
 		const WString&	GetWorkingDir				() { return workingDir; }
@@ -108,6 +110,8 @@ namespace ING {
 		Configuration*	GetConfiguration			() { return configuration; }
 
 		const std::vector<WString>& GetArgv() { return argv; }
+
+		const String&	GetMode						() { return mode; }
 
 
 

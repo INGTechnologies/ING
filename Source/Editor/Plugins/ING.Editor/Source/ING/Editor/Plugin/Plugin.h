@@ -5,6 +5,9 @@
 
 
 
+/**
+ *	Declare Classes
+ */
 namespace ING {
 
 	class Engine;
@@ -14,8 +17,16 @@ namespace ING {
 
 
 
+/**
+ *	Plugin Info
+ */
 DECLARE_PLUGIN_NAME(ING_EDITOR);
 
+
+
+/**
+ *	Plugin Events
+ */
 DECLARE_PLUGIN_FUNCTION(ING_EDITOR, bool, Load)			(ING::Engine* engine, ING::IPlugin * plugin);
 DECLARE_PLUGIN_FUNCTION(ING_EDITOR, bool, Unload)		();
 
