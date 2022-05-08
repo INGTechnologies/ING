@@ -27,16 +27,26 @@
 
 
 
+#include <mutex>
+
+
+
 using namespace ING;
 using namespace ING::Utils;
 
 
 
+std::mutex mutex;
+
 void LoadSingletonInstance(void** wherePtrAre, const ING::Utils::String& name) {
+
+	mutex.lock();
 
 	PluginManager* pluginManager = PluginManager::GetInstance();
 
 	*wherePtrAre = pluginManager->GetPointer(name);
+
+	mutex.unlock();
 
 }
 

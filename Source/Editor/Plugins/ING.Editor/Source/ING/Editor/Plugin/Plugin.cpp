@@ -6,6 +6,7 @@
 #include <ING/_Debug/Debug.h>
 #include <ING/Plugin/Plugin.h>
 #include <ING/Plugin/Manager/Manager.h>
+#include <ING/Window/Manager/Manager.h>
 
 /**
  *	Include Editor Application
