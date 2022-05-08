@@ -50,13 +50,35 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::unordered_map<String, void*> name2Pointer;
+		std::unordered_map<String, void*> name2PointerMap;
+
+		std::unordered_map<String, IPlugin*> name2PluginMap;
 
 	public:
 		void		SetPointer		(const String& name, void* pointer);
 		bool		IsHasPointer	(const String& name);
 		void*		GetPointer		(const String& name);
 		void		RemovePointer	(const String& name);
+
+		IPlugin*	GetPlugin		(const String& name) { return name2PluginMap[name]; }
+		bool		IsHasPlugin		(const String& name) { return name2PluginMap.find(name) != name2PluginMap.end(); }
+
+
+
+		/**
+		 *	Methods
+		 */
+	public:
+		bool		LoadPlugins(const WString& path);
+
+		void		AddPlugin	(IPlugin* plugin);
+		void		RemovePlugin(IPlugin* plugin);
+
+		bool		LateCreate	();
+		bool		PreInit		();
+		bool		LateInit	();
+		bool		PreRun		();
+		bool		PreRelease	();
 
 	};
 

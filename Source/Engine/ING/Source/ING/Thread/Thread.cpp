@@ -26,6 +26,8 @@ namespace ING {
 
 		isSTDThreadCreated	= false;
 
+		isStarted = false;
+
 	}
 
 	Thread::Thread(ThreadFunction function) {
@@ -33,6 +35,8 @@ namespace ING {
 		isReady = false;
 
 		isSTDThreadCreated = false;
+
+		isStarted = false;
 
 		this->function = function;
 
@@ -63,6 +67,8 @@ namespace ING {
 
 		isReady = true;
 
+		isStarted = true;
+
 	}
 
 	void Thread::WaitReady() {
@@ -77,7 +83,11 @@ namespace ING {
 
 	void Thread::Join() {
 
-		stdThread.join();
+		if (isStarted) {
+
+			stdThread.join();
+
+		}
 
 		Release();
 

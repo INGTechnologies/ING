@@ -151,7 +151,8 @@ namespace ING {
 
 		Debug::Log("Start Releasing WindowManager");
 
-		consoleWindow->Release();
+		if(consoleWindow != 0)
+			consoleWindow->Release();
 
 		idGenerator.ClearIds();
 

@@ -78,6 +78,7 @@ namespace ING {
 		unsigned int id;
 		bool isReady;
 		bool isSTDThreadCreated;
+		bool isStarted;
 
 	public:
 		unsigned int&	GetID() {
@@ -95,6 +96,12 @@ namespace ING {
 		std::thread&	GetSTDThread() {
 
 			return stdThread;
+
+		}
+
+		bool			IsStarted() {
+
+			return isStarted;
 
 		}
 

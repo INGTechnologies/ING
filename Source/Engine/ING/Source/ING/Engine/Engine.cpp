@@ -177,6 +177,10 @@ using namespace ING::Utils;
 
 
 
+#include <nlohmann/json.hpp>
+
+
+
 namespace ING {
 
 	/**
@@ -193,6 +197,10 @@ namespace ING {
 
 
 		Debug::Log("Start Creating Engine");
+
+
+
+
 
 
 
@@ -292,6 +300,40 @@ namespace ING {
 		SetRootPath(L"Game", gameDir);
 		SetRootPath(L"Engine", workingDir);
 
+
+
+		if (!PluginManager::GetInstance()->LoadPlugins(L"Engine:/Plugins/")) {
+
+			Debug::Error("Plugin Cant Load Plugins In Engine:/Plugins/");
+
+			Shutdown();
+
+			return;
+
+		}
+
+		if (!PluginManager::GetInstance()->LoadPlugins(L"Game:/Plugins/")) {
+
+			Debug::Error("Plugin Cant Load Plugins In Game:/Plugins/");
+
+			Shutdown();
+
+			return;
+
+		}
+
+
+
+		if (!PluginManager::GetInstance()->LateCreate()) {
+
+			Debug::Error("Plugin LateCreate Error");
+
+			Shutdown();
+
+			return;
+
+		}
+
 		Debug::Log("Engine Created");
 
 	}
@@ -321,6 +363,16 @@ namespace ING {
 
 		name = configuration->Get<String>("ING.Engine.name");
 
+		if (!PluginManager::GetInstance()->PreInit()) {
+
+			Debug::Error("Plugin PreInit Error");
+
+			Shutdown();
+
+			return false;
+
+		}
+
 		bool result = Board<Engine>::Init();
 
 		if (!result) {
@@ -342,6 +394,16 @@ namespace ING {
 
 		}
 
+		if (!PluginManager::GetInstance()->LateInit()) {
+
+			Debug::Error("Plugin LateInit Error");
+
+			Shutdown();
+
+			return false;
+
+		}
+
 		return result;
 	}
 
@@ -349,7 +411,17 @@ namespace ING {
 
 		state = RUNNING_APPLICATION_STATE;
 
-		Debug::Log("Start Running Engine");
+		Debug::Log("Start Running Engine");		
+		
+		if (!PluginManager::GetInstance()->PreRun()) {
+
+			Debug::Error("Plugin PreRun Error");
+
+			Shutdown();
+
+			return false;
+
+		}
 
 		bool squaresRunResult = Board<Engine>::Run();
 
@@ -389,6 +461,20 @@ namespace ING {
 	bool Engine::Release() {
 
 		Debug::Log("Start Releasing Engine");
+
+		if (!PluginManager::GetInstance()->PreRelease()) {
+
+			Debug::Error("Plugin PreRelease Error");
+
+			if (configuration->Get<unsigned int>("ING.Engine.terminationBehavior") == 1) {
+				system("pause");
+			}
+
+			exit(1);
+
+			return false;
+
+		}
 
 		delete configuration;
 

@@ -20,13 +20,20 @@
 
 
 
+/**
+ *	Include Plugin Manager
+ */
+#include <ING/Plugin/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
 	 *	Constructors And Destructor
 	 */
-	IPlugin::IPlugin(const String& name, const WString& path) :
-		name(name),
+	IPlugin::IPlugin(const WString& path) :
+		name(""),
 		path(path)
 	{
 
@@ -45,11 +52,27 @@ namespace ING {
 	/**
 	 *	Release Method
 	 */
-	void IPlugin::Release() {
+	bool IPlugin::Release() {
 
-		PreRelease();
+		bool result = true;
+
+		if (isLoaded) {
+
+			PreRelease();
+
+			if (!unloadFunction) {
+
+				result = unloadFunction();
+
+			}
+
+			isLoaded = false;
+
+		}
 
 		delete this;
+
+		return result;
 	}
 
 
@@ -57,10 +80,10 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	IPlugin* IPlugin::Create(const String& name, const WString& path) {
+	IPlugin* IPlugin::Create(const WString& path) {
 
 #ifdef USE_MSVC
-		return new MSVC::Plugin(name, path);
+		return new MSVC::Plugin(path);
 #endif
 
 		return 0;
@@ -69,6 +92,8 @@ namespace ING {
 	bool IPlugin::Load() {
 
 		if (!loadFunction) return false;
+
+		PluginManager::GetInstance()->AddPlugin(this);
 
 		isLoaded = true; 
 		
@@ -85,41 +110,44 @@ namespace ING {
 
 		isLoaded = false;
 
+		PluginManager::GetInstance()->RemovePlugin(this);
+
 		return true;
 	}
 
-	void IPlugin::LateCreate() {
+	bool IPlugin::LateCreate() {
 
-		if (!lateCreateFunction) return;
+		if (!lateCreateFunction) return false;
 
-		lateCreateFunction();
+		if (!lateCreateFunction()) return false;
 	}
 
-	void IPlugin::PreInit() {
+	bool IPlugin::PreInit() {
 
-		if (!preInitFunction) return;
+		if (!preInitFunction) return false;
 
-		preInitFunction();
-	}
-	void IPlugin::LateInit() {
-
-		if (!lateInitFunction) return;
-
-		lateInitFunction();
+		if (!preInitFunction()) return false;
 	}
 
-	void IPlugin::PreRun() {
+	bool IPlugin::LateInit() {
 
-		if (!preRunFunction) return;
+		if (!lateInitFunction) return false;
 
-		preRunFunction();
+		if (!lateInitFunction()) return false;
 	}
 
-	void IPlugin::PreRelease() {
+	bool IPlugin::PreRun() {
 
-		if (!preReleaseFunction) return;
+		if (!preRunFunction) return false;
 
-		preReleaseFunction();
+		if (!preRunFunction()) return false;
+	}
+
+	bool IPlugin::PreRelease() {
+
+		if (!preReleaseFunction) return false;
+
+		if (!preReleaseFunction()) return false;
 	}
 
 }

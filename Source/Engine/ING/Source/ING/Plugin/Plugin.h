@@ -22,15 +22,16 @@ namespace ING {
 	class Engine;
 
 
+	typedef ING::Utils::String (*PluginNameFunction)	();
 
 	typedef bool (*PluginLoadFunction)		(ING::Engine* engine, ING::IPlugin* plugin);
 	typedef bool (*PluginUnloadFunction)	();
 
-	typedef void (*PluginLateCreateFunction)();
-	typedef void (*PluginPreInitFunction)	();
-	typedef void (*PluginLateInitFunction)	();
-	typedef void (*PluginPreRunFunction)	();
-	typedef void (*PluginPreReleaseFunction)();
+	typedef bool (*PluginLateCreateFunction)();
+	typedef bool (*PluginPreInitFunction)	();
+	typedef bool (*PluginLateInitFunction)	();
+	typedef bool (*PluginPreRunFunction)	();
+	typedef bool (*PluginPreReleaseFunction)();
 
 
 
@@ -40,7 +41,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		IPlugin(const String& name, const WString& path);
+		IPlugin(const WString& path);
 		~IPlugin();
 
 
@@ -49,14 +50,14 @@ namespace ING {
 		 *	Release Method
 		 */
 	public:
-		virtual void Release();
+		virtual bool Release();
 
 
 
 		/**
 		 *	Properties
 		 */
-	private:
+	protected:
 		String  name;
 		WString path;
 		bool	isLoaded;
@@ -67,6 +68,8 @@ namespace ING {
 		bool			IsLoaded() { return isLoaded; }
 
 	protected:
+		PluginNameFunction			nameFunction;
+
 		PluginLoadFunction			loadFunction;
 		PluginUnloadFunction		unloadFunction;
 
@@ -82,19 +85,19 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		static IPlugin* Create(const String& name, const WString& path);
+		static IPlugin* Create(const WString& path);
 
 		virtual bool Load	();
 		virtual bool Unload	();
 
-		virtual void LateCreate();
+		virtual bool LateCreate();
 
-		virtual void PreInit();
-		virtual void LateInit();
+		virtual bool PreInit();
+		virtual bool LateInit();
 
-		virtual void PreRun();
+		virtual bool PreRun();
 
-		virtual void PreRelease();
+		virtual bool PreRelease();
 
 	};
 
@@ -110,3 +113,56 @@ namespace ING {
 		ING::Engine::LoadInstance(engine);\
 		ING::PluginManager::LoadInstance(ING::Engine::GetInstance()->GetSquare<ING::PluginManager>());
 #endif
+
+#define PLUGIN_STR(Str) \
+Str
+
+#define PLUGIN_EXPORTS(Name) \
+PLUGIN_STR(Name)_EXPORTS
+
+#define PLUGIN_API(Name) \
+PLUGIN_STR(Name)_API
+
+#define PLUGIN_PRIVATE_API(Name) \
+PLUGIN_STR(Name)_PRIVATE_API
+
+#define PLUGIN_EXTERN(Name) \
+PLUGIN_STR(Name)_EXTERN
+
+#define PLUGIN_FUNCTION(Name) \
+extern "C" PLUGIN_API(Name)
+
+#define DECLARE_PLUGIN_NAME(Name) \
+extern "C" PLUGIN_PRIVATE_API(Name) ING::Utils::String PluginName();\
+PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_PluginName();
+
+#define DEFINE_PLUGIN_NAME(Name) \
+ING::Utils::String PluginName(){ return #Name; }\
+ING::Utils::String PLUGIN_STR(Name)_PluginName(){ return #Name; }
+
+#define DECLARE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
+PLUGIN_FUNCTION(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
+
+#define DEFINE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
+ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
+
+
+
+/**
+ *	Add This To Plugin Entry Point And Replace <Name> To Your Plugin Name
+ */
+ /* 
+ #if PLUGIN_EXPORTS(<Name>) > 0
+ #define <Name>_API __declspec(dllexport)
+ #define <Name>_PRIVATE_API __declspec(dllexport)
+ #define <Name>_EXTERN
+ #else
+ #define <Name>_API __declspec(dllimport)
+ #ifndef IS_PLUGIN
+ #define <Name>_PRIVATE_API __declspec(dllimport)
+ #else
+ #define <Name>_PRIVATE_API
+ #endif
+ #define <Name>_EXTERN extern
+ #endif
+ */

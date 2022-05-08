@@ -78,7 +78,8 @@ namespace ING {
 
 		void ILanguage::Release() {
 
-			mainContext->Release();
+			if(mainContext != 0)
+				mainContext->Release();
 
 			Manager::GetInstance()->RemoveLanguage(this);
 

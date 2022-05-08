@@ -48,7 +48,7 @@ namespace ING {
 
 		WString ING_API ToWString(const wchar_t* content);
 
-		WString ING_API ToWString(char content);
+		WString ING_API ToWString(wchar_t content);
 
 		WString ING_API ToWString(int content);
 

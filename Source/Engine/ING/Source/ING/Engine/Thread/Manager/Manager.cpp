@@ -145,11 +145,11 @@ namespace ING {
 
 		Debug::Log("Start Releasing EngineThreadManager");
 
-		applicationThreadList.Foreach([](EngineThread*& thread) {
+		for (EngineThread*& thread : applicationThreadList) {
 
 			thread->Join();
 
-		});
+		}
 
 		applicationThreadList.Clear();
 

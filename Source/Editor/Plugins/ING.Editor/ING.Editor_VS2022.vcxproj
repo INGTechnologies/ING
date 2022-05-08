@@ -142,8 +142,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -184,8 +183,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -227,8 +225,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -269,8 +266,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
-      </Command>
+      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
