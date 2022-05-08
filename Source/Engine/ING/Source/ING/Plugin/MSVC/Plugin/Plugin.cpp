@@ -116,14 +116,14 @@ namespace ING {
 
 			name = nameFunction();
 
-			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLoad")).c_str());
-			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginUnload")).c_str());
+			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_Load")).c_str());
+			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_Unload")).c_str());
 
-			lateCreateFunction = (PluginLateCreateFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLateCreate")).c_str());
-			preInitFunction = (PluginPreInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreInit")).c_str());
-			lateInitFunction = (PluginLateInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLateInit")).c_str());
-			preRunFunction = (PluginPreRunFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreRun")).c_str());
-			preReleaseFunction = (PluginPreReleaseFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginPreRelease")).c_str());
+			lateCreateFunction = (PluginLateCreateFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_LateCreate")).c_str());
+			preInitFunction = (PluginPreInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PreInit")).c_str());
+			lateInitFunction = (PluginLateInitFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_LateInit")).c_str());
+			preRunFunction = (PluginPreRunFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PreRun")).c_str());
+			preReleaseFunction = (PluginPreReleaseFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PreRelease")).c_str());
 
 			return IPlugin::Load();
 		}

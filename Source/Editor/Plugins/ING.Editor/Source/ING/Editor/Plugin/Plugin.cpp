@@ -6,6 +6,7 @@
 #include <ING/_Debug/Debug.h>
 #include <ING/Plugin/Plugin.h>
 #include <ING/Plugin/Manager/Manager.h>
+#include <ING/Window/Manager/Manager.h>
 
 /**
  *	Include Editor Application
@@ -41,6 +42,7 @@ DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, LateCreate) () {
 
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreInit) () {
 
+	/* To run the editor, we need 2 arguments (the first one is program directory path and the second is project directory path) */
 	if (Engine::GetInstance()->GetArgv().size() < 2) {
 
 		return false;
@@ -70,7 +72,7 @@ DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreRun) () {
 
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreRelease) () {
 
-
+	Editor::Application::GetInstance()->Release();
 
 	return true;
 }

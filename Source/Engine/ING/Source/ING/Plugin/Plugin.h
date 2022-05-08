@@ -134,17 +134,17 @@ extern "C" PLUGIN_API(Name)
 
 #define DECLARE_PLUGIN_NAME(Name) \
 extern "C" PLUGIN_PRIVATE_API(Name) ING::Utils::String PluginName();\
-PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_PluginName();
+PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_Name();
 
 #define DEFINE_PLUGIN_NAME(Name) \
 ING::Utils::String PluginName(){ return #Name; }\
-ING::Utils::String PLUGIN_STR(Name)_PluginName(){ return #Name; }
+ING::Utils::String PLUGIN_STR(Name)_Name(){ return #Name; }
 
-#define DECLARE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
-PLUGIN_FUNCTION(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
+#define DECLARE_PLUGIN_FUNCTION(PluginName, ReturnType, FunctionName) \
+PLUGIN_FUNCTION(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)FunctionName
 
-#define DEFINE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
-ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
+#define DEFINE_PLUGIN_FUNCTION(PluginName, ReturnType, FunctionName) \
+ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)FunctionName
 
 
 
