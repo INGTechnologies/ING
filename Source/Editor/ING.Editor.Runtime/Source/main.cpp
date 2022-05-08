@@ -64,7 +64,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 	ING::Engine::CreateInstance(argv);
 
-	ING::IPlugin* plugin = ING::IPlugin::Create("INGEditor", L"Game:/Plugins/ING.Editor/ING.Editor.dll");
+	ING::IPlugin* plugin = ING::IPlugin::Create(L"Game:/Plugins/ING.Editor.Second/ING.Editor.Second.dll");
 
 	plugin->Load();
 

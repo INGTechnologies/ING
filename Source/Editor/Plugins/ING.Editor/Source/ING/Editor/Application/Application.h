@@ -38,7 +38,7 @@ namespace ING {
 
 
 
-		class ING_EDITOR_API Application :
+		class PLUGIN_API(ING_EDITOR) Application :
 			public IApplication,
 			public Singleton<Application>
 		{

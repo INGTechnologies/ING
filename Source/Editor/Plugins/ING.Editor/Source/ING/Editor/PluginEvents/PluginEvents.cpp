@@ -1,56 +1,48 @@
 
 #include "PluginEvents.h"
-
 #include <iostream>
-
 #include <ING/Engine/Engine.h>
-
 #include <ING/_Debug/Debug.h>
-
 #include <ING/Plugin/Plugin.h>
-
 #include <ING/Plugin/Manager/Manager.h>
 
-bool INGEditor_PluginLoad(ING::Engine* engine, ING::IPlugin* plugin) {
 
-	int a = 5;
+
+DEFINE_PLUGIN_NAME(ING_EDITOR);
+
+DEFINE_PLUGIN_EVENT(ING_EDITOR, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
 	DEFAULT_PLUGIN_LOAD(engine, plugin);
 
 	return false;
 }
 
-bool INGEditor_PluginUnload() {
+DEFINE_PLUGIN_EVENT(ING_EDITOR, bool, Unload) () {
 
 
 
 	return true;
 }
 
-void INGEditor_PluginLateCreate() {
+DEFINE_PLUGIN_EVENT(ING_EDITOR, void, LateCreate) () {
 
 
 
 }
 
-void INGEditor_PluginPreInit() {
-
-
-
-}
-void INGEditor_PluginLateInit() {
+DEFINE_PLUGIN_EVENT(ING_EDITOR, void, PreInit) () {
 
 
 
 }
 
-void INGEditor_PluginPreRun() {
+DEFINE_PLUGIN_EVENT(ING_EDITOR, void, LateInit) () {
 
 
 
 }
 
-void INGEditor_PluginPreRelease() {
+DEFINE_PLUGIN_EVENT(ING_EDITOR, void, PreRelease) () {
 
 
 

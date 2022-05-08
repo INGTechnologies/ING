@@ -43,7 +43,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Plugin(const String& name, const WString& path);
+			Plugin(const WString& path);
 			~Plugin();
 
 

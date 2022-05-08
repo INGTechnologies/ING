@@ -12,19 +12,16 @@ namespace ING {
 
 }
 
+DECLARE_PLUGIN_NAME(ING_EDITOR);
 
+DECLARE_PLUGIN_EVENT(ING_EDITOR, bool, Load)		(ING::Engine* engine, ING::IPlugin * plugin);
+DECLARE_PLUGIN_EVENT(ING_EDITOR, bool, Unload)		();
 
-/**
- *	Plugin Events
- */
-ING_EDITOR_EVENT bool INGEditor_PluginLoad		(ING::Engine* engine, ING::IPlugin * plugin);
-ING_EDITOR_EVENT bool INGEditor_PluginUnload	();
+DECLARE_PLUGIN_EVENT(ING_EDITOR, void, LateCreate)	();
 
-ING_EDITOR_EVENT void INGEditor_PluginLateCreate();
+DECLARE_PLUGIN_EVENT(ING_EDITOR, void, PreInit)		();
+DECLARE_PLUGIN_EVENT(ING_EDITOR, void, LateInit)	();
 
-ING_EDITOR_EVENT void INGEditor_PluginPreInit	();
-ING_EDITOR_EVENT void INGEditor_PluginLateInit	();
+DECLARE_PLUGIN_EVENT(ING_EDITOR, void, PreRun)		();
 
-ING_EDITOR_EVENT void INGEditor_PluginPreRun	();
-
-ING_EDITOR_EVENT void INGEditor_PluginPreRelease();
+DECLARE_PLUGIN_EVENT(ING_EDITOR, void, PreRelease)	();

@@ -25,8 +25,8 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	IPlugin::IPlugin(const String& name, const WString& path) :
-		name(name),
+	IPlugin::IPlugin(const WString& path) :
+		name(""),
 		path(path)
 	{
 
@@ -57,10 +57,10 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	IPlugin* IPlugin::Create(const String& name, const WString& path) {
+	IPlugin* IPlugin::Create(const WString& path) {
 
 #ifdef USE_MSVC
-		return new MSVC::Plugin(name, path);
+		return new MSVC::Plugin(path);
 #endif
 
 		return 0;

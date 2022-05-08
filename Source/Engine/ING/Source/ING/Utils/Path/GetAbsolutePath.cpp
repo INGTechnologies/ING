@@ -6,6 +6,10 @@
 
 
 
+#include "Normalize.h"
+
+
+
 #include <ING/Utils/Utils.h>
 
 
@@ -29,11 +33,11 @@ namespace ING {
 
 				if (Engine::GetInstance()->IsHaveRootPath(rootName.first)) {
 
-					return Engine::GetInstance()->GetRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second);
+					return Normalize(Engine::GetInstance()->GetRootPath(rootName.first) + pathStr.substr(rootName.second, pathStr.size() - rootName.second));
 
 				}
 
-				return pathStr;
+				return Normalize(pathStr);
 
 			}
 

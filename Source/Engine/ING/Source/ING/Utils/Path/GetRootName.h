@@ -19,7 +19,7 @@ namespace ING {
 
 			static inline std::pair<WString, unsigned int> GetRootName(const WString& pathStr) {
 
-				size_t chCount = pathStr.size();
+				size_t chCount = pathStr.length();
 
 				if (
 					pathStr == L"." && chCount == 1
