@@ -130,7 +130,7 @@ namespace ING {
 
 		}
 
-		WString ToWString(char content) {
+		WString ToWString(wchar_t content) {
 
 			WString result;
 

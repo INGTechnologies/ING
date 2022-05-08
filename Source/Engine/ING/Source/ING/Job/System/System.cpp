@@ -192,6 +192,8 @@ namespace ING {
 
 	void JobSystem::JoinThreads() {
 
+		if (!isRunning) return;
+
 		this->isRunning = false;
 
 		unsigned int currentThreadCount = threads.size();

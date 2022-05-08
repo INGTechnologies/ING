@@ -60,19 +60,9 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 	}
 
-	WString projectPath = argv[1];
-
 	ING::Engine::CreateInstance(argv);
 
-	ING::IPlugin* plugin = ING::IPlugin::Create(L"Game:/Plugins/ING.Editor.Second/ING.Editor.Second.dll");
-
-	plugin->Load();
-
-	//ING::Editor::Application* editorApplication = new ING::Editor::Application(L"Game:/Config.ini", projectPath);
-
 	if (!ING::Engine::GetInstance()->Init()) return 1;
-
-	//if (!editorApplication->Init()) return 1;
 
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 

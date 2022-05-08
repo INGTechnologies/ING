@@ -52,7 +52,7 @@ namespace ING {
 			 *	Release Method
 			 */
 		public:
-			virtual void Release() override;
+			virtual bool Release() override;
 
 
 
@@ -71,14 +71,14 @@ namespace ING {
 			virtual bool Load		()	override;
 			virtual bool Unload		()	override;
 
-			virtual void LateCreate	()	override;
+			virtual bool LateCreate	()	override;
 
-			virtual void PreInit	()	override;
-			virtual void LateInit	()	override;
+			virtual bool PreInit	()	override;
+			virtual bool LateInit	()	override;
 
-			virtual void PreRun		()	override;
+			virtual bool PreRun		()	override;
 
-			virtual void PreRelease	()	override;
+			virtual bool PreRelease	()	override;
 
 		};
 

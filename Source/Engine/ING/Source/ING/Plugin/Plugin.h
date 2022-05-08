@@ -27,11 +27,11 @@ namespace ING {
 	typedef bool (*PluginLoadFunction)		(ING::Engine* engine, ING::IPlugin* plugin);
 	typedef bool (*PluginUnloadFunction)	();
 
-	typedef void (*PluginLateCreateFunction)();
-	typedef void (*PluginPreInitFunction)	();
-	typedef void (*PluginLateInitFunction)	();
-	typedef void (*PluginPreRunFunction)	();
-	typedef void (*PluginPreReleaseFunction)();
+	typedef bool (*PluginLateCreateFunction)();
+	typedef bool (*PluginPreInitFunction)	();
+	typedef bool (*PluginLateInitFunction)	();
+	typedef bool (*PluginPreRunFunction)	();
+	typedef bool (*PluginPreReleaseFunction)();
 
 
 
@@ -50,7 +50,7 @@ namespace ING {
 		 *	Release Method
 		 */
 	public:
-		virtual void Release();
+		virtual bool Release();
 
 
 
@@ -90,14 +90,14 @@ namespace ING {
 		virtual bool Load	();
 		virtual bool Unload	();
 
-		virtual void LateCreate();
+		virtual bool LateCreate();
 
-		virtual void PreInit();
-		virtual void LateInit();
+		virtual bool PreInit();
+		virtual bool LateInit();
 
-		virtual void PreRun();
+		virtual bool PreRun();
 
-		virtual void PreRelease();
+		virtual bool PreRelease();
 
 	};
 
@@ -129,21 +129,21 @@ PLUGIN_STR(Name)_PRIVATE_API
 #define PLUGIN_EXTERN(Name) \
 PLUGIN_STR(Name)_EXTERN
 
-#define PLUGIN_EVENT(Name) \
+#define PLUGIN_FUNCTION(Name) \
 extern "C" PLUGIN_API(Name)
 
 #define DECLARE_PLUGIN_NAME(Name) \
 extern "C" PLUGIN_PRIVATE_API(Name) ING::Utils::String PluginName();\
-PLUGIN_EVENT(Name) ING::Utils::String PLUGIN_STR(Name)_PluginName();
+PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_PluginName();
 
 #define DEFINE_PLUGIN_NAME(Name) \
 ING::Utils::String PluginName(){ return #Name; }\
 ING::Utils::String PLUGIN_STR(Name)_PluginName(){ return #Name; }
 
-#define DECLARE_PLUGIN_EVENT(PluginName, ReturnType, EventName) \
-PLUGIN_EVENT(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
+#define DECLARE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
+PLUGIN_FUNCTION(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
 
-#define DEFINE_PLUGIN_EVENT(PluginName, ReturnType, EventName) \
+#define DEFINE_PLUGIN_FUNCTION(PluginName, ReturnType, EventName) \
 ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)PLUGIN_STR(Plugin)EventName
 
 

@@ -36,6 +36,17 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Plugin
+ */
+#include <ING/Plugin/Plugin.h>
+
+
+
+#include <filesystem>
+
+
+
 namespace ING {
 
 	/**
@@ -85,7 +96,7 @@ namespace ING {
 
 		Debug::Log("Start Releasing PluginManager");
 
-		name2Pointer.clear();
+		name2PointerMap.clear();
 
 		delete this;
 
@@ -103,13 +114,13 @@ namespace ING {
 
 		if (IsHasPointer(name)) return;
 
-		name2Pointer[name] = pointer;
+		name2PointerMap[name] = pointer;
 
 	}
 
 	bool PluginManager::IsHasPointer(const String& name) {
 
-		return name2Pointer.find(name) != name2Pointer.end();
+		return name2PointerMap.find(name) != name2PointerMap.end();
 
 	}
 
@@ -117,7 +128,7 @@ namespace ING {
 
 		if (!IsHasPointer(name)) return 0;
 
-		return name2Pointer[name];
+		return name2PointerMap[name];
 
 	}
 
@@ -125,8 +136,118 @@ namespace ING {
 
 		if (!IsHasPointer(name)) return;
 
-		name2Pointer.erase(name);
+		name2PointerMap.erase(name);
 
+	}
+
+
+
+	/**
+	 *	Methods
+	 */
+	bool PluginManager::LoadPlugins(const WString& path) {
+
+		WString absolutePath = Path::GetAbsolutePath(path);
+
+		if (!std::filesystem::exists(absolutePath)) return true;
+
+
+
+		for (const auto& entry : std::filesystem::directory_iterator(absolutePath)) {
+
+			std::error_code ec;
+
+			if (std::filesystem::is_directory(entry.path(), ec))
+			{
+
+				String pluginName = entry.path().filename().string();
+
+				WString pluginDLLPath = Path::Normalize(entry.path().wstring() + ToWString(L'/') + ToWString(pluginName) + ToWString(L".dll"));
+				
+				if (std::filesystem::exists(pluginDLLPath)) {
+
+					IPlugin* plugin = IPlugin::Create(pluginDLLPath);
+
+					if (!plugin->Load()) return false;
+
+				}
+
+			}
+
+		}
+
+		return true;
+	}
+
+	void PluginManager::AddPlugin(IPlugin* plugin) {
+
+		if (IsHasPlugin(plugin->GetName())) return;
+
+		name2PluginMap[plugin->GetName()] = plugin;
+
+	}
+
+	void PluginManager::RemovePlugin(IPlugin* plugin) {
+
+		if (!IsHasPlugin(plugin->GetName())) return;
+
+		name2PluginMap.erase(plugin->GetName());
+
+	}
+
+	bool PluginManager::LateCreate() {
+
+		for (auto& item : name2PluginMap) {
+
+			if (!item.second->LateCreate())return false;
+
+		}
+
+		return true;
+	}
+
+	bool PluginManager::PreInit() {
+
+		for (auto& item : name2PluginMap) {
+
+			if (!item.second->PreInit())return false;
+
+		}
+
+		return true;
+	}
+
+	bool PluginManager::LateInit() {
+
+		for (auto& item : name2PluginMap) {
+
+			if (!item.second->LateInit())return false;
+
+		}
+
+		return true;
+	}
+
+	bool PluginManager::PreRun() {
+
+		for (auto& item : name2PluginMap) {
+
+			if (!item.second->PreRun())return false;
+
+		}
+
+		return true;
+	}
+
+	bool PluginManager::PreRelease() {
+
+		for (auto& item : name2PluginMap) {
+
+			if (!item.second->Release())return false;
+
+		}
+
+		return true;
 	}
 
 }

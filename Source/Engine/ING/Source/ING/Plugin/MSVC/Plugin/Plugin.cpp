@@ -50,9 +50,10 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		void Plugin::Release() {
+		bool Plugin::Release() {
 
-			IPlugin::Release();
+			return IPlugin::Release();
+
 		}
 
 
@@ -88,8 +89,6 @@ namespace ING {
 
 			if (moduleHandle != 0) return false;
 
-			Debug::Log(Path::GetAbsolutePath(GetPath()));
-
 			moduleHandle = LoadLibrary(Path::GetAbsolutePath(GetPath()).c_str());
 
 			if (moduleHandle == 0) {
@@ -103,7 +102,19 @@ namespace ING {
 
 			}
 
-			name = ((PluginNameFunction)GetProcAddress(moduleHandle, "PluginName"))();
+			PluginNameFunction nameFunction = (PluginNameFunction)GetProcAddress(moduleHandle, "PluginName");
+
+			if (!nameFunction) {
+
+				Debug::Error(ToWString("Not Found Plugin Name") + GetPath());
+
+				Release();
+
+				return false;
+
+			}
+
+			name = nameFunction();
 
 			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginLoad")).c_str());
 			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_PluginUnload")).c_str());
@@ -121,41 +132,43 @@ namespace ING {
 
 			if (moduleHandle == 0) return false;
 
+			FreeLibrary(moduleHandle);
+
 			return IPlugin::Unload();
 		}
 
-		void Plugin::LateCreate() {
+		bool Plugin::LateCreate() {
 
-			if (!lateCreateFunction) return;
+			if (!lateCreateFunction) return false;
 
-			IPlugin::LateCreate();
+			return IPlugin::LateCreate();
 		}
 
-		void Plugin::PreInit() {
+		bool Plugin::PreInit() {
 
-			if (!preInitFunction) return;
+			if (!preInitFunction) return false;
 
-			IPlugin::PreInit();
+			return IPlugin::PreInit();
 		}
-		void Plugin::LateInit() {
+		bool Plugin::LateInit() {
 
-			if (!lateInitFunction) return;
+			if (!lateInitFunction) return false;
 
-			IPlugin::LateInit();
-		}
-
-		void Plugin::PreRun() {
-
-			if (!preRunFunction) return;
-
-			IPlugin::PreRun();
+			return IPlugin::LateInit();
 		}
 
-		void Plugin::PreRelease() {
+		bool Plugin::PreRun() {
 
-			if (!preReleaseFunction) return;
+			if (!preRunFunction) return false;
 
-			IPlugin::PreRelease();
+			return IPlugin::PreRun();
+		}
+
+		bool Plugin::PreRelease() {
+
+			if (!preReleaseFunction) return false;
+
+			return IPlugin::PreRelease();
 		}
 
 	}

@@ -131,9 +131,7 @@ namespace ING {
 
 				}
 
-				ILanguage::Release();
-
-				mono_jit_cleanup(rootDomain);
+				ILanguage::Release(); 
 
 			}
 
