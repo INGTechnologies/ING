@@ -301,11 +301,15 @@ namespace ING {
 
 		ING_ENGINE_CONFIG_PROP(String, "ING.Engine.name", "ING App");
 
+		ING_ENGINE_CONFIG_PROP(String, "ING.Engine.mode", "ING.Standalone");
+
 		SetRootPath(L"CWD", std::filesystem::current_path().wstring() + WString(L"/"));
 		SetRootPath(L"CWD/../", std::filesystem::current_path().wstring() + WString(L"/../"));
 
 		gameDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.gameDir")));
 		workingDir = Path::GetAbsolutePath(ToWString(configuration->Get<String>("ING.Engine.workingDir")));
+
+		mode = configuration->Get<String>("ING.Engine.mode");
 
 		SetRootPath(L"Game", gameDir);
 		SetRootPath(L"Engine", workingDir);

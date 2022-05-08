@@ -53,9 +53,12 @@ namespace ING {
 		 */
 	private:
 		std::unordered_map<String, IApplication*> name2ApplicationMap;
+		IApplication*	gameApplication;
 
 	public:
-		IApplication*	GetApplication(const String& name) { return name2ApplicationMap[name]; }
+		IApplication*	GetApplication			(const String& name) { return name2ApplicationMap[name]; }
+		IApplication*	GetGameApplication		(){ return gameApplication; }
+		void			SetGameApplication		(IApplication* gameApplication){ this->gameApplication = gameApplication; }
 
 
 

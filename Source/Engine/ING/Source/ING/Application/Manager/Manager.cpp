@@ -48,7 +48,8 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	ApplicationManager::ApplicationManager()
+	ApplicationManager::ApplicationManager() :
+		gameApplication(0)
 	{
 
 		Debug::Log("Start Creating ApplicationManager");

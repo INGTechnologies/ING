@@ -28,6 +28,13 @@
 
 
 /**
+ *	Include ApplicationManager
+ */
+#include <ING/Application/Manager/Manager.h>
+
+
+
+/**
  *	Include Window
  */
 #include <ING/Window/Window.h>
@@ -38,13 +45,6 @@
  *	Include Event
  */
 #include <ING/Event/Event.h>
-
-
-
-/**
- *	Include GameApplication
- */
-#include <ING/Editor/Game/Application/Application.h>
 
 
 
@@ -190,7 +190,9 @@ namespace ING {
 
 		void Application::CreateGameApplication() {
 
-			gameApplication = new GameApplication(L"Game:/Config.ini");
+			gameApplication = new IApplication(L"Game:/Config.ini");
+
+			ApplicationManager::GetInstance()->SetGameApplication(gameApplication);
 
 		}
 
