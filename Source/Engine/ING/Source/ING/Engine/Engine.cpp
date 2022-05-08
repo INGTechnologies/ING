@@ -181,6 +181,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include GameFramework
+ */
+#include <ING/GameFramework/GameFramework.h>
+
+
+
 namespace ING {
 
 	/**
@@ -274,6 +281,9 @@ namespace ING {
 
 		/* ECS Repository Manager */
 		AddSquare<ECS::RepositoryManager>();
+
+		/* GameFramework */
+		AddSquare<GameFramework>();
 
 		/* Application Manager */
 		AddSquare<ApplicationManager>();

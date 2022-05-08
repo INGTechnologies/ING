@@ -115,8 +115,6 @@ namespace ING {
 
 			IApplication::Release();
 
-			ING::Engine::GetInstance()->Shutdown();
-
 			Debug::Log("Finished Releasing Editor Application");
 
 		}
@@ -184,7 +182,7 @@ namespace ING {
 
 			GetWindowSystem()->GetWindow("ING.Editor.MainWindow")->GetEvent("DESTROY")->AddListener([](Event* e) {
 				
-				Application::GetInstance()->Release();
+				ING::Engine::GetInstance()->Shutdown();
 				
 			});
 

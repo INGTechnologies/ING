@@ -230,8 +230,6 @@ namespace ING {
 
 			ApplicationManager::GetInstance()->Render();
 
-			//Rendering::System::GetInstance()->FrameUpdate();
-
 			ECS::RepositoryManager::GetInstance()->LateRender();
 
 			ApplicationManager::GetInstance()->LateRender();
