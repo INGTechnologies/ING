@@ -50,10 +50,21 @@ namespace ING {
 			 *	Properties
 			 */
 		protected:
-			IContext* mainContext;
+			IContext*	mainContext;
+
+			std::unordered_map<String, IContext*>	name2ContextMap;
 
 		public:
-			IContext* GetMainContext() { return mainContext; }
+			IContext*	GetMainContext() { return mainContext; }
+
+			IContext*	GetContext(const String& name) { 
+
+				if (name2ContextMap.find(name) == name2ContextMap.end()) return 0;
+				
+				return name2ContextMap[name]; 
+			}
+
+			bool		IsHasContext(const String& name) { return !(name2ContextMap.find(name) == name2ContextMap.end()); }
 
 
 
@@ -61,11 +72,14 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual String GetName() { return "None"; }
+			void				AddContext		(IContext* context);
+			void				RemoveContext	(IContext* context);
 
-			virtual IContext*	CreateContext(const String& name, bool isMainContext);
+			virtual String		GetName			() { return "None"; }
 
-			IContext*			CreateContext(const String& name);
+			virtual IContext*	CreateContext	(const String& name, bool isMainContext);
+
+			IContext*			CreateContext	(const String& name);
 
 		};
 

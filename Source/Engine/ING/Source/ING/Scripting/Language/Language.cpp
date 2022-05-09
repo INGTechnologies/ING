@@ -92,6 +92,18 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void		ILanguage::AddContext(IContext* context) {
+
+			name2ContextMap[context->GetName()] = context;
+
+		}
+
+		void		ILanguage::RemoveContext(IContext* context) {
+
+			name2ContextMap.erase(context->GetName());
+
+		}
+
 		IContext*	ILanguage::CreateContext(const String& name, bool isMainContext) {
 
 			Debug::Error("Cant Create Scripting Context");

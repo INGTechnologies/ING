@@ -314,6 +314,10 @@ namespace ING {
 		SetRootPath(L"Game", gameDir);
 		SetRootPath(L"Engine", workingDir);
 
+#ifdef USE_MSVC
+		AddDllDirectory(Path::GetAbsolutePath(L"Game:/").c_str());
+#endif
+
 
 
 		if (!PluginManager::GetInstance()->LoadPlugins(L"Engine:/Plugins/")) {

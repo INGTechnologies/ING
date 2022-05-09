@@ -15,8 +15,16 @@ using namespace ING;
 
 
 
+/**
+ *	Plugin Info
+ */
 DEFINE_PLUGIN_NAME(ING_EDITOR);
 
+
+
+/**
+ *	Plugin Events
+ */
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
 	DEFAULT_PLUGIN_LOAD(engine, plugin);

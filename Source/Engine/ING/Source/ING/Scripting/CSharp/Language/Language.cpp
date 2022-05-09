@@ -140,18 +140,6 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void		Language::AddContext	(Context* context) {
-
-				name2ContextMap[context->GetName()] = context;
-
-			}
-
-			void		Language::RemoveContext	(Context* context) {
-
-				name2ContextMap.erase(context->GetName());
-
-			}
-
 			String Language::GetName() { return "CSharp"; }
 
 			IContext*	Language::CreateContext(const String& name, bool isMainContext) {

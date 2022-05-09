@@ -55,7 +55,14 @@ namespace ING {
 			std::unordered_map<String, ILanguage*> name2LanguageMap;
 
 		public:
-			ILanguage* GetLanguage(const String& name) { return name2LanguageMap[name]; }
+			ILanguage*	GetLanguage		(const String& name) { 
+
+				if (!IsHasLanguage(name)) return 0;
+				
+				return name2LanguageMap[name]; 
+			}
+
+			bool		IsHasLanguage	(const String& name) { return name2LanguageMap.find(name) != name2LanguageMap.end(); }
 
 
 
@@ -63,8 +70,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void AddLanguage	(ILanguage* language);
-			void RemoveLanguage	(ILanguage* language);
+			void		AddLanguage		(ILanguage* language);
+			void		RemoveLanguage	(ILanguage* language);
 
 		};
 

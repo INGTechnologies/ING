@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include CPP Language
+ */
+#include <ING/Scripting/CPP/Language/Language.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -47,6 +54,7 @@ namespace ING {
 			Debug::Log("Start Creating Scripting::Manager");
 
 			AddLanguage(new CSharp::Language());
+			AddLanguage(new CPP::Language());
 
 			Debug::Log("Scripting::Manager Created");
 

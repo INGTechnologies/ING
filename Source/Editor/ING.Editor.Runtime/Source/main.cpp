@@ -6,48 +6,6 @@
 
 
 
-/**
- *	Include Style
- */
-#include <ING/UI/Style/Style.h>
-
-
-
-/**
- *	Include Element
- */
-#include <ING/UI/Element/Element.h>
-
-
-
-/**
- *	Include Node
- */
-#include <ING/UI/Node/Node.h>
-
-
-
-/**
- *	Include UISystem
- */
-#include <ING/Application/UISystem/UISystem.h>
-
-
-
-/**
- *	Include Debug
- */
-#include <ING/_Debug/Debug.h>
-
-
-
-/**
- *	Include Plugin
- */
-#include <ING/Plugin/Plugin.h>
-
-
-
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
