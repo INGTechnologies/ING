@@ -266,18 +266,14 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y</Command>
+      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\" /s /i /y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ING\Editor\Application\Application.cpp" />
-    <ClCompile Include="Source\ING\Editor\EntryPoint\EntryPoint.cpp" />
-    <ClCompile Include="Source\ING\Editor\Plugin\Plugin.cpp" />
+    <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ING\Editor\Application\Application.h" />
-    <ClInclude Include="Source\ING\Editor\EntryPoint\EntryPoint.h" />
-    <ClInclude Include="Source\ING\Editor\Plugin\Plugin.h" />
+    <ClInclude Include="Source\**\*.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

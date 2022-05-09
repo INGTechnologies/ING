@@ -23,31 +23,20 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include Mono
- */
-#include <mono/jit/jit.h>
-#include <mono/metadata/assembly.h>
-#include <mono/metadata/debug-helpers.h>
-
-
-
 namespace ING {
 
 	namespace Scripting {
 
-		namespace CSharp {
+		namespace CPP {
 
 			class Context;
-
-			class IAssemblyComponentCreator;
 
 
 
 			class ING_API Language : public ILanguage
 			{
 
-				/**
+				/** 
 				 *	Constructors And Destructor
 				 */
 			public:
@@ -66,31 +55,12 @@ namespace ING {
 
 
 				/**
-				 *	Properties
-				 */
-			private:
-				MonoDomain* rootDomain;
-
-				std::unordered_map<String, IAssemblyComponentCreator*>	name2AssemblyComponentCreatorMap;
-
-			public:
-				MonoDomain* GetRootDomain	() { return rootDomain; }
-
-				IAssemblyComponentCreator* GetAssemblyComponentCreator(const String& name) { return name2AssemblyComponentCreatorMap[name]; }
-
-
-
-				/**
 				 *	Methods
 				 */
 			public:
 				virtual String GetName()		override;
 
 				virtual IContext*	CreateContext(const String& name, bool isMainContext) override;
-
-				void OpenAssemblies(const WString& iniFilePath, const String& tag);
-
-				void AddAssemblyComponentCreator(IAssemblyComponentCreator* creator);
 
 			};
 
