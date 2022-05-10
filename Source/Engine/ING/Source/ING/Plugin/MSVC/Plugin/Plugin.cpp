@@ -116,6 +116,8 @@ namespace ING {
 
 			name = nameFunction();
 
+			dllDirCookie = AddDllDirectory(GetPath().c_str());
+
 			loadFunction	= (PluginLoadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_Load")).c_str());
 			unloadFunction	= (PluginUnloadFunction)GetProcAddress(moduleHandle, (GetName() + ToString("_Unload")).c_str());
 
@@ -131,6 +133,10 @@ namespace ING {
 		bool Plugin::Unload() {
 
 			if (moduleHandle == 0) return false;
+
+			RemoveDllDirectory(dllDirCookie);
+
+			dllDirCookie = 0;
 
 			FreeLibrary(moduleHandle);
 
