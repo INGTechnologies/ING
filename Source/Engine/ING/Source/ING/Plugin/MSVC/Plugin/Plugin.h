@@ -33,11 +33,21 @@ namespace ING {
 
 	class Engine;
 
+	class PluginManager;
+
 
 
 	namespace MSVC {
 
 		class ING_API Plugin : public IPlugin {
+
+			/**
+			 *	Friend Class
+			 */
+		public:
+			friend class PluginManager;
+
+
 
 			/**
 			 *	Constructors And Destructor
@@ -61,6 +71,8 @@ namespace ING {
 			 */
 		private:
 			HMODULE						moduleHandle;
+
+			DLL_DIRECTORY_COOKIE		dllDirCookie;
 
 
 

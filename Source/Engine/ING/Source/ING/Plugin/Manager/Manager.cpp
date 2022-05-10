@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include MSVC Plugin
+ */
+#include <ING/Plugin/MSVC/Plugin/Plugin.h>
+
+
+
 #include <filesystem>
 
 
