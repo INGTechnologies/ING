@@ -106,7 +106,7 @@ namespace ING {
 
 			if (!nameFunction) {
 
-				Debug::Error(ToWString("Not Found Plugin Name") + GetPath());
+				Debug::Error(ToWString("Not Found Plugin ") + GetPath());
 
 				Release();
 
