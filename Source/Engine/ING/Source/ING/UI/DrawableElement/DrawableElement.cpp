@@ -27,8 +27,16 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		DrawableElement::DrawableElement():
+		DrawableElement::DrawableElement() :
 			IElement()
+		{
+
+
+
+		}
+
+		DrawableElement::DrawableElement(const String& name):
+			IElement(name)
 		{
 
 

@@ -159,7 +159,9 @@ namespace ING {
 	void IApplication::Release()
 	{
 
-		for (unsigned int i = 0; i < componentVector.size();) {
+		for (unsigned int j = componentVector.size(); j >= 1; --j) {
+
+			unsigned int i = j - 1;
 
 			componentVector[i]->Release();
 

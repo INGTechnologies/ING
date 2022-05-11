@@ -52,6 +52,7 @@ namespace ING {
 			 */
 		public:
 			IElement	();
+			IElement	(const String& name);
 			~IElement	();
 
 
@@ -77,6 +78,9 @@ namespace ING {
 			Math::RVector4			padding; //(top, right, bottom, left)
 			Math::RVector4			margin;	//(top, right, bottom, left)
 
+		protected:
+			String					name;
+
 		public:
 			Node*					GetNode		() { return node; }
 			Style*					GetStyle	() { return style; }
@@ -89,21 +93,25 @@ namespace ING {
 			const Math::RVector4&	GetPadding	() { return padding; }
 			const Math::RVector4&	GetMargin	() { return margin; }
 
+			const String&			GetName		() { return name; }
+
 
 
 			/**
 			 *	Methods
 			 */
 		public:
-			virtual void			Start();
+			virtual void			Start		();
 
-			virtual void			PreUpdate();
-			virtual void			Update();
-			virtual void			LateUpdate();
+			virtual void			PreUpdate	();
+			virtual void			Update		();
+			virtual void			LateUpdate	();
 
-			virtual void			PreRender();
-			virtual void			Render();
-			virtual void			LateRender();
+			virtual void			PreRender	();
+			virtual void			Render		();
+			virtual void			LateRender	();
+
+			virtual void			Resize		();
 
 		};
 

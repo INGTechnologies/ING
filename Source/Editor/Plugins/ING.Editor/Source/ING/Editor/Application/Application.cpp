@@ -48,6 +48,34 @@
 
 
 
+/**
+ *	Include Editor Window
+ */
+#include <ING/Editor/Window/Window.h>
+
+
+
+/**
+ *	Include Editor Window System
+ */
+#include <ING/Editor/Application/WindowSystem/WindowSystem.h>
+
+
+
+/**
+ *	Include Editor Layout System
+ */
+#include <ING/Editor/Application/LayoutSystem/LayoutSystem.h>
+
+
+
+/**
+ *	Include Layout
+ */
+#include <ING/Editor/Layout/Layout.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -58,11 +86,7 @@ namespace ING {
 		Application::Application() :
 			IApplication(L""),
 			Singleton()
-		{
-			 
-
-
-		}
+		{}
 
 		Application::Application(const WString& configPath, const WString& projectPath) :
 			IApplication(configPath),
@@ -74,9 +98,20 @@ namespace ING {
 
 			Debug::Log("Start Creating Editor Application");
 
+
+
 			SetupRootPaths();
 
+
+
+			AddComponent(new ApplicationLayoutSystem(this));
+			AddComponent(new ApplicationWindowSystem(this));
+
+
+
 			CreateGameApplication();
+
+
 
 			Debug::Log("Editor Application Created");
 
@@ -98,8 +133,6 @@ namespace ING {
 			Debug::Log("Start Initializing Editor Application");
 
 			if(!IApplication::Init())return false;
-
-			CreateMainWindow();
 
 			if (!InitGameApplication())return false;
 
@@ -155,36 +188,6 @@ namespace ING {
 				projectPath
 
 			);
-
-		}
-
-		void	Application::CreateMainWindow() {
-
-			Debug::Log("Editor MainWindow Created");
-
-			GetWindowSystem()->AddWindow(
-			
-				IWindow::Create({
-
-					1600,
-
-					900,
-
-					L"ING.Editor",
-
-					"ING.Editor.MainWindow",
-
-					true
-
-				})
-			
-			);
-
-			GetWindowSystem()->GetWindow("ING.Editor.MainWindow")->GetEvent("DESTROY")->AddListener([](Event* e) {
-				
-				ING::Engine::GetInstance()->Shutdown();
-				
-			});
 
 		}
 

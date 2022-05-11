@@ -46,6 +46,7 @@ namespace ING {
 			 */
 		public:
 			DrawableElement();
+			DrawableElement(const String& name);
 			~DrawableElement();
 
 

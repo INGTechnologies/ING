@@ -46,15 +46,15 @@ namespace ING {
 
 
 
-		class ING_API ICanvas : public IElement
+		class ING_API Canvas : public IElement
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ICanvas	();
-			~ICanvas();
+			Canvas	(const String& name);
+			~Canvas	();
 
 
 
@@ -70,15 +70,17 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Start() override;
+			virtual void Start		()	override;
 
-			virtual void PreUpdate() override;
-			virtual void Update() override;
-			virtual void LateUpdate() override;
+			virtual void PreUpdate	()	override;
+			virtual void Update		()	override;
+			virtual void LateUpdate	()	override;
 
-			virtual void PreRender() override;
-			virtual void Render() override;
-			virtual void LateRender() override;
+			virtual void PreRender	()	override;
+			virtual void Render		()	override;
+			virtual void LateRender	()	override;
+
+			virtual void Resize		()	override;
 
 		};
 

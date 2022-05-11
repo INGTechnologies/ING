@@ -119,7 +119,7 @@ namespace ING {
 
 		void Manager::RemoveLanguage	(ILanguage* language) {
 
-			name2LanguageMap.erase(language->GetName());
+			name2LanguageMap.erase(language->GetName()); 
 
 		}
 

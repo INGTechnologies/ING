@@ -169,6 +169,16 @@ namespace ING {
 
 		}
 
+		void Node::Resize() {
+
+			for (auto child : childList) {
+
+				child->GetElement()->Resize();
+
+			}
+
+		}
+
 	}
 
 }

@@ -34,15 +34,15 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ICanvas::ICanvas():
-			IElement()
+		Canvas::Canvas(const String& name):
+			IElement(name)
 		{
 
 
 
 		}
 
-		ICanvas::~ICanvas()
+		Canvas::~Canvas()
 		{
 
 
@@ -54,7 +54,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void ICanvas::Release() {
+		void Canvas::Release() {
 
 			IElement::Release();
 		}
@@ -64,45 +64,51 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	ICanvas::Start() {
+		void	Canvas::Start() {
 
 			IElement::Start();
 
 		}
 
-		void	ICanvas::PreUpdate() {
+		void	Canvas::PreUpdate() {
 
 			IElement::PreUpdate();
 
 		}
 
-		void	ICanvas::Update() {
+		void	Canvas::Update() {
 
 			IElement::Update();
 
 		}
 
-		void	ICanvas::LateUpdate() {
+		void	Canvas::LateUpdate() {
 
 			IElement::LateUpdate();
 
 		}
 
-		void	ICanvas::PreRender() {
+		void	Canvas::PreRender() {
 
 			IElement::PreRender();
 
 		}
 
-		void	ICanvas::Render() {
+		void	Canvas::Render() {
 
 			IElement::Render();
 
 		}
 
-		void	ICanvas::LateRender() {
+		void	Canvas::LateRender() {
 
 			IElement::LateRender();
+
+		}
+
+		void	Canvas::Resize() {
+
+			IElement::Resize();
 
 		}
 

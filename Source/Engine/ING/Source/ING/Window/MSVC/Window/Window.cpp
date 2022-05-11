@@ -32,6 +32,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
+/**
  *	Include Engine
  */
 #include <ING/Engine/Engine.h>
@@ -95,29 +102,29 @@ namespace ING {
 			case WM_SIZE:
 			{
 
-				if (!window->IsResizing()) {
-
-					ING::WindowResizeEvent* event = (ING::WindowResizeEvent*)window->GetEvent("RESIZE");
-
-					event->newWidth = LOWORD(lparam);
-					event->newHeight = HIWORD(lparam);
-
-					event->Execute();
-
-				}
-
 				break;
 			}
 			case WM_ENTERSIZEMOVE:
+			{
 
 				window->isResizing = true;
 
 				break;
+			}
 			case WM_EXITSIZEMOVE:
+			{
 
 				window->isResizing = false;
 
+				ING::WindowResizeEvent* event = (ING::WindowResizeEvent*)window->GetEvent("RESIZE");
+
+				event->newWidth = LOWORD(lparam);
+				event->newHeight = HIWORD(lparam);
+
+				event->Execute();
+
 				break;
+			}
 			case WM_MOUSEMOVE:
 			{
 				return ::DefWindowProc(hwnd, msg, wparam, lparam);
