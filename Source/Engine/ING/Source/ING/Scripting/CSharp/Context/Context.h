@@ -64,7 +64,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			protected:
-				Context(const String& name, ILanguage* language, bool isMainContext);
+				Context(const String& name, ILanguage* language);
 				~Context();
 
 

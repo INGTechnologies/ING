@@ -82,17 +82,21 @@ namespace ING {
 
 		namespace CSharp {
 
+			const String mainContextName = "Main";
+
+
+
 			/**
 			 *	Constructors And Destructor
 			 */
-			Context::Context(const String& name, ILanguage* language, bool isMainContext) :
-				IContext(name, language, isMainContext),
+			Context::Context(const String& name, ILanguage* language) :
+				IContext(name, language),
 
 				domain(0),
 				assembly(0)
 			{
 
-				if (isMainContext) {
+				if (name == mainContextName) {
 
 					domain = ((CSharp::Language*)language)->GetRootDomain();
 
@@ -108,8 +112,6 @@ namespace ING {
 					}
 
 				}
-
-				((Language*)language)->AddContext(this);
 
 			}
 
@@ -132,8 +134,6 @@ namespace ING {
 
 				UnloadDomain();
 
-				((Language*)GetLanguage())->RemoveContext(this);
-
 				IContext::Release();
 
 			}
@@ -145,7 +145,7 @@ namespace ING {
 			 */
 			bool				Context::CreateDomain() {
 
-				if (IsMainContext()) return false;
+				if (GetName() == mainContextName) return false;
 
 				domain = mono_domain_create_appdomain((char*)GetName().c_str(), NULL);
 
@@ -161,7 +161,7 @@ namespace ING {
 
 			bool				Context::UnloadDomain() {
 
-				if (IsMainContext()) return false;
+				if (GetName() == mainContextName) return false;
 
 				if (domain == 0) return false;
 
@@ -307,7 +307,7 @@ namespace ING {
 
 			void Context::Unload() {
 
-				if (IsMainContext()) {
+				if (GetName() == mainContextName) {
 
 					Debug::Error("Cant Unload Main CSharp Context");
 
@@ -323,7 +323,7 @@ namespace ING {
 
 			void Context::Reload() {
 
-				if (IsMainContext()) {
+				if (GetName() == mainContextName) {
 
 					Debug::Error("Cant Reload Main CSharp Context");
 
