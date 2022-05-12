@@ -41,8 +41,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Layout::Layout(const String& name) :
-			name(name)
+		Layout::Layout(const String& name, const LayoutNode& rootNode) :
+			name(name),
+			rootNode(rootNode)
 		{
 
 

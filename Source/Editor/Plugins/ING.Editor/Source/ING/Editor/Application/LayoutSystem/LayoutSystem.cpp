@@ -88,7 +88,54 @@ namespace ING {
 		{
 
 			Layout* defaultLayout = new Layout(
-				"ING.Editor.DefaultLayout"
+				"ING.Editor.DefaultLayout",
+
+				{
+
+					{
+
+						{
+
+							{
+
+
+
+							},
+
+							LAYOUT_DIRECTION_NONE,
+
+							{
+					
+								"View.Scene"
+				
+							}
+
+						},
+
+						{
+
+							{
+
+
+
+							},
+
+							LAYOUT_DIRECTION_NONE,
+
+							{
+
+								"View.Hierarchy"
+
+							}
+
+						}
+
+					},
+
+					LAYOUT_DIRECTION_ROW
+
+				}
+
 			);
 
 			AddLayout(defaultLayout);

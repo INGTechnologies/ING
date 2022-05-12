@@ -70,6 +70,13 @@
 
 
 /**
+ *	Include Editor Tab System
+ */
+#include <ING/Editor/Application/TabSystem/TabSystem.h>
+
+
+
+/**
  *	Include Layout
  */
 #include <ING/Editor/Layout/Layout.h>
@@ -105,6 +112,7 @@ namespace ING {
 
 
 			AddComponent(new ApplicationLayoutSystem(this));
+			AddComponent(new ApplicationTabSystem(this));
 			AddComponent(new ApplicationWindowSystem(this));
 
 

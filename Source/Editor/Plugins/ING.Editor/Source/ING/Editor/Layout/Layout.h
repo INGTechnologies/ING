@@ -37,6 +37,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include LayoutNode
+ */
+#include <ING/Editor/Layout/Node/Node.h>
+
+
+
 namespace ING {
 
 	namespace UI {
@@ -47,6 +54,10 @@ namespace ING {
 
 	namespace Editor {
 
+		class LayoutNode;
+
+
+
 		class PLUGIN_API(ING_EDITOR) Layout
 		{
 
@@ -54,7 +65,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Layout(const String & name);
+			Layout(const String& name, const LayoutNode& rootNode);
 			~Layout();
 
 
@@ -71,10 +82,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			String name;
+			String			name;
+
+			LayoutNode		rootNode;
 
 		public:
-			const String& GetName() { return name; }
+			const String&	GetName() { return name; }
+
+			LayoutNode&		GetRootNode() { return rootNode; }
 
 
 
@@ -82,7 +97,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void SetupFor(ING::UI::Canvas * canvas);
+			virtual void	SetupFor(ING::UI::Canvas * canvas);
 
 		};
 

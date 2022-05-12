@@ -27,49 +27,26 @@ namespace ING {
 
 	namespace Editor {
 
-		class PLUGIN_API(ING_EDITOR) LayoutNode
+		enum LayoutDirection {
+
+			LAYOUT_DIRECTION_NONE,
+			LAYOUT_DIRECTION_ROW,
+			LAYOUT_DIRECTION_COLUMN,
+			LAYOUT_DIRECTION_ROW_INV,
+			LAYOUT_DIRECTION_COLUMN_INV
+
+		};
+
+
+
+		struct PLUGIN_API(ING_EDITOR) LayoutNode
 		{
 
-			/**
-			 *	Constructors And Destructor
-			 */
-		public:
-			LayoutNode	();
-			~LayoutNode	();
+			std::vector<LayoutNode> childVector;
 
+			LayoutDirection			direction = LAYOUT_DIRECTION_COLUMN;
 
-
-			/**
-			 *	Release Methods
-			 */
-		public:
-			virtual void Release();
-
-
-
-			/**
-			 *	Properties
-			 */
-		private:
-			List<LayoutNode*>	childList;
-
-			List<LayoutNode*>::Node* nodeInParentChildList;
-
-			LayoutNode*			parent;
-
-		public:
-			const List<LayoutNode*>& GetChildList() { return childList; }
-
-			LayoutNode*			GetParent	() { return parent; }
-
-
-
-			/**
-			 *	Methods
-			 */
-		public:
-			void				AddChild	(LayoutNode* child);
-			void				RemoveChild	(LayoutNode* child);
+			std::vector<String>		tabVector;
 
 		};
 
