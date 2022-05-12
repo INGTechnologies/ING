@@ -61,9 +61,7 @@ namespace ING {
 	 *	Constructors And Destructor
 	 */
 	ApplicationUISystem::ApplicationUISystem(IApplication* application) :
-		IApplicationComponent(application, "UISystem"),
-
-		mainCanvas(0)
+		IApplicationComponent(application, "UISystem")
 	{
 
 
@@ -83,16 +81,16 @@ namespace ING {
 	 */
 	bool ApplicationUISystem::Init() {
 
-		mainCanvas = new UI::ICanvas();
+
 
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationUISystem::Release() {
 
-		if (mainCanvas != 0) {
+		for (auto item = name2CanvasMap.begin(); item != name2CanvasMap.end();) {
 
-			mainCanvas->Release();
+			(item++)->second->Release();
 
 		}
 
@@ -103,34 +101,29 @@ namespace ING {
 
 
 	/**
-	 *	Properties
-	 */
-	void	ApplicationUISystem::ReleaseMainCanvas() {
-
-		if (this->mainCanvas != 0) {
-
-			this->mainCanvas->Release();
-
-		}
-
-	}
-
-	void	ApplicationUISystem::SetMainCanvas(UI::ICanvas* mainCanvas) {
-
-		this->mainCanvas = mainCanvas;
-
-	}
-
-
-
-	/**
 	 *	Methods
 	 */
+	void	ApplicationUISystem::AddCanvas(UI::Canvas* canvas) {
+
+		name2CanvasMap[canvas->GetName()] = canvas;
+
+	}
+
+	void	ApplicationUISystem::RemoveCanvas(UI::Canvas* canvas) {
+
+		name2CanvasMap.erase(canvas->GetName());
+
+	}
+
 	void	ApplicationUISystem::Start() {
 
 		IApplicationComponent::Start();
 
-		mainCanvas->Start();
+		for (auto item : name2CanvasMap) {
+
+			item.second->Start();
+
+		}
 
 	}
 
@@ -138,7 +131,11 @@ namespace ING {
 
 		IApplicationComponent::PreUpdate();
 
-		mainCanvas->PreUpdate();
+		for (auto item : name2CanvasMap) {
+
+			item.second->PreUpdate();
+
+		}
 
 	}
 
@@ -146,7 +143,11 @@ namespace ING {
 
 		IApplicationComponent::Update();
 
-		mainCanvas->Update();
+		for (auto item : name2CanvasMap) {
+
+			item.second->Update();
+
+		}
 
 	}
 
@@ -154,7 +155,11 @@ namespace ING {
 
 		IApplicationComponent::LateUpdate();
 
-		mainCanvas->LateUpdate();
+		for (auto item : name2CanvasMap) {
+
+			item.second->LateUpdate();
+
+		}
 
 	}
 
@@ -162,7 +167,11 @@ namespace ING {
 
 		IApplicationComponent::PreRender();
 
-		mainCanvas->PreRender();
+		for (auto item : name2CanvasMap) {
+
+			item.second->PreRender();
+
+		}
 
 	}
 
@@ -170,7 +179,11 @@ namespace ING {
 
 		IApplicationComponent::Render();
 
-		mainCanvas->Render();
+		for (auto item : name2CanvasMap) {
+
+			item.second->Render();
+
+		}
 
 	}
 
@@ -178,7 +191,11 @@ namespace ING {
 
 		IApplicationComponent::LateRender();
 
-		mainCanvas->LateRender();
+		for (auto item : name2CanvasMap) {
+
+			item.second->LateRender();
+
+		}
 
 	}
 

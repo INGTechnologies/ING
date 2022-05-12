@@ -66,6 +66,8 @@ namespace ING {
 		public:
 			IElement*	GetElement	() { return element; }
 
+			const List<Node*>& GetChildList() { return childList; }
+
 			Node*		GetParent	() { return parent; }
 
 
@@ -86,6 +88,8 @@ namespace ING {
 			virtual void	PreRender();
 			virtual void	Render();
 			virtual void	LateRender();
+
+			virtual void	Resize();
 
 		};
 

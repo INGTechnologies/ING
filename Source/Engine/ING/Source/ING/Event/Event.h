@@ -24,7 +24,7 @@ namespace ING {
 		 *	Nested Types
 		 */
 	public:
-		typedef void (*Listener)(Event*);
+		typedef void (*Listener)(Event* e);
 
 
 
@@ -53,14 +53,24 @@ namespace ING {
 
 		List<Listener>::Node*	currentNode;
 
+		std::unordered_map<List<Listener>::Node*, void*> ownerMap;
+
 	public:
 		const List<Listener>&	GetListenerList		() { return listenerList; }
 
+		List<Listener>::Node*	AddListener			(Listener listener, void* owner);
 		List<Listener>::Node*	AddListener			(Listener listener);
+
+		List<Listener>::Node*	GetCurrentListenerNode	() { return currentNode; }
 
 		void					RemoveListener		(List<Event::Listener>::Node* listenerNode);
 
 		void					RemoveCurrentListener();
+
+		void*					GetOwner			(List<Listener>::Node* node);
+		void*					GetCurrentOwner		();
+		bool					IsHasOwner			(List<Listener>::Node* node) { return ownerMap.find(node) != ownerMap.end(); }
+		void					SetOwner			(List<Listener>::Node* node, void* owner);
 
 
 

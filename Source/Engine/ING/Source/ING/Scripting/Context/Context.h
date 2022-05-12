@@ -40,7 +40,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IContext(const String& name, ILanguage* language, bool isMainContext);
+			IContext(const String& name, ILanguage* language);
 			~IContext();
 
 
@@ -58,15 +58,11 @@ namespace ING {
 			 */
 		private:
 			String			name;
-			ILanguage*			language;
-
-			bool				isMainContext;
+			ILanguage*		language;
 
 		public:
 			const String&	GetName		() { return name; }
-			ILanguage*			GetLanguage	() { return language; }
-
-			bool				IsMainContext() { return isMainContext; }
+			ILanguage*		GetLanguage	() { return language; }
 
 
 

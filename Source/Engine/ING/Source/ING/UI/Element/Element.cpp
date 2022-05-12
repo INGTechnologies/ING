@@ -47,6 +47,14 @@ namespace ING {
 
 		}
 
+		IElement::IElement(const String& name) :
+			IElement()
+		{
+
+			this->name = name;
+
+		}
+
 		IElement::~IElement()
 		{
 
@@ -138,6 +146,12 @@ namespace ING {
 		void	IElement::LateRender() {
 
 			node->LateRender();
+
+		}
+
+		void	IElement::Resize() {
+
+			node->Resize();
 
 		}
 

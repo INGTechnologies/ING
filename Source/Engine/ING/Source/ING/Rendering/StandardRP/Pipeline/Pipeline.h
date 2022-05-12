@@ -57,7 +57,7 @@ namespace ING {
 				 *	Constructors And Destructor
 				 */
 			public:
-				Pipeline(const String& name, ApplicationRenderingSystem* system);
+				Pipeline(const String& name);
 				~Pipeline();
 
 
@@ -75,6 +75,14 @@ namespace ING {
 				 */
 			private:
 				IPass*				firstPass;
+
+				IPass*				depthPrepass;
+				IPass*				gbufferPass;
+				IPass*				computePass;
+				IPass*				effectPass;
+				IPass*				uiPass;
+				IPass*				postProcessPass;
+
 				IPass*				finalPass;
 
 				Mode				mode;
@@ -85,6 +93,20 @@ namespace ING {
 
 				IPass*				GetFinalPass					() { return finalPass; }
 				void				SetFinalPass					(IPass* finalPass) { this->finalPass = finalPass; }
+
+				IPass*				GetDepthPrepass					() { return depthPrepass; }
+				IPass*				GetGbufferPass					() { return gbufferPass; }
+				IPass*				GetComputePass					() { return computePass; }
+				IPass*				GetEffectPass					() { return effectPass; }
+				IPass*				GetUiPass						() { return uiPass; }
+				IPass*				GetPostProcessPass				() { return postProcessPass; }
+
+				void				SetDepthPrepass					(IPass* pass) { this->depthPrepass = pass; }
+				void				SetGbufferPass					(IPass* pass) { this->gbufferPass = pass; }
+				void				SetComputePass					(IPass* pass) { this->computePass = pass; }
+				void				SetEffectPass					(IPass* pass) { this->effectPass = pass; }
+				void				SetUiPass						(IPass* pass) { this->uiPass = pass; }
+				void				SetPostProcessPass				(IPass* pass) { this->postProcessPass = pass; }
 
 				Mode				GetMode							() { return mode; }
 				void				SetMode							(Mode mode) { this->mode = mode; }

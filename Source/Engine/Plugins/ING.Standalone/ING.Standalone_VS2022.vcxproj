@@ -266,7 +266,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command></Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

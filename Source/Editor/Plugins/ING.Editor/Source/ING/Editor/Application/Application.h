@@ -34,6 +34,10 @@ namespace ING {
 
 	namespace Editor {
 
+		class Layout;
+
+
+
 		class PLUGIN_API(ING_EDITOR) Application :
 			public IApplication,
 			public Singleton<Application>
@@ -88,8 +92,6 @@ namespace ING {
 			 */
 		private:
 			void				SetupRootPaths();
-
-			void				CreateMainWindow();
 
 			void				CreateGameApplication();
 

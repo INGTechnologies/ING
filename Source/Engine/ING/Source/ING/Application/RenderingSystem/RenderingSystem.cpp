@@ -106,7 +106,7 @@ namespace ING {
 	 */
 	bool ApplicationRenderingSystem::Init() {
 
-		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline", this);
+		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
 
 		mainDevice = Rendering::IAPI::GetInstance()->GetDevice();
 

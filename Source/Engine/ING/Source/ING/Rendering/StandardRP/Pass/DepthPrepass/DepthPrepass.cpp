@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "First.h"
+#include "DepthPrepass.h"
 
 
 
@@ -15,13 +15,13 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FirstPass::FirstPass(const String& name) : IPass(name) {
+			DepthPrepass::DepthPrepass(const String& name) : IPass(name) {
 
 
 
 			}
 
-			FirstPass::~FirstPass() {
+			DepthPrepass::~DepthPrepass() {
 
 
 
@@ -32,7 +32,7 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void FirstPass::Release() {
+			void DepthPrepass::Release() {
 
 				IPass::Release();
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FirstPass::Render(IDeviceContext* context, Camera* camera) {
+			bool DepthPrepass::Render(IDeviceContext* context, Camera* camera) {
 
 
 

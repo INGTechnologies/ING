@@ -76,11 +76,17 @@ namespace ING {
 
 		namespace CSharp {
 
+			const String mainContextName = "Main";
+
+
+
 			/**
 			 *	Constructors And Destructor
 			 */
 			Language::Language() :
-				ILanguage()
+				ILanguage(),
+
+				mainContext(0)
 			{
 
 				AddAssemblyComponentCreator(new AssemblyComponentCreator<EngineAssemblyComponent>("Engine"));
@@ -105,9 +111,11 @@ namespace ING {
 
 				rootDomain = mono_jit_init((GetName() + String("RootDomain")).c_str());
 
+				mainContext = CreateContext(mainContextName);
+
 				ILanguage::Init();
 
-				/* Open Engine, Game Assemblies */
+				/* Open Engine Assemblies */
 				OpenAssemblies(L"Engine:/Scripting/CSharp/Assemblies.ini", "Engine");
 
 			}
@@ -118,7 +126,7 @@ namespace ING {
 
 				for (auto item = name2ContextMap.begin(); item != name2ContextMap.end();) {
 
-					if (!item->second->IsMainContext())
+					if (item->second->GetName() != mainContextName)
 						(item++)->second->Release();
 					else
 						item++;
@@ -131,6 +139,9 @@ namespace ING {
 
 				}
 
+				if (mainContext != 0)
+					mainContext->Release();
+
 				ILanguage::Release(); 
 
 			}
@@ -142,9 +153,9 @@ namespace ING {
 			 */
 			String Language::GetName() { return "CSharp"; }
 
-			IContext*	Language::CreateContext(const String& name, bool isMainContext) {
+			IContext*	Language::CreateContext(const String& name) {
 
-				if (mainContext != 0 && isMainContext == true) {
+				if (mainContext != 0 && name == mainContextName) {
 
 					Debug::Warning(GetName() + String(" Main Context Created"));
 
@@ -152,7 +163,7 @@ namespace ING {
 
 				}
 
-				return new CSharp::Context(name, this, isMainContext);
+				return new CSharp::Context(name, this);
 
 			}
 
@@ -219,6 +230,43 @@ namespace ING {
 
 					if (assemblyCount == 0) return;
 
+					for (auto item = compiledData.begin(); item != compiledData.end(); ++item) {
+
+						String name = tag + String(".") + item->first;
+
+						if (!item->second.has("path")) return;
+
+						WString path = ToWString(item->second.get("path"));
+
+						path = path.substr(1, path.size() - 2);
+
+						String componentsStr = item->second.get("components");
+
+						componentsStr = componentsStr.substr(1, componentsStr.size() - 2);
+
+						std::vector<String> componentNames = GetAssemblyComponentNames(componentsStr);
+
+						String contextName = name;
+
+						Context* context = (Context*)CreateContext(contextName);
+
+						if (context->LoadAssembly(
+
+							path,
+
+							name,
+
+							componentNames
+
+						) == 0) {
+
+							Debug::Error(String("Cant Load Assembly ") + name);
+
+						}
+
+					}
+
+					/*
 					if (((Context*)mainContext)->assembly != 0) {
 
 						for (auto item = compiledData.begin(); item != compiledData.end(); ++item) {
@@ -343,6 +391,7 @@ namespace ING {
 						}
 
 					}
+					*/
 
 				}
 

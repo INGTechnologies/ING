@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include Language
+ */
+#include <ING/Scripting/Language/Language.h>
+
+
+
 namespace ING {
 
 	namespace Scripting {
@@ -34,13 +41,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IContext::IContext(const String& name, ILanguage* language, bool isMainContext) :
+		IContext::IContext(const String& name, ILanguage* language) :
 			name(name),
-			language(language),
-			isMainContext(isMainContext)
+			language(language)
 		{
 
-			 
+			language->AddContext(this);
 
 		}
 
@@ -57,6 +63,8 @@ namespace ING {
 		 *	Release Method
 		 */
 		void IContext::Release() {
+
+			GetLanguage()->RemoveContext(this);
 
 			delete this;
 			

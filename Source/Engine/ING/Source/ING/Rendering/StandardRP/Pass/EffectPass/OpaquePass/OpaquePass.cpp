@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "Final.h"
+#include "OpaquePass.h"
 
 
 
@@ -15,13 +15,13 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FinalPass::FinalPass(const String& name) : IPass(name) {
+			OpaquePass::OpaquePass(const String& name) : IPass(name) {
 
 
 
 			}
 
-			FinalPass::~FinalPass() {
+			OpaquePass::~OpaquePass() {
 
 
 
@@ -32,7 +32,7 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void FinalPass::Release() {
+			void OpaquePass::Release() {
 
 				IPass::Release();
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FinalPass::Render(IDeviceContext* context, Camera* camera) {
+			bool OpaquePass::Render(IDeviceContext* context, Camera* camera) {
 
 
 
