@@ -63,13 +63,13 @@ namespace ING {
 		 */
 		void IPass::Release	() {
 
-			for (unsigned int i = 0; i < childVector.size();) {
-
-				RemoveChild(i);
+			for (unsigned int i = 0; i < childVector.size(); ++i) {
 
 				childVector[i]->Release();
 
 			}
+
+			childVector.clear();
 
 			delete this;
 
@@ -142,17 +142,19 @@ namespace ING {
 
 		void IPass::RemoveChild(unsigned int index) {
 
+			String childName = GetChild(index)->GetName();
+
 			childVector.erase(childVector.begin() + index);
 
 			unsigned int passCount = childVector.size();
 
-			for (unsigned int i = index; i < passCount; ++i) {
+			for (unsigned int i = index + 1; i < passCount; ++i) {
 
 				name2ChildIndex[childVector[i]->GetName()]--;
 
 			}
 
-			name2ChildIndex.erase(GetChild(index)->GetName());
+			name2ChildIndex.erase(childName);
 
 		}
 
