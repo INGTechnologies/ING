@@ -56,6 +56,48 @@
 
 
 /**
+ *	Include StandardRP DepthPrepass
+ */
+#include <ING/Rendering/StandardRP/Pass/DepthPrepass/DepthPrepass.h>
+
+
+
+/**
+ *	Include StandardRP GBufferPass
+ */
+#include <ING/Rendering/StandardRP/Pass/GBufferPass/GBufferPass.h>
+
+
+
+/**
+ *	Include StandardRP ComputePass
+ */
+#include <ING/Rendering/StandardRP/Pass/ComputePass/ComputePass.h>
+
+
+
+/**
+ *	Include StandardRP EffectPass
+ */
+#include <ING/Rendering/StandardRP/Pass/EffectPass/EffectPass.h>
+
+
+
+/**
+ *	Include StandardRP UIPass
+ */
+#include <ING/Rendering/StandardRP/Pass/UIPass/UIPass.h>
+
+
+
+/**
+ *	Include StandardRP PostProcessPass
+ */
+#include <ING/Rendering/StandardRP/Pass/PostProcessPass/PostProcessPass.h>
+
+
+
+/**
  *	Include StandardRP Final Pass
  */
 #include <ING/Rendering/StandardRP/Pass/FinalPass/FinalPass.h>
@@ -122,14 +164,49 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 			Pipeline::Pipeline(const String& name) : 
-				IPipeline(name) 
+				IPipeline(name),
+
+				firstPass(0),
+
+				depthPrepass(0),
+				gbufferPass(0),
+				computePass(0),
+				effectPass(0),
+				uiPass(0),
+				postProcessPass(0),
+
+				finalPass(0)
 			{
 
 				/**
 				 *	Create Default Passes
 				 */
-				firstPass = new FirstPass	("StandardRP.FirstPass");				 
-				finalPass = new FinalPass	("StandardRP.FinalPass");
+				firstPass		= new FirstPass			("StandardRP.FirstPass");	
+
+				depthPrepass	= new DepthPrepass		("StandardRP.DepthPrepass");	
+				gbufferPass		= new GBufferPass		("StandardRP.GBufferPass");	
+				computePass		= new ComputePass		("StandardRP.ComputePass");	
+				effectPass		= new EffectPass		("StandardRP.EffectPass");	
+				uiPass			= new UIPass			("StandardRP.UIPass");	
+				postProcessPass = new PostProcessPass	("StandardRP.PostProcessPass");	
+
+				finalPass		= new FinalPass			("StandardRP.FinalPass");
+
+
+
+				/**
+				 *	Add Passes
+				 */
+				AddPass(firstPass);
+				
+				AddPass(depthPrepass);
+				AddPass(gbufferPass);
+				AddPass(computePass);
+				AddPass(effectPass);
+				AddPass(uiPass);
+				AddPass(postProcessPass);
+
+				AddPass(finalPass);
 
 
 

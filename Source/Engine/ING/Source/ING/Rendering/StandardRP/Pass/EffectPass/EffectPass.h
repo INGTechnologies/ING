@@ -45,6 +45,25 @@ namespace ING {
 
 
 				/**
+				 *	Properties
+				 */
+			private:
+				IPass*	skyPass;
+				IPass*	opaquePass;
+				IPass*	transparentPass;
+
+			public:
+				IPass*	GetSkyPass			() { return skyPass; }
+				IPass*	GetOpaquePass		() { return opaquePass; }
+				IPass*	GetTransparentPass	() { return transparentPass; }
+
+				void	SetSkyPass			(IPass* pass) { this->skyPass = pass; }
+				void	SetOpaquePass		(IPass* pass) { this->opaquePass = pass; }
+				void	SetTransparentPass	(IPass* pass) { this->transparentPass = pass; }
+
+
+
+				/**
 				 *	Methods
 				 */
 			public:
