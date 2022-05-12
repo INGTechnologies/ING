@@ -77,6 +77,13 @@
 
 
 /**
+ *	Include Editor Rendering System
+ */
+#include <ING/Editor/Application/RenderingSystem/RenderingSystem.h>
+
+
+
+/**
  *	Include Layout
  */
 #include <ING/Editor/Layout/Layout.h>
@@ -114,6 +121,7 @@ namespace ING {
 			AddComponent(new ApplicationLayoutSystem(this));
 			AddComponent(new ApplicationTabSystem(this));
 			AddComponent(new ApplicationWindowSystem(this));
+			AddComponent(new ApplicationRenderingSystem(this));
 
 
 

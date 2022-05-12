@@ -35,7 +35,7 @@ namespace ING {
 
 		namespace UI {
 
-			class ITab;
+			class ITabCreator;
 
 		}
 
@@ -66,12 +66,12 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			std::unordered_map<String, UI::ITab*> name2TabMap;
+			std::unordered_map<String, UI::ITabCreator*> name2TabCreatorMap;
 
 		public:
-			UI::ITab*		GetTab		(const String& name) { return name2TabMap[name]; }
+			UI::ITabCreator*GetTabCreator		(const String& name) { return name2TabCreatorMap[name]; }
 
-			bool			IsHasTab	(const String& name) { return name2TabMap.find(name) != name2TabMap.end(); }
+			bool			IsHasTabCreator	(const String& name) { return name2TabCreatorMap.find(name) != name2TabCreatorMap.end(); }
 
 
 
@@ -79,8 +79,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void			AddTab		(UI::ITab* layout);
-			void			RemoveTab	(UI::ITab* layout);
+			void			AddTabCreator		(UI::ITabCreator* tabCreator);
+			void			RemoveTabCreator	(UI::ITabCreator* tabCreator);
 
 			virtual void	Start		() override;
 

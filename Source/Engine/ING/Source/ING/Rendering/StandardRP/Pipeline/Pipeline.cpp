@@ -51,14 +51,14 @@
 /**
  *	Include StandardRP First Pass
  */
-#include <ING/Rendering/StandardRP/Pass/First/First.h>
+#include <ING/Rendering/StandardRP/Pass/FirstPass/FirstPass.h>
 
 
 
 /**
  *	Include StandardRP Final Pass
  */
-#include <ING/Rendering/StandardRP/Pass/Final/Final.h>
+#include <ING/Rendering/StandardRP/Pass/FinalPass/FinalPass.h>
 
 
 
@@ -121,8 +121,8 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			Pipeline::Pipeline(const String& name, ApplicationRenderingSystem* system) : 
-				IPipeline(name, system) 
+			Pipeline::Pipeline(const String& name) : 
+				IPipeline(name) 
 			{
 
 				/**

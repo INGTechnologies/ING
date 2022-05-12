@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "Final.h"
+#include "EffectPass.h"
 
 
 
@@ -15,13 +15,13 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FinalPass::FinalPass(const String& name) : IPass(name) {
+			EffectPass::EffectPass(const String& name) : IPass(name) {
 
 
 
 			}
 
-			FinalPass::~FinalPass() {
+			EffectPass::~EffectPass() {
 
 
 
@@ -32,7 +32,7 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void FinalPass::Release() {
+			void EffectPass::Release() {
 
 				IPass::Release();
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FinalPass::Render(IDeviceContext* context, Camera* camera) {
+			bool EffectPass::Render(IDeviceContext* context, Camera* camera) {
 
 
 

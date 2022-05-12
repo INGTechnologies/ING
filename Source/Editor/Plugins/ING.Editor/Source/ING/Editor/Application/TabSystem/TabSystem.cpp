@@ -58,6 +58,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Editor Tab Creator
+ */
+#include <ING/Editor/UI/Tab/Creator/Creator.h>
+
+
+
+/**
  *	Include Editor Scene Tab
  */
 #include <ING/Editor/UI/Tab/SceneTab/SceneTab.h>
@@ -67,7 +74,7 @@ using namespace ING::Utils;
 /**
  *	Include Editor Hierarchy Tab
  */
-#include <ING/Editor/UI/Tab/HierarchyTab/HierarchyTab.h>
+#include <ING/Editor/UI/Tab/SceneExplorerTab/SceneExplorerTab.h>
 
 
 
@@ -101,7 +108,8 @@ namespace ING {
 		bool ApplicationTabSystem::Init()
 		{
 
-
+			AddTabCreator(new UI::TabCreator<UI::SceneTab>("View.Scene"));
+			AddTabCreator(new UI::TabCreator<UI::SceneExplorerTab>("View.SceneExplorer"));
 
 			return IApplicationComponent::Init();
 
@@ -110,7 +118,7 @@ namespace ING {
 		void ApplicationTabSystem::Release()
 		{
 
-			for (auto item = name2TabMap.begin(); item != name2TabMap.end();) {
+			for (auto item = name2TabCreatorMap.begin(); item != name2TabCreatorMap.end();) {
 
 				(item++)->second->Release();
 
@@ -125,15 +133,15 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	ApplicationTabSystem::AddTab(UI::ITab* tab) {
+		void	ApplicationTabSystem::AddTabCreator(UI::ITabCreator* tabCreator) {
 
-			name2TabMap[tab->GetName()] = tab;
+			name2TabCreatorMap[tabCreator->GetName()] = tabCreator;
 
 		}
 
-		void	ApplicationTabSystem::RemoveTab(UI::ITab* tab) {
+		void	ApplicationTabSystem::RemoveTabCreator(UI::ITabCreator* tabCreator) {
 
-			name2TabMap.erase(tab->GetName());
+			name2TabCreatorMap.erase(tabCreator->GetName());
 
 		}
 

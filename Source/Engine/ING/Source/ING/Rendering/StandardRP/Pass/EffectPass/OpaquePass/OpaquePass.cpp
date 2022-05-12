@@ -2,7 +2,7 @@
 /**
  * Include Header
  */
-#include "First.h"
+#include "OpaquePass.h"
 
 
 
@@ -15,13 +15,13 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			FirstPass::FirstPass(const String& name) : IPass(name) {
+			OpaquePass::OpaquePass(const String& name) : IPass(name) {
 
 
 
 			}
 
-			FirstPass::~FirstPass() {
+			OpaquePass::~OpaquePass() {
 
 
 
@@ -32,7 +32,7 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void FirstPass::Release() {
+			void OpaquePass::Release() {
 
 				IPass::Release();
 
@@ -43,7 +43,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			bool FirstPass::Render(IDeviceContext* context, Camera* camera) {
+			bool OpaquePass::Render(IDeviceContext* context, Camera* camera) {
 
 
 

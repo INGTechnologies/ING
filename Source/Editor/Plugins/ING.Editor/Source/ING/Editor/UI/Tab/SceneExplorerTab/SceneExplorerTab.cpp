@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "HierarchyTab.h"
+#include "SceneExplorerTab.h"
 
 
 
@@ -36,15 +36,17 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			HierarchyTab::HierarchyTab() :
-				ITab("View.Hierarchy")
+			SceneExplorerTab::SceneExplorerTab() :
+				ITab("View.SceneExplorer"),
+
+				sceneTab(0)
 			{
 
 
 
 			}
 
-			HierarchyTab::~HierarchyTab()
+			SceneExplorerTab::~SceneExplorerTab()
 			{
 
 
@@ -56,7 +58,7 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void HierarchyTab::Release() {
+			void SceneExplorerTab::Release() {
 
 				ITab::Release();
 			}
@@ -66,49 +68,49 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void	HierarchyTab::Start() {
+			void	SceneExplorerTab::Start() {
 
 				ITab::Start();
 
 			}
 
-			void	HierarchyTab::PreUpdate() {
+			void	SceneExplorerTab::PreUpdate() {
 
 				ITab::PreUpdate();
 
 			}
 
-			void	HierarchyTab::Update() {
+			void	SceneExplorerTab::Update() {
 
 				ITab::Update();
 
 			}
 
-			void	HierarchyTab::LateUpdate() {
+			void	SceneExplorerTab::LateUpdate() {
 
 				ITab::LateUpdate();
 
 			}
 
-			void	HierarchyTab::PreRender() {
+			void	SceneExplorerTab::PreRender() {
 
 				ITab::PreRender();
 
 			}
 
-			void	HierarchyTab::Render() {
+			void	SceneExplorerTab::Render() {
 
 				ITab::Render();
 
 			}
 
-			void	HierarchyTab::LateRender() {
+			void	SceneExplorerTab::LateRender() {
 
 				ITab::LateRender();
 
 			}
 
-			void	HierarchyTab::Resize() {
+			void	SceneExplorerTab::Resize() {
 
 				ITab::Resize();
 

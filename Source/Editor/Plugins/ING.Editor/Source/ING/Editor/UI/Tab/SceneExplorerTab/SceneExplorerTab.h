@@ -43,15 +43,19 @@ namespace ING {
 
 		namespace UI {
 
-			class PLUGIN_API(ING_EDITOR) HierarchyTab : public ITab
+			class SceneTab;
+
+
+
+			class PLUGIN_API(ING_EDITOR) SceneExplorerTab : public ITab
 			{
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				HierarchyTab	();
-				~HierarchyTab	();
+				SceneExplorerTab	();
+				~SceneExplorerTab	();
 
 
 
@@ -60,6 +64,19 @@ namespace ING {
 				 */
 			public:
 				virtual void Release() override;
+
+
+
+				/**
+				 *	Properties
+				 */
+			private:
+				SceneTab*	sceneTab;
+
+			public:
+				SceneTab*	GetSceneTab	() { return sceneTab; }
+
+				void		SetSceneTab	(SceneTab* sceneTab){ this->sceneTab = sceneTab; }
 
 
 
