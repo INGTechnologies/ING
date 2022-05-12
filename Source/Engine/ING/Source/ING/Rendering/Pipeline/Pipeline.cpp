@@ -79,13 +79,13 @@ namespace ING {
 		 */
 		void IPipeline::Release() {
 
-			for (unsigned int i = 0; i < passVector.size();) {
-
-				RemovePass(i);
+			for (unsigned int i = 0; i < passVector.size(); ++i) {
 
 				passVector[i]->Release();
 
 			}
+
+			passVector.clear();
 
 			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
@@ -143,19 +143,21 @@ namespace ING {
 
 		void IPipeline::RemovePass(unsigned int index) {
 
+			String passName = GetPass(index)->GetName();
+
 			GetPass(index)->SetPipeline(0);
 
 			passVector.erase(passVector.begin() + index);
 
 			unsigned int passCount = passVector.size();
 
-			for (unsigned int i = index; i < passCount; ++i) {
+			for (unsigned int i = index + 1; i < passCount; ++i) {
 
 				name2PassIndex[passVector[i]->GetName()]--;
 
 			}
 
-			name2PassIndex.erase(GetPass(index)->GetName());
+			name2PassIndex.erase(passName);
 			
 		}
 
@@ -198,9 +200,7 @@ namespace ING {
 
 			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
-				if (camera->GetRenderingPipeline() != this) {
-
-					camera->SetRenderingPipeline(this);
+				if (camera->GetRenderingPipeline() == this && camera->GetRenderingData() == 0) {
 
 					SetupCamera(context, camera);
 

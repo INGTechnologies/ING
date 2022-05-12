@@ -179,7 +179,7 @@ namespace ING {
 			{
 
 				/**
-				 *	Create Default Passes
+				 *	Create Passes
 				 */
 				firstPass		= new FirstPass			("StandardRP.FirstPass");	
 
@@ -264,6 +264,8 @@ namespace ING {
 				IPipeline::BeginRender(context);
 
 				for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+
+					if (camera->GetRenderingPipeline() != this) continue;
 
 					CameraData* renderingData = (CameraData*)camera->GetRenderingData();
 
