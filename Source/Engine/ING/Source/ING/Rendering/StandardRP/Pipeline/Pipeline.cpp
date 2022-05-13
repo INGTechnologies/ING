@@ -70,16 +70,23 @@
 
 
 /**
- *	Include StandardRP ComputePass
+ *	Include StandardRP SkyPass
  */
-#include <ING/Rendering/StandardRP/Pass/ComputePass/ComputePass.h>
+#include <ING/Rendering/StandardRP/Pass/SkyPass/SkyPass.h>
 
 
 
 /**
- *	Include StandardRP EffectPass
+ *	Include StandardRP OpaquePass
  */
-#include <ING/Rendering/StandardRP/Pass/EffectPass/EffectPass.h>
+#include <ING/Rendering/StandardRP/Pass/OpaquePass/OpaquePass.h>
+
+
+
+/**
+ *	Include StandardRP TransparentPass
+ */
+#include <ING/Rendering/StandardRP/Pass/TransparentPass/TransparentPass.h>
 
 
 
@@ -170,8 +177,9 @@ namespace ING {
 
 				depthPrepass(0),
 				gbufferPass(0),
-				computePass(0),
-				effectPass(0),
+				skyPass(0),
+				opaquePass(0),
+				transparentPass(0),
 				uiPass(0),
 				postProcessPass(0),
 
@@ -185,8 +193,9 @@ namespace ING {
 
 				depthPrepass	= new DepthPrepass		("StandardRP.DepthPrepass");	
 				gbufferPass		= new GBufferPass		("StandardRP.GBufferPass");	
-				computePass		= new ComputePass		("StandardRP.ComputePass");	
-				effectPass		= new EffectPass		("StandardRP.EffectPass");	
+				skyPass			= new SkyPass			("StandardRP.SkyPass");	
+				opaquePass		= new OpaquePass		("StandardRP.OpaquePass");	
+				transparentPass	= new TransparentPass	("StandardRP.TransparentPass");	
 				uiPass			= new UIPass			("StandardRP.UIPass");	
 				postProcessPass = new PostProcessPass	("StandardRP.PostProcessPass");	
 
@@ -201,8 +210,9 @@ namespace ING {
 				
 				AddPass(depthPrepass);
 				AddPass(gbufferPass);
-				AddPass(computePass);
-				AddPass(effectPass);
+				AddPass(skyPass);
+				AddPass(opaquePass);
+				AddPass(transparentPass);
 				AddPass(uiPass);
 				AddPass(postProcessPass);
 

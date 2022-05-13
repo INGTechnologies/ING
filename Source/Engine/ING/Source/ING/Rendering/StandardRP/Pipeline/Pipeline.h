@@ -78,8 +78,9 @@ namespace ING {
 
 				IPass*				depthPrepass;
 				IPass*				gbufferPass;
-				IPass*				computePass;
-				IPass*				effectPass;
+				IPass*				skyPass;
+				IPass*				opaquePass;
+				IPass*				transparentPass;
 				IPass*				uiPass;
 				IPass*				postProcessPass;
 
@@ -96,15 +97,17 @@ namespace ING {
 
 				IPass*				GetDepthPrepass					() { return depthPrepass; }
 				IPass*				GetGbufferPass					() { return gbufferPass; }
-				IPass*				GetComputePass					() { return computePass; }
-				IPass*				GetEffectPass					() { return effectPass; }
+				IPass*				GetSkyPass					() { return skyPass; }
+				IPass*				GetOpaquePass					() { return opaquePass; }
+				IPass*				GetTransparentPass					() { return transparentPass; }
 				IPass*				GetUiPass						() { return uiPass; }
 				IPass*				GetPostProcessPass				() { return postProcessPass; }
 
 				void				SetDepthPrepass					(IPass* pass) { this->depthPrepass = pass; }
 				void				SetGbufferPass					(IPass* pass) { this->gbufferPass = pass; }
-				void				SetComputePass					(IPass* pass) { this->computePass = pass; }
-				void				SetEffectPass					(IPass* pass) { this->effectPass = pass; }
+				void				SetSkyPass						(IPass* pass) { this->skyPass = pass; }
+				void				SetOpaquePass					(IPass* pass) { this->opaquePass = pass; }
+				void				SetTransparentPass				(IPass* pass) { this->transparentPass = pass; }
 				void				SetUiPass						(IPass* pass) { this->uiPass = pass; }
 				void				SetPostProcessPass				(IPass* pass) { this->postProcessPass = pass; }
 
