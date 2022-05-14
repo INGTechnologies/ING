@@ -31,6 +31,8 @@ namespace ING {
 
 		class IDrawble;
 
+		class LayerSystem;
+
 
 
 		class ING_API Layer
@@ -41,6 +43,7 @@ namespace ING {
 			 */
 		public:
 			friend class LayerManager;
+			friend class LayerSystem;
 
 
 
@@ -48,7 +51,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			Layer	(String name);
+			Layer	(String name, LayerSystem* system);
 			~Layer	();
 
 
@@ -69,6 +72,8 @@ namespace ING {
 
 			unsigned int		index;
 
+			LayerSystem*		system;
+
 			std::unordered_map<String, IDrawableFilter*> name2DrawableFilterMap;
 
 		public:
@@ -81,6 +86,8 @@ namespace ING {
 			IDrawableFilter*	GetFilter		(const String& name);
 			void			    AddFilter		(const String& name);
 			void			    RemoveFilter	(const String& name);
+
+			LayerSystem*		GetSystem		() { return system; }
 
 		};
 

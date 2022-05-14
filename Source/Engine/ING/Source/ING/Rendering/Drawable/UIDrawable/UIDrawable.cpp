@@ -56,7 +56,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		UIDrawable::UIDrawable() {
+		UIDrawable::UIDrawable(LayerSystem* system) :
+			IDrawable(system)
+		{
 
 
 

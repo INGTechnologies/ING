@@ -73,22 +73,5 @@ namespace ING {
 			return true;
 		}
 
-
-
-		/**
-		 *	Methods
-		 */
-		void	SceneManager::AddScene		(Scene* scene) {
-
-			sceneMap[scene->GetName()] = scene;
-
-		}
-
-		void	SceneManager::RemoveScene	(Scene* scene) {
-
-			sceneMap.erase(scene->GetName());
-
-		}
-
 	}
 }

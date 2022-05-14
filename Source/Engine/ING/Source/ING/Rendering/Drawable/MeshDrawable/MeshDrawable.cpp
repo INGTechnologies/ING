@@ -126,7 +126,8 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		MeshDrawable::MeshDrawable() :
+		MeshDrawable::MeshDrawable(LayerSystem* system) :
+			IDrawable(system),
 			mesh(0),
 			material(0)
 		{

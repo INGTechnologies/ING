@@ -43,6 +43,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Layer System
+ */
+#include <ING/Rendering/Layer/System/System.h>
+
+
+
 
 
 namespace ING {
@@ -52,10 +59,12 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Layer::Layer(String name)
+		Layer::Layer(String name, LayerSystem* system) :
+			name(name),
+			system(system)
 		{
 
-			this->name = name;
+
 
 		}
 
@@ -73,6 +82,8 @@ namespace ING {
 		 */
 		void Layer::Release()
 		{
+
+			system->SetLayer(0, index);
 
 			for (auto& item : name2DrawableFilterMap) {
 

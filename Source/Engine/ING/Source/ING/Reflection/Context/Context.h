@@ -22,6 +22,8 @@ namespace ING {
 
 		class Namespace;
 
+		class IClassType;
+
 
 
 		class ING_API Context
@@ -52,6 +54,18 @@ namespace ING {
 
 		public:
 			Namespace*	GetNamespace	() { return globalNamespace; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			Namespace* CreateNamespace	(const String& fullName);
+
+			Namespace* GetNamespace		(const String& fullName);
+
+			IClassType* GetClass			(const String& fullName);
 
 		};
 

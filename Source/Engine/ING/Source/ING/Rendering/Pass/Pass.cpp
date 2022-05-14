@@ -90,6 +90,8 @@ namespace ING {
 
 			parent = newParent;
 
+			SetPipeline(pipeline);
+
 		}
 
 		void IPass::SetPipeline(IPipeline* pipeline) {

@@ -89,7 +89,7 @@ namespace ING {
 		bool ApplicationRenderingSystem::Init()
 		{
 
-			mainPipeline = new Rendering::StandardRP::Pipeline("ING.Editor.MainRenderingPipeline");
+			mainPipeline = new Rendering::StandardRP::Pipeline("ING.Editor.Rendering.Pipeline");
 
 			return IApplicationComponent::Init();
 

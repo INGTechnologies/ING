@@ -37,6 +37,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Layer System
+ */
+#include <ING/Rendering/Layer/System/System.h>
+
+
+
+/**
  *	Include Drawable Category
  */
 #include <ING/Rendering/Drawable/Filter/Filter.h>
@@ -50,6 +57,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering Scene System
+ */
+#include <ING/Rendering/Scene/System/System.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -57,14 +71,14 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Scene::Scene(String name)
+		Scene::Scene(String name, SceneSystem* system) :
+			name(name),
+			system(system)
 		{
-
-			this->name = name;
 
 			layerMask = 0;
 
-			SceneManager::GetInstance()->AddScene(this);
+			system->AddScene(this);
 
 		}
 
@@ -83,7 +97,7 @@ namespace ING {
 		void Scene::Release()
 		{
 
-			SceneManager::GetInstance()->RemoveScene(this);
+			system->RemoveScene(this);
 
 			delete this;
 
@@ -115,8 +129,7 @@ namespace ING {
 
 				if (maskBitSet[i] == 1) {
 
-					Rendering::LayerManager* layerManager = Rendering::LayerManager::GetInstance();
-					layerVector[i] = LayerManager::GetInstance()->GetLayer(i);
+					layerVector[i] = system->GetLayerSystem()->GetLayer(i);
 
 				}
 

@@ -1,0 +1,25 @@
+
+IMPLEMENT
+{
+
+    INCLUDE <ING/_Debug/Debug.h>
+
+}
+
+
+
+INCLUDE <ING/Reflection/Object/Object.h>
+
+
+
+namespace Demo {
+    
+    CLASS(DemoClass2)
+        EXTEND(ING::Reflection::IObject) 
+    {		
+
+
+
+    }
+
+}
