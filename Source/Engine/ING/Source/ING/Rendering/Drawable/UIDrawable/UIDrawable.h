@@ -39,6 +39,8 @@ namespace ING {
 
 		class IPass;
 
+		class LayerSystem;
+
 
 
 		class ING_API UIDrawable : public IDrawable
@@ -48,7 +50,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			UIDrawable();
+			UIDrawable(LayerSystem* system);
 			~UIDrawable();
 
 

@@ -46,26 +46,6 @@ namespace ING {
 			virtual bool Run()		override;
 			virtual bool Release()	override;
 
-
-
-			/**
-			 *	Properties
-			 */
-		private:
-			std::unordered_map<String, Scene*>		sceneMap;
-
-		public:
-			std::unordered_map<String, Scene*>&	GetSceneMap () { return sceneMap; }
-
-
-
-			/**
-			 *	Methods
-			 */
-		public:
-			void	AddScene	(Scene* scene);
-			void	RemoveScene	(Scene* scene);
-
 		};
 
 	}

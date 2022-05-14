@@ -36,6 +36,8 @@ namespace ING {
 
 		class Layer;
 
+		class LayerSystem;
+
 
 
 		using DrawableId = size_t;
@@ -54,7 +56,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IDrawable	();
+			IDrawable	(LayerSystem* system);
 			~IDrawable	();
 
 
@@ -75,11 +77,13 @@ namespace ING {
 
 			Layer*							layer;
 
-			std::vector<String>		filterNameVector;
+			std::vector<String>				filterNameVector;
 
-			std::unordered_map<String, IDrawableFilter*>	filterName2FilterMap;
+			std::unordered_map<String, IDrawableFilter*>filterName2FilterMap;
 
 			bool							isActive;
+
+			LayerSystem*					system;
 
 		public:
 			DrawableId						GetId					() { return id; }
@@ -87,17 +91,15 @@ namespace ING {
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();
 
-			const std::vector<String>& GetFilterNameVector		() { return filterNameVector; }
+			const std::vector<String>&		GetFilterNameVector		() { return filterNameVector; }
 			void							SetFilterNameVector		(const std::vector<String>& filterNameVector);
 			void							SetFilters				(const std::vector<String>& filterNameVector);
-
-			//List<IDrawable*>::Node*			GetNode					(const String& filterName);
-			//void							AddNode					(const String& filterName, List<IDrawable*>::Node* node);
-			//void							RemoveNode				(const String& filterName);
 			bool							IsHaveFilter			(const String& filterName) { return filterName2FilterMap.find(filterName) != filterName2FilterMap.end(); }
 
 			bool							IsActive				() { return isActive; }
 			void							SetActive				(bool isActive) { this->isActive = isActive; }
+
+			LayerSystem*					GetSystem				() { return system; }
 
 
 

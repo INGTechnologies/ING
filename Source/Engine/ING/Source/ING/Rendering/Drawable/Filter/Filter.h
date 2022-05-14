@@ -22,6 +22,8 @@ namespace ING {
 
 		class IDrawable;
 
+		class LayerSystem;
+
 
 
 		class ING_API IDrawableFilter

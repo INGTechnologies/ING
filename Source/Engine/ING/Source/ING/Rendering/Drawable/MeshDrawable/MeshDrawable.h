@@ -50,6 +50,8 @@ namespace ING {
 
 		class IMaterial;
 
+		class LayerSystem;
+
 
 
 		class ING_API MeshDrawable : public IDrawable
@@ -59,7 +61,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			MeshDrawable();
+			MeshDrawable(LayerSystem* system);
 			~MeshDrawable();
 
 

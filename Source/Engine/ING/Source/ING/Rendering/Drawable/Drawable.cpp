@@ -70,6 +70,13 @@
 
 
 /**
+ *	Include Rendering Layer System
+ */
+#include <ING/Rendering/Layer/System/System.h>
+
+
+
+/**
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
@@ -84,7 +91,11 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IDrawable::IDrawable() : layer(0) {
+		IDrawable::IDrawable(LayerSystem* system) :
+			layer(0),
+
+			system(system)
+		{
 
 			filterNameVector.resize(0);
 
@@ -116,7 +127,7 @@ namespace ING {
 		 */
 		void	IDrawable::SetLayer(unsigned int index) {
 
-			if (LayerManager::GetInstance()->GetLayerVector()[index] == 0) {
+			if (system->GetLayerVector()[index] == 0) {
 
 				return;
 
@@ -132,7 +143,7 @@ namespace ING {
 
 			}
 
-			layer = LayerManager::GetInstance()->GetLayer(index);
+			layer = system->GetLayer(index);
 
 			SetFilterNameVector(filterNameVector);
 
@@ -150,7 +161,7 @@ namespace ING {
 #ifdef _DEBUG
 			for (unsigned int i = 0; i < filterCount; ++i) {
 
-				if (!LayerManager::GetInstance()->IsHaveFilter(filterNameVector[i])) {
+				if (!system->IsHaveFilter(filterNameVector[i])) {
 
 					Debug::Error(ToString("Filter With Name ") + ToString('"') + filterNameVector[i] + ToString('"') + ToString(" Not Found"));
 
