@@ -22,19 +22,23 @@ namespace ING {
 
 		class Namespace;
 
+		class IType;
+
 		class IClassType;
 
+		class Context;
 
 
-		class ING_API Context
+
+		class ING_API IObject
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			Context		();
-			~Context	();
+			IObject		(IClassType* _class);
+			~IObject	();
 
 
 
@@ -50,22 +54,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			Namespace*	globalNamespace;
+			IClassType*		_class;
 
 		public:
-			Namespace*	GetNamespace	() { return globalNamespace; }
-
-
-
-			/**
-			 *	Methods
-			 */
-		public:
-			Namespace* CreateNamespace	(const String& fullName);
-
-			Namespace* GetNamespace		(const String& fullName);
-
-			IClassType* GetClass			(const String& fullName);
+			IClassType*		GetType	() { return _class; }
 
 		};
 

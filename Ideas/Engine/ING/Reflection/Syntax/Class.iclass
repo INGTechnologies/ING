@@ -1,0 +1,39 @@
+
+IMPLEMENT
+{
+
+    INCLUDE "Class2.h"
+
+    INCLUDE <ING/_Debug/Debug.h>
+
+    INCLUDE <ING/Reflection/Context/Context.h>
+
+}
+
+
+
+INCLUDE <ING/Reflection/Object/Object.h>
+
+
+
+namespace Demo {
+
+    class DemoClass2;
+    
+    CLASS(DemoClass)
+        EXTEND(ING::Reflection::IObject)
+    {		
+
+    public:
+        PROPERTY(EDIT_EVERYWHERE)
+            int Prop1;
+
+        FUNCTION()
+            DemoClass2* CreateDemo2Ins(){
+
+                return DemoClass2::CreateInstance(GetClass()->GetContext());
+            }
+
+    }
+
+}

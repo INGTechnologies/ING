@@ -104,8 +104,27 @@
 
 
 
+/**
+ *	Include Type
+ */
+#include <ING/Reflection/Type/Type.h>
+
+
+
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Type/ClassType/ClassType.h>
+
+
+
 using namespace ING::Rendering;
 using namespace ING;
+using namespace ING::Reflection;
 using namespace ING::UI;
 
 
@@ -115,9 +134,40 @@ static IWindow* mainWindow = 0;
 
 
 
+namespace Demo {
+
+	class DemoClass : public IObject {
+
+		ING_REFLECT_CLASS(DemoClass, IObject)
+
+	public:
+		unsigned int a;
+		unsigned int b;
+
+	};
+
+
+
+	ING_BEGIN_REFLECTED_CLASS (DemoClass, IObject)
+
+		ING_CLASS_PROPERTY (DemoClass::a)
+
+		ING_CLASS_PROPERTY (DemoClass::b)
+
+	ING_END_REFLECTED_CLASS ()
+
+}
+
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
-{
+{ 
+
+	Context* context = new Context();
+	IClassType* demoClass = Demo::DemoClass::CreateType(context);
+
+	Demo::DemoClass* demoObj = (Demo::DemoClass*)demoClass->CreateInstance();
+
+
 
 	std::vector<WString> argv(argc);
 
@@ -130,6 +180,8 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 	ING::Engine::CreateInstance(argv);
 
 	if (!ING::Engine::GetInstance()->Init()) return 1;
+
+
 
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 
