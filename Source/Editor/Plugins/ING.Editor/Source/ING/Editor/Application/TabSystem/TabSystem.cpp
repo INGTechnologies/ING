@@ -78,6 +78,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	namespace Editor {

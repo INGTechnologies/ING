@@ -57,6 +57,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -66,25 +73,6 @@ namespace ING {
 		 */
 		ApplicationLayoutSystem::ApplicationLayoutSystem(IApplication* application) :
 			IApplicationComponent(application, "EditorLayoutSystem")
-		{
-
-
-
-		}
-
-		ApplicationLayoutSystem::~ApplicationLayoutSystem()
-		{
-
-
-
-		}
-
-
-
-		/**
-		 *	Release Methods
-		 */
-		bool ApplicationLayoutSystem::Init()
 		{
 
 			Layout* defaultLayout = new Layout(
@@ -105,9 +93,9 @@ namespace ING {
 							LAYOUT_DIRECTION_NONE,
 
 							{
-					
+
 								"View.Scene"
-				
+
 							}
 
 						},
@@ -139,6 +127,23 @@ namespace ING {
 			);
 
 			AddLayout(defaultLayout);
+
+		}
+
+		ApplicationLayoutSystem::~ApplicationLayoutSystem()
+		{
+
+
+
+		}
+
+
+
+		/**
+		 *	Release Methods
+		 */
+		bool ApplicationLayoutSystem::Init()
+		{
 
 			return IApplicationComponent::Init();
 

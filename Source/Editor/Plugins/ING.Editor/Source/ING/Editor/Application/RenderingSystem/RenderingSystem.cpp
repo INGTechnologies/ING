@@ -57,6 +57,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -64,10 +71,8 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ApplicationRenderingSystem::ApplicationRenderingSystem(IApplication* application) :
-			IApplicationComponent(application, "EditorRenderingSystem"),
-
-			mainPipeline(0)
+		ApplicationRenderingSystem::ApplicationRenderingSystem(IApplicationComponent* component) :
+			ApplicationComponentOverride(component, "EditorRenderingSystem")
 		{
 
 
@@ -89,22 +94,18 @@ namespace ING {
 		bool ApplicationRenderingSystem::Init()
 		{
 
-			mainPipeline = new Rendering::StandardRP::Pipeline("ING.Editor.Rendering.Pipeline");
+			GetComponent()->GetMainPipeline()->Release();
 
-			return IApplicationComponent::Init();
+			GetComponent()->SetMainPipeline(new Rendering::StandardRP::Pipeline("ING.Editor.Rendering.Pipeline"));
+
+			return ApplicationComponentOverride::Init();
 
 		}
 
 		void ApplicationRenderingSystem::Release()
 		{
 
-			if (mainPipeline != 0) {
-
-				mainPipeline->Release();
-
-			}
-
-			IApplicationComponent::Release();
+			ApplicationComponentOverride::Release();
 
 		}
 
@@ -115,43 +116,43 @@ namespace ING {
 		 */
 		void	ApplicationRenderingSystem::Start() {
 
-			IApplicationComponent::Start();
+			ApplicationComponentOverride::Start();
 
 		}
 
 		void	ApplicationRenderingSystem::PreUpdate() {
 
-			IApplicationComponent::PreUpdate();
+			ApplicationComponentOverride::PreUpdate();
 
 		}
 
 		void	ApplicationRenderingSystem::Update() {
 
-			IApplicationComponent::Update();
+			ApplicationComponentOverride::Update();
 
 		}
 
 		void	ApplicationRenderingSystem::LateUpdate() {
 
-			IApplicationComponent::LateUpdate();
+			ApplicationComponentOverride::LateUpdate();
 
 		}
 
 		void	ApplicationRenderingSystem::PreRender() {
 
-			IApplicationComponent::PreRender();
+			ApplicationComponentOverride::PreRender();
 
 		}
 
 		void	ApplicationRenderingSystem::Render() {
 
-			IApplicationComponent::Render();
+			ApplicationComponentOverride::Render();
 
 		}
 
 		void	ApplicationRenderingSystem::LateRender() {
 
-			IApplicationComponent::LateRender();
+			ApplicationComponentOverride::LateRender();
 
 		}
 

@@ -40,6 +40,7 @@ namespace ING {
 		 */
 	public:
 		friend class ApplicationManager;
+		friend class IApplicationComponent;
 
 
 
@@ -96,6 +97,10 @@ namespace ING {
 		ApplicationRenderingSystem*	GetRenderingSystem() { return renderingSystem; }
 
 		ApplicationUISystem*		GetUISystem		() { return uiSystem; }
+
+		bool						IsHasComponent	(const String& name) { return name2ComponentIndexMap.find(name) != name2ComponentIndexMap.end(); }
+
+		unsigned int				GetComponentIndex(const String& name) { return name2ComponentIndexMap[name]; }
 
 		IApplicationComponent*		GetComponent	(const String& name) { return componentVector[name2ComponentIndexMap[name]]; }
 

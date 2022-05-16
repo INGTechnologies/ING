@@ -105,11 +105,15 @@ namespace ING {
 	 */
 	void	ApplicationUISystem::AddCanvas(UI::Canvas* canvas) {
 
+		if (name2CanvasMap.find(canvas->GetName()) != name2CanvasMap.end()) return;
+
 		name2CanvasMap[canvas->GetName()] = canvas;
 
 	}
 
 	void	ApplicationUISystem::RemoveCanvas(UI::Canvas* canvas) {
+
+		if (name2CanvasMap.find(canvas->GetName()) == name2CanvasMap.end()) return;
 
 		name2CanvasMap.erase(canvas->GetName());
 

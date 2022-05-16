@@ -118,7 +118,7 @@
 #include <ING/Reflection/Namespace/Namespace.h>
 #include <ING/Reflection/Object/Object.h>
 #include <ING/Reflection/Context/Context.h>
-#include <ING/Reflection/Type/ClassType/ClassType.h>
+#include <ING/Reflection/Type/Class/Class.h>
 
 
 
@@ -163,7 +163,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 { 
 
 	Context* context = new Context();
-	IClassType* demoClass = Demo::DemoClass::CreateType(context);
+	IClass* demoClass = Demo::DemoClass::CreateType(context);
 
 	Demo::DemoClass* demoObj = (Demo::DemoClass*)demoClass->CreateInstance();
 

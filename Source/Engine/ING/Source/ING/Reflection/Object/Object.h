@@ -24,7 +24,7 @@ namespace ING {
 
 		class IType;
 
-		class IClassType;
+		class IClass;
 
 		class Context;
 
@@ -37,7 +37,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IObject		(IClassType* _class);
+			IObject		(IClass* _class);
 			~IObject	();
 
 
@@ -54,10 +54,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			IClassType*		_class;
+			IClass*		_class;
 
 		public:
-			IClassType*		GetType	() { return _class; }
+			IClass*		GetType	() { return _class; }
 
 		};
 

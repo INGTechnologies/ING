@@ -17,15 +17,24 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ApplicationComponent
+ *	Include ApplicationComponentOverride
  */
-#include <ING/Application/Component/Component.h>
+#include <ING/Application/Component/Override/Override.h>
+
+
+
+/**
+ *	Include ING::ApplicationRenderingSystem
+ */
+#include <ING/Application/RenderingSystem/RenderingSystem.h>
 
 
 
 namespace ING {
 
 	class IApplication;
+
+	class IApplicationComponent;
 
 	namespace Rendering {
 
@@ -37,14 +46,15 @@ namespace ING {
 
 	namespace Editor {
 
-		class PLUGIN_API(ING_EDITOR) ApplicationRenderingSystem : public IApplicationComponent
+		class PLUGIN_API(ING_EDITOR) ApplicationRenderingSystem : 
+			public ApplicationComponentOverride<ING::ApplicationRenderingSystem>
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ApplicationRenderingSystem	(IApplication* application);
+			ApplicationRenderingSystem	(IApplicationComponent* component);
 			~ApplicationRenderingSystem	();
 
 
@@ -55,19 +65,6 @@ namespace ING {
 		public:
 			virtual bool Init() override;
 			virtual void Release() override;
-
-
-
-			/**
-			 *	Properties
-			 */
-		private:
-			Rendering::IPipeline*	mainPipeline;
-
-		public:
-			Rendering::IPipeline*	GetMainPipeline() { return mainPipeline; }
-
-			void					SetMainPipeline(Rendering::IPipeline*) { this->mainPipeline = mainPipeline; }
 
 
 

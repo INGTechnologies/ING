@@ -76,9 +76,27 @@
 
 
 
+/**
+ *	Include Window System
+ */
+#include <ING/Application/WindowSystem/WindowSystem.h>
+
+
+
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
+
+		#define WINDOW_CANVAS_NAME(window) (window->name + ".Canvas")
+
+
 
 		/**
 		 *	Constructors And Destructor
@@ -86,7 +104,7 @@ namespace ING {
 		Window::Window(const WindowDesc& desc) :
 			ingWindow(0),
 			name(desc.name),
-			canvas(canvas),
+			canvas(0),
 			layout(desc.layout)
 		{
 			Application* application = Application::GetInstance();
@@ -119,7 +137,7 @@ namespace ING {
 			/**
 			 *	Add to Window System
 			 */
-			ApplicationWindowSystem* windowSystem = (ApplicationWindowSystem*)application->GetComponent("EditorWindowSystem");
+			ApplicationWindowSystem* windowSystem = (ApplicationWindowSystem*)(application->GetWindowSystem()->GetOverride("EditorWindowSystem"));
 
 			windowSystem->AddWindow(this);
 
@@ -130,7 +148,7 @@ namespace ING {
 			 */
 			canvas = new UI::Canvas(name + ".Canvas");
 
-			ApplicationUISystem* uiSystem = (ApplicationUISystem*)application->GetComponent("UISystem");
+			ApplicationUISystem* uiSystem = (ApplicationUISystem*)(application->GetComponent("UISystem"));
 
 			uiSystem->AddCanvas(canvas);
 
@@ -168,19 +186,23 @@ namespace ING {
 
 			Application* application = Application::GetInstance();
 
-			ApplicationWindowSystem* windowSystem = (ApplicationWindowSystem*)application->GetComponent("EditorWindowSystem");
-
-			windowSystem->RemoveWindow(this);
-
-			if (canvas != 0) {
+			if (canvas != 0 && application->IsHasComponent("UISystem")) {
 
 				ApplicationUISystem* uiSystem = (ApplicationUISystem*)application->GetComponent("UISystem");
 
-				uiSystem->RemoveCanvas(canvas);
+				if (uiSystem->IsHasCanvas(WINDOW_CANVAS_NAME(this))) {
 
-				canvas->Release();
+					uiSystem->RemoveCanvas(canvas);
+
+					canvas->Release();
+
+				}
 
 			}
+
+			ApplicationWindowSystem* windowSystem = (ApplicationWindowSystem*)application->GetWindowSystem()->GetOverride("EditorWindowSystem");
+
+			windowSystem->RemoveWindow(this);
 
 			if (ingWindow != 0) {
 

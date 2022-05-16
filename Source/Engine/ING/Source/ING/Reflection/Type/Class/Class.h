@@ -77,15 +77,15 @@ namespace ING {
 
 
 
-		class ING_API IClassType : public IType
+		class ING_API IClass : public IType
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IClassType	(const String& name, Namespace* _namespace);
-			~IClassType	();
+			IClass	(const String& name, Namespace* _namespace);
+			~IClass	();
 
 
 
@@ -132,21 +132,21 @@ namespace ING {
 
 
 		template<class T>
-		class ClassType : public IClassType {
+		class Class : public IClass {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ClassType(const String& name, Namespace* _namespace) :
-				IClassType(name, _namespace)
+			Class(const String& name, Namespace* _namespace) :
+				IClass(name, _namespace)
 			{
 
 
 
 			}
 
-			~ClassType () {
+			~Class () {
 
 
 
@@ -163,7 +163,7 @@ namespace ING {
 		};
 
 		template<class T>
-		IObject* ClassType<T>::CreateInstance() {
+		IObject* Class<T>::CreateInstance() {
 
 			return new T(this);
 		}
@@ -179,19 +179,19 @@ namespace ING {
  */
 #define ING_REFLECT_CLASS(ClassFullName, ExtendedClassFullName) \
 public:\
-	friend class ClassType<ClassFullName>;\
+	friend class Class<ClassFullName>;\
 \
 private:\
-	ClassFullName(ING::Reflection::IClassType* _class);\
+	ClassFullName(ING::Reflection::IClass* _class);\
 	\
 	~ClassFullName();\
 	\
 public:\
-	static ING::Reflection::ClassType<ClassFullName>*	CreateType		(ING::Reflection::Context* context);\
+	static ING::Reflection::Class<ClassFullName>*	CreateType		(ING::Reflection::Context* context);\
 	static ClassFullName*				CreateInstance	(ING::Reflection::Context* context);
 
 #define ING_BEGIN_REFLECTED_CLASS(ClassFullName, ExtendedClassFullName) \
-ClassFullName::ClassFullName	(ING::Reflection::IClassType* _class) : ExtendedClassFullName(_class) {\
+ClassFullName::ClassFullName	(ING::Reflection::IClass* _class) : ExtendedClassFullName(_class) {\
 \
 \
 \
@@ -209,14 +209,14 @@ ClassFullName*	ClassFullName::CreateInstance	(ING::Reflection::Context* context)
 \
 }\
 \
-ING::Reflection::ClassType<ClassFullName>* ClassFullName::CreateType(ING::Reflection::Context* context) {\
+ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection::Context* context) {\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(ClassFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
 \
 	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(ClassFullName).name());\
 \
-	ING::Reflection::ClassType<ClassFullName>* classType = new ING::Reflection::ClassType<ClassFullName>(classBaseName, _namespace);
+	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(classBaseName, _namespace);
 
 #define ING_END_REFLECTED_CLASS() \
 	return classType;\
