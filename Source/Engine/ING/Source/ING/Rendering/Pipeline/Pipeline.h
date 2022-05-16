@@ -47,6 +47,14 @@ namespace ING {
 		{
 
 			/**
+			 *	Friend Class
+			 */
+		public:
+			friend class IPass;
+
+
+
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:

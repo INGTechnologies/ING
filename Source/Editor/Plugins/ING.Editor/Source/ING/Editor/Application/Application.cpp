@@ -120,8 +120,9 @@ namespace ING {
 
 			AddComponent(new ApplicationLayoutSystem(this));
 			AddComponent(new ApplicationTabSystem(this));
-			AddComponent(new ApplicationWindowSystem(this));
-			AddComponent(new ApplicationRenderingSystem(this));
+
+			GetWindowSystem()->AddOverride(new ApplicationWindowSystem(GetWindowSystem()));
+			GetRenderingSystem()->AddOverride(new ApplicationRenderingSystem(GetRenderingSystem()));
 
 
 

@@ -17,15 +17,24 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ApplicationComponent
+ *	Include ApplicationComponentOverride
  */
-#include <ING/Application/Component/Component.h>
+#include <ING/Application/Component/Override/Override.h>
+
+
+
+/**
+ *	Include ING::ApplicationWindowSystem
+ */
+#include <ING/Application/WindowSystem/WindowSystem.h>
 
 
 
 namespace ING {
 
 	class IApplication;
+
+	class IApplicationComponent;
 
 	class IWindow;
 
@@ -37,14 +46,15 @@ namespace ING {
 
 
 
-		class PLUGIN_API(ING_EDITOR) ApplicationWindowSystem : public IApplicationComponent
+		class PLUGIN_API(ING_EDITOR) ApplicationWindowSystem :
+			public ApplicationComponentOverride<ING::ApplicationWindowSystem>
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ApplicationWindowSystem	(IApplication* application);
+			ApplicationWindowSystem	(IApplicationComponent * component);
 			~ApplicationWindowSystem();
 
 

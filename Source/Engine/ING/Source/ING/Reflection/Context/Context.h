@@ -22,7 +22,7 @@ namespace ING {
 
 		class Namespace;
 
-		class IClassType;
+		class IClass;
 
 
 
@@ -65,7 +65,7 @@ namespace ING {
 
 			Namespace* GetNamespace		(const String& fullName);
 
-			IClassType* GetClass			(const String& fullName);
+			IClass* GetClass			(const String& fullName);
 
 		};
 

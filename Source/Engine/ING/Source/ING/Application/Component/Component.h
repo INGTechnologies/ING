@@ -20,10 +20,22 @@ namespace ING {
 
 	class IApplication;
 
+	class IApplicationComponentOverride;
+
+	class IApplicationComponent;
+
 
 
 	class ING_API IApplicationComponent
 	{
+
+		/**
+		 *	Friend Class
+		 */
+	public:
+		friend class IApplicationComponentOverride;
+
+
 
 		/**
 		 *	Constructors And Destructor
@@ -49,12 +61,22 @@ namespace ING {
 	private:
 		String			name;
 
-		IApplication*		application;
+		IApplication*	application;
+
+		std::unordered_map<String, unsigned int> name2OverrideIndex;
+
+		std::vector<IApplicationComponentOverride*> overrideVector;
 
 	public:
 		const String&	GetName			() { return name; }
 
-		IApplication*		GetApplication	() { return application; }
+		IApplication*	GetApplication	() { return application; }
+
+		unsigned int	GetOverrideIndex(const String& name) { return name2OverrideIndex[name]; }
+
+		IApplicationComponentOverride* GetOverride(const String& name) { return overrideVector[GetOverrideIndex(name)]; }
+
+		IApplicationComponentOverride* GetOverride(unsigned int index) { return overrideVector[index]; }
 
 
 
@@ -62,6 +84,12 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
+		void			AddOverride		(IApplicationComponentOverride* pass);
+		void			AddOverride		(IApplicationComponentOverride* pass, unsigned int index);
+		void			RemoveOverride	(unsigned int index);
+		void			RemoveOverride	(const String& name);
+		void			RemoveOverride	(IApplicationComponentOverride* pass);
+
 		virtual void	Start();
 
 		virtual void	PreUpdate();

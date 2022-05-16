@@ -28,9 +28,9 @@
 
 
 /**
- *	Include ClassType
+ *	Include Class
  */
-#include <ING/Reflection/Type/ClassType/ClassType.h>
+#include <ING/Reflection/Type/Class/Class.h>
 
 
 
@@ -103,12 +103,12 @@ namespace ING {
 
 		}
 
-		IClassType* Context::GetClass(const String& fullName) {
+		IClass* Context::GetClass(const String& fullName) {
 
 			String namespaceName = IType::FullNameToNamespaceName(fullName);
 			String className = IType::FullNameToBaseName(fullName);
 
-			return (IClassType*)(GetNamespace(namespaceName)->GetType(className));
+			return (IClass*)(GetNamespace(namespaceName)->GetType(className));
 
 		}
 

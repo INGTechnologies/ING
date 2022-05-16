@@ -64,6 +64,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationComponent
+ */
+#include <ING/Application/Component/Component.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -71,8 +78,8 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ApplicationWindowSystem::ApplicationWindowSystem(IApplication* application) :
-			IApplicationComponent(application, "EditorWindowSystem")
+		ApplicationWindowSystem::ApplicationWindowSystem(IApplicationComponent* component) :
+			ApplicationComponentOverride(component, "EditorWindowSystem")
 		{
 
 
@@ -103,8 +110,6 @@ namespace ING {
 
 					900
 
-					
-
 				}
 			);
 
@@ -114,7 +119,7 @@ namespace ING {
 
 			});
 
-			return IApplicationComponent::Init();
+			return ApplicationComponentOverride::Init();
 
 		}
 
@@ -127,7 +132,7 @@ namespace ING {
 
 			}
 
-			IApplicationComponent::Release();
+			ApplicationComponentOverride::Release();
 
 		}
 
@@ -154,43 +159,43 @@ namespace ING {
 
 		void	ApplicationWindowSystem::Start() {
 
-			IApplicationComponent::Start();
+			ApplicationComponentOverride::Start();
 
 		}
 
 		void	ApplicationWindowSystem::PreUpdate() {
 
-			IApplicationComponent::PreUpdate();
+			ApplicationComponentOverride::PreUpdate();
 
 		}
 
 		void	ApplicationWindowSystem::Update() {
 
-			IApplicationComponent::Update();
+			ApplicationComponentOverride::Update();
 
 		}
 
 		void	ApplicationWindowSystem::LateUpdate() {
 
-			IApplicationComponent::LateUpdate();
+			ApplicationComponentOverride::LateUpdate();
 
 		}
 
 		void	ApplicationWindowSystem::PreRender() {
 
-			IApplicationComponent::PreRender();
+			ApplicationComponentOverride::PreRender();
 
 		}
 
 		void	ApplicationWindowSystem::Render() {
 
-			IApplicationComponent::Render();
+			ApplicationComponentOverride::Render();
 
 		}
 
 		void	ApplicationWindowSystem::LateRender() {
 
-			IApplicationComponent::LateRender();
+			ApplicationComponentOverride::LateRender();
 
 		}
 

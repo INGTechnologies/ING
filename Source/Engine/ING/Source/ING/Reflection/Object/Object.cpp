@@ -28,9 +28,9 @@
 
 
 /**
- *	Include ClassType
+ *	Include Class
  */
-#include <ING/Reflection/Type/ClassType/ClassType.h>
+#include <ING/Reflection/Type/Class/Class.h>
 
 
 
@@ -41,7 +41,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IObject::IObject(IClassType* _class) :
+		IObject::IObject(IClass* _class) :
 			_class(_class)
 		{
 

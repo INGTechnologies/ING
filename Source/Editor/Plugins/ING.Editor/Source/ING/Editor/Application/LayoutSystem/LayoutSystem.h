@@ -65,7 +65,7 @@ namespace ING {
 			std::unordered_map<String, Layout*> name2LayoutMap;
 
 		public:
-			Layout*			GetLayout		(const String& name) { return name2LayoutMap[name]; }
+			Layout*			GetLayout		(const String& name) { if(!IsHasLayout(name)) return 0; return name2LayoutMap[name]; }
 
 			bool			IsHasLayout		(const String& name) { return name2LayoutMap.find(name) != name2LayoutMap.end(); }
 

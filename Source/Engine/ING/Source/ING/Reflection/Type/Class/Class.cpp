@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "ClassType.h"
+#include "Class.h"
 
 
 
@@ -27,7 +27,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IClassType::IClassType(const String& name, Namespace* _namespace) :
+		IClass::IClass(const String& name, Namespace* _namespace) :
 			IType(name, _namespace)
 		{
 
@@ -35,7 +35,7 @@ namespace ING {
 
 		}
 
-		IClassType::~IClassType() {
+		IClass::~IClass() {
 
 
 
@@ -46,7 +46,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IClassType::Release() {
+		void IClass::Release() {
 
 			GetNamespace()->RemoveType(this);
 
@@ -58,7 +58,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IObject* IClassType::CreateInstance() {
+		IObject* IClass::CreateInstance() {
 
 
 			return 0;

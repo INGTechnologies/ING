@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Rendering Pipeline
+ */
+#include <ING/Rendering/Pipeline/Pipeline.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -62,6 +69,20 @@ namespace ING {
 		 *	Release Methods
 		 */
 		void IPass::Release	() {
+
+			if (pipeline != 0) {
+
+				pipeline->passVector[pipeline->GetPassIndex(name)] = 0;
+				pipeline->name2PassIndex.erase(name);
+
+			}
+
+			if (parent != 0) {
+
+				parent->childVector[parent->GetChildIndex(name)] = 0;
+				parent->name2ChildIndex.erase(name);
+
+			}
 
 			for (unsigned int i = 0; i < childVector.size(); ++i) {
 
