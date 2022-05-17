@@ -86,8 +86,7 @@ namespace ING {
 
 		if (application != 0) {
 
-			application->componentVector[application->GetComponentIndex(name)] = 0;
-			application->name2ComponentIndexMap.erase(name);
+			application->RemoveComponent(this);
 
 		}
 
@@ -107,68 +106,33 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void	IApplicationComponent::AddOverride(IApplicationComponentOverride* component) {
+	void	IApplicationComponent::AddOverride(IApplicationComponentOverride* override) {
 
-		AddOverride(component, overrideVector.size());
+		name2OverrideIndex[override->GetName()] = overrideVector.size();
+
+		overrideVector.resize(overrideVector.size() + 1);
+
+		overrideVector[overrideVector.size() - 1] = override;
 
 	}
 
-	void	IApplicationComponent::AddOverride(IApplicationComponentOverride* component, unsigned int index) {
+	void	IApplicationComponent::RemoveOverride(IApplicationComponentOverride* override) {
 
-		if (overrideVector.size() == index) {
+		unsigned int index = name2OverrideIndex[override->GetName()];
 
-			overrideVector.push_back(component);
+		overrideVector.erase(overrideVector.begin() + index);
 
-		}
-		else {
+		name2OverrideIndex.erase(override->GetName());
 
-			overrideVector.insert(overrideVector.begin() + index, component);
+		for (auto& item : name2OverrideIndex) {
 
-			unsigned int passCount = overrideVector.size();
+			if (item.second > index) {
 
-			for (unsigned int i = index + 1; i < passCount; ++i) {
-
-				name2OverrideIndex[overrideVector[i]->GetName()]++;
+				item.second--;
 
 			}
 
 		}
-
-		name2OverrideIndex[component->GetName()] = index;
-
-		component->SetComponent(this);
-
-	}
-
-	void	IApplicationComponent::RemoveOverride(unsigned int index) {
-
-		String passName = GetOverride(index)->GetName();
-
-		GetOverride(index)->SetComponent(0);
-
-		overrideVector.erase(overrideVector.begin() + index);
-
-		unsigned int passCount = overrideVector.size();
-
-		for (unsigned int i = index + 1; i < passCount; ++i) {
-
-			name2OverrideIndex[overrideVector[i]->GetName()]--;
-
-		}
-
-		name2OverrideIndex.erase(passName);
-
-	}
-
-	void	IApplicationComponent::RemoveOverride(const String& name) {
-
-		RemoveOverride(name2OverrideIndex[name]);
-
-	}
-
-	void	IApplicationComponent::RemoveOverride(IApplicationComponentOverride* component) {
-
-		RemoveOverride(component->GetName());
 
 	}
 
