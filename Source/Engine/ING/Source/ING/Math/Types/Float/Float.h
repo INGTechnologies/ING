@@ -1863,7 +1863,7 @@ namespace ING {
 
 	namespace Math {
 
-#ifndef __AVX__
+#ifdef NON_SIMD
 
 #pragma region CFloat2
 		struct ING_API CFloat2 {

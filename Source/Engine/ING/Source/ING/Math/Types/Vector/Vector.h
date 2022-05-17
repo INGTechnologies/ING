@@ -805,7 +805,7 @@ namespace ING {
 
 	namespace Math {
 
-#ifndef __AVX__
+#ifdef NON_SIMD
 
 #pragma region CVector2 
 		struct ING_API CVector2 {

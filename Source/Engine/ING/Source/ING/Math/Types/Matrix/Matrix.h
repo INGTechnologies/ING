@@ -2476,7 +2476,7 @@ namespace ING {
 
 	namespace Math {
 
-#ifndef __AVX__
+#ifdef NON_SIMD
 
 #pragma region CMatrix2x2
 		struct ING_API CMatrix2x2 {
