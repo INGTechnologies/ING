@@ -7,6 +7,10 @@ namespace ING {
 		struct RFloat3;
 		struct RFloat4;
 
+		struct CFloat2;
+		struct CFloat3;
+		struct CFloat4;
+
 
 
 		struct CFloat2x2;
@@ -34,14 +38,6 @@ namespace ING {
 		struct RFloat4x4;
 
 
-
-
-
-
-
-		struct CFloat2;
-		struct CFloat3;
-		struct CFloat4;
 
 		struct RVector2;
 		struct RVector3;
