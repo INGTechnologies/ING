@@ -42,6 +42,13 @@
 
 
 /**
+ *	Include Math
+ */
+#include <ING/Math/Math.h>
+
+
+
+/**
  *	Include Rendering Pipeline
  */
 #include <ING/Rendering/Pipeline/Pipeline.h>
@@ -160,14 +167,7 @@ namespace Demo {
 
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
-{ 
-
-	Context* context = new Context();
-	IClass* demoClass = Demo::DemoClass::CreateType(context);
-
-	Demo::DemoClass* demoObj = (Demo::DemoClass*)demoClass->CreateInstance();
-
-
+{
 
 	std::vector<WString> argv(argc);
 

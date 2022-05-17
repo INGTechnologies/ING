@@ -20,12 +20,5 @@ using namespace ING::Utils;
 
 
 
-namespace ING {
-
-	namespace Math {
-
-
-
-	}
-
-}
+#include "NonSIMD.h"
+#include "AVX.h"
