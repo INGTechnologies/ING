@@ -149,7 +149,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -157,7 +157,7 @@
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
@@ -238,7 +238,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -252,7 +252,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
       <FloatingPointModel>Fast</FloatingPointModel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -277,7 +277,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -285,7 +285,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <FunctionLevelLinking>
       </FunctionLevelLinking>
@@ -366,7 +366,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;ING_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -380,7 +380,7 @@ XCOPY "$(MONO_X64)bin\mono-2.0-sgen.dll" "$(OutDir)" /y</Command>
       <FloatingPointModel>Fast</FloatingPointModel>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <BufferSecurityCheck>false</BufferSecurityCheck>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
