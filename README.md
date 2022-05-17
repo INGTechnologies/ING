@@ -15,9 +15,12 @@
     + DirectX11 API
     + Multi-Pass Shader
     + Pass, Pipeline
-  + Math (support SIMD)
+    + Material
+    + Layer System
+  + Math (SIMD and non-SIMD)
   + Event
-  + Window
+  + Relection (Developing)
+  + Window (MSVC)
   + Utilities Library
   + Support Multi-Application
   + C++ Plugin loading at runtime
@@ -31,15 +34,16 @@
     + Add new environment variable: \
       `key`**:** **MONO_**{ platform (**X64** or **WIN32**) }\
       `value`**:** { mono installation path }
-  + `Step 2` **:** Clone [**ING repository**](https://github.com/INGTechnologies/ING).
+  + `Step 2` **:** Fork [**ING repository**](https://github.com/INGTechnologies/ING) to new repository and then clone it.
   + `Step 3` **:** Create new directory: **"Source/Games/Developers/** {your github username} **"**. This directory will store your games,...
   + `Step 4` **:** Copy and paste **"Source/Games/Sample"** to your directory which is created in step 3.
   + `Step 5` **:** Copy and paste **"ING_VS** {visual studio version} **.sln"** to **"ING.GitIgnores_VS** {visual studio version} **.sln"**.
   + `Step 6` **:** Open **"ING.GitIgnores_VS** {visual studio version} **.sln"**.
-  + `Step 7` **:** Create **"Source/Games/Developers/** {your github username} **"** (visual studio solution folder).
+  + `Step 7` **:** Create new visual studio solution folder **"Source/Games/Developers/** {your github username} **"**.
   + `Step 8` **:** Add all projects in **"Source/Games/Developers/** {your github username} **/Sample"** to solution folder which is created is step 7.
   + `Step 9` **:** Set runtime project that is added in step 8 as startup project.
-  + `Step 10` **:** Run and enjoy.
+  + `Step 10` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
+  + `Step 11` **:** Run and enjoy.
 - **Other** **:**
   + `Step 1` **:** Setup, install Mono
     + [**Install Mono**](https://www.mono-project.com/docs/getting-started/install/windows/)
@@ -54,7 +58,8 @@
   + `Step 7` **:** Create **"Source/Games/Developers/** {your github username} **"** (visual studio solution folder).
   + `Step 8` **:** Add all projects in **"Source/Games/Developers/GitIgnores/** {your github username} **/Sample"** to solution folder which is created is step 7.
   + `Step 9` **:** Set runtime project that is added in step 8 as startup project.
-  + `Step 10` **:** Run and enjoy.
+  + `Step 10` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
+  + `Step 11` **:** Run and enjoy.
 
 
 ## Documentation ##
