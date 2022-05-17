@@ -137,6 +137,8 @@ namespace ING {
 
 			name2PassIndex[pass->GetName()] = index;
 
+			pass->parent = 0;
+
 			pass->SetPipeline(this);
 
 		}

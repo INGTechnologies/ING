@@ -84,11 +84,8 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void			AddOverride		(IApplicationComponentOverride* pass);
-		void			AddOverride		(IApplicationComponentOverride* pass, unsigned int index);
-		void			RemoveOverride	(unsigned int index);
-		void			RemoveOverride	(const String& name);
-		void			RemoveOverride	(IApplicationComponentOverride* pass);
+		void			AddOverride		(IApplicationComponentOverride* override);
+		void			RemoveOverride	(IApplicationComponentOverride* override);
 
 		virtual void	Start();
 

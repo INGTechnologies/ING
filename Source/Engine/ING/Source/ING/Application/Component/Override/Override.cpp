@@ -82,8 +82,7 @@ namespace ING {
 
 		if (component != 0) {
 
-			component->overrideVector[component->GetOverrideIndex(name)] = 0;
-			component->name2OverrideIndex.erase(name);
+			component->RemoveOverride(this);
 
 		}
 
