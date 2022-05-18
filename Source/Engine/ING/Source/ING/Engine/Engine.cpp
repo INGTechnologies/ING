@@ -177,10 +177,6 @@ using namespace ING::Utils;
 
 
 
-#include <nlohmann/json.hpp>
-
-
-
 /**
  *	Include GameFramework
  */

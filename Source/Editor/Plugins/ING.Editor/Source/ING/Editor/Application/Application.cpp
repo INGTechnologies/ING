@@ -178,7 +178,7 @@ namespace ING {
 
 			if (!std::filesystem::exists(projectPath)) {
 
-				Debug::Log("Editor Application Config Not Found");
+				Debug::Log("Project Config Not Found");
 
 				Release();
 
