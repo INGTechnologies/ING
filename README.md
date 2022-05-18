@@ -42,8 +42,10 @@
   + `Step 7` **:** Create new visual studio solution folder **"Source/Games/Developers/** {your github username} **"**.
   + `Step 8` **:** Add all projects in **"Source/Games/Developers/** {your github username} **/Sample"** to solution folder which is created is step 7.
   + `Step 9` **:** Set runtime project that is added in step 8 as startup project.
-  + `Step 10` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
-  + `Step 11` **:** Run and enjoy.
+  + `Step 10` **:** Set project dependencies of your Runtime project: ING, your BuildEvents.
+  + `Step 11` **:** Set project dependencies of your BuildEvents project: ING.
+  + `Step 12` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
+  + `Step 13` **:** Run and enjoy.
 - **Other** **:**
   + `Step 1` **:** Setup, install Mono
     + [**Install Mono**](https://www.mono-project.com/docs/getting-started/install/windows/)
@@ -58,8 +60,10 @@
   + `Step 7` **:** Create **"Source/Games/Developers/** {your github username} **"** (visual studio solution folder).
   + `Step 8` **:** Add all projects in **"Source/Games/Developers/GitIgnores/** {your github username} **/Sample"** to solution folder which is created is step 7.
   + `Step 9` **:** Set runtime project that is added in step 8 as startup project.
-  + `Step 10` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
-  + `Step 11` **:** Run and enjoy.
+  + `Step 10` **:** Set project dependencies of your Runtime project: ING, your BuildEvents.
+  + `Step 11` **:** Set project dependencies of your BuildEvents project: ING.
+  + `Step 12` **:** If your CPU not support SIMD, change configuration to Debug.NonSIMD.
+  + `Step 13` **:** Run and enjoy.
 
 
 ## Documentation ##
