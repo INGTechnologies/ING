@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -41,7 +48,9 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IShader::IShader(IDevice* device, const String& name) : device(0) {
+		IShader::IShader(IDevice* device, const String& name) :			
+			device(0) 
+		{
 
 			this->name = name;
 
@@ -85,6 +94,18 @@ namespace ING {
 		IShaderPass* IShader::GetPass(const String& name) {
 
 			return passName2PassMap[name];
+
+		}
+
+		void		 IShader::SetFilterNameVector(const std::vector<String>& filterNameVector) {
+
+			this->filterNameVector = filterNameVector;
+
+			for (auto mat : materialList) {
+
+				mat->UpdateFilterNameVector();
+
+			}
 
 		}
 

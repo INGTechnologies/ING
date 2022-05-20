@@ -129,6 +129,16 @@
 
 
 
+#include <ING/Rendering/Shader/Shader.h>
+#include <ING/Rendering/Material/Material.h>
+#include <ING/Rendering/Material/Event/UpdateFilterNameVectorEvent/UpdateFilterNameVectorEvent.h>
+#include <ING/Rendering/Drawable/Drawable.h>
+#include <ING/Rendering/Drawable/MeshDrawable/MeshDrawable.h>
+#include <ING/Rendering/Layer/System/System.h>
+
+
+
+
 using namespace ING::Rendering;
 using namespace ING;
 using namespace ING::Reflection;
@@ -181,7 +191,25 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 	if (!ING::Engine::GetInstance()->Init()) return 1;
 
+	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](Event* e) {
 
+		IShader* shader = new IShader("DemoShader");
+
+		IMaterial* material = new IMaterial("DemoMaterial", shader);
+
+		LayerSystem* layerSystem = new LayerSystem();
+
+		MeshDrawable* demoDrawable = new MeshDrawable(layerSystem);
+
+		demoDrawable->SetMaterial(material);
+
+		shader->SetFilterNameVector({
+
+			"Transparent"
+
+		});
+
+	});
 
 	if (!ING::Engine::GetInstance()->Run()) return 1;
 

@@ -135,13 +135,15 @@ namespace ING {
 			std::vector<ShaderCBuffer>	cbufferVector;
 			std::unordered_map<String, unsigned int> cbufferName2CBufferIndexMap;
 
+			std::vector<String>			filterNameVector;
+
 			List<IMaterial*>			materialList;
 
 		protected:
 			IDevice* device;
 
 		public:
-			String					GetName		() const { return name; }
+			String						GetName		() const { return name; }
 
 			const std::unordered_map<String, IShaderPass*>&	GetPassName2PassMap() const { return passName2PassMap; }
 			IShaderPass*				GetPass		(const String& name);
@@ -170,6 +172,9 @@ namespace ING {
 				return cbufferName2CBufferIndexMap.find(name) != cbufferName2CBufferIndexMap.end();
 
 			}
+
+			const std::vector<String>&	GetFilterNameVector () { return filterNameVector; }
+			void						SetFilterNameVector (const std::vector<String>& filterNameVector);
 
 
 
