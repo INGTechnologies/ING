@@ -84,6 +84,13 @@
 
 
 /**
+ *	Include Editor UI System
+ */
+#include <ING/Editor/Application/UISystem/UISystem.h>
+
+
+
+/**
  *	Include Layout
  */
 #include <ING/Editor/Layout/Layout.h>
@@ -123,6 +130,7 @@ namespace ING {
 
 			GetWindowSystem()->AddOverride(new ApplicationWindowSystem(GetWindowSystem()));
 			GetRenderingSystem()->AddOverride(new ApplicationRenderingSystem(GetRenderingSystem()));
+			GetUISystem()->AddOverride(new ApplicationUISystem(GetUISystem()));
 
 
 
