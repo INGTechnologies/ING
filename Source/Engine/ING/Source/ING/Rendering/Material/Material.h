@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include EventStorage
+ */
+#include <ING/Event/Storage/Storage.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -80,7 +87,9 @@ namespace ING {
 
 
 
-		class ING_API IMaterial : public AsMethod
+		class ING_API IMaterial : 
+			public EventStorage,
+			public AsMethod
 		{
 
 			/**
@@ -120,7 +129,7 @@ namespace ING {
 			std::vector<IBuffer*> cbufferVector;
 
 		public:
-			String		GetName			() { return name; }
+			String			GetName			() { return name; }
 
 			IShader*		GetShader		() { return shader; }
 
@@ -187,6 +196,8 @@ namespace ING {
 
 			IView*		 GetView				(const String& name);
 			void		 SetView				(const String& name, IView* view);
+
+			virtual void UpdateFilterNameVector	();
 
 			virtual void Update					();
 

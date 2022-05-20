@@ -118,6 +118,20 @@
 
 
 
+/**
+ *	Include Material Event
+ */
+#include <ING/Rendering/Material/Event/Event.h>
+
+
+
+/**
+ *	Include Shader
+ */
+#include <ING/Rendering/Shader/Shader.h>
+
+
+
 
 namespace ING {
 
@@ -129,7 +143,8 @@ namespace ING {
 		MeshDrawable::MeshDrawable(LayerSystem* system) :
 			IDrawable(system),
 			mesh(0),
-			material(0)
+			material(0),
+			nodeInMaterialUpdateFilterNameVectorEventListenerList(0)
 		{
 
 
@@ -149,7 +164,42 @@ namespace ING {
 		 */
 		void MeshDrawable::Release() {
 
+			if (this->material != 0) {
+
+				this->material->GetEvent("UPDATE_FILTER_NAME_VECTOR")->RemoveListener(nodeInMaterialUpdateFilterNameVectorEventListenerList);
+
+			}
+
 			delete this;
+
+		}
+
+
+
+		/**
+		 *	Properties
+		 */
+		void MeshDrawable::SetMaterial(IMaterial* material) { 
+			
+			if (this->material != 0) {
+
+				this->material->GetEvent("UPDATE_FILTER_NAME_VECTOR")->RemoveListener(nodeInMaterialUpdateFilterNameVectorEventListenerList);
+
+			}
+
+			this->material = material; 
+
+			material->GetEvent("UPDATE_FILTER_NAME_VECTOR")->AddListener([](Event* e) {
+			
+				IMaterialEvent* materialEvent = (IMaterialEvent*)e;
+
+				((MeshDrawable*)materialEvent->GetCurrentOwner())->SetFilterNameVector(
+				
+					materialEvent->GetMaterial()->GetShader()->GetFilterNameVector()
+				
+				);
+				
+			}, this);
 
 		}
 

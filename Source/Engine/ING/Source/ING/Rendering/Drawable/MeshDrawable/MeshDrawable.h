@@ -30,6 +30,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Material Event
+ */
+#include <ING/Rendering/Material/Event/Event.h>
+
+
+
 namespace ING {
 
 	class Camera;
@@ -79,7 +86,10 @@ namespace ING {
 			 */
 		private:
 			IMesh*		mesh;
+
 			IMaterial*	material;
+			List<Event::Listener>::Node* nodeInMaterialUpdateFilterNameVectorEventListenerList;
+
 			TransformM	transformMatrices;
 
 		public:
@@ -87,7 +97,7 @@ namespace ING {
 			IMaterial*	GetMaterial	()						{ return material; }
 
 			void		SetMesh		(IMesh* mesh)			{ this->mesh = mesh; }
-			void		SetMaterial	(IMaterial* material)	{ this->material = material; }
+			void		SetMaterial	(IMaterial* material);
 
 			void		SetTransform(const TransformM& transformMatrices)	{ this->transformMatrices = transformMatrices; }
 

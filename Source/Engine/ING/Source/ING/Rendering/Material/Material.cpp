@@ -83,6 +83,22 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Event
+ */
+#include <ING/Event/Event.h>
+
+
+
+/**
+ *	Include Material Events
+ */
+#include <ING/Rendering/Material/Event/Event.h>
+
+#include <ING/Rendering/Material/Event/UpdateFilterNameVectorEvent/UpdateFilterNameVectorEvent.h>
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -91,6 +107,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		IMaterial::IMaterial(const String& name, IShader* shader) : 
+			EventStorage(),
+
 			shader(0),
 			propertyBuffer(0),
 			propertyPData(0),
@@ -99,6 +117,14 @@ namespace ING {
 
 			this->name = name;
 
+			
+			
+			/* Add Events */
+			AddEvent(new MaterialUpdateFilterNameVectorEvent(this));
+
+
+
+			/* Set Shader */
 			SetShader(shader);
 
 		}
@@ -117,6 +143,8 @@ namespace ING {
 		 */
 		void IMaterial::Release()
 		{
+
+			RELEASE_EVENT_STORAGE();
 
 			ReleasePropertyBuffer();
 
@@ -351,7 +379,13 @@ namespace ING {
 
 		}
 
-		void IMaterial::Update() {
+		void	IMaterial::UpdateFilterNameVector(){
+
+			GetEvent("UPDATE_FILTER_NAME_VECTOR")->Execute();
+
+		}
+
+		void	IMaterial::Update() {
 
 
 
