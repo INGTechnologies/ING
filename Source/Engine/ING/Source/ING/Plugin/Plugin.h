@@ -132,11 +132,11 @@ PLUGIN_STR(Name)_EXTERN
 #define PLUGIN_FUNCTION(Name) \
 extern "C" PLUGIN_API(Name)
 
-#define DECLARE_PLUGIN_NAME(Name) \
+#define DECLARE_PLUGIN(Name) \
 extern "C" PLUGIN_PRIVATE_API(Name) ING::Utils::String PluginName();\
 PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_Name();
 
-#define DEFINE_PLUGIN_NAME(Name) \
+#define DEFINE_PLUGIN(Name) \
 ING::Utils::String PluginName(){ return #Name; }\
 ING::Utils::String PLUGIN_STR(Name)_Name(){ return #Name; }
 

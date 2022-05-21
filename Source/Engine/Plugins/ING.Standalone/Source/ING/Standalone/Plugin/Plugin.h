@@ -20,7 +20,7 @@ namespace ING {
 /**
  *	Plugin Info
  */
-DECLARE_PLUGIN_NAME(ING_STANDALONE);
+DECLARE_PLUGIN(ING_STANDALONE);
 
 
 

@@ -18,7 +18,7 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN_NAME(ING_EDITOR);
+DEFINE_PLUGIN(ING_EDITOR);
 
 
 

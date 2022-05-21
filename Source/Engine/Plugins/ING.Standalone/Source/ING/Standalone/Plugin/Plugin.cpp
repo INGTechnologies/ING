@@ -19,7 +19,7 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN_NAME(ING_STANDALONE);
+DEFINE_PLUGIN(ING_STANDALONE);
 
 
 
