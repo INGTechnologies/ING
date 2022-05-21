@@ -118,13 +118,6 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ECS Repository Manager
- */
-#include <ING/ECS/Repository/Manager/Manager.h>
-
-
-
-/**
  *	Include Profiler
  */
 #include <ING/Profiler/Profiler.h>
@@ -274,9 +267,6 @@ namespace ING {
 		AddSquare<Scripting::Manager>();
 
 		AddSquare<UI::Engine>();
-
-		/* ECS Repository Manager */
-		AddSquare<ECS::RepositoryManager>();
 
 		/* GameFramework */
 		AddSquare<GameFramework>();
@@ -557,7 +547,7 @@ namespace ING {
 
 
 
-		ECS::RepositoryManager::GetInstance()->PreUpdate();
+		//ECS::RepositoryManager::GetInstance()->PreUpdate();
 
 
 		GetEvent("START_FRAME_UPDATE")->Execute();
@@ -572,8 +562,8 @@ namespace ING {
 
 		ApplicationManager::GetInstance()->Update();
 
-		ECS::RepositoryManager::GetInstance()->Update();
-		ECS::RepositoryManager::GetInstance()->LateUpdate();
+		//ECS::RepositoryManager::GetInstance()->Update();
+		//ECS::RepositoryManager::GetInstance()->LateUpdate();
 
 		ApplicationManager::GetInstance()->LateUpdate();
 

@@ -207,7 +207,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		shader->SetFilterNameVector({
 
-			"Transparent"
+			"Opaque"
 
 		});
 
