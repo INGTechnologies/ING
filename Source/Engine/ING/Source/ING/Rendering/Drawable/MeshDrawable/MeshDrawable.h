@@ -57,6 +57,8 @@ namespace ING {
 
 		class IMaterial;
 
+		class DrawableMaterial;
+
 		class LayerSystem;
 
 
@@ -87,17 +89,17 @@ namespace ING {
 		private:
 			IMesh*		mesh;
 
-			IMaterial*	material;
+			DrawableMaterial*	material;
 			List<Event::Listener>::Node* nodeInMaterialUpdateFilterNameVectorEventListenerList;
 
 			TransformM	transformMatrices;
 
 		public:
 			IMesh*		GetMesh		()						{ return mesh; }
-			IMaterial*	GetMaterial	()						{ return material; }
+			DrawableMaterial*	GetMaterial	()						{ return material; }
 
 			void		SetMesh		(IMesh* mesh)			{ this->mesh = mesh; }
-			void		SetMaterial	(IMaterial* material);
+			void		SetMaterial	(DrawableMaterial* material);
 
 			void		SetTransform(const TransformM& transformMatrices)	{ this->transformMatrices = transformMatrices; }
 

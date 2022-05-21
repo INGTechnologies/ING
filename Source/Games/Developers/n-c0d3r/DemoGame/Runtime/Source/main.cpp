@@ -130,7 +130,9 @@
 
 
 #include <ING/Rendering/Shader/Shader.h>
+#include <ING/Rendering/Shader/DrawableShader/DrawableShader.h>
 #include <ING/Rendering/Material/Material.h>
+#include <ING/Rendering/Material/DrawableMaterial/DrawableMaterial.h>
 #include <ING/Rendering/Material/Event/UpdateFilterNameVectorEvent/UpdateFilterNameVectorEvent.h>
 #include <ING/Rendering/Drawable/Drawable.h>
 #include <ING/Rendering/Drawable/MeshDrawable/MeshDrawable.h>
@@ -193,9 +195,9 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](Event* e) {
 
-		IShader* shader = new IShader("DemoShader");
+		DrawableShader* shader = new DrawableShader("DemoShader");
 
-		IMaterial* material = new IMaterial("DemoMaterial", shader);
+		DrawableMaterial* material = new DrawableMaterial("DemoMaterial", shader);
 
 		LayerSystem* layerSystem = new LayerSystem();
 

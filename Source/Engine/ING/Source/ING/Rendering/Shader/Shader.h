@@ -176,6 +176,8 @@ namespace ING {
 			const std::vector<String>&	GetFilterNameVector () { return filterNameVector; }
 			void						SetFilterNameVector (const std::vector<String>& filterNameVector);
 
+			const List<IMaterial*>&		GetMaterialList () { return materialList; }
+
 
 
 			/**

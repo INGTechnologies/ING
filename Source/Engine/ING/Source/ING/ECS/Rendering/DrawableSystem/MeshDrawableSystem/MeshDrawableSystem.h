@@ -91,10 +91,10 @@ namespace ING {
 
 		public:
 			ING::Rendering::IMesh*			GetMesh					() { return ingMeshDrawable->GetMesh(); }
-			ING::Rendering::IMaterial*		GetMaterial				() { return ingMeshDrawable->GetMaterial(); }
+			ING::Rendering::DrawableMaterial *GetMaterial() { return ingMeshDrawable->GetMaterial(); }
 
 			void							SetMesh					(ING::Rendering::IMesh* mesh) { ingMeshDrawable->SetMesh(mesh); }
-			void							SetMaterial				(ING::Rendering::IMaterial* material) { ingMeshDrawable->SetMaterial(material); }
+			void							SetMaterial				(ING::Rendering::DrawableMaterial* material) { ingMeshDrawable->SetMaterial(material); }
 
 			void							SetTransform			(const TransformM& transformMatrices) { ingMeshDrawable->SetTransform(transformMatrices); }
 
