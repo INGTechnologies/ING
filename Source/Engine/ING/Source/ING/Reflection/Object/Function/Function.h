@@ -37,25 +37,14 @@ namespace ING {
 
 
 
-		class IClassFunction {
+		class ING_API IObjectFunction {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		protected:
-			IClassFunction(void* object) :
-				object(object)
-			{
-
-
-
-			}
-
-			~IClassFunction() {
-
-
-
-			}
+			IObjectFunction(void* object);
+			~IObjectFunction();
 
 
 
@@ -63,11 +52,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release() {
-
-				delete this;
-
-			}
+			virtual void Release();
 
 
 
@@ -78,7 +63,7 @@ namespace ING {
 			void* object;
 
 		public:
-			void* GetObject() { return object; }
+			void* _GetObject() { return object; }
 			void  SetObject(void* object) { this->object = object; }
 
 
@@ -107,14 +92,14 @@ namespace ING {
 
 
 		template<typename TResult, typename... TArgs>
-		class SpecifiedClassFunction : public IClassFunction {
+		class SpecifiedClassFunction : public IObjectFunction {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		protected:
 			SpecifiedClassFunction(void* object) :
-				IClassFunction(object)
+				IObjectFunction(object)
 			{
 
 
@@ -170,7 +155,7 @@ namespace ING {
 			 *	Properties
 			 */
 		public:
-			TObject* GetObject() { return (TObject*)SpecifiedClassFunction<TResult, TArgs...>::GetObject(); }
+			TObject* _GetObject() { return (TObject*)SpecifiedClassFunction<TResult, TArgs...>::_GetObject(); }
 			void     SetObject(TObject* object) { SpecifiedClassFunction<TResult, TArgs...>::SetObject(object); }
 
 
@@ -185,18 +170,10 @@ namespace ING {
 
 
 
-		void IClassFunction::Invoke() {
-
-			return Specify<void>()->Invoke();
-
-		}
-
-
-
 		template<class TObject, auto TClassFunction, typename TResult, typename... TArgs>
 		TResult ClassFunction<TObject, TClassFunction, TResult, TArgs...>::Invoke(TArgs... args) {
 
-			return (GetObject()->*TClassFunction)(args...);
+			return (_GetObject()->*TClassFunction)(args...);
 
 		}
 
