@@ -95,6 +95,13 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Material Events
+ */
+#include <ING/Rendering/Material/Event/Event.h>
+
+#include <ING/Rendering/Material/Event/UpdateFilterNameVectorEvent/UpdateFilterNameVectorEvent.h>
+
 
 
 namespace ING {
@@ -109,6 +116,11 @@ namespace ING {
 		{
 
 			cbufferVector.resize(1);
+
+
+
+			/* Add Events */
+			AddEvent(new MaterialUpdateFilterNameVectorEvent(this));
 
 		}
 

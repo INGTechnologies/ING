@@ -112,14 +112,14 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			String		name;
+			String			name;
 
 			IShader*		shader;
 
 			void*			propertyPData;
 			IBuffer*		propertyBuffer;
 
-			std::vector<MaterialView>						viewVector;
+			std::vector<MaterialView>					viewVector;
 			std::unordered_map<String, unsigned int>	viewName2ViewIndexMap;
 			std::unordered_map<String, std::vector<unsigned int>>	viewType2ViewIndexVectorMap;
 

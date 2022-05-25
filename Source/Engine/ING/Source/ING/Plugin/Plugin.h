@@ -108,14 +108,14 @@ namespace ING {
 /**
  *	Define Macros
  */
-#ifdef IS_PLUGIN
-#define DEFAULT_PLUGIN_LOAD(engine, plugin)\
-		ING::Engine::LoadInstance(engine);\
-		ING::PluginManager::LoadInstance(ING::Engine::GetInstance()->GetSquare<ING::PluginManager>());
-#endif
+#define PLUGIN_STR(Str) Str
 
-#define PLUGIN_STR(Str) \
-Str
+#ifdef IS_PLUGIN
+#define DEFAULT_PLUGIN_LOAD(Name, engine, plugin)\
+		ING::Engine::LoadInstance(engine);\
+		ING::PluginManager::LoadInstance(ING::Engine::GetInstance()->GetSquare<ING::PluginManager>());\
+		PLUGIN_STR(Name)_Plugin = plugin;
+#endif
 
 #define PLUGIN_EXPORTS(Name) \
 PLUGIN_STR(Name)_EXPORTS
@@ -132,13 +132,16 @@ PLUGIN_STR(Name)_EXTERN
 #define PLUGIN_FUNCTION(Name) \
 extern "C" PLUGIN_API(Name)
 
-#define DECLARE_PLUGIN_NAME(Name) \
+#define DECLARE_PLUGIN(Name) \
 extern "C" PLUGIN_PRIVATE_API(Name) ING::Utils::String PluginName();\
-PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_Name();
+PLUGIN_FUNCTION(Name) ING::Utils::String PLUGIN_STR(Name)_Name();\
+static ING::IPlugin* PLUGIN_STR(Name)_Plugin;\
 
-#define DEFINE_PLUGIN_NAME(Name) \
+#define DEFINE_PLUGIN(Name) \
 ING::Utils::String PluginName(){ return #Name; }\
 ING::Utils::String PLUGIN_STR(Name)_Name(){ return #Name; }
+
+#define GET_PLUGIN(Name) (PLUGIN_STR(Name)_Plugin)
 
 #define DECLARE_PLUGIN_FUNCTION(PluginName, ReturnType, FunctionName) \
 PLUGIN_FUNCTION(PluginName) ReturnType PLUGIN_STR(PLUGIN_STR(PluginName)_)FunctionName

@@ -19,7 +19,7 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN_NAME(ING_STANDALONE);
+DEFINE_PLUGIN(ING_STANDALONE);
 
 
 
@@ -28,7 +28,7 @@ DEFINE_PLUGIN_NAME(ING_STANDALONE);
  */
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
-	DEFAULT_PLUGIN_LOAD(engine, plugin);
+	DEFAULT_PLUGIN_LOAD(ING_STANDALONE, engine, plugin);
 
 	/* Continue if engine is in ING.Standalone mode */
 	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {

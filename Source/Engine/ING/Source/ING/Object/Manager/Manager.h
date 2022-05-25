@@ -33,7 +33,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Object;
+	class IObject;
 
 
 
@@ -43,7 +43,7 @@ namespace ING {
 	{
 
 	public:
-		friend class Object;
+		friend class IObject;
 
 
 
@@ -72,7 +72,7 @@ namespace ING {
 	private:
 		IdGenerator idGenerator;
 
-		std::unordered_map<ObjectId, Object*> id2ObjectMap;
+		std::unordered_map<ObjectId, IObject*> id2ObjectMap;
 
 		std::mutex mutex;
 
@@ -82,9 +82,9 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void	RegisterObject	(Object* object);
-		void	RemoveObject	(Object* object);
-		Object* GetObjectById	(ObjectId id);
+		void	RegisterObject	(IObject* object);
+		void	RemoveObject	(IObject* object);
+		IObject*GetObjectById	(ObjectId id);
 
 	};
 

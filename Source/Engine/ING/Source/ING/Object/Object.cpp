@@ -18,7 +18,7 @@ namespace ING {
 	/**
 	 *	Constructor And Destructors
 	 */
-	Object::Object() :
+	IObject::IObject() :
 		id(0)
 	{
 
@@ -26,7 +26,7 @@ namespace ING {
 
 	}
 
-	Object::Object(ObjectId id) :
+	IObject::IObject(ObjectId id) :
 		id(id)
 	{
 
@@ -34,7 +34,7 @@ namespace ING {
 
 	}
 
-	Object::~Object() {
+	IObject::~IObject() {
 
 
 
@@ -45,7 +45,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void Object::Release() {
+	void IObject::Release() {
 
 		ObjectManager::GetInstance()->RemoveObject(this);
 

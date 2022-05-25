@@ -117,11 +117,6 @@ namespace ING {
 
 			this->name = name;
 
-			
-			
-			/* Add Events */
-			AddEvent(new MaterialUpdateFilterNameVectorEvent(this));
-
 
 
 			/* Set Shader */

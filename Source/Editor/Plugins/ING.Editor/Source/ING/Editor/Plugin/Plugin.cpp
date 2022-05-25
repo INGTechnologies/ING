@@ -18,7 +18,7 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN_NAME(ING_EDITOR);
+DEFINE_PLUGIN(ING_EDITOR);
 
 
 
@@ -27,7 +27,7 @@ DEFINE_PLUGIN_NAME(ING_EDITOR);
  */
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
-	DEFAULT_PLUGIN_LOAD(engine, plugin);
+	DEFAULT_PLUGIN_LOAD(ING_EDITOR, engine, plugin);
 
 	/* Continue if engine is in ING.Editor mode */
 	if (Engine::GetInstance()->GetMode() != "ING.Editor") {

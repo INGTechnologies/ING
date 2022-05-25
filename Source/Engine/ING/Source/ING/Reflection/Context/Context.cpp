@@ -30,7 +30,7 @@
 /**
  *	Include Class
  */
-#include <ING/Reflection/Type/Class/Class.h>
+#include <ING/Reflection/Class/Class.h>
 
 
 

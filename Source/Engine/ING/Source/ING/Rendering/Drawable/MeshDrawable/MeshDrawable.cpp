@@ -179,7 +179,7 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void MeshDrawable::SetMaterial(IMaterial* material) { 
+		void MeshDrawable::SetMaterial(DrawableMaterial* material) {
 			
 			if (this->material != 0) {
 
