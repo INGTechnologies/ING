@@ -31,6 +31,10 @@ namespace ING {
 
 		class IObject;
 
+		class IObjectFunction;
+
+		struct ClassMember;
+
 
 
 		enum ClassMemberAccess {
@@ -61,6 +65,8 @@ namespace ING {
 
 			String				typeName;
 
+			IObjectFunction*		(*functionCreator)(IObject* object);
+
 			String				name = "";
 
 			ClassMemberAccess	access;
@@ -73,6 +79,25 @@ namespace ING {
 
 				return name == "";
 
+			}
+
+
+
+			/**
+			 *	To Use With Macros
+			 */
+			ClassMember& ACCESS (ClassMemberAccess access) {
+
+				this->access = access;
+
+				return *(this);
+			}
+
+			ClassMember& TAG(ClassMemberTag tag) {
+
+				this->tag = tag;
+
+				return *(this);
 			}
 
 		};
@@ -106,6 +131,8 @@ namespace ING {
 			std::unordered_map<String, ClassMember> name2MemberMap;
 
 		public:
+			const std::unordered_map<String, ClassMember>& GetName2MemberMap () { return name2MemberMap; }
+
 			bool			IsHasMember(const String& name) { return name2MemberMap.find(name) != name2MemberMap.end(); }
 
 			const ClassMember& GetMember(const String& name) {
@@ -218,7 +245,9 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 \
 	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(ClassFullName).name());\
 \
-	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(classBaseName, _namespace);
+	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(classBaseName, _namespace);\
+\
+	ING::Reflection::ClassMember currentMember;
 
 #define ING_END_REFLECTED_CLASS() \
 	return classType;\
@@ -229,13 +258,18 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
 	unsigned int memberOffset = GetMemberOffset(&MemberFullName);\
 	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(MemberFullName));\
-	classType->SetMember({ true, memberOffset, typeName, memberBaseName, ##__VA_ARGS__ });\
-}
+	currentMember = { true, memberOffset, typeName, [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, memberBaseName, ##__VA_ARGS__ };\
+	classType->SetMember(currentMember);\
+}\
+currentMember
 
-#define ING_CLASS_FUNCTION(MemberFullName, ...) \
+#define ING_CLASS_FUNCTION(MemberFullName, ClassFullName, ...) \
 {\
 	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
-	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(&MemberFullName));\
-	Debug::Log(typeName);\
-}
-
+	currentMember = { false, 0, "", [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{\
+			return new ING::Reflection::ClassFunction<ClassFullName, &MemberFullName,##__VA_ARGS__>((ClassFullName*)object); \
+	},\
+	memberBaseName};\
+	classType->SetMember(currentMember);\
+}\
+currentMember

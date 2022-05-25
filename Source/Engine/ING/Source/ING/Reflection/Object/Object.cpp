@@ -6,9 +6,9 @@
 
 
 
-/**
- *	Include Debug
- */
+ /**
+  *	Include Debug
+  */
 #include <ING/_Debug/Debug.h>
 
 
@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Object Function
+ */
+#include <ING/Reflection/Object/Function/Function.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -46,7 +53,15 @@ namespace ING {
 			_class(_class)
 		{
 
+			for (auto item : _class->GetName2MemberMap()) {
 
+				if (!(item.second.isProperty)) {
+
+					name2Function[item.second.name] = item.second.functionCreator(this);
+
+				}
+
+			}
 
 		}
 
@@ -62,6 +77,12 @@ namespace ING {
 		 *	Release Methods
 		 */
 		void IObject::Release() {
+
+			for (auto item : name2Function) {
+
+				item.second->Release();
+
+			}
 
 			delete this;
 		}

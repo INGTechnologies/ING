@@ -60,7 +60,6 @@ namespace ING {
 		 */
 		IObject* IClass::CreateInstance() {
 
-
 			return 0;
 		}
 
