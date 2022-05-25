@@ -29,7 +29,7 @@ namespace ING {
 
 
 
-	class ING_API Object {
+	class ING_API IObject {
 		
 	public:
 		friend class ObjectManager;
@@ -40,11 +40,11 @@ namespace ING {
 		 *	Constructor And Destructors
 		 */
 	public:
-		Object();
+		IObject	();
 
-		Object(ObjectId id);
+		IObject	(ObjectId id);
 
-		~Object();
+		~IObject();
 
 
 

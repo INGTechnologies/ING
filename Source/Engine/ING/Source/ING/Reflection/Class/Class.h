@@ -35,11 +35,11 @@ namespace ING {
 
 		enum ClassMemberAccess {
 
-			CLASS_MEMBER_ACCESS_PUBLIC,
+			CLASS_MEMBER_ACCESS_PRIVATE = 0x0,
 
-			CLASS_MEMBER_ACCESS_PROTECTED,
+			CLASS_MEMBER_ACCESS_PROTECTED = 0x1,
 
-			CLASS_MEMBER_ACCESS_PRIVATE
+			CLASS_MEMBER_ACCESS_PUBLIC = 0x2
 
 		};
 
@@ -47,13 +47,15 @@ namespace ING {
 
 		enum ClassMemberTag {
 
-			CLASS_MEMBER_TAG_EDIT_EVERYWHERE
+			CLASS_MEMBER_TAG_EDIT_EVERYWHERE = 0x0
 
 		};
 
 
 
 		struct ClassMember {
+
+			bool				isProperty = true;
 
 			size_t				offsetInBytes = 0;
 
@@ -227,5 +229,13 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
 	unsigned int memberOffset = GetMemberOffset(&MemberFullName);\
 	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(MemberFullName));\
-	classType->SetMember({ memberOffset, typeName, memberBaseName, ##__VA_ARGS__ });\
+	classType->SetMember({ true, memberOffset, typeName, memberBaseName, ##__VA_ARGS__ });\
 }
+
+#define ING_CLASS_FUNCTION(MemberFullName, ...) \
+{\
+	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
+	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(&MemberFullName));\
+	Debug::Log(typeName);\
+}
+

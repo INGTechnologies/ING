@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Object
+ */
+#include <ING\Object/Object.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -26,19 +33,21 @@ namespace ING {
 
 		class IClass;
 
+		struct ClassMember;
+
 		class Context;
 
 
 
-		class ING_API IObject
+		class ING_API IObject : public ING::IObject
 		{
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			IObject		(IClass* _class);
-			~IObject	();
+			IObject	(IClass* _class);
+			~IObject();
 
 
 
@@ -58,6 +67,21 @@ namespace ING {
 
 		public:
 			IClass*		GetType	() { return _class; }
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void*		GetPropertyPointer (const String& name);
+
+			template<typename T>
+			T&			GetProperty(const String& name) {
+			
+				return *((T*)GetPropertyPointer(name));
+			
+			}
 
 		};
 

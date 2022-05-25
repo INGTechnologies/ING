@@ -30,7 +30,7 @@
 /**
  *	Include Class
  */
-#include <ING/Reflection/Type/Class/Class.h>
+#include <ING/Reflection/Class/Class.h>
 
 
 
@@ -42,6 +42,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		IObject::IObject(IClass* _class) :
+			ING::IObject(),
 			_class(_class)
 		{
 
@@ -63,6 +64,17 @@ namespace ING {
 		void IObject::Release() {
 
 			delete this;
+		}
+
+
+
+		/**
+		 *	Methods
+		 */
+		void* IObject::GetPropertyPointer(const String& name) {
+
+			return ((char*)this) + _class->GetMember(name).offsetInBytes;
+
 		}
 
 	}

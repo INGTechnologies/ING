@@ -124,7 +124,6 @@
 #include <ING/Reflection/Type/Type.h>
 #include <ING/Reflection/Namespace/Namespace.h>
 #include <ING/Reflection/Object/Object.h>
-#include <ING/Reflection/Class/Function/Function.h>
 #include <ING/Reflection/Context/Context.h>
 #include <ING/Reflection/Class/Class.h>
 
@@ -149,53 +148,18 @@ using namespace ING::UI;
 
 
 
-static IApplication* application = 0;
-static IWindow* mainWindow = 0;
+namespace Demo {
 
+	class DemoClass : public Reflection::IObject {
 
+		ING_REFLECT_CLASS(DemoClass, IObject)
 
-#include "DemoClass.h"
+	public:
+		unsigned int a;
+		unsigned int b;
 
+		void Fn();
 
+	};
 
-#include <functional>
-
-
-
-#ifdef USE_MSVC
-int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
-{
-
-	std::vector<WString> argv(argc);
-
-	for (unsigned int i = 0; i < argc; ++i) {
-
-		argv[i] = ToWString(argv_cstr[i]);
-
-	}
-
-	ING::Engine::CreateInstance(argv);
-
-	if (!ING::Engine::GetInstance()->Init()) return 1;
-
-	ING::Engine::GetInstance()->GetEvent("RUN")->AddListener([](Event* e) {
-
-		Reflection::Context* ctx = new Reflection::Context();
-
-		Reflection::IClass* _class = (Reflection::IClass*)Demo::DemoClass::CreateType(ctx);
-
-		Demo::DemoClass* demoObject = (Demo::DemoClass*)_class->CreateInstance();
-
-		IClassFunction* f = new ClassFunction<Demo::DemoClass, &Demo::DemoClass::Fn, void>(demoObject);
-
-		f->Invoke();
-
-		Debug::Log(demoObject->GetProperty<unsigned int>("a"));
-
-	});
-
-	if (!ING::Engine::GetInstance()->Run()) return 1;
-
-	return 0;
 }
-#endif

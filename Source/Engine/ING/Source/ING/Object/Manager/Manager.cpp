@@ -80,7 +80,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void ObjectManager::RegisterObject(Object* object) {
+	void ObjectManager::RegisterObject(IObject* object) {
 
 		mutex.lock();
 
@@ -98,7 +98,7 @@ namespace ING {
 
 	}
 
-	void ObjectManager::RemoveObject(Object* object) {
+	void ObjectManager::RemoveObject(IObject* object) {
 
 		mutex.lock();
 
@@ -110,7 +110,7 @@ namespace ING {
 
 	}
 
-	Object* ObjectManager::GetObjectById(ObjectId id) {
+	IObject* ObjectManager::GetObjectById(ObjectId id) {
 
 		if (id2ObjectMap.find(id) == id2ObjectMap.end()) {
 
