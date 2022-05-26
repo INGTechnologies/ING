@@ -151,18 +151,27 @@ using namespace ING::UI;
 
 namespace Demo {
 
-	class DemoClass : public Reflection::IObject {
+	class DemoClassA : public Reflection::IObject {
 
-		ING_REFLECT_CLASS(DemoClass, IObject)
+		ING_REFLECT_CLASS(DemoClassA, IObject)
+
+	protected:
+		void Constructor(int b);
+
+	public:
+		unsigned int b;
+
+	};
+
+	class DemoClass : public DemoClassA {
+
+		ING_REFLECT_CLASS(DemoClass, DemoClassA)
 
 	protected:
 		void Constructor(int a);
 
 	public:
 		unsigned int a;
-		unsigned int b;
-
-		int Fn();
 
 	};
 
