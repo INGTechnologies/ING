@@ -65,7 +65,8 @@ namespace ING {
 
 		enum ClassMemberTag {
 
-			CLASS_MEMBER_TAG_EDIT_EVERYWHERE = 0x0
+			CLASS_MEMBER_TAG_EDIT_EVERYWHERE = 0x0,
+			CLASS_MEMBER_TAG_NO_EDIT = 0x0
 
 		};
 
@@ -319,27 +320,25 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 	return classType;\
 }
 
-#define ING_CLASS_PROPERTY(MemberFullName, ...) \
+#define ING_CLASS_PROPERTY(ClassFullName, MemberBaseName, ...) \
 {\
-	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
-	unsigned int memberOffset = GetMemberOffset(&MemberFullName);\
-	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(MemberFullName));\
-	currentMember = { true, memberOffset, typeName, [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, memberBaseName, ##__VA_ARGS__ };\
+	unsigned int memberOffset = GetMemberOffset(&ClassFullName::##MemberBaseName);\
+	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName::##MemberBaseName));\
+	currentMember = { true, memberOffset, typeName, [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, #MemberBaseName, ##__VA_ARGS__ };\
 	classType->SetMember(currentMember);\
 }\
 currentMember
 
-#define ING_CLASS_FUNCTION(MemberFullName, ClassFullName, ...) \
+#define ING_CLASS_FUNCTION(ClassFullName, MemberBaseName, ...) \
 {\
-	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
 	currentMember = { false, 0, "", [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{\
-			return new ING::Reflection::ObjectFunction<ClassFullName, &MemberFullName,##__VA_ARGS__>((ClassFullName*)object); \
+			return new ING::Reflection::ObjectFunction<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \
 	},\
-	memberBaseName};\
+	#MemberBaseName};\
 	classType->SetMember(currentMember);\
 }\
 currentMember
 
-#define ING_CLASS_CONSTRUCTOR(MemberFullName, ClassFullName, ...) \
-ING_CLASS_FUNCTION(MemberFullName, ClassFullName, void, ##__VA_ARGS__)
+#define ING_CLASS_CONSTRUCTOR(ClassFullName, ...) \
+ING_CLASS_FUNCTION(ClassFullName, Constructor, void, ##__VA_ARGS__)
 
