@@ -61,11 +61,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			Namespace* CreateNamespace	(const String& fullName);
+			Namespace*	CreateNamespace	(const String& fullName);
 
-			Namespace* GetNamespace		(const String& fullName);
+			Namespace*	GetNamespace	(const String& fullName);
 
-			IClass* GetClass			(const String& fullName);
+			IClass*		GetClass		(const String& fullName);
 
 		};
 

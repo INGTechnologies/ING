@@ -23,6 +23,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ObjectFunction
+ */
+#include <ING\Reflection\Object\Function\Function.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -154,7 +161,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual IObject* CreateInstance();
+			virtual IObject* ICreateInstance();
 
 		};
 
@@ -187,14 +194,37 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual IObject* CreateInstance() override;
+			virtual IObject* ICreateInstance() override;
+
+			template<typename... TArgs>
+			T*				 CreateInstance(TArgs... args) {
+
+				T* result = new T(this);
+
+				if (result->IsHasFunction("Constructor")) {
+
+					result->Constructor(args...);
+
+				}
+
+				return result;
+
+			}
 
 		};
 
 		template<class T>
-		IObject* Class<T>::CreateInstance() {
+		IObject* Class<T>::ICreateInstance() {
 
-			return new T(this);
+			T* result = new T(this);
+
+			if (result->IsHasFunction("Constructor")) {
+
+				result->GetFunction("Constructor")->Specify<void>()->Invoke();
+
+			}
+		
+			return result;
 		}
 
 	}
@@ -217,7 +247,13 @@ private:\
 	\
 public:\
 	static ING::Reflection::Class<ClassFullName>*	CreateType		(ING::Reflection::Context* context);\
-	static ClassFullName*				CreateInstance	(ING::Reflection::Context* context);
+	static ClassFullName*		ICreateInstance	(ING::Reflection::Context* context);\
+	template<typename... TArgs>\
+	static ClassFullName*		CreateInstance	(ING::Reflection::Context* context, TArgs... args) {\
+		return ((ING::Reflection::Class<ClassFullName>*)(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)))))->CreateInstance(args...);\
+	}\
+	\
+	static ING::Utils::String	ClassName		();
 
 #define ING_BEGIN_REFLECTED_CLASS(ClassFullName, ExtendedClassFullName) \
 ClassFullName::ClassFullName	(ING::Reflection::IClass* _class) : ExtendedClassFullName(_class) {\
@@ -232,9 +268,15 @@ ClassFullName::~ClassFullName	()  {\
 \
 }\
 \
-ClassFullName*	ClassFullName::CreateInstance	(ING::Reflection::Context* context) {\
+ClassFullName*	ClassFullName::ICreateInstance	(ING::Reflection::Context* context) {\
 \
-	return new ClassFullName(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName))));\
+	return (ClassFullName*)((ING::Reflection::Class<ClassFullName>*)(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)))))->ICreateInstance();\
+\
+}\
+\
+ING::Utils::String	ClassFullName::ClassName	() {\
+\
+	return ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName));\
 \
 }\
 \
@@ -267,9 +309,13 @@ currentMember
 {\
 	ING::Utils::String memberBaseName = ING::Reflection::IType::FullNameToBaseName(#MemberFullName);\
 	currentMember = { false, 0, "", [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{\
-			return new ING::Reflection::ClassFunction<ClassFullName, &MemberFullName,##__VA_ARGS__>((ClassFullName*)object); \
+			return new ING::Reflection::ObjectFunction<ClassFullName, &MemberFullName,##__VA_ARGS__>((ClassFullName*)object); \
 	},\
 	memberBaseName};\
 	classType->SetMember(currentMember);\
 }\
 currentMember
+
+#define ING_CLASS_CONSTRUCTOR(MemberFullName, ClassFullName, ...) \
+ING_CLASS_FUNCTION(MemberFullName, ClassFullName, void, ##__VA_ARGS__)
+

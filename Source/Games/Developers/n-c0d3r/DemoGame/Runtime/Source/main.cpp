@@ -125,6 +125,7 @@
 #include <ING/Reflection/Namespace/Namespace.h>
 #include <ING/Reflection/Object/Object.h>
 #include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Function/Function.h>
 #include <ING/Reflection/Context/Context.h>
 #include <ING/Reflection/Class/Class.h>
 
@@ -162,6 +163,15 @@ static IWindow* mainWindow = 0;
 
 
 
+
+int DemoFunc() {
+
+
+	return 5;
+}
+
+
+
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
@@ -182,11 +192,11 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Reflection::Context* ctx = new Reflection::Context();
 
-		Reflection::IClass* _class = (Reflection::IClass*)Demo::DemoClass::CreateType(ctx);
+#define GAME_REFLECTION_CTX ctx
 
-		Demo::DemoClass* demoObject = (Demo::DemoClass*)_class->CreateInstance();
+		auto _class = Demo::DemoClass::CreateType(ctx);
 
-		demoObject->GetFunction("Fn")->Invoke();
+		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(GAME_REFLECTION_CTX, 5);
 
 		demoObject->Release();
 

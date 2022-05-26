@@ -10,8 +10,7 @@
 /**
  *	Include Utils
  */
-#include <ING\Utils/Utils.h>
-
+#include <ING\Utils/Utils.h>SpecifiedObjectFunctionSpecifiedObjectFunction
 using namespace ING::Utils;
 
 
@@ -33,7 +32,7 @@ namespace ING {
 
 
 		template<typename TResult, typename... TArgs>
-		class SpecifiedClassFunction;
+		class SpecifiedObjectFunction;
 
 
 
@@ -73,9 +72,9 @@ namespace ING {
 			 */
 		public:
 			template<typename TResult, typename... TArgs>
-			SpecifiedClassFunction<TResult, TArgs...>* Specify() {
+			SpecifiedObjectFunction<TResult, TArgs...>* Specify() {
 
-				return (SpecifiedClassFunction<TResult, TArgs...>*)this;
+				return (SpecifiedObjectFunction<TResult, TArgs...>*)this;
 
 			}
 
@@ -92,13 +91,13 @@ namespace ING {
 
 
 		template<typename TResult, typename... TArgs>
-		class SpecifiedClassFunction : public IObjectFunction {
+		class SpecifiedObjectFunction : public IObjectFunction {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		protected:
-			SpecifiedClassFunction(void* object) :
+			SpecifiedObjectFunction(void* object) :
 				IObjectFunction(object)
 			{
 
@@ -106,7 +105,7 @@ namespace ING {
 
 			}
 
-			~SpecifiedClassFunction() {
+			~SpecifiedObjectFunction() {
 			
 			
 			
@@ -128,22 +127,22 @@ namespace ING {
 
 
 
-		template<class TObject, auto TClassFunction, typename TResult, typename... TArgs>
-		class ClassFunction : public SpecifiedClassFunction<TResult, TArgs...> {
+		template<class TObject, auto TObjectFunction, typename TResult, typename... TArgs>
+		class ObjectFunction : public SpecifiedObjectFunction<TResult, TArgs...> {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ClassFunction(TObject* object) :
-				SpecifiedClassFunction<TResult, TArgs...>(object)
+			ObjectFunction(TObject* object) :
+				SpecifiedObjectFunction<TResult, TArgs...>(object)
 			{
 
 
 
 			}
 
-			~ClassFunction() {
+			~ObjectFunction() {
 
 
 
@@ -155,8 +154,8 @@ namespace ING {
 			 *	Properties
 			 */
 		public:
-			TObject* _GetObject() { return (TObject*)SpecifiedClassFunction<TResult, TArgs...>::_GetObject(); }
-			void     SetObject(TObject* object) { SpecifiedClassFunction<TResult, TArgs...>::SetObject(object); }
+			TObject* _GetObject() { return (TObject*)SpecifiedObjectFunction<TResult, TArgs...>::_GetObject(); }
+			void     SetObject(TObject* object) { SpecifiedObjectFunction<TResult, TArgs...>::SetObject(object); }
 
 
 
@@ -170,10 +169,10 @@ namespace ING {
 
 
 
-		template<class TObject, auto TClassFunction, typename TResult, typename... TArgs>
-		TResult ClassFunction<TObject, TClassFunction, TResult, TArgs...>::Invoke(TArgs... args) {
+		template<class TObject, auto TObjectFunction, typename TResult, typename... TArgs>
+		TResult ObjectFunction<TObject, TObjectFunction, TResult, TArgs...>::Invoke(TArgs... args) {
 
-			return (_GetObject()->*TClassFunction)(args...);
+			return (_GetObject()->*TObjectFunction)(args...);
 
 		}
 
