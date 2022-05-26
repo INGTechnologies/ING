@@ -39,17 +39,32 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+
+
 namespace ING {
 
-	class ING_API IActor
+	class ING_API IActor : public Reflection::IObject
 	{
 
+		ING_REFLECT_CLASS(IActor, Reflection::IObject)
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-	public:
-		IActor	();
-		~IActor	();
+	protected:
+		void Constructor();
 
 
 
@@ -57,18 +72,7 @@ namespace ING {
 		 *	Release Methods
 		 */
 	public:
-		virtual void Release();
-
-
-
-		/**
-		 *	Properties
-		 */
-	private:
-		ActorId	id;
-
-	public:
-		ActorId	GetId() { return id; }
+		virtual void Release() override;
 
 	};
 

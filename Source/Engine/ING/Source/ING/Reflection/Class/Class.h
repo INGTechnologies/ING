@@ -66,7 +66,10 @@ namespace ING {
 		enum ClassMemberTag {
 
 			CLASS_MEMBER_TAG_EDIT_EVERYWHERE = 0x0,
-			CLASS_MEMBER_TAG_NO_EDIT = 0x0
+
+			CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE = 0x1,
+
+			CLASS_MEMBER_TAG_NO_EDIT = 0x2
 
 		};
 
@@ -252,7 +255,7 @@ namespace ING {
  */
 #define ING_REFLECT_CLASS(ClassFullName, ExtendedClassFullName) \
 public:\
-	friend class Class<ClassFullName>;\
+	friend class ING::Reflection::Class<ClassFullName>;\
 \
 protected:\
 	ClassFullName(ING::Reflection::IClass* _class);\

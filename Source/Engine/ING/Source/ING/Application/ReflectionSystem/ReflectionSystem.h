@@ -33,7 +33,7 @@ namespace ING {
 
 		class Type;
 
-		class Class;
+		class IClass;
 
 		class Struct;
 
