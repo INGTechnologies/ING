@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Actor
+ */
+#include <ING/Actor/Actor.h>
+
+
+
 namespace ING {
 
 	/**
@@ -64,10 +71,28 @@ namespace ING {
 
 		context = new Reflection::Context();
 
+
+
+		/**
+		 *	Add Classes
+		 */
+		IActor::CreateType(context);
+
+
+
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationReflectionSystem::Release() {
+
+
+
+		/**
+		 *	Release Classes
+		 */
+		IActor::ReleaseType(context);
+
+
 
 		if (context != 0) {
 

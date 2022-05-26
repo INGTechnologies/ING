@@ -68,6 +68,8 @@ DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreInit) () {
 		return true;
 	}
 
+	Debug::Log(Engine::GetInstance()->GetArgv()[0]);
+
 	/* To run the editor, we need 2 arguments (the first one is program directory path and the second is project directory path) */
 	if (Engine::GetInstance()->GetArgv().size() < 2) {
 
@@ -94,6 +96,10 @@ DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, LateInit) () {
 
 	return true;
 }
+
+#include <ING/Actor/Actor.h>
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+#include <ING/Editor/Application/ReflectionSystem/ReflectionSystem.h>
 
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreRun) () {
 

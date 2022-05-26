@@ -161,6 +161,8 @@ namespace Demo {
 	public:
 		unsigned int b;
 
+		void		 Test();
+
 	};
 
 	class DemoClass : public DemoClassA {
@@ -172,6 +174,8 @@ namespace Demo {
 
 	public:
 		unsigned int a;
+
+		void		 Test();
 
 	};
 

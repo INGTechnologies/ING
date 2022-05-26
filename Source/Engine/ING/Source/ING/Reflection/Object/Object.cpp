@@ -57,6 +57,12 @@ namespace ING {
 
 				if (!(item.second.isProperty)) {
 
+					if(name2Function.find(item.second.name) != name2Function.end()) {
+
+						name2Function[item.second.name]->Release();
+
+					}
+
 					name2Function[item.second.name] = item.second.functionCreator(this);
 
 				}
