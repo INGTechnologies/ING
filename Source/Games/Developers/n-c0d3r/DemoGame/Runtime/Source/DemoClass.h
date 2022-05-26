@@ -155,11 +155,14 @@ namespace Demo {
 
 		ING_REFLECT_CLASS(DemoClass, IObject)
 
+	protected:
+		void Constructor(int a);
+
 	public:
 		unsigned int a;
 		unsigned int b;
 
-		void Fn();
+		int Fn();
 
 	};
 

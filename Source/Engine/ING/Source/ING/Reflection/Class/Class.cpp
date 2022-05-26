@@ -58,7 +58,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IObject* IClass::CreateInstance() {
+		IObject* IClass::ICreateInstance() {
 
 			return 0;
 		}
