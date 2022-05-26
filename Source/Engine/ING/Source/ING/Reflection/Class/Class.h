@@ -17,6 +17,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Debug
+ */
+#include <ING\_Debug/Debug.h>
+
+
+
+/**
  *	Include Type
  */
 #include <ING\Reflection\Type\Type.h>
@@ -199,13 +206,16 @@ namespace ING {
 			template<typename... TArgs>
 			T*				 CreateInstance(TArgs... args) {
 
+				if (!IsHasMember("Constructor")) {
+
+					Debug::Error(String(IType::TypeInfoToFullName(typeid(T))) + " Does Not Has Any Constructor");
+
+					return 0;
+				}
+
 				T* result = new T(this);
 
-				if (result->IsHasFunction("Constructor")) {
-
-					result->Constructor(args...);
-
-				}
+				result->Constructor(args...);
 
 				return result;
 
@@ -216,13 +226,16 @@ namespace ING {
 		template<class T>
 		IObject* Class<T>::ICreateInstance() {
 
+			if (!IsHasMember("Constructor")) {
+
+				Debug::Error(String(IType::TypeInfoToFullName(typeid(T))) + " Does Not Has Any Constructor");
+
+				return 0;
+			}
+
 			T* result = new T(this);
 
-			if (result->IsHasFunction("Constructor")) {
-
-				result->GetFunction("Constructor")->Specify<void>()->Invoke();
-
-			}
+			result->GetFunction("Constructor")->Invoke();
 		
 			return result;
 		}
@@ -247,6 +260,7 @@ private:\
 	\
 public:\
 	static ING::Reflection::Class<ClassFullName>*	CreateType		(ING::Reflection::Context* context);\
+	static void					ReleaseType		(ING::Reflection::Context* context);\
 	static ClassFullName*		ICreateInstance	(ING::Reflection::Context* context);\
 	template<typename... TArgs>\
 	static ClassFullName*		CreateInstance	(ING::Reflection::Context* context, TArgs... args) {\
@@ -280,6 +294,15 @@ ING::Utils::String	ClassFullName::ClassName	() {\
 \
 }\
 \
+void ClassFullName::ReleaseType(ING::Reflection::Context * context) {\
+\
+ING::Utils::String className = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName));\
+\
+ING::Reflection::IClass* _class = context->GetClass(className);\
+_class->Release();\
+\
+}\
+\
 ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection::Context* context) {\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(ClassFullName).name());\
@@ -289,7 +312,8 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 \
 	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(classBaseName, _namespace);\
 \
-	ING::Reflection::ClassMember currentMember;
+	ING::Reflection::ClassMember currentMember;\
+\
 
 #define ING_END_REFLECTED_CLASS() \
 	return classType;\

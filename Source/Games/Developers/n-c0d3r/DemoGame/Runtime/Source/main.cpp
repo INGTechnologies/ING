@@ -192,13 +192,13 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Reflection::Context* ctx = new Reflection::Context();
 
-#define GAME_REFLECTION_CTX ctx
+		Demo::DemoClass::CreateType(ctx);
 
-		auto _class = Demo::DemoClass::CreateType(ctx);
-
-		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(GAME_REFLECTION_CTX, 5);
+		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(ctx, 5);
 
 		demoObject->Release();
+
+		Demo::DemoClass::ReleaseType(ctx);
 
 	});
 
