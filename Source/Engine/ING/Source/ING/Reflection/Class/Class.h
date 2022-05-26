@@ -83,7 +83,7 @@ namespace ING {
 
 			String				typeName;
 
-			IObjectFunction*		(*functionCreator)(IObject* object);
+			IObjectFunction*	(*functionCreator)(IObject* object);
 
 			String				name = "";
 

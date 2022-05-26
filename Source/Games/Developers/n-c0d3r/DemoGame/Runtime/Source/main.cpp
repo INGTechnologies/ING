@@ -196,6 +196,8 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(ctx, 5);
 
+		Debug::Log(demoObject->GetFunction("GetClass")->Specify<IClass*>()->Invoke());
+
 		Debug::Log(demoObject->a);
 		Debug::Log(demoObject->b);
 

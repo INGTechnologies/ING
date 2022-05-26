@@ -26,6 +26,12 @@ using namespace ING::Utils;
 namespace ING {
 
 	class ObjectManager;
+	
+	namespace Reflection {
+
+		class IClass;
+
+	}
 
 
 
@@ -33,6 +39,7 @@ namespace ING {
 		
 	public:
 		friend class ObjectManager;
+		friend class Reflection::IClass;
 
 
 

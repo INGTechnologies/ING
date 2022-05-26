@@ -45,6 +45,14 @@ namespace ING {
 		{
 
 			/**
+			 *	Friend Classes
+			 */
+		public:
+			friend class IClass;
+
+
+
+			/**
 			 *	Constructors And Destructor
 			 */
 		public:
@@ -70,7 +78,7 @@ namespace ING {
 			std::unordered_map<String, IObjectFunction*> name2Function;
 
 		public:
-			IClass*		GetType	() { return _class; }
+			IClass*		GetClass() { return _class; }
 
 			bool		IsHasFunction(const String& name) { return name2Function.find(name) != name2Function.end(); }
 			IObjectFunction* GetFunction(const String& name) { 
