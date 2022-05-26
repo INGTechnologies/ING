@@ -254,7 +254,7 @@ namespace ING {
 public:\
 	friend class Class<ClassFullName>;\
 \
-private:\
+protected:\
 	ClassFullName(ING::Reflection::IClass* _class);\
 	\
 	~ClassFullName();\
