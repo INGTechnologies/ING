@@ -140,6 +140,8 @@
 #include <ING/Rendering/Drawable/MeshDrawable/MeshDrawable.h>
 #include <ING/Rendering/Layer/System/System.h>
 
+#include <ING/Actor/Actor.h>
+
 
 
 
@@ -196,7 +198,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(ctx, 5);
 
-		Debug::Log(demoObject->GetFunction("GetClass")->Specify<IClass*>()->Invoke());
+		demoObject->GetFunction("Test2")->Specify<Demo::DemoClass*>()->Invoke();
 
 		Debug::Log(demoObject->a);
 		Debug::Log(demoObject->b);

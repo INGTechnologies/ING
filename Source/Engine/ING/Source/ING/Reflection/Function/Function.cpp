@@ -41,9 +41,9 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IFunction::Invoke() {
+		RType::Void IFunction::Invoke() {
 
-			return Specify<void>()->Invoke();
+			return Specify<RType::Void>()->Invoke();
 
 		}
 

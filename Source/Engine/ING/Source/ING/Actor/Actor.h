@@ -49,6 +49,8 @@ using namespace ING::Math;
 #include <ING/Reflection/Context/Context.h>
 #include <ING/Reflection/Class/Class.h>
 
+using namespace ING::Reflection;
+
 
 
 namespace ING {
@@ -64,7 +66,20 @@ namespace ING {
 		 *	Constructor
 		 */
 	protected:
-		void Constructor();
+		RType::Void		Constructor();
+
+
+
+		/**
+		 *	Properties
+		 */
+	private:
+		String			name;
+
+	public:
+		const String&	GetName () { return name; }
+
+		RType::Void		SetName (const String& name) { this->name = name; return 0; }
 
 
 
@@ -72,7 +87,7 @@ namespace ING {
 		 *	Release Methods
 		 */
 	public:
-		virtual void Release() override;
+		virtual void	Release() override;
 
 	};
 
