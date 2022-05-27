@@ -70,21 +70,18 @@ namespace ING {
 		 */
 		void IPass::Release	() {
 
-			if (pipeline != 0) {
-
-				pipeline->passVector[pipeline->GetPassIndex(name)] = 0;
-				pipeline->name2PassIndex.erase(name);
-
-			}
-
 			if (parent != 0) {
 
-				parent->childVector[parent->GetChildIndex(name)] = 0;
-				parent->name2ChildIndex.erase(name);
+				parent->RemoveChild(this);
+
+			}
+			else {
+
+				pipeline->RemovePass(this);
 
 			}
 
-			for (unsigned int i = 0; i < childVector.size(); ++i) {
+			for (unsigned int i = 0; i < childVector.size();) {
 
 				childVector[i]->Release();
 

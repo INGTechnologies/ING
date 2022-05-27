@@ -79,7 +79,7 @@ namespace ING {
 		 */
 		void IPipeline::Release() {
 
-			for (unsigned int i = 0; i < passVector.size(); ++i) {
+			for (unsigned int i = 0; i < passVector.size();) {
 
 				passVector[i]->Release();
 
@@ -153,7 +153,7 @@ namespace ING {
 
 			unsigned int passCount = passVector.size();
 
-			for (unsigned int i = index + 1; i < passCount; ++i) {
+			for (unsigned int i = index; i < passCount; ++i) {
 
 				name2PassIndex[passVector[i]->GetName()]--;
 

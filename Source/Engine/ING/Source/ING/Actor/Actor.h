@@ -55,6 +55,10 @@ using namespace ING::Reflection;
 
 namespace ING {
 
+	class IActorComponent;
+
+
+
 	class ING_API IActor : public Reflection::IObject
 	{
 
@@ -76,10 +80,24 @@ namespace ING {
 	private:
 		String			name;
 
+		std::unordered_map<String, unsigned int> name2ComponentIndexMap;
+
+		std::vector<IActorComponent*> componentVector;
+
 	public:
 		const String&	GetName () { return name; }
 
 		void			SetName (const String& name) { this->name = name; }
+
+		const std::vector<IActorComponent*>& GetComponentVector () { return componentVector; }
+
+		unsigned int	GetComponentIndex (const String& componentName) { return name2ComponentIndexMap[componentName]; }
+
+		bool			IsHasComponent	(const String& componentName) { return name2ComponentIndexMap[componentName]; }
+
+		IActorComponent*GetComponent	(unsigned int index) { return componentVector[index]; }
+
+		IActorComponent*GetComponentByName(const String& componentName) { if (!IsHasComponent(componentName)) return 0; return GetComponent(GetComponentIndex(componentName)); }
 
 
 
@@ -88,6 +106,18 @@ namespace ING {
 		 */
 	public:
 		virtual void	Release() override;
+
+
+
+		/**
+		 *	Methods
+		 */
+	public:
+		void	AddComponent	(IActorComponent* component);
+		void	AddComponentByIndex	(IActorComponent* component, unsigned int index);
+		void	RemoveComponentByIndex(unsigned int index);
+		void	RemoveComponentByName(const String& componentName);
+		void	RemoveComponent  (IActorComponent* component);
 
 	};
 

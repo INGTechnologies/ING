@@ -141,6 +141,7 @@
 #include <ING/Rendering/Layer/System/System.h>
 
 #include <ING/Actor/Actor.h>
+#include <ING/Actor/Component/Component.h>
 
 
 
@@ -196,14 +197,22 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Demo::DemoClass::CreateType(ctx);
 
+		IActor::CreateType(ctx);
+
+		IActorComponent::CreateType(ctx);
+
 		Demo::DemoClass* demoObject = Demo::DemoClass::CreateInstance(ctx, 5);
 
-		demoObject->GetFunction("Test2")->Specify<Demo::DemoClass*>()->Invoke();
+		demoObject->GetProcedure("Test")->Invoke();
 
 		Debug::Log(demoObject->a);
 		Debug::Log(demoObject->b);
 
 		demoObject->Release();
+
+		IActorComponent::ReleaseType(ctx);
+
+		IActor::ReleaseType(ctx);
 
 		Demo::DemoClass::ReleaseType(ctx);
 
