@@ -125,6 +125,8 @@
 #include <ING/Reflection/Namespace/Namespace.h>
 #include <ING/Reflection/Object/Object.h>
 #include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Object/Procedure/Procedure.h>
+#include <ING/Reflection/Procedure/Procedure.h>
 #include <ING/Reflection/Context/Context.h>
 #include <ING/Reflection/Class/Class.h>
 
@@ -156,12 +158,12 @@ namespace Demo {
 		ING_REFLECT_CLASS(DemoClassA, IObject)
 
 	protected:
-		RType::Void Constructor(int b);
+		void		Constructor(int b);
 
 	public:
 		unsigned int b;
 
-		Reflection::RType::Void Test();
+		void		Test();
 
 	};
 
@@ -170,13 +172,13 @@ namespace Demo {
 		ING_REFLECT_CLASS(DemoClass, DemoClassA)
 
 	protected:
-		RType::Void Constructor(int a);
+		void		Constructor(int a);
 
 	public:
 		unsigned int a;
 
-		Reflection::RType::Void	Test();
-		DemoClass*	 Test2();
+		void		Test();
+		DemoClass*	Test2();
 
 	};
 
