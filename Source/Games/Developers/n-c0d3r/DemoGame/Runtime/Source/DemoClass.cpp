@@ -25,27 +25,23 @@ namespace Demo {
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_EDIT_EVERYWHERE);
 
-		ING_CLASS_FUNCTION		
-			(DemoClassA, Test, Reflection::RType::Void)
+		ING_CLASS_PROCEDURE
+			(DemoClassA, Test)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_EDIT_EVERYWHERE);
 
 	ING_END_REFLECTED_CLASS	
 		()
 
-	Reflection::RType::Void DemoClassA::Constructor(int b) {
+	void DemoClassA::Constructor(int b) {
 
 		this->b = b;
 
-		return 0;
-
 	}
 
-	Reflection::RType::Void DemoClassA::Test() {
+	void DemoClassA::Test() {
 
 		Debug::Log("TestA");
-
-		return 0;
 
 	}
 
@@ -64,8 +60,8 @@ namespace Demo {
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_EDIT_EVERYWHERE);
 
-		ING_CLASS_FUNCTION		
-			(DemoClass, Test, RType::Void)
+		ING_CLASS_PROCEDURE		
+			(DemoClass, Test)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_EDIT_EVERYWHERE);
 
@@ -77,21 +73,17 @@ namespace Demo {
 	ING_END_REFLECTED_CLASS		
 		()
 
-	Reflection::RType::Void DemoClass::Constructor(int a) {
+	void DemoClass::Constructor(int a) {
 
 		DemoClassA::Constructor(a + 5);
 
 		this->a = a;
 
-		return 0;
-
 	}
 
-	Reflection::RType::Void DemoClass::Test () {
+	void DemoClass::Test () {
 
 		Debug::Log("Test");
-
-		return 0;
 
 	}
 

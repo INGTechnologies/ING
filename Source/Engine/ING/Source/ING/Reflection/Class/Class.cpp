@@ -59,13 +59,15 @@ namespace ING {
 			 */
 			SetMember({
 
-				true,
+				0,
 
 				(unsigned int)GetMemberOffset(&ING::IObject::id),
 
 				IType::TypeInfoToFullName(typeid(ObjectId)),
 
 				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+
+				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 				"id",
 
@@ -77,7 +79,7 @@ namespace ING {
 
 			SetMember({
 
-				false,
+				1,
 
 				0,
 
@@ -87,6 +89,8 @@ namespace ING {
 					
 					return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetId,ObjectId>((Reflection::IObject*)object);
 				},
+
+				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 				"GetId",
 
@@ -98,13 +102,15 @@ namespace ING {
 
 			SetMember({
 
-				true,
+				0,
 
 				(unsigned int)GetMemberOffset(&ING::Reflection::IObject::_class),
 
 				IType::TypeInfoToFullName(typeid(ING::Reflection::IClass*)),
 
 				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+
+				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 				"_class",
 
@@ -116,7 +122,7 @@ namespace ING {
 
 			SetMember({
 
-				false,
+				1,
 
 				0,
 
@@ -126,6 +132,8 @@ namespace ING {
 
 					return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetClass, IClass*>((Reflection::IObject*)object);
 				},
+
+				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 				"GetClass",
 

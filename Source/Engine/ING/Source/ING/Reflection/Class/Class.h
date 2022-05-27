@@ -37,6 +37,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ObjectProcedure
+ */
+#include <ING\Reflection\Object\Procedure\Procedure.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -46,6 +53,8 @@ namespace ING {
 		class IObject;
 
 		class IObjectFunction;
+
+		class IObjectProcedure;
 
 		struct ClassMember;
 
@@ -77,13 +86,14 @@ namespace ING {
 
 		struct ClassMember {
 
-			bool				isProperty = true;
+			unsigned int		memberType = 0;
 
 			size_t				offsetInBytes = 0;
 
 			String				typeName;
 
 			IObjectFunction*	(*functionCreator)(IObject* object);
+			IObjectProcedure*	(*procedureCreator)(IObject* object);
 
 			String				name = "";
 
@@ -111,7 +121,7 @@ namespace ING {
 				return *(this);
 			}
 
-			ClassMember& TAG(ClassMemberTag tag) {
+			ClassMember& TAG	(ClassMemberTag tag) {
 
 				this->tag = tag;
 
@@ -327,21 +337,45 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 {\
 	unsigned int memberOffset = GetMemberOffset(&ClassFullName::##MemberBaseName);\
 	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName::##MemberBaseName));\
-	currentMember = { true, memberOffset, typeName, [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, #MemberBaseName, ##__VA_ARGS__ };\
+	currentMember = { \
+		0, \
+		memberOffset, \
+		typeName, \
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, \
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure*{return 0;}, \
+		#MemberBaseName, \
+		##__VA_ARGS__ \
+	};\
 	classType->SetMember(currentMember);\
 }\
 currentMember
 
 #define ING_CLASS_FUNCTION(ClassFullName, MemberBaseName, ...) \
 {\
-	currentMember = { false, 0, "", [](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{\
-			return new ING::Reflection::ObjectFunction<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \
-	},\
-	#MemberBaseName};\
+	currentMember = { 1, 0, "",\
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{\
+				return new ING::Reflection::ObjectFunction<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \
+		},\
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure*{return 0;}, \
+		#MemberBaseName\
+	};\
+	classType->SetMember(currentMember);\
+}\
+currentMember
+
+#define ING_CLASS_PROCEDURE(ClassFullName, MemberBaseName, ...) \
+{\
+	currentMember = { 2, 0, "",\
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction*{return 0;}, \
+		[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure*{\
+				return new ING::Reflection::ObjectProcedure<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \
+		},\
+		#MemberBaseName\
+	};\
 	classType->SetMember(currentMember);\
 }\
 currentMember
 
 #define ING_CLASS_CONSTRUCTOR(ClassFullName, ...) \
-ING_CLASS_FUNCTION(ClassFullName, Constructor, ING::Reflection::RType::Void, ##__VA_ARGS__)
+ING_CLASS_PROCEDURE(ClassFullName, Constructor, ##__VA_ARGS__)
 

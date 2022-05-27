@@ -66,7 +66,7 @@ namespace ING {
 		 *	Constructor
 		 */
 	protected:
-		RType::Void		Constructor();
+		void			Constructor();
 
 
 
@@ -79,7 +79,7 @@ namespace ING {
 	public:
 		const String&	GetName () { return name; }
 
-		RType::Void		SetName (const String& name) { this->name = name; return 0; }
+		void			SetName (const String& name) { this->name = name; }
 
 
 

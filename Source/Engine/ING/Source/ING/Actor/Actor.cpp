@@ -35,8 +35,8 @@ namespace ING {
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
-		ING_CLASS_FUNCTION		
-			(IActor, SetName, RType::Void, const String&)
+		ING_CLASS_PROCEDURE
+			(IActor, SetName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -48,12 +48,11 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	RType::Void IActor::Constructor()
+	void IActor::Constructor()
 	{
 
 		name = "NewActor";
 
-		return 0;
 	}
 
 

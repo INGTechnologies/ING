@@ -35,6 +35,8 @@ namespace ING {
 
 		class IObjectFunction;
 
+		class IObjectProcedure;
+
 		struct ClassMember;
 
 		class Context;
@@ -76,9 +78,17 @@ namespace ING {
 			IClass*		_class;
 
 			std::unordered_map<String, IObjectFunction*> name2Function;
+			std::unordered_map<String, IObjectProcedure*> name2Procedure;
 
 		public:
 			IClass*		GetClass() { return _class; }
+
+			template<typename T>
+			T& GetProperty(const String& name) {
+
+				return *((T*)GetPropertyPointer(name));
+
+			}
 
 			bool		IsHasFunction(const String& name) { return name2Function.find(name) != name2Function.end(); }
 			IObjectFunction* GetFunction(const String& name) { 
@@ -88,6 +98,14 @@ namespace ING {
 				return name2Function[name]; 
 			}
 
+			bool		IsHasProcedure(const String& name) { return name2Procedure.find(name) != name2Procedure.end(); }
+			IObjectProcedure* GetProcedure(const String& name) {
+
+				if (!IsHasProcedure(name)) return 0;
+
+				return name2Procedure[name];
+			}
+
 
 
 			/**
@@ -95,13 +113,6 @@ namespace ING {
 			 */
 		public:
 			void*		GetPropertyPointer (const String& name);
-
-			template<typename T>
-			T&			GetProperty(const String& name) {
-			
-				return *((T*)GetPropertyPointer(name));
-			
-			}
 
 		};
 

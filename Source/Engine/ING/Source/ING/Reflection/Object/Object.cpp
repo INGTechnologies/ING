@@ -41,6 +41,13 @@
 
 
 
+/**
+ *	Include Object Procedure
+ */
+#include <ING/Reflection/Object/Procedure/Procedure.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -55,7 +62,7 @@ namespace ING {
 
 			for (auto item : _class->GetName2MemberMap()) {
 
-				if (!(item.second.isProperty)) {
+				if (item.second.memberType == 1) {
 
 					if(name2Function.find(item.second.name) != name2Function.end()) {
 
@@ -64,6 +71,22 @@ namespace ING {
 					}
 
 					name2Function[item.second.name] = item.second.functionCreator(this);
+
+				}
+
+			}
+
+			for (auto item : _class->GetName2MemberMap()) {
+
+				if (item.second.memberType == 2) {
+
+					if (name2Procedure.find(item.second.name) != name2Procedure.end()) {
+
+						name2Procedure[item.second.name]->Release();
+
+					}
+
+					name2Procedure[item.second.name] = item.second.procedureCreator(this);
 
 				}
 
@@ -85,6 +108,12 @@ namespace ING {
 		void IObject::Release() {
 
 			for (auto item : name2Function) {
+
+				item.second->Release();
+
+			}
+
+			for (auto item : name2Procedure) {
 
 				item.second->Release();
 
