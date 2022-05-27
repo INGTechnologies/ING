@@ -22,8 +22,23 @@ namespace ING {
 
 		ING_CLASS_CONSTRUCTOR
 			(IActor)
-			.ACCESS	(Reflection::CLASS_MEMBER_ACCESS_PROTECTED)
-			.TAG	(Reflection::CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_CLASS_PROPERTY		
+			(IActor, name)
+			.ACCESS	(CLASS_MEMBER_ACCESS_PRIVATE)
+			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_CLASS_FUNCTION		
+			(IActor, GetName, const String&)
+			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
+			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_CLASS_FUNCTION		
+			(IActor, SetName, RType::Void, const String&)
+			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
+			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 	ING_END_REFLECTED_CLASS
 		()
@@ -33,11 +48,12 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IActor::Constructor()
+	RType::Void IActor::Constructor()
 	{
 
+		name = "NewActor";
 
-
+		return 0;
 	}
 
 

@@ -16,6 +16,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include RType
+ */
+#include <ING/Reflection/RType/RType.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -73,7 +80,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void Invoke();
+			RType::Void Invoke();
 
 		};
 
@@ -106,11 +113,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual TResult Invoke(TArgs... args) {
-
-				return TResult();
-				 
-			}
+			virtual TResult Invoke(TArgs... args) = 0;
 
 		};
 

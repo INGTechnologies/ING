@@ -156,12 +156,12 @@ namespace Demo {
 		ING_REFLECT_CLASS(DemoClassA, IObject)
 
 	protected:
-		void Constructor(int b);
+		RType::Void Constructor(int b);
 
 	public:
 		unsigned int b;
 
-		void		 Test();
+		Reflection::RType::Void Test();
 
 	};
 
@@ -170,12 +170,13 @@ namespace Demo {
 		ING_REFLECT_CLASS(DemoClass, DemoClassA)
 
 	protected:
-		void Constructor(int a);
+		RType::Void Constructor(int a);
 
 	public:
 		unsigned int a;
 
-		void		 Test();
+		Reflection::RType::Void	Test();
+		DemoClass*	 Test2();
 
 	};
 

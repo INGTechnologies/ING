@@ -343,5 +343,5 @@ currentMember
 currentMember
 
 #define ING_CLASS_CONSTRUCTOR(ClassFullName, ...) \
-ING_CLASS_FUNCTION(ClassFullName, Constructor, void, ##__VA_ARGS__)
+ING_CLASS_FUNCTION(ClassFullName, Constructor, ING::Reflection::RType::Void, ##__VA_ARGS__)
 
