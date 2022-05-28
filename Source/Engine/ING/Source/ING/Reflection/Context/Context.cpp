@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include Object
+ */
+#include <ING/Reflection/Object/Object.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -42,10 +49,16 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		Context::Context() :
-			globalNamespace(0)
+			globalNamespace(0),
+			objectClass(0)
 		{
 
 			globalNamespace = new Namespace("", this);
+
+			objectClass = new Class<Reflection::IObject>(
+				IType::FullNameToBaseName(typeid(Reflection::IObject)),
+				CreateNamespace(IType::FullNameToNamespaceName(typeid(Reflection::IObject)))
+			);
 
 		}
 
@@ -73,6 +86,8 @@ namespace ING {
 		 *	Methods
 		 */
 		Namespace* Context::CreateNamespace(const String& fullName) {
+
+			if (fullName == "") return globalNamespace;
 
 			NamespacePath path = Namespace::FullNameToPath(fullName);
 

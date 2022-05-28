@@ -139,7 +139,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IClass	(const String& name, Namespace* _namespace);
+			IClass	(const String& name, Namespace* _namespace, IClass* base);
 			~IClass	();
 
 
@@ -157,6 +157,8 @@ namespace ING {
 			 */
 		private:
 			std::unordered_map<String, ClassMember> name2MemberMap;
+			IClass*			base;
+			Context*		context;
 
 		public:
 			const std::unordered_map<String, ClassMember>& GetName2MemberMap () { return name2MemberMap; }
@@ -175,6 +177,10 @@ namespace ING {
 				name2MemberMap[member.name] = member;
 			
 			}
+
+			IClass*			GetBase () { return base; }
+
+			Context*		GetContext () { return context; }
 
 
 
@@ -195,8 +201,16 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
+			Class(const String& name, Namespace* _namespace, IClass* base) :
+				IClass(name, _namespace, base)
+			{
+
+
+
+			}
+
 			Class(const String& name, Namespace* _namespace) :
-				IClass(name, _namespace)
+				IClass(name, _namespace, 0)
 			{
 
 
@@ -324,7 +338,11 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 \
 	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(ClassFullName).name());\
 \
-	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(classBaseName, _namespace);\
+	ING::Reflection::Class<ClassFullName>* classType = new ING::Reflection::Class<ClassFullName>(\
+		classBaseName,\
+		_namespace,\
+		context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ExtendedClassFullName)))\
+	);\
 \
 	ING::Reflection::ClassMember currentMember;\
 \

@@ -122,6 +122,24 @@ namespace ING {
 
 		String IType::FullNameToNamespaceName(const String& fullName) {
 
+			int cC = 0;
+
+			for (unsigned int i = 0; i < fullName.length(); ++i) {
+
+				if (fullName[i] == ':') {
+
+					cC++;
+
+				}
+
+			}
+
+			if (cC < 2) {
+
+				return "";
+
+			}
+
 			int startingIndex = 0;
 			int endIndex = 0;
 

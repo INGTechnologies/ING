@@ -35,6 +35,13 @@
 
 
 /**
+ *	Include Reflection Context
+ */
+#include <ING/Reflection/Context/Context.h>
+
+
+
+/**
  *	Include Object
  */
 #include <ING/Object/Object.h>
@@ -48,100 +55,139 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IClass::IClass(const String& name, Namespace* _namespace) :
-			IType(name, _namespace)
+		IClass::IClass(const String& name, Namespace* _namespace, IClass* base) :
+			IType(name, _namespace),
+
+			base(base),
+
+			context(_namespace->GetContext())
 		{
 
+			if (base == 0) {
+
+				base = context->GetClass(IType::TypeInfoToFullName(typeid(Reflection::IObject)));
+
+				if (base == this) {
+
+					base = 0;
+
+				}
+
+			}
+
+
+
 			GetNamespace()->AddType(this);
+
+
+
+			/**
+			 *	Add Base's Members
+			 */
+			if (base != 0) {
+
+				for (auto item : base->name2MemberMap) {
+
+					SetMember(item.second);
+
+				}
+
+			}
+
+
 
 			/**
 			 *	Add Reflection::IObject Members
 			 */
-			SetMember({
+			if (base == 0) {
 
-				0,
+				SetMember({
 
-				(unsigned int)GetMemberOffset(&ING::IObject::id),
+					0,
 
-				IType::TypeInfoToFullName(typeid(ObjectId)),
+					(unsigned int)GetMemberOffset(&ING::IObject::id),
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+					IType::TypeInfoToFullName(typeid(ObjectId)),
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
 
-				"id",
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
-				CLASS_MEMBER_ACCESS_PRIVATE,
+					"id",
 
-				CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
+					CLASS_MEMBER_ACCESS_PRIVATE,
 
-			});
+					CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
 
-			SetMember({
+					});
 
-				1,
+				SetMember({
 
-				0,
+					1,
 
-				"",
+					0,
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
-					
-					return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetId,ObjectId>((Reflection::IObject*)object);
-				},
+					"",
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
 
-				"GetId",
+						return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetId,ObjectId>((Reflection::IObject*)object);
+					},
 
-				CLASS_MEMBER_ACCESS_PUBLIC,
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
-				CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
+					"GetId",
 
-			});
+					CLASS_MEMBER_ACCESS_PUBLIC,
 
-			SetMember({
+					CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
 
-				0,
+					});
 
-				(unsigned int)GetMemberOffset(&ING::Reflection::IObject::_class),
+				SetMember({
 
-				IType::TypeInfoToFullName(typeid(ING::Reflection::IClass*)),
+					0,
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+					(unsigned int)GetMemberOffset(&ING::Reflection::IObject::_class),
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					IType::TypeInfoToFullName(typeid(ING::Reflection::IClass*)),
 
-				"_class",
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
 
-				CLASS_MEMBER_ACCESS_PRIVATE,
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
-				CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
+					"_class",
 
-			});
+					CLASS_MEMBER_ACCESS_PRIVATE,
 
-			SetMember({
+					CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
 
-				1,
+					});
 
-				0,
+				SetMember({
 
-				"",
+					1,
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
+					0,
 
-					return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetClass, IClass*>((Reflection::IObject*)object);
-				},
+					"",
 
-				[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
 
-				"GetClass",
+						return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetClass, IClass*>((Reflection::IObject*)object);
+					},
 
-				CLASS_MEMBER_ACCESS_PUBLIC,
+					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
-				CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
+					"GetClass",
 
-			});
+					CLASS_MEMBER_ACCESS_PUBLIC,
+
+					CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE
+
+					});
+
+			}
 
 		}
 
