@@ -52,8 +52,12 @@ namespace ING {
 		private:
 			Namespace*	globalNamespace;
 
+			IClass*		objectClass;
+
 		public:
-			Namespace*	GetNamespace	() { return globalNamespace; }
+			Namespace*	GetGlobalNamespace	() { return globalNamespace; }
+
+			IClass*		GetObjectClass	() { return objectClass; }
 
 
 

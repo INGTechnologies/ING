@@ -254,10 +254,12 @@
     <LocalDebuggerWorkingDirectory>$(ProjectDir)..\Engine\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="Source\DemoActor.cpp" />
     <ClCompile Include="Source\DemoClass.cpp" />
     <ClCompile Include="Source\main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\DemoActor.h" />
     <ClInclude Include="Source\DemoClass.h" />
     <ClInclude Include="Source\DemoNamespace.icl" />
   </ItemGroup>
