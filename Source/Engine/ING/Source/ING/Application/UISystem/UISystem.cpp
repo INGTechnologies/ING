@@ -55,6 +55,20 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Reflection System
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
 namespace ING {
 
 	/**
@@ -83,10 +97,34 @@ namespace ING {
 
 
 
+		/**
+		 *	Add Classes
+		 */
+		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
+
+		UI::IElement::CreateType(reflectionContext);
+
+		UI::Canvas::CreateType(reflectionContext);
+
+
+
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationUISystem::Release() {
+
+
+
+		/**
+		 *	Release Classes
+		 */
+		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
+
+		UI::Canvas::ReleaseType(reflectionContext);
+
+		UI::IElement::ReleaseType(reflectionContext);
+
+
 
 		for (auto item = name2CanvasMap.begin(); item != name2CanvasMap.end();) {
 

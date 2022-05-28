@@ -289,6 +289,7 @@ protected:\
 public:\
 	static ING::Reflection::Class<ClassFullName>*	CreateType		(ING::Reflection::Context* context);\
 	static void					ReleaseType		(ING::Reflection::Context* context);\
+	static ING::Reflection::Class<ClassFullName>*	GetType			(ING::Reflection::Context* context);\
 	static ClassFullName*		ICreateInstance	(ING::Reflection::Context* context);\
 	template<typename... TArgs>\
 	static ClassFullName*		CreateInstance	(ING::Reflection::Context* context, TArgs... args) {\
@@ -328,6 +329,17 @@ ING::Utils::String className = ING::Reflection::IType::TypeInfoToFullName(typeid
 \
 ING::Reflection::IClass* _class = context->GetClass(className);\
 _class->Release();\
+\
+}\
+\
+ING::Reflection::Class<ClassFullName>* ClassFullName::GetType(ING::Reflection::Context* context) {\
+\
+	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(ClassFullName).name());\
+	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
+\
+	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(ClassFullName).name());\
+\
+	return (ING::Reflection::Class<ClassFullName>*)context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)));\
 \
 }\
 \

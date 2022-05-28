@@ -24,29 +24,24 @@ namespace ING {
 
 	namespace UI {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(DrawableElement, IElement)
+
+			ING_CLASS_CONSTRUCTOR
+				(DrawableElement, const String&)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
 		/**
 		 *	Constructors And Destructor
 		 */
-		DrawableElement::DrawableElement() :
-			IElement()
+		void DrawableElement::Constructor(const String& name)
 		{
 
-
-
-		}
-
-		DrawableElement::DrawableElement(const String& name):
-			IElement(name)
-		{
-
-
-
-		}
-
-		DrawableElement::~DrawableElement()
-		{
-
-
+			IElement::Constructor(name);
 
 		}
 

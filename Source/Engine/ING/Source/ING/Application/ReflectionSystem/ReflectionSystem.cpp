@@ -73,24 +73,10 @@ namespace ING {
 
 
 
-		/**
-		 *	Add Classes
-		 */
-		IActor::CreateType(context);
-
-
-
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationReflectionSystem::Release() {
-
-
-
-		/**
-		 *	Release Classes
-		 */
-		IActor::ReleaseType(context);
 
 
 
@@ -99,6 +85,8 @@ namespace ING {
 			context->Release();
 
 		}
+
+
 
 		IApplicationComponent::Release();
 

@@ -214,7 +214,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		demoPawn->GetProcedure("SetName")->Specify<const String&>()->Invoke("Test");
 
-		Debug::Log(demoPawn->GetId());
+		Debug::Log(DemoActor::GetType(ctx));
 
 		
 

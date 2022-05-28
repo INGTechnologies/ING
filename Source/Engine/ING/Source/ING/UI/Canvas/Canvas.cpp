@@ -31,21 +31,24 @@ namespace ING {
 
 	namespace UI {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(Canvas, IElement)
+
+			ING_CLASS_CONSTRUCTOR
+				(Canvas, const String&)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
 		/**
 		 *	Constructors And Destructor
 		 */
-		Canvas::Canvas(const String& name):
-			IElement(name)
+		void Canvas::Constructor(const String& name)
 		{
 
-
-
-		}
-
-		Canvas::~Canvas()
-		{
-
-
+			IElement::Constructor(name);
 
 		}
 
