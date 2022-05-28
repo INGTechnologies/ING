@@ -141,6 +141,8 @@
 #include <ING/Rendering/Layer/System/System.h>
 
 #include <ING/Actor/Actor.h>
+#include <ING/Pawn/Pawn.h>
+#include <ING/Character/Character.h>
 #include <ING/Actor/Component/Component.h>
 
 
@@ -202,15 +204,23 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		IActorComponent::CreateType(ctx);
 
+		IPawn::CreateType(ctx);
+
 		DemoActor::CreateType(ctx);
 
 
 
-		DemoActor* demoActor = DemoActor::CreateInstance(ctx);
+		IPawn* demoPawn = IPawn::CreateInstance(ctx);
+
+		demoPawn->GetProcedure("SetName")->Specify<const String&>()->Invoke("Test");
+
+		Debug::Log(demoPawn->GetId());
 
 		
 
 		DemoActor::ReleaseType(ctx);
+
+		IPawn::ReleaseType(ctx);
 
 		IActorComponent::ReleaseType(ctx);
 
