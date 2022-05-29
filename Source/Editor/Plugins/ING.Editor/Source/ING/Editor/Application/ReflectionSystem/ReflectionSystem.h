@@ -93,4 +93,5 @@ namespace ING {
 /**
  *	Define Macros
  */
-#define ING_EDITOR_REFLECTION_CTX ING::Editor::Application::GetInstance()->GetReflectionSystem()->GetContext()
+#define ING_EDITOR_REFLECTION_CTX \
+(ING::Editor::Application::GetInstance()->GetReflectionSystem()->GetContext())

@@ -73,10 +73,26 @@ namespace ING {
 
 
 
+		for (auto item : classCreatorList) {
+
+			item(context);
+
+		}
+
+
+
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationReflectionSystem::Release() {
+
+
+
+		for (auto item : classDestructorList) {
+
+			item(context);
+
+		}
 
 
 

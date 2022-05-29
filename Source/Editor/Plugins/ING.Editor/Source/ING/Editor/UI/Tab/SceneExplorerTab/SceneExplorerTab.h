@@ -50,12 +50,15 @@ namespace ING {
 			class PLUGIN_API(ING_EDITOR) SceneExplorerTab : public ITab
 			{
 
+				ING_REFLECT_CLASS(SceneExplorerTab, ITab)
+
+
+
 				/**
-				 *	Constructors And Destructor
+				 *	Constructor
 				 */
-			public:
-				SceneExplorerTab	();
-				~SceneExplorerTab	();
+			protected:
+				void Constructor(const String& name);
 
 
 

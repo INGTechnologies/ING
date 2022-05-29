@@ -46,12 +46,15 @@ namespace ING {
 			class PLUGIN_API(ING_EDITOR) TabGroup : public ING::UI::IElement
 			{
 
+				ING_REFLECT_CLASS(TabGroup, ING::UI::IElement)
+
+
+
 				/**
-				 *	Constructors And Destructor
+				 *	Constructor
 				 */
-			public:
-				TabGroup	();
-				~TabGroup	();
+			protected:
+				void Constructor(const String& name);
 
 
 

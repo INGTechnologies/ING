@@ -46,12 +46,15 @@ namespace ING {
 			class PLUGIN_API(ING_EDITOR) ITab : public ING::UI::IElement
 			{
 
+				ING_REFLECT_CLASS(ITab, ING::UI::IElement)
+
+
+
 				/**
-				 *	Constructors And Destructor
+				 *	Constructor
 				 */
-			public:
-				ITab	(const String& name);
-				~ITab	();
+			protected:
+				void Constructor(const String& name);
 
 
 

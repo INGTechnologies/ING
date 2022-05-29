@@ -268,6 +268,11 @@ namespace ING {
 			return result;
 		}
 
+
+
+		typedef IClass* (*ClassCreator)(Context*);
+		typedef void	(*ClassDestructor)(Context*);
+
 	}
 
 }

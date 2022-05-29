@@ -33,21 +33,25 @@ namespace ING {
 
 		namespace UI {
 
+			ING_BEGIN_REFLECTED_CLASS
+				(ITab, IElement)
+
+				ING_CLASS_CONSTRUCTOR
+					(ITab, const String&)
+					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+			ING_END_REFLECTED_CLASS
+				()
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-			ITab::ITab(const String& name) :
-				IElement(name)
-			{
+			void ITab::Constructor(const String& name) {
 
-
-
-			}
-
-			ITab::~ITab()
-			{
-
-
+				IElement::Constructor(name);
 
 			}
 

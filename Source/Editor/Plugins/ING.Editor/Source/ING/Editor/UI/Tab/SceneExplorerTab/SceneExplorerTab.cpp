@@ -33,23 +33,27 @@ namespace ING {
 
 		namespace UI {
 
+			ING_BEGIN_REFLECTED_CLASS
+				(SceneExplorerTab, ITab)
+
+				ING_CLASS_CONSTRUCTOR
+					(SceneExplorerTab, const String&)
+					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+			ING_END_REFLECTED_CLASS
+				()
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-			SceneExplorerTab::SceneExplorerTab() :
-				ITab("View.SceneExplorer"),
+			void SceneExplorerTab::Constructor(const String& name) {
 
-				sceneTab(0)
-			{
+				ITab::Constructor(name);
 
-
-
-			}
-
-			SceneExplorerTab::~SceneExplorerTab()
-			{
-
-
+				sceneTab = 0;
 
 			}
 

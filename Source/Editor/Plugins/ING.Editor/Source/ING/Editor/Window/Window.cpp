@@ -90,6 +90,34 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Editor Application
+ */
+#include <ING/Editor/Application/Application.h>
+
+
+
+/**
+ *	Include EditorReflectionSystem
+ */
+#include <ING/Editor/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
+/**
+ *	Include ApplicationReflectionSystem
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -146,7 +174,7 @@ namespace ING {
 			/**
 			 *	Create Canvas
 			 */
-			canvas = new UI::Canvas(name + ".Canvas");
+			canvas = UI::Canvas::CreateInstance(ING_EDITOR_REFLECTION_CTX, name + ".Canvas");
 
 			ApplicationUISystem* uiSystem = (ApplicationUISystem*)(application->GetComponent("UISystem"));
 

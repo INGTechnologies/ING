@@ -76,6 +76,13 @@
 
 
 
+/**
+ *	Include ApplicationReflectionSystem
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
 namespace ING {
 
 	/**

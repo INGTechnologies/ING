@@ -78,7 +78,8 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::IElement>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::Canvas>();
 
 	}
 
@@ -97,32 +98,10 @@ namespace ING {
 
 
 
-		/**
-		 *	Add Classes
-		 */
-		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
-
-		UI::IElement::CreateType(reflectionContext);
-
-		UI::Canvas::CreateType(reflectionContext);
-
-
-
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationUISystem::Release() {
-
-
-
-		/**
-		 *	Release Classes
-		 */
-		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
-
-		UI::Canvas::ReleaseType(reflectionContext);
-
-		UI::IElement::ReleaseType(reflectionContext);
 
 
 

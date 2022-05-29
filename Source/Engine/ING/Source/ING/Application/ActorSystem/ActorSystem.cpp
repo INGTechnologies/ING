@@ -64,7 +64,8 @@ namespace ING {
 		IApplicationComponent(application, "ActorSystem")
 	{
 
-
+		GetApplication()->GetReflectionSystem()->_RegisterClass<IActor>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<IActorComponent>();
 
 	}
 
@@ -83,32 +84,10 @@ namespace ING {
 
 
 
-		/**
-		 *	Add Classes
-		 */
-		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
-
-		IActor::CreateType(reflectionContext);
-
-		IActorComponent::CreateType(reflectionContext);
-
-
-
 		return IApplicationComponent::Init();
 	}
 
 	void ApplicationActorSystem::Release() {
-
-
-
-		/**
-		 *	Release Classes
-		 */
-		Reflection::Context* reflectionContext = GetApplication()->GetReflectionSystem()->GetContext();
-
-		IActor::ReleaseType(reflectionContext);
-
-		IActorComponent::ReleaseType(reflectionContext);
 
 
 
