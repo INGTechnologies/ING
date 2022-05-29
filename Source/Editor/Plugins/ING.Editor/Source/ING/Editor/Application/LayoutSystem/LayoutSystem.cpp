@@ -90,7 +90,7 @@ namespace ING {
 
 							},
 
-							LAYOUT_DIRECTION_NONE,
+							LAYOUT_DIRECTION_ROW,
 
 							{
 
@@ -108,7 +108,7 @@ namespace ING {
 
 							},
 
-							LAYOUT_DIRECTION_NONE,
+							LAYOUT_DIRECTION_ROW,
 
 							{
 

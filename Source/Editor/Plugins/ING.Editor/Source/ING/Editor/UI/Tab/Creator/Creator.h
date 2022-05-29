@@ -23,17 +23,31 @@ using namespace ING::Utils;
 
 
 
- /**
-  *	Include Math
-  */
+/**
+ *	Include Math
+ */
 #include <ING/Math/Math.h>
 
 
 
-  /**
-   *	Include UI Element
-   */
+/**
+ *	Include UI Element
+ */
 #include <ING/UI/Element/Element.h>
+
+
+
+/**
+ *	Include Editor Application
+ */
+#include <ING/Editor/Application/Application.h>
+
+
+
+/**
+ *	Include Editor ReflectionSystem
+ */
+#include <ING/Editor/Application/ReflectionSystem/ReflectionSystem.h>
 
 
 
@@ -82,7 +96,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual ITab* Create();
+				virtual ITab* Create(const String& tabName);
 
 			};
 
@@ -104,7 +118,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual ITab* Create() override;
+				virtual ITab* Create(const String& tabName) override;
 
 			};
 
@@ -147,10 +161,9 @@ namespace ING {
 			 *	Methods
 			 */
 			template<class T>
-			ITab* TabCreator<T>::Create() {
+			ITab* TabCreator<T>::Create(const String& tabName) {
 
-
-				return new T();
+				return T::CreateInstance(Editor::Application::GetInstance()->GetReflectionSystem()->GetContext(), tabName);
 			}
 
 		}

@@ -49,12 +49,15 @@ namespace ING {
 		class ING_API Canvas : public IElement
 		{
 
+			ING_REFLECT_CLASS(Canvas, IElement)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
 		public:
-			Canvas	(const String& name);
-			~Canvas	();
+			void Constructor (const String& name);
 
 
 

@@ -31,34 +31,34 @@ namespace ING {
 
 	namespace UI {
 
-		/**
-		 *	Constructors And Destructor
-		 */
-		IElement::IElement():
-			node(0),
+		ING_BEGIN_REFLECTED_CLASS
+		(IElement, Reflection::IObject)
 
-			size(Math::RVector2()),
-			padding(Math::RVector4()),
-			margin(Math::RVector4())
+			ING_CLASS_CONSTRUCTOR
+				(IElement, const String&)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
+		/**
+		 *	Constructor
+		 */
+		void IElement::Constructor(const String& name)
 		{
 
 			node = new Node(this);
+
+			size = (Math::RVector2());
+			padding = (Math::RVector4());
+			margin = (Math::RVector4());
+
 			style = new Style();
 
-		}
-
-		IElement::IElement(const String& name) :
-			IElement()
-		{
-
 			this->name = name;
-
-		}
-
-		IElement::~IElement()
-		{
-
-
 
 		}
 

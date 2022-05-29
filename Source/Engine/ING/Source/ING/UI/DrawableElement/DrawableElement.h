@@ -41,13 +41,15 @@ namespace ING {
 		class ING_API DrawableElement : public IElement
 		{
 
+			ING_REFLECT_CLASS(DrawableElement, IElement)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
 		public:
-			DrawableElement();
-			DrawableElement(const String& name);
-			~DrawableElement();
+			void Constructor (const String& name);
 
 
 

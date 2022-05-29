@@ -73,10 +73,11 @@ namespace ING {
 
 
 
-		/**
-		 *	Add Classes
-		 */
-		IActor::CreateType(context);
+		for (auto item : classCreatorList) {
+
+			item(context);
+
+		}
 
 
 
@@ -87,10 +88,11 @@ namespace ING {
 
 
 
-		/**
-		 *	Release Classes
-		 */
-		IActor::ReleaseType(context);
+		for (auto item : classDestructorList) {
+
+			item(context);
+
+		}
 
 
 
@@ -99,6 +101,8 @@ namespace ING {
 			context->Release();
 
 		}
+
+
 
 		IApplicationComponent::Release();
 

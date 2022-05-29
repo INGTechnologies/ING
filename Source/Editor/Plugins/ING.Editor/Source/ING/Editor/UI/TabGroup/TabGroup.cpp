@@ -33,21 +33,25 @@ namespace ING {
 
 		namespace UI {
 
+			ING_BEGIN_REFLECTED_CLASS
+				(TabGroup, IElement)
+
+				ING_CLASS_CONSTRUCTOR
+					(TabGroup, const String&)
+					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+			ING_END_REFLECTED_CLASS
+				()
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-			TabGroup::TabGroup() :
-				IElement()
-			{
+			void TabGroup::Constructor(const String& name) {
 
-
-
-			}
-
-			TabGroup::~TabGroup()
-			{
-
-
+				IElement::Constructor(name);
 
 			}
 

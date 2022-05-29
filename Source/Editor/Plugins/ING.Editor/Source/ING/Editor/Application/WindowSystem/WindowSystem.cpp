@@ -71,6 +71,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationReflectionSystem
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
 namespace ING {
 
 	namespace Editor {

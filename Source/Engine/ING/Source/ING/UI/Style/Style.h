@@ -30,6 +30,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	namespace UI {

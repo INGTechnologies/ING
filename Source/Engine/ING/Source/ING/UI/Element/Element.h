@@ -30,6 +30,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	namespace UI {
@@ -39,7 +53,7 @@ namespace ING {
 
 
 
-		class ING_API IElement
+		class ING_API IElement : public Reflection::IObject
 		{
 
 		public:
@@ -47,13 +61,15 @@ namespace ING {
 
 
 
+			ING_REFLECT_CLASS(IElement, Reflection::IObject)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			IElement	();
-			IElement	(const String& name);
-			~IElement	();
+		protected:
+			void		Constructor	(const String& name);
 
 
 
@@ -61,7 +77,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual void Release() override;
 
 
 

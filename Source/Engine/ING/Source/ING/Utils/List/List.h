@@ -184,7 +184,12 @@ namespace ING {
 			Iterator begin() const { return Iterator(headNode); }
 			Iterator end() const { return Iterator(nullptr); }
 
-			Node* AddAt(T& obj, Node* node2) {
+			Node* AddAt(const T& obj, Node* node2) {
+
+				if (node2 == 0) {
+
+					return Add(obj);
+				}
 
 				Node* node = new Node();
 
@@ -208,7 +213,12 @@ namespace ING {
 				return node;
 
 			}
-			Node* AddAfter(T& obj, Node* node2) {
+			Node* AddAfter(const T& obj, Node* node2) {
+
+				if (node2 == 0) {
+
+					return Add(obj);
+				}
 
 				Node* node = new Node();
 
@@ -233,7 +243,7 @@ namespace ING {
 
 			}
 
-			Node* Add(T& obj) {
+			Node* Add(const T& obj) {
 
 				Node* node = nullptr;
 
@@ -472,18 +482,18 @@ namespace ING {
 
 				}
 
-				Node* AddAt(T& obj, Node* node2) {
+				Node* AddAt(const T& obj, Node* node2) {
 
 					return listPtr->AddAt(obj, node2);
 
 				}
-				Node* AddAfter(T& obj, Node* node2) {
+				Node* AddAfter(const T& obj, Node* node2) {
 
 					return listPtr->AddAfter(obj, node2);
 
 				}
 
-				Node* Add(T& obj) {
+				Node* Add(const T& obj) {
 
 					return listPtr->Add(obj);
 

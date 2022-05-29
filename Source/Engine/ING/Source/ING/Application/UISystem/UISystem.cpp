@@ -55,6 +55,20 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Reflection System
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
 namespace ING {
 
 	/**
@@ -64,7 +78,8 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::IElement>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::Canvas>();
 
 	}
 
@@ -87,6 +102,8 @@ namespace ING {
 	}
 
 	void ApplicationUISystem::Release() {
+
+
 
 		for (auto item = name2CanvasMap.begin(); item != name2CanvasMap.end();) {
 

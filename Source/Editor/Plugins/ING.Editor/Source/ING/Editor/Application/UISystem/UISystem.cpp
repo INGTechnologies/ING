@@ -57,6 +57,41 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ApplicationReflectionSystem
+ */
+#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
+
+
+
+/**
+ *	Include Editor Tab
+ */
+#include <ING/Editor/UI/Tab/Tab.h>
+
+
+
+/**
+ *	Include Editor TabGroup
+ */
+#include <ING/Editor/UI/TabGroup/TabGroup.h>
+
+
+
+/**
+ *	Include Editor SceneTab
+ */
+#include <ING/Editor/UI/Tab/SceneTab/SceneTab.h>
+
+
+
+/**
+ *	Include Editor SceneExplorerTab
+ */
+#include <ING/Editor/UI/Tab/SceneExplorerTab/SceneExplorerTab.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -68,7 +103,10 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorUISystem")
 		{
 
-
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::ITab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::SceneTab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::SceneExplorerTab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::TabGroup>();
 
 		}
 
