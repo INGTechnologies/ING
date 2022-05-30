@@ -31,7 +31,7 @@ namespace ING {
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(IPawn)
+			(IPawn, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -43,12 +43,10 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IPawn::Constructor()
+	void IPawn::Constructor(const String& name)
 	{
 
-		IActor::Constructor();
-
-		SetName("NewPawn");
+		IActor::Constructor(name);
 
 	}
 

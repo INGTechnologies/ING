@@ -31,7 +31,7 @@ namespace ING {
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(IActorComponent)
+			(IActorComponent, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -79,10 +79,10 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IActorComponent::Constructor()
+	void IActorComponent::Constructor(const String& name)
 	{
 
-		name = "NewActorComponent";
+		this->name = name;
 
 		actor = 0;
 

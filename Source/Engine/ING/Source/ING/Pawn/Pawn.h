@@ -36,7 +36,7 @@ namespace ING {
 		 *	Constructor
 		 */
 	protected:
-		void			Constructor();
+		void			Constructor(const String& name);
 
 
 
