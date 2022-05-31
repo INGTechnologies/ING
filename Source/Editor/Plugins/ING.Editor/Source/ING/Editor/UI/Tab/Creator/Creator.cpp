@@ -67,7 +67,7 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			ITab* ITabCreator::Create(const String& tabName) {
+			C_Tab* ITabCreator::Create(const String& tabName) {
 
 
 				return 0;

@@ -43,14 +43,14 @@ namespace ING {
 
 		namespace UI {
 
-			class SceneTab;
+			class C_SceneTab;
 
 
 
-			class PLUGIN_API(ING_EDITOR) SceneExplorerTab : public ITab
+			class PLUGIN_API(ING_EDITOR) C_SceneExplorerTab : public C_Tab
 			{
 
-				ING_REFLECT_CLASS(SceneExplorerTab, ITab)
+				ING_REFLECT_CLASS(C_SceneExplorerTab, C_Tab)
 
 
 
@@ -74,12 +74,12 @@ namespace ING {
 				 *	Properties
 				 */
 			private:
-				SceneTab*	sceneTab;
+				C_SceneTab*	sceneTab;
 
 			public:
-				SceneTab*	GetSceneTab	() { return sceneTab; }
+				C_SceneTab*	GetSceneTab	() { return sceneTab; }
 
-				void		SetSceneTab	(SceneTab* sceneTab){ this->sceneTab = sceneTab; }
+				void		SetSceneTab	(C_SceneTab* sceneTab){ this->sceneTab = sceneTab; }
 
 
 

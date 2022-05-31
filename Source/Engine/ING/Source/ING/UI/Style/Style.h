@@ -51,7 +51,7 @@ namespace ING {
 		class Node;
 
 		class Style;
-		class IElement;
+		class C_Element;
 
 		struct DFloat;
 
@@ -64,10 +64,10 @@ namespace ING {
 		/**
 		 *	Dynamic Value Type Functions
 		 */
-		typedef float				(*DFloatFunction)	(ING::UI::Style* style, ING::UI::IElement* element, const DFloat& instance);
-		typedef ING::Math::RVector2	(*DVector2Function)	(ING::UI::Style* style, ING::UI::IElement* element, const DVector2& instance);
-		typedef ING::Math::RVector3	(*DVector3Function)	(ING::UI::Style* style, ING::UI::IElement* element, const DVector3& instance);
-		typedef ING::Math::RVector4	(*DVector4Function)	(ING::UI::Style* style, ING::UI::IElement* element, const DVector4& instance);
+		typedef float				(*DFloatFunction)	(ING::UI::Style* style, ING::UI::C_Element* element, const DFloat& instance);
+		typedef ING::Math::RVector2	(*DVector2Function)	(ING::UI::Style* style, ING::UI::C_Element* element, const DVector2& instance);
+		typedef ING::Math::RVector3	(*DVector3Function)	(ING::UI::Style* style, ING::UI::C_Element* element, const DVector3& instance);
+		typedef ING::Math::RVector4	(*DVector4Function)	(ING::UI::Style* style, ING::UI::C_Element* element, const DVector4& instance);
 
 
 
@@ -86,7 +86,7 @@ namespace ING {
 			}
 
 			DFloat() :
-				function([](ING::UI::Style* style, ING::UI::IElement* element, const DFloat& instance) -> float {return 0; })
+				function([](ING::UI::Style* style, ING::UI::C_Element* element, const DFloat& instance) -> float {return 0; })
 			{
 
 
@@ -97,7 +97,7 @@ namespace ING {
 
 			std::vector<float> capturedFloatVector;
 
-			float operator()(ING::UI::Style* style, ING::UI::IElement* element) {
+			float operator()(ING::UI::Style* style, ING::UI::C_Element* element) {
 
 				return function(style, element, *this);
 
@@ -117,7 +117,7 @@ namespace ING {
 			}
 
 			DVector2() :
-				function([](ING::UI::Style* style, ING::UI::IElement* element, const DVector2& instance) -> ING::Math::RVector2 {return ING::Math::RVector2(); })
+				function([](ING::UI::Style* style, ING::UI::C_Element* element, const DVector2& instance) -> ING::Math::RVector2 {return ING::Math::RVector2(); })
 			{
 
 
@@ -128,7 +128,7 @@ namespace ING {
 			
 			std::vector<float> capturedFloatVector;
 
-			ING::Math::RVector2 operator()(ING::UI::Style* style, ING::UI::IElement* element) {
+			ING::Math::RVector2 operator()(ING::UI::Style* style, ING::UI::C_Element* element) {
 
 				return function(style, element, *this);
 
@@ -148,7 +148,7 @@ namespace ING {
 			}
 
 			DVector3() :
-				function([](ING::UI::Style* style, ING::UI::IElement* element, const DVector3& instance) -> ING::Math::RVector3 { return ING::Math::RVector3(); })
+				function([](ING::UI::Style* style, ING::UI::C_Element* element, const DVector3& instance) -> ING::Math::RVector3 { return ING::Math::RVector3(); })
 			{
 
 
@@ -159,7 +159,7 @@ namespace ING {
 
 			std::vector<float> capturedFloatVector;
 
-			ING::Math::RVector3 operator()(ING::UI::Style* style, ING::UI::IElement* element) {
+			ING::Math::RVector3 operator()(ING::UI::Style* style, ING::UI::C_Element* element) {
 
 				return function(style, element, *this);
 
@@ -179,7 +179,7 @@ namespace ING {
 			}
 
 			DVector4() :
-				function([](ING::UI::Style* style, ING::UI::IElement* element, const DVector4& instance) -> ING::Math::RVector4 { return ING::Math::RVector4(); })
+				function([](ING::UI::Style* style, ING::UI::C_Element* element, const DVector4& instance) -> ING::Math::RVector4 { return ING::Math::RVector4(); })
 			{
 
 
@@ -190,7 +190,7 @@ namespace ING {
 
 			std::vector<float> capturedFloatVector;
 
-			ING::Math::RVector4 operator()(ING::UI::Style* style, ING::UI::IElement* element) {
+			ING::Math::RVector4 operator()(ING::UI::Style* style, ING::UI::C_Element* element) {
 
 				return function(style, element, *this);
 
@@ -248,7 +248,7 @@ namespace ING {
 			virtual void			CopyFrom	(Style* srcStyle);
 			virtual void			CopyTo		(Style* dstStyle);
 
-			virtual void			Apply		(IElement* element);
+			virtual void			Apply		(C_Element* element);
 
 		};
 
@@ -324,7 +324,7 @@ namespace ING {
 
 #define UI_DFLOAT(x,...) (\
 			ING::UI::DFloat(\
-				[](ING::UI::Style* style, ING::UI::IElement* element, const DFloat& instance) -> ING::Math::RVector2 {\
+				[](ING::UI::Style* style, ING::UI::C_Element* element, const DFloat& instance) -> ING::Math::RVector2 {\
 					return (x);\
 				},\
 				{ ##__VA_ARGS__ }\
@@ -333,7 +333,7 @@ namespace ING {
 
 #define UI_DVECTOR2(x, y,...) (\
 			ING::UI::DVector2(\
-				[](ING::UI::Style* style, ING::UI::IElement* element, const ING::UI::DVector2& instance) -> ING::Math::RVector2 {\
+				[](ING::UI::Style* style, ING::UI::C_Element* element, const ING::UI::DVector2& instance) -> ING::Math::RVector2 {\
 					return ING::Math::RVector2(x, y);\
 				},\
 				{ ##__VA_ARGS__ }\
@@ -342,7 +342,7 @@ namespace ING {
 
 #define UI_DVECTOR3(x, y, z,...) (\
 			ING::UI::DVector3(\
-				[](ING::UI::Style* style, ING::UI::IElement* element, const ING::UI::DVector3& instance) -> ING::Math::RVector3 {\
+				[](ING::UI::Style* style, ING::UI::C_Element* element, const ING::UI::DVector3& instance) -> ING::Math::RVector3 {\
 					return ING::Math::RVector3(x, y, z);\
 				},\
 				{ ##__VA_ARGS__ }\
@@ -351,7 +351,7 @@ namespace ING {
 
 #define UI_DVECTOR4(x, y, z, w,...) (\
 			ING::UI::DVector4(\
-				[](ING::UI::Style* style, ING::UI::IElement* element, const ING::UI::DVector4& instance) -> ING::Math::RVector4 {\
+				[](ING::UI::Style* style, ING::UI::C_Element* element, const ING::UI::DVector4& instance) -> ING::Math::RVector4 {\
 					return ING::Math::RVector4(x, y, z, w);\
 				},\
 				{ ##__VA_ARGS__ }\

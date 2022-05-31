@@ -38,10 +38,10 @@ namespace ING {
 
 
 
-		class ING_API DrawableElement : public IElement
+		class ING_API DrawableElement : public C_Element
 		{
 
-			ING_REFLECT_CLASS(DrawableElement, IElement)
+			ING_REFLECT_CLASS(DrawableElement, C_Element)
 
 
 

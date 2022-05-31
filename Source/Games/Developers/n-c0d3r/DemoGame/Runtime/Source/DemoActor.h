@@ -154,9 +154,9 @@ using namespace ING::UI;
 
 
 
-class DemoActor : public IActor {
+class DemoActor : public C_Actor {
 
-	ING_REFLECT_CLASS(DemoActor, IActor)
+	ING_REFLECT_CLASS(DemoActor, C_Actor)
 
 
 

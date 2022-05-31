@@ -7,7 +7,7 @@
 
 
 ING_BEGIN_REFLECTED_CLASS	
-	(DemoActor, ING::IActor)
+	(DemoActor, C_Actor)
 
 	ING_CLASS_CONSTRUCTOR	
 		(DemoActor)
@@ -19,12 +19,12 @@ ING_END_REFLECTED_CLASS
 
 void DemoActor::Constructor() {
 
-	IActor::Constructor();
+	C_Actor::Constructor("Demo");
 
 }
 
 void DemoActor::Release() {
 
-	IActor::Release();
+	C_Actor::Release();
 
 }

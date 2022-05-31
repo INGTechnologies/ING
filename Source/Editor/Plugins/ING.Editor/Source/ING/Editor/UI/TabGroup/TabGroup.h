@@ -43,10 +43,10 @@ namespace ING {
 
 		namespace UI {
 
-			class PLUGIN_API(ING_EDITOR) TabGroup : public ING::UI::IElement
+			class PLUGIN_API(ING_EDITOR) C_TabGroup : public ING::UI::C_Element
 			{
 
-				ING_REFLECT_CLASS(TabGroup, ING::UI::IElement)
+				ING_REFLECT_CLASS(C_TabGroup, ING::UI::C_Element)
 
 
 

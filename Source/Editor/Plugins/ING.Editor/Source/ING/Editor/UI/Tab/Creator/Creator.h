@@ -57,7 +57,7 @@ namespace ING {
 
 		namespace UI {
 
-			class ITab;
+			class C_Tab;
 
 
 
@@ -96,7 +96,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual ITab* Create(const String& tabName);
+				virtual C_Tab* Create(const String& tabName);
 
 			};
 
@@ -118,7 +118,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual ITab* Create(const String& tabName) override;
+				virtual C_Tab* Create(const String& tabName) override;
 
 			};
 
@@ -161,7 +161,7 @@ namespace ING {
 			 *	Methods
 			 */
 			template<class T>
-			ITab* TabCreator<T>::Create(const String& tabName) {
+			C_Tab* TabCreator<T>::Create(const String& tabName) {
 
 				return T::CreateInstance(Editor::Application::GetInstance()->GetReflectionSystem()->GetContext(), tabName);
 			}

@@ -48,7 +48,7 @@ namespace ING {
 
 	namespace UI {
 
-		class Canvas;
+		class C_Canvas;
 
 	}
 
@@ -97,7 +97,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void	SetupFor(ING::UI::Canvas * canvas);
+			virtual void	SetupFor(ING::UI::C_Canvas * canvas);
 
 		};
 

@@ -55,7 +55,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IObject::IObject(IClass* _class) :
+		C_Object::C_Object(IClass* _class) :
 			ING::IObject(),
 			_class(_class)
 		{
@@ -94,7 +94,7 @@ namespace ING {
 
 		}
 
-		IObject::~IObject() {
+		C_Object::~C_Object() {
 
 
 
@@ -105,7 +105,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IObject::Release() {
+		void C_Object::Release() {
 
 			for (auto item : name2Function) {
 
@@ -127,7 +127,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void* IObject::GetPropertyPointer(const String& name) {
+		void* C_Object::GetPropertyPointer(const String& name) {
 
 			return ((char*)this) + _class->GetMember(name).offsetInBytes;
 

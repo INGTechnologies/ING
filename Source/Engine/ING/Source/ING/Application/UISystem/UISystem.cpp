@@ -78,8 +78,8 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::IElement>();
-		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::Canvas>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Element>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Canvas>();
 
 	}
 
@@ -111,6 +111,8 @@ namespace ING {
 
 		}
 
+
+
 		IApplicationComponent::Release();
 
 	}
@@ -120,7 +122,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void	ApplicationUISystem::AddCanvas(UI::Canvas* canvas) {
+	void	ApplicationUISystem::AddCanvas(UI::C_Canvas* canvas) {
 
 		if (name2CanvasMap.find(canvas->GetName()) != name2CanvasMap.end()) return;
 
@@ -128,7 +130,7 @@ namespace ING {
 
 	}
 
-	void	ApplicationUISystem::RemoveCanvas(UI::Canvas* canvas) {
+	void	ApplicationUISystem::RemoveCanvas(UI::C_Canvas* canvas) {
 
 		if (name2CanvasMap.find(canvas->GetName()) == name2CanvasMap.end()) return;
 

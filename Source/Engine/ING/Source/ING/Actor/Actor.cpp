@@ -25,13 +25,13 @@ using namespace ING::Utils;
 namespace ING {
 
 	ING_BEGIN_REFLECTED_CLASS
-		(IActor, Reflection::IObject)
+		(C_Actor, Reflection::C_Object)
 
 		/**
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(IActor, const String&)
+			(C_Actor, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -39,12 +39,12 @@ namespace ING {
 		 *	Properties
 		 */
 		ING_CLASS_PROPERTY		
-			(IActor, name)
+			(C_Actor, name)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PRIVATE)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROPERTY		
-			(IActor, componentVector)
+			(C_Actor, componentVector)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PRIVATE)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -52,37 +52,37 @@ namespace ING {
 		 *	Property Getters And Setters
 		 */
 		ING_CLASS_FUNCTION		
-			(IActor, GetName, const String&)
+			(C_Actor, GetName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROCEDURE
-			(IActor, SetName, const String&)
+			(C_Actor, SetName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION		
-			(IActor, GetComponentVector, const std::vector<IActorComponent*>&)
+			(C_Actor, GetComponentVector, const std::vector<C_ActorComponent*>&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION
-			(IActor, GetComponentIndex, unsigned int, const String&)
+			(C_Actor, GetComponentIndex, unsigned int, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION
-			(IActor, IsHasComponent, bool, const String&)
+			(C_Actor, IsHasComponent, bool, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION
-			(IActor, GetComponent, IActorComponent* , unsigned int)
+			(C_Actor, GetComponent, C_ActorComponent* , unsigned int)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION
-			(IActor, GetComponentByName, IActorComponent* , const String&)
+			(C_Actor, GetComponentByName, C_ActorComponent* , const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -90,27 +90,27 @@ namespace ING {
 		 *	Methods
 		 */
 		ING_CLASS_PROCEDURE
-			(IActor, AddComponent, IActorComponent*)
+			(C_Actor, AddComponent, C_ActorComponent*)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROCEDURE
-			(IActor, AddComponentByIndex, IActorComponent*, unsigned int)
+			(C_Actor, AddComponentByIndex, C_ActorComponent*, unsigned int)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 		
 		ING_CLASS_PROCEDURE
-			(IActor, RemoveComponentByIndex, unsigned int)
+			(C_Actor, RemoveComponentByIndex, unsigned int)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 		
 		ING_CLASS_PROCEDURE
-			(IActor, RemoveComponentByName, const String&)
+			(C_Actor, RemoveComponentByName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROCEDURE
-			(IActor, RemoveComponent, IActorComponent*)
+			(C_Actor, RemoveComponent, C_ActorComponent*)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -122,7 +122,7 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IActor::Constructor(const String& name)
+	void C_Actor::Constructor(const String& name)
 	{
 
 		this->name = name;
@@ -134,7 +134,7 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
-	void IActor::Release()
+	void C_Actor::Release()
 	{
 
 		for (unsigned int i = 0; i < componentVector.size();) {
@@ -153,13 +153,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void IActor::AddComponent(IActorComponent* component) {
+	void C_Actor::AddComponent(C_ActorComponent* component) {
 
 		AddComponentByIndex(component, componentVector.size());
 
 	}
 
-	void IActor::AddComponentByIndex(IActorComponent* component, unsigned int index) {
+	void C_Actor::AddComponentByIndex(C_ActorComponent* component, unsigned int index) {
 
 		if (componentVector.size() == index) {
 
@@ -186,7 +186,7 @@ namespace ING {
 
 	}
 
-	void IActor::RemoveComponentByIndex(unsigned int index) {
+	void C_Actor::RemoveComponentByIndex(unsigned int index) {
 
 		String componentName = GetComponent(index)->GetName();
 
@@ -206,13 +206,13 @@ namespace ING {
 
 	}
 
-	void IActor::RemoveComponentByName(const String& componentName) {
+	void C_Actor::RemoveComponentByName(const String& componentName) {
 
 		RemoveComponentByIndex(name2ComponentIndexMap[componentName]);
 
 	}
 
-	void IActor::RemoveComponent(IActorComponent* component) {
+	void C_Actor::RemoveComponent(C_ActorComponent* component) {
 
 		RemoveComponentByName(component->GetName());
 

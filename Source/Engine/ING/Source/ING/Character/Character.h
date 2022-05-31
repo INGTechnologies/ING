@@ -25,10 +25,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class ING_API ICharacter : public IPawn
+	class ING_API C_Character : public C_Pawn
 	{
 
-		ING_REFLECT_CLASS(ICharacter, IPawn)
+		ING_REFLECT_CLASS(C_Character, C_Pawn)
 
 
 

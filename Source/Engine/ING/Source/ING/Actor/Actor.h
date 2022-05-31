@@ -55,14 +55,14 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	class IActorComponent;
+	class C_ActorComponent;
 
 
 
-	class ING_API IActor : public Reflection::IObject
+	class ING_API C_Actor : public Reflection::C_Object
 	{
 
-		ING_REFLECT_CLASS(IActor, Reflection::IObject)
+		ING_REFLECT_CLASS(C_Actor, Reflection::C_Object)
 
 
 
@@ -82,22 +82,22 @@ namespace ING {
 
 		std::unordered_map<String, unsigned int> name2ComponentIndexMap;
 
-		std::vector<IActorComponent*> componentVector;
+		std::vector<C_ActorComponent*> componentVector;
 
 	public:
 		const String&	GetName () { return name; }
 
 		void			SetName (const String& name) { this->name = name; }
 
-		const std::vector<IActorComponent*>& GetComponentVector () { return componentVector; }
+		const std::vector<C_ActorComponent*>& GetComponentVector () { return componentVector; }
 
 		unsigned int	GetComponentIndex (const String& componentName) { return name2ComponentIndexMap[componentName]; }
 
 		bool			IsHasComponent	(const String& componentName) { return name2ComponentIndexMap[componentName]; }
 
-		IActorComponent*GetComponent	(unsigned int index) { return componentVector[index]; }
+		C_ActorComponent*GetComponent	(unsigned int index) { return componentVector[index]; }
 
-		IActorComponent*GetComponentByName(const String& componentName) { if (!IsHasComponent(componentName)) return 0; return GetComponent(GetComponentIndex(componentName)); }
+		C_ActorComponent*GetComponentByName(const String& componentName) { if (!IsHasComponent(componentName)) return 0; return GetComponent(GetComponentIndex(componentName)); }
 
 
 
@@ -113,11 +113,11 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void	AddComponent	(IActorComponent* component);
-		void	AddComponentByIndex	(IActorComponent* component, unsigned int index);
+		void	AddComponent	(C_ActorComponent* component);
+		void	AddComponentByIndex	(C_ActorComponent* component, unsigned int index);
 		void	RemoveComponentByIndex(unsigned int index);
 		void	RemoveComponentByName(const String& componentName);
-		void	RemoveComponent  (IActorComponent* component);
+		void	RemoveComponent  (C_ActorComponent* component);
 
 	};
 

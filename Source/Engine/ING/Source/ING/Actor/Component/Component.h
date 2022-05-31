@@ -55,14 +55,14 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	class IActor;
+	class C_Actor;
 
 
 
-	class ING_API IActorComponent : public Reflection::IObject
+	class ING_API C_ActorComponent : public Reflection::C_Object
 	{
 
-		ING_REFLECT_CLASS(IActorComponent, Reflection::IObject)
+		ING_REFLECT_CLASS(C_ActorComponent, Reflection::C_Object)
 
 
 
@@ -70,7 +70,7 @@ namespace ING {
 		 *	Friend Classes
 		 */
 	public:
-		friend class IActor;
+		friend class C_Actor;
 
 
 
@@ -88,14 +88,14 @@ namespace ING {
 	private:
 		String			name;
 
-		IActor*			actor;
+		C_Actor*		actor;
 
 	public:
 		const String&	GetName () { return name; }
 
 		void			SetName (const String& name) { this->name = name; }
 
-		IActor*			GetActor() { return actor; }
+		C_Actor*		GetActor() { return actor; }
 
 		unsigned int    GetIndex();
 

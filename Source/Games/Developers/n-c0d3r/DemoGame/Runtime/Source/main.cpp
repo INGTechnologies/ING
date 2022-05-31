@@ -200,17 +200,17 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		Demo::DemoClass::CreateType(ctx);
 
-		IActor::CreateType(ctx);
+		C_Actor::CreateType(ctx);
 
-		IActorComponent::CreateType(ctx);
+		C_ActorComponent::CreateType(ctx);
 
-		IPawn::CreateType(ctx);
+		C_Pawn::CreateType(ctx);
 
 		DemoActor::CreateType(ctx);
 
 
 
-		IPawn* demoPawn = IPawn::CreateInstance(ctx);
+		C_Pawn* demoPawn = C_Pawn::CreateInstance(ctx, "Test");
 
 		demoPawn->GetProcedure("SetName")->Specify<const String&>()->Invoke("Test");
 
@@ -220,11 +220,11 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		DemoActor::ReleaseType(ctx);
 
-		IPawn::ReleaseType(ctx);
+		C_Pawn::ReleaseType(ctx);
 
-		IActorComponent::ReleaseType(ctx);
+		C_ActorComponent::ReleaseType(ctx);
 
-		IActor::ReleaseType(ctx);
+		C_Actor::ReleaseType(ctx);
 
 		Demo::DemoClass::ReleaseType(ctx);
 

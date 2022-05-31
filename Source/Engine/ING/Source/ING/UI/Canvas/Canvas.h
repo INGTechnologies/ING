@@ -46,10 +46,10 @@ namespace ING {
 
 
 
-		class ING_API Canvas : public IElement
+		class ING_API C_Canvas : public C_Element
 		{
 
-			ING_REFLECT_CLASS(Canvas, IElement)
+			ING_REFLECT_CLASS(C_Canvas, C_Element)
 
 
 

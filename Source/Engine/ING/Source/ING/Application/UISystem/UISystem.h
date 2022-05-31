@@ -31,9 +31,9 @@ namespace ING {
 
 		class Node;
 
-		class IElement;
+		class C_Element;
 
-		class Canvas;
+		class C_Canvas;
 
 	}
 
@@ -62,14 +62,14 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		std::unordered_map<String, UI::Canvas*> name2CanvasMap;
+		std::unordered_map<String, UI::C_Canvas*> name2CanvasMap;
 
 	public:
-		UI::Canvas*		GetCanvas	(const String& name) { 
+		UI::C_Canvas*	GetCanvas	(const String& name) { 
 
 			if (!IsHasCanvas(name)) return 0;
 			
-			return name2CanvasMap[name]; 
+			return name2CanvasMap[name];
 		}
 
 		bool			IsHasCanvas	(const String& name) { return name2CanvasMap.find(name) != name2CanvasMap.end(); }
@@ -80,8 +80,8 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		void			AddCanvas	(UI::Canvas* canvas);
-		void			RemoveCanvas(UI::Canvas* canvas);
+		void			AddCanvas	(UI::C_Canvas* canvas);
+		void			RemoveCanvas(UI::C_Canvas* canvas);
 
 		virtual void	Start		() override;
 
