@@ -34,10 +34,10 @@ namespace ING {
 		namespace UI {
 
 			ING_BEGIN_REFLECTED_CLASS
-				(TabGroup, IElement)
+				(C_TabGroup, C_Element)
 
 				ING_CLASS_CONSTRUCTOR
-					(TabGroup, const String&)
+					(C_TabGroup, const String&)
 					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -49,9 +49,9 @@ namespace ING {
 			/**
 			 *	Constructor
 			 */
-			void TabGroup::Constructor(const String& name) {
+			void C_TabGroup::Constructor(const String& name) {
 
-				IElement::Constructor(name);
+				C_Element::Constructor(name);
 
 			}
 
@@ -60,9 +60,9 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void TabGroup::Release() {
+			void C_TabGroup::Release() {
 
-				IElement::Release();
+				C_Element::Release();
 			}
 
 
@@ -70,51 +70,51 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void	TabGroup::Start() {
+			void	C_TabGroup::Start() {
 
-				IElement::Start();
-
-			}
-
-			void	TabGroup::PreUpdate() {
-
-				IElement::PreUpdate();
+				C_Element::Start();
 
 			}
 
-			void	TabGroup::Update() {
+			void	C_TabGroup::PreUpdate() {
 
-				IElement::Update();
-
-			}
-
-			void	TabGroup::LateUpdate() {
-
-				IElement::LateUpdate();
+				C_Element::PreUpdate();
 
 			}
 
-			void	TabGroup::PreRender() {
+			void	C_TabGroup::Update() {
 
-				IElement::PreRender();
-
-			}
-
-			void	TabGroup::Render() {
-
-				IElement::Render();
+				C_Element::Update();
 
 			}
 
-			void	TabGroup::LateRender() {
+			void	C_TabGroup::LateUpdate() {
 
-				IElement::LateRender();
+				C_Element::LateUpdate();
 
 			}
 
-			void	TabGroup::Resize() {
+			void	C_TabGroup::PreRender() {
 
-				IElement::Resize();
+				C_Element::PreRender();
+
+			}
+
+			void	C_TabGroup::Render() {
+
+				C_Element::Render();
+
+			}
+
+			void	C_TabGroup::LateRender() {
+
+				C_Element::LateRender();
+
+			}
+
+			void	C_TabGroup::Resize() {
+
+				C_Element::Resize();
 
 			}
 

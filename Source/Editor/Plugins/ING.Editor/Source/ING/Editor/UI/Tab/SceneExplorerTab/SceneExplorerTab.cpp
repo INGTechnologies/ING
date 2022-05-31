@@ -34,10 +34,10 @@ namespace ING {
 		namespace UI {
 
 			ING_BEGIN_REFLECTED_CLASS
-				(SceneExplorerTab, ITab)
+				(C_SceneExplorerTab, C_Tab)
 
 				ING_CLASS_CONSTRUCTOR
-					(SceneExplorerTab, const String&)
+					(C_SceneExplorerTab, const String&)
 					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -49,9 +49,9 @@ namespace ING {
 			/**
 			 *	Constructor
 			 */
-			void SceneExplorerTab::Constructor(const String& name) {
+			void C_SceneExplorerTab::Constructor(const String& name) {
 
-				ITab::Constructor(name);
+				C_Tab::Constructor(name);
 
 				sceneTab = 0;
 
@@ -62,9 +62,9 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void SceneExplorerTab::Release() {
+			void C_SceneExplorerTab::Release() {
 
-				ITab::Release();
+				C_Tab::Release();
 			}
 
 
@@ -72,51 +72,51 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void	SceneExplorerTab::Start() {
+			void	C_SceneExplorerTab::Start() {
 
-				ITab::Start();
-
-			}
-
-			void	SceneExplorerTab::PreUpdate() {
-
-				ITab::PreUpdate();
+				C_Tab::Start();
 
 			}
 
-			void	SceneExplorerTab::Update() {
+			void	C_SceneExplorerTab::PreUpdate() {
 
-				ITab::Update();
-
-			}
-
-			void	SceneExplorerTab::LateUpdate() {
-
-				ITab::LateUpdate();
+				C_Tab::PreUpdate();
 
 			}
 
-			void	SceneExplorerTab::PreRender() {
+			void	C_SceneExplorerTab::Update() {
 
-				ITab::PreRender();
-
-			}
-
-			void	SceneExplorerTab::Render() {
-
-				ITab::Render();
+				C_Tab::Update();
 
 			}
 
-			void	SceneExplorerTab::LateRender() {
+			void	C_SceneExplorerTab::LateUpdate() {
 
-				ITab::LateRender();
+				C_Tab::LateUpdate();
 
 			}
 
-			void	SceneExplorerTab::Resize() {
+			void	C_SceneExplorerTab::PreRender() {
 
-				ITab::Resize();
+				C_Tab::PreRender();
+
+			}
+
+			void	C_SceneExplorerTab::Render() {
+
+				C_Tab::Render();
+
+			}
+
+			void	C_SceneExplorerTab::LateRender() {
+
+				C_Tab::LateRender();
+
+			}
+
+			void	C_SceneExplorerTab::Resize() {
+
+				C_Tab::Resize();
 
 			}
 

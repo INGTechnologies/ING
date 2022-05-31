@@ -65,7 +65,7 @@ namespace ING {
 
 			if (base == 0) {
 
-				base = context->GetClass(IType::TypeInfoToFullName(typeid(Reflection::IObject)));
+				base = context->GetClass(IType::TypeInfoToFullName(typeid(Reflection::C_Object)));
 
 				if (base == this) {
 
@@ -97,7 +97,7 @@ namespace ING {
 
 
 			/**
-			 *	Add Reflection::IObject Members
+			 *	Add Reflection::C_Object Members
 			 */
 			if (base == 0) {
 
@@ -109,9 +109,9 @@ namespace ING {
 
 					IType::TypeInfoToFullName(typeid(ObjectId)),
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction* {return 0; },
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 					"id",
 
@@ -129,12 +129,12 @@ namespace ING {
 
 					"",
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction* {
 
-						return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetId,ObjectId>((Reflection::IObject*)object);
+						return new ING::Reflection::ObjectFunction<Reflection::C_Object, &Reflection::C_Object::GetId,ObjectId>((Reflection::C_Object*)object);
 					},
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 					"GetId",
 
@@ -148,13 +148,13 @@ namespace ING {
 
 					0,
 
-					(unsigned int)GetMemberOffset(&ING::Reflection::IObject::_class),
+					(unsigned int)GetMemberOffset(&ING::Reflection::C_Object::_class),
 
 					IType::TypeInfoToFullName(typeid(ING::Reflection::IClass*)),
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction* {return 0; },
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 					"_class",
 
@@ -172,12 +172,12 @@ namespace ING {
 
 					"",
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectFunction* {
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction* {
 
-						return new ING::Reflection::ObjectFunction<Reflection::IObject, &Reflection::IObject::GetClass, IClass*>((Reflection::IObject*)object);
+						return new ING::Reflection::ObjectFunction<Reflection::C_Object, &Reflection::C_Object::GetClass, IClass*>((Reflection::C_Object*)object);
 					},
 
-					[](ING::Reflection::IObject* object)->ING::Reflection::IObjectProcedure* {return 0; },
+					[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure* {return 0; },
 
 					"GetClass",
 
@@ -214,7 +214,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		IObject* IClass::ICreateInstance() {
+		C_Object* IClass::ICreateInstance() {
 
 			return 0;
 		}

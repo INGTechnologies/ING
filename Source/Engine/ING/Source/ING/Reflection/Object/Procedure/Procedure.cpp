@@ -13,7 +13,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		IObjectProcedure::IObjectProcedure(void* object) :
+		IObjectProcedure::IObjectProcedure(C_Object* object) :
 			object(object)
 		{
 

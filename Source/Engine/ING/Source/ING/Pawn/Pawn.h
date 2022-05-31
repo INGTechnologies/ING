@@ -25,10 +25,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class ING_API IPawn : public IActor
+	class ING_API C_Pawn : public C_Actor
 	{
 
-		ING_REFLECT_CLASS(IPawn, IActor)
+		ING_REFLECT_CLASS(C_Pawn, C_Actor)
 
 
 
@@ -36,7 +36,7 @@ namespace ING {
 		 *	Constructor
 		 */
 	protected:
-		void			Constructor();
+		void			Constructor(const String& name);
 
 
 

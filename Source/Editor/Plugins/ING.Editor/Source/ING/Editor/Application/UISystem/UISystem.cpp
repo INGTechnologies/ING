@@ -103,10 +103,10 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorUISystem")
 		{
 
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::ITab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::SceneTab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::SceneExplorerTab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::TabGroup>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Tab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_SceneTab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_SceneExplorerTab>();
+			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_TabGroup>();
 
 		}
 

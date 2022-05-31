@@ -32,10 +32,10 @@ namespace ING {
 	namespace UI {
 
 		ING_BEGIN_REFLECTED_CLASS
-			(Canvas, IElement)
+			(C_Canvas, C_Element)
 
 			ING_CLASS_CONSTRUCTOR
-				(Canvas, const String&)
+				(C_Canvas, const String&)
 				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -45,10 +45,10 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		void Canvas::Constructor(const String& name)
+		void C_Canvas::Constructor(const String& name)
 		{
 
-			IElement::Constructor(name);
+			C_Element::Constructor(name);
 
 		}
 
@@ -57,9 +57,9 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void Canvas::Release() {
+		void C_Canvas::Release() {
 
-			IElement::Release();
+			C_Element::Release();
 		}
 
 
@@ -67,51 +67,51 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	Canvas::Start() {
+		void	C_Canvas::Start() {
 
-			IElement::Start();
-
-		}
-
-		void	Canvas::PreUpdate() {
-
-			IElement::PreUpdate();
+			C_Element::Start();
 
 		}
 
-		void	Canvas::Update() {
+		void	C_Canvas::PreUpdate() {
 
-			IElement::Update();
-
-		}
-
-		void	Canvas::LateUpdate() {
-
-			IElement::LateUpdate();
+			C_Element::PreUpdate();
 
 		}
 
-		void	Canvas::PreRender() {
+		void	C_Canvas::Update() {
 
-			IElement::PreRender();
-
-		}
-
-		void	Canvas::Render() {
-
-			IElement::Render();
+			C_Element::Update();
 
 		}
 
-		void	Canvas::LateRender() {
+		void	C_Canvas::LateUpdate() {
 
-			IElement::LateRender();
+			C_Element::LateUpdate();
 
 		}
 
-		void	Canvas::Resize() {
+		void	C_Canvas::PreRender() {
 
-			IElement::Resize();
+			C_Element::PreRender();
+
+		}
+
+		void	C_Canvas::Render() {
+
+			C_Element::Render();
+
+		}
+
+		void	C_Canvas::LateRender() {
+
+			C_Element::LateRender();
+
+		}
+
+		void	C_Canvas::Resize() {
+
+			C_Element::Resize();
 
 		}
 

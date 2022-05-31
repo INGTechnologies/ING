@@ -32,6 +32,8 @@ namespace ING {
 
 		class IClass;
 
+		class C_Object;
+
 		struct ClassMember;
 
 		class Context;
@@ -49,7 +51,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		protected:
-			IObjectFunction(void* object);
+			IObjectFunction(C_Object* object);
 			~IObjectFunction();
 
 
@@ -66,11 +68,11 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			void* object;
+			C_Object* object;
 
 		public:
-			void* _GetObject() { return object; }
-			void  SetObject(void* object) { this->object = object; }
+			C_Object* _GetObject() { return object; }
+			void  SetObject(C_Object* object) { this->object = object; }
 
 
 
@@ -104,7 +106,7 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		protected:
-			SpecifiedObjectFunction(void* object) :
+			SpecifiedObjectFunction(C_Object* object) :
 				IObjectFunction(object)
 			{
 

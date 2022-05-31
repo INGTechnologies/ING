@@ -44,7 +44,7 @@ namespace ING {
 
 		class Struct;
 
-		class IObject;
+		class C_Object;
 
 		class Context;
 

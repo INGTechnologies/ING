@@ -108,7 +108,7 @@ namespace ING {
 
 		}
 
-		void Style::Apply(IElement* element) {
+		void Style::Apply(C_Element* element) {
 
 			element->position = position(this, element);
 			element->size = size(this, element);

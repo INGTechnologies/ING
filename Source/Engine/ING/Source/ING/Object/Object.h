@@ -47,11 +47,11 @@ namespace ING {
 		 *	Constructor And Destructors
 		 */
 	public:
-		IObject	();
+		IObject		();
 
-		IObject	(ObjectId id);
+		IObject		(ObjectId id);
 
-		~IObject();
+		~IObject	();
 
 
 

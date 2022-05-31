@@ -13,7 +13,7 @@
 namespace Demo {
 
 	ING_BEGIN_REFLECTED_CLASS	
-		(DemoClassA, IObject)
+		(DemoClassA, C_Object)
 
 		ING_CLASS_CONSTRUCTOR	
 			(DemoClassA, int)

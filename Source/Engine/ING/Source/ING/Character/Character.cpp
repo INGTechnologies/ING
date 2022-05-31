@@ -25,13 +25,13 @@ using namespace ING::Utils;
 namespace ING {
 
 	ING_BEGIN_REFLECTED_CLASS
-		(ICharacter, IPawn)
+		(C_Character, C_Pawn)
 
 		/**
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(ICharacter)
+			(C_Character, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -43,12 +43,10 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void ICharacter::Constructor()
+	void C_Character::Constructor(const String& name)
 	{
 
-		IPawn::Constructor();
-
-		SetName("NewCharacter");
+		C_Pawn::Constructor(name);
 
 	}
 
@@ -57,10 +55,10 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
-	void ICharacter::Release()
+	void C_Character::Release()
 	{
 
-		IPawn::Release();
+		C_Pawn::Release();
 
 	}
 

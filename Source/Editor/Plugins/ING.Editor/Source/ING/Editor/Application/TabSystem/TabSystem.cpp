@@ -115,8 +115,8 @@ namespace ING {
 		bool ApplicationTabSystem::Init()
 		{
 
-			AddTabCreator(new UI::TabCreator<UI::SceneTab>("View.Scene"));
-			AddTabCreator(new UI::TabCreator<UI::SceneExplorerTab>("View.SceneExplorer"));
+			AddTabCreator(new UI::TabCreator<UI::C_SceneTab>("View.Scene"));
+			AddTabCreator(new UI::TabCreator<UI::C_SceneExplorerTab>("View.SceneExplorer"));
 
 			return IApplicationComponent::Init();
 

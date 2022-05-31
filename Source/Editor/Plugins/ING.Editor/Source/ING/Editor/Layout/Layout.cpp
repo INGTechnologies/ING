@@ -72,7 +72,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void Layout::SetupFor(ING::UI::Canvas* canvas) {
+		void Layout::SetupFor(ING::UI::C_Canvas* canvas) {
 
 			for (auto child : canvas->GetNode()->GetChildList()) {
 

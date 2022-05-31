@@ -25,7 +25,7 @@ namespace ING {
 	namespace UI {
 
 		ING_BEGIN_REFLECTED_CLASS
-			(DrawableElement, IElement)
+			(DrawableElement, C_Element)
 
 			ING_CLASS_CONSTRUCTOR
 				(DrawableElement, const String&)
@@ -41,7 +41,7 @@ namespace ING {
 		void DrawableElement::Constructor(const String& name)
 		{
 
-			IElement::Constructor(name);
+			C_Element::Constructor(name);
 
 		}
 
@@ -52,7 +52,7 @@ namespace ING {
 		 */
 		void DrawableElement::Release() {
 
-			IElement::Release();
+			C_Element::Release();
 
 		}
 

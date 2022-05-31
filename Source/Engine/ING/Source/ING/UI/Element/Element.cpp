@@ -32,10 +32,10 @@ namespace ING {
 	namespace UI {
 
 		ING_BEGIN_REFLECTED_CLASS
-		(IElement, Reflection::IObject)
+		(C_Element, Reflection::C_Object)
 
 			ING_CLASS_CONSTRUCTOR
-				(IElement, const String&)
+				(C_Element, const String&)
 				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -47,7 +47,7 @@ namespace ING {
 		/**
 		 *	Constructor
 		 */
-		void IElement::Constructor(const String& name)
+		void C_Element::Constructor(const String& name)
 		{
 
 			node = new Node(this);
@@ -67,7 +67,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IElement::Release() {
+		void C_Element::Release() {
 
 			node->Release();
 
@@ -82,13 +82,13 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void IElement::SetStyle(Style* style) {
+		void C_Element::SetStyle(Style* style) {
 
 			this->style = style;
 
 		}
 
-		void IElement::ReleaseStyle() {
+		void C_Element::ReleaseStyle() {
 
 			this->style->Release();
 
@@ -101,25 +101,25 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	IElement::Start() {
+		void	C_Element::Start() {
 
 			node->Start();
 
 		}
 
-		void	IElement::PreUpdate() {
+		void	C_Element::PreUpdate() {
 
 			node->PreUpdate();
 
 		}
 
-		void	IElement::Update() {
+		void	C_Element::Update() {
 
 			node->Update();
 
 		}
 
-		void	IElement::LateUpdate() {
+		void	C_Element::LateUpdate() {
 
 			if (style != 0) {
 
@@ -131,25 +131,25 @@ namespace ING {
 
 		}
 
-		void	IElement::PreRender() {
+		void	C_Element::PreRender() {
 
 			node->PreRender();
 
 		}
 
-		void	IElement::Render() {
+		void	C_Element::Render() {
 
 			node->Render();
 
 		}
 
-		void	IElement::LateRender() {
+		void	C_Element::LateRender() {
 
 			node->LateRender();
 
 		}
 
-		void	IElement::Resize() {
+		void	C_Element::Resize() {
 
 			node->Resize();
 

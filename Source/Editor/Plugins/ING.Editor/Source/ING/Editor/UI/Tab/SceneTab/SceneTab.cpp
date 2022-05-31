@@ -34,10 +34,10 @@ namespace ING {
 		namespace UI {
 
 			ING_BEGIN_REFLECTED_CLASS
-				(SceneTab, ITab)
+				(C_SceneTab, C_Tab)
 
 				ING_CLASS_CONSTRUCTOR
-					(SceneTab, const String&)
+					(C_SceneTab, const String&)
 					.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 					.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -49,9 +49,9 @@ namespace ING {
 			/**
 			 *	Constructor
 			 */
-			void SceneTab::Constructor(const String& name) {
+			void C_SceneTab::Constructor(const String& name) {
 
-				ITab::Constructor(name);
+				C_Tab::Constructor(name);
 
 			}
 
@@ -60,9 +60,9 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void SceneTab::Release() {
+			void C_SceneTab::Release() {
 
-				ITab::Release();
+				C_Tab::Release();
 			}
 
 
@@ -70,51 +70,51 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void	SceneTab::Start() {
+			void	C_SceneTab::Start() {
 
-				ITab::Start();
-
-			}
-
-			void	SceneTab::PreUpdate() {
-
-				ITab::PreUpdate();
+				C_Tab::Start();
 
 			}
 
-			void	SceneTab::Update() {
+			void	C_SceneTab::PreUpdate() {
 
-				ITab::Update();
-
-			}
-
-			void	SceneTab::LateUpdate() {
-
-				ITab::LateUpdate();
+				C_Tab::PreUpdate();
 
 			}
 
-			void	SceneTab::PreRender() {
+			void	C_SceneTab::Update() {
 
-				ITab::PreRender();
-
-			}
-
-			void	SceneTab::Render() {
-
-				ITab::Render();
+				C_Tab::Update();
 
 			}
 
-			void	SceneTab::LateRender() {
+			void	C_SceneTab::LateUpdate() {
 
-				ITab::LateRender();
+				C_Tab::LateUpdate();
 
 			}
 
-			void	SceneTab::Resize() {
+			void	C_SceneTab::PreRender() {
 
-				ITab::Resize();
+				C_Tab::PreRender();
+
+			}
+
+			void	C_SceneTab::Render() {
+
+				C_Tab::Render();
+
+			}
+
+			void	C_SceneTab::LateRender() {
+
+				C_Tab::LateRender();
+
+			}
+
+			void	C_SceneTab::Resize() {
+
+				C_Tab::Resize();
 
 			}
 

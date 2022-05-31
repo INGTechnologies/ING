@@ -25,13 +25,13 @@ using namespace ING::Utils;
 namespace ING {
 
 	ING_BEGIN_REFLECTED_CLASS
-		(IPawn, IActor)
+		(C_Pawn, C_Actor)
 
 		/**
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(IPawn)
+			(C_Pawn, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -43,12 +43,10 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IPawn::Constructor()
+	void C_Pawn::Constructor(const String& name)
 	{
 
-		IActor::Constructor();
-
-		SetName("NewPawn");
+		C_Actor::Constructor(name);
 
 	}
 
@@ -57,10 +55,10 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
-	void IPawn::Release()
+	void C_Pawn::Release()
 	{
 
-		IActor::Release();
+		C_Actor::Release();
 
 	}
 

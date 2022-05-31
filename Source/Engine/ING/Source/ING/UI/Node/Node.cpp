@@ -36,7 +36,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Node::Node(IElement* element):
+		Node::Node(C_Element* element):
 			element(element),
 			nodeInParentChildList(0),
 			parent(0)

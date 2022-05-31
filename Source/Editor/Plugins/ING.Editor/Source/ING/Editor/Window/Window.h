@@ -43,7 +43,7 @@ namespace ING {
 
 	namespace UI {
 
-		class Canvas;
+		class C_Canvas;
 
 	}
 
@@ -83,7 +83,7 @@ namespace ING {
 
 			String			name;
 
-			UI::Canvas*		canvas;
+			UI::C_Canvas*	canvas;
 
 			Layout*			layout;
 
@@ -92,7 +92,7 @@ namespace ING {
 
 			const String&	GetName		()	{ return name; }
 
-			UI::Canvas*		GetCanvas	()	{ return canvas; }
+			UI::C_Canvas*	GetCanvas	()	{ return canvas; }
 
 			Layout*			GetLayout	()  { return layout; }
 			void			SetLayout	(Layout* layout);

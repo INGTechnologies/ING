@@ -53,7 +53,7 @@ namespace ING {
 
 
 
-		class ING_API IElement : public Reflection::IObject
+		class ING_API C_Element : public Reflection::C_Object
 		{
 
 		public:
@@ -61,7 +61,7 @@ namespace ING {
 
 
 
-			ING_REFLECT_CLASS(IElement, Reflection::IObject)
+			ING_REFLECT_CLASS(C_Element, Reflection::C_Object)
 
 
 

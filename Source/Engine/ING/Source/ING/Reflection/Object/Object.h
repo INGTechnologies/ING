@@ -43,7 +43,7 @@ namespace ING {
 
 
 
-		class ING_API IObject : public ING::IObject
+		class ING_API C_Object : public ING::IObject
 		{
 
 			/**
@@ -58,8 +58,8 @@ namespace ING {
 			 *	Constructors And Destructor
 			 */
 		public:
-			IObject	(IClass* _class);
-			~IObject();
+			C_Object	(IClass* _class);
+			~C_Object();
 
 
 

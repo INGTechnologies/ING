@@ -55,9 +55,9 @@ namespace ING {
 
 			globalNamespace = new Namespace("", this);
 
-			objectClass = new Class<Reflection::IObject>(
-				IType::FullNameToBaseName(typeid(Reflection::IObject)),
-				CreateNamespace(IType::FullNameToNamespaceName(typeid(Reflection::IObject)))
+			objectClass = new Class<Reflection::C_Object>(
+				IType::FullNameToBaseName(typeid(Reflection::C_Object)),
+				CreateNamespace(IType::FullNameToNamespaceName(typeid(Reflection::C_Object)))
 			);
 
 		}

@@ -64,8 +64,8 @@ namespace ING {
 		IApplicationComponent(application, "ActorSystem")
 	{
 
-		GetApplication()->GetReflectionSystem()->_RegisterClass<IActor>();
-		GetApplication()->GetReflectionSystem()->_RegisterClass<IActorComponent>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<C_Actor>();
+		GetApplication()->GetReflectionSystem()->_RegisterClass<C_ActorComponent>();
 
 	}
 

@@ -153,9 +153,9 @@ using namespace ING::UI;
 
 namespace Demo {
 
-	class DemoClassA : public Reflection::IObject {
+	class DemoClassA : public Reflection::C_Object {
 
-		ING_REFLECT_CLASS(DemoClassA, IObject)
+		ING_REFLECT_CLASS(DemoClassA, C_Object)
 
 	protected:
 		void		Constructor(int b);

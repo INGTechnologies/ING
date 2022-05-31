@@ -25,13 +25,13 @@ using namespace ING::Utils;
 namespace ING {
 
 	ING_BEGIN_REFLECTED_CLASS
-		(IActorComponent, Reflection::IObject)
+		(C_ActorComponent, Reflection::C_Object)
 
 		/**
 		 *	Constructor
 		 */
 		ING_CLASS_CONSTRUCTOR
-			(IActorComponent)
+			(C_ActorComponent, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -39,12 +39,12 @@ namespace ING {
 		 *	Properties
 		 */
 		ING_CLASS_PROPERTY		
-			(IActorComponent, name)
+			(C_ActorComponent, name)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PRIVATE)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROPERTY		
-			(IActorComponent, actor)
+			(C_ActorComponent, actor)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PRIVATE)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -52,22 +52,22 @@ namespace ING {
 		 *	Property Getters And Setters
 		 */
 		ING_CLASS_FUNCTION		
-			(IActorComponent, GetName, const String&)
+			(C_ActorComponent, GetName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_PROCEDURE
-			(IActorComponent, SetName, const String&)
+			(C_ActorComponent, SetName, const String&)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION		
-			(IActorComponent, GetActor, const IActor*)
+			(C_ActorComponent, GetActor, const C_Actor*)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
 		ING_CLASS_FUNCTION		
-			(IActorComponent, GetIndex, unsigned int)
+			(C_ActorComponent, GetIndex, unsigned int)
 			.ACCESS	(CLASS_MEMBER_ACCESS_PUBLIC)
 			.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
 
@@ -79,10 +79,10 @@ namespace ING {
 	/**
 	 *	Constructor
 	 */
-	void IActorComponent::Constructor()
+	void C_ActorComponent::Constructor(const String& name)
 	{
 
-		name = "NewActorComponent";
+		this->name = name;
 
 		actor = 0;
 
@@ -93,7 +93,7 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	unsigned int IActorComponent::GetIndex() { 
+	unsigned int C_ActorComponent::GetIndex() { 
 		
 		return GetActor()->GetComponentIndex(name); 
 	}
@@ -103,7 +103,7 @@ namespace ING {
 	/**
 	 *	Release Methods
 	 */
-	void IActorComponent::Release()
+	void C_ActorComponent::Release()
 	{
 
 		actor->RemoveComponent(this);
