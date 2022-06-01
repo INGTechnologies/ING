@@ -210,11 +210,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 
 
-		C_Pawn* demoPawn = C_Pawn::CreateInstance(ctx, "Test");
-
-		demoPawn->GetProcedure("SetName")->Specify<const String&>()->Invoke("Test");
-
-		Debug::Log(DemoActor::GetType(ctx));
+		DemoActor::CreateInstance(ctx);
 
 		
 

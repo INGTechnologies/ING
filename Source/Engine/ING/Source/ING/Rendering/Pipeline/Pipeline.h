@@ -23,6 +23,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	class Camera;
@@ -33,33 +47,36 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
+		class C_Renderer;
 
 		class IDevice;
 
 		class IDeviceContext;
 
-		class IPass;
+		class C_Pass;
 
 
 
-		class ING_API IPipeline
+		class ING_API C_Pipeline : public Reflection::C_Object
 		{
 
 			/**
 			 *	Friend Class
 			 */
 		public:
-			friend class IPass;
+			friend class C_Pass;
+
+
+
+			ING_REFLECT_CLASS(C_Pipeline, Reflection::C_Object)
 
 
 
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			IPipeline	(const String& name);
-			~IPipeline	();
+		protected:
+			void Constructor(const String& name);
 
 
 
@@ -67,7 +84,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void Release();
+			virtual void Release() override;
 
 
 
@@ -77,28 +94,28 @@ namespace ING {
 		protected:
 			String		name;
 
-			IRenderer*	renderer;
+			C_Renderer*	renderer;
 
 			bool		isRendering;
 
 			std::unordered_map<String, unsigned int> name2PassIndex;
 
-			std::vector<IPass*> passVector;
+			std::vector<C_Pass*> passVector;
 
 		public:
 			const String& GetName			() { return name; }
 
-			IRenderer*	GetRenderer			() { return renderer; }
+			C_Renderer*	GetRenderer			() { return renderer; }
 
-			void		SetRenderer			(IRenderer* renderer) { this->renderer = renderer; }
+			void		SetRenderer			(C_Renderer* renderer) { this->renderer = renderer; }
 
 			bool		IsRendering			() { return isRendering; }
 
 			unsigned int GetPassIndex		(const String& name) { return name2PassIndex[name]; }
 
-			IPass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
+			C_Pass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
 
-			IPass*		GetPass				(unsigned int index) { return passVector[index]; }
+			C_Pass*		GetPass				(unsigned int index) { return passVector[index]; }
 
 
 
@@ -106,11 +123,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void		 AddPass			(IPass* pass);
-			void		 AddPass			(IPass* pass, unsigned int index);
+			void		 AddPass			(C_Pass* pass);
+			void		 AddPass			(C_Pass* pass, unsigned int index);
 			void		 RemovePass			(unsigned int index);
 			void		 RemovePass			(const String& name);
-			void		 RemovePass			(IPass* pass);
+			void		 RemovePass			(C_Pass* pass);
 
 			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);
 			virtual void ClearCameraData	(Camera* camera);

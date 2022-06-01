@@ -12,6 +12,10 @@
 
 
 
+#include <ING/Standalone/GameApplication/GameApplication.h>
+
+
+
 using namespace ING;
 
 
@@ -70,7 +74,8 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreInit) () {
 	}
 
 	/* Create Game Application */
-	IApplication* gameApplication = new IApplication(L"Game:/Config.ini");
+	IGameApplication* gameApplication = new Standalone::GameApplication(L"Game:/Config.ini");
+
 	ApplicationManager::GetInstance()->SetGameApplication(gameApplication);
 
 	return true;

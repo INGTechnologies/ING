@@ -61,23 +61,23 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IDrawableFilter::AddDrawable		(IDrawable* drawable) {
+		void IDrawableFilter::AddDrawable		(C_Drawable* drawable) {
 
 			if (drawable->IsHaveFilter(name)) return;
 
 			DrawableId id = idGenerator.GenUInt64();
 
-			drawable->id = id;
+			drawable->idInFilter = id;
 
 			drawableArray.Add(drawable, id);
 
 		}
 
-		void IDrawableFilter::RemoveDrawable	(IDrawable* drawable) {
+		void IDrawableFilter::RemoveDrawable	(C_Drawable* drawable) {
 
 			if (!drawable->IsHaveFilter(name)) return;
 
-			drawableArray.Erase(drawable->id);
+			drawableArray.Erase(drawable->idInFilter);
 
 			drawable->filterName2FilterMap.erase(name);
 
@@ -100,7 +100,7 @@ namespace ING {
 
 			}
 
-			idGenerator.RemoveUInt64Id(drawable->id);
+			idGenerator.RemoveUInt64Id(drawable->idInFilter);
 
 		}
 

@@ -53,22 +53,29 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**IIDeviceContext
-		 *	Constructors And Destructor
+		ING_BEGIN_REFLECTED_CLASS
+			(C_Pipeline, Reflection::C_Object)
+
+			ING_CLASS_CONSTRUCTOR
+				(C_Pipeline, const String&)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
+		/**
+		 *	Constructor
 		 */
-		IPipeline::IPipeline	(const String& name) :
-			renderer(0)
-		{
+		void C_Pipeline::Constructor(const String& name) {
 
 			this->name = name;
 
+			this->renderer = 0;
+
 			isRendering = false;
-
-		}
-
-		IPipeline::~IPipeline	() {
-
-
 
 		}
 
@@ -77,7 +84,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IPipeline::Release() {
+		void C_Pipeline::Release() {
 
 			for (unsigned int i = 0; i < passVector.size();) {
 
@@ -99,7 +106,7 @@ namespace ING {
 
 			}
 
-			delete this;
+			Reflection::C_Object::Release();
 
 		}
 
@@ -108,13 +115,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPipeline::AddPass(IPass* pass) {
+		void C_Pipeline::AddPass(C_Pass* pass) {
 
 			AddPass(pass, passVector.size());
 
 		}
 
-		void IPipeline::AddPass(IPass* pass, unsigned int index) {
+		void C_Pipeline::AddPass(C_Pass* pass, unsigned int index) {
 
 			if (passVector.size() == index) {
 
@@ -143,7 +150,7 @@ namespace ING {
 
 		}
 
-		void IPipeline::RemovePass(unsigned int index) {
+		void C_Pipeline::RemovePass(unsigned int index) {
 
 			String passName = GetPass(index)->GetName();
 
@@ -163,31 +170,31 @@ namespace ING {
 			
 		}
 
-		void IPipeline::RemovePass(const String& name) {
+		void C_Pipeline::RemovePass(const String& name) {
 
 			RemovePass(name2PassIndex[name]);
 
 		}
 
-		void IPipeline::RemovePass(IPass* pass) {
+		void C_Pipeline::RemovePass(C_Pass* pass) {
 
 			RemovePass(pass->GetName());
 
 		}
 
-		void IPipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
+		void C_Pipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
 
 
 
 		}
 
-		void IPipeline::ClearCameraData(Camera* camera) {
+		void C_Pipeline::ClearCameraData(Camera* camera) {
 
 			camera->SetRenderingData(0);
 
 		}
 
-		bool IPipeline::Render	(IDeviceContext* context) {
+		bool C_Pipeline::Render	(IDeviceContext* context) {
 
 			BeginRender(context);
 
@@ -196,7 +203,7 @@ namespace ING {
 			return true;
 		}
 
-		void IPipeline::BeginRender(IDeviceContext* context) {
+		void C_Pipeline::BeginRender(IDeviceContext* context) {
 
 			isRendering = true;
 
@@ -211,7 +218,7 @@ namespace ING {
 			}
 		}
 
-		void IPipeline::EndRender(IDeviceContext* context) {
+		void C_Pipeline::EndRender(IDeviceContext* context) {
 
 			isRendering = false;
 		}

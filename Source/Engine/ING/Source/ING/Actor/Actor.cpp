@@ -145,7 +145,7 @@ namespace ING {
 
 		componentVector.clear();
 
-		delete this;
+		Reflection::C_Object::Release();
 	}
 
 

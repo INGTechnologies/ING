@@ -91,6 +91,13 @@
 
 
 /**
+ *	Include Editor Game Application
+ */
+#include <ING/Editor/GameApplication/GameApplication.h>
+
+
+
+/**
  *	Include Layout
  */
 #include <ING/Editor/Layout/Layout.h>
@@ -218,7 +225,7 @@ namespace ING {
 
 		void Application::CreateGameApplication() {
 
-			gameApplication = new IApplication(L"Game:/Config.ini");
+			gameApplication = new GameApplication(L"Game:/Config.ini");
 
 			ApplicationManager::GetInstance()->SetGameApplication(gameApplication);
 

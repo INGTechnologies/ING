@@ -38,7 +38,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IDrawableCategory;
+		class C_DrawableCategory;
 
 		class IDrawble;
 

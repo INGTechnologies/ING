@@ -51,13 +51,6 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Rendering StandardRP Pipeline
- */
-#include <ING/Rendering/StandardRP/Pipeline/Pipeline.h>
-
-
-
-/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>

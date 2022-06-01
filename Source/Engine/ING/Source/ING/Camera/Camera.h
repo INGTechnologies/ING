@@ -52,7 +52,7 @@ namespace ING {
 
 		class Scene;
 
-		class IPipeline;
+		class C_Pipeline;
 
 		class ICameraData;
 
@@ -132,7 +132,7 @@ namespace ING {
 
 		Rendering::ICameraData*	renderingData;
 
-		Rendering::IPipeline*	renderingPipeline;
+		Rendering::C_Pipeline*	renderingPipeline;
 
 		CameraTargetMode		targetMode;
 
@@ -171,8 +171,8 @@ namespace ING {
 		Rendering::ICameraData*	GetRenderingData	()							{ return renderingData; }
 		void					SetRenderingData	(Rendering::ICameraData* renderingData)		{ this->renderingData = renderingData; }
 
-		Rendering::IPipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
-		void					SetRenderingPipeline(Rendering::IPipeline* renderingPipeline);
+		Rendering::C_Pipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
+		void					SetRenderingPipeline(Rendering::C_Pipeline* renderingPipeline);
 
 		CameraTargetMode		GetTargetMode		()							{ return targetMode; }
 		void					SetTargetMode		(CameraTargetMode mode);

@@ -45,13 +45,13 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
+		class C_Renderer;
 
 		class IDevice;
 
 		class IDeviceContext;
 
-		class IPass;
+		class C_Pass;
 
 		class IMesh;
 
@@ -63,15 +63,18 @@ namespace ING {
 
 
 
-		class ING_API MeshDrawable : public IDrawable
+		class ING_API C_MeshDrawable : public C_Drawable
 		{
 
+			ING_REFLECT_CLASS(C_MeshDrawable, C_Drawable)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			MeshDrawable(LayerSystem* system);
-			~MeshDrawable();
+		protected:
+			void Constructor(LayerSystem* system);
 
 
 

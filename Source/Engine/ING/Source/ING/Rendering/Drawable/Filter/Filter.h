@@ -20,7 +20,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IDrawable;
+		class C_Drawable;
 
 		class LayerSystem;
 
@@ -52,14 +52,14 @@ namespace ING {
 		private:
 			String name;
 
-			SmartArray<IDrawable*> drawableArray;
+			SmartArray<C_Drawable*> drawableArray;
 
 			IdGenerator		idGenerator;
 
 		public:
 			String				GetName			() { return name; }
 
-			const SmartArray<IDrawable*>& GetDrawableArray	() { return drawableArray; }
+			const SmartArray<C_Drawable*>& GetDrawableArray	() { return drawableArray; }
 
 
 
@@ -67,8 +67,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void	AddDrawable		(IDrawable* drawable);
-			void	RemoveDrawable	(IDrawable* drawable);
+			void	AddDrawable		(C_Drawable* drawable);
+			void	RemoveDrawable	(C_Drawable* drawable);
 
 		};
 
