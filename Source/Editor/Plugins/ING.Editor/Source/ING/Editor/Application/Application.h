@@ -32,6 +32,10 @@ using namespace ING::Utils;
 
 namespace ING {
 
+	class IGameApplication;
+
+
+
 	namespace Editor {
 
 		class Layout;
@@ -76,12 +80,12 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			IApplication*		gameApplication;
+			IGameApplication*	gameApplication;
 
 			WString				projectPath;
 
 		public:
-			IApplication*		GetGameApplication() { return gameApplication; }
+			IGameApplication*	GetGameApplication() { return gameApplication; }
 
 			const WString&		GetProjectPath() { return projectPath; }
 
