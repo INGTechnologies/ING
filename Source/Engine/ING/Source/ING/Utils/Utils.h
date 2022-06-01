@@ -106,9 +106,9 @@
 
 
 /**
- *	Include SmartArray
+ *	Include FMap
  */
-#include <ING/Utils/SmartArray/SmartArray.h>
+#include <ING/Utils/FMap/FMap.h>
 
 
 

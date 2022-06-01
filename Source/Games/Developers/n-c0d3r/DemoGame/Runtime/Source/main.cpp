@@ -144,6 +144,7 @@
 #include <ING/Pawn/Pawn.h>
 #include <ING/Character/Character.h>
 #include <ING/Actor/Component/Component.h>
+#include <ING/Object/Manager/Manager.h>
 
 
 
@@ -210,7 +211,7 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 
 
-		DemoActor::CreateInstance(ctx);
+		FMap<size_t> test;
 
 		
 
