@@ -52,13 +52,13 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
+		class C_Renderer;
 
 		class IDevice;
 
 		class IDeviceContext;
 
-		class IPass;
+		class C_Pass;
 
 		class IBuffer;
 

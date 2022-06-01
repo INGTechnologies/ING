@@ -127,6 +127,12 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		Context* C_Object::GetContext() {
+
+			return _class->GetContext();
+
+		}
+
 		void* C_Object::GetPropertyPointer(const String& name) {
 
 			return ((char*)this) + _class->GetMember(name).offsetInBytes;

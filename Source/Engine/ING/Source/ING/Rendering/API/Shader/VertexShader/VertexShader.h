@@ -27,7 +27,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IShaderPass;
+		class C_ShaderPass;
 		
 		class IDevice;
 

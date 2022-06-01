@@ -27,7 +27,7 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IShaderPass;
+		class C_ShaderPass;
 
 		class IMaterial;
 
@@ -59,12 +59,12 @@ namespace ING {
 			 *	Properties
 			 */
 		public:
-			String	name;
-			IDevice* device;
+			String		name;
+			IDevice*	device;
 
 		public:
 			const String& GetName		() { return name; }
-			IDevice*		   GetDevice	() { return device; }
+			IDevice*	GetDevice	() { return device; }
 
 			
 

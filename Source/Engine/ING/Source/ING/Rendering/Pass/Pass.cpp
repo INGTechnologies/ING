@@ -45,21 +45,27 @@ namespace ING {
 
 	namespace Rendering {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(C_Pass, Reflection::C_Object)
+
+			ING_CLASS_CONSTRUCTOR
+				(C_Pass, const String&)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-		IPass::IPass	(const String& name) : 
-			parent(0),
-			name(name)
-		{
+		void C_Pass::Constructor(const String& name) {
 
+			this->name = name;
 
-
-		}
-
-		IPass::~IPass	() {
-
-
+			parent = 0;
 
 		}
 
@@ -68,7 +74,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IPass::Release	() {
+		void C_Pass::Release	() {
 
 			if (parent != 0) {
 
@@ -89,7 +95,7 @@ namespace ING {
 
 			childVector.clear();
 
-			delete this;
+			Reflection::C_Object::Release();
 
 		}
 
@@ -98,7 +104,7 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void IPass::SetParent(IPass* newParent) {
+		void C_Pass::SetParent(C_Pass* newParent) {
 
 			for (auto child : childVector) {
 
@@ -112,7 +118,7 @@ namespace ING {
 
 		}
 
-		void IPass::SetPipeline(IPipeline* pipeline) {
+		void C_Pass::SetPipeline(C_Pipeline* pipeline) {
 
 			for (auto child : childVector) {
 
@@ -129,13 +135,13 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IPass::AddChild(IPass* pass) {
+		void C_Pass::AddChild(C_Pass* pass) {
 
 			AddChild(pass, childVector.size());
 
 		}
 
-		void IPass::AddChild(IPass* pass, unsigned int index) {
+		void C_Pass::AddChild(C_Pass* pass, unsigned int index) {
 
 			if (childVector.size() == index) {
 
@@ -160,7 +166,7 @@ namespace ING {
 
 		}
 
-		void IPass::RemoveChild(unsigned int index) {
+		void C_Pass::RemoveChild(unsigned int index) {
 
 			String childName = GetChild(index)->GetName();
 
@@ -178,19 +184,19 @@ namespace ING {
 
 		}
 
-		void IPass::RemoveChild(const String& name) {
+		void C_Pass::RemoveChild(const String& name) {
 
 			RemoveChild(name2ChildIndex[name]);
 
 		}
 
-		void IPass::RemoveChild(IPass* pass) {
+		void C_Pass::RemoveChild(C_Pass* pass) {
 
 			RemoveChild(pass->GetName());
 
 		}
 
-		bool IPass::Render(IDeviceContext* context, Camera* camera) {
+		bool C_Pass::Render(IDeviceContext* context, Camera* camera) {
 
 			for (auto child : childVector) {
 

@@ -156,7 +156,7 @@ namespace ING {
 
 	}
 
-	void Camera::SetRenderingPipeline(Rendering::IPipeline* renderingPipeline) {
+	void Camera::SetRenderingPipeline(Rendering::C_Pipeline* renderingPipeline) {
 
 		if (this->renderingPipeline != 0) {
 

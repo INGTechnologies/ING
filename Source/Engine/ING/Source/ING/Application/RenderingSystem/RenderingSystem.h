@@ -31,9 +31,9 @@ namespace ING {
 
 		class Renderer;
 
-		class IRenderer;
+		class C_Renderer;
 
-		class IPipeline;
+		class C_Pipeline;
 
 		class IDevice;
 
@@ -64,15 +64,15 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		Rendering::IPipeline*	mainPipeline;
+		Rendering::C_Pipeline*	mainPipeline;
 
 		Rendering::IDevice*		mainDevice;
 
 	public:
 
-		Rendering::IPipeline*	GetMainPipeline	() { return mainPipeline; }
+		Rendering::C_Pipeline*	GetMainPipeline	() { return mainPipeline; }
 
-		void					SetMainPipeline (Rendering::IPipeline* pipeline);
+		void					SetMainPipeline (Rendering::C_Pipeline* pipeline);
 		void					ReleaseMainPipeline();
 
 		Rendering::IDevice*		GetMainDevice	() { return mainDevice; }

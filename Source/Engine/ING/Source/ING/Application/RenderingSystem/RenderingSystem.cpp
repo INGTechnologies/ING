@@ -49,13 +49,6 @@
 
 
 /**
- *	Include StandardRP Pipeline
- */
-#include <ING/Rendering/StandardRP/Pipeline/Pipeline.h>
-
-
-
-/**
  *	Include Debug
  */
 #include <ING/_Debug/Debug.h>
@@ -113,7 +106,7 @@ namespace ING {
 	 */
 	bool ApplicationRenderingSystem::Init() {
 
-		mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
+		//mainPipeline = new Rendering::StandardRP::Pipeline("StandardRP.Pipeline");
 
 		mainDevice = Rendering::IAPI::GetInstance()->GetDevice();
 
@@ -137,7 +130,7 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void	ApplicationRenderingSystem::SetMainPipeline(Rendering::IPipeline* pipeline) {
+	void	ApplicationRenderingSystem::SetMainPipeline(Rendering::C_Pipeline* pipeline) {
 
 		this->mainPipeline = pipeline;
 

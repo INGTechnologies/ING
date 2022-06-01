@@ -31,27 +31,30 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
+		class C_Renderer;
 
 		class IDevice;
 
 		class IDeviceContext;
 
-		class IPass;
+		class C_Pass;
 
 		class LayerSystem;
 
 
 
-		class ING_API UIDrawable : public IDrawable
+		class ING_API C_UIDrawable : public C_Drawable
 		{
 
+			ING_REFLECT_CLASS(C_UIDrawable, Reflection::C_Object)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			UIDrawable(LayerSystem* system);
-			~UIDrawable();
+		protected:
+			void Constructor(LayerSystem* system);
 
 
 

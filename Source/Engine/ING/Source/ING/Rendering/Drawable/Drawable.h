@@ -16,6 +16,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	class Camera;
@@ -24,13 +38,13 @@ namespace ING {
 
 	namespace Rendering {
 
-		class IRenderer;
+		class C_Renderer;
 
 		class IDevice;
 
 		class IDeviceContext;
 
-		class IPass;
+		class C_Pass;
 
 		class IDrawableFilter;
 
@@ -44,7 +58,7 @@ namespace ING {
 
 
 
-		class ING_API IDrawable
+		class ING_API C_Drawable : public Reflection::C_Object
 		{
 
 		public:
@@ -52,12 +66,15 @@ namespace ING {
 
 
 
+			ING_REFLECT_CLASS(C_Drawable, Reflection::C_Object)
+
+
+
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			IDrawable	(LayerSystem* system);
-			~IDrawable	();
+		protected:
+			void Constructor(LayerSystem* system);
 
 
 
@@ -73,7 +90,7 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			DrawableId						id;
+			DrawableId						idInFilter;
 
 			Layer*							layer;
 
@@ -86,7 +103,7 @@ namespace ING {
 			LayerSystem*					system;
 
 		public:
-			DrawableId						GetId					() { return id; }
+			DrawableId						GetIdInFilter			() { return idInFilter; }
 
 			void							SetLayer				(unsigned int index);
 			Layer*							GetLayer				();

@@ -108,7 +108,7 @@ namespace ING {
 
 		actor->RemoveComponent(this);
 
-		delete this;
+		Reflection::C_Object::Release();
 	}
 
 }

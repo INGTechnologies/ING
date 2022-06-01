@@ -33,6 +33,8 @@ namespace ING {
 
 		class IClass;
 
+		class Context;
+
 		class IObjectFunction;
 
 		class IObjectProcedure;
@@ -111,8 +113,18 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
+		private:
+			Context*GetContext();
+
 		public:
-			void*		GetPropertyPointer (const String& name);
+			void*   GetPropertyPointer(const String& name);
+
+			template<class T, typename... TArgs>
+			T*		CreateObject (TArgs... args) {
+
+				return T::CreateInstance(GetContext(), args...);
+
+			}
 
 		};
 

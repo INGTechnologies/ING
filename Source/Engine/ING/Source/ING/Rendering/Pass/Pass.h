@@ -16,6 +16,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Type/Type.h>
+#include <ING/Reflection/Namespace/Namespace.h>
+#include <ING/Reflection/Object/Object.h>
+#include <ING/Reflection/Object/Function/Function.h>
+#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Class/Class.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	class Camera;
@@ -26,30 +40,33 @@ namespace ING {
 
 		class IDeviceContext;
 
-		class IPipeline;
+		class C_Pipeline;
 
 
 
 		/**
 		 *	Interface Class
 		 */
-		class ING_API IPass
+		class ING_API C_Pass : public Reflection::C_Object
 		{
 
 			/**
 			 *	Friend Class
 			 */
 		public:
-			friend class IPipeline;
+			friend class C_Pipeline;
+
+
+
+			ING_REFLECT_CLASS(C_Pass, Reflection::C_Object)
 
 
 
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			IPass	(const String& name);
-			~IPass	();
+		protected:
+			void Constructor(const String& name);
 
 
 
@@ -57,7 +74,7 @@ namespace ING {
 			 *	Release Methods
 			 */
 		public:
-			virtual void	Release();
+			virtual void Release() override;
 
 
 
@@ -69,29 +86,29 @@ namespace ING {
 
 			std::unordered_map<String, unsigned int> name2ChildIndex;
 
-			std::vector<IPass*> childVector;
+			std::vector<C_Pass*> childVector;
 
-			IPass*			parent;
+			C_Pass*			parent;
 
-			IPipeline*		pipeline;
+			C_Pipeline*		pipeline;
 
 		public:
 			String			GetName		() { return name; }
 
 			unsigned int	GetChildIndex(const String& name) { return name2ChildIndex[name]; }
 
-			IPass*			GetChild	(const String& name) { return childVector[GetChildIndex(name)]; }
+			C_Pass*			GetChild	(const String& name) { return childVector[GetChildIndex(name)]; }
 
-			IPass*			GetChild	(unsigned int index) { return childVector[index]; }
+			C_Pass*			GetChild	(unsigned int index) { return childVector[index]; }
 
-			IPass*			GetParent	() { return parent; }
+			C_Pass*			GetParent	() { return parent; }
 
-			IPipeline*		GetPipeline	() { return pipeline; }
+			C_Pipeline*		GetPipeline	() { return pipeline; }
 
 		private:
-			void			SetParent	(IPass* newParent);
+			void			SetParent	(C_Pass* newParent);
 
-			void			SetPipeline	(IPipeline* pipeline);
+			void			SetPipeline	(C_Pipeline* pipeline);
 
 
 
@@ -99,11 +116,11 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void			AddChild	(IPass* child);
-			void			AddChild	(IPass* child, unsigned int index);
+			void			AddChild	(C_Pass* child);
+			void			AddChild	(C_Pass* child, unsigned int index);
 			void			RemoveChild	(unsigned int index);
 			void			RemoveChild	(const String& name);
-			void			RemoveChild	(IPass* child);
+			void			RemoveChild	(C_Pass* child);
 
 			virtual bool	Render		(IDeviceContext* context, Camera* camera);
 

@@ -88,24 +88,31 @@ namespace ING {
 
 	namespace Rendering {
 
-		/**
-		 *	Constructors And Destructor
-		 */
-		IDrawable::IDrawable(LayerSystem* system) :
-			layer(0),
+		ING_BEGIN_REFLECTED_CLASS
+			(C_Drawable, Reflection::C_Object)
 
-			system(system)
-		{
+			ING_CLASS_CONSTRUCTOR
+				(C_Drawable, LayerSystem*)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
+		/**
+		 *	Constructor
+		 */
+		void C_Drawable::Constructor(LayerSystem* system) {
+
+			layer = 0;
+
+			this->system = system;
 
 			filterNameVector.resize(0);
 
 			SetLayer(0);
-
-		}
-
-		IDrawable::~IDrawable() {
-
-
 
 		}
 
@@ -114,9 +121,9 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void	IDrawable::Release() {
+		void	C_Drawable::Release() {
 
-			delete this;
+			Reflection::C_Object::Release();
 
 		}
 
@@ -125,7 +132,7 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void	IDrawable::SetLayer(unsigned int index) {
+		void	C_Drawable::SetLayer(unsigned int index) {
 
 			if (system->GetLayerVector()[index] == 0) {
 
@@ -149,12 +156,12 @@ namespace ING {
 
 		}
 
-		Layer*	IDrawable::GetLayer	() {
+		Layer*	C_Drawable::GetLayer	() {
 			
 			return layer;
 		}
 
-		void	IDrawable::SetFilterNameVector(const std::vector<String>& filterNameVector) {
+		void	C_Drawable::SetFilterNameVector(const std::vector<String>& filterNameVector) {
 
 			unsigned int filterCount = filterNameVector.size();
 
@@ -196,7 +203,7 @@ namespace ING {
 		
 		}
 
-		void	IDrawable::SetFilters(const std::vector<String>& filterNameVector) {
+		void	C_Drawable::SetFilters(const std::vector<String>& filterNameVector) {
 
 			SetFilterNameVector(filterNameVector);
 
@@ -207,7 +214,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	IDrawable::Draw (Camera* camera, const String& passName) {
+		void	C_Drawable::Draw (Camera* camera, const String& passName) {
 
 			
 

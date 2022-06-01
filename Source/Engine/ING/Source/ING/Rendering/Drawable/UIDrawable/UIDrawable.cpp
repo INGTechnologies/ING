@@ -53,20 +53,25 @@ namespace ING {
 
 	namespace Rendering {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(C_UIDrawable, C_Drawable)
+
+			ING_CLASS_CONSTRUCTOR
+				(C_UIDrawable, LayerSystem*)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-		UIDrawable::UIDrawable(LayerSystem* system) :
-			IDrawable(system)
-		{
+		void C_UIDrawable::Constructor(LayerSystem* system) {
 
-
-
-		}
-
-		UIDrawable::~UIDrawable() {
-
-
+			C_Drawable::Constructor(system);
 
 		}
 
@@ -75,9 +80,9 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void UIDrawable::Release() {
+		void C_UIDrawable::Release() {
 
-			delete this;
+			C_Drawable::Release();
 
 		}
 
@@ -86,7 +91,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void UIDrawable::Draw(Camera* camera, const String& passName) {
+		void C_UIDrawable::Draw(Camera* camera, const String& passName) {
 
 
 

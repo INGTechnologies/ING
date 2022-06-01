@@ -137,23 +137,29 @@ namespace ING {
 
 	namespace Rendering {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(C_MeshDrawable, C_Drawable)
+
+			ING_CLASS_CONSTRUCTOR
+				(C_MeshDrawable, LayerSystem*)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-		MeshDrawable::MeshDrawable(LayerSystem* system) :
-			IDrawable(system),
-			mesh(0),
-			material(0),
-			nodeInMaterialUpdateFilterNameVectorEventListenerList(0)
-		{
+		void C_MeshDrawable::Constructor(LayerSystem* system) {
 
+			C_Drawable::Constructor(system);
 
-
-		}
-
-		MeshDrawable::~MeshDrawable() {
-
-				
+			mesh = 0;
+			material = 0;
+			nodeInMaterialUpdateFilterNameVectorEventListenerList = 0;
 
 		}
 
@@ -162,7 +168,7 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void MeshDrawable::Release() {
+		void C_MeshDrawable::Release() {
 
 			if (this->material != 0) {
 
@@ -170,7 +176,7 @@ namespace ING {
 
 			}
 
-			delete this;
+			C_Drawable::Release();
 
 		}
 
@@ -179,7 +185,7 @@ namespace ING {
 		/**
 		 *	Properties
 		 */
-		void MeshDrawable::SetMaterial(DrawableMaterial* material) {
+		void C_MeshDrawable::SetMaterial(DrawableMaterial* material) {
 			
 			if (this->material != 0) {
 
@@ -193,7 +199,7 @@ namespace ING {
 			
 				IMaterialEvent* materialEvent = (IMaterialEvent*)e;
 
-				((MeshDrawable*)materialEvent->GetCurrentOwner())->SetFilterNameVector(
+				((C_MeshDrawable*)materialEvent->GetCurrentOwner())->SetFilterNameVector(
 				
 					materialEvent->GetMaterial()->GetShader()->GetFilterNameVector()
 				
@@ -208,7 +214,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void MeshDrawable::Draw(Camera* camera, const String& passName) {
+		void C_MeshDrawable::Draw(Camera* camera, const String& passName) {
 
 			material->Apply(passName);
 

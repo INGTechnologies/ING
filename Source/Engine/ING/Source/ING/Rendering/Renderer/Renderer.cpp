@@ -83,24 +83,27 @@
 
 
 
-
-
 namespace ING {
 
 	namespace Rendering {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(C_Renderer, Reflection::C_Object)
+
+			ING_CLASS_CONSTRUCTOR
+				(C_Renderer)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-		IRenderer::IRenderer()
-		{
-
-
-
-		}
-
-		IRenderer::~IRenderer()
-		{
+		void C_Renderer::Constructor() {
 
 
 
@@ -111,10 +114,10 @@ namespace ING {
 		/**
 		 *	Release Methods
 		 */
-		void IRenderer::Release()
+		void C_Renderer::Release()
 		{
 
-			delete this;
+			Reflection::C_Object::Release();
 
 		}
 
@@ -123,7 +126,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void IRenderer::RenderDrawables(Camera* camera, const String& filterName, const String& passName) {
+		void C_Renderer::RenderDrawables(Camera* camera, const String& filterName, const String& passName) {
 
 			if (camera->GetRenderingScene() == 0) {
 
@@ -155,7 +158,7 @@ namespace ING {
 
 		}
 
-		void IRenderer::RenderDrawable(Camera* camera, IDrawable* drawable, const String& passName) {
+		void C_Renderer::RenderDrawable(Camera* camera, C_Drawable* drawable, const String& passName) {
 
 			drawable->Draw(camera, passName);
 
