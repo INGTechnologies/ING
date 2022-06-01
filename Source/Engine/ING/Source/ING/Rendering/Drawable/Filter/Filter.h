@@ -50,16 +50,16 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			String name;
+			String					name;
 
-			SmartArray<C_Drawable*> drawableArray;
+			FMap<C_Drawable*>		drawableArray;
 
-			IdGenerator		idGenerator;
+			IdGenerator				idGenerator;
 
 		public:
-			String				GetName			() { return name; }
+			String					GetName			() { return name; }
 
-			const SmartArray<C_Drawable*>& GetDrawableArray	() { return drawableArray; }
+			const FMap<C_Drawable*>&GetDrawableArray	() { return drawableArray; }
 
 
 
