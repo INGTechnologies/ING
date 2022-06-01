@@ -51,13 +51,6 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Rendering StandardRP Pipeline
- */
-#include <ING/Rendering/StandardRP/Pipeline/Pipeline.h>
-
-
-
-/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>
@@ -94,9 +87,9 @@ namespace ING {
 		bool ApplicationRenderingSystem::Init()
 		{
 
-			GetComponent()->GetMainPipeline()->Release();
+			//GetComponent()->GetMainPipeline()->Release();
 
-			GetComponent()->SetMainPipeline(new Rendering::StandardRP::Pipeline("ING.Editor.Rendering.Pipeline"));
+			//GetComponent()->SetMainPipeline(new Rendering::StandardRP::Pipeline("ING.Editor.Rendering.Pipeline"));
 
 			return ApplicationComponentOverride::Init();
 

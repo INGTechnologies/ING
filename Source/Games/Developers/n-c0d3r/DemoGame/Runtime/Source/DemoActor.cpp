@@ -21,6 +21,12 @@ void DemoActor::Constructor() {
 
 	C_Actor::Constructor("Demo");
 
+	C_Actor* testObject = CreateObject<C_Actor, const String&>("TestObject");
+
+	testObject->AddComponent(CreateObject<C_ActorComponent, const String&>("SceneComponent"));
+
+	Debug::Log(testObject->GetName());
+
 }
 
 void DemoActor::Release() {
