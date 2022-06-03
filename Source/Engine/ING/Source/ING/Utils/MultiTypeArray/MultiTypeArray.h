@@ -175,26 +175,26 @@ namespace ING {
 
 
 			/**
-			 *	Ref Class
+			 *	Reference Class
 			 */
 		public:
-			class Ref {
+			class Reference {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				Ref() : 
+				Reference() : 
 					arrayPtr(0) 
 				{}
 
-				Ref(MultiTypeArray* arrayPtr) {
+				Reference(MultiTypeArray* arrayPtr) {
 
 					this->arrayPtr = arrayPtr;
 
 				}
 
-				~Ref() {
+				~Reference() {
 
 					if (this->arrayPtr != nullptr) {
 
@@ -249,7 +249,7 @@ namespace ING {
 
 				}
 
-				Ref& operator=(MultiTypeArray* arrayPtr) {
+				Reference& operator=(MultiTypeArray* arrayPtr) {
 
 					this->arrayPtr = arrayPtr;
 

@@ -22,6 +22,8 @@ namespace ING {
 
 		class Namespace;
 
+		class Context;
+
 
 
 		template<class T, typename U>
@@ -80,6 +82,11 @@ namespace ING {
 			static String FullNameToNamespaceName	(const std::type_info& fullName);
 
 		};
+
+
+
+		typedef IType*	(*TypeCreator)		(Context*);
+		typedef void	(*TypeDestructor)	(Context*);
 
 	}
 

@@ -28,7 +28,11 @@ namespace ING {
 
 	class ApplicationUISystem;
 
+	class ApplicationActorSystem;
+
 	class IApplicationComponent;
+
+	class IApplicationModule;
 
 
 
@@ -68,8 +72,10 @@ namespace ING {
 	private:
 		String						name;
 
+	protected:
 		WString						configPath;
 
+	private:
 		Configuration*				configuration;
 
 		ApplicationReflectionSystem*reflectionSystem;
@@ -80,8 +86,14 @@ namespace ING {
 
 		ApplicationUISystem*		uiSystem;
 
+		ApplicationActorSystem*		actorSystem;
+
 		std::unordered_map<String, unsigned int> name2ComponentIndexMap;
 		std::vector<IApplicationComponent*> componentVector;
+
+		std::unordered_map<String, IApplicationModule*> name2ModuleMap;
+
+		std::vector<IApplicationModule*> sortedModuleVector;
 
 	public:
 		const String&				GetName			() { return name; }
@@ -98,6 +110,8 @@ namespace ING {
 
 		ApplicationUISystem*		GetUISystem		() { return uiSystem; }
 
+		ApplicationActorSystem*		GetActorSystem		() { return actorSystem; }
+
 		bool						IsHasComponent	(const String& name) { return name2ComponentIndexMap.find(name) != name2ComponentIndexMap.end(); }
 
 		unsigned int				GetComponentIndex(const String& name) { return name2ComponentIndexMap[name]; }
@@ -106,12 +120,23 @@ namespace ING {
 
 		IApplicationComponent*		GetComponent	(unsigned int index) { return componentVector[index]; }
 
+		const std::unordered_map<String, IApplicationModule*>& GetName2ModuleMap () { return name2ModuleMap; }
+
+		bool						IsHasModule(const String& moduleName) { return name2ModuleMap.find(moduleName) != name2ModuleMap.end(); }
+
+		IApplicationModule*			GetModule(const String& moduleName) { if (!IsHasModule(moduleName)) return 0; return name2ModuleMap[moduleName]; }
+
+		const std::vector<IApplicationModule*>& GetSortedModuleVector () { return sortedModuleVector; }
+
 
 
 		/**
 		 *	Methods
 		 */
 	public:
+		unsigned int				GetModuleLevel(IApplicationModule* module);
+		void						SortModuleVector();
+
 		void						AddComponent	(IApplicationComponent* component);
 		void						RemoveComponent	(IApplicationComponent* component);
 
@@ -124,6 +149,9 @@ namespace ING {
 		virtual void				PreRender();
 		virtual void				Render();
 		virtual void				LateRender();
+
+		void						AddModule(IApplicationModule* module);
+		void						RemoveModule(IApplicationModule* module);
 
 	};
 

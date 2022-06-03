@@ -41,6 +41,13 @@
 
 
 
+/**
+ *	Include Struct
+ */
+#include <ING/Reflection/Struct/Struct.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -124,6 +131,15 @@ namespace ING {
 			String className = IType::FullNameToBaseName(fullName);
 
 			return (IClass*)(GetNamespace(namespaceName)->GetType(className));
+
+		}
+
+		IStruct* Context::GetStruct(const String& fullName) {
+
+			String namespaceName = IType::FullNameToNamespaceName(fullName);
+			String className = IType::FullNameToBaseName(fullName);
+
+			return (IStruct*)(GetNamespace(namespaceName)->GetType(className));
 
 		}
 

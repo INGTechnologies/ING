@@ -336,28 +336,28 @@ namespace ING {
 
 
 			/**
-			 *	Ref Class
+			 *	Reference Class
 			 */
 		public:
-			class Ref {
+			class Reference {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				Ref() {
+				Reference() {
 
 					listPtr = nullptr;
 
 				}
 
-				Ref(NoDuplicatesList<T>* listPtr) {
+				Reference(NoDuplicatesList<T>* listPtr) {
 
 					this->listPtr = listPtr;
 
 				}
 
-				~Ref() {
+				~Reference() {
 
 					if (this->listPtr != nullptr) {
 

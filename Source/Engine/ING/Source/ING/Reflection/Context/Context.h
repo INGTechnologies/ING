@@ -24,6 +24,8 @@ namespace ING {
 
 		class IClass;
 
+		class IStruct;
+
 
 
 		class ING_API Context
@@ -70,6 +72,8 @@ namespace ING {
 			Namespace*	GetNamespace	(const String& fullName);
 
 			IClass*		GetClass		(const String& fullName);
+
+			IStruct*	GetStruct		(const String& fullName);
 
 		};
 
