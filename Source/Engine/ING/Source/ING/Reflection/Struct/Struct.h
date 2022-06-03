@@ -56,17 +56,25 @@ namespace ING {
 
 		class IObjectProcedure;
 
-		struct ClassMember;
+		struct StructMember;
+
+
+
+		struct S_Base {
+
+
+
+		};
 
 
 
 		enum StructMemberAccess {
 
-			CLASS_MEMBER_ACCESS_PRIVATE = 0x0,
+			STRUCT_MEMBER_ACCESS_PRIVATE = 0x0,
 
-			CLASS_MEMBER_ACCESS_PROTECTED = 0x1,
+			STRUCT_MEMBER_ACCESS_PROTECTED = 0x1,
 
-			CLASS_MEMBER_ACCESS_PUBLIC = 0x2
+			STRUCT_MEMBER_ACCESS_PUBLIC = 0x2
 
 		};
 
@@ -74,11 +82,11 @@ namespace ING {
 
 		enum StructMemberTag {
 
-			CLASS_MEMBER_TAG_EDIT_EVERYWHERE = 0x0,
+			STRUCT_MEMBER_TAG_EDIT_EVERYWHERE = 0x0,
 
-			CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE = 0x1,
+			STRUCT_MEMBER_TAG_VISIBLE_EVERYWHERE = 0x1,
 
-			CLASS_MEMBER_TAG_NO_EDIT = 0x2
+			STRUCT_MEMBER_TAG_NO_EDIT = 0x2
 
 		};
 
@@ -192,7 +200,7 @@ namespace ING {
 			 */
 		public:
 			Struct(const String& name, Namespace* _namespace, IStruct* base) :
-				IStruct(name, _namespace, base)
+				IStruct(name, _namespace, base, sizeof(T))
 			{
 
 
@@ -230,4 +238,72 @@ namespace ING {
 
 	}
 
+}
+
+
+
+/**
+ *	Define Macros
+ */
+#define ING_REFLECT_STRUCT(StructFullName, ExtendedStructFullName) \
+public:\
+	friend class ING::Reflection::Struct<StructFullName>;\
+\
+public:\
+	static ING::Reflection::Struct<StructFullName>*	CreateType		(ING::Reflection::Context* context);\
+	static void					ReleaseType		(ING::Reflection::Context* context);\
+	static ING::Reflection::Struct<StructFullName>*	GetType			(ING::Reflection::Context* context);\
+	template<typename... TArgs>\
+	static StructFullName		CreateInstance	(TArgs... args) {\
+		return {args...};\
+	}\
+	\
+	static ING::Utils::String	TypeName		();
+
+#define ING_BEGIN_REFLECTED_STRUCT(StructFullName, ExtendedStructFullName) \
+\
+ING::Utils::String	StructFullName::TypeName	() {\
+\
+	return ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName));\
+\
+}\
+\
+void StructFullName::ReleaseType(ING::Reflection::Context * context) {\
+\
+ING::Utils::String className = ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName));\
+\
+ING::Reflection::IStruct* _class = context->GetStruct(className);\
+_class->Release();\
+\
+}\
+\
+ING::Reflection::Struct<StructFullName>* StructFullName::GetType(ING::Reflection::Context* context) {\
+\
+	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
+	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
+\
+	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
+\
+	return (ING::Reflection::Struct<StructFullName>*)context->GetStruct(ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName)));\
+\
+}\
+\
+ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflection::Context* context) {\
+\
+	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
+	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
+\
+	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
+\
+	ING::Reflection::Struct<StructFullName>* classType = new ING::Reflection::Struct<StructFullName>(\
+		classBaseName,\
+		_namespace,\
+		context->GetStruct(ING::Reflection::IType::TypeInfoToFullName(typeid(ExtendedStructFullName)))\
+	);\
+\
+	ING::Reflection::StructMember currentMember;\
+\
+
+#define ING_END_REFLECTED_STRUCT() \
+	return classType;\
 }

@@ -52,14 +52,14 @@ namespace ING {
 		private:
 			String					name;
 
-			FMap<C_Drawable*>		drawableArray;
+			FMap<size_t, C_Drawable*>drawableArray;
 
 			IdGenerator				idGenerator;
 
 		public:
 			String					GetName			() { return name; }
 
-			const FMap<C_Drawable*>&GetDrawableArray	() { return drawableArray; }
+			const FMap<size_t, C_Drawable*>&GetDrawableArray	() { return drawableArray; }
 
 
 

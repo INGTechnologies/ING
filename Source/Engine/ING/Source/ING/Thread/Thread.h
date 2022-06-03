@@ -108,7 +108,7 @@ namespace ING {
 
 
 	public:
-		MultiTypeArray::Ref params;
+		MultiTypeArray::Reference params;
 
 
 

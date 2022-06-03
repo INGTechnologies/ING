@@ -24,9 +24,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include Reflection Class
+ *	Include Reflection Type
  */
-#include <ING/Reflection/Class/Class.h>
+#include <ING/Reflection/Type/Type.h>
 
 
 
@@ -38,11 +38,11 @@ namespace ING {
 
 		class Namespace;
 
-		class Type;
+		class IType;
 
 		class IClass;
 
-		class Struct;
+		class IStruct;
 
 		class C_Object;
 
@@ -79,16 +79,16 @@ namespace ING {
 	private:
 		Reflection::Context*	context;
 
-		List<Reflection::ClassCreator>		classCreatorList;
-		List<Reflection::ClassDestructor>	classDestructorList;
+		List<Reflection::TypeCreator>		typeCreatorList;
+		List<Reflection::TypeDestructor>	typeDestructorList;
 
 	public:
 		Reflection::Context*	GetContext	() { return context; }
 		void					SetContext	(Reflection::Context*);
 		void					ReleaseContext ();
 
-		const List<Reflection::ClassCreator>& GetClassCreatorList() { return classCreatorList; }
-		const List<Reflection::ClassDestructor>& GetClassDestructorList() { return classDestructorList; }
+		const List<Reflection::TypeCreator>& GetTypeCreatorList() { return typeCreatorList; }
+		const List<Reflection::TypeDestructor>& GetTypeDestructorList() { return typeDestructorList; }
 
 
 
@@ -97,11 +97,11 @@ namespace ING {
 		 */
 	public:
 		template<class T>
-		void					_RegisterClass () {
+		void					RegisterType () {
 
-			classCreatorList.Add(
+			typeCreatorList.Add(
 			
-				[] (Reflection::Context* context) -> Reflection::IClass* {
+				[] (Reflection::Context* context) -> Reflection::IType* {
 
 					return T::CreateType(context);
 
@@ -109,7 +109,7 @@ namespace ING {
 			
 			);
 
-			classDestructorList.AddAt(
+			typeDestructorList.AddAt(
 			
 				[] (Reflection::Context* context) -> void {
 
@@ -117,7 +117,7 @@ namespace ING {
 
 				},
 
-				classDestructorList.GetHeadNode()
+				typeDestructorList.GetHeadNode()
 			
 			);
 

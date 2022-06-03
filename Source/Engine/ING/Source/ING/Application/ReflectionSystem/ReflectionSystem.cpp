@@ -73,7 +73,7 @@ namespace ING {
 
 
 
-		for (auto item : classCreatorList) {
+		for (auto item : typeCreatorList) {
 
 			item(context);
 
@@ -88,7 +88,7 @@ namespace ING {
 
 
 
-		for (auto item : classDestructorList) {
+		for (auto item : typeDestructorList) {
 
 			item(context);
 

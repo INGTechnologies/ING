@@ -121,13 +121,7 @@
 /**
  *	Include Reflection
  */
-#include <ING/Reflection/Type/Type.h>
-#include <ING/Reflection/Namespace/Namespace.h>
-#include <ING/Reflection/Object/Object.h>
-#include <ING/Reflection/Object/Function/Function.h>
-#include <ING/Reflection/Function/Function.h>
-#include <ING/Reflection/Context/Context.h>
-#include <ING/Reflection/Class/Class.h>
+#include <ING/Reflection/Reflection.h>
 
 
 
@@ -179,6 +173,28 @@ int DemoFunc() {
 
 
 
+struct S_DemoStruct {
+
+	ING_REFLECT_STRUCT(S_DemoStruct, S_Base);
+
+	int a;
+	int b;
+	int c;
+	bool d;
+
+};
+
+
+
+ING_BEGIN_REFLECTED_STRUCT
+	(S_DemoStruct, S_Base)
+
+
+
+ING_END_REFLECTED_STRUCT
+	()
+
+
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
@@ -209,11 +225,15 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		DemoActor::CreateType(ctx);
 
+		S_DemoStruct::CreateType(ctx);
 
 
-		FMap<size_t> test;
 
-		
+		S_DemoStruct ds = S_DemoStruct::CreateInstance(4,5,6,true);
+
+
+
+		S_DemoStruct::ReleaseType(ctx);
 
 		DemoActor::ReleaseType(ctx);
 

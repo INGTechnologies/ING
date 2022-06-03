@@ -268,11 +268,6 @@ namespace ING {
 			return result;
 		}
 
-
-
-		typedef IClass* (*ClassCreator)(Context*);
-		typedef void	(*ClassDestructor)(Context*);
-
 	}
 
 }
@@ -301,7 +296,7 @@ public:\
 		return ((ING::Reflection::Class<ClassFullName>*)(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)))))->CreateInstance(args...);\
 	}\
 	\
-	static ING::Utils::String	ClassName		();
+	static ING::Utils::String	TypeName		();
 
 #define ING_BEGIN_REFLECTED_CLASS(ClassFullName, ExtendedClassFullName) \
 ClassFullName::ClassFullName	(ING::Reflection::IClass* _class) : ExtendedClassFullName(_class) {\
@@ -322,7 +317,7 @@ ClassFullName*	ClassFullName::ICreateInstance	(ING::Reflection::Context* context
 \
 }\
 \
-ING::Utils::String	ClassFullName::ClassName	() {\
+ING::Utils::String	ClassFullName::TypeName	() {\
 \
 	return ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName));\
 \

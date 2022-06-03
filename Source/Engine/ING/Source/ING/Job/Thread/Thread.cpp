@@ -109,7 +109,7 @@ namespace ING {
 
 			JobThread* jobThread = ingThread->params[0].As<JobThread*>();
 			
-			ingThread->params.~Ref();
+			ingThread->params.~Reference();
 
 			jobThread->Loop();
 

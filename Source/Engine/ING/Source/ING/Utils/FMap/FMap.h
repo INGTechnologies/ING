@@ -45,7 +45,7 @@ namespace ING {
 		/**
 		 *	Main Class
 		 */
-		template<typename T>
+		template<typename TId, typename T>
 		class FMap : public IFMap
 		{
 
@@ -137,8 +137,8 @@ namespace ING {
 			size_t									filledCount;
 			size_t									count;
 
-			std::unordered_map<size_t, size_t>		id2IndexMap;
-			std::unordered_map<size_t, size_t>		index2IdMap;
+			std::unordered_map<TId, size_t>			id2IndexMap;
+			std::unordered_map<size_t, TId>			index2IdMap;
 
 		public:
 			T*										GetPData		() { return pData; }
@@ -147,8 +147,8 @@ namespace ING {
 
 			size_t									GetFilledCount	() { return filledCount; }
 
-			std::unordered_map<size_t, size_t>&		GetId2IndexMap	() { return id2IndexMap; }
-			std::unordered_map<size_t, size_t>&		GetIndex2IdMap	() { return index2IdMap; }
+			std::unordered_map<TId, size_t>&		GetId2IndexMap	() { return id2IndexMap; }
+			std::unordered_map<size_t, TId>&		GetIndex2IdMap	() { return index2IdMap; }
 
 
 
@@ -159,18 +159,18 @@ namespace ING {
 			void		Allocate	(size_t newFilledCount);
 
 		public:
-			size_t		Id2Index	(size_t id) { return id2IndexMap[id]; }
+			size_t		Id2Index	(TId id) { return id2IndexMap[id]; }
 			size_t		Index2Id	(size_t index) { return index2IdMap[index]; }
 
 			Iterator	begin		() const { return Iterator(0, pData); }
 			Iterator	end			() const { return Iterator(filledCount, pData); }
 
 			void		Clear		();
-			void		Add			(const T& data, size_t id);
-			void		Erase		(size_t id);
-			T&			Get			(size_t id);
+			void		Add			(const T& data, TId id);
+			void		Erase		(TId id);
+			T&			Get			(TId id);
 			T&			GetByIndex	(size_t index);
-			T*			GetDataPtr	(size_t id);
+			T*			GetDataPtr	(TId id);
 
 		};
 
@@ -190,8 +190,8 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		template<typename T>
-		void FMap<T>::Allocate(size_t newFilledCount) {
+		template<typename TId, typename T>
+		void FMap<TId, T>::Allocate(size_t newFilledCount) {
 
 			size_t newCount = newFilledCount * 2;
 
@@ -243,8 +243,8 @@ namespace ING {
 
 		}
 
-		template<typename T>
-		void FMap<T>::Clear() {
+		template<typename TId, typename T>
+		void FMap<TId, T>::Clear() {
 
 			if (pData != nullptr) {
 
@@ -264,8 +264,8 @@ namespace ING {
 			
 		}
 
-		template<typename T>
-		void FMap<T>::Add(const T& data, size_t id) {
+		template<typename TId, typename T>
+		void FMap<TId, T>::Add(const T& data, TId id) {
 
 			if (filledCount + 1 > count) {
 
@@ -287,8 +287,8 @@ namespace ING {
 
 		}
 
-		template<typename T>
-		void FMap<T>::Erase(size_t id) {
+		template<typename TId, typename T>
+		void FMap<TId, T>::Erase(TId id) {
 
 			size_t index = Id2Index(id);
 
@@ -333,22 +333,22 @@ namespace ING {
 
 		}
 
-		template<typename T>
-		T& FMap<T>::Get(size_t id) {
+		template<typename TId, typename T>
+		T& FMap<TId, T>::Get(TId id) {
 
 			return pData[Id2Index(id)];
 
 		}
 
-		template<typename T>
-		T& FMap<T>::GetByIndex(size_t index) {
+		template<typename TId, typename T>
+		T& FMap<TId, T>::GetByIndex(size_t index) {
 
 			return pData[index];
 
 		}
 
-		template<typename T>
-		T* FMap<T>::GetDataPtr(size_t id) {
+		template<typename TId, typename T>
+		T* FMap<TId, T>::GetDataPtr(TId id) {
 
 			return pData + Id2Index(id);
 

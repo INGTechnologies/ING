@@ -78,8 +78,8 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Element>();
-		GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Canvas>();
+		GetApplication()->GetReflectionSystem()->RegisterType<UI::C_Element>();
+		GetApplication()->GetReflectionSystem()->RegisterType<UI::C_Canvas>();
 
 	}
 

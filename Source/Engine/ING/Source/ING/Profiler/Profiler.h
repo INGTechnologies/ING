@@ -58,7 +58,7 @@ namespace ING {
 		 */
 	private:
 		std::map<std::pair<String, String>, ProfilerSession*> sessionMap;
-		std::map<String, List<ProfilerSession*>::Ref >				category2SessionListMap;
+		std::map<String, List<ProfilerSession*>::Reference >				category2SessionListMap;
 
 		bool															logSessionInConsole;
 
