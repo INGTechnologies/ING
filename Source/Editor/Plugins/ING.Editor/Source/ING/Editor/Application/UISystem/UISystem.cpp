@@ -92,6 +92,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -103,10 +110,18 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorUISystem")
 		{
 
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_Tab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_SceneTab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_SceneExplorerTab>();
-			GetApplication()->GetReflectionSystem()->_RegisterClass<UI::C_TabGroup>();
+			IApplicationModule* module = new IApplicationModule("ING.Editor.UI");
+
+			module->RegisterType<UI::C_Tab>();
+			module->RegisterType<UI::C_SceneTab>();
+			module->RegisterType<UI::C_SceneExplorerTab>();
+			module->RegisterType<UI::C_TabGroup>();
+
+			module->AddDependencies(GetApplication()->GetModule("ING.UI"));
+
+			GetApplication()->AddModule(module);
+
+			GetApplication()->GetModule("ING.Editor")->AddDependencies(module);
 
 		}
 

@@ -69,6 +69,13 @@
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	/**
@@ -78,8 +85,14 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-		GetApplication()->GetReflectionSystem()->RegisterType<UI::C_Element>();
-		GetApplication()->GetReflectionSystem()->RegisterType<UI::C_Canvas>();
+		IApplicationModule* module = new IApplicationModule("ING.UI");
+
+		module->RegisterType<UI::C_Element>();
+		module->RegisterType<UI::C_Canvas>();
+
+		GetApplication()->AddModule(module);
+
+		GetApplication()->GetModule("ING")->AddDependencies(module);
 
 	}
 

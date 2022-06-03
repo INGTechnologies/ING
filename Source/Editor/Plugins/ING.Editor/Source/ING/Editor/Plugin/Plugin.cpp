@@ -10,7 +10,6 @@
 #include <ING/Editor/Application/Application.h>
 
 
-
 using namespace ING;
 
 
@@ -94,12 +93,10 @@ DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, LateInit) () {
 
 	if(!Editor::Application::GetInstance()->Init()) return false;
 
+	Editor::Application* editorApplication = Editor::Application::GetInstance();
+
 	return true;
 }
-
-#include <ING/Actor/Actor.h>
-#include <ING/Application/ReflectionSystem/ReflectionSystem.h>
-#include <ING/Editor/Application/ReflectionSystem/ReflectionSystem.h>
 
 DEFINE_PLUGIN_FUNCTION(ING_EDITOR, bool, PreRun) () {
 

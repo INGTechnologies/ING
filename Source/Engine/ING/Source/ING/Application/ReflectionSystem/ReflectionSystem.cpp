@@ -41,6 +41,20 @@
 
 
 
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	/**
@@ -49,7 +63,8 @@ namespace ING {
 	ApplicationReflectionSystem::ApplicationReflectionSystem(IApplication* application) :
 		IApplicationComponent(application, "ReflectionSystem"),
 
-		context(0)
+		context(0),
+		isTypesRegistered(false)
 	{
 
 
@@ -73,11 +88,19 @@ namespace ING {
 
 
 
+		for (auto item : GetApplication()->GetSortedModuleVector()) {
+
+			item->RegisterTypes();
+
+		}
+
 		for (auto item : typeCreatorList) {
 
 			item(context);
 
 		}
+
+		isTypesRegistered = true;
 
 
 
@@ -87,6 +110,12 @@ namespace ING {
 	void ApplicationReflectionSystem::Release() {
 
 
+
+		for (auto item : GetApplication()->GetSortedModuleVector()) {
+
+			item->UnregisterTypes();
+
+		}
 
 		for (auto item : typeDestructorList) {
 

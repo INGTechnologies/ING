@@ -65,9 +65,23 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include Actor System
+ */
+#include <ING/Application/ActorSystem/ActorSystem.h>
+
+
+
+/**
  *	Include ApplicationComponent
  */
 #include <ING/Application/Component/Component.h>
+
+
+
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
 
 
 
@@ -85,6 +99,12 @@ namespace ING {
 		reflectionSystem(0)
 	{
 
+		IApplicationModule* module = new IApplicationModule("ING");
+
+		AddModule(module);
+
+
+
 		reflectionSystem = new ApplicationReflectionSystem(this);
 		AddComponent(reflectionSystem);
 
@@ -96,6 +116,9 @@ namespace ING {
 
 		uiSystem = new ApplicationUISystem(this);
 		AddComponent(uiSystem);
+
+		actorSystem = new ApplicationActorSystem(this);
+		AddComponent(actorSystem);
 
 	}
 
@@ -135,6 +158,8 @@ namespace ING {
 
 		}
 
+		SortModuleVector();
+
 		for (unsigned int i = 0; i < componentVector.size(); ++i) {
 
 			if (!componentVector[i]->Init()) {
@@ -173,6 +198,12 @@ namespace ING {
 		name2ComponentIndexMap.clear();
 		componentVector.clear();
 
+		for (auto item : GetSortedModuleVector()) {
+
+			item->Release();
+
+		}
+
 		ApplicationManager::GetInstance()->RemoveApplication(this);
 
 		delete this;
@@ -210,6 +241,77 @@ namespace ING {
 			}
 
 		}
+
+	}
+
+	unsigned int IApplication::GetModuleLevel(IApplicationModule* module) {
+
+		unsigned int level = 1;
+
+		for (auto item : module->GetDependenciesMap()) {
+
+			unsigned int dependencyLevel = GetModuleLevel(name2ModuleMap[item.first]);
+
+			if (level < dependencyLevel + 1) {
+
+				level = dependencyLevel + 1;
+
+			}
+
+		}
+
+		return level;
+	}
+
+	void	IApplication::SortModuleVector() {
+
+		/* Setup Name To Module Level Map */
+		std::unordered_map<String, unsigned int> name2ModuleLevelMap;
+
+		for (auto item : name2ModuleMap) {
+
+			name2ModuleLevelMap[item.second->GetName()] = GetModuleLevel(item.second);
+
+		}
+
+
+
+		/* Sort */
+		std::vector<IApplicationModule*> moduleVector(name2ModuleMap.size());
+
+		{
+
+			unsigned int i = 0;
+
+			for (auto item : name2ModuleMap) {
+
+				moduleVector[i] = item.second;
+
+				++i;
+
+			}
+
+		}
+
+		for (unsigned int i = 0; i < moduleVector.size(); ++i) {
+
+			for (unsigned int j = 0; j < i; ++j) {
+
+				if (
+					name2ModuleLevelMap[moduleVector[i]->GetName()] < name2ModuleLevelMap[moduleVector[j]->GetName()]
+				) {
+
+					IApplicationModule* mw = moduleVector[i];
+					moduleVector[i] = moduleVector[j];
+					moduleVector[j] = mw;
+
+				}
+
+			}
+
+		}
+
+		sortedModuleVector = moduleVector;
 
 	}
 
@@ -280,6 +382,22 @@ namespace ING {
 			componentVector[i]->LateRender();
 
 		}
+
+	}
+
+	void IApplication::AddModule(IApplicationModule* module) {
+
+		name2ModuleMap[module->GetName()] = module;
+
+		module->application = this;
+
+	}
+
+	void IApplication::RemoveModule(IApplicationModule* module) {
+
+		name2ModuleMap.erase(module->GetName());
+
+		module->application = 0;
 
 	}
 	

@@ -82,6 +82,11 @@ namespace ING {
 		List<Reflection::TypeCreator>		typeCreatorList;
 		List<Reflection::TypeDestructor>	typeDestructorList;
 
+		std::unordered_map<String, List<Reflection::TypeCreator>::Node*>name2TypeCreatorNodeMap;
+		std::unordered_map<String, List<Reflection::TypeDestructor>::Node*>name2TypeDestructorNodeMap;
+
+		bool					isTypesRegistered;
+
 	public:
 		Reflection::Context*	GetContext	() { return context; }
 		void					SetContext	(Reflection::Context*);
@@ -89,6 +94,8 @@ namespace ING {
 
 		const List<Reflection::TypeCreator>& GetTypeCreatorList() { return typeCreatorList; }
 		const List<Reflection::TypeDestructor>& GetTypeDestructorList() { return typeDestructorList; }
+
+		bool					IsTypesRegistered () { return isTypesRegistered; }
 
 
 
@@ -99,7 +106,9 @@ namespace ING {
 		template<class T>
 		void					RegisterType () {
 
-			typeCreatorList.Add(
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			name2TypeCreatorNodeMap[typeName] = typeCreatorList.Add(
 			
 				[] (Reflection::Context* context) -> Reflection::IType* {
 
@@ -109,7 +118,7 @@ namespace ING {
 			
 			);
 
-			typeDestructorList.AddAt(
+			name2TypeDestructorNodeMap[typeName] = typeDestructorList.AddAt(
 			
 				[] (Reflection::Context* context) -> void {
 
@@ -120,6 +129,19 @@ namespace ING {
 				typeDestructorList.GetHeadNode()
 			
 			);
+
+		}
+
+		template<class T>
+		void					UnregisterType() {
+
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			typeCreatorList.Remove(name2TypeCreatorNodeMap[typeName]);
+			typeDestructorList.Remove(name2TypeDestructorNodeMap[typeName]);
+
+			name2TypeCreatorNodeMap.erase(typeName);
+			name2TypeDestructorNodeMap.erase(typeName);
 
 		}
 

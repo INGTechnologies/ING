@@ -104,6 +104,13 @@
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -129,6 +136,14 @@ namespace ING {
 
 
 			SetupRootPaths();
+
+
+
+			IApplicationModule* module = new IApplicationModule("ING.Editor");
+
+			module->AddDependencies(GetModule("ING"));
+
+			AddModule(module);
 
 
 
@@ -220,6 +235,8 @@ namespace ING {
 				projectPath
 
 			);
+
+			configPath = L"Editor:/";
 
 		}
 

@@ -164,6 +164,9 @@ static IWindow* mainWindow = 0;
 
 
 
+#include <ING/Application/Module/Module.h>
+
+
 
 int DemoFunc() {
 

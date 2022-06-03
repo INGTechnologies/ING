@@ -55,6 +55,13 @@
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	/**
@@ -64,8 +71,14 @@ namespace ING {
 		IApplicationComponent(application, "ActorSystem")
 	{
 
-		GetApplication()->GetReflectionSystem()->RegisterType<C_Actor>();
-		GetApplication()->GetReflectionSystem()->RegisterType<C_ActorComponent>();
+		IApplicationModule* module = new IApplicationModule("ING.Actor");
+
+		module->RegisterType<C_Actor>();
+		module->RegisterType<C_ActorComponent>();
+
+		GetApplication()->AddModule(module);
+
+		GetApplication()->GetModule("ING")->AddDependencies(module);
 
 	}
 
