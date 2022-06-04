@@ -128,6 +128,10 @@ namespace ING {
 
 		};
 
+
+
+		using C_Base = C_Object;
+
 	}
 
 }

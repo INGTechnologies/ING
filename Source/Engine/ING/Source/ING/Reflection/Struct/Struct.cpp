@@ -53,7 +53,11 @@ namespace ING {
 
 				for (auto item : base->name2MemberMap) {
 
-					SetMember(item.second);
+					if (item.second.access == STRUCT_MEMBER_ACCESS_PUBLIC || item.second.access == STRUCT_MEMBER_ACCESS_PROTECTED) {
+
+						SetMember(item.second);
+
+					}
 
 				}
 

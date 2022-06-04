@@ -85,6 +85,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Transform
+ */
+#include <ING/Transform/Transform.h>
+
+
+
 namespace ING {
 
 	/**
@@ -100,6 +107,9 @@ namespace ING {
 	{
 
 		IApplicationModule* module = new IApplicationModule("ING");
+
+		module->RegisterType<TransformM>();
+		module->RegisterType<TransformS>();
 
 		AddModule(module);
 

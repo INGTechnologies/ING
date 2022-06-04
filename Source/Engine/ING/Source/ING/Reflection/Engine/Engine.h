@@ -20,6 +20,10 @@ namespace ING {
 
 	namespace Reflection {
 
+		class Context;
+
+
+
 		class ING_API Engine :
 			public Singleton<Engine>,
 			public Square
@@ -41,6 +45,17 @@ namespace ING {
 			virtual bool Init()		override;
 			virtual bool Run()		override;
 			virtual bool Release()	override;
+
+
+
+			/**
+			 *	Properties
+			 */
+		private:
+			Context* mainContext;
+
+		public:
+			Context* GetMainContext () { return mainContext; }
 
 		};
 

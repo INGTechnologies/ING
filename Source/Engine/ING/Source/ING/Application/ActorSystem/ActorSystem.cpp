@@ -78,7 +78,7 @@ namespace ING {
 
 		GetApplication()->AddModule(module);
 
-		GetApplication()->GetModule("ING")->AddDependencies(module);
+		GetApplication()->GetModule("ING")->AddDependencies("ING.Actor");
 
 	}
 

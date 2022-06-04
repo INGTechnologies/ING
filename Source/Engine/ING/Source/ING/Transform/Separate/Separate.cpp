@@ -8,9 +8,23 @@
 
 namespace ING {
 
+	ING_BEGIN_REFLECTED_STRUCT
+		(TransformS, S_Base)
+
+		ING_STRUCT_PROPERTY
+			(TransformS, localPosition);
+
+		ING_STRUCT_PROPERTY
+			(TransformS, localScale);
+
+	ING_END_REFLECTED_STRUCT
+		()
+
+
+
 	/**
-		*	Constructors And Destructor
-		*/
+	 *	Constructors And Destructor
+	 */
 	TransformS::TransformS() {
 
 

@@ -130,16 +130,28 @@ namespace ING {
 			String namespaceName = IType::FullNameToNamespaceName(fullName);
 			String className = IType::FullNameToBaseName(fullName);
 
-			return (IClass*)(GetNamespace(namespaceName)->GetType(className));
+			Namespace* _namespace = GetNamespace(namespaceName);
+
+			if (_namespace == 0) return 0;
+
+			if (!_namespace->IsHasType(className)) return 0;
+
+			return (IClass*)(_namespace->GetType(className));
 
 		}
 
 		IStruct* Context::GetStruct(const String& fullName) {
 
 			String namespaceName = IType::FullNameToNamespaceName(fullName);
-			String className = IType::FullNameToBaseName(fullName);
+			String structName = IType::FullNameToBaseName(fullName);
 
-			return (IStruct*)(GetNamespace(namespaceName)->GetType(className));
+			Namespace* _namespace = GetNamespace(namespaceName);
+
+			if (_namespace == 0) return 0;
+
+			if (!_namespace->IsHasType(structName)) return 0;
+
+			return (IStruct*)(_namespace->GetType(structName));
 
 		}
 
