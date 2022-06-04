@@ -123,8 +123,8 @@ namespace ING {
 		ApplicationReflectionSystem* GetReflectionSystem();
 
 	public:
-		void AddDependencies(IApplicationModule* dependency);
-		void RemoveDependencies(IApplicationModule* dependency);
+		void AddDependencies(const String& dependencyName);
+		void RemoveDependencies(const String& dependencyName);
 
 		void RegisterTypes();
 		void UnregisterTypes();

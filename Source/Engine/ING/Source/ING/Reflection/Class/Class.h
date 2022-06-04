@@ -97,9 +97,9 @@ namespace ING {
 
 			String				name = "";
 
-			ClassMemberAccess	access;
+			ClassMemberAccess	access = CLASS_MEMBER_ACCESS_PRIVATE;
 
-			ClassMemberTag		tag;
+			ClassMemberTag		tag = CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE;
 
 
 

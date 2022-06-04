@@ -100,9 +100,9 @@ namespace ING {
 
 			String				name = "";
 
-			StructMemberAccess	access;
+			StructMemberAccess	access = STRUCT_MEMBER_ACCESS_PUBLIC;
 
-			StructMemberTag		tag;
+			StructMemberTag		tag = STRUCT_MEMBER_TAG_EDIT_EVERYWHERE;
 
 
 
@@ -307,3 +307,17 @@ ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflect
 #define ING_END_REFLECTED_STRUCT() \
 	return classType;\
 }
+
+#define ING_STRUCT_PROPERTY(StructFullName, MemberBaseName, ...) \
+{\
+	unsigned int memberOffset = GetMemberOffset(&StructFullName::##MemberBaseName);\
+	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName::##MemberBaseName));\
+	currentMember = { \
+		memberOffset, \
+		typeName, \
+		#MemberBaseName, \
+		##__VA_ARGS__ \
+	};\
+	classType->SetMember(currentMember);\
+}\
+currentMember

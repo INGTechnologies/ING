@@ -88,7 +88,20 @@ namespace ING {
 
 				for (auto item : base->name2MemberMap) {
 
-					SetMember(item.second);
+					if (item.second.memberType != 0) {
+
+						SetMember(item.second);
+
+					}
+					else {
+
+						if (item.second.access == CLASS_MEMBER_ACCESS_PUBLIC || item.second.access == CLASS_MEMBER_ACCESS_PROTECTED) {
+
+							SetMember(item.second);
+
+						}
+
+					}
 
 				}
 

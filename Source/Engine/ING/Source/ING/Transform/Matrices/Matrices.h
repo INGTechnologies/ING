@@ -25,10 +25,23 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Reflection.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
-	struct ING_API TransformM
+	struct ING_API TransformM : public S_Base
 	{
+
+		ING_REFLECT_STRUCT(TransformM, S_Base)
+
+
 
 		/**
 		 *	Constructors And Destructor
