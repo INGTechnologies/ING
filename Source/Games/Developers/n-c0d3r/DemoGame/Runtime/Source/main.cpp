@@ -234,6 +234,9 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 		S_DemoStruct ds = S_DemoStruct::CreateInstance(4,5,6,true);
 
+		S_DemoStruct::CreateType(0);
+		S_DemoStruct::CreateType(0);
+
 
 
 		S_DemoStruct::ReleaseType(ctx);

@@ -13,6 +13,13 @@
 
 
 
+/**
+ *	Include Reflection Context
+ */
+#include <ING/Reflection/Context/Context.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -20,11 +27,13 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		Engine::Engine() {
+		Engine::Engine() :
+			mainContext(0)
+		{
 
 			Debug::Log("Start Creating Reflection::Engine");
 
-
+			mainContext = new Context();
 
 			Debug::Log("Reflection::Engine Created");
 
@@ -62,6 +71,12 @@ namespace ING {
 		bool Engine::Release() {
 
 			Debug::Log("Start Releasing Reflection::Engine");
+
+			if (mainContext != 0) {
+
+				mainContext->Release();
+
+			}
 
 			delete this;
 

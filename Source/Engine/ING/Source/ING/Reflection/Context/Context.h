@@ -69,9 +69,15 @@ namespace ING {
 		public:
 			Namespace*	CreateNamespace	(const String& fullName);
 
+			bool		IsHasNamespace	(const String& fullName) { return GetNamespace(fullName) != 0; }
+
 			Namespace*	GetNamespace	(const String& fullName);
 
+			bool		IsHasClass		(const String& fullName) { return GetClass(fullName) != 0; }
+
 			IClass*		GetClass		(const String& fullName);
+
+			bool		IsHasStruct		(const String& fullName) { return GetStruct(fullName) != 0; }
 
 			IStruct*	GetStruct		(const String& fullName);
 

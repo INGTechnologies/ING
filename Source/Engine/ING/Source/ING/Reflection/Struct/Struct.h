@@ -270,6 +270,8 @@ ING::Utils::String	StructFullName::TypeName	() {\
 \
 void StructFullName::ReleaseType(ING::Reflection::Context * context) {\
 \
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+\
 ING::Utils::String className = ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName));\
 \
 ING::Reflection::IStruct* _class = context->GetStruct(className);\
@@ -278,6 +280,8 @@ _class->Release();\
 }\
 \
 ING::Reflection::Struct<StructFullName>* StructFullName::GetType(ING::Reflection::Context* context) {\
+\
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
@@ -289,6 +293,12 @@ ING::Reflection::Struct<StructFullName>* StructFullName::GetType(ING::Reflection
 }\
 \
 ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflection::Context* context) {\
+\
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+\
+	ING::Utils::String structFullName = ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName));\
+\
+	if (context->IsHasStruct(structFullName)) return (ING::Reflection::Struct<StructFullName>*)context->GetStruct(structFullName);\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\

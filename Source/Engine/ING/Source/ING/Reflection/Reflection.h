@@ -1,5 +1,7 @@
 #pragma once
 
+#include <ING/Reflection/Engine/Engine.h>
+
 #include <ING/Reflection/Context/Context.h>
 
 #include <ING/Reflection/Type/Type.h>

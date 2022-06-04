@@ -313,6 +313,8 @@ ClassFullName::~ClassFullName	()  {\
 \
 ClassFullName*	ClassFullName::ICreateInstance	(ING::Reflection::Context* context) {\
 \
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+\
 	return (ClassFullName*)((ING::Reflection::Class<ClassFullName>*)(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)))))->ICreateInstance();\
 \
 }\
@@ -325,6 +327,8 @@ ING::Utils::String	ClassFullName::TypeName	() {\
 \
 void ClassFullName::ReleaseType(ING::Reflection::Context * context) {\
 \
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+\
 ING::Utils::String className = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName));\
 \
 ING::Reflection::IClass* _class = context->GetClass(className);\
@@ -333,6 +337,8 @@ _class->Release();\
 }\
 \
 ING::Reflection::Class<ClassFullName>* ClassFullName::GetType(ING::Reflection::Context* context) {\
+\
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(ClassFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
@@ -344,6 +350,12 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::GetType(ING::Reflection::C
 }\
 \
 ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection::Context* context) {\
+\
+	if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+\
+	ING::Utils::String classFullName = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName));\
+\
+	if (context->IsHasClass(classFullName)) return (ING::Reflection::Class<ClassFullName>*)context->GetClass(classFullName);\
 \
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(ClassFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
