@@ -293,6 +293,9 @@ public:\
 	static ClassFullName*		ICreateInstance	(ING::Reflection::Context* context);\
 	template<typename... TArgs>\
 	static ClassFullName*		CreateInstance	(ING::Reflection::Context* context, TArgs... args) {\
+		\
+		if (context == 0) context = ING::Reflection::Engine::GetInstance()->GetMainContext();\
+		\
 		return ((ING::Reflection::Class<ClassFullName>*)(context->GetClass(ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName)))))->CreateInstance(args...);\
 	}\
 	\

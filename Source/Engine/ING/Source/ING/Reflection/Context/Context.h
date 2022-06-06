@@ -81,6 +81,8 @@ namespace ING {
 
 			IStruct*	GetStruct		(const String& fullName);
 
+			bool		IsHasType		(const String& fullName);
+
 		};
 
 	}

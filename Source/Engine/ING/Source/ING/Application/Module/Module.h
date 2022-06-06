@@ -130,11 +130,81 @@ namespace ING {
 		void UnregisterTypes();
 
 		template<class T>
-		void RegisterType() {
+		void L_RegisterType() {
 
 			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
 
 			if(application != 0)
+				if (GetReflectionSystem()->IsTypesRegistered()) {
+
+					name2TypeMap[typeName] = T::CreateType(0);
+
+					return;
+
+				}
+
+			if (!canRegisterTypes) {
+
+				Debug::Error(ToString("Cant L_Register Type, Module: ") + name);
+
+				return;
+
+			}
+
+			name2RegisterNodeMap[typeName] = typeRegisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
+
+				reflectionSystem->L_RegisterType<T>();
+
+			});
+
+			name2UnregisterNodeMap[typeName] = typeUnregisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
+
+				reflectionSystem->L_UnregisterType<T>();
+
+			});
+
+		}
+
+		template<class T>
+		void L_UnregisterType() {
+
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			if (application != 0)
+				if (GetReflectionSystem()->IsTypesRegistered()) {
+
+					T::ReleaseType(0);
+
+					name2TypeMap.erase(typeName);
+
+					return;
+
+				}
+
+			if (!canUnregisterTypes) {
+
+				Debug::Error(ToString("Cant L_Unregister Type, Module: ") + name);
+
+				return;
+
+			}
+
+			typeRegisterList.Remove(name2RegisterNodeMap[typeName]);
+
+			name2RegisterNodeMap.erase(typeName);
+
+			typeUnregisterList.Remove(name2UnregisterNodeMap[typeName]);
+
+			name2UnregisterNodeMap.erase(typeName);
+
+		}
+
+		template<class T>
+		void RegisterType() {
+
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			if (application != 0)
 				if (GetReflectionSystem()->IsTypesRegistered()) {
 
 					name2TypeMap[typeName] = T::CreateType(GetReflectionSystem()->GetContext());
@@ -145,7 +215,7 @@ namespace ING {
 
 			if (!canRegisterTypes) {
 
-				Debug::Error(ToString("Cant Register Type, Module: ") + name);
+				Debug::Error(ToString("Cant G_Register Type, Module: ") + name);
 
 				return;
 
@@ -155,13 +225,13 @@ namespace ING {
 
 				reflectionSystem->RegisterType<T>();
 
-			});
+				});
 
 			name2UnregisterNodeMap[typeName] = typeUnregisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
 
-				reflectionSystem->UnregisterType<T>();
+				reflectionSystem->RegisterType<T>();
 
-			});
+				});
 
 		}
 
@@ -183,7 +253,7 @@ namespace ING {
 
 			if (!canUnregisterTypes) {
 
-				Debug::Error(ToString("Cant Unregister Type, Module: ") + name);
+				Debug::Error(ToString("Cant G_Unregister Type, Module: ") + name);
 
 				return;
 

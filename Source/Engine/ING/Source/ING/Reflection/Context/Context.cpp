@@ -92,7 +92,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		Namespace* Context::CreateNamespace(const String& fullName) {
+		Namespace*	Context::CreateNamespace(const String& fullName) {
 
 			if (fullName == "") return globalNamespace;
 
@@ -119,13 +119,13 @@ namespace ING {
 			return currentNamespace;
 		}
 
-		Namespace* Context::GetNamespace(const String& fullName) {
+		Namespace*	Context::GetNamespace(const String& fullName) {
 
 			return CreateNamespace(fullName);
 
 		}
 
-		IClass* Context::GetClass(const String& fullName) {
+		IClass*		Context::GetClass(const String& fullName) {
 
 			String namespaceName = IType::FullNameToNamespaceName(fullName);
 			String className = IType::FullNameToBaseName(fullName);
@@ -140,7 +140,7 @@ namespace ING {
 
 		}
 
-		IStruct* Context::GetStruct(const String& fullName) {
+		IStruct*	Context::GetStruct(const String& fullName) {
 
 			String namespaceName = IType::FullNameToNamespaceName(fullName);
 			String structName = IType::FullNameToBaseName(fullName);
@@ -152,6 +152,19 @@ namespace ING {
 			if (!_namespace->IsHasType(structName)) return 0;
 
 			return (IStruct*)(_namespace->GetType(structName));
+
+		}
+
+		bool		Context::IsHasType(const String& fullName) {
+
+			String namespaceName = IType::FullNameToNamespaceName(fullName);
+			String typeName = IType::FullNameToBaseName(fullName);
+
+			Namespace* _namespace = GetNamespace(namespaceName);
+
+			if (_namespace == 0) return false;
+
+			return _namespace->IsHasType(typeName);
 
 		}
 
