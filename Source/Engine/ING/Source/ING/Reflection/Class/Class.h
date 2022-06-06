@@ -31,6 +31,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include TypeGroup
+ */
+#include <ING\Reflection\TypeGroup\TypeGroup.h>
+
+
+
+/**
  *	Include ObjectFunction
  */
 #include <ING\Reflection\Object\Function\Function.h>
@@ -88,6 +95,8 @@ namespace ING {
 
 			unsigned int		memberType = 0;
 
+			TypeGroup			typeGroup = ING::Reflection::TYPE_GROUP_NONE;
+
 			size_t				offsetInBytes = 0;
 
 			String				typeName;
@@ -114,6 +123,13 @@ namespace ING {
 			/**
 			 *	To Use With Macros
 			 */
+			ClassMember& TYPE_GROUP(TypeGroup typeGroup) {
+
+				this->typeGroup = typeGroup;
+
+				return *(this);
+			}
+
 			ClassMember& ACCESS (ClassMemberAccess access) {
 
 				this->access = access;
@@ -384,6 +400,7 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(ClassFullName::##MemberBaseName));\
 	currentMember = { \
 		0, \
+		ING::Reflection::TYPE_GROUP_NONE, \
 		memberOffset, \
 		typeName, \
 		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction*{return 0;}, \
@@ -397,7 +414,7 @@ currentMember
 
 #define ING_CLASS_FUNCTION(ClassFullName, MemberBaseName, ...) \
 {\
-	currentMember = { 1, 0, "",\
+	currentMember = { 1, ING::Reflection::TYPE_GROUP_NONE, 0, "",\
 		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction*{\
 				return new ING::Reflection::ObjectFunction<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \
 		},\
@@ -410,7 +427,7 @@ currentMember
 
 #define ING_CLASS_PROCEDURE(ClassFullName, MemberBaseName, ...) \
 {\
-	currentMember = { 2, 0, "",\
+	currentMember = { 2, ING::Reflection::TYPE_GROUP_NONE, 0, "",\
 		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction*{return 0;}, \
 		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure*{\
 				return new ING::Reflection::ObjectProcedure<ClassFullName, &ClassFullName::##MemberBaseName,##__VA_ARGS__>((ClassFullName*)object); \

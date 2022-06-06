@@ -31,6 +31,13 @@ using namespace ING::Utils;
 
 
 /**
+ *	Include TypeGroup
+ */
+#include <ING\Reflection\TypeGroup\TypeGroup.h>
+
+
+
+/**
  *	Include ObjectFunction
  */
 #include <ING\Reflection\Object\Function\Function.h>
@@ -60,7 +67,7 @@ namespace ING {
 
 
 
-		struct S_Base {
+		struct S_Object {
 
 
 
@@ -96,6 +103,8 @@ namespace ING {
 
 			size_t				offsetInBytes = 0;
 
+			TypeGroup			typeGroup = TYPE_GROUP_NONE;
+
 			String				typeName;
 
 			String				name = "";
@@ -117,6 +126,13 @@ namespace ING {
 			/**
 			 *	To Use With Macros
 			 */
+			StructMember& TYPE_GROUP(TypeGroup typeGroup) {
+
+				this->typeGroup = typeGroup;
+
+				return *(this);
+			}
+
 			StructMember& ACCESS (StructMemberAccess access) {
 
 				this->access = access;
@@ -324,6 +340,7 @@ ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflect
 	String typeName = ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName::##MemberBaseName));\
 	currentMember = { \
 		memberOffset, \
+		ING::Reflection::TYPE_GROUP_NONE, \
 		typeName, \
 		#MemberBaseName, \
 		##__VA_ARGS__ \

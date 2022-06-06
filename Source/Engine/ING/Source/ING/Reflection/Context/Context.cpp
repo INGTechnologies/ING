@@ -57,7 +57,8 @@ namespace ING {
 		 */
 		Context::Context() :
 			globalNamespace(0),
-			objectClass(0)
+			objectClass(0),
+			objectStruct(0)
 		{
 
 			globalNamespace = new Namespace("", this);
@@ -65,6 +66,12 @@ namespace ING {
 			objectClass = new Class<Reflection::C_Object>(
 				IType::FullNameToBaseName(typeid(Reflection::C_Object)),
 				CreateNamespace(IType::FullNameToNamespaceName(typeid(Reflection::C_Object)))
+			);
+
+			objectStruct = new Struct<Reflection::S_Object>(
+				IType::FullNameToBaseName(typeid(Reflection::S_Object)),
+				CreateNamespace(IType::FullNameToNamespaceName(typeid(Reflection::S_Object))),
+				0
 			);
 
 		}
