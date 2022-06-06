@@ -104,7 +104,7 @@ namespace ING {
 		 */
 	public:
 		template<class T>
-		void					RegisterType () {
+		void					L_RegisterType () {
 
 			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
 
@@ -122,7 +122,53 @@ namespace ING {
 			
 				[] (Reflection::Context* context) -> void {
 
+					if (!context->IsHasType(Reflection::IType::TypeInfoToFullName(typeid(T)))) return;
+
 					T::ReleaseType(context);
+
+				},
+
+				typeDestructorList.GetHeadNode()
+			
+			);
+
+		}
+
+		template<class T>
+		void					L_UnregisterType() {
+
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			typeCreatorList.Remove(name2TypeCreatorNodeMap[typeName]);
+			typeDestructorList.Remove(name2TypeDestructorNodeMap[typeName]);
+
+			name2TypeCreatorNodeMap.erase(typeName);
+			name2TypeDestructorNodeMap.erase(typeName);
+
+		}
+
+		template<class T>
+		void					RegisterType () {
+
+			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
+
+			name2TypeCreatorNodeMap[typeName] = typeCreatorList.Add(
+			
+				[] (Reflection::Context* context) -> Reflection::IType* {
+
+					return T::CreateType(0);
+
+				}
+			
+			);
+
+			name2TypeDestructorNodeMap[typeName] = typeDestructorList.AddAt(
+			
+				[] (Reflection::Context* context) -> void {
+
+					if (!context->IsHasType(Reflection::IType::TypeInfoToFullName(typeid(T)))) return;
+
+					T::ReleaseType(0);
 
 				},
 

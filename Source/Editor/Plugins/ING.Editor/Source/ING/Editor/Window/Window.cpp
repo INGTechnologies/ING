@@ -174,7 +174,7 @@ namespace ING {
 			/**
 			 *	Create Canvas
 			 */
-			canvas = UI::C_Canvas::CreateInstance(ING_EDITOR_REFLECTION_CTX, name + ".Canvas");
+			canvas = UI::C_Canvas::CreateInstance(0, name + ".Canvas");
 
 			ApplicationUISystem* uiSystem = (ApplicationUISystem*)(application->GetComponent("UISystem"));
 

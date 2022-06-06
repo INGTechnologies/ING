@@ -42,12 +42,7 @@ using namespace ING::Math;
 /**
  *	Include Reflection
  */
-#include <ING/Reflection/Type/Type.h>
-#include <ING/Reflection/Namespace/Namespace.h>
-#include <ING/Reflection/Object/Object.h>
-#include <ING/Reflection/Object/Function/Function.h>
-#include <ING/Reflection/Context/Context.h>
-#include <ING/Reflection/Class/Class.h>
+#include <ING/Reflection/Reflection.h>
 
 using namespace ING::Reflection;
 
