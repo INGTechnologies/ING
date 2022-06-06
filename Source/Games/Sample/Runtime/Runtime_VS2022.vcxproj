@@ -100,42 +100,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
     <LinkIncremental>true</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)</TargetName>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>

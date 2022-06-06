@@ -95,3 +95,13 @@ namespace Demo {
 	}
 
 }
+
+
+int Test2(int a) {
+
+	iv.push_back(a);
+
+	return 0;
+}
+
+int a2 = Test2(7);

@@ -183,3 +183,7 @@ namespace Demo {
 	};
 
 }
+
+
+
+static std::vector<int> iv;

@@ -42,6 +42,20 @@ namespace ING {
 			context(_namespace->GetContext())
 		{
 
+			if (base == 0) {
+
+				base = context->GetStruct(IType::TypeInfoToFullName(typeid(Reflection::S_Object)));
+
+				if (base == this) {
+
+					base = 0;
+
+				}
+
+			}
+
+
+
 			GetNamespace()->AddType(this);
 
 

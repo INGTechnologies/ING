@@ -178,24 +178,38 @@ int DemoFunc() {
 
 struct S_DemoStruct {
 
-	ING_REFLECT_STRUCT(S_DemoStruct, S_Base);
+	ING_REFLECT_STRUCT(S_DemoStruct, S_Object);
 
+public:
 	int a;
 	int b;
 	int c;
 	bool d;
+
+	std::vector<int> iv;
 
 };
 
 
 
 ING_BEGIN_REFLECTED_STRUCT
-	(S_DemoStruct, S_Base)
+	(S_DemoStruct, S_Object)
 
+	ING_STRUCT_PROPERTY
+		(S_DemoStruct, a);
 
+	ING_STRUCT_PROPERTY
+		(S_DemoStruct, b);
+
+	ING_STRUCT_PROPERTY
+		(S_DemoStruct, iv)
+		.TYPE_GROUP(TYPE_GROUP_ARRAY);
 
 ING_END_REFLECTED_STRUCT
 	()
+
+
+#include <nlohmann/json.hpp>
 
 
 #ifdef USE_MSVC
@@ -232,10 +246,30 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 
 
-		S_DemoStruct ds = S_DemoStruct::CreateInstance(4,5,6,true);
+		S_DemoStruct ds = { 4, 5, 6, true, { 1,2,3,4 } };
 
-		S_DemoStruct::CreateType(0);
-		S_DemoStruct::CreateType(0);
+
+		/*
+		nlohmann::json json_parsed = nlohmann::json::parse(R"(
+
+			{
+
+				"a" : 5,
+
+				"b" : [
+
+					"c" : 4,
+					"d" : {
+
+						"e" : 1
+
+					}
+
+				]
+ 
+			}
+		
+		)");*/
 
 
 

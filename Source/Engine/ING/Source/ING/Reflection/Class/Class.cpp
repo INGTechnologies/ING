@@ -118,6 +118,8 @@ namespace ING {
 
 					0,
 
+					TYPE_GROUP_NONE,
+
 					(unsigned int)GetMemberOffset(&ING::IObject::id),
 
 					IType::TypeInfoToFullName(typeid(ObjectId)),
@@ -137,6 +139,8 @@ namespace ING {
 				SetMember({
 
 					1,
+
+					TYPE_GROUP_NONE,
 
 					0,
 
@@ -161,6 +165,8 @@ namespace ING {
 
 					0,
 
+					TYPE_GROUP_NONE,
+
 					(unsigned int)GetMemberOffset(&ING::Reflection::C_Object::_class),
 
 					IType::TypeInfoToFullName(typeid(ING::Reflection::IClass*)),
@@ -180,6 +186,8 @@ namespace ING {
 				SetMember({
 
 					1,
+
+					TYPE_GROUP_NONE,
 
 					0,
 

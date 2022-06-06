@@ -56,10 +56,14 @@ namespace ING {
 
 			IClass*		objectClass;
 
+			IStruct*	objectStruct;
+
 		public:
 			Namespace*	GetGlobalNamespace	() { return globalNamespace; }
 
 			IClass*		GetObjectClass	() { return objectClass; }
+
+			IStruct*	GetObjectStruct	() { return objectStruct; }
 
 
 

@@ -9,7 +9,7 @@
 namespace ING {
 
 	ING_BEGIN_REFLECTED_STRUCT
-		(TransformM, S_Base)
+		(TransformM, S_Object)
 
 		ING_STRUCT_PROPERTY
 			(TransformM, translationMatrix);

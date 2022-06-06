@@ -3,6 +3,7 @@
  *	Include Header
  */
 #include "DemoActor.h"
+#include "DemoClass.h"
 
 
 
@@ -28,3 +29,13 @@ void DemoActor::Release() {
 	C_Actor::Release();
 
 }
+
+
+int Test(int a) {
+
+	iv.push_back(a);
+
+	return 0;
+}
+
+int a = Test(5);
