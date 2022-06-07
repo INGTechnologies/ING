@@ -66,8 +66,8 @@ namespace ING {
 		public:
 			virtual void Apply	(const String& passName) override;
 
-			virtual void ApplyTransform (const TransformM& transformMatrices);
-			virtual void ApplyTransform (const TransformM& transformMatrices, bool updateBuffer);
+			virtual void ApplyTransform (const S_TransformM& transformMatrices);
+			virtual void ApplyTransform (const S_TransformM& transformMatrices, bool updateBuffer);
 
 			virtual void ApplyCamera	(Camera* camera);
 			virtual void ApplyCamera	(Camera* camera, bool updateBuffer);

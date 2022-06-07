@@ -123,23 +123,23 @@ namespace ING {
 			/**
 			 *	To Use With Macros
 			 */
-			ClassMember& TYPE_GROUP(TypeGroup typeGroup) {
+			ClassMember& TYPE_GROUP(TypeGroup _typeGroup) {
 
-				this->typeGroup = typeGroup;
-
-				return *(this);
-			}
-
-			ClassMember& ACCESS (ClassMemberAccess access) {
-
-				this->access = access;
+				this->typeGroup = _typeGroup;
 
 				return *(this);
 			}
 
-			ClassMember& TAG	(ClassMemberTag tag) {
+			ClassMember& ACCESS (ClassMemberAccess _access) {
 
-				this->tag = tag;
+				this->access = _access;
+
+				return *(this);
+			}
+
+			ClassMember& TAG	(ClassMemberTag _tag) {
+
+				this->tag = _tag;
 
 				return *(this);
 			}
@@ -184,6 +184,19 @@ namespace ING {
 			const ClassMember& GetMember(const String& name) {
 
 				if (!IsHasMember(name)) return {};
+
+				return name2MemberMap[name];
+			}
+
+			ClassMember&	GetMemberReference (const String& name) {
+
+				if (!IsHasMember(name)) {
+
+					ClassMember noneMember;
+
+					return noneMember;
+				
+				}
 
 				return name2MemberMap[name];
 			}
@@ -410,7 +423,7 @@ ING::Reflection::Class<ClassFullName>* ClassFullName::CreateType(ING::Reflection
 	};\
 	classType->SetMember(currentMember);\
 }\
-currentMember
+classType->GetMemberReference(currentMember.name)
 
 #define ING_CLASS_FUNCTION(ClassFullName, MemberBaseName, ...) \
 {\
@@ -423,7 +436,7 @@ currentMember
 	};\
 	classType->SetMember(currentMember);\
 }\
-currentMember
+classType->GetMemberReference(currentMember.name)
 
 #define ING_CLASS_PROCEDURE(ClassFullName, MemberBaseName, ...) \
 {\
@@ -436,7 +449,7 @@ currentMember
 	};\
 	classType->SetMember(currentMember);\
 }\
-currentMember
+classType->GetMemberReference(currentMember.name)
 
 #define ING_CLASS_CONSTRUCTOR(ClassFullName, ...) \
 ING_CLASS_PROCEDURE(ClassFullName, Constructor, ##__VA_ARGS__)

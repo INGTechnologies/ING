@@ -95,7 +95,7 @@ namespace ING {
 			DrawableMaterial*	material;
 			List<Event::Listener>::Node* nodeInMaterialUpdateFilterNameVectorEventListenerList;
 
-			TransformM	transformMatrices;
+			S_TransformM	transformMatrices;
 
 		public:
 			IMesh*		GetMesh		()						{ return mesh; }
@@ -104,7 +104,7 @@ namespace ING {
 			void		SetMesh		(IMesh* mesh)			{ this->mesh = mesh; }
 			void		SetMaterial	(DrawableMaterial* material);
 
-			void		SetTransform(const TransformM& transformMatrices)	{ this->transformMatrices = transformMatrices; }
+			void		SetTransform(const S_TransformM& transformMatrices)	{ this->transformMatrices = transformMatrices; }
 
 
 

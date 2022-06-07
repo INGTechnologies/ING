@@ -157,7 +157,7 @@ namespace ING {
 
 		}
 
-		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices, bool updateBuffer) {
+		void DrawableMaterial::ApplyTransform(const S_TransformM& transformMatrices, bool updateBuffer) {
 
 			SetProperty<RMatrix4x4>("ING_WorldMatrix", transformMatrices.translationMatrix, false);
 
@@ -168,7 +168,7 @@ namespace ING {
 			}
 
 		}
-		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices) {
+		void DrawableMaterial::ApplyTransform(const S_TransformM& transformMatrices) {
 			ApplyTransform(transformMatrices, true);
 		}
 

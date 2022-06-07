@@ -81,6 +81,8 @@ namespace ING {
 			static String FullNameToNamespaceName	(const String& fullName);
 			static String FullNameToNamespaceName	(const std::type_info& fullName);
 
+			static String VectorTypeNameToElementTypeName(const String& fullName);
+
 		};
 
 

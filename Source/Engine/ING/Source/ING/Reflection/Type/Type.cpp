@@ -199,6 +199,56 @@ namespace ING {
 
 		}
 
+		String IType::VectorTypeNameToElementTypeName(const String& fullName) {
+
+			unsigned int startIndex = 0;
+			unsigned int endIndex = fullName.size() - 1;
+
+			for (; startIndex < endIndex; ++startIndex) {
+
+				if (fullName[startIndex] == '<') {
+
+					++startIndex;
+
+					break;
+
+				}
+
+			}
+
+			unsigned int l = 0;
+
+			for (endIndex = startIndex; endIndex < fullName.size(); ++endIndex) {
+
+				if (fullName[endIndex] == '<' && l == 0) {
+
+					++l;
+
+				}
+
+				if (fullName[endIndex] == '>' && l == 0) {
+
+					--l;
+
+				}
+
+				if (fullName[endIndex] == ',' && l == 0) {
+
+					--endIndex;
+
+					break;
+
+				}
+
+			}
+
+			String elementTypeName = fullName.substr(startIndex, endIndex - startIndex + 1);
+
+			elementTypeName = FullNameToNamespaceName(elementTypeName) + ToString("::") + FullNameToBaseName(elementTypeName);
+
+			return elementTypeName;
+		}
+
 	}
 
 }

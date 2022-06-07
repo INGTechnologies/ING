@@ -38,16 +38,23 @@ using namespace ING::Utils;
 
 
 /**
- *	Include ObjectFunction
+ *	Include Function
  */
-#include <ING\Reflection\Object\Function\Function.h>
+#include <ING\Reflection\Function\Function.h>
 
 
 
 /**
- *	Include ObjectProcedure
+ *	Include Procedure
  */
-#include <ING\Reflection\Object\Procedure\Procedure.h>
+#include <ING\Reflection\Procedure\Procedure.h>
+
+
+
+/**
+ *	Include Nlohmann JSON
+ */
+#include <nlohmann/json.hpp>
 
 
 
@@ -126,23 +133,23 @@ namespace ING {
 			/**
 			 *	To Use With Macros
 			 */
-			StructMember& TYPE_GROUP(TypeGroup typeGroup) {
+			StructMember& TYPE_GROUP(TypeGroup _typeGroup) {
 
-				this->typeGroup = typeGroup;
-
-				return *(this);
-			}
-
-			StructMember& ACCESS (StructMemberAccess access) {
-
-				this->access = access;
+				this->typeGroup = _typeGroup;
 
 				return *(this);
 			}
 
-			StructMember& TAG	(StructMemberTag tag) {
+			StructMember& ACCESS (StructMemberAccess _access) {
 
-				this->tag = tag;
+				this->access = _access;
+
+				return *(this);
+			}
+
+			StructMember& TAG	(StructMemberTag _tag) {
+
+				this->tag = _tag;
 
 				return *(this);
 			}
@@ -192,6 +199,19 @@ namespace ING {
 				return name2MemberMap[name];
 			}
 
+			StructMember&	GetMemberReference (const String& name) {
+
+				if (!IsHasMember(name)) {
+
+					StructMember noneMember;
+
+					return noneMember;
+				
+				}
+
+				return name2MemberMap[name];
+			}
+
 			void			SetMember	(const StructMember& member){
 
 				name2MemberMap[member.name] = member;
@@ -208,7 +228,7 @@ namespace ING {
 
 
 
-		template<class T>
+		template<typename T>
 		class Struct : public IStruct {
 
 			/**
@@ -274,7 +294,9 @@ public:\
 		return {args...};\
 	}\
 	\
-	static ING::Utils::String	TypeName		();
+	static ING::Utils::String	TypeName		();\
+	\
+
 
 #define ING_BEGIN_REFLECTED_STRUCT(StructFullName, ExtendedStructFullName) \
 \
@@ -302,7 +324,7 @@ ING::Reflection::Struct<StructFullName>* StructFullName::GetType(ING::Reflection
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
 \
-	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
+	ING::Utils::String structBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
 \
 	return (ING::Reflection::Struct<StructFullName>*)context->GetStruct(ING::Reflection::IType::TypeInfoToFullName(typeid(StructFullName)));\
 \
@@ -319,10 +341,10 @@ ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflect
 	ING::Utils::String namespaceFullName = ING::Reflection::IType::FullNameToNamespaceName(typeid(StructFullName).name());\
 	ING::Reflection::Namespace* _namespace = context->CreateNamespace(namespaceFullName);\
 \
-	ING::Utils::String classBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
+	ING::Utils::String structBaseName = ING::Reflection::IType::FullNameToBaseName(typeid(StructFullName).name());\
 \
-	ING::Reflection::Struct<StructFullName>* classType = new ING::Reflection::Struct<StructFullName>(\
-		classBaseName,\
+	ING::Reflection::Struct<StructFullName>* structType = new ING::Reflection::Struct<StructFullName>(\
+		structBaseName,\
 		_namespace,\
 		context->GetStruct(ING::Reflection::IType::TypeInfoToFullName(typeid(ExtendedStructFullName)))\
 	);\
@@ -331,7 +353,7 @@ ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflect
 \
 
 #define ING_END_REFLECTED_STRUCT() \
-	return classType;\
+	return structType;\
 }
 
 #define ING_STRUCT_PROPERTY(StructFullName, MemberBaseName, ...) \
@@ -345,6 +367,6 @@ ING::Reflection::Struct<StructFullName>* StructFullName::CreateType(ING::Reflect
 		#MemberBaseName, \
 		##__VA_ARGS__ \
 	};\
-	classType->SetMember(currentMember);\
+	structType->SetMember(currentMember);\
 }\
-currentMember
+structType->GetMemberReference(currentMember.name)

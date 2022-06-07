@@ -58,8 +58,8 @@ namespace ING {
 
 	}
 
-	struct TransformS;
-	struct TransformM;
+	struct S_TransformS;
+	struct S_TransformM;
 
 	class Screen;
 
@@ -117,7 +117,7 @@ namespace ING {
 		RMatrix4x4				viewMatrix;
 		RMatrix4x4				projectionMatrix;
 
-		TransformM				transformM;
+		S_TransformM				transformM;
 
 		float					fov;
 
@@ -150,9 +150,9 @@ namespace ING {
 		const RMatrix4x4&		GetViewMatrix		()							{ return viewMatrix; }
 		const RMatrix4x4&		GetProjectionMatrix ()							{ return projectionMatrix; }
 
-		const TransformM&		GetTransformM		()							{ return transformM; }
+		const S_TransformM&		GetS_TransformM		()							{ return transformM; }
 
-		void					SetTransformM		(const ING::TransformM& newTransformM)		{ this->transformM = newTransformM; }
+		void					SetS_TransformM		(const ING::S_TransformM& newS_TransformM)		{ this->transformM = newS_TransformM; }
 
 		float					GetFOV				()							{ return fov; }
 		void					SetFOV				(float fov)					{ this->fov = fov;				Update(); }

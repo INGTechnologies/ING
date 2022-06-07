@@ -174,6 +174,27 @@ int DemoFunc() {
 	return 5;
 }
 
+struct S_DemoStruct2 {
+
+	ING_REFLECT_STRUCT(S_DemoStruct2, S_Object);
+
+public:
+	int a;
+
+};
+
+
+
+ING_BEGIN_REFLECTED_STRUCT
+	(S_DemoStruct2, S_Object)
+
+	ING_STRUCT_PROPERTY
+		(S_DemoStruct2, a)
+		.TYPE_GROUP(TYPE_GROUP_INT);
+
+ING_END_REFLECTED_STRUCT
+	()
+
 
 
 struct S_DemoStruct {
@@ -188,6 +209,10 @@ public:
 
 	std::vector<int> iv;
 
+	S_DemoStruct2 e;
+
+	std::vector<S_DemoStruct2> ev;
+
 };
 
 
@@ -196,20 +221,31 @@ ING_BEGIN_REFLECTED_STRUCT
 	(S_DemoStruct, S_Object)
 
 	ING_STRUCT_PROPERTY
-		(S_DemoStruct, a);
+		(S_DemoStruct, a)
+		.TYPE_GROUP(TYPE_GROUP_INT);
 
 	ING_STRUCT_PROPERTY
-		(S_DemoStruct, b);
+		(S_DemoStruct, b)
+		.TYPE_GROUP(TYPE_GROUP_INT);
+
+	//ING_STRUCT_PROPERTY
+	//	(S_DemoStruct, e)
+	//	.TYPE_GROUP(TYPE_GROUP_S_OBJECT);
 
 	ING_STRUCT_PROPERTY
 		(S_DemoStruct, iv)
-		.TYPE_GROUP(TYPE_GROUP_ARRAY);
+		.TYPE_GROUP(TYPE_GROUP_INT_ARRAY);
+
+	ING_STRUCT_PROPERTY
+		(S_DemoStruct, ev)
+		.TYPE_GROUP(TYPE_GROUP_S_OBJECT_ARRAY);
 
 ING_END_REFLECTED_STRUCT
 	()
 
 
-#include <nlohmann/json.hpp>
+#include <ING/Utils/JSON/JSON.h>
+
 
 
 #ifdef USE_MSVC
@@ -246,30 +282,19 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 
 
-		S_DemoStruct ds = { 4, 5, 6, true, { 1,2,3,4 } };
+		S_DemoStruct ds;
 
 
-		/*
-		nlohmann::json json_parsed = nlohmann::json::parse(R"(
 
-			{
+		JSON json = JSON::parse(R"(
 
-				"a" : 5,
+		{
 
-				"b" : [
+			"a" : 5
 
-					"c" : 4,
-					"d" : {
+		}
 
-						"e" : 1
-
-					}
-
-				]
- 
-			}
-		
-		)");*/
+)");
 
 
 

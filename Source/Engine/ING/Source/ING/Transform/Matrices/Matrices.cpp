@@ -9,22 +9,22 @@
 namespace ING {
 
 	ING_BEGIN_REFLECTED_STRUCT
-		(TransformM, S_Object)
+		(S_TransformM, S_Object)
 
 		ING_STRUCT_PROPERTY
-			(TransformM, translationMatrix);
+			(S_TransformM, translationMatrix);
 
 		ING_STRUCT_PROPERTY
-			(TransformM, scaleMatrix);
+			(S_TransformM, scaleMatrix);
 
 		ING_STRUCT_PROPERTY
-			(TransformM, rotationMatrix);
+			(S_TransformM, rotationMatrix);
 
 		ING_STRUCT_PROPERTY
-			(TransformM, localMatrix);
+			(S_TransformM, localMatrix);
 
 		ING_STRUCT_PROPERTY
-			(TransformM, worldMatrix);
+			(S_TransformM, worldMatrix);
 
 	ING_END_REFLECTED_STRUCT
 		()
@@ -34,13 +34,13 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	TransformM::TransformM() {
+	S_TransformM::S_TransformM() {
 
 
 
 	}
 
-	TransformM::~TransformM() {
+	S_TransformM::~S_TransformM() {
 
 
 
