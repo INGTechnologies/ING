@@ -36,10 +36,10 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	struct ING_API TransformS : public S_Object
+	struct ING_API S_TransformS : public S_Object
 	{
 
-		ING_REFLECT_STRUCT(TransformS, S_Object)
+		ING_REFLECT_STRUCT(S_TransformS, S_Object)
 
 
 
@@ -47,8 +47,8 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 	public:
-		TransformS();
-		~TransformS();
+		S_TransformS();
+		~S_TransformS();
 
 
 

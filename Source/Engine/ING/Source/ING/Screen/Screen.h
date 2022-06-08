@@ -40,7 +40,7 @@ namespace ING {
 
 	class IWindow;
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -88,7 +88,7 @@ namespace ING {
 
 		IWindow*						window;
 
-		List<Camera*>					cameraList;
+		List<C_Camera*>					cameraList;
 
 	public:
 		bool							IsMain				() { return isMain; }
@@ -110,8 +110,8 @@ namespace ING {
 		 *	Methods
 		 */
 	public:
-		List<Camera*>::Node*			AddCamera			(Camera* camera);
-		void							RemoveCamera		(Camera* camera);
+		List<C_Camera*>::Node*			AddCamera			(C_Camera* camera);
+		void							RemoveCamera		(C_Camera* camera);
 
 	};
 

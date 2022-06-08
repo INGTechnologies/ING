@@ -141,7 +141,7 @@ namespace ING {
 
 			IApplicationModule* module = new IApplicationModule("ING.Editor");
 
-			module->AddDependencies("ING");
+			module->AddDependency("ING");
 
 			AddModule(module);
 

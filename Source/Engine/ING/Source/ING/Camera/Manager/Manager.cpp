@@ -83,13 +83,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	List<Camera*>::Node*	CameraManager::AddCamera(Camera* camera) {
+	List<C_Camera*>::Node*	CameraManager::AddCamera(C_Camera* camera) {
 
 		return cameraList.Add(camera);
 
 	}
 
-	void					CameraManager::RemoveCamera(List<Camera*>::Node* node) {
+	void					CameraManager::RemoveCamera(List<C_Camera*>::Node* node) {
 
 		cameraList.Remove(node);
 

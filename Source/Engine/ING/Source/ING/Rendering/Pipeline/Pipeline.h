@@ -34,7 +34,7 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 	class ApplicationRenderingSystem;
 
@@ -124,8 +124,8 @@ namespace ING {
 			void		 RemovePass			(const String& name);
 			void		 RemovePass			(C_Pass* pass);
 
-			virtual void SetupCamera		(IDeviceContext* context, Camera* camera);
-			virtual void ClearCameraData	(Camera* camera);
+			virtual void SetupCamera		(IDeviceContext* context, C_Camera* camera);
+			virtual void ClearCameraData	(C_Camera* camera);
 
 			virtual bool Render				(IDeviceContext* context);
 

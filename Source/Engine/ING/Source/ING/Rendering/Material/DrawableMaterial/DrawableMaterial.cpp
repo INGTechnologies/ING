@@ -157,7 +157,7 @@ namespace ING {
 
 		}
 
-		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices, bool updateBuffer) {
+		void DrawableMaterial::ApplyTransform(const S_TransformM& transformMatrices, bool updateBuffer) {
 
 			SetProperty<RMatrix4x4>("ING_WorldMatrix", transformMatrices.translationMatrix, false);
 
@@ -168,11 +168,11 @@ namespace ING {
 			}
 
 		}
-		void DrawableMaterial::ApplyTransform(const TransformM& transformMatrices) {
+		void DrawableMaterial::ApplyTransform(const S_TransformM& transformMatrices) {
 			ApplyTransform(transformMatrices, true);
 		}
 
-		void DrawableMaterial::ApplyCamera(Camera* camera, bool updateBuffer) {
+		void DrawableMaterial::ApplyCamera(C_Camera* camera, bool updateBuffer) {
 
 			SetProperty<RMatrix4x4>("ING_ViewMatrix", camera->GetViewMatrix(), false);
 			SetProperty<RMatrix4x4>("ING_ProjectionMatrix", camera->GetProjectionMatrix(), false);
@@ -184,7 +184,7 @@ namespace ING {
 			}
 
 		}
-		void DrawableMaterial::ApplyCamera(Camera* camera) {
+		void DrawableMaterial::ApplyCamera(C_Camera* camera) {
 			ApplyCamera(camera, true);
 		}
 

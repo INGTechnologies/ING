@@ -117,11 +117,11 @@ namespace ING {
 			module->RegisterType<UI::C_SceneExplorerTab>();
 			module->RegisterType<UI::C_TabGroup>();
 
-			module->AddDependencies("ING.UI");
+			module->AddDependency("ING");
 
 			GetApplication()->AddModule(module);
 
-			GetApplication()->GetModule("ING.Editor")->AddDependencies("ING.Editor.UI");
+			GetApplication()->GetModule("ING.Editor")->AddDependency("ING.Editor.UI");
 
 		}
 

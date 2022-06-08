@@ -57,6 +57,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering StandardRP Application Module
+ */
+#include <ING/Rendering/StandardRP/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -68,7 +75,21 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorRenderingSystem")
 		{
 
+			IApplicationModule* standardRPModule = new Rendering::StandardRP::ApplicationModule("ING.Rendering.StandardRP");
 
+			standardRPModule->AddDependency("ING");
+
+			GetApplication()->AddModule(standardRPModule);
+
+
+
+			IApplicationModule* module = new IApplicationModule("ING.Editor.Rendering");
+
+			module->AddDependency("ING");
+			module->AddDependency("ING.Rendering.StandardRP");
+
+			GetApplication()->AddModule(module);
+			GetApplication()->GetModule("ING.Editor")->AddDependency("ING.Editor.Rendering");
 
 		}
 

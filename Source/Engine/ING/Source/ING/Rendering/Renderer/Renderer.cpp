@@ -126,7 +126,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void C_Renderer::RenderDrawables(Camera* camera, const String& filterName, const String& passName) {
+		void C_Renderer::RenderDrawables(C_Camera* camera, const String& filterName, const String& passName) {
 
 			if (camera->GetRenderingScene() == 0) {
 
@@ -158,7 +158,7 @@ namespace ING {
 
 		}
 
-		void C_Renderer::RenderDrawable(Camera* camera, C_Drawable* drawable, const String& passName) {
+		void C_Renderer::RenderDrawable(C_Camera* camera, C_Drawable* drawable, const String& passName) {
 
 			drawable->Draw(camera, passName);
 

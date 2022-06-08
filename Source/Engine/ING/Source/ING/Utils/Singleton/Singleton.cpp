@@ -40,6 +40,8 @@ std::mutex mutex;
 
 void LoadSingletonInstance(void** wherePtrAre, const ING::Utils::String& name) {
 
+	if (PluginManager::GetInstance() == 0) return;
+
 	mutex.lock();
 
 	PluginManager* pluginManager = PluginManager::GetInstance();
@@ -65,6 +67,8 @@ void SetupSingletonInstance(void* instance, const ING::Utils::String& name) {
 
 	}
 	else {
+
+		if (PluginManager::GetInstance() == 0) return;
 
 		PluginManager* pluginManager = PluginManager::GetInstance();
 

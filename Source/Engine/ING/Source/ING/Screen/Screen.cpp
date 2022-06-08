@@ -136,7 +136,7 @@ namespace ING {
 	void Screen::Release()
 	{
 
-		cameraList.Foreach([](Camera*& camera) {
+		cameraList.Foreach([](C_Camera*& camera) {
 			
 			camera->SetScreen(0);
 			
@@ -178,13 +178,13 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	List<Camera*>::Node* Screen::AddCamera(Camera* camera) {
+	List<C_Camera*>::Node* Screen::AddCamera(C_Camera* camera) {
 
 		return cameraList.Add(camera);
 
 	}
 
-	void	Screen::RemoveCamera(Camera* camera) {
+	void	Screen::RemoveCamera(C_Camera* camera) {
 
 		cameraList.Remove(camera->GetNodeInScreenCameraList());
 

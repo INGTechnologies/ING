@@ -9,13 +9,13 @@
 namespace ING {
 
 	ING_BEGIN_REFLECTED_STRUCT
-		(TransformS, S_Object)
+		(S_TransformS, S_Object)
 
 		ING_STRUCT_PROPERTY
-			(TransformS, localPosition);
+			(S_TransformS, localPosition);
 
 		ING_STRUCT_PROPERTY
-			(TransformS, localScale);
+			(S_TransformS, localScale);
 
 	ING_END_REFLECTED_STRUCT
 		()
@@ -25,13 +25,13 @@ namespace ING {
 	/**
 	 *	Constructors And Destructor
 	 */
-	TransformS::TransformS() {
+	S_TransformS::S_TransformS() {
 
 
 
 	}
 
-	TransformS::~TransformS() {
+	S_TransformS::~S_TransformS() {
 
 
 

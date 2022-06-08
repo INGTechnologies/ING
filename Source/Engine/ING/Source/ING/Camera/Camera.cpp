@@ -64,24 +64,34 @@ using namespace ING::Utils;
 
 
 
-/**
- *	Include XMath
- */
-//#include <ING/XMath/XMathDef.h>
-
-
-
 namespace ING {
+
+		ING_BEGIN_REFLECTED_CLASS
+			(C_Camera, C_Object)
+
+			/**
+			 *	Constructor
+			 */
+			ING_CLASS_CONSTRUCTOR
+				(C_Camera)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
 
 	/**
 	 *	Constructors And Destructor
 	 */
-	Camera::Camera() :
-		node(0),
-		renderingPipeline(0),
-		renderingScene(0),
-		renderingData(0)
+	void C_Camera::Constructor()
 	{
+
+		node = 0;
+		renderingPipeline = 0;
+		renderingScene = 0;
+		renderingData = 0;
 
 		isActive	= true;
 
@@ -98,19 +108,12 @@ namespace ING {
 
 	}
 
-	Camera::~Camera()
-	{
-
-
-
-	}
-
 
 
 	/**
 	 *	Release Methods
 	 */
-	void Camera::Release()
+	void C_Camera::Release()
 	{
 
 		if (renderingPipeline != 0) {
@@ -124,7 +127,7 @@ namespace ING {
 
 		CameraManager::GetInstance()->RemoveCamera(node);
 
-		delete this;
+		C_Object::Release();
 
 	}
 
@@ -133,7 +136,7 @@ namespace ING {
 	/**
 	 *	Properties
 	 */
-	void Camera::SetScreen(Screen* screen) {
+	void C_Camera::SetScreen(Screen* screen) {
 
 		if(this->screen != 0)
 			this->screen->RemoveCamera(this);
@@ -146,7 +149,7 @@ namespace ING {
 		Update(); 
 	}
 
-	void Camera::SetTargetMode(CameraTargetMode mode) {
+	void C_Camera::SetTargetMode(CameraTargetMode mode) {
 
 		if (mode == targetMode) return;
 
@@ -156,7 +159,7 @@ namespace ING {
 
 	}
 
-	void Camera::SetRenderingPipeline(Rendering::C_Pipeline* renderingPipeline) {
+	void C_Camera::SetRenderingPipeline(Rendering::C_Pipeline* renderingPipeline) {
 
 		if (this->renderingPipeline != 0) {
 
@@ -168,7 +171,7 @@ namespace ING {
 
 	}
 
-	unsigned int Camera::GetClientWidth() {
+	unsigned int C_Camera::GetClientWidth() {
 
 		if (this->targetMode == CAMERA_TARGET_SCREEN) {
 
@@ -180,7 +183,7 @@ namespace ING {
 		return 0;
 	}
 
-	unsigned int Camera::GetClientHeight() {
+	unsigned int C_Camera::GetClientHeight() {
 
 		if (this->targetMode == CAMERA_TARGET_SCREEN) {
 
@@ -197,7 +200,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void Camera::Update() {
+	void C_Camera::Update() {
 
 		/* Check if screen resized */
 		if (targetMode == CAMERA_TARGET_SCREEN) {
@@ -218,11 +221,11 @@ namespace ING {
 			}
 			else {
 
-				if (renderingData == nullptr) {
+				//if (renderingData == nullptr) {
 
-					delete renderingData;
+				//	delete renderingData;
 
-				}
+				//}
 
 			}
 

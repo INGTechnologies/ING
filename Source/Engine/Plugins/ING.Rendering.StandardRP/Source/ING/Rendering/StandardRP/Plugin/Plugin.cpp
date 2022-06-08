@@ -30,49 +30,47 @@ DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, Load) (ING::Engine* engin
 
 	DEFAULT_PLUGIN_LOAD(ING_RENDERING_STANDARDRP, engine, plugin);
 
-
-
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, Unload) () {
-
-
 
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, LateCreate) () {
 
-
-
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreInit) () {
 
+	/* Continue if engine is in ING.Standalone mode */
+	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
+		return true;
+	}
 
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, LateInit) () {
 
+	/* Continue if engine is in ING.Standalone mode */
+	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
+		return true;
+	}
 
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreRun) () {
 
-
-
 	return true;
 }
 
 DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreRelease) () {
-
-
 
 	return true;
 }

@@ -214,7 +214,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void C_MeshDrawable::Draw(Camera* camera, const String& passName) {
+		void C_MeshDrawable::Draw(C_Camera* camera, const String& passName) {
 
 			material->Apply(passName);
 

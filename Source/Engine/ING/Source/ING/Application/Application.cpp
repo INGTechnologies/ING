@@ -108,8 +108,8 @@ namespace ING {
 
 		IApplicationModule* module = new IApplicationModule("ING");
 
-		module->RegisterType<TransformM>();
-		module->RegisterType<TransformS>();
+		module->RegisterType<S_TransformM>();
+		module->RegisterType<S_TransformS>();
 
 		AddModule(module);
 

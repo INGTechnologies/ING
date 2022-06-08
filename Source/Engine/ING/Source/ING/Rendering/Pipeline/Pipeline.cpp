@@ -94,7 +94,7 @@ namespace ING {
 
 			passVector.clear();
 
-			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+			for (C_Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
 				if (camera->GetRenderingPipeline() == this) {
 
@@ -182,13 +182,13 @@ namespace ING {
 
 		}
 
-		void C_Pipeline::SetupCamera	(IDeviceContext* context, Camera* camera) {
+		void C_Pipeline::SetupCamera	(IDeviceContext* context, C_Camera* camera) {
 
 
 
 		}
 
-		void C_Pipeline::ClearCameraData(Camera* camera) {
+		void C_Pipeline::ClearCameraData(C_Camera* camera) {
 
 			camera->SetRenderingData(0);
 
@@ -207,7 +207,7 @@ namespace ING {
 
 			isRendering = true;
 
-			for (Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+			for (C_Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
 
 				if (camera->GetRenderingPipeline() == this && camera->GetRenderingData() == 0) {
 

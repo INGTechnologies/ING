@@ -77,13 +77,13 @@ namespace ING {
 
 	}
 
-	void IApplicationModule::AddDependencies(const String& dependencyName) {
+	void IApplicationModule::AddDependency(const String& dependencyName) {
 
 		dependenciesMap[dependencyName] = true;
 
 	}
 
-	void IApplicationModule::RemoveDependencies(const String& dependencyName) {
+	void IApplicationModule::RemoveDependency(const String& dependencyName) {
 
 		dependenciesMap.erase(dependencyName);
 

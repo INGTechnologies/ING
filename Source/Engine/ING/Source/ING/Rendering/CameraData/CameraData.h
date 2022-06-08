@@ -16,25 +16,34 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Reflection.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
 	namespace Rendering {
 
-		class IRenderTargetView;
+		class ING_API C_CameraData : public C_Object {
+
+			ING_REFLECT_CLASS(C_CameraData, C_Object)
 
 
-		struct ING_API ICameraData {
 
 			/**
-			 *	Constructors And Destructor
+			 *	Constructor
 			 */
-		public:
-			ICameraData		(Camera* camera);
-			~ICameraData	();
+		protected:
+			void Constructor(C_Camera* camera);
 
 
 
@@ -42,7 +51,7 @@ namespace ING {
 			 *	Release Method
 			 */
 		public:
-			virtual void Release();
+			virtual void	Release();
 
 
 
@@ -50,10 +59,10 @@ namespace ING {
 			 *	Properties
 			 */
 		private:
-			Camera*				camera;
+			C_Camera*		camera;
 
 		public:
-			Camera*				GetCamera () { return camera; }
+			C_Camera*		GetCamera () { return camera; }
 
 		};
 

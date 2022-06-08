@@ -74,20 +74,29 @@ namespace ING {
 
 	namespace Rendering {
 
+		ING_BEGIN_REFLECTED_CLASS
+			(C_CameraData, C_Object)
+
+			/**
+			 *	Constructor
+			 */
+			ING_CLASS_CONSTRUCTOR
+				(C_CameraData, C_Camera*)
+				.ACCESS	(CLASS_MEMBER_ACCESS_PROTECTED)
+				.TAG	(CLASS_MEMBER_TAG_VISIBLE_EVERYWHERE);
+
+		ING_END_REFLECTED_CLASS
+			()
+
+
+
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-		ICameraData::ICameraData(Camera* camera) :
-			camera(camera)
+		void C_CameraData::Constructor(C_Camera* camera)
 		{
 
-
-
-		}
-
-		ICameraData::~ICameraData() {
-
-				
+			this->camera = camera;
 
 		}
 
@@ -96,10 +105,10 @@ namespace ING {
 		/**
 		 *	Release Method
 		 */
-		void ICameraData::Release() {
+		void C_CameraData::Release() {
 
+			C_Object::Release();
 
-			delete this;
 		}
 
 	}

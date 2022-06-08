@@ -1,0 +1,39 @@
+{
+
+    "PIE" : {
+
+        "name" : "DemoGame2",
+
+        "mode" : "ING.PIE",
+    
+        "plugins" : [
+    
+            {
+    
+                "name" : "DemoPlugin"
+    
+            }
+    
+        ]
+
+    },
+
+    "Standalone" : {
+
+        "name" : "DemoGame2",
+
+        "mode" : "ING.Standalone",
+    
+        "plugins" : [
+    
+            {
+    
+                "name" : "DemoPlugin"
+    
+            }
+    
+        ]
+
+    }
+
+}
