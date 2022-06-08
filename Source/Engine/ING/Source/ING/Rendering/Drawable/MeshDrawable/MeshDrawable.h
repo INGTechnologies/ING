@@ -39,7 +39,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -112,7 +112,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Draw(Camera* camera, const String& passName) override;
+			virtual void Draw(C_Camera* camera, const String& passName) override;
 
 		};
 

@@ -92,7 +92,7 @@ namespace ING {
 
 		GetApplication()->AddModule(module);
 
-		GetApplication()->GetModule("ING")->AddDependencies("ING.UI");
+		GetApplication()->GetModule("ING")->AddDependency("ING.UI");
 
 	}
 

@@ -46,6 +46,15 @@ using namespace ING::Math;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Reflection.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
 
 	namespace Rendering {
@@ -54,7 +63,7 @@ namespace ING {
 
 		class C_Pipeline;
 
-		class ICameraData;
+		class C_CameraData;
 
 	}
 
@@ -74,8 +83,12 @@ namespace ING {
 
 
 
-	class ING_API Camera
+	class ING_API C_Camera : public C_Object
 	{
+
+		ING_REFLECT_CLASS(C_Camera, C_Object)
+
+
 
 		/**
 		 *	Friend Classes
@@ -86,11 +99,10 @@ namespace ING {
 
 
 		/**
-		 *	Constructors And Destructor
+		 *	Constructor
 		 */
-	public:
-		Camera();
-		~Camera();
+	protected:
+		void Constructor();
 
 
 
@@ -106,9 +118,9 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		List<Camera*>::Node*	node;
+		List<C_Camera*>::Node*	node;
 
-		List<Camera*>::Node*	nodeInScreenCameraList;
+		List<C_Camera*>::Node*	nodeInScreenCameraList;
 
 		CameraId				id;
 
@@ -117,7 +129,7 @@ namespace ING {
 		RMatrix4x4				viewMatrix;
 		RMatrix4x4				projectionMatrix;
 
-		S_TransformM				transformM;
+		S_TransformM			transformM;
 
 		float					fov;
 
@@ -130,16 +142,16 @@ namespace ING {
 
 		Rendering::Scene*		renderingScene;
 
-		Rendering::ICameraData*	renderingData;
+		Rendering::C_CameraData*	renderingData;
 
 		Rendering::C_Pipeline*	renderingPipeline;
 
 		CameraTargetMode		targetMode;
 
 	public:
-		List<Camera*>::Node*	GetNode				()							{ return node; }
+		List<C_Camera*>::Node*	GetNode				()							{ return node; }
 
-		List<Camera*>::Node*	GetNodeInScreenCameraList()						{ return nodeInScreenCameraList; }
+		List<C_Camera*>::Node*	GetNodeInScreenCameraList()						{ return nodeInScreenCameraList; }
 
 		CameraId				GetId				()							{ return id; }
 
@@ -168,8 +180,8 @@ namespace ING {
 		Rendering::Scene*		GetRenderingScene	()							{ return renderingScene; }
 		void					SetRenderingScene	(Rendering::Scene* renderingScene)	{ this->renderingScene = renderingScene;}
 
-		Rendering::ICameraData*	GetRenderingData	()							{ return renderingData; }
-		void					SetRenderingData	(Rendering::ICameraData* renderingData)		{ this->renderingData = renderingData; }
+		Rendering::C_CameraData*	GetRenderingData	()							{ return renderingData; }
+		void					SetRenderingData	(Rendering::C_CameraData* renderingData)		{ this->renderingData = renderingData; }
 
 		Rendering::C_Pipeline*	GetRenderingPipeline()							{ return renderingPipeline; }
 		void					SetRenderingPipeline(Rendering::C_Pipeline* renderingPipeline);

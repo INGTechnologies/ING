@@ -91,7 +91,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void C_UIDrawable::Draw(Camera* camera, const String& passName) {
+		void C_UIDrawable::Draw(C_Camera* camera, const String& passName) {
 
 
 

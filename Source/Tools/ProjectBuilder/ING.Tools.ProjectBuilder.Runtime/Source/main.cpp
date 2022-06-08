@@ -9,6 +9,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ProjectBuilder
+ */
+#include <ING/Tools/ProjectBuilder/ProjectBuilder.h>
+
+
+
 #ifdef USE_MSVC
 int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 {
@@ -21,7 +28,11 @@ int wmain(int argc, wchar_t* argv_cstr[], wchar_t* envp[])
 
 	}
 
+	Tools::ProjectBuilder* builder = new Tools::ProjectBuilder(argv);
 
+	builder->Build();
+
+	builder->Release();
 
 	return 0;
 }

@@ -32,7 +32,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -69,8 +69,8 @@ namespace ING {
 			virtual void ApplyTransform (const S_TransformM& transformMatrices);
 			virtual void ApplyTransform (const S_TransformM& transformMatrices, bool updateBuffer);
 
-			virtual void ApplyCamera	(Camera* camera);
-			virtual void ApplyCamera	(Camera* camera, bool updateBuffer);
+			virtual void ApplyCamera	(C_Camera* camera);
+			virtual void ApplyCamera	(C_Camera* camera, bool updateBuffer);
 
 		};
 

@@ -18,7 +18,7 @@ using namespace ING::Utils;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -50,10 +50,10 @@ namespace ING {
 		 *	Properties
 		 */
 	private:
-		List<Camera*>			cameraList;
+		List<C_Camera*>			cameraList;
 
 	public:
-		List<Camera*>&			GetCameraList () { return cameraList; }
+		List<C_Camera*>&		GetCameraList () { return cameraList; }
 
 
 
@@ -61,9 +61,9 @@ namespace ING {
 		 *	Method
 		 */
 	public:
-		List<Camera*>::Node*	AddCamera		(Camera* camera);
+		List<C_Camera*>::Node*	AddCamera		(C_Camera* camera);
 
-		void					RemoveCamera	(List<Camera*>::Node* node);
+		void					RemoveCamera	(List<C_Camera*>::Node* node);
 
 		void					FrameUpdate		();
 

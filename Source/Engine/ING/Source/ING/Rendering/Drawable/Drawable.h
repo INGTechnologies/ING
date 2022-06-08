@@ -27,7 +27,7 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -119,7 +119,7 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			virtual void Draw(Camera* camera, const String& passName);
+			virtual void Draw(C_Camera* camera, const String& passName);
 
 		};
 
