@@ -64,6 +64,13 @@
 
 
 /**
+ *	Include JSON
+ */
+#include "JSON/JSON.h"
+
+
+
+/**
  *	Include UniquePtr
  */
 #include "UniquePtr/UniquePtr.h"

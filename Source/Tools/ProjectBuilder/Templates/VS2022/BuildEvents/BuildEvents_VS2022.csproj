@@ -53,9 +53,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-    <PostBuildEvent>XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "$(INGEngineBinariesDir)" /s /i /y </PostBuildEvent>
-    <PostBuildEvent>XCOPY "$(INGEngineDir)" "$(INGEngineBinariesDir)" /s /i /y </PostBuildEvent>
-    <PostBuildEvent>XCOPY "$(INGGameDir)" "$(INGGameBinariesDir)" /s /i /y </PostBuildEvent>
+    <PostBuildEvent>
+      XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "$(INGEngineBinariesDir)" /s /i /y
+      XCOPY "$(INGEngineDir)" "$(INGEngineBinariesDir)" /s /i /y
+      XCOPY "$(INGGameDir)" "$(INGGameBinariesDir)" /s /i /y 
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.NonSIMD|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -81,7 +83,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\main.cs" />
+    <Compile Include="main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

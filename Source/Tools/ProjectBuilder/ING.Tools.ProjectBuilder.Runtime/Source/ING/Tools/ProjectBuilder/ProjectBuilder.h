@@ -13,6 +13,7 @@ namespace ING {
 
 		class ISolutionGenerator;
 		class IFileReader;
+		class IFileWriter;
 
 
 
@@ -57,8 +58,6 @@ namespace ING {
 			WString			projectFilePath;
 			WString			projectDirectoryPath;
 
-			String			configurationName;
-
 			bool			isNeedGenerateSolution;
 
 			ISolutionGenerator* solutionGenerator;
@@ -66,8 +65,14 @@ namespace ING {
 			std::unordered_map<String, WString> name2PlaceholderValueMap;
 
 			IFileReader*	fileReader;
+			IFileWriter*	fileWriter;
 
 			WString			projectFileContent;
+
+			JSON			projectJSON;
+
+			std::vector<String>	gamePluginNameVector;
+			std::vector<JSON>	gamePluginJSONVector;
 
 		public:
 			const std::vector<WString>& GetArgv () { return argv; }
@@ -75,17 +80,24 @@ namespace ING {
 			const WString&	GetProjectFilePath () { return projectFilePath; }
 			const WString&	GetProjectDirectoryPath() { return projectDirectoryPath; }
 
-			const String&	GetConfigurationName () { return configurationName; }
-
 			bool			IsNeedGenerateSolution () { return isNeedGenerateSolution; }
 
 			ISolutionGenerator* GetSolutionGenerator () { return solutionGenerator; }
 
 			const std::unordered_map<String, WString>& GetName2PlaceholderValueMap() { return name2PlaceholderValueMap; }
 
+			const WString&	GetPlaceholder(const String& name) { return name2PlaceholderValueMap.find(name)->second; }
+			void			SetPlaceholder(const String& name, const WString& value) { name2PlaceholderValueMap[name] = value; }
+
 			IFileReader*	GetFileReader () { return fileReader; }
+			IFileWriter*	GetFileWriter () { return fileWriter; }
 
 			const WString&	GetProjectFileContent () { return projectFileContent; }
+
+			const JSON&		GetProjectJSON () { return projectJSON; }
+
+			const std::vector<String>&	GetGamePluginNameVector () { return gamePluginNameVector; }
+			const std::vector<JSON>&	GetGamePluginJSONVector () { return gamePluginJSONVector; }
 
 
 
@@ -93,6 +105,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
+			void SetupGamePluginVector();
+			void SortGamePluginList();
 			void GenerateSolution();
 			void Build();
 
