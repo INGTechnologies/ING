@@ -1,35 +1,21 @@
 {
 
-    "PIE" : {
+    "name" : "DemoGame2",
 
-        "name" : "DemoGame2",
+    "mode" : "ING.PIE",
 
-        "mode" : "ING.PIE",
+    "projectDir" : "$(SolutionDir)Source/Games/Developers/n-c0d3r/DemoGame2/",
 
-        "binariesDir" : "$(INGProjectDir)Binaries/",
-    
-        "plugins" : [
-    
-            
-    
-        ]
+    "binariesDirName" : "Binaries",
 
-    },
+    "engineDirName" : "Engine",
 
-    "Standalone" : {
+    "gameDirName" : "Game",
 
-        "name" : "DemoGame2",
+    "plugins" : [
 
-        "mode" : "ING.Standalone",
+        "DemoPlugin"
 
-        "binariesDir" : "$(INGProjectDir)Binaries/",
-    
-        "plugins" : [
-    
-            
-    
-        ]
-
-    }
+    ]
 
 }

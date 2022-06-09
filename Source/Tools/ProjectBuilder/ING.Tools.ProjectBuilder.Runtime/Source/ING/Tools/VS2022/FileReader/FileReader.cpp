@@ -66,41 +66,14 @@ namespace ING {
 			 */
 			WString	FileReader::Read(const WString& path) {
 
-				WString rawContent = L"";
+				std::wifstream fileStream(path);
 
-				std::wfstream fileStream;
+				WString result = WString(
+					std::istreambuf_iterator<wchar_t>(fileStream),
+					std::istreambuf_iterator<wchar_t>()
+				);
 
-				std::streampos fileSize = 0;
-
-
-
-				/* Open File */
-				fileStream.open(path.c_str());
-
-
-
-				/* Get File Size */
-				fileStream.seekg(0, std::wios::end);
-
-				fileSize = fileStream.tellg();
-
-				fileStream.seekg(0, std::wios::beg);
-
-
-
-				/* Read File */
-				rawContent.resize(fileSize);
-
-				fileStream.read((wchar_t*)rawContent.c_str(), fileSize);
-
-
-
-				/* Close File */
 				fileStream.close();
-
-
-
-				WString result = rawContent;
 
 				for (auto item : GetProjectBuilder()->GetName2PlaceholderValueMap()) {
 

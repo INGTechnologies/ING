@@ -8,11 +8,10 @@ using namespace ING::Utils;
 
 
 
-
 /**
- *	Include SolutionGenerator
+ *	Include FileWriter
  */
-#include <ING/Tools/SolutionGenerator/SolutionGenerator.h>
+#include <ING/Tools/FileWriter/FileWriter.h>
 
 
 
@@ -20,16 +19,20 @@ namespace ING {
 
 	namespace Tools {
 
+		class ProjectBuilder;
+
+
+
 		namespace VS2022 {
 
-			class SolutionGenerator : public ISolutionGenerator {
+			class FileWriter : public IFileWriter {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				SolutionGenerator(ProjectBuilder* projectBuilder);
-				~SolutionGenerator();
+				FileWriter	(ProjectBuilder* projectBuilder);
+				~FileWriter ();
 
 
 
@@ -45,10 +48,7 @@ namespace ING {
 				 *	Methods
 				 */
 			public:
-				virtual void Generate() override;
-
-				void GenerateBuildEventsProject();
-				void GenerateRuntimeProject();
+				virtual void Write(const WString& path, const WString& content) override;
 
 			};
 

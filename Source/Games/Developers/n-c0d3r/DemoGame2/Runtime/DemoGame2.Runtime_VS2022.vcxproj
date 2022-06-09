@@ -29,10 +29,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{6C6DC6F9-D2E2-4334-82AF-8213316BFAAB}</ProjectGuid>
+    <ProjectGuid>{40A87591-D13C-496C-A0DD-6833912002E2}</ProjectGuid>
     <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>$(INGProjectName).Runtime</ProjectName>
+    <ProjectName>DemoGame2.Runtime</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -250,8 +250,8 @@
     </Link>
   </ItemDefinitionGroup>
   <PropertyGroup>
-    <OutDir>$(INGEngineBinariesDir)</OutDir>
-    <LocalDebuggerWorkingDirectory>$(INGEngineBinariesDir)</LocalDebuggerWorkingDirectory>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Engine\</OutDir>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Engine\</LocalDebuggerWorkingDirectory>
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="Source\**\*.cpp" />

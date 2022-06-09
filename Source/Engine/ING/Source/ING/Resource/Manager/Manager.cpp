@@ -115,36 +115,13 @@ namespace ING {
 
 
 
-		WString result;
+		std::wifstream fileStream(path);
 
-		std::wfstream fileStream;
+		WString result = WString(
+			std::istreambuf_iterator<wchar_t>(fileStream),
+			std::istreambuf_iterator<wchar_t>()
+		);
 
-		std::streampos fileSize = 0;
-
-
-
-		/* Open File */
-		fileStream.open(path.c_str());
-
-
-
-		/* Get File Size */
-		fileStream.seekg(0, std::wios::end);
-
-		fileSize = fileStream.tellg();
-
-		fileStream.seekg(0, std::wios::beg);
-
-
-
-		/* Read File */
-		result.resize(fileSize);
-
-		fileStream.read((wchar_t*)result.c_str(), fileSize);
-
-
-
-		/* Close File */
 		fileStream.close();
 
 
@@ -191,7 +168,20 @@ namespace ING {
 
 		std::wfstream fileStream;
 
-		unsigned long fileSize = parsedContent.length();
+		size_t fileSize = parsedContent.size();
+
+
+
+		if (std::filesystem::exists(path)) {
+
+			std::filesystem::remove(path);
+
+		}
+
+		std::filesystem::create_directories(std::filesystem::path(path).parent_path());
+
+		std::ofstream ofs(path);
+		ofs.close();
 
 
 

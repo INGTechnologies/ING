@@ -27,6 +27,13 @@
 
 
 
+/**
+ *	Include VS2022 FileWriter
+ */
+#include <ING/Tools/VS2022/FileWriter/FileWriter.h>
+
+
+
 namespace ING {
 
 	namespace Tools {
@@ -36,7 +43,8 @@ namespace ING {
 		 */
 		ProjectBuilder::ProjectBuilder() :
 			solutionGenerator(0),
-			fileReader(0)
+			fileReader(0),
+			fileWriter(0)
 		{
 
 
@@ -49,7 +57,7 @@ namespace ING {
 
 			this->argv = argv;
 
-			if (argv.size() < 3) {
+			if (argv.size() < 2) {
 
 				Release();
 
@@ -64,27 +72,24 @@ namespace ING {
 			projectDirectoryPath = Path::GetDirectoryPath(projectFilePath) + ToWString(L"\\");
 			ReplaceAll(projectDirectoryPath, L"\\", L"/");
 
-			configurationName = ToString(argv[2]);
-
-			name2PlaceholderValueMap["INGProjectFile"] = projectFilePath;
-			name2PlaceholderValueMap["INGProjectDir"] = projectDirectoryPath;
-			name2PlaceholderValueMap["INGConfiguration"] = ToWString(configurationName);
+			name2PlaceholderValueMap["INGAbsProjectFile"] = projectFilePath;
+			name2PlaceholderValueMap["INGAbsProjectDir"] = projectDirectoryPath;
 
 
 
 			isNeedGenerateSolution = true;
 
-			if (argv.size() > 3) {
+			if (argv.size() > 2) {
 
-				isNeedGenerateSolution = (argv[3] == ToWString("true"));
+				isNeedGenerateSolution = (argv[2] == ToWString("true"));
 
 			}
 
 			String solutionGeneratorName = "VS2022";
 
-			if (argv.size() > 4) {
+			if (argv.size() > 3) {
 
-				solutionGeneratorName = ToString(argv[4]);
+				solutionGeneratorName = ToString(argv[3]);
 
 			}
 
@@ -92,13 +97,13 @@ namespace ING {
 
 			if (solutionGeneratorName == "VS2022") {
 
-				solutionGenerator = new VS2022::SolutionGenerator(this);
+				fileReader = new VS2022::FileReader(this);
 
 			}
 
 			if (solutionGeneratorName == "VS2022") {
 
-				fileReader = new VS2022::FileReader(this);
+				fileWriter = new VS2022::FileWriter(this);
 
 			}
 
@@ -106,7 +111,7 @@ namespace ING {
 
 			if (
 				fileReader == 0
-				|| solutionGenerator == 0
+				|| fileWriter == 0
 			) {
 
 				Release();
@@ -116,6 +121,93 @@ namespace ING {
 			}
 
 			projectFileContent = fileReader->Read(projectFilePath);
+
+
+
+			projectJSON = ParseJSON(projectFileContent);
+
+
+
+			if (projectJSON.find("name") == projectJSON.end())
+				name2PlaceholderValueMap["INGProjectName"] = ToWString(L"Untitled");
+			else
+				name2PlaceholderValueMap["INGProjectName"] = ToWString(projectJSON["name"].get<std::string>());
+
+			if (projectJSON.find("mode") == projectJSON.end())
+				name2PlaceholderValueMap["INGMode"] = ToWString(L"ING.Standalone");
+			else
+				name2PlaceholderValueMap["INGMode"] = ToWString(projectJSON["mode"].get<std::string>());
+
+			if (projectJSON.find("projectDir") == projectJSON.end())
+				name2PlaceholderValueMap["INGProjectDir"] = ToWString(L"$(Solution)Source/Games/") + GetPlaceholder("INGProjectName");
+			else
+				name2PlaceholderValueMap["INGProjectDir"] = ToWString(projectJSON["projectDir"].get<std::string>());
+
+			name2PlaceholderValueMap["INGProjectFile"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/") + GetPlaceholder("INGProjectName") + ToWString(L".iproject"));
+
+			if (projectJSON.find("engineDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGEngineDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/Engine/"));
+			else
+				name2PlaceholderValueMap["INGEngineDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/") + ToWString(projectJSON["engineDirName"].get<std::string>()) + ToWString(L"/"));
+
+			if (projectJSON.find("gameDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGGameDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/Game/"));
+			else
+				name2PlaceholderValueMap["INGGameDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/") + ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
+
+			if (projectJSON.find("binariesDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGBinariesDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(L"/Binaries/"));
+			else
+				name2PlaceholderValueMap["INGBinariesDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(projectJSON["binariesDirName"].get<std::string>()) + ToWString(L"/"));
+
+			if (projectJSON.find("engineDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/Engine/"));
+			else
+				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["engineDirName"].get<std::string>()) + ToWString(L"/"));
+
+			if (projectJSON.find("gameDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/Game/"));
+			else
+				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
+
+
+
+			const std::vector<String> defaultGamePluginNameVector = {
+			
+				"ING.Standalone",
+			
+			};
+
+			if (projectJSON.find("gamePlugins") == projectJSON.end())
+				gamePluginNameVector = defaultGamePluginNameVector;
+			else
+			{
+
+				this->gamePluginNameVector = defaultGamePluginNameVector + projectJSON["gamePlugins"].get<std::vector<std::string>>();
+
+			}
+
+			gamePluginJSONVector.resize(gamePluginNameVector.size());
+
+			SetupGamePluginVector();
+
+
+
+			if (solutionGeneratorName == "VS2022") {
+
+				solutionGenerator = new VS2022::SolutionGenerator(this);
+
+			}
+
+			if (
+				solutionGenerator == 0
+			) {
+
+				Release();
+
+				return;
+
+			}
 
 		}
 
@@ -128,7 +220,7 @@ namespace ING {
 
 
 		/**
-		 *	CreateInstance, Release Methods
+		 *	Release Methods
 		 */
 		void	ProjectBuilder::Release() {
 
@@ -152,6 +244,36 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		void	ProjectBuilder::SetupGamePluginVector() {
+
+			for (unsigned int i = 0; i < gamePluginNameVector.size(); ++i) {
+
+				WString gamePluginJSONFilePath = Path::Normalize(GetPlaceholder("INGAbsProjectDir") + ToWString(L"GamePlugins/") + ToWString(gamePluginNameVector[i]) + ToWString(L"/") + ToWString(gamePluginNameVector[i]) + ToWString(".igamePlugin"));
+
+				if (std::filesystem::exists(gamePluginJSONFilePath)) {
+
+					WString content = fileReader->Read(
+
+						gamePluginJSONFilePath
+
+					);
+
+					gamePluginJSONVector[i] = ParseJSON(ToString(content));
+
+				}
+
+			}
+
+			SortGamePluginList();
+
+		}
+
+		void	ProjectBuilder::SortGamePluginList() {
+
+
+
+		}
+
 		void	ProjectBuilder::GenerateSolution() {
 
 			solutionGenerator->Generate();
