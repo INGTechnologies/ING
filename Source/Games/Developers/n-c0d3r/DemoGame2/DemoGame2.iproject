@@ -5,14 +5,12 @@
         "name" : "DemoGame2",
 
         "mode" : "ING.PIE",
+
+        "binariesDir" : "$(INGProjectDir)Binaries/",
     
         "plugins" : [
     
-            {
-    
-                "name" : "DemoPlugin"
-    
-            }
+            
     
         ]
 
@@ -23,14 +21,12 @@
         "name" : "DemoGame2",
 
         "mode" : "ING.Standalone",
+
+        "binariesDir" : "$(INGProjectDir)Binaries/",
     
         "plugins" : [
     
-            {
-    
-                "name" : "DemoPlugin"
-    
-            }
+            
     
         ]
 

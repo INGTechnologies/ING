@@ -11,6 +11,11 @@ namespace ING {
 
 	namespace Tools {
 
+		class ISolutionGenerator;
+		class IFileReader;
+
+
+
 		class ProjectBuilder : public Singleton<ProjectBuilder> {
 
 			/**
@@ -54,6 +59,16 @@ namespace ING {
 
 			String			configurationName;
 
+			bool			isNeedGenerateSolution;
+
+			ISolutionGenerator* solutionGenerator;
+
+			std::unordered_map<String, WString> name2PlaceholderValueMap;
+
+			IFileReader*	fileReader;
+
+			WString			projectFileContent;
+
 		public:
 			const std::vector<WString>& GetArgv () { return argv; }
 
@@ -62,12 +77,23 @@ namespace ING {
 
 			const String&	GetConfigurationName () { return configurationName; }
 
+			bool			IsNeedGenerateSolution () { return isNeedGenerateSolution; }
+
+			ISolutionGenerator* GetSolutionGenerator () { return solutionGenerator; }
+
+			const std::unordered_map<String, WString>& GetName2PlaceholderValueMap() { return name2PlaceholderValueMap; }
+
+			IFileReader*	GetFileReader () { return fileReader; }
+
+			const WString&	GetProjectFileContent () { return projectFileContent; }
+
 
 
 			/**
 			 *	Methods
 			 */
 		public:
+			void GenerateSolution();
 			void Build();
 
 		};

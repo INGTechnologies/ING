@@ -1,0 +1,14 @@
+
+{
+
+    "name" : "Untitled",
+
+    "binariesDir" : "$(INGProjectDir)Binaries",
+
+    "plugins" : [
+
+        
+
+    ]
+
+}
