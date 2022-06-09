@@ -184,7 +184,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
@@ -226,7 +227,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -267,7 +269,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -309,7 +312,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
@@ -351,7 +355,8 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>XCOPY "$(OutDir)\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" /s /i /y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

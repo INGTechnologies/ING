@@ -119,6 +119,24 @@ namespace ING {
 
 		}
 
+		bool Replace(String& str, const String& from, const String& to) {
+			size_t start_pos = str.find(from);
+			if (start_pos == String::npos)
+				return false;
+			str.replace(start_pos, from.length(), to);
+			return true;
+		}
+
+		void ReplaceAll(String& str, const String& from, const String& to) {
+			if (from.empty())
+				return;
+			size_t start_pos = 0;
+			while ((start_pos = str.find(from, start_pos)) != String::npos) {
+				str.replace(start_pos, from.length(), to);
+				start_pos += to.length();
+			}
+		}
+
 
 
 
@@ -264,6 +282,24 @@ namespace ING {
 
 			return s;
 
+		}
+
+		bool Replace(WString& str, const WString& from, const WString& to) {
+			size_t start_pos = str.find(from);
+			if (start_pos == WString::npos)
+				return false;
+			str.replace(start_pos, from.length(), to);
+			return true;
+		}
+
+		void ReplaceAll(WString& str, const WString& from, const WString& to) {
+			if (from.empty())
+				return;
+			size_t start_pos = 0;
+			while ((start_pos = str.find(from, start_pos)) != WString::npos) {
+				str.replace(start_pos, from.length(), to);
+				start_pos += to.length();
+			}
 		}
 
 	}
