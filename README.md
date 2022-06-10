@@ -35,7 +35,6 @@
       `key`**:** **MONO_**{ platform (**X64** or **WIN32**) }\
       `value`**:** { mono installation path }
   + `Step 2` **:** Clone [**ING repository**](https://github.com/INGTechnologies/ING).
-  + `Step 3` **:** Open **"ING_VS** {visual studio version} **.sln"**.
 
 
 ## Documentation ##
