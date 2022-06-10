@@ -1,0 +1,13 @@
+{
+
+    "varname" : "ING_EDITOR",
+
+    "sourceDirName" : "Source/ING/Editor/",
+
+    "dependencies" : [
+
+        "ING.Rendering.StandardRP"
+
+    ]
+
+}

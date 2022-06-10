@@ -80,14 +80,19 @@ namespace ING {
 
 
 
-				if (!std::filesystem::exists(path)) {
+				if (std::filesystem::exists(path)) {
 
-					std::filesystem::create_directories(std::filesystem::path(path).parent_path());
-
-					std::ofstream ofs(path);
-					ofs.close();
-
+					std::filesystem::remove(path);
 				}
+
+
+				auto dirPath = std::filesystem::path(path).parent_path();
+
+				if(!std::filesystem::exists(dirPath))
+					std::filesystem::create_directories(dirPath);
+
+				std::ofstream ofs(path);
+				ofs.close();
 
 
 

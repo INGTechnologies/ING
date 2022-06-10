@@ -53,9 +53,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
-    <PostBuildEvent>XCOPY "$(SolutionDir)Source\Editor\Engine\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y
-    XCOPY "$(SolutionDir)Source\Editor\Editor\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\" /s /i /y
-    XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y
+    <PostBuildEvent>
+      XCOPY "$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\" "$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y
+      XCOPY "$(SolutionDir)Source\Editor\Engine\" "$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Engine\" /s /i /y
+      XCOPY "$(SolutionDir)Source\Editor\Editor\" "$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\" /s /i /y 
     </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug.NonSIMD|x64'">
@@ -82,7 +83,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\main.cs" />
+    <Compile Include="main.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
