@@ -4,7 +4,7 @@
 
     "projectDir" : "$(SolutionDir)Source/Engine/",
 
-    "binariesDirName" : "Binaries/../../Binaries/$(Platform)/$(Configuration)/$(INGIDE)/Engine/",
+    "binariesDirName" : "../../Binaries/$(Platform)/$(Configuration)/$(INGIDE)/Engine/",
 
     "engineDirName" : "/",
 
