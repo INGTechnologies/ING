@@ -7,16 +7,16 @@
 
 
 
-#if PLUGIN_EXPORTS(ING_STANDALONE) > 0
-#define ING_STANDALONE_API __declspec(dllexport)
-#define ING_STANDALONE_PRIVATE_API __declspec(dllexport)
-#define ING_STANDALONE_EXTERN
+#if PLUGIN_EXPORTS($(INGPluginVarName)) > 0
+#define $(INGPluginVarName)_API __declspec(dllexport)
+#define $(INGPluginVarName)_PRIVATE_API __declspec(dllexport)
+#define $(INGPluginVarName)_EXTERN
 #else
-#define ING_STANDALONE_API __declspec(dllimport)
+#define $(INGPluginVarName)_API __declspec(dllimport)
 #ifndef IS_PLUGIN
-#define ING_STANDALONE_PRIVATE_API __declspec(dllimport)
+#define $(INGPluginVarName)_PRIVATE_API __declspec(dllimport)
 #else
-#define ING_STANDALONE_PRIVATE_API
+#define $(INGPluginVarName)_PRIVATE_API
 #endif
-#define ING_STANDALONE_EXTERN extern
+#define $(INGPluginVarName)_EXTERN extern
 #endif

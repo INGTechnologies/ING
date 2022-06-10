@@ -50,6 +50,9 @@ namespace ING {
 				void GenerateBuildEventsProject();
 				void GenerateRuntimeProject();
 
+				void GeneratePluginProject(const String& name);
+				void GeneratePluginProjects();
+
 			};
 
 		}

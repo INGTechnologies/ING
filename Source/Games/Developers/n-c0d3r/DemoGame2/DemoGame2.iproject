@@ -12,10 +12,24 @@
 
     "gameDirName" : "Game",
 
+    "buildRuntime" : true,
+
+    "buildPlugins" : true,
+
+    "buildEngine" : true,
+
+    "buildGame" : true,
+
     "plugins" : [
 
-        "DemoPlugin"
+        "DemoPlugin",
 
-    ]
+        "DemoPlugin2",
+
+        "DemoPlugin3"
+
+    ],
+
+    "engineProjectDir" : "$(SolutionDir)Source/Engine/"
 
 }

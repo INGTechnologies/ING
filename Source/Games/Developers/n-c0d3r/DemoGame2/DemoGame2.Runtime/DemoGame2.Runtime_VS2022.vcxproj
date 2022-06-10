@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{40A87591-D13C-496C-A0DD-6833912002E2}</ProjectGuid>
+    <ProjectGuid>{52A737C1-5ED6-4B8F-BB0C-BD5B63499656}</ProjectGuid>
     <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>DemoGame2.Runtime</ProjectName>

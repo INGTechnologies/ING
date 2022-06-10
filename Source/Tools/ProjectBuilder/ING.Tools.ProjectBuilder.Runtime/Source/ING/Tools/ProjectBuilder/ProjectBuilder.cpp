@@ -57,7 +57,44 @@ namespace ING {
 
 			this->argv = argv;
 
-			if (argv.size() < 2) {
+
+
+			isNeedGenerateSolution = true;
+
+			String solutionGeneratorName = "VS2022";
+
+			for (unsigned int i = 0; i < argv.size() - 1; ++i) {
+
+				if (argv[i] == L"/Path:") {
+
+					projectFilePath = argv[i + 1];
+
+					++i;
+
+				}
+				else if (argv[i] == L"/GenerateSolution:") {
+
+					if (argv[i + 1] == L"true") {
+
+						isNeedGenerateSolution = true;
+
+					}
+					else isNeedGenerateSolution = false;
+
+					++i;
+
+				}
+				else if (argv[i] == L"/IDE:") {
+
+					solutionGeneratorName = ToString(argv[i + 1]);
+
+					++i;
+
+				}
+
+			}
+
+			if (projectFilePath == L"") {
 
 				Release();
 
@@ -66,7 +103,6 @@ namespace ING {
 
 
 
-			projectFilePath = argv[1];
 			ReplaceAll(projectDirectoryPath, L"\\", L"/");
 
 			projectDirectoryPath = Path::GetDirectoryPath(projectFilePath) + ToWString(L"\\");
@@ -77,23 +113,8 @@ namespace ING {
 
 
 
-			isNeedGenerateSolution = true;
-
-			if (argv.size() > 2) {
-
-				isNeedGenerateSolution = (argv[2] == ToWString("true"));
-
-			}
-
-			String solutionGeneratorName = "VS2022";
-
-			if (argv.size() > 3) {
-
-				solutionGeneratorName = ToString(argv[3]);
-
-			}
-
 			name2PlaceholderValueMap["SolutionGeneratorName"] = ToWString(solutionGeneratorName);
+			name2PlaceholderValueMap["INGIDE"] = ToWString(solutionGeneratorName);
 
 			if (solutionGeneratorName == "VS2022") {
 
@@ -170,26 +191,99 @@ namespace ING {
 			else
 				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
 
+			if (projectJSON.find("engineProjectDir") == projectJSON.end())
+				name2PlaceholderValueMap["INGEngineProjectDir"] = ToWString(L"$(SolutionDir)Source/Engine/");
+			else
+				name2PlaceholderValueMap["INGEngineProjectDir"] = Path::Normalize(ToWString(projectJSON["engineProjectDir"].get<std::string>()));
 
 
-			const std::vector<String> defaultGamePluginNameVector = {
+
+			if (projectJSON.find("buildRuntime") == projectJSON.end())
+				name2PlaceholderValueMap["INGBuildRuntime"] = L"true";
+			else {
+
+				if (projectJSON["buildRuntime"].get<bool>()) {
+
+					name2PlaceholderValueMap["INGBuildRuntime"] = L"true";
+
+				}
+				else {
+
+					name2PlaceholderValueMap["INGBuildRuntime"] = L"false";
+
+				}
+
+			}
+
+			if (projectJSON.find("buildPlugins") == projectJSON.end())
+				name2PlaceholderValueMap["INGBuildPlugins"] = L"true";
+			else {
+
+				if (projectJSON["buildPlugins"].get<bool>()) {
+
+					name2PlaceholderValueMap["INGBuildPlugins"] = L"true";
+
+				}
+				else {
+
+					name2PlaceholderValueMap["INGBuildPlugins"] = L"false";
+
+				}
+
+			}
+
+			if (projectJSON.find("buildEngine") == projectJSON.end())
+				name2PlaceholderValueMap["INGBuildEngine"] = L"true";
+			else {
+
+				if (projectJSON["buildEngine"].get<bool>()) {
+
+					name2PlaceholderValueMap["INGBuildEngine"] = L"true";
+
+				}
+				else {
+
+					name2PlaceholderValueMap["INGBuildEngine"] = L"false";
+
+				}
+
+			}
+
+			if (projectJSON.find("buildGame") == projectJSON.end())
+				name2PlaceholderValueMap["INGBuildGame"] = L"true";
+			else {
+
+				if (projectJSON["buildGame"].get<bool>()) {
+
+					name2PlaceholderValueMap["INGBuildGame"] = L"true";
+
+				}
+				else {
+
+					name2PlaceholderValueMap["INGBuildGame"] = L"false";
+
+				}
+
+			}
+
+
+
+			const std::vector<String> defaultPluginNameVector = {
 			
 				"ING.Standalone",
 			
 			};
 
-			if (projectJSON.find("gamePlugins") == projectJSON.end())
-				gamePluginNameVector = defaultGamePluginNameVector;
+			if (projectJSON.find("plugins") == projectJSON.end())
+				pluginNameVector = defaultPluginNameVector;
 			else
 			{
 
-				this->gamePluginNameVector = defaultGamePluginNameVector + projectJSON["gamePlugins"].get<std::vector<std::string>>();
+				this->pluginNameVector = defaultPluginNameVector + projectJSON["plugins"].get<std::vector<std::string>>();
 
 			}
 
-			gamePluginJSONVector.resize(gamePluginNameVector.size());
-
-			SetupGamePluginVector();
+			SetupPluginVector();
 
 
 
@@ -244,33 +338,127 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	ProjectBuilder::SetupGamePluginVector() {
+		void	ProjectBuilder::SetupPluginVector() {
 
-			for (unsigned int i = 0; i < gamePluginNameVector.size(); ++i) {
+			std::unordered_map<String, bool> pluginMap;
 
-				WString gamePluginJSONFilePath = Path::Normalize(GetPlaceholder("INGAbsProjectDir") + ToWString(L"GamePlugins/") + ToWString(gamePluginNameVector[i]) + ToWString(L"/") + ToWString(gamePluginNameVector[i]) + ToWString(".igamePlugin"));
+			for (unsigned int i = 0; i < pluginNameVector.size(); ++i) {
 
-				if (std::filesystem::exists(gamePluginJSONFilePath)) {
+				pluginMap[pluginNameVector[i]] = true;
+
+			}
+
+			pluginNameVector.clear();
+
+			for (auto item : pluginMap) {
+
+				pluginNameVector.push_back(item.first);
+
+			}
+
+			for (unsigned int i = 0; i < pluginNameVector.size(); ++i) {
+
+				WString pluginJSONFilePath = Path::Normalize(GetPlaceholder("INGAbsProjectDir") + ToWString(L"Plugins/") + ToWString(pluginNameVector[i]) + ToWString(L"/") + ToWString(pluginNameVector[i]) + ToWString(".iplugin"));
+
+				if (std::filesystem::exists(pluginJSONFilePath)) {
 
 					WString content = fileReader->Read(
 
-						gamePluginJSONFilePath
+						pluginJSONFilePath
 
 					);
 
-					gamePluginJSONVector[i] = ParseJSON(ToString(content));
+					JSON pluginJSON = ParseJSON(ToString(content));
+
+					pluginJSON["name"] = pluginNameVector[i];
+
+					if (pluginJSON.find("sourceDirName") == pluginJSON.end()) {
+
+						pluginJSON["sourceDirName"] = ToString("Source/");
+
+					}
+
+					pluginJSONVector.push_back(pluginJSON);
+
+					name2PluginJSONIndexMap[pluginNameVector[i]] = pluginJSONVector.size() - 1;
 
 				}
 
 			}
 
-			SortGamePluginList();
+			SortPluginVector();
 
 		}
 
-		void	ProjectBuilder::SortGamePluginList() {
+		unsigned int ProjectBuilder::GetPluginLevel(const String& name) {
+
+			unsigned int level = 1;
+			
+			JSON pluginJSON = GetPluginJSON(name);
+
+			if (pluginJSON.find("dependencies") == pluginJSON.end()) {
+
+				return level;
+			}
+
+			auto dependencies = pluginJSON["dependencies"].get<std::vector<std::string>>();
+
+			for (auto item : dependencies) {
+
+				unsigned int dependencyLevel = 1;
+
+				if (name2PluginJSONIndexMap.find(item) != name2PluginJSONIndexMap.end()) {
+
+					dependencyLevel = GetPluginLevel(item);
+
+				}
+
+				if (level < dependencyLevel + 1) {
+
+					level = dependencyLevel + 1;
+
+				}
+
+			}
+
+			return level;
+		}
+
+		void	ProjectBuilder::SortPluginVector() {
+
+			/* Setup Name To Plugin Level Map */
+			std::unordered_map<String, unsigned int> name2PluginLevelMap;
+
+			for (auto item : name2PluginJSONIndexMap) {
+
+				name2PluginLevelMap[item.first] = GetPluginLevel(item.first);
+
+			}
 
 
+
+			/* Sort */
+			std::vector<JSON> pluginJSONVector = this->pluginJSONVector;
+
+			for (unsigned int i = 0; i < pluginJSONVector.size(); ++i) {
+
+				for (unsigned int j = 0; j < i; ++j) {
+
+					if (
+						name2PluginLevelMap[pluginJSONVector[i]["name"].get<std::string>()] < name2PluginLevelMap[pluginJSONVector[j]["name"].get<std::string>()]
+					) {
+
+						JSON mw = pluginJSONVector[i];
+						pluginJSONVector[i] = pluginJSONVector[j];
+						pluginJSONVector[j] = mw;
+
+					}
+
+				}
+
+			}
+
+			this->pluginJSONVector = pluginJSONVector;
 
 		}
 

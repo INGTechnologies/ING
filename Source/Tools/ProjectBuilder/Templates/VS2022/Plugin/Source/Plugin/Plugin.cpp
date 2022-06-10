@@ -19,46 +19,46 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN(ING_STANDALONE);
+DEFINE_PLUGIN($(INGPluginVarName));
 
 
 
 /**
  *	Plugin Events
  */
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
-	DEFAULT_PLUGIN_LOAD(ING_STANDALONE, engine, plugin);
-
-	return true;
-}
-
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Unload) () {
+	DEFAULT_PLUGIN_LOAD($(INGPluginVarName), engine, plugin);
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateCreate) () {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, Unload) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreInit) () {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, LateCreate) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateInit) () {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreInit) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRun) () {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, LateInit) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRelease) () {
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreRun) () {
+
+	return true;
+}
+
+DEFINE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreRelease) () {
 
 	return true;
 }

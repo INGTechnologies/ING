@@ -29,10 +29,10 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{77CC56D8-07A1-4131-8C9A-F09635464226}</ProjectGuid>
+    <ProjectGuid>{975D96DD-8A12-4803-92C9-CF265746743A}</ProjectGuid>
     <RootNamespace>ING</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>$(INGPluginName)</ProjectName>
+    <ProjectName>DemoPlugin</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -99,49 +99,49 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(INGGameBinariesDir)Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(INGPluginIncludePath);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(INGPluginLibraryPath);$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)Source\Games\Developers\n-c0d3r\DemoGame2\Binaries\Game\Plugins\$(ProjectName)\</OutDir>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
@@ -149,7 +149,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -192,7 +192,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS;NON_SIMD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -238,7 +238,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -277,7 +277,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -320,7 +320,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS;NON_SIMD</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS;NON_SIMD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>
@@ -366,7 +366,7 @@
       </FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;$(INGPluginVarName)_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions);USE_MSVC;IS_PLUGIN;DEMO_PLUGIN_EXPORTS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>

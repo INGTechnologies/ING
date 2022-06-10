@@ -1,0 +1,15 @@
+{
+
+    "varname" : "DEMO_PLUGIN_3",
+
+    "dependencies" : [
+
+        "ING.Rendering.StandardRP",
+
+        "DemoPlugin2",
+
+        "DemoPlugin"
+
+    ]
+
+}

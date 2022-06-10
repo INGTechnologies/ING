@@ -76,35 +76,46 @@ namespace ING {
 
 				ISolutionGenerator::Generate();
 
-				if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"))) {
+				if (GetProjectBuilder()->GetPlaceholder("INGBuildGame") == L"true")
+					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"))) {
 
-					std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"));
+						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"));
 
-				}
+					}
 
-				if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"))) {
+				if (GetProjectBuilder()->GetPlaceholder("INGBuildEngine") == L"true") {
 
-					std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"));
+					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"))) {
 
-				}
+						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"));
 
-				WString targetEngineConfigFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/Config.ini"));
+					}
 
-				GetProjectBuilder()
-					->GetFileWriter()
-					->Write(
+					WString targetEngineConfigFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/Config.ini"));
 
-						targetEngineConfigFilePath,
+					GetProjectBuilder()
+						->GetFileWriter()
+						->Write(
 
-						GetProjectBuilder()
-						->GetFileReader()
-						->Read(L"./Templates/VS2022/Engine/Config.ini")
+							targetEngineConfigFilePath,
 
-					);
+							GetProjectBuilder()
+							->GetFileReader()
+							->Read(L"./Templates/VS2022/Engine/Config.ini")
 
-				GenerateBuildEventsProject();
+						);
 
-				GenerateRuntimeProject();
+				}					
+						
+
+
+				if (GetProjectBuilder()->GetPlaceholder("INGBuildRuntime") == L"true")
+					GenerateRuntimeProject(); 
+						
+
+
+				if (GetProjectBuilder()->GetPlaceholder("INGBuildPlugins") == L"true")
+					GeneratePluginProjects();
 
 			}
 
@@ -144,7 +155,9 @@ namespace ING {
 
 			void	SolutionGenerator::GenerateRuntimeProject() {
 
-				WString targetVCXPROJFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Runtime/") + GetProjectBuilder()->GetPlaceholder("INGProjectName") + ToWString(L".Runtime_VS2022.vcxproj"));
+				GenerateBuildEventsProject();
+
+				WString targetVCXPROJFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/") + GetProjectBuilder()->GetPlaceholder("INGProjectName") + ToWString(L".Runtime/") + GetProjectBuilder()->GetPlaceholder("INGProjectName") + ToWString(L".Runtime_VS2022.vcxproj"));
 
 				if (std::filesystem::exists(targetVCXPROJFilePath)) {
 
@@ -166,7 +179,7 @@ namespace ING {
 
 
 
-				WString targetMainCPPFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Runtime/Source/main.cpp"));
+				WString targetMainCPPFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/") + GetProjectBuilder()->GetPlaceholder("INGProjectName") + ToWString(L".Runtime/Source/main.cpp"));
 				
 				GetProjectBuilder()
 					->GetFileWriter()
@@ -181,6 +194,173 @@ namespace ING {
 					);
 
 
+
+			}
+
+			void	SolutionGenerator::GeneratePluginProject(const String& name) {
+
+				JSON pluginJSON = GetProjectBuilder()->GetPluginJSON(name);
+				
+				WString pluginWName = ToWString(pluginJSON["name"].get<std::string>());
+				WString pluginWVarName = ToWString(pluginJSON["varname"].get<std::string>());
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginVarName", pluginWVarName);
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginName", pluginWName);
+				
+
+
+				std::vector<std::string> dependencies;
+				
+				if (pluginJSON.find("dependencies") != pluginJSON.end()) {
+
+					dependencies = pluginJSON["dependencies"].get<std::vector<std::string>>();
+
+				}
+
+
+
+				WString pluginIncludePath = L";";
+
+				for (auto item : dependencies) {
+
+					/* If has plugin JSON, item is game plugin */
+					if (GetProjectBuilder()->IsHasPluginJSON(item)) {
+
+						pluginIncludePath += Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGProjectDir") + ToWString("/Plugins/") + ToWString(item) + ToWString("/Source/;"));
+
+					}
+					/* If not has plugin JSON, item is engine plugin */
+					else {
+
+						pluginIncludePath += Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGEngineProjectDir") + ToWString("/Plugins/") + ToWString(item) + ToWString("/Source/;"));
+
+					}
+
+				}
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginIncludePath", pluginIncludePath);
+
+
+				WString pluginLibraryPath = L";";
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginLibraryPath", pluginLibraryPath);
+
+
+
+				WString targetVCXPROJFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/") + pluginWName + ToWString(L"/") + pluginWName + ToWString(L"_VS2022.vcxproj"));
+
+				if (std::filesystem::exists(targetVCXPROJFilePath)) {
+
+					std::filesystem::remove(targetVCXPROJFilePath);
+
+				}
+
+				GetProjectBuilder()
+					->GetFileWriter()
+					->Write(
+
+						targetVCXPROJFilePath,
+
+						GetProjectBuilder()
+						->GetFileReader()
+						->Read(L"./Templates/VS2022/Plugin/Plugin_VS2022.vcxproj")
+
+					);
+
+
+
+				WString targetEntryPointHFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/") + pluginWName + ToWString("/") + ToWString(pluginJSON["sourceDirName"].get<std::string>()) + ToWString(L"/EntryPoint/EntryPoint.h"));
+
+				if (std::filesystem::exists(targetEntryPointHFilePath)) {
+
+					std::filesystem::remove(targetEntryPointHFilePath);
+
+				}
+
+				GetProjectBuilder()
+					->GetFileWriter()
+					->Write(
+
+						targetEntryPointHFilePath,
+
+						GetProjectBuilder()
+						->GetFileReader()
+						->Read(L"./Templates/VS2022/Plugin/Source/EntryPoint/EntryPoint.h")
+
+					);
+
+
+
+				WString targetEntryPointCPPFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/") + pluginWName + ToWString("/") + ToWString(pluginJSON["sourceDirName"].get<std::string>()) + ToWString(L"/EntryPoint/EntryPoint.cpp"));
+
+				if (std::filesystem::exists(targetEntryPointCPPFilePath)) {
+
+					std::filesystem::remove(targetEntryPointCPPFilePath);
+
+				}
+
+				GetProjectBuilder()
+					->GetFileWriter()
+					->Write(
+
+						targetEntryPointCPPFilePath,
+
+						GetProjectBuilder()
+						->GetFileReader()
+						->Read(L"./Templates/VS2022/Plugin/Source/EntryPoint/EntryPoint.cpp")
+
+					);
+
+
+
+				WString targetPluginHFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/") + pluginWName + ToWString("/") + ToWString(pluginJSON["sourceDirName"].get<std::string>()) + ToWString(L"/Plugin/Plugin.h"));
+
+				if (!std::filesystem::exists(targetPluginHFilePath)) {
+
+					GetProjectBuilder()
+						->GetFileWriter()
+						->Write(
+
+							targetPluginHFilePath,
+
+							GetProjectBuilder()
+							->GetFileReader()
+							->Read(L"./Templates/VS2022/Plugin/Source/Plugin/Plugin.h")
+
+						);
+
+				}
+
+
+
+				WString targetPluginCPPFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/") + pluginWName + ToWString("/") + ToWString(pluginJSON["sourceDirName"].get<std::string>()) + ToWString(L"/Plugin/Plugin.cpp"));
+
+				if (!std::filesystem::exists(targetPluginCPPFilePath)) {
+
+					GetProjectBuilder()
+						->GetFileWriter()
+						->Write(
+
+							targetPluginCPPFilePath,
+
+							GetProjectBuilder()
+							->GetFileReader()
+							->Read(L"./Templates/VS2022/Plugin/Source/Plugin/Plugin.cpp")
+
+						);
+
+				}
+
+			}
+
+			void	SolutionGenerator::GeneratePluginProjects() {
+
+				for (auto item : GetProjectBuilder()->GetPluginJSONVector()) {
+
+					GeneratePluginProject(item["name"].get<std::string>());
+
+				}
 
 			}
 
