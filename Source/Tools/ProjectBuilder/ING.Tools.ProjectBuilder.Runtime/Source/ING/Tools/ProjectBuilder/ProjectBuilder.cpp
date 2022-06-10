@@ -14,9 +14,9 @@
 
 
 /**
- *	Include VS2022 SolutionGenerator
+ *	Include VS2022 ProjectGenerator
  */
-#include <ING/Tools/VS2022/SolutionGenerator/SolutionGenerator.h>
+#include <ING/Tools/VS2022/ProjectGenerator/ProjectGenerator.h>
 
 
 
@@ -49,7 +49,7 @@ namespace ING {
 		 *	Constructors And Destructor
 		 */
 		ProjectBuilder::ProjectBuilder() :
-			solutionGenerator(0),
+			projectGenerator(0),
 			fileReader(0),
 			fileWriter(0),
 			buildTool(0)
@@ -67,9 +67,9 @@ namespace ING {
 
 
 
-			isNeedGenerateSolution = true;
+			isNeedGenerateProject = true;
 
-			String solutionGeneratorName = "VS2022";
+			String projectGeneratorName = "VS2022";
 
 			buildConfig = "";
 
@@ -82,21 +82,28 @@ namespace ING {
 					++i;
 
 				}
-				else if (argv[i] == L"/GenerateSolution:") {
+				else if (argv[i] == L"/GenerateProject") {
+
+					isNeedGenerateProject = true;
+
+					++i;
+
+				}
+				else if (argv[i] == L"/GenerateProject:") {
 
 					if (argv[i + 1] == L"true") {
 
-						isNeedGenerateSolution = true;
+						isNeedGenerateProject = true;
 
 					}
-					else isNeedGenerateSolution = false;
+					else isNeedGenerateProject = false;
 
 					++i;
 
 				}
 				else if (argv[i] == L"/IDE:") {
 
-					solutionGeneratorName = ToString(argv[i + 1]);
+					projectGeneratorName = ToString(argv[i + 1]);
 
 					++i;
 
@@ -130,16 +137,16 @@ namespace ING {
 
 
 
-			name2PlaceholderValueMap["SolutionGeneratorName"] = ToWString(solutionGeneratorName);
-			name2PlaceholderValueMap["INGIDE"] = ToWString(solutionGeneratorName);
+			name2PlaceholderValueMap["ProjectGeneratorName"] = ToWString(projectGeneratorName);
+			name2PlaceholderValueMap["INGIDE"] = ToWString(projectGeneratorName);
 
-			if (solutionGeneratorName == "VS2022") {
+			if (projectGeneratorName == "VS2022") {
 
 				fileReader = new VS2022::FileReader(this);
 
 			}
 
-			if (solutionGeneratorName == "VS2022") {
+			if (projectGeneratorName == "VS2022") {
 
 				fileWriter = new VS2022::FileWriter(this);
 
@@ -177,7 +184,7 @@ namespace ING {
 				name2PlaceholderValueMap["INGMode"] = ToWString(projectJSON["mode"].get<std::string>());
 
 			if (projectJSON.find("projectDir") == projectJSON.end())
-				name2PlaceholderValueMap["INGProjectDir"] = ToWString(L"$(Solution)Source/Games/") + GetPlaceholder("INGProjectName");
+				name2PlaceholderValueMap["INGProjectDir"] = ToWString(L"$(Project)Source/Games/") + GetPlaceholder("INGProjectName");
 			else
 				name2PlaceholderValueMap["INGProjectDir"] = ToWString(projectJSON["projectDir"].get<std::string>());
 
@@ -209,7 +216,7 @@ namespace ING {
 				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
 
 			if (projectJSON.find("engineProjectDir") == projectJSON.end())
-				name2PlaceholderValueMap["INGEngineProjectDir"] = ToWString(L"$(SolutionDir)Source/Engine/");
+				name2PlaceholderValueMap["INGEngineProjectDir"] = ToWString(L"$(ProjectDir)Source/Engine/");
 			else
 				name2PlaceholderValueMap["INGEngineProjectDir"] = Path::Normalize(ToWString(projectJSON["engineProjectDir"].get<std::string>()));
 
@@ -304,14 +311,14 @@ namespace ING {
 
 
 
-			if (solutionGeneratorName == "VS2022") {
+			if (projectGeneratorName == "VS2022") {
 
-				solutionGenerator = new VS2022::SolutionGenerator(this);
+				projectGenerator = new VS2022::ProjectGenerator(this);
 
 			}
 
 			if (
-				solutionGenerator == 0
+				projectGenerator == 0
 			) {
 
 				Release();
@@ -322,7 +329,7 @@ namespace ING {
 
 
 
-			if (solutionGeneratorName == "VS2022") {
+			if (projectGeneratorName == "VS2022") {
 
 				buildTool = new VS2022::BuildTool(this);
 
@@ -353,9 +360,9 @@ namespace ING {
 		 */
 		void	ProjectBuilder::Release() {
 
-			if (solutionGenerator == 0) {
+			if (projectGenerator == 0) {
 
-				solutionGenerator->Release();
+				projectGenerator->Release();
 
 			}
 
@@ -497,17 +504,17 @@ namespace ING {
 
 		}
 
-		void	ProjectBuilder::GenerateSolution() {
+		void	ProjectBuilder::GenerateProject() {
 
-			solutionGenerator->Generate();
+			projectGenerator->Generate();
 
 		}
 
 		void	ProjectBuilder::Build() {
 
-			if (isNeedGenerateSolution) {
+			if (isNeedGenerateProject) {
 
-				GenerateSolution();
+				GenerateProject();
 
 			}
 

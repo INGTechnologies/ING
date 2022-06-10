@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "SolutionGenerator.h"
+#include "ProjectGenerator.h"
 
 
 
@@ -20,7 +20,7 @@ namespace ING {
 		/**
 		 *	Constructors And Destructor
 		 */
-		ISolutionGenerator::ISolutionGenerator(ProjectBuilder* projectBuilder) :
+		IProjectGenerator::IProjectGenerator(ProjectBuilder* projectBuilder) :
 			projectBuilder(projectBuilder)
 		{
 
@@ -28,7 +28,7 @@ namespace ING {
 
 		}
 
-		ISolutionGenerator::~ISolutionGenerator() {
+		IProjectGenerator::~IProjectGenerator() {
 
 
 
@@ -39,7 +39,7 @@ namespace ING {
 		/**
 		 *	CreateInstance, Release Methods
 		 */
-		void	ISolutionGenerator::Release() {
+		void	IProjectGenerator::Release() {
 
 			delete this;
 		}
@@ -49,7 +49,7 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
-		void	ISolutionGenerator::Generate() {
+		void	IProjectGenerator::Generate() {
 
 
 

@@ -10,9 +10,9 @@ using namespace ING::Utils;
 
 
 /**
- *	Include SolutionGenerator
+ *	Include ProjectGenerator
  */
-#include <ING/Tools/SolutionGenerator/SolutionGenerator.h>
+#include <ING/Tools/ProjectGenerator/ProjectGenerator.h>
 
 
 
@@ -22,14 +22,14 @@ namespace ING {
 
 		namespace VS2022 {
 
-			class SolutionGenerator : public ISolutionGenerator {
+			class ProjectGenerator : public IProjectGenerator {
 
 				/**
 				 *	Constructors And Destructor
 				 */
 			public:
-				SolutionGenerator(ProjectBuilder* projectBuilder);
-				~SolutionGenerator();
+				ProjectGenerator(ProjectBuilder* projectBuilder);
+				~ProjectGenerator();
 
 
 

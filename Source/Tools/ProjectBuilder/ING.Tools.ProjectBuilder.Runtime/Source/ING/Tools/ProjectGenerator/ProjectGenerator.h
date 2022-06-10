@@ -16,14 +16,14 @@ namespace ING {
 
 
 
-		class ISolutionGenerator {
+		class IProjectGenerator {
 
 			/**
 			 *	Constructors And Destructor
 			 */
 		public:
-			ISolutionGenerator  (ProjectBuilder* projectBuilder);
-			~ISolutionGenerator ();
+			IProjectGenerator  (ProjectBuilder* projectBuilder);
+			~IProjectGenerator ();
 
 
 
