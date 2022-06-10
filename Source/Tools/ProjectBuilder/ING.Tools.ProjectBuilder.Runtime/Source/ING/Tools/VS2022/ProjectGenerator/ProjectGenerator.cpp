@@ -79,7 +79,7 @@ namespace ING {
 				if (GetProjectBuilder()->GetPlaceholder("INGBuildGame") == L"true")
 					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"))) {
 
-						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"));
+						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName"));
 
 					}
 
@@ -87,23 +87,27 @@ namespace ING {
 
 					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"))) {
 
-						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/"));
+						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGEngineDirName"));
 
 					}
 
-					WString targetEngineConfigFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Engine/Config.ini"));
+					WString targetEngineConfigFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGEngineDirName") + ToWString(L"/Config.ini"));
 
-					GetProjectBuilder()
-						->GetFileWriter()
-						->Write(
+					if (!std::filesystem::exists(targetEngineConfigFilePath)) {
 
-							targetEngineConfigFilePath,
+						GetProjectBuilder()
+							->GetFileWriter()
+							->Write(
 
-							GetProjectBuilder()
-							->GetFileReader()
-							->Read(L"./Templates/VS2022/Engine/Config.ini")
+								targetEngineConfigFilePath,
 
-						);
+								GetProjectBuilder()
+								->GetFileReader()
+								->Read(L"./Templates/VS2022/Engine/Config.ini")
+
+							);
+
+					}
 
 				}					
 						
@@ -244,7 +248,35 @@ namespace ING {
 
 				WString pluginLibraryPath = L";";
 
+				for (auto item : dependencies) {
+
+					/* If has plugin JSON, item is game plugin */
+					if (GetProjectBuilder()->IsHasPluginJSON(item)) {
+
+						pluginLibraryPath += Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGEngineBinariesDir") + ToWString("/Plugins/") + ToWString(item) + ToWString("/;"));
+
+					}
+					/* If not has plugin JSON, item is engine plugin */
+					else {
+
+						pluginLibraryPath += Path::Normalize(ToWString("$(SolutionDir)Binaries/$(Platform)/$(Configuration)/") + GetProjectBuilder()->GetPlaceholder("INGIDE") + ToWString("/Engine/Plugins/") + ToWString(item) + ToWString("/;"));
+
+					}
+
+				}
+
 				GetProjectBuilder()->SetPlaceholder("INGPluginLibraryPath", pluginLibraryPath);
+
+
+				WString pluginDependenciesPath = L";";
+
+				for (auto item : dependencies) {
+
+					pluginDependenciesPath += ToWString(item) + ToWString(".lib;");
+
+				}
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginDependencies", pluginDependenciesPath);
 
 
 

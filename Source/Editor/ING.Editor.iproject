@@ -1,0 +1,31 @@
+{
+
+    "name" : "ING.Editor",
+
+    "mode" : "ING.Editor",
+
+    "projectDir" : "$(SolutionDir)Source/Editor/",
+
+    "binariesDirName" : "../../Binaries/$(Platform)/$(Configuration)/$(INGIDE)/Editor/",
+
+    "engineDirName" : "/Engine/",
+
+    "gameDirName" : "/Editor/",
+
+    "buildRuntime" : true,
+
+    "buildPlugins" : true,
+
+    "buildEngine" : true,
+
+    "buildGame" : true,
+
+    "plugins" : [
+
+        "ING.Editor"
+
+    ],
+
+    "engineProjectDir" : "$(SolutionDir)Source/Engine/"
+
+}

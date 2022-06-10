@@ -205,15 +205,31 @@ namespace ING {
 			else
 				name2PlaceholderValueMap["INGBinariesDir"] = Path::Normalize(GetPlaceholder("INGProjectDir") + ToWString(projectJSON["binariesDirName"].get<std::string>()) + ToWString(L"/"));
 
-			if (projectJSON.find("engineDirName") == projectJSON.end())
-				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/Engine/"));
-			else
-				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["engineDirName"].get<std::string>()) + ToWString(L"/"));
+			if (projectJSON.find("engineDirName") == projectJSON.end()) {
 
-			if (projectJSON.find("gameDirName") == projectJSON.end())
+				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/Engine/"));
+				name2PlaceholderValueMap["INGEngineDirName"] = ToWString(L"Engine/");
+
+			}
+			else {
+
+				name2PlaceholderValueMap["INGEngineBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["engineDirName"].get<std::string>()) + ToWString(L"/"));
+				name2PlaceholderValueMap["INGEngineDirName"] = Path::Normalize(ToWString(projectJSON["engineDirName"].get<std::string>()) + ToWString(L"/"));
+
+			}
+
+			if (projectJSON.find("gameDirName") == projectJSON.end()) {
+
 				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/Game/"));
-			else
+				name2PlaceholderValueMap["INGGameDirName"] = ToWString(L"Game/");
+
+			}
+			else {
+
 				name2PlaceholderValueMap["INGGameBinariesDir"] = Path::Normalize(GetPlaceholder("INGBinariesDir") + ToWString(L"/") + ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
+				name2PlaceholderValueMap["INGGameDirName"] = Path::Normalize(ToWString(projectJSON["gameDirName"].get<std::string>()) + ToWString(L"/"));
+
+			}
 
 			if (projectJSON.find("engineProjectDir") == projectJSON.end())
 				name2PlaceholderValueMap["INGEngineProjectDir"] = ToWString(L"$(ProjectDir)Source/Engine/");
