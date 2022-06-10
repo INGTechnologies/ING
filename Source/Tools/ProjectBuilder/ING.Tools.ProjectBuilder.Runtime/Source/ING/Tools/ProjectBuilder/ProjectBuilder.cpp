@@ -34,6 +34,13 @@
 
 
 
+/**
+ *	Include VS2022 BuildTool
+ */
+#include <ING/Tools/VS2022/BuildTool/BuildTool.h>
+
+
+
 namespace ING {
 
 	namespace Tools {
@@ -44,7 +51,8 @@ namespace ING {
 		ProjectBuilder::ProjectBuilder() :
 			solutionGenerator(0),
 			fileReader(0),
-			fileWriter(0)
+			fileWriter(0),
+			buildTool(0)
 		{
 
 
@@ -62,6 +70,8 @@ namespace ING {
 			isNeedGenerateSolution = true;
 
 			String solutionGeneratorName = "VS2022";
+
+			buildConfig = "";
 
 			for (unsigned int i = 0; i < argv.size() - 1; ++i) {
 
@@ -87,6 +97,13 @@ namespace ING {
 				else if (argv[i] == L"/IDE:") {
 
 					solutionGeneratorName = ToString(argv[i + 1]);
+
+					++i;
+
+				}
+				else if (argv[i] == L"/Config:") {
+
+					buildConfig = ToString(argv[i + 1]);
 
 					++i;
 
@@ -303,6 +320,24 @@ namespace ING {
 
 			}
 
+
+
+			if (solutionGeneratorName == "VS2022") {
+
+				buildTool = new VS2022::BuildTool(this);
+
+			}
+
+			if (
+				buildTool == 0
+				) {
+
+				Release();
+
+				return;
+
+			}
+
 		}
 
 		ProjectBuilder::~ProjectBuilder() {
@@ -473,6 +508,12 @@ namespace ING {
 			if (isNeedGenerateSolution) {
 
 				GenerateSolution();
+
+			}
+
+			if (buildConfig != "") {
+
+				buildTool->Build();
 
 			}
 

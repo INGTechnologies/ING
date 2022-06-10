@@ -14,6 +14,7 @@ namespace ING {
 		class ISolutionGenerator;
 		class IFileReader;
 		class IFileWriter;
+		class IBuildTool;
 
 
 
@@ -62,6 +63,8 @@ namespace ING {
 
 			ISolutionGenerator* solutionGenerator;
 
+			IBuildTool*		buildTool;
+
 			std::unordered_map<String, WString> name2PlaceholderValueMap;
 
 			IFileReader*	fileReader;
@@ -76,6 +79,8 @@ namespace ING {
 
 			std::unordered_map<String, unsigned int> name2PluginJSONIndexMap;
 
+			String			buildConfig;
+
 		public:
 			const std::vector<WString>& GetArgv () { return argv; }
 
@@ -85,6 +90,8 @@ namespace ING {
 			bool			IsNeedGenerateSolution () { return isNeedGenerateSolution; }
 
 			ISolutionGenerator* GetSolutionGenerator () { return solutionGenerator; }
+
+			IBuildTool*		GetBuildTool () { return buildTool; }
 
 			const std::unordered_map<String, WString>& GetName2PlaceholderValueMap() { return name2PlaceholderValueMap; }
 
@@ -105,6 +112,8 @@ namespace ING {
 			bool			IsHasPluginJSON (const String& name) { return name2PluginJSONIndexMap.find(name) != name2PluginJSONIndexMap.end(); }
 
 			const std::unordered_map<String, unsigned int>& GetName2PluginJSONIndexMap () { return name2PluginJSONIndexMap; }
+
+			const String&	GetBuildConfig () { return buildConfig; }
 
 
 
