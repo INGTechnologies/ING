@@ -1,0 +1,31 @@
+{
+
+    "name" : "Engine",
+
+    "projectDir" : "$(SolutionDir)Source/Engine/",
+
+    "binariesDirName" : "../../Binaries/$(Platform)/$(Configuration)/$(INGIDE)/Engine/",
+
+    "engineDirName" : "/",
+
+    "gameDirName" : "/",
+
+    "buildRuntime" : false,
+
+    "buildPlugins" : true,
+
+    "buildEngine" : false,
+
+    "buildGame" : false,
+
+    "plugins" : [
+
+        "ING.Standalone",
+
+        "ING.Rendering.StandardRP",
+
+    ],
+
+    "engineProjectDir" : "$(SolutionDir)Source/Engine/"
+
+}

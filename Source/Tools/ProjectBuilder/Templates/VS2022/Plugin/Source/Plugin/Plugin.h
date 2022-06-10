@@ -20,21 +20,21 @@ namespace ING {
 /**
  *	Plugin Info
  */
-DECLARE_PLUGIN(ING_STANDALONE);
+DECLARE_PLUGIN($(INGPluginVarName));
 
 
 
 /**
  *	Plugin Events
  */
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Load)			(ING::Engine* engine, ING::IPlugin * plugin);
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Unload)		();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, Load)			(ING::Engine* engine, ING::IPlugin * plugin);
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, Unload)		();
 
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateCreate)	();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, LateCreate)	();
 
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreInit)		();
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateInit)		();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreInit)		();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, LateInit)		();
 
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRun)		();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreRun)		();
 
-DECLARE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRelease)	();
+DECLARE_PLUGIN_FUNCTION($(INGPluginVarName), bool, PreRelease)	();

@@ -14,6 +14,7 @@ namespace ING {
 		class ISolutionGenerator;
 		class IFileReader;
 		class IFileWriter;
+		class IBuildTool;
 
 
 
@@ -62,6 +63,8 @@ namespace ING {
 
 			ISolutionGenerator* solutionGenerator;
 
+			IBuildTool*		buildTool;
+
 			std::unordered_map<String, WString> name2PlaceholderValueMap;
 
 			IFileReader*	fileReader;
@@ -71,8 +74,12 @@ namespace ING {
 
 			JSON			projectJSON;
 
-			std::vector<String>	gamePluginNameVector;
-			std::vector<JSON>	gamePluginJSONVector;
+			std::vector<String>	pluginNameVector;
+			std::vector<JSON>	pluginJSONVector;
+
+			std::unordered_map<String, unsigned int> name2PluginJSONIndexMap;
+
+			String			buildConfig;
 
 		public:
 			const std::vector<WString>& GetArgv () { return argv; }
@@ -83,6 +90,8 @@ namespace ING {
 			bool			IsNeedGenerateSolution () { return isNeedGenerateSolution; }
 
 			ISolutionGenerator* GetSolutionGenerator () { return solutionGenerator; }
+
+			IBuildTool*		GetBuildTool () { return buildTool; }
 
 			const std::unordered_map<String, WString>& GetName2PlaceholderValueMap() { return name2PlaceholderValueMap; }
 
@@ -96,8 +105,15 @@ namespace ING {
 
 			const JSON&		GetProjectJSON () { return projectJSON; }
 
-			const std::vector<String>&	GetGamePluginNameVector () { return gamePluginNameVector; }
-			const std::vector<JSON>&	GetGamePluginJSONVector () { return gamePluginJSONVector; }
+			const std::vector<String>&	GetPluginNameVector () { return pluginNameVector; }
+			const std::vector<JSON>&	GetPluginJSONVector () { return pluginJSONVector; }
+
+			const JSON&		GetPluginJSON	(const String& name) { return pluginJSONVector[name2PluginJSONIndexMap[name]]; }
+			bool			IsHasPluginJSON (const String& name) { return name2PluginJSONIndexMap.find(name) != name2PluginJSONIndexMap.end(); }
+
+			const std::unordered_map<String, unsigned int>& GetName2PluginJSONIndexMap () { return name2PluginJSONIndexMap; }
+
+			const String&	GetBuildConfig () { return buildConfig; }
 
 
 
@@ -105,8 +121,14 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
-			void SetupGamePluginVector();
-			void SortGamePluginList();
+			void SetupPluginVector();
+
+		private:
+			unsigned int GetPluginLevel(const String& name);
+
+		public:
+			void SortPluginVector();
+			
 			void GenerateSolution();
 			void Build();
 
