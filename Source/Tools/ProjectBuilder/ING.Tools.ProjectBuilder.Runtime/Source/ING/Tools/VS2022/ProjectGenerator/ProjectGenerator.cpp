@@ -2,7 +2,7 @@
 /**
  *	Include Header
  */
-#include "SolutionGenerator.h"
+#include "ProjectGenerator.h"
 
 
 
@@ -43,15 +43,15 @@ namespace ING {
 			/**
 			 *	Constructors And Destructor
 			 */
-			SolutionGenerator::SolutionGenerator(ProjectBuilder* projectBuilder) :
-				ISolutionGenerator(projectBuilder)
+			ProjectGenerator::ProjectGenerator(ProjectBuilder* projectBuilder) :
+				IProjectGenerator(projectBuilder)
 			{
 
 
 
 			}
 
-			SolutionGenerator::~SolutionGenerator() {
+			ProjectGenerator::~ProjectGenerator() {
 
 
 
@@ -62,9 +62,9 @@ namespace ING {
 			/**
 			 *	Release Methods
 			 */
-			void	SolutionGenerator::Release() {
+			void	ProjectGenerator::Release() {
 
-				ISolutionGenerator::Release();
+				IProjectGenerator::Release();
 			}
 
 
@@ -72,9 +72,9 @@ namespace ING {
 			/**
 			 *	Methods
 			 */
-			void	SolutionGenerator::Generate() {
+			void	ProjectGenerator::Generate() {
 
-				ISolutionGenerator::Generate();
+				IProjectGenerator::Generate();
 
 				if (GetProjectBuilder()->GetPlaceholder("INGBuildGame") == L"true")
 					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"))) {
@@ -119,7 +119,7 @@ namespace ING {
 
 			}
 
-			void	SolutionGenerator::GenerateBuildEventsProject() {
+			void	ProjectGenerator::GenerateBuildEventsProject() {
 
 				WString targetBuildEventsProjectDir = GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/BuildEvents/");
 
@@ -153,7 +153,7 @@ namespace ING {
 
 			}
 
-			void	SolutionGenerator::GenerateRuntimeProject() {
+			void	ProjectGenerator::GenerateRuntimeProject() {
 
 				GenerateBuildEventsProject();
 
@@ -197,7 +197,7 @@ namespace ING {
 
 			}
 
-			void	SolutionGenerator::GeneratePluginProject(const String& name) {
+			void	ProjectGenerator::GeneratePluginProject(const String& name) {
 
 				JSON pluginJSON = GetProjectBuilder()->GetPluginJSON(name);
 				
@@ -354,7 +354,7 @@ namespace ING {
 
 			}
 
-			void	SolutionGenerator::GeneratePluginProjects() {
+			void	ProjectGenerator::GeneratePluginProjects() {
 
 				for (auto item : GetProjectBuilder()->GetPluginJSONVector()) {
 

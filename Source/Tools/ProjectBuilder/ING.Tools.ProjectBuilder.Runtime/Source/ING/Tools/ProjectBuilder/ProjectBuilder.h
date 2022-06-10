@@ -11,7 +11,7 @@ namespace ING {
 
 	namespace Tools {
 
-		class ISolutionGenerator;
+		class IProjectGenerator;
 		class IFileReader;
 		class IFileWriter;
 		class IBuildTool;
@@ -59,9 +59,9 @@ namespace ING {
 			WString			projectFilePath;
 			WString			projectDirectoryPath;
 
-			bool			isNeedGenerateSolution;
+			bool			isNeedGenerateProject;
 
-			ISolutionGenerator* solutionGenerator;
+			IProjectGenerator* projectGenerator;
 
 			IBuildTool*		buildTool;
 
@@ -87,9 +87,9 @@ namespace ING {
 			const WString&	GetProjectFilePath () { return projectFilePath; }
 			const WString&	GetProjectDirectoryPath() { return projectDirectoryPath; }
 
-			bool			IsNeedGenerateSolution () { return isNeedGenerateSolution; }
+			bool			IsNeedGenerateProject () { return isNeedGenerateProject; }
 
-			ISolutionGenerator* GetSolutionGenerator () { return solutionGenerator; }
+			IProjectGenerator* GetProjectGenerator () { return projectGenerator; }
 
 			IBuildTool*		GetBuildTool () { return buildTool; }
 
@@ -129,7 +129,7 @@ namespace ING {
 		public:
 			void SortPluginVector();
 			
-			void GenerateSolution();
+			void GenerateProject();
 			void Build();
 
 		};
