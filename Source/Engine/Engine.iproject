@@ -24,8 +24,6 @@
 
         "ING.Rendering.StandardRP",
 
-        "ING.Animation.IK"
-
     ],
 
     "engineProjectDir" : "$(SolutionDir)Source/Engine/"
