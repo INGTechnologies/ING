@@ -26,6 +26,8 @@
   + Support Multi-Application
   + C++ Plugin loading at runtime
   + C# Scripting
+- **Tools**
+  + Project Builder
 
 
 ## Setting up ##
