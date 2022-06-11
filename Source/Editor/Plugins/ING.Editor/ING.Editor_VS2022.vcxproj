@@ -100,48 +100,48 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)Source\Editor\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Editor\Editor\Plugins\$(ProjectName)\</OutDir>
-    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(ProjectDir)Source\;$(SolutionDir)Source\Dependencies\DirectXTex\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Engine\ING\Source\;$(SolutionDir)Source\Dependencies\nlohmann\json\include\;;$(SolutionDir)Source\Engine\Plugins\ING.Rendering.StandardRP\Source\;;;;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Source\Dependencies\DirectXTex\DirectXTex\Bin\Desktop_2022\$(Platform)\Debug\;$(MONO_X64)lib\;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;;$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\Plugins\ING.Rendering.StandardRP\;;;;$(LibraryPath)</LibraryPath>
     <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
     <TargetName>$(ProjectName)</TargetName>
   </PropertyGroup>
@@ -175,7 +175,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -218,7 +218,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -262,7 +262,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -303,7 +303,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -346,7 +346,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -390,7 +390,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;ING.Rendering.StandardRP.lib;;;;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
