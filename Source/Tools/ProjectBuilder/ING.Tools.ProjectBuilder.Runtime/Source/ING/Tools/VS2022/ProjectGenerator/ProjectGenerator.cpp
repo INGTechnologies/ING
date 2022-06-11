@@ -388,11 +388,41 @@ namespace ING {
 
 			void	ProjectGenerator::GeneratePluginProjects() {
 
+				std::vector<String> pluginNameVector;
+
 				for (auto item : GetProjectBuilder()->GetPluginJSONVector()) {
 
-					GeneratePluginProject(item["name"].get<std::string>());
+					String pluginName = item["name"].get<std::string>();
+
+					GeneratePluginProject(pluginName);
+
+					pluginNameVector.push_back(pluginName);
 
 				}
+
+
+
+				JSON pluginsJSON = pluginNameVector;
+
+				String pluginsFileContent = pluginsJSON.dump();
+
+				WString targetPluginsFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName") + ToWString("/Plugins/Plugins.json"));
+
+				if (std::filesystem::exists(targetPluginsFilePath)) {
+
+					std::filesystem::remove(targetPluginsFilePath);
+
+				}
+
+				GetProjectBuilder()
+					->GetFileWriter()
+					->Write(
+
+						targetPluginsFilePath,
+
+						ToWString(pluginsFileContent)
+
+					);
 
 			}
 
