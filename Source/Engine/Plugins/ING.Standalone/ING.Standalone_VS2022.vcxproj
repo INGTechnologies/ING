@@ -184,7 +184,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -227,7 +227,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -269,7 +269,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -312,7 +312,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -355,7 +355,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -397,7 +397,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

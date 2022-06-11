@@ -54,6 +54,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ResourceManager
+ */
+#include <ING/Resource/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	/**
@@ -160,6 +167,33 @@ namespace ING {
 
 
 
+		WString absoluteJSONFilePath = Path::Normalize(absolutePath + ToWString(L"/Plugins.json"));
+
+		if (!std::filesystem::exists(absoluteJSONFilePath)) return true;
+
+
+
+		JSON pluginsJSON = ParseJSON(ResourceManager::GetInstance()->ReadFile(absoluteJSONFilePath));
+
+		std::vector<String> pluginNameVector = pluginsJSON;
+
+
+
+		for (const auto& pluginName : pluginNameVector) {
+
+			WString pluginDLLPath = Path::Normalize(absolutePath + ToWString(L'/') + ToWString(pluginName) + ToWString(L'/') + ToWString(pluginName) + ToWString(L".dll"));
+
+			if (std::filesystem::exists(pluginDLLPath)) {
+
+				IPlugin* plugin = IPlugin::Create(pluginDLLPath);
+
+				if (!plugin->Load()) return false;
+
+			}
+
+		}
+
+		/*
 		for (const auto& entry : std::filesystem::directory_iterator(absolutePath)) {
 
 			std::error_code ec;
@@ -182,6 +216,7 @@ namespace ING {
 			}
 
 		}
+		*/
 
 		return true;
 	}
