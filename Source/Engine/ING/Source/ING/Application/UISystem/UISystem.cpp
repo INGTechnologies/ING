@@ -87,8 +87,8 @@ namespace ING {
 
 		IApplicationModule* module = new IApplicationModule("ING.UI");
 
-		module->RegisterType<UI::C_Element>();
-		module->RegisterType<UI::C_Canvas>();
+		module->RegisterType<UI::C_Element>(0);
+		module->RegisterType<UI::C_Canvas>(0);
 
 		GetApplication()->AddModule(module);
 

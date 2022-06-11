@@ -73,8 +73,8 @@ namespace ING {
 
 		IApplicationModule* module = new IApplicationModule("ING.Actor");
 
-		module->RegisterType<C_Actor>();
-		module->RegisterType<C_ActorComponent>();
+		module->RegisterType<C_Actor>(0);
+		module->RegisterType<C_ActorComponent>(0);
 
 		GetApplication()->AddModule(module);
 

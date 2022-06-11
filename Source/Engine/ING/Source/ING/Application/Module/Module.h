@@ -46,6 +46,13 @@ using namespace ING::Reflection;
 
 
 
+/**
+ *	Include ApplicationManager
+ */
+#include <ING/Application/Manager/Manager.h>
+
+
+
 namespace ING {
 
 	class ApplicationReflectionSystem;
@@ -54,8 +61,119 @@ namespace ING {
 
 	class IApplication;
 
-	typedef void (*ApplicationModuleTypeRegister) (IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem);
-	typedef void (*ApplicationModuleTypeUnregister) (IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem);
+
+
+	struct IApplicationModuleTypeLoader {
+	
+		IApplicationModuleTypeLoader(
+			IApplicationModule* module, 
+			Reflection::Context* reflectionContext, 
+			void (*func)(const IApplicationModuleTypeLoader& loader),
+			const String& name
+		) {
+
+			this->module = module;
+			this->reflectionContext = reflectionContext;
+			this->func = func;
+			this->name = name;
+
+		}
+
+		IApplicationModuleTypeLoader() {}
+
+		IApplicationModule* module;
+
+		Reflection::Context* reflectionContext;
+
+		void (*func)(const IApplicationModuleTypeLoader& loader);
+
+		String name;
+
+		void Load() {
+
+			func(*this);
+
+		}
+	
+	};
+
+	template<typename T>
+	struct ApplicationModuleTypeLoader : public IApplicationModuleTypeLoader {
+
+		ApplicationModuleTypeLoader(
+			IApplicationModule* module,
+			Reflection::Context* reflectionContext
+		) :
+			IApplicationModuleTypeLoader(
+				module,
+				reflectionContext,
+				[](const IApplicationModuleTypeLoader& loader) {
+
+					T::CreateType(loader.reflectionContext);
+
+				},
+				IType::TypeInfoToFullName(typeid(T))
+			)
+		{}
+
+	};
+
+
+
+	struct IApplicationTypeModuleUnloader {
+
+		IApplicationTypeModuleUnloader(
+			IApplicationModule* module,
+			Reflection::Context* reflectionContext,
+			void (*func)(const IApplicationTypeModuleUnloader& unloader),
+			const String& name
+		) {
+
+			this->module = module;
+			this->reflectionContext = reflectionContext;
+			this->func = func;
+			this->name = name;
+
+		}
+
+		IApplicationTypeModuleUnloader() {}
+
+		IApplicationModule* module;
+
+		Reflection::Context* reflectionContext;
+
+		void (*func)(const IApplicationTypeModuleUnloader& unloader);
+
+		String name;
+
+		void Unload() {
+
+			func(*this);
+
+		}
+
+	};
+
+	template<typename T>
+	struct ApplicationTypeModuleUnloader : public IApplicationTypeModuleUnloader {
+
+		ApplicationTypeModuleUnloader(
+			IApplicationModule* module,
+			Reflection::Context* reflectionContext
+		) :
+			IApplicationTypeModuleUnloader(
+				module,
+				reflectionContext,
+				[](const IApplicationTypeModuleUnloader& unloader) {
+
+					T::ReleaseType(unloader.reflectionContext);
+
+				},
+				IType::TypeInfoToFullName(typeid(T))
+			)
+		{}
+
+	};
 
 
 
@@ -63,6 +181,8 @@ namespace ING {
 
 	public:
 		friend class IApplication;
+		friend class IApplicationModuleTypeLoader;
+		friend class ApplicationReflectionSystem;
 
 
 
@@ -91,28 +211,26 @@ namespace ING {
 
 		IApplication* application;
 
-		List<ApplicationModuleTypeRegister>		   typeRegisterList;
-		List<ApplicationModuleTypeUnregister>	   typeUnregisterList;
+		List<IApplicationModuleTypeLoader>	typeLoaderList;
+		List<IApplicationTypeModuleUnloader>	typeUnloaderList;
 
-		bool canRegisterTypes;
-		bool canUnregisterTypes;
-
-		std::unordered_map<String, List<ApplicationModuleTypeRegister>::Node*> name2RegisterNodeMap;
-		std::unordered_map<String, List<ApplicationModuleTypeUnregister>::Node*> name2UnregisterNodeMap;
+		std::unordered_map<String, List<IApplicationModuleTypeLoader>::Node*> name2LoaderNodeMap;
+		std::unordered_map<String, List<IApplicationTypeModuleUnloader>::Node*> name2UnloaderNodeMap;
 
 		std::unordered_map<String, Reflection::IType*> name2TypeMap;
 
 		std::unordered_map<String, bool>			dependenciesMap;
+
+		bool isLoaded;
 
 	public:
 		String& GetName() { return name; }
 
 		IApplication* GetApplication() { return application; }
 
-		const List<ApplicationModuleTypeRegister>& GetTypeRegisterList() { return typeRegisterList; }
-		const List<ApplicationModuleTypeUnregister>& GetTypeUnregisterList() { return typeUnregisterList; }
-
 		const std::unordered_map<String, bool>&		GetDependenciesMap () { return dependenciesMap; }
+
+		bool IsLoaded() { return isLoaded; }
 
 
 
@@ -126,112 +244,27 @@ namespace ING {
 		void AddDependency(const String& dependencyName);
 		void RemoveDependency(const String& dependencyName);
 
-		void RegisterTypes();
-		void UnregisterTypes();
-
 		template<class T>
-		void L_RegisterType() {
+		void RegisterType(Reflection::Context* context) {
 
 			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
 
-			if(application != 0)
-				if (GetReflectionSystem()->IsTypesRegistered()) {
+			if (name2LoaderNodeMap.find(typeName) != name2LoaderNodeMap.end()) return;
 
-					name2TypeMap[typeName] = T::CreateType(0);
+			if (isLoaded) {
 
-					return;
-
-				}
-
-			if (!canRegisterTypes) {
-
-				Debug::Error(ToString("Cant L_Register Type, Module: ") + name);
-
-				return;
+				name2TypeMap[typeName] = T::CreateType(context);
 
 			}
 
-			name2RegisterNodeMap[typeName] = typeRegisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
+			name2LoaderNodeMap[typeName] = typeLoaderList.Add(
+				ApplicationModuleTypeLoader<T>(this, context)
+			);
 
-				reflectionSystem->L_RegisterType<T>();
-
-			});
-
-			name2UnregisterNodeMap[typeName] = typeUnregisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
-
-				reflectionSystem->L_UnregisterType<T>();
-
-			});
-
-		}
-
-		template<class T>
-		void L_UnregisterType() {
-
-			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
-
-			if (application != 0)
-				if (GetReflectionSystem()->IsTypesRegistered()) {
-
-					T::ReleaseType(0);
-
-					name2TypeMap.erase(typeName);
-
-					return;
-
-				}
-
-			if (!canUnregisterTypes) {
-
-				Debug::Error(ToString("Cant L_Unregister Type, Module: ") + name);
-
-				return;
-
-			}
-
-			typeRegisterList.Remove(name2RegisterNodeMap[typeName]);
-
-			name2RegisterNodeMap.erase(typeName);
-
-			typeUnregisterList.Remove(name2UnregisterNodeMap[typeName]);
-
-			name2UnregisterNodeMap.erase(typeName);
-
-		}
-
-		template<class T>
-		void RegisterType() {
-
-			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
-
-			if (application != 0)
-				if (GetReflectionSystem()->IsTypesRegistered()) {
-
-					name2TypeMap[typeName] = T::CreateType(GetReflectionSystem()->GetContext());
-
-					return;
-
-				}
-
-			if (!canRegisterTypes) {
-
-				Debug::Error(ToString("Cant G_Register Type, Module: ") + name);
-
-				return;
-
-			}
-
-			name2RegisterNodeMap[typeName] = typeRegisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
-
-				reflectionSystem->RegisterType<T>();
-
-				});
-
-			name2UnregisterNodeMap[typeName] = typeUnregisterList.Add([](IApplicationModule* module, ApplicationReflectionSystem* reflectionSystem) {
-
-				reflectionSystem->RegisterType<T>();
-
-				});
+			name2UnloaderNodeMap[typeName] = typeUnloaderList.AddAt(
+				ApplicationTypeModuleUnloader<T>(this, context),
+				typeUnloaderList.GetHeadNode()
+			);
 
 		}
 
@@ -240,34 +273,37 @@ namespace ING {
 
 			String typeName = Reflection::IType::TypeInfoToFullName(typeid(T));
 
-			if (application != 0)
-				if (GetReflectionSystem()->IsTypesRegistered()) {
+			if (name2LoaderNodeMap.find(typeName) == name2LoaderNodeMap.end()) return;
 
-					T::ReleaseType(GetReflectionSystem()->GetContext());
+			if (!isLoaded) {
 
-					name2TypeMap.erase(typeName);
+				if (
+
+					name2UnloaderNodeMap[typeName]->pValue.reflectionContext == 0
+					&& ApplicationManager::GetInstance()->GetModuleInstanceCount(name) > 0
+						
+				) {
 
 					return;
-
 				}
 
-			if (!canUnregisterTypes) {
+				T::ReleaseType(name2LoaderNodeMap[typeName]->pValue->reflectionContext);
 
-				Debug::Error(ToString("Cant G_Unregister Type, Module: ") + name);
-
-				return;
+				name2TypeMap.erase(typeName);
 
 			}
 
-			typeRegisterList.Remove(name2RegisterNodeMap[typeName]);
+			typeLoaderList.Remove(name2LoaderNodeMap[typeName]);
+			typeUnloaderList.Remove(name2UnloaderNodeMap[typeName]);
 
-			name2RegisterNodeMap.erase(typeName);
-
-			typeUnregisterList.Remove(name2UnregisterNodeMap[typeName]);
-
-			name2UnregisterNodeMap.erase(typeName);
+			name2LoaderNodeMap.erase(typeName);
+			name2UnloaderNodeMap.erase(typeName);
 
 		}
+
+		void Load();
+		void Unload();
+		void Reload();
 
 	};
 

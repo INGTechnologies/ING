@@ -112,10 +112,10 @@ namespace ING {
 
 			IApplicationModule* module = new IApplicationModule("ING.Editor.UI");
 
-			module->RegisterType<UI::C_Tab>();
-			module->RegisterType<UI::C_SceneTab>();
-			module->RegisterType<UI::C_SceneExplorerTab>();
-			module->RegisterType<UI::C_TabGroup>();
+			module->RegisterType<UI::C_Tab>(0);
+			module->RegisterType<UI::C_SceneTab>(0);
+			module->RegisterType<UI::C_SceneExplorerTab>(0);
+			module->RegisterType<UI::C_TabGroup>(0);
 
 			module->AddDependency("ING");
 

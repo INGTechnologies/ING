@@ -14,6 +14,13 @@
 
 
 /**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
+/**
  *	Include ApplicationReflectionSystem
  */
 #include <ING/Application/ReflectionSystem/ReflectionSystem.h>
@@ -27,11 +34,17 @@ namespace ING {
 	 */
 	IApplicationModule::IApplicationModule(const String& name) :
 		name(name),
-		application(0)
+		application(0),
+		isLoaded(false)
 	{
 
-		canRegisterTypes = true;
-		canUnregisterTypes = false;
+		if (!ApplicationManager::GetInstance()->IsHasModule(name)) {
+
+			ApplicationManager::GetInstance()->name2ModuleInstanceCount[name] = 0;
+
+		}
+
+		ApplicationManager::GetInstance()->name2ModuleInstanceCount[name]++;
 
 	}
 
@@ -48,19 +61,25 @@ namespace ING {
 	 */
 	void IApplicationModule::Release() {
 
+		if (isLoaded) {
+
+			Unload();
+
+		}
+
+		ApplicationManager::GetInstance()->name2ModuleInstanceCount[name]--;
+
+		if (ApplicationManager::GetInstance()->GetModuleInstanceCount(name) == 0) {
+
+			ApplicationManager::GetInstance()->name2ModuleInstanceCount.erase(name);
+
+		}
+
 		if (application != 0) {
-
-			if (application->IsHasComponent("ReflectionSystem")) {
-
-				UnregisterTypes();
-
-			}
 
 			application->RemoveModule(this);
 
 		}
-
-		typeRegisterList.Clear();
 
 		delete this;
 
@@ -89,29 +108,59 @@ namespace ING {
 
 	}
 
-	void IApplicationModule::RegisterTypes() {
+	void IApplicationModule::Load() {
 
-		canRegisterTypes = false;
-		canUnregisterTypes = true;
+		if(isLoaded) return;
 
-		for (auto item : typeRegisterList) {
+		for (auto loader : typeLoaderList) {
 
-			item(this, application->GetReflectionSystem());
+			loader.Load();
 
 		}
+
+		isLoaded = true;
 
 	}
 
-	void IApplicationModule::UnregisterTypes() {
+	void IApplicationModule::Unload() {
 
-		for (auto item : typeUnregisterList) {
+		if (!isLoaded) return;
 
-			item(this, application->GetReflectionSystem());
+		for (auto unloader : typeUnloaderList) {
+
+			if (
+				unloader.reflectionContext == 0
+				&& ApplicationManager::GetInstance()->GetModuleInstanceCount(name) > 0
+			) {
+
+
+
+			}
+			else {
+
+				unloader.Unload();
+
+			}
 
 		}
 
-		canRegisterTypes = true;
-		canUnregisterTypes = false;
+		isLoaded = false;
+
+	}
+
+	void IApplicationModule::Reload() {
+
+		if (!isLoaded) {
+
+			Load();
+
+		}
+		else {
+
+			Unload();
+			Load();
+
+		}
 
 	}
 
