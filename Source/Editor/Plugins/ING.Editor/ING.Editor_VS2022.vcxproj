@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{77CC56D8-07A1-4131-8C9A-F09635464226}</ProjectGuid>
+    <ProjectGuid>{35A31032-3CE1-440D-9976-EA963C5916CB}</ProjectGuid>
     <RootNamespace>ING</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>ING.Editor</ProjectName>
@@ -184,7 +184,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -227,7 +227,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -269,7 +269,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -312,7 +312,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -355,7 +355,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -397,7 +397,7 @@
       </Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>
+      <Command>COPY "$(ProjectDir)..\Plugins.json" "$(OutDir)..\Plugins.json" /y
       </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

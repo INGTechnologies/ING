@@ -406,7 +406,7 @@ namespace ING {
 
 				String pluginsFileContent = pluginsJSON.dump();
 
-				WString targetPluginsFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName") + ToWString("/Plugins/Plugins.json"));
+				WString targetPluginsFilePath = Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString("/Plugins/Plugins.json"));
 
 				if (std::filesystem::exists(targetPluginsFilePath)) {
 

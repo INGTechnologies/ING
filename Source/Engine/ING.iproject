@@ -1,6 +1,6 @@
 {
 
-    "name" : "ING.Engine",
+    "name" : "ING",
 
     "projectDir" : "$(SolutionDir)Source/Engine/",
 

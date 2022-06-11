@@ -30,7 +30,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{8C9FE286-F738-44A0-BD17-A2119EB18AB2}</ProjectGuid>
-    <RootNamespace>FirstGame</RootNamespace>
+    <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>ING.Runtime</ProjectName>
   </PropertyGroup>
@@ -97,91 +97,64 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath);$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
-    <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath);$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(IncludePath);$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
-    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
-    <OutDir>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
-    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
-    <TargetName>$(ProjectName)</TargetName>
-  </PropertyGroup>
-  <PropertyGroup>
-    <LocalDebuggerWorkingDirectory>$(OutDir)</LocalDebuggerWorkingDirectory>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);;$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);;$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);;$(SolutionDir)Source\Dependencies\nlohmann\json\include\</IncludePath>
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)</TargetName>
+    <IncludePath>$(SolutionDir)Source\Engine\ING\Source\;$(MONO_X64)include\mono-2.0\;$(BOOST);$(SolutionDir)Source\Dependencies\nlohmann\json\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Binaries\$(Platform)\$(Configuration)\VS2022\Engine\;$(LibraryPath)</LibraryPath>
+    <IntDir>$(ProjectDir)Binaries\$(Platform)\$(Configuration)\VS2022\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-      <AssemblyDebug>true</AssemblyDebug>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|Win32'">
     <ClCompile>
@@ -190,40 +163,28 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-      <AssemblyDebug>true</AssemblyDebug>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>
-      </FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -231,13 +192,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -246,24 +201,15 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-      <AssemblyDebug>true</AssemblyDebug>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug.NonSIMD|x64'">
     <ClCompile>
@@ -272,40 +218,28 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC;NON_SIMD</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>NoExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
-      <AssemblyDebug>true</AssemblyDebug>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <FunctionLevelLinking>
-      </FunctionLevelLinking>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);USE_MSVC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
-      <EnableEnhancedInstructionSet>AdvancedVectorExtensions</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Fast</FloatingPointModel>
-      <BufferSecurityCheck>false</BufferSecurityCheck>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -313,14 +247,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ING.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <ModuleDefinitionFile>
-      </ModuleDefinitionFile>
     </Link>
-    <PreBuildEvent>
-      <Command>
-      </Command>
-    </PreBuildEvent>
   </ItemDefinitionGroup>
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)Source\Engine\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</OutDir>
+    <LocalDebuggerWorkingDirectory>$(SolutionDir)Source\Engine\..\..\Binaries\$(Platform)\$(Configuration)\VS2022\Engine\</LocalDebuggerWorkingDirectory>
+  </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="Source\**\*.cpp" />
   </ItemGroup>
