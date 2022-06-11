@@ -29,7 +29,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{18BF2631-EAFC-44D3-94F0-4655AD9B1656}</ProjectGuid>
+    <ProjectGuid>{6C6DC6F9-D2E2-4334-82AF-8213316BFAAB}</ProjectGuid>
     <RootNamespace>Runtime</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>ING.Editor.Runtime</ProjectName>

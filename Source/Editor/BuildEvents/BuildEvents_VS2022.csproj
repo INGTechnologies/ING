@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
-    <ProjectGuid>{295CE24E-3CFF-447D-B432-7259B9550B4A}</ProjectGuid>
+    <ProjectGuid>{2976EC1D-6716-4C8F-9BAD-261FF9489D14}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>EngineBuilderCaller_VS2022</RootNamespace>
     <AssemblyName>EngineBuilderCaller_VS2022</AssemblyName>

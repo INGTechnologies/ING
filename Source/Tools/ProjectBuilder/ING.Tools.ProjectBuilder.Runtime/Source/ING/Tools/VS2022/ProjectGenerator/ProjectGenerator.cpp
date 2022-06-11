@@ -246,6 +246,25 @@ namespace ING {
 				GetProjectBuilder()->SetPlaceholder("INGPluginIncludePath", pluginIncludePath);
 
 
+
+				String pluginAdditionalIncludePath = ";";
+
+				if (pluginJSON.find("additionalIncludePaths") != pluginJSON.end()) {
+
+					std::vector<std::string> pluginAdditionalIncludePaths = pluginJSON["additionalIncludePaths"].get<std::vector<std::string>>();
+
+					for (auto item : pluginAdditionalIncludePaths) {
+
+						pluginAdditionalIncludePath += item + ";";
+
+					}
+
+				}
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginAdditionalIncludePath", ToWString(pluginAdditionalIncludePath));
+
+
+
 				WString pluginLibraryPath = L";";
 
 				for (auto item : dependencies) {
@@ -268,6 +287,25 @@ namespace ING {
 				GetProjectBuilder()->SetPlaceholder("INGPluginLibraryPath", pluginLibraryPath);
 
 
+
+				String pluginAdditionalLibraryPath = ";";
+
+				if (pluginJSON.find("additionalLibraryPaths") != pluginJSON.end()) {
+
+					std::vector<std::string> pluginAdditionalLibraryPaths = pluginJSON["additionalLibraryPaths"].get<std::vector<std::string>>();
+
+					for (auto item : pluginAdditionalLibraryPaths) {
+
+						pluginAdditionalLibraryPath += item + ";";
+
+					}
+
+				}
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginAdditionalLibraryPath", ToWString(pluginAdditionalLibraryPath));
+
+
+
 				WString pluginDependenciesPath = L";";
 
 				for (auto item : dependencies) {
@@ -277,6 +315,24 @@ namespace ING {
 				}
 
 				GetProjectBuilder()->SetPlaceholder("INGPluginDependencies", pluginDependenciesPath);
+
+
+
+				String pluginAdditionalDependenciesPath = ";";
+
+				if (pluginJSON.find("additionalDependencies") != pluginJSON.end()) {
+
+					std::vector<std::string> pluginAdditionalDependenciesPaths = pluginJSON["additionalDependencies"].get<std::vector<std::string>>();
+
+					for (auto item : pluginAdditionalDependenciesPaths) {
+
+						pluginAdditionalDependenciesPath += item + ";";
+
+					}
+
+				}
+
+				GetProjectBuilder()->SetPlaceholder("INGPluginAdditionalDependencies", ToWString(pluginAdditionalDependenciesPath));
 
 
 
