@@ -108,8 +108,8 @@ namespace ING {
 
 		IApplicationModule* module = new IApplicationModule("ING");
 
-		module->RegisterType<S_TransformM>();
-		module->RegisterType<S_TransformS>();
+		module->RegisterType<S_TransformM>(0);
+		module->RegisterType<S_TransformS>(0);
 
 		AddModule(module);
 
@@ -182,6 +182,16 @@ namespace ING {
 
 			}
 
+			if (componentVector[i] == reflectionSystem) {
+
+				for (auto module : sortedModuleVector) {
+
+					module->Load();
+
+				}
+
+			}
+
 		}
 
 		ApplicationManager::GetInstance()->AddApplication(this);
@@ -193,6 +203,18 @@ namespace ING {
 	}
 	void IApplication::Release()
 	{
+
+		for (unsigned int i = sortedModuleVector.size() - 1; ; --i) {
+
+			sortedModuleVector[i]->Unload();
+
+			if (i == 0) {
+
+				break;
+
+			}
+
+		}
 
 		for (unsigned int j = componentVector.size(); j >= 1; --j) {
 
@@ -208,9 +230,15 @@ namespace ING {
 		name2ComponentIndexMap.clear();
 		componentVector.clear();
 
-		for (auto item : GetSortedModuleVector()) {
+		for (unsigned int i = sortedModuleVector.size() - 1; ; --i) {
 
-			item->Release();
+			sortedModuleVector[i]->Release();
+
+			if (i == 0) {
+
+				break;
+
+			}
 
 		}
 
