@@ -175,7 +175,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -218,7 +218,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -262,7 +262,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
@@ -303,7 +303,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -346,7 +346,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
       <AssemblyDebug>
       </AssemblyDebug>
     </Link>
@@ -390,7 +390,7 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>
       </ModuleDefinitionFile>
-      <AdditionalDependencies>ING.lib;$(INGPluginDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ING.lib;;;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>
