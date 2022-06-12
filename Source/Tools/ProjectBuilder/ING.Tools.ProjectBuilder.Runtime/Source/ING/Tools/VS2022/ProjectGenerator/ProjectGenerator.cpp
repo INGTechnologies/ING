@@ -272,7 +272,7 @@ namespace ING {
 					/* If has plugin JSON, item is game plugin */
 					if (GetProjectBuilder()->IsHasPluginJSON(item)) {
 
-						pluginLibraryPath += Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGEngineBinariesDir") + ToWString("/Plugins/") + ToWString(item) + ToWString("/;"));
+						pluginLibraryPath += Path::Normalize(GetProjectBuilder()->GetPlaceholder("INGGameBinariesDir") + ToWString("/Plugins/") + ToWString(item) + ToWString("/;"));
 
 					}
 					/* If not has plugin JSON, item is engine plugin */
