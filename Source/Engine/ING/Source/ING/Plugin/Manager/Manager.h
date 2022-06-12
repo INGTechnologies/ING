@@ -54,14 +54,18 @@ namespace ING {
 
 		std::unordered_map<String, IPlugin*> name2PluginMap;
 
+		List<IPlugin*> pluginList;
+
 	public:
 		void		SetPointer		(const String& name, void* pointer);
 		bool		IsHasPointer	(const String& name);
 		void*		GetPointer		(const String& name);
 		void		RemovePointer	(const String& name);
 
-		IPlugin*	GetPlugin		(const String& name) { return name2PluginMap[name]; }
+		IPlugin*	GetPlugin		(const String& name) { if(!IsHasPlugin(name)) return 0; return name2PluginMap[name]; }
 		bool		IsHasPlugin		(const String& name) { return name2PluginMap.find(name) != name2PluginMap.end(); }
+
+		const List<IPlugin*>& GetPluginList() { return pluginList; }
 
 
 
@@ -71,7 +75,7 @@ namespace ING {
 	public:
 		bool		LoadPlugins(const WString& path);
 
-		void		AddPlugin	(IPlugin* plugin);
+		List<IPlugin*>::Node* AddPlugin	(IPlugin* plugin);
 		void		RemovePlugin(IPlugin* plugin);
 
 		bool		LateCreate	();
