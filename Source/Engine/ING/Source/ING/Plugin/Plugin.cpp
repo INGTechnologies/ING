@@ -34,7 +34,8 @@ namespace ING {
 	 */
 	IPlugin::IPlugin(const WString& path) :
 		name(""),
-		path(path)
+		path(path),
+		node(0)
 	{
 
 		isLoaded = false;
@@ -93,7 +94,7 @@ namespace ING {
 
 		if (!loadFunction) return false;
 
-		PluginManager::GetInstance()->AddPlugin(this);
+		node = PluginManager::GetInstance()->AddPlugin(this);
 
 		isLoaded = true; 
 		

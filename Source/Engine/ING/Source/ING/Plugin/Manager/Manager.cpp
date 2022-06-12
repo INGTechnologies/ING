@@ -193,39 +193,16 @@ namespace ING {
 
 		}
 
-		/*
-		for (const auto& entry : std::filesystem::directory_iterator(absolutePath)) {
-
-			std::error_code ec;
-
-			if (std::filesystem::is_directory(entry.path(), ec))
-			{
-
-				String pluginName = entry.path().filename().string();
-
-				WString pluginDLLPath = Path::Normalize(entry.path().wstring() + ToWString(L'/') + ToWString(pluginName) + ToWString(L".dll"));
-				
-				if (std::filesystem::exists(pluginDLLPath)) {
-
-					IPlugin* plugin = IPlugin::Create(pluginDLLPath);
-
-					if (!plugin->Load()) return false;
-
-				}
-
-			}
-
-		}
-		*/
-
 		return true;
 	}
 
-	void PluginManager::AddPlugin(IPlugin* plugin) {
+	List<IPlugin*>::Node* PluginManager::AddPlugin(IPlugin* plugin) {
 
-		if (IsHasPlugin(plugin->GetName())) return;
+		if (IsHasPlugin(plugin->GetName())) return 0;
 
 		name2PluginMap[plugin->GetName()] = plugin;
+
+		return pluginList.Add(plugin);
 
 	}
 
@@ -235,13 +212,15 @@ namespace ING {
 
 		name2PluginMap.erase(plugin->GetName());
 
+		pluginList.Remove(plugin->GetNode());
+
 	}
 
 	bool PluginManager::LateCreate() {
 
-		for (auto& item : name2PluginMap) {
+		for (auto plugin : pluginList) {
 
-			if (!item.second->LateCreate())return false;
+			if (!plugin->LateCreate())return false;
 
 		}
 
@@ -250,9 +229,9 @@ namespace ING {
 
 	bool PluginManager::PreInit() {
 
-		for (auto& item : name2PluginMap) {
+		for (auto plugin : pluginList) {
 
-			if (!item.second->PreInit())return false;
+			if (!plugin->PreInit())return false;
 
 		}
 
@@ -261,9 +240,9 @@ namespace ING {
 
 	bool PluginManager::LateInit() {
 
-		for (auto& item : name2PluginMap) {
+		for (auto plugin : pluginList) {
 
-			if (!item.second->LateInit())return false;
+			if (!plugin->LateInit())return false;
 
 		}
 
@@ -272,9 +251,9 @@ namespace ING {
 
 	bool PluginManager::PreRun() {
 
-		for (auto& item : name2PluginMap) {
+		for (auto plugin : pluginList) {
 
-			if (!item.second->PreRun())return false;
+			if (!plugin->PreRun())return false;
 
 		}
 
@@ -283,9 +262,15 @@ namespace ING {
 
 	bool PluginManager::PreRelease() {
 
-		for (auto& item : name2PluginMap) {
+		for (auto item = pluginList.GetTailNode(); ; item = item->prev) {
 
-			if (!item.second->Release())return false;
+			if (!(*((IPlugin**)item->pValue))->Release()) return false;
+
+			if (item == pluginList.GetHeadNode()) {
+
+				break;
+
+			}
 
 		}
 

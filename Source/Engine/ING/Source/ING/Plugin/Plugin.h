@@ -62,10 +62,14 @@ namespace ING {
 		WString path;
 		bool	isLoaded;
 
+		List<IPlugin*>::Node* node;
+
 	public:
 		const String&	GetName() { return name; }
 		const WString&	GetPath() { return path; }
 		bool			IsLoaded() { return isLoaded; }
+
+		List<IPlugin*>::Node* GetNode() { return node; }
 
 	protected:
 		PluginNameFunction			nameFunction;
