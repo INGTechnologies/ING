@@ -106,12 +106,10 @@ namespace ING {
 		reflectionSystem(0)
 	{
 
-		IApplicationModule* module = new IApplicationModule("ING");
+		IApplicationModule* module = new IApplicationModule("ING", this);
 
 		module->RegisterType<S_TransformM>(0);
 		module->RegisterType<S_TransformS>(0);
-
-		AddModule(module);
 
 
 

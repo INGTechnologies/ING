@@ -71,12 +71,12 @@ namespace ING {
 		IApplicationComponent(application, "ActorSystem")
 	{
 
-		IApplicationModule* module = new IApplicationModule("ING.Actor");
+		IApplicationModule* module = new IApplicationModule("ING.Actor", GetApplication());
 
 		module->RegisterType<C_Actor>(0);
 		module->RegisterType<C_ActorComponent>(0);
 
-		GetApplication()->AddModule(module);
+
 
 		GetApplication()->GetModule("ING")->AddDependency("ING.Actor");
 

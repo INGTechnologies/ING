@@ -3,7 +3,7 @@
 /**
  *	Include Plugin
  */
-#include <ING/OpenWorld/Plugin/Plugin.h>
+#include <ING/ImmediateGUI/Plugin/Plugin.h>
 
 
 
@@ -16,16 +16,16 @@
 
 namespace ING {
 
-	namespace OpenWorld {
+	namespace ImmediateGUI {
 
-		class PLUGIN_API(ING_OPENWORLD) ApplicationModule : public IApplicationModule {
+		class PLUGIN_API(ING_IMMEDIATEGUI) ApplicationModule : public IApplicationModule {
 
 			/**
 			 *	Constructor And Destructors
 			 */
 		public:
-			ApplicationModule(IApplication * application);
-			~ApplicationModule();
+			ApplicationModule	(IApplication * application);
+			~ApplicationModule	();
 
 
 

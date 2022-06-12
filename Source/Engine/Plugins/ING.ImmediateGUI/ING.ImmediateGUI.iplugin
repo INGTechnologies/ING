@@ -1,0 +1,13 @@
+{
+
+    "varname" : "ING_IMMEDIATEGUI",
+
+    "sourceDirName" : "Source/ING/ImmediateGUI/",
+
+    "dependencies" : [
+
+        "ING.Rendering.StandardRP"
+
+    ]
+
+}

@@ -190,7 +190,7 @@ namespace ING {
 		 *	Constructor And Destructors
 		 */
 	public:
-		IApplicationModule	(const String& name);
+		IApplicationModule	(const String& name, IApplication* application);
 		~IApplicationModule	();
 
 

@@ -26,7 +26,7 @@ namespace ING {
 				 *	Constructor And Destructors
 				 */
 			public:
-				ApplicationModule	(const String& name);
+				ApplicationModule	(IApplication* application);
 				~ApplicationModule	();
 
 

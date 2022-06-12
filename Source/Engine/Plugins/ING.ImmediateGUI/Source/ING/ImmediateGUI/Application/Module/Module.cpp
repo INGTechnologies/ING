@@ -22,13 +22,13 @@
 
 namespace ING {
 
-	namespace OpenWorld {
+	namespace ImmediateGUI {
 
 		/**
 		 *	Constructor And Destructors
 		 */
 		ApplicationModule::ApplicationModule(IApplication* application) :
-			IApplicationModule("ING.OpenWorld", application)
+			IApplicationModule("ING.ImmediateGUI", application)
 		{
 
 			if (!application->IsHasModule("ING.Rendering.StandardRP"))
