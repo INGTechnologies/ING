@@ -85,12 +85,12 @@ namespace ING {
 		IApplicationComponent(application, "UISystem")
 	{
 
-		IApplicationModule* module = new IApplicationModule("ING.UI");
+		IApplicationModule* module = new IApplicationModule("ING.UI", GetApplication());
 
 		module->RegisterType<UI::C_Element>(0);
 		module->RegisterType<UI::C_Canvas>(0);
 
-		GetApplication()->AddModule(module);
+
 
 		GetApplication()->GetModule("ING")->AddDependency("ING.UI");
 

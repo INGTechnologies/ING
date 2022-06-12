@@ -24,6 +24,8 @@
 
         "ING.Rendering.StandardRP",
 
+        "ING.ImmediateGUI",
+
         "ING.OpenWorld"
 
     ],

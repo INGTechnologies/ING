@@ -6,7 +6,9 @@
 
     "dependencies" : [
 
-        "ING.Rendering.StandardRP"
+        "ING.Rendering.StandardRP",
+
+        "ING.ImmediateGUI"
 
     ]
 

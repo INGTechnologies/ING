@@ -99,6 +99,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include ImmediateGUI Module
+ */
+#include <ING/ImmediateGUI/Application/Module/Module.h>
+
+
+
 namespace ING {
 
 	namespace Editor {
@@ -110,7 +117,12 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorUISystem")
 		{
 
-			IApplicationModule* module = new IApplicationModule("ING.Editor.UI");
+			if(!GetApplication()->IsHasModule("ING.ImmediateGUI"))
+				IApplicationModule* imGUIModule = new ImmediateGUI::ApplicationModule(GetApplication());
+
+
+
+			IApplicationModule* module = new IApplicationModule("ING.Editor.UI", GetApplication());
 
 			module->RegisterType<UI::C_Tab>(0);
 			module->RegisterType<UI::C_SceneTab>(0);
@@ -118,8 +130,9 @@ namespace ING {
 			module->RegisterType<UI::C_TabGroup>(0);
 
 			module->AddDependency("ING");
+			module->AddDependency("ING.ImmediateGUI");
 
-			GetApplication()->AddModule(module);
+
 
 			GetApplication()->GetModule("ING.Editor")->AddDependency("ING.Editor.UI");
 

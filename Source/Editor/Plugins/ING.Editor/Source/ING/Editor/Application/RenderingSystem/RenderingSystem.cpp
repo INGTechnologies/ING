@@ -75,20 +75,18 @@ namespace ING {
 			ApplicationComponentOverride(component, "EditorRenderingSystem")
 		{
 
-			IApplicationModule* standardRPModule = new Rendering::StandardRP::ApplicationModule("ING.Rendering.StandardRP");
-
-			standardRPModule->AddDependency("ING");
-
-			GetApplication()->AddModule(standardRPModule);
+			if (!GetApplication()->IsHasModule("ING.Rendering.StandardRP"))
+				new Rendering::StandardRP::ApplicationModule(GetApplication());
 
 
 
-			IApplicationModule* module = new IApplicationModule("ING.Editor.Rendering");
+			IApplicationModule* module = new IApplicationModule("ING.Editor.Rendering", GetApplication());
 
 			module->AddDependency("ING");
 			module->AddDependency("ING.Rendering.StandardRP");
 
-			GetApplication()->AddModule(module);
+
+
 			GetApplication()->GetModule("ING.Editor")->AddDependency("ING.Editor.Rendering");
 
 		}

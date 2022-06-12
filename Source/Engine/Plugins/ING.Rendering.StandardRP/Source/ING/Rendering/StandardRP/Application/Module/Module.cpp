@@ -15,11 +15,11 @@ namespace ING {
 			/**
 			 *	Constructor And Destructors
 			 */
-			ApplicationModule::ApplicationModule(const String& name) :
-				IApplicationModule(name)
+			ApplicationModule::ApplicationModule(IApplication* application) :
+				IApplicationModule("ING.Rendering.StandardRP", application)
 			{
 
-
+				AddDependency("ING");
 
 			}
 

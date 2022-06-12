@@ -2,6 +2,12 @@
 
     "varname" : "ING_OPENWORLD",
 
-    "sourceDirName" : "Source/ING/OpenWorld/"
+    "sourceDirName" : "Source/ING/OpenWorld/",
+
+    "dependencies" : [
+
+        "ING.Rendering.StandardRP"
+
+    ]
 
 }

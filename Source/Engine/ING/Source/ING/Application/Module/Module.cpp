@@ -32,9 +32,9 @@ namespace ING {
 	/**
 	 *	Constructor And Destructors
 	 */
-	IApplicationModule::IApplicationModule(const String& name) :
+	IApplicationModule::IApplicationModule(const String& name, IApplication* application) :
 		name(name),
-		application(0),
+		application(application),
 		isLoaded(false)
 	{
 
@@ -45,6 +45,8 @@ namespace ING {
 		}
 
 		ApplicationManager::GetInstance()->name2ModuleInstanceCount[name]++;
+
+		application->AddModule(this);
 
 	}
 
