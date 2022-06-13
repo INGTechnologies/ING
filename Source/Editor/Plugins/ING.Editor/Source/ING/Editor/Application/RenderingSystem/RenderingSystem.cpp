@@ -64,6 +64,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Rendering Pipeline
+ */
+#include <ING/Rendering/Pipeline/Pipeline.h>
+
+
+
 namespace ING {
 
 	namespace Editor {

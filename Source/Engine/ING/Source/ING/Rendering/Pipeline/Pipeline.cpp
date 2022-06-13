@@ -48,6 +48,13 @@
 
 
 
+/**
+ *	Include Rendering CameraData
+ */
+#include <ING/Rendering/CameraData/CameraData.h>
+
+
+
 
 namespace ING {
 
@@ -76,6 +83,8 @@ namespace ING {
 			this->renderer = 0;
 
 			isRendering = false;
+
+			cameraDataClass = C_CameraData::GetType(GetClass()->GetContext());
 
 		}
 
@@ -184,11 +193,15 @@ namespace ING {
 
 		void C_Pipeline::SetupCamera	(IDeviceContext* context, C_Camera* camera) {
 
+			C_CameraData* cameraData = (C_CameraData*)cameraDataClass->RCreateInstance(camera);
 
+			camera->SetRenderingData(cameraData);
 
 		}
 
 		void C_Pipeline::ClearCameraData(C_Camera* camera) {
+
+			camera->GetRenderingData()->Release();
 
 			camera->SetRenderingData(0);
 

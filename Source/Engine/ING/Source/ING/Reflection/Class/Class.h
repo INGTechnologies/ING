@@ -51,6 +51,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Function
+ */
+#include <ING\Reflection\Function\Function.h>
+
+
+
+/**
+ *	Include Procedure
+ */
+#include <ING\Reflection\Procedure\Procedure.h>
+
+
+
 namespace ING {
 
 	namespace Reflection {
@@ -59,7 +73,11 @@ namespace ING {
 
 		class C_Object;
 
+		class IFunction;
+
 		class IObjectFunction;
+
+		class IProcedure;
 
 		class IObjectProcedure;
 
@@ -148,6 +166,15 @@ namespace ING {
 
 
 
+		template<class T, typename... TArgs>
+		void InstanceConstructorCaller(T* object, TArgs... args) {
+
+			object->GetProcedure("Constructor")->Specify<T*, TArgs...>()->Invoke(object, args...);
+
+		}
+
+
+
 		class ING_API IClass : public IType
 		{
 
@@ -175,6 +202,9 @@ namespace ING {
 			std::unordered_map<String, ClassMember> name2MemberMap;
 			IClass*			base;
 			Context*		context;
+
+		private:
+			IProcedure*		instanceConstructorCaller;
 
 		public:
 			const std::unordered_map<String, ClassMember>& GetName2MemberMap () { return name2MemberMap; }
@@ -211,13 +241,58 @@ namespace ING {
 
 			Context*		GetContext () { return context; }
 
+			template<class T, typename... TArgs>
+			void			SetInstanceConstructorCaller() {
+
+				if (instanceConstructorCaller != 0) {
+
+					instanceConstructorCaller->Release();
+
+				}
+
+				instanceConstructorCaller = new Procedure<
+					InstanceConstructorCaller<T, TArgs...>,
+					T*, TArgs...
+				>();
+
+			}
+
+			IProcedure*	GetInstanceConstructorCaller() {
+
+				return instanceConstructorCaller;
+
+			}
+
 
 
 			/**
 			 *	Methods
 			 */
+		protected:
+			virtual C_Object* IMalloc();
+			
+			IObjectProcedure* GetConstructor(C_Object* object);
+
 		public:
 			virtual C_Object* ICreateInstance();
+
+			template<typename... TArgs>
+			C_Object*		  RCreateInstance(TArgs... args) {
+
+				if (!IsHasMember("Constructor")) {
+
+					Debug::Error(GetName() + " Does Not Has Any Constructor");
+
+					return 0;
+				}
+
+				C_Object* result = IMalloc();
+
+				GetConstructor(result)->Specify<TArgs...>()->Invoke(args...);
+
+				return result;
+
+			}
 
 		};
 
@@ -258,6 +333,8 @@ namespace ING {
 			 *	Methods
 			 */
 		public:
+			virtual C_Object* IMalloc() override;
+
 			virtual C_Object* ICreateInstance() override;
 
 			template<typename... TArgs>
@@ -270,7 +347,7 @@ namespace ING {
 					return 0;
 				}
 
-				T* result = new T(this);
+				T* result = (T*)IMalloc();
 
 				result->Constructor(args...);
 
@@ -279,6 +356,12 @@ namespace ING {
 			}
 
 		};
+
+		template<class T>
+		C_Object* Class<T>::IMalloc() {
+
+			return new T(this);
+		}
 
 		template<class T>
 		C_Object* Class<T>::ICreateInstance() {
@@ -290,7 +373,7 @@ namespace ING {
 				return 0;
 			}
 
-			T* result = new T(this);
+			T* result = (T*)IMalloc();
 
 			result->GetFunction("Constructor")->Invoke();
 		
@@ -452,5 +535,16 @@ classType->GetMemberReference(currentMember.name)
 classType->GetMemberReference(currentMember.name)
 
 #define ING_CLASS_CONSTRUCTOR(ClassFullName, ...) \
-ING_CLASS_PROCEDURE(ClassFullName, Constructor, ##__VA_ARGS__)
+{\
+	currentMember = { 2, ING::Reflection::TYPE_GROUP_NONE, 0, "",\
+		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectFunction*{return 0;}, \
+		[](ING::Reflection::C_Object* object)->ING::Reflection::IObjectProcedure*{\
+				return new ING::Reflection::ObjectProcedure<ClassFullName, &ClassFullName::Constructor,##__VA_ARGS__>((ClassFullName*)object); \
+		},\
+		"Constructor"\
+	};\
+	classType->SetMember(currentMember);\
+	classType->SetInstanceConstructorCaller<ClassFullName, ##__VA_ARGS__>(); \
+}\
+classType->GetMemberReference(currentMember.name)
 

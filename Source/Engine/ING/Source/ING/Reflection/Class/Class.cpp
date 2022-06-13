@@ -14,30 +14,9 @@
 
 
 /**
- *	Include Namespace
+ *	Include Reflection
  */
-#include <ING/Reflection/Namespace/Namespace.h>
-
-
-
-/**
- *	Include Reflection Object
- */
-#include <ING/Reflection/Object/Object.h>
-
-
-
-/**
- *	Include Reflection Object Function
- */
-#include <ING/Reflection/Object/Function/Function.h>
-
-
-
-/**
- *	Include Reflection Context
- */
-#include <ING/Reflection/Context/Context.h>
+#include <ING/Reflection/Reflection.h>
 
 
 
@@ -60,7 +39,9 @@ namespace ING {
 
 			base(base),
 
-			context(_namespace->GetContext())
+			context(_namespace->GetContext()),
+
+			instanceConstructorCaller(0)
 		{
 
 			if (base == 0) {
@@ -227,6 +208,12 @@ namespace ING {
 
 			GetNamespace()->RemoveType(this);
 
+			if (instanceConstructorCaller != 0) {
+
+				instanceConstructorCaller->Release();
+
+			}
+
 			IType::Release();
 		}
 
@@ -235,6 +222,17 @@ namespace ING {
 		/**
 		 *	Methods
 		 */
+		C_Object* IClass::IMalloc() {
+
+			return 0;
+		}
+
+		IObjectProcedure* IClass::GetConstructor(C_Object* object) {
+
+			return object->GetProcedure("Constructor");
+
+		}
+
 		C_Object* IClass::ICreateInstance() {
 
 			return 0;
