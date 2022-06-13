@@ -22,7 +22,7 @@
 
         "ING.Standalone",
 
-        "ING.Rendering.StandardRP",
+        "ING.StandardRP",
 
         "ING.ImmediateGUI",
 

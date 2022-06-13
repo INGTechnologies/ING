@@ -6,7 +6,7 @@
 
     "dependencies" : [
 
-        "ING.Rendering.StandardRP"
+        "ING.StandardRP"
 
     ]
 
