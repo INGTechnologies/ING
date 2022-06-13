@@ -27,7 +27,7 @@ using namespace ING::Reflection;
 
 namespace ING {
 
-	class Camera;
+	class C_Camera;
 
 
 
@@ -117,7 +117,7 @@ namespace ING {
 			void			RemoveChild	(const String& name);
 			void			RemoveChild	(C_Pass* child);
 
-			virtual bool	Render		(IDeviceContext* context, Camera* camera);
+			virtual bool	Render		(IDeviceContext* context, C_Camera* camera);
 
 		};
 

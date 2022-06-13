@@ -196,7 +196,7 @@ namespace ING {
 
 		}
 
-		bool C_Pass::Render(IDeviceContext* context, Camera* camera) {
+		bool C_Pass::Render(IDeviceContext* context, C_Camera* camera) {
 
 			for (auto child : childVector) {
 
