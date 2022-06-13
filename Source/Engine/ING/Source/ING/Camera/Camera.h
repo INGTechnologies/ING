@@ -180,7 +180,7 @@ namespace ING {
 		Rendering::Scene*		GetRenderingScene	()							{ return renderingScene; }
 		void					SetRenderingScene	(Rendering::Scene* renderingScene)	{ this->renderingScene = renderingScene;}
 
-		Rendering::C_CameraData*	GetRenderingData	()							{ return renderingData; }
+		Rendering::C_CameraData*GetRenderingData	()							{ return renderingData; }
 		void					SetRenderingData	(Rendering::C_CameraData* renderingData)		{ this->renderingData = renderingData; }
 
 		Rendering::C_Pipeline*	GetRenderingPipeline()							{ return renderingPipeline; }

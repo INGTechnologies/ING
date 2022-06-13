@@ -130,6 +130,7 @@ namespace ING {
 			void		 RemovePass			(C_Pass* pass);
 
 			virtual void SetupCamera		(IDeviceContext* context, C_Camera* camera);
+			virtual void ResizeCamera		(IDeviceContext* context, C_Camera* camera);
 			virtual void ClearCameraData	(C_Camera* camera);
 
 			virtual bool Render				(IDeviceContext* context);

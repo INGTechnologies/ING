@@ -209,9 +209,13 @@ namespace ING {
 
 				if (oldScreenWidth != screen->GetClientWidth() || oldScreenHeight != screen->GetClientHeight()) {
 
-					Rendering::IDeviceContext* context = screen->GetSwapChain()->GetDevice()->GetImmediateContext();
+					if (renderingPipeline != 0) {
 
-					renderingPipeline->SetupCamera(context, this);
+						Rendering::IDeviceContext* context = screen->GetSwapChain()->GetDevice()->GetImmediateContext();
+
+						renderingPipeline->ResizeCamera(context, this);
+
+					}
 
 				}
 

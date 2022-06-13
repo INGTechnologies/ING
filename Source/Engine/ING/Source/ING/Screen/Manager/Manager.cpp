@@ -114,7 +114,7 @@ namespace ING {
 	/**
 	 *	Methods
 	 */
-	void					ScreenManager::InitScreen	(Screen* screen) {
+	void ScreenManager::InitScreen	(Screen* screen) {
 
 		if (mainScreen != nullptr) return;
 

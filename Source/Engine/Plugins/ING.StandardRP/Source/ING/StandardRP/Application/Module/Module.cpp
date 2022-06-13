@@ -6,6 +6,20 @@
 
 
 
+/**
+ *	Include StandardRP Pipeline
+ */
+#include <ING/StandardRP/Pipeline/Pipeline.h>
+
+
+
+/**
+ *	Include StandardRP Renderer
+ */
+#include <ING/StandardRP/Renderer/Renderer.h>
+
+
+
 namespace ING {
 
 	namespace StandardRP {
@@ -16,6 +30,11 @@ namespace ING {
 		ApplicationModule::ApplicationModule(IApplication* application) :
 			IApplicationModule("ING.StandardRP", application)
 		{
+
+			RegisterType<C_Pipeline>(0);
+			RegisterType<C_Renderer>(0);
+
+
 
 			AddDependency("ING");
 

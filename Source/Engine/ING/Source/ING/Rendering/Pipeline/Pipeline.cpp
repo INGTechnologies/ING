@@ -55,6 +55,20 @@
 
 
 
+/**
+ *	Include Rendering SwapChain
+ */
+#include <ING/Rendering/API/SwapChain/SwapChain.h>
+
+
+
+/**
+ *	Include Screen
+ */
+#include <ING/Screen/Screen.h>
+
+
+
 
 namespace ING {
 
@@ -199,6 +213,12 @@ namespace ING {
 
 		}
 
+		void C_Pipeline::ResizeCamera(IDeviceContext* context, C_Camera* camera) {
+
+
+
+		}
+		
 		void C_Pipeline::ClearCameraData(C_Camera* camera) {
 
 			camera->GetRenderingData()->Release();
@@ -234,6 +254,17 @@ namespace ING {
 		void C_Pipeline::EndRender(IDeviceContext* context) {
 
 			isRendering = false;
+
+			for (C_Camera* camera : CameraManager::GetInstance()->GetCameraList()) {
+
+				if (camera->GetTargetMode() == CAMERA_TARGET_SCREEN) {
+
+					camera->GetScreen()->GetSwapChain()->Present();
+
+				}
+
+			}
+			
 		}
 
 	}
