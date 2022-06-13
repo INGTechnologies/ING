@@ -6,38 +6,18 @@
 
 
 
-/**
- *	Include StandardRP Module
- */
-#include <ING/StandardRP/Application/Module/Module.h>
-
-
-
-/**
- *	Include Application
- */
-#include <ING/Application/Application.h>
-
-
-
 namespace ING {
 
-	namespace OpenWorld {
+	namespace StandardRP {
 
 		/**
 		 *	Constructor And Destructors
 		 */
 		ApplicationModule::ApplicationModule(IApplication* application) :
-			IApplicationModule("ING.OpenWorld", application)
+			IApplicationModule("ING.StandardRP", application)
 		{
 
-			if (!application->IsHasModule("ING.StandardRP"))
-				new StandardRP::ApplicationModule(application);
-
-
-
 			AddDependency("ING");
-			AddDependency("ING.StandardRP");
 
 		}
 

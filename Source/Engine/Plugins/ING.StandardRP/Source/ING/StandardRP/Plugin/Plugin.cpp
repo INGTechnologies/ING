@@ -19,31 +19,31 @@ using namespace ING;
 /**
  *	Plugin Info
  */
-DEFINE_PLUGIN(ING_RENDERING_STANDARDRP);
+DEFINE_PLUGIN(ING_STANDARDRP);
 
 
 
 /**
  *	Plugin Events
  */
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, Load) (ING::Engine* engine, ING::IPlugin* plugin) {
 
-	DEFAULT_PLUGIN_LOAD(ING_RENDERING_STANDARDRP, engine, plugin);
-
-	return true;
-}
-
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, Unload) () {
+	DEFAULT_PLUGIN_LOAD(ING_STANDARDRP, engine, plugin);
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, LateCreate) () {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, Unload) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreInit) () {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, LateCreate) () {
+
+	return true;
+}
+
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, PreInit) () {
 
 	/* Continue if engine is in ING.Standalone mode */
 	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
@@ -54,7 +54,7 @@ DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreInit) () {
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, LateInit) () {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, LateInit) () {
 
 	/* Continue if engine is in ING.Standalone mode */
 	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
@@ -65,12 +65,12 @@ DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, LateInit) () {
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreRun) () {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, PreRun) () {
 
 	return true;
 }
 
-DEFINE_PLUGIN_FUNCTION(ING_RENDERING_STANDARDRP, bool, PreRelease) () {
+DEFINE_PLUGIN_FUNCTION(ING_STANDARDRP, bool, PreRelease) () {
 
 	return true;
 }

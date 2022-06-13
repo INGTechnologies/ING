@@ -7,9 +7,9 @@
 
 
 /**
- *	Include Rendering StandardRP Module
+ *	Include StandardRP Module
  */
-#include <ING/Rendering/StandardRP/Application/Module/Module.h>
+#include <ING/StandardRP/Application/Module/Module.h>
 
 
 
@@ -38,8 +38,8 @@ namespace ING {
 			IApplicationModule("ING.ImmediateGUI", application)
 		{
 
-			if (!application->IsHasModule("ING.Rendering.StandardRP"))
-				new Rendering::StandardRP::ApplicationModule(application);
+			if (!application->IsHasModule("ING.StandardRP"))
+				new StandardRP::ApplicationModule(application);
 
 
 
@@ -48,7 +48,7 @@ namespace ING {
 
 
 			AddDependency("ING");
-			AddDependency("ING.Rendering.StandardRP");
+			AddDependency("ING.StandardRP");
 
 		}
 

@@ -92,6 +92,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Engine
+ */
+#include <ING/Engine/Engine.h>
+
+
+
 namespace ING {
 
 	/**
@@ -285,6 +292,14 @@ namespace ING {
 		unsigned int level = 1;
 
 		for (auto item : module->GetDependenciesMap()) {
+
+			if (!IsHasModule(item.first)) {
+
+				Debug::Error("Cant Find Application Module: " + item.first);
+
+				Engine::GetInstance()->Shutdown();
+
+			}
 
 			unsigned int dependencyLevel = GetModuleLevel(name2ModuleMap[item.first]);
 
