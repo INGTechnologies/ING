@@ -14,13 +14,6 @@
 
 
 /**
- *	Include Renderer
- */
-#include <ING/Rendering/Renderer/Renderer.h>
-
-
-
-/**
  *	Include Rendering API
  */
 #include <ING/Rendering/API/API.h>
@@ -45,6 +38,34 @@
  *	Include Rendering Pipeline
  */
 #include <ING/Rendering/Pipeline/Pipeline.h>
+
+
+
+/**
+ *	Include Rendering Pass
+ */
+#include <ING/Rendering/Pass/Pass.h>
+
+
+
+/**
+ *	Include Rendering CameraData
+ */
+#include <ING/Rendering/CameraData/CameraData.h>
+
+
+
+/**
+ *	Include Rendering Renderer
+ */
+#include <ING/Rendering/Renderer/Renderer.h>
+
+
+
+/**
+ *	Include Rendering Drawable
+ */
+#include <ING/Rendering/Drawable/Drawable.h>
 
 
 
@@ -76,6 +97,20 @@
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
+/**
+ *	Include Application
+ */
+#include <ING/Application/Application.h>
+
+
+
 namespace ING {
 
 	/**
@@ -89,7 +124,18 @@ namespace ING {
 		mainDevice(0)
 	{
 
+		IApplicationModule* module = new IApplicationModule("ING.Rendering", GetApplication());
 
+		module->RegisterType<Rendering::C_Renderer>(0);
+		module->RegisterType<Rendering::C_CameraData>(0);
+		module->RegisterType<Rendering::C_Drawable>(0);
+		module->RegisterType<Rendering::C_Pass>(0);
+		module->RegisterType<Rendering::C_Pipeline>(0);
+		module->RegisterType<Rendering::C_Renderer>(0);
+
+
+
+		GetApplication()->GetModule("ING")->AddDependency("ING.Rendering");
 
 	}
 

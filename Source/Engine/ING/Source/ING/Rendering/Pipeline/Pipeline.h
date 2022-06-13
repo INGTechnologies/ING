@@ -97,6 +97,8 @@ namespace ING {
 
 			std::vector<C_Pass*> passVector;
 
+			IClass*		cameraDataClass;
+
 		public:
 			const String& GetName			() { return name; }
 
@@ -111,6 +113,9 @@ namespace ING {
 			C_Pass*		GetPass				(const String& name) { return passVector[GetPassIndex(name)]; }
 
 			C_Pass*		GetPass				(unsigned int index) { return passVector[index]; }
+
+			IClass*		GetCameraDataClass	() { return cameraDataClass; }
+			void		SetCameraDataClass	(IClass* _class) { this->cameraDataClass = _class; }
 
 
 
