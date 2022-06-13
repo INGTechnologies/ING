@@ -20,6 +20,13 @@
 
 
 
+/**
+ *	Include Canvas
+ */
+#include <ING/ImmediateGUI/Canvas/Canvas.h>
+
+
+
 namespace ING {
 
 	namespace ImmediateGUI {
@@ -33,6 +40,10 @@ namespace ING {
 
 			if (!application->IsHasModule("ING.Rendering.StandardRP"))
 				new Rendering::StandardRP::ApplicationModule(application);
+
+
+
+			RegisterType<ImmediateGUI::C_Canvas>(0);
 
 
 
