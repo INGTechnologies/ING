@@ -65,6 +65,10 @@ using namespace ING::Utils;
 
 
 
+#include <windowsx.h>
+
+
+
 namespace ING {
 
 	namespace MSVC {
@@ -127,6 +131,9 @@ namespace ING {
 			}
 			case WM_MOUSEMOVE:
 			{
+
+				window->mousePosition = RInt2(GET_X_LPARAM(lparam), GET_Y_LPARAM(lparam));
+
 				return ::DefWindowProc(hwnd, msg, wparam, lparam);
 				break;
 			}

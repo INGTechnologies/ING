@@ -30,6 +30,22 @@ namespace ING {
 		static const __m128 m128_i1_i1_i1_i1	= _mm_set_ps(-1, -1, -1, -1);
 		static const __m128 m128_0_0_0_0		= _mm_set_ps( 0,  0,  0,  0);
 
+
+
+		static const __m128i m128i_1_0_0_0 = _mm_set_epi32(1, 0, 0, 0);
+		static const __m128i m128i_0_1_0_0 = _mm_set_epi32(0, 1, 0, 0);
+		static const __m128i m128i_0_0_1_0 = _mm_set_epi32(0, 0, 1, 0);
+		static const __m128i m128i_0_0_0_1 = _mm_set_epi32(0, 0, 0, 1);
+
+		static const __m128i m128i_i1_0_0_0 = _mm_set_epi32(-1, 0, 0, 0);
+		static const __m128i m128i_0_i1_0_0 = _mm_set_epi32(0, -1, 0, 0);
+		static const __m128i m128i_0_0_i1_0 = _mm_set_epi32(0, 0, -1, 0);
+		static const __m128i m128i_0_0_0_i1 = _mm_set_epi32(0, 0, 0, -1);
+
+		static const __m128i m128i_1_1_1_1 = _mm_set_epi32(1, 1, 1, 1);
+		static const __m128i m128i_i1_i1_i1_i1 = _mm_set_epi32(-1, -1, -1, -1);
+		static const __m128i m128i_0_0_0_0 = _mm_set_epi32(0, 0, 0, 0);
+
 	}
 
 }
@@ -118,6 +134,87 @@ namespace ING {
 				__m128 m128_2;
 				__m128 m128_3;
 				__m128 m128_4;
+
+			};
+
+		};
+
+
+		
+
+		static const __m256i m256i_1_0_0_0_0_0_0_0			= _mm256_set_epi32(1, 0, 0, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_1_0_0_0_0_0_0			= _mm256_set_epi32(0, 1, 0, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_1_0_0_0_0_0			= _mm256_set_epi32(0, 0, 1, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_0_1_0_0_0_0			= _mm256_set_epi32(0, 0, 0, 1, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_0_0_1_0_0_0			= _mm256_set_epi32(0, 0, 0, 0, 1, 0, 0, 0);
+		static const __m256i m256i_0_0_0_0_0_1_0_0			= _mm256_set_epi32(0, 0, 0, 0, 0, 1, 0, 0);
+		static const __m256i m256i_0_0_0_0_0_0_1_0			= _mm256_set_epi32(0, 0, 0, 0, 0, 0, 1, 0);
+		static const __m256i m256i_0_0_0_0_0_0_0_1			= _mm256_set_epi32(0, 0, 0, 0, 0, 0, 0, 1);
+
+		static const __m256i m256i_i1_0_0_0_0_0_0_0			= _mm256_set_epi32(-1, 0, 0, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_i1_0_0_0_0_0_0			= _mm256_set_epi32(0, -1, 0, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_i1_0_0_0_0_0			= _mm256_set_epi32(0, 0, -1, 0, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_0_i1_0_0_0_0			= _mm256_set_epi32(0, 0, 0, -1, 0, 0, 0, 0);
+		static const __m256i m256i_0_0_0_0_i1_0_0_0			= _mm256_set_epi32(0, 0, 0, 0, -1, 0, 0, 0);
+		static const __m256i m256i_0_0_0_0_0_i1_0_0			= _mm256_set_epi32(0, 0, 0, 0, 0, -1, 0, 0);
+		static const __m256i m256i_0_0_0_0_0_0_i1_0			= _mm256_set_epi32(0, 0, 0, 0, 0, 0, -1, 0);
+		static const __m256i m256i_0_0_0_0_0_0_0_i1			= _mm256_set_epi32(0, 0, 0, 0, 0, 0, 0, -1);
+
+		static const __m256i m256i_1_1_1_1_1_1_1_1			= _mm256_set_epi32(1, 1, 1, 1, 1, 1, 1, 1);
+		static const __m256i m256i_i1_i1_i1_i1_i1_i1_i1_i1	= _mm256_set_epi32(-1, -1, -1, -1, -1, -1, -1, -1);
+		static const __m256i m256i_0_0_0_0_0_0_0_0			= _mm256_set_epi32(0, 0, 0, 0, 0, 0, 0, 0);
+
+		static const std::pair<__m256i, __m256i> m256i_0_0_0_0_0_0_0_0_x2(m256i_0_0_0_0_0_0_0_0, m256i_0_0_0_0_0_0_0_0);
+
+
+
+		static const __m256i M128I_DUPLICATE_PERMUTE = _mm256_set_epi32(3,2,1,0,3,2,1,0);
+
+		union __m128i_x2 {
+
+			__m128i_x2(){}
+			__m128i_x2(__m256i m):m256(m){}
+			__m128i_x2(__m128i m1, __m128i m2):m128_1(m1),m128_2(m2){}
+			__m128i_x2(const __m128i* m){
+			
+				m256 = _mm256_permutevar8x32_epi32(*((__m256i*)m), M128_DUPLICATE_PERMUTE);
+			
+			}
+
+			__m256i m256;
+
+			struct {
+
+				__m128i m128_1;
+				__m128i m128_2;
+
+			};
+
+		};
+
+
+
+		static const __m256i _M256I_FP0_TO_ALL = _mm256_set_epi32(0, 0, 0, 0, 0, 0, 0, 0);
+
+
+		union __m128i_x4 {
+
+			__m128i_x4() {}
+			__m128i_x4(__m256i m1, __m256i m2) :m256_1(m1), m256_2(m2) {}
+
+			struct {
+
+				__m256i m256_1;
+				__m256i m256_2;
+
+			};
+
+			struct {
+
+				__m128i m128_1;
+				__m128i m128_2;
+				__m128i m128_3;
+				__m128i m128_4;
 
 			};
 
