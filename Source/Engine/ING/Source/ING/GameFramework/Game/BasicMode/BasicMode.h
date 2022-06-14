@@ -63,6 +63,7 @@ namespace ING {
 
 	public:
 		IClass*			GetPlayerPawnClass () { return playerPawnClass; }
+		void			SetPlayerPawnClass (IClass* playerPawnClass) { this->playerPawnClass = playerPawnClass; }
 
 		C_Pawn*			GetPlayerPawn () { return playerPawn; }
 

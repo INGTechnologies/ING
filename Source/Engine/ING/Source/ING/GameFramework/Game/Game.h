@@ -59,6 +59,7 @@ namespace ING {
 		const String&	GetName () { return name; }
 
 		IClass*			GetModeClass () { return modeClass; }
+		void			SetModeClass (IClass* modeClass) { this->modeClass = modeClass; }
 		C_GameMode*		GetMode () { return mode; }
 
 
