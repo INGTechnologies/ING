@@ -76,12 +76,37 @@ namespace ING {
 
 				IProjectGenerator::Generate();
 
-				if (GetProjectBuilder()->GetPlaceholder("INGBuildGame") == L"true")
-					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + ToWString(L"/Game/"))) {
+				if (GetProjectBuilder()->GetPlaceholder("INGBuildGame") == L"true") {
+
+					if (!std::filesystem::exists(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName"))) {
 
 						std::filesystem::create_directory(GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName"));
 
 					}
+
+
+
+					WString debugLinkFilePath = GetProjectBuilder()->GetPlaceholder("INGAbsProjectDir") + GetProjectBuilder()->GetPlaceholder("INGGameDirName") + L"/DebugLink.igitignore";
+
+					if (std::filesystem::exists(debugLinkFilePath)) {
+
+						std::filesystem::remove(debugLinkFilePath);
+
+					}
+
+					GetProjectBuilder()
+						->GetFileWriter()
+						->Write(
+
+							debugLinkFilePath,
+
+							GetProjectBuilder()
+							->GetFileReader()
+							->Read(L"./Templates/VS2022/Game/DebugLink.igitignore")
+
+						);
+
+				}
 
 				if (GetProjectBuilder()->GetPlaceholder("INGBuildEngine") == L"true") {
 
