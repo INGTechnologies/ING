@@ -37,6 +37,15 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Math
+ */
+#include <ING/Math/Math.h>
+
+using namespace ING::Math;
+
+
+
 namespace ING {
 
 	class IWindow;

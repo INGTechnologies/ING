@@ -20,6 +20,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Math {
@@ -78,6 +85,36 @@ namespace ING {
 			}
 
 			inline RVector2		Transpose() const;
+
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RVector2";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
 
 
 
@@ -160,6 +197,44 @@ namespace ING {
 			}
 
 			inline RVector3		Transpose() const;
+
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RVector3";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
 
 
 
@@ -255,6 +330,52 @@ namespace ING {
 
 			inline RVector4	Transpose() const;
 
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RVector4";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0E);
+
+				std::cout << w;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
+
 
 
 			/**
@@ -334,6 +455,36 @@ namespace ING {
 			}
 
 			inline CVector2		Transpose() const;
+
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CVector2";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
 
 
 
@@ -416,6 +567,44 @@ namespace ING {
 			}
 
 			inline CVector3	Transpose() const;
+
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CVector3";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
 
 
 
@@ -510,6 +699,52 @@ namespace ING {
 			}
 
 			inline CVector4	Transpose() const;
+
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CVector4";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0E);
+
+				std::cout << w;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
 
 
 

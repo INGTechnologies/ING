@@ -20,6 +20,13 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Debug
+ */
+#include <ING/_Debug/Debug.h>
+
+
+
 namespace ING {
 
 	namespace Math {
@@ -75,6 +82,42 @@ namespace ING {
 				return *(((float*)this) + i);
 			}
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CFloat2";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
+
 		};
 #pragma endregion
 		
@@ -127,6 +170,50 @@ namespace ING {
 		public:
 			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CFloat3";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
 			}
 
 		};
@@ -197,6 +284,58 @@ namespace ING {
 				return *(((float*)this) + i);
 			}
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "CFloat4";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0E);
+
+				std::cout << w;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
+
 		};
 #pragma endregion
 
@@ -249,6 +388,42 @@ namespace ING {
 		public:
 			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RFloat2";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
 			}
 
 		};
@@ -305,6 +480,50 @@ namespace ING {
 				return *(((float*)this) + i);
 			}
 
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RFloat3";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
+			}
+
 		};
 #pragma endregion
 		
@@ -359,6 +578,58 @@ namespace ING {
 		public:
 			inline float& operator[](unsigned char i) {
 				return *(((float*)this) + i);
+			}
+
+
+
+			/**
+			 *	Methods
+			 */
+		public:
+			void DebugLog() const {
+
+				Debug::SetConsoleColor(0x08);
+
+				std::cout << "RFloat4";
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << "(";
+
+				Debug::SetConsoleColor(0x0C);
+
+				std::cout << x;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0A);
+
+				std::cout << y;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0B);
+
+				std::cout << z;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << ", ";
+
+				Debug::SetConsoleColor(0x0E);
+
+				std::cout << w;
+
+				Debug::SetConsoleColor(0x07);
+
+				std::cout << " )";
+
+				Debug::SetConsoleColor(0x07);
+
 			}
 
 		};

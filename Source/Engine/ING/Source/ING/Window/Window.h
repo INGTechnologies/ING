@@ -58,6 +58,15 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Math
+ */
+#include <ING/Math/Math.h>
+
+using namespace ING::Math;
+
+
+
 namespace ING {
 
 	class Screen;
@@ -117,6 +126,9 @@ namespace ING {
 
 		bool		isResizing;
 
+	protected:
+		RInt2		mousePosition;
+
 	public:
 		void*		GetHandle	() { return handle; }
 
@@ -127,6 +139,8 @@ namespace ING {
 		Screen*		GetScreen	() { return screen; }
 
 		bool		IsResizing	() { return isResizing; }
+
+		RInt2		GetMousePosition () { return mousePosition; }
 
 
 
