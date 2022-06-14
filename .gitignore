@@ -359,3 +359,5 @@ MigrationBackup/
 [Bb]inaries/
 
 ING.GitIgnore_VS2022.sln
+
+*.igitignore

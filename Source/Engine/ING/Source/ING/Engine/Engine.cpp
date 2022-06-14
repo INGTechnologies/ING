@@ -297,6 +297,15 @@ namespace ING {
 
 		mode = configuration->Get<String>("ING.Engine.mode");
 
+		SetRootPath(L"GameBinaries", gameDir);
+		SetRootPath(L"EngineBinaries", workingDir);
+
+		if (std::filesystem::exists(gameDir + ToWString("/DebugLink.igitignore"))) {
+
+			gameDir = ResourceManager::GetInstance()->ReadFile(gameDir + ToWString("/DebugLink.igitignore"));
+
+		}
+
 		SetRootPath(L"Game", gameDir);
 		SetRootPath(L"Engine", workingDir);
 
@@ -306,7 +315,7 @@ namespace ING {
 
 
 
-		if (!PluginManager::GetInstance()->LoadPlugins(L"Engine:/Plugins/")) {
+		if (!PluginManager::GetInstance()->LoadPlugins(L"EngineBinaries:/Plugins/")) {
 
 			Debug::Error("Plugin Cant Load Plugins In Engine:/Plugins/");
 
@@ -316,7 +325,7 @@ namespace ING {
 
 		}
 
-		if (!PluginManager::GetInstance()->LoadPlugins(L"Game:/Plugins/")) {
+		if (!PluginManager::GetInstance()->LoadPlugins(L"GameBinaries:/Plugins/")) {
 
 			Debug::Error("Plugin Cant Load Plugins In Game:/Plugins/");
 
