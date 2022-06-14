@@ -23,6 +23,7 @@ namespace ING {
 		Debug::Log("Start Creating GameFramework");
 
 
+
 		Debug::Log("GameFramework Created");
 
 	}

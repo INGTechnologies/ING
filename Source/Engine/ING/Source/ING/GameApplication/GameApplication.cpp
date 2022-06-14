@@ -48,6 +48,34 @@
 
 
 
+/**
+ *	Include Application Module
+ */
+#include <ING/Application/Module/Module.h>
+
+
+
+/**
+ *	Include Game
+ */
+#include <ING/GameFramework/Game/Game.h>
+
+
+
+/**
+ *	Include Game Mode
+ */
+#include <ING/GameFramework/Game/Mode/Mode.h>
+
+
+
+/**
+ *	Include Basic Game Mode
+ */
+#include <ING/GameFramework/Game/BasicMode/BasicMode.h>
+
+
+
 namespace ING {
 
 	/**
@@ -61,10 +89,26 @@ namespace ING {
 	IGameApplication::IGameApplication(const WString& configPath, const String& mode) :
 		IApplication(configPath),
 
-		mode(mode)
+		mode(mode),
+		gameClass(0),
+		game(0)
 	{
 
 		Debug::Log("Start Creating Game Application");
+
+
+
+		IApplicationModule* module = new IApplicationModule("ING.GameFramework", this);
+
+		module->RegisterType<C_Game>(0);
+		module->RegisterType<C_GameMode>(0);
+		module->RegisterType<C_BasicGameMode>(0);
+
+		module->AddDependency("ING.Actor");
+
+
+
+		GetModule("ING")->AddDependency("ING.GameFramework");
 
 
 
@@ -89,12 +133,20 @@ namespace ING {
 
 		if(!IApplication::Init())return false;
 
+		gameClass = C_Game::GetType(0);
+
 		Debug::Log("Finished Initializing Game Application");
 
 	}
 	void	IGameApplication::Release() {
 
 		Debug::Log("Start Releasing Game Application");
+
+		if (game != 0) {
+
+			game->Release();
+
+		}
 
 		IApplication::Release();
 
@@ -108,6 +160,8 @@ namespace ING {
 	 *	Methods
 	 */
 	void	IGameApplication::Start() {
+
+		game = (C_Game*)gameClass->RCreateInstance(GetName());
 
 		IApplication::Start();
 

@@ -30,7 +30,20 @@ using namespace ING::Utils;
 
 
 
+/**
+ *	Include Reflection
+ */
+#include <ING/Reflection/Reflection.h>
+
+using namespace ING::Reflection;
+
+
+
 namespace ING {
+
+	class C_Game;
+
+
 
 	class ING_API IGameApplication :
 		public IApplication,
@@ -72,8 +85,14 @@ namespace ING {
 	private:
 		String mode;
 
+		IClass*gameClass;
+		C_Game*game;
+
 	public:
-		String& GetMode () { return mode; }
+		String&GetMode () { return mode; }
+
+		IClass*GetGameClass () { return gameClass; }
+		C_Game*GetGame () { return game; }
 
 
 
