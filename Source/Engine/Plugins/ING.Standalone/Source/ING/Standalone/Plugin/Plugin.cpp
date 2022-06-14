@@ -16,10 +16,6 @@
 
 
 
-using namespace ING;
-
-
-
 /**
  *	Plugin Info
  */
@@ -35,7 +31,7 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Load) (ING::Engine* engine, ING::IP
 	DEFAULT_PLUGIN_LOAD(ING_STANDALONE, engine, plugin);
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
@@ -46,7 +42,7 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Load) (ING::Engine* engine, ING::IP
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Unload) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
@@ -57,7 +53,7 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, Unload) () {
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateCreate) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
@@ -68,15 +64,15 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateCreate) () {
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreInit) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
 
 	/* Create Game Application */
-	IGameApplication* gameApplication = new Standalone::GameApplication(L"Game:/Config.ini");
+	ING::IGameApplication* gameApplication = new ING::Standalone::GameApplication(L"Game:/Config.ini");
 
-	ApplicationManager::GetInstance()->SetGameApplication(gameApplication);
+	ING::ApplicationManager::GetInstance()->SetGameApplication(gameApplication);
 
 	return true;
 }
@@ -84,12 +80,12 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreInit) () {
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateInit) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
 
-	if (!ApplicationManager::GetInstance()->GetGameApplication()->Init()) return false;
+	if (!ING::ApplicationManager::GetInstance()->GetGameApplication()->Init()) return false;
 
 	return true;
 }
@@ -97,7 +93,7 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, LateInit) () {
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRun) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}
@@ -108,7 +104,7 @@ DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRun) () {
 DEFINE_PLUGIN_FUNCTION(ING_STANDALONE, bool, PreRelease) () {
 
 	/* Continue if engine is in ING.Standalone mode */
-	if (Engine::GetInstance()->GetMode() != "ING.Standalone") {
+	if (ING::Engine::GetInstance()->GetMode() != "ING.Standalone") {
 
 		return true;
 	}

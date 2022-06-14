@@ -62,6 +62,20 @@
 
 
 
+/**
+ *	Include Pawn
+ */
+#include <ING/Pawn/Pawn.h>
+
+
+
+/**
+ *	Include Character
+ */
+#include <ING/Character/Character.h>
+
+
+
 namespace ING {
 
 	/**
@@ -75,6 +89,9 @@ namespace ING {
 
 		module->RegisterType<C_Actor>(0);
 		module->RegisterType<C_ActorComponent>(0);
+
+		module->RegisterType<C_Pawn>(0);
+		module->RegisterType<C_Character>(0);
 
 
 

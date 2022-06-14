@@ -85,6 +85,7 @@ namespace ING {
 		void	RegisterObject	(IObject* object);
 		void	RemoveObject	(IObject* object);
 		IObject*GetObjectById	(ObjectId id);
+		bool	IsHasObject		(ObjectId id) { return id2ObjectMap.find(id) != id2ObjectMap.end(); }
 
 	};
 
